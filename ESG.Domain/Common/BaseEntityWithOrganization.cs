@@ -9,6 +9,6 @@ namespace ESG.Domain.Common
     public  abstract class BaseEntityWithOrganization<T>
     {
         public virtual T Id { get; set; }
-        public virtual T TenantId { get; set; }
+        public virtual T OrganizationId { get; set; }
     }
 }
