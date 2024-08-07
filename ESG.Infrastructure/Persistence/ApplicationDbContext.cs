@@ -89,9 +89,9 @@ namespace ESG.Infrastructure.Persistence
             new Language { Id = 27, Name = "Yakut", IsoCode = "sah" }
         );
             modelBuilder.Entity<Domain.Entities.UnitOfMeasureType>().HasData(
-             new Domain.Entities.UnitOfMeasureType { Id = 1, Name = "Kilogram", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1,LanguageId=1 },
-             new Domain.Entities.UnitOfMeasureType { Id = 2, Name = "Gram", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1 },
-             new Domain.Entities.UnitOfMeasureType { Id = 3, Name = "Liter", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1 }
+             new Domain.Entities.UnitOfMeasureType { Id = 1, Name = "Kilogram", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1,LanguageId=1,OrganizationId=1 },
+             new Domain.Entities.UnitOfMeasureType { Id = 2, Name = "Gram", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
+             new Domain.Entities.UnitOfMeasureType { Id = 3, Name = "Liter", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1 , OrganizationId = 1 }
          );
             
             modelBuilder.Entity<Tenant>().HasData(

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ESG.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240807104947_Initial Create")]
-    partial class InitialCreate
+    [Migration("20240807140647_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,34 @@ namespace ESG.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("ESG.Domain.Entities.Currency", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("CurrencyCode")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("LongText")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ShortText")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Currency");
+                });
 
             modelBuilder.Entity("ESG.Domain.Entities.Language", b =>
                 {
@@ -367,12 +395,12 @@ namespace ESG.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<long>("OrganizationId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("ShortText")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<long>("TenantId")
-                        .HasColumnType("bigint");
 
                     b.Property<long>("UnitOfMeasureTypeId")
                         .HasColumnType("bigint");
@@ -380,6 +408,8 @@ namespace ESG.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LanguageId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("UnitOfMeasureTypeId");
 
@@ -416,12 +446,14 @@ namespace ESG.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long>("TenantId")
+                    b.Property<long>("OrganizationId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
                     b.HasIndex("LanguageId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("UnitOfMeasureTypes");
 
@@ -430,37 +462,37 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 7, 10, 49, 47, 180, DateTimeKind.Utc).AddTicks(9421),
+                            CreatedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5654),
                             IsDeleted = false,
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 7, 10, 49, 47, 180, DateTimeKind.Utc).AddTicks(9424),
+                            LastModifiedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5656),
                             Name = "Kilogram",
-                            TenantId = 0L
+                            OrganizationId = 1L
                         },
                         new
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 7, 10, 49, 47, 180, DateTimeKind.Utc).AddTicks(9436),
+                            CreatedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5665),
                             IsDeleted = false,
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 7, 10, 49, 47, 180, DateTimeKind.Utc).AddTicks(9436),
+                            LastModifiedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5665),
                             Name = "Gram",
-                            TenantId = 0L
+                            OrganizationId = 1L
                         },
                         new
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 7, 10, 49, 47, 180, DateTimeKind.Utc).AddTicks(9438),
+                            CreatedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5667),
                             IsDeleted = false,
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 7, 10, 49, 47, 180, DateTimeKind.Utc).AddTicks(9439),
+                            LastModifiedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5668),
                             Name = "Liter",
-                            TenantId = 0L
+                            OrganizationId = 1L
                         });
                 });
 
@@ -612,6 +644,12 @@ namespace ESG.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ESG.Domain.Entities.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ESG.Domain.Entities.UnitOfMeasureType", "UnitOfMeasureTypes")
                         .WithMany("UnitOfMeasure")
                         .HasForeignKey("UnitOfMeasureTypeId")
@@ -619,6 +657,8 @@ namespace ESG.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Language");
+
+                    b.Navigation("Organization");
 
                     b.Navigation("UnitOfMeasureTypes");
                 });
@@ -631,7 +671,15 @@ namespace ESG.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ESG.Domain.Entities.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Language");
+
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.UserRole", b =>
