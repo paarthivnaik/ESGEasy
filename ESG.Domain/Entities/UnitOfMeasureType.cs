@@ -11,7 +11,7 @@ namespace ESG.Domain.Entities
     {
 
         public string Name { get; set; } = string.Empty;
-        public List<UnitOfMeasure> UnitOfMeasure { get; set; }
+        public IEnumerable<UnitOfMeasure> UnitOfMeasure { get; set; }
         public long LanguageId { get; set; }
         public Language Language { get; set; }
     }

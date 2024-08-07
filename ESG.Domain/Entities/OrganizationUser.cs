@@ -15,6 +15,6 @@ namespace ESG.Domain.Entities
         public long UserId { get; set; }
         public  Organization Organizations { get; set; }
 
-        public  User Users { get; set; }
+        public  IEnumerable<User> Users { get; set; }
     }
 }
