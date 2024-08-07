@@ -58,7 +58,6 @@ namespace ESG.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
             modelBuilder.Entity<Language>().HasData(
             new Language { Id = 1, Name = "Russian", IsoCode = "ru" },
@@ -111,6 +110,7 @@ namespace ESG.Infrastructure.Persistence
                     TenantId = 1
                 }
             );
+            base.OnModelCreating(modelBuilder);
         }
 
     }

@@ -365,10 +365,10 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.UnitOfMeasure", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    b.Property<long>("OrganizationId")
+                        .HasColumnType("bigint");
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -392,9 +392,6 @@ namespace ESG.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long>("OrganizationId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("ShortText")
                         .IsRequired()
                         .HasColumnType("text");
@@ -402,7 +399,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("UnitOfMeasureTypeId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id", "OrganizationId");
 
                     b.HasIndex("LanguageId");
 
@@ -459,11 +456,11 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5654),
+                            CreatedDate = new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6228),
                             IsDeleted = false,
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5656),
+                            LastModifiedDate = new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6230),
                             Name = "Kilogram",
                             OrganizationId = 1L
                         },
@@ -471,11 +468,11 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5665),
+                            CreatedDate = new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6241),
                             IsDeleted = false,
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5665),
+                            LastModifiedDate = new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6242),
                             Name = "Gram",
                             OrganizationId = 1L
                         },
@@ -483,11 +480,11 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5667),
+                            CreatedDate = new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6244),
                             IsDeleted = false,
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5668),
+                            LastModifiedDate = new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6244),
                             Name = "Liter",
                             OrganizationId = 1L
                         });

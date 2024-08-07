@@ -223,13 +223,12 @@ namespace ESG.Infrastructure.Migrations
                 name: "UnitOfMeasures",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<long>(type: "bigint", nullable: false),
+                    OrganizationId = table.Column<long>(type: "bigint", nullable: false),
                     UnitOfMeasureTypeId = table.Column<long>(type: "bigint", nullable: false),
                     ShortText = table.Column<string>(type: "text", nullable: false),
                     LongText = table.Column<string>(type: "text", nullable: false),
                     LanguageId = table.Column<long>(type: "bigint", nullable: false),
-                    OrganizationId = table.Column<long>(type: "bigint", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     CreatedBy = table.Column<long>(type: "bigint", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -238,7 +237,7 @@ namespace ESG.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UnitOfMeasures", x => x.Id);
+                    table.PrimaryKey("PK_UnitOfMeasures", x => new { x.Id, x.OrganizationId });
                     table.ForeignKey(
                         name: "FK_UnitOfMeasures_Languages_LanguageId",
                         column: x => x.LanguageId,
@@ -308,9 +307,9 @@ namespace ESG.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsDeleted", "LanguageId", "LastModifiedBy", "LastModifiedDate", "Name", "OrganizationId" },
                 values: new object[,]
                 {
-                    { 1L, 1L, new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5654), false, 1L, 1L, new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5656), "Kilogram", 1L },
-                    { 2L, 1L, new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5665), false, 1L, 1L, new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5665), "Gram", 1L },
-                    { 3L, 1L, new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5667), false, 1L, 1L, new DateTime(2024, 8, 7, 14, 6, 47, 664, DateTimeKind.Utc).AddTicks(5668), "Liter", 1L }
+                    { 1L, 1L, new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6228), false, 1L, 1L, new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6230), "Kilogram", 1L },
+                    { 2L, 1L, new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6241), false, 1L, 1L, new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6242), "Gram", 1L },
+                    { 3L, 1L, new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6244), false, 1L, 1L, new DateTime(2024, 8, 7, 14, 31, 50, 64, DateTimeKind.Utc).AddTicks(6244), "Liter", 1L }
                 });
 
             migrationBuilder.CreateIndex(

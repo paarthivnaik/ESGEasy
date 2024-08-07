@@ -14,7 +14,7 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<UnitOfMeasure> builder)
         {
-            builder.HasKey(x => new { x.Id, x.TenantId});
+            builder.HasKey(x => new { x.Id, x.OrganizationId });
         }
     }
 }
