@@ -24,6 +24,7 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<ESG.Domain.Entities.UnitOfMeasure> UnitOfMeasures { get; set; }
         public DbSet<ESG.Domain.Entities.UnitOfMeasureType> UnitOfMeasureTypes { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Currency> Currency { get; set; }
         public DateTime _curretDateTime { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
