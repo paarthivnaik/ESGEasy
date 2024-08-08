@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ESG.Infrastructure.Persistence.Configurations
 {
-    public class DimentionTypesConfiguration : IEntityTypeConfiguration<DimentionType>
+    public class DimensionTypesConfiguration : IEntityTypeConfiguration<DimensionType>
     {
-        public void Configure(EntityTypeBuilder<DimentionType> builder)
+        public void Configure(EntityTypeBuilder<DimensionType> builder)
         {
             builder.HasKey(x => new { x.Id, x.OrganizationId });
         }

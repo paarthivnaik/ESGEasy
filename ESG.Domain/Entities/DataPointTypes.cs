@@ -14,8 +14,6 @@ namespace ESG.Domain.Entities
         public string LongText { get; set; }
         public long LanguageId { get; set; }
         public Language Language { get; set; }
-        public long DimentionId { get; set; }
-        public Dimentions Dimentions { get; set; }
 
         public IEnumerable<DataPointValues> DataPointValues { get; set; }
         public IEnumerable<DatapointModel> DatapointModels { get; set; }
