@@ -207,14 +207,9 @@ namespace ESG.Infrastructure.Persistence
         Email = "user1@example.com",
         FirstName = "John",
         LastName = "Doe",
-        EmailConfirmed = true,
+       
         PhoneNumber = "1234567890",
-        PhoneNumberConfirmed = true,
-        LockoutEnabled = false,
-        AccessFailedCount = 0,
-        Active = true,
-        LastLogin = DateTime.UtcNow,
-        PasswordExpiry = DateTime.UtcNow.AddMonths(3),
+       
         CreatedBy = 1,
         CreatedDate = DateTime.UtcNow
     },
@@ -226,14 +221,9 @@ namespace ESG.Infrastructure.Persistence
         Email = "user2@example.com",
         FirstName = "Jane",
         LastName = "Smith",
-        EmailConfirmed = true,
+        
         PhoneNumber = "0987654321",
-        PhoneNumberConfirmed = true,
-        LockoutEnabled = false,
-        AccessFailedCount = 0,
-        Active = true,
-        LastLogin = DateTime.UtcNow,
-        PasswordExpiry = DateTime.UtcNow.AddMonths(3),
+        
         CreatedBy = 1,
         CreatedDate = DateTime.UtcNow
     },
@@ -245,14 +235,9 @@ namespace ESG.Infrastructure.Persistence
         Email = "user3@example.com",
         FirstName = "Alice",
         LastName = "Johnson",
-        EmailConfirmed = true,
+       
         PhoneNumber = "2345678901",
-        PhoneNumberConfirmed = true,
-        LockoutEnabled = false,
-        AccessFailedCount = 0,
-        Active = true,
-        LastLogin = DateTime.UtcNow,
-        PasswordExpiry = DateTime.UtcNow.AddMonths(3),
+        
         CreatedBy = 1,
         CreatedDate = DateTime.UtcNow
     });
