@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESG.Application
+namespace ESG.Application.Dto
 {
     public class UnitOfMeasureDto
     {
@@ -13,5 +13,6 @@ namespace ESG.Application
         public long UnitOfMeasureTypeId { get; set; }
         public string ShortText { get; set; } = string.Empty;
         public string LongText { get; set; } = string.Empty;
+        public bool IsActive { get; set; }
     }
 }
