@@ -8,7 +8,7 @@ namespace ESG.Domain.Common
 {
     public interface IAuditableEntity
     {
-        bool IsDeleted { get; set; }
+        bool IsActive { get; set; }
         long CreatedBy { get; set; }
         DateTime CreatedDate { get; set; }
         long? LastModifiedBy { get; set; }

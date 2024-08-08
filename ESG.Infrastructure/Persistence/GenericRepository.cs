@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace ESG.Infrastructure.Persistence
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         #region Properties
         private readonly ApplicationDbContext _context;
 
-        protected DbSet<TEntity> _entities;
+        protected DbSet<T> _entities;
 
         public GenericRepository(ApplicationDbContext context)
         {
@@ -66,18 +66,18 @@ namespace ESG.Infrastructure.Persistence
         /// <summary>
         /// Gets an entity set
         /// </summary>
-        protected virtual DbSet<TEntity> Entities
+        protected virtual DbSet<T> Entities
         {
             get
             {
                 if (_entities == null)
-                    _entities = _context.Set<TEntity>();
+                    _entities = _context.Set<T>();
 
                 return _entities;
             }
         }
         #region Add
-        public virtual void Add(TEntity entity)
+        public virtual void Add(T entity)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace ESG.Infrastructure.Persistence
             }
 
         }
-        public async Task AddRange(IEnumerable<TEntity> entities)
+        public async Task AddRange(IEnumerable<T> entities)
         {
             try
             {
@@ -108,7 +108,7 @@ namespace ESG.Infrastructure.Persistence
             }
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity)
+        public async Task<T> AddAsync(T entity)
         {
             //_context.Entry(entity).State = EntityState.Added;
             await Entities.AddAsync(entity);
@@ -116,7 +116,7 @@ namespace ESG.Infrastructure.Persistence
         }
         #endregion
         #region Read
-        public virtual async Task<TEntity> Get(long id)
+        public virtual async Task<T> Get(long id)
         {
             try
             {
@@ -127,7 +127,7 @@ namespace ESG.Infrastructure.Persistence
                 throw;
             }
         }
-        public virtual async Task<TEntity> Get(Expression<Func<TEntity, bool>> where)
+        public virtual async Task<T> Get(Expression<Func<T, bool>> where)
         {
             try
             {
@@ -140,7 +140,7 @@ namespace ESG.Infrastructure.Persistence
             }
 
         }
-        public virtual async Task<IEnumerable<TEntity>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
             try
             {
@@ -151,14 +151,14 @@ namespace ESG.Infrastructure.Persistence
                 throw;
             }
         }
-        public virtual async Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity, bool>> where)
+        public virtual async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> where)
         {
             return Entities.AsNoTracking().Where(where);
         }
         #endregion
 
         #region Update
-        public virtual async Task Update(TEntity entity)
+        public virtual async Task<T> Update(T entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
@@ -166,14 +166,14 @@ namespace ESG.Infrastructure.Persistence
             {
                 //Entities.Update(entity);
                 _context.Entry(entity).State = EntityState.Modified;
-                await Task.CompletedTask;
+               return entity;
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        public  async  Task UpdateRange(IEnumerable<TEntity> entities)
+        public  async  Task UpdateRange(IEnumerable<T> entities)
         {
             if (entities == null)
                 throw new ArgumentNullException(nameof(entities));
@@ -187,11 +187,11 @@ namespace ESG.Infrastructure.Persistence
                 throw;
             }
         }
-        public Task UpdateAsync(long Id, TEntity entity)
+        public async Task<T> UpdateAsync(long Id, T entity)
         {
-            TEntity exist = _context.Set<TEntity>().Find(Id);
+            T exist = _context.Set<T>().Find(Id);
             _context.Entry(exist).CurrentValues.SetValues(entity);
-            return Task.CompletedTask;
+            return entity;
         }
         #endregion
         #region Delete
@@ -211,7 +211,7 @@ namespace ESG.Infrastructure.Persistence
                 throw;
             }
         }
-        public virtual async Task<bool> Delete(TEntity entity)
+        public virtual async Task<bool> Delete(T entity)
         {
             try
             {
@@ -226,7 +226,7 @@ namespace ESG.Infrastructure.Persistence
                 throw;
             }
         }
-        public virtual async Task<bool> Delete(Expression<Func<TEntity, bool>> where)
+        public virtual async Task<bool> Delete(Expression<Func<T, bool>> where)
         {
             try
             {
@@ -257,7 +257,7 @@ namespace ESG.Infrastructure.Persistence
             return await Entities.AsNoTracking().CountAsync();
 
         }
-        public virtual async Task<int> Count(Expression<Func<TEntity, bool>> where)
+        public virtual async Task<int> Count(Expression<Func<T, bool>> where)
         {
             return await Entities.AsNoTracking().CountAsync(where);
 
@@ -266,12 +266,12 @@ namespace ESG.Infrastructure.Persistence
         /// <summary>
         /// Gets a table
         /// </summary>
-        public virtual IQueryable<TEntity> Table => Entities;
+        public virtual IQueryable<T> Table => Entities;
 
         /// <summary>
         /// Gets a table with "no tracking" enabled (EF feature) Use it only when you load record(s) only for read-only operations
         /// </summary>
-        public virtual IQueryable<TEntity> AsNoTracking => Entities.AsNoTracking();
+        public virtual IQueryable<T> AsNoTracking => Entities.AsNoTracking();
         public virtual new DbSet<TEntity> Set<TEntity>() where TEntity : class
         {
             return _context.Set<TEntity>();
@@ -279,7 +279,7 @@ namespace ESG.Infrastructure.Persistence
         #endregion
 
 
-        public async  Task UpdateFieldsSave(TEntity entity, params Expression<Func<TEntity, object>>[] includeProperties)
+        public async  Task UpdateFieldsSave(T entity, params Expression<Func<T, object>>[] includeProperties)
         {
             var dbEntry = _context.Entry(entity);
             foreach (var includeProperty in includeProperties)

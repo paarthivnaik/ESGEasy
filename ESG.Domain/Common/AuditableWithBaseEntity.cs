@@ -8,7 +8,7 @@ namespace ESG.Domain.Common
 {
     public abstract class AuditableWithBaseEntity<T> : BaseEntity<T>, IAuditableEntity
     {
-        public bool IsDeleted { get; set; } = false;
+        public bool IsActive { get; set; } = false;
         public long CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public long? LastModifiedBy { get; set; }
