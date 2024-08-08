@@ -142,10 +142,17 @@ namespace ESG.Infrastructure.Persistence
     new DimentionType { Id = 10, Name = "DimensionType10", ShortText = "DT10", LongText = "Dimension Type 10", LanguageId = 1, IsHeirarchialDimention = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
 );
 
-            modelBuilder.Entity<Domain.Entities.UnitOfMeasureType>().HasData(
-             new Domain.Entities.UnitOfMeasureType { Id = 1, Name = "Kilogram", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
-             new Domain.Entities.UnitOfMeasureType { Id = 2, Name = "Gram", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
-             new Domain.Entities.UnitOfMeasureType { Id = 3, Name = "Liter", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 });
+            modelBuilder.Entity<UnitOfMeasureType>().HasData(
+     new UnitOfMeasureType { Id = 1, Name = "Speed", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
+     new UnitOfMeasureType { Id = 2, Name = "Weight", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
+     new UnitOfMeasureType { Id = 3, Name = "Amount", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 });
+
+            modelBuilder.Entity<UnitOfMeasure>().HasData(
+             new UnitOfMeasure { Id = 4, ShortText = "kg", LongText = "Kilogram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
+             new UnitOfMeasure { Id = 5, ShortText = "gm", LongText = "Gram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
+             new UnitOfMeasure { Id = 6, ShortText = "ml", LongText = "milliliter", UnitOfMeasureTypeId = 3, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
+             new UnitOfMeasure { Id = 7, ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
+             new UnitOfMeasure { Id = 8, ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 });
 
             modelBuilder.Entity<Tenant>().HasData(
             new Tenant { Id = 1, Name = "ESG" });
@@ -230,19 +237,6 @@ namespace ESG.Infrastructure.Persistence
 
      );
 
-            modelBuilder.Entity<Dimentions>()
-        .HasMany(d => d.DataPointTypes)
-        .WithOne(dpt => dpt.Dimentions)
-        .HasForeignKey(dpt => dpt.DimentionId);
-
-            modelBuilder.Entity<DataPointTypes>()
-                .HasOne(dpt => dpt.Dimentions)
-                .WithMany(d => d.DataPointTypes)
-                .HasForeignKey(dpt => dpt.DimentionId);
-            modelBuilder.Entity<DataPointValues>()
-    .HasOne(dpv => dpv.DataPointType)
-    .WithMany(dpt => dpt.DataPointValues)
-    .HasForeignKey(dpv => dpv.DatapointTypeId);
 
             base.OnModelCreating(modelBuilder);
         }

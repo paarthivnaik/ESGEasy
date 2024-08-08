@@ -18,5 +18,6 @@ namespace ESG.Domain.Entities
         public bool IsHeirarchialDimention { get; set; }
         public DimentionType DimentionType { get; set; }
         public IEnumerable<DataPointTypes> DataPointTypes { get; set; }
+        public IEnumerable<DatapointModel> DatapointModels { get; set; }
     }
 }
