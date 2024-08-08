@@ -1,5 +1,5 @@
 ﻿using ESG.Application;
-using ESG.Application.Common.Interface.UnitOfMeasure;
+using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 

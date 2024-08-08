@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
-using ESG.Application.Common.Interface.UnitOfMeasure;
-using ESG.Application.Common.Mapping;
+using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 
 namespace ESG.Application.Services

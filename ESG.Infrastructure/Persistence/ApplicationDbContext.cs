@@ -245,7 +245,6 @@ namespace ESG.Infrastructure.Persistence
     .HasForeignKey(dpv => dpv.DatapointTypeId);
 
             base.OnModelCreating(modelBuilder);
-            base.OnModelCreating(modelBuilder);
         }
 
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESG.Application.Common.Interface.UnitOfMeasure
+namespace ESG.Application.Services.Interfaces
 {
     public interface IUnitOfMeasureService
     {

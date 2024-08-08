@@ -1,5 +1,5 @@
-﻿using ESG.Application.Common.Interface.UnitOfMeasure;
-using ESG.Application.Services;
+﻿using ESG.Application.Services;
+using ESG.Application.Services.Interfaces;
 
 namespace ESG.API
 {
