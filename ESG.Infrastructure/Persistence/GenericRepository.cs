@@ -26,6 +26,7 @@ namespace ESG.Infrastructure.Persistence
         #region Ctor
 
         #endregion
+
         #region Utility
         protected string GetFullErrorTextAndRollbackEntityChanges(DbUpdateException exception)
         {
@@ -115,6 +116,7 @@ namespace ESG.Infrastructure.Persistence
             return entity;
         }
         #endregion
+
         #region Read
         public virtual async Task<T> Get(long id)
         {
@@ -194,6 +196,7 @@ namespace ESG.Infrastructure.Persistence
             return entity;
         }
         #endregion
+
         #region Delete
         public virtual async Task<bool> Delete(long id)
         {
@@ -241,6 +244,7 @@ namespace ESG.Infrastructure.Persistence
             }
         }
         #endregion
+
         #region Save
         public virtual void Save()
         {
@@ -251,6 +255,7 @@ namespace ESG.Infrastructure.Persistence
             _context.SaveChangesAsync();
         }
         #endregion
+
         #region Count
         public virtual async Task<int> Count()
         {

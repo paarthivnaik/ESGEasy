@@ -8,10 +8,14 @@ namespace ESG.API
     {
         public static IServiceCollection AddAPIDependancies(this IServiceCollection services)
         {
-
             services.AddScoped<IUnitOfMeasureService, UnitOfMeasureService>();
             services.AddScoped<ITenantService, TenantService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IUnitOfMeasureTypeService, UnitOfMeasureTypeService>();
+            services.AddScoped<IDimentionTypeService, DimentionTypeService>();
+            services.AddScoped<IDimensionsService, DimensionsService>();
+            services.AddScoped<IDatapointTypesService, DatapointTypesService>();
+            services.AddScoped<IDimensionsService, DimensionsService>();
             return services;
         }
     }

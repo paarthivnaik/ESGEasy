@@ -16,12 +16,14 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.UnitOfMeasureTypeId, opt => opt.MapFrom(src => src.UnitOfMeasureTypeId))
-                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
+                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                 .ForMember(dest=>dest.OrganizationId,opt=>opt.MapFrom(src=>src.OrganizationId));
             CreateMap<UnitOfMeasure, UnitOfMeasureDto>()
                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                .ForMember(dest => dest.UnitOfMeasureTypeId, opt => opt.MapFrom(src => src.UnitOfMeasureTypeId))
-               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
+               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+               .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId));
                
 
         }

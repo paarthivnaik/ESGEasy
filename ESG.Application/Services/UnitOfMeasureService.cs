@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
+using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 
@@ -31,7 +32,7 @@ namespace ESG.Application.Services
         {
 
             var data = _mapper.Map<UnitOfMeasure>(unitOfMeasure);
-            var existingData = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(data.Id);
+            var existingData = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(u=>u.Id==unitOfMeasure.Id && u.OrganizationId==unitOfMeasure.OrganizationId);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasure.Id} not found.");
@@ -58,7 +59,7 @@ namespace ESG.Application.Services
         }
         public async Task<UnitOfMeasureDto> GetById(long Id)
         {
-            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(Id);
+            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(u => u.Id == Id && u.OrganizationId ==1);
             var data = _mapper.Map<UnitOfMeasureDto>(lst);
             return data;
         }

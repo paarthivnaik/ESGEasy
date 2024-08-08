@@ -9,6 +9,7 @@ namespace ESG.Application
     public class UnitOfMeasureDto
     {
         public long Id { get; set; }
+        public long OrganizationId { get; set; }
         public long UnitOfMeasureTypeId { get; set; }
         public string ShortText { get; set; } = string.Empty;
         public string LongText { get; set; } = string.Empty;

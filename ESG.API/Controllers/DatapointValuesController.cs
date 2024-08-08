@@ -1,0 +1,57 @@
+﻿using ESG.Application.Services.Interfaces;
+using ESG.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ESG.API.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class DatapointValuesController : ControllerBase
+    {
+        private readonly ILogger<DatapointValuesController> _logger;
+        private readonly IDatapointValuesService _datapintValuesService;
+        public DatapointValuesController(ILogger<DatapointValuesController> logger, IDatapointValuesService datapintValuesService)
+        {
+            _logger = logger;
+            _datapintValuesService = datapintValuesService;
+        }
+        // GET: api/<DatapointValuesController>
+        [HttpGet]
+        public async Task<IEnumerable<DataPointValues>> Get()
+        {
+            return await _datapintValuesService.GetAll();
+        }
+
+        // GET api/<DatapointValuesController>/5
+        [HttpGet("{id}")]
+        public async Task<DataPointValues> Get(int id)
+        {
+            return await _datapintValuesService.GetById(id);
+        }
+
+        // POST api/<DatapointValuesController>
+        [HttpPost]
+        public async Task<DataPointValues> Post([FromBody] DataPointValues value)
+        {
+            var res = await _datapintValuesService.AddAsync(value);
+
+            return res;
+        }
+
+        // PUT api/<DatapointValuesController>/5
+        [HttpPut("{id}")]
+        public async Task<DataPointValues> Put([FromBody] DataPointValues value)
+        {
+            var res = await _datapintValuesService.UpdateAsync(value);
+            return res;
+        }
+
+        // DELETE api/<DatapointValuesController>/5
+        [HttpDelete("{id}")]
+        public async Task<bool> Delete(int id)
+        {
+            var res = await _datapintValuesService.Delete(id);
+            return res;
+        }
+    }
+}
