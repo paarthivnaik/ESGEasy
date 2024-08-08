@@ -1,4 +1,5 @@
-﻿using ESG.Domain.Entities;
+﻿
+using ESG.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -10,14 +11,11 @@ using System.Threading.Tasks;
 
 namespace ESG.Infrastructure.Persistence.Configurations
 {
-    public class UnitOfMeasureConfiguration : IEntityTypeConfiguration<UnitOfMeasure>
+    public class UnitOfMeasureTypeConfiguration : IEntityTypeConfiguration<UnitOfMeasureType>
     {
-        public void Configure(EntityTypeBuilder<UnitOfMeasure> builder)
+        public void Configure(EntityTypeBuilder<UnitOfMeasureType> builder)
         {
             builder.HasKey(x => new { x.Id, x.OrganizationId });
-            builder.HasOne(dpv => dpv.UnitOfMeasureTypes)
-                .WithMany(dpt => dpt.UnitOfMeasure)
-                .HasForeignKey(dpv => dpv.UnitOfMeasureTypeId);
         }
     }
 }

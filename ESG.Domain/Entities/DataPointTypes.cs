@@ -18,5 +18,6 @@ namespace ESG.Domain.Entities
         public Dimentions Dimentions { get; set; }
 
         public IEnumerable<DataPointValues> DataPointValues { get; set; }
+        public IEnumerable<DatapointModel> DatapointModels { get; set; }
     }
 }
