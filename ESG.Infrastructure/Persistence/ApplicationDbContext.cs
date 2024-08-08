@@ -142,8 +142,8 @@ namespace ESG.Infrastructure.Persistence
             PostalCode = "12345",
             Country = "USA",
             Email = "john.doe@org1.com",
-            TenantId = 1, 
-            LangaugeId = 1 
+            TenantId = 1,
+            LanguageId = 1 
         });
 
             modelBuilder.Entity<Dimensions>().HasData(
@@ -207,7 +207,7 @@ namespace ESG.Infrastructure.Persistence
         Email = "user1@example.com",
         FirstName = "John",
         LastName = "Doe",
-       
+        LanguageId=1,
         PhoneNumber = "1234567890",
        
         CreatedBy = 1,
@@ -221,7 +221,7 @@ namespace ESG.Infrastructure.Persistence
         Email = "user2@example.com",
         FirstName = "Jane",
         LastName = "Smith",
-        
+        LanguageId = 1,
         PhoneNumber = "0987654321",
         
         CreatedBy = 1,
@@ -235,7 +235,7 @@ namespace ESG.Infrastructure.Persistence
         Email = "user3@example.com",
         FirstName = "Alice",
         LastName = "Johnson",
-       
+        LanguageId = 1,
         PhoneNumber = "2345678901",
         
         CreatedBy = 1,

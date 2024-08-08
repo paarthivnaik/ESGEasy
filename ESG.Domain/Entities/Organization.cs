@@ -21,7 +21,7 @@ namespace ESG.Domain.Entities
         public string? LogoUrl { get; set; }
         public long TenantId { get; set; }
         public Tenant Tenant { get; set; }
-        public long LangaugeId { get; set; }
+        public long LanguageId { get; set; }
         public Language Languages { get; set; }
     }
 }

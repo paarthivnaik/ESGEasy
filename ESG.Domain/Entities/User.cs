@@ -18,7 +18,7 @@ namespace ESG.Domain.Entities
         public Guid SecurityStamp { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public long LangaugeId { get; set; }
+        public long LanguageId { get; set; }
         public Language Languages { get; set; }
     }
 }
