@@ -12,6 +12,7 @@ namespace ESG.API
             services.AddScoped<IUnitOfMeasureService, UnitOfMeasureService>();
             services.AddScoped<ITenantService, TenantService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IUserService, UserService>();
             return services;
         }
     }
