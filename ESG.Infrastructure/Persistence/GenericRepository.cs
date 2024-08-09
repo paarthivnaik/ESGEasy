@@ -109,11 +109,10 @@ namespace ESG.Infrastructure.Persistence
             }
         }
 
-        public async Task<T> AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
             //_context.Entry(entity).State = EntityState.Added;
             await Entities.AddAsync(entity);
-            return entity;
         }
         #endregion
 

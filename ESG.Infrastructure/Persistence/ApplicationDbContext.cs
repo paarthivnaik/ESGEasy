@@ -13,14 +13,18 @@ namespace ESG.Infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+            _curretDateTime = DateTime.UtcNow;
+        }
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<User> Users { get; set; }
-
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<OrganizationUser> OrganizationUsers { get; set; }
         public DbSet<UnitOfMeasure> UnitOfMeasures { get; set; }
+        public DbSet<UnitOfMeasureTranslations> UnitOfMeasureTranslations{ get; set; }
         public DbSet<UnitOfMeasureType> UnitOfMeasureTypes { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Currency> Currency { get; set; }
@@ -29,10 +33,6 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<DataPointTypes> DataPointTypes { get; set; }
         public DbSet<DataPointValues> DataPointValues { get; set; }
         public DateTime _curretDateTime { get; set; }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {
-            _curretDateTime = DateTime.UtcNow;
-        }
 
         public async Task<int> SaveChangesAsync()
         {
@@ -188,11 +188,11 @@ namespace ESG.Infrastructure.Persistence
      new UnitOfMeasureType { Id = 3, Name = "Amount", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 });
 
             modelBuilder.Entity<UnitOfMeasure>().HasData(
-             new UnitOfMeasure { Id = 4, ShortText = "kg", LongText = "Kilogram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
-             new UnitOfMeasure { Id = 5, ShortText = "gm", LongText = "Gram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
-             new UnitOfMeasure { Id = 6, ShortText = "ml", LongText = "milliliter", UnitOfMeasureTypeId = 3, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
-             new UnitOfMeasure { Id = 7, ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
-             new UnitOfMeasure { Id = 8, ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 });
+             new UnitOfMeasure { Id = 4, ShortText = "kg", LongText = "Kilogram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 },
+             new UnitOfMeasure { Id = 5, ShortText = "gm", LongText = "Gram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 },
+             new UnitOfMeasure { Id = 6, ShortText = "ml", LongText = "milliliter", UnitOfMeasureTypeId = 3, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1,  OrganizationId = 1 },
+             new UnitOfMeasure { Id = 7, ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1,  OrganizationId = 1 },
+             new UnitOfMeasure { Id = 8, ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 });
 
             modelBuilder.Entity<Tenant>().HasData(
             new Tenant { Id = 1, Name = "ESG" });

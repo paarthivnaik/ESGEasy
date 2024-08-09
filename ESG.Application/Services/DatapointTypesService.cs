@@ -18,11 +18,10 @@ namespace ESG.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<DataPointTypes> AddAsync(DataPointTypes dataPointTypes)
+        public async Task AddAsync(DataPointTypes dataPointTypes)
         {
-            var res = await _unitOfWork.Repository<DataPointTypes>().AddAsync(dataPointTypes);
+            await _unitOfWork.Repository<DataPointTypes>().AddAsync(dataPointTypes);
             await _unitOfWork.SaveAsync();
-            return res;
         }
 
         public async Task<bool> Delete(long Id)

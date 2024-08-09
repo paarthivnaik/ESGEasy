@@ -11,5 +11,7 @@ namespace ESG.Domain.Entities
     {
         public string Name { get; set; }
         public string IsoCode { get; set; }
+
+        public virtual ICollection<UnitOfMeasureTranslations> UnitOfMeasureTranslations { get; set; }
     }
 }

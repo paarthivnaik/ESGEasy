@@ -35,11 +35,9 @@ namespace ESG.API.Controllers
             return res;
         }
         [HttpPost]
-        public async Task<Tenant> Post(Tenant value)
+        public async Task Post(Tenant value)
         {
-            var res= await _tenantService.AddAsync(value);
-            
-            return res;
+            await _tenantService.AddAsync(value);
         }
 
         [HttpPut]

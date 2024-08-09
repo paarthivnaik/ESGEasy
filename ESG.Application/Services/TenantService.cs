@@ -13,11 +13,10 @@ namespace ESG.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Tenant> AddAsync(Tenant tenant)
+        public async Task AddAsync(Tenant tenant)
         {
-           var res= await _unitOfWork.Repository<Tenant>().AddAsync(tenant);
+           await _unitOfWork.Repository<Tenant>().AddAsync(tenant);
            await _unitOfWork.SaveAsync();
-            return res;
         }
 
         public Task<long> Count()

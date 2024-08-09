@@ -9,7 +9,7 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IDimensionsService
     {
-        Task<Dimensions> AddAsync(Dimensions dimentions);
+        Task AddAsync(Dimensions dimentions);
         Task<Dimensions> UpdateAsync(Dimensions dimentions);
         Task<IEnumerable<Dimensions>> GetAll();
         Task<Dimensions> GetById(long Id);

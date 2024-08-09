@@ -32,11 +32,9 @@ namespace ESG.API.Controllers
 
         // POST api/<UnitOfMeasureTypeController>
         [HttpPost]
-        public async Task<UnitOfMeasureType> Post([FromBody] UnitOfMeasureType value)
+        public async Task Post([FromBody] UnitOfMeasureType value)
         {
-            var res = await _unitOfMeasuretypeService.AddAsync(value);
-
-            return res;
+            await _unitOfMeasuretypeService.AddAsync(value);
         }
 
         // PUT api/<UnitOfMeasureTypeController>/5

@@ -9,7 +9,7 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IDatapointTypesService
     {
-        Task<DataPointTypes> AddAsync(DataPointTypes datapointTypes);
+        Task AddAsync(DataPointTypes datapointTypes);
         Task<DataPointTypes> UpdateAsync(DataPointTypes datapointTypes);
         Task<IEnumerable<DataPointTypes>> GetAll();
         Task<DataPointTypes> GetById(long Id);

@@ -9,7 +9,7 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface ITenantService
     {
-        Task<Tenant> AddAsync(Tenant tenant);
+        Task AddAsync(Tenant tenant);
         Task<Tenant> UpdateAsync(Tenant tenant);
         Task<IEnumerable<Tenant>> GetAll();
         Task<Tenant> GetById(long Id);

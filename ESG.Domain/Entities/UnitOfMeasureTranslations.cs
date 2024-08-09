@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace ESG.Domain.Entities
 {
-    public class UnitOfMeasure : AuditableWithBaseEntityAndOrganization<long>
+    public class UnitOfMeasureTranslations : AuditableWithBaseEntityAndOrganization<long>
     {
-
-        public long UnitOfMeasureTypeId { get; set; }
+        public long UnitOfMeasureId { get; set; }
+        public UnitOfMeasure UnitOfMeasure { get; set; }
         public string ShortText { get; set; } = string.Empty;
         public string LongText { get; set; } = string.Empty;
-        public UnitOfMeasureType UnitOfMeasureTypes { get; set; }
-        public ICollection<UnitOfMeasureTranslations> UnitOfMeasureTranslations { get; set; }
-
+        public long LanguageId { get; set; }
+        public Language Language { get; set; }
     }
 }

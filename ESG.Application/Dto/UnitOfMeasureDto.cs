@@ -13,6 +13,9 @@ namespace ESG.Application.Dto
         public long UnitOfMeasureTypeId { get; set; }
         public string ShortText { get; set; } = string.Empty;
         public string LongText { get; set; } = string.Empty;
+
+        public long LanguageId { get; set; }
         public bool IsActive { get; set; }
+        public long UnitOfMeasureId { get; set; }
     }
 }

@@ -16,11 +16,22 @@ namespace ESG.Application.Services
             _unitOfMeasure = unitOfMeasure;
             _mapper = mapper;
         }
-        public async Task<int> Add(UnitOfMeasureDto unitOfMeasure)
+        public async Task Add(UnitOfMeasureDto unitOfMeasure)
         {
-            var data = _mapper.Map<UnitOfMeasure>(unitOfMeasure);
-            await _unitOfMeasure.Repository<UnitOfMeasure>().AddAsync(data);
-            return await _unitOfMeasure.SaveAsync();
+            if (unitOfMeasure.UnitOfMeasureId > 0)
+            {
+                var uomTranslationdataOnly = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasure);
+                await _unitOfMeasure.Repository<UnitOfMeasureTranslations>().AddAsync(uomTranslationdataOnly);
+            }
+            else
+            {
+                var uomdata = _mapper.Map<UnitOfMeasure>(unitOfMeasure);
+                var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasure);
+                await _unitOfMeasure.Repository<UnitOfMeasure>().AddAsync(uomdata);
+                uomdata.UnitOfMeasureTranslations = new List<UnitOfMeasureTranslations> { uomTranslationdata };
+            }
+            
+            await _unitOfMeasure.SaveAsync();
         }
 
         public async Task AddRange(IEnumerable<UnitOfMeasureDto> unitOfMeasure)

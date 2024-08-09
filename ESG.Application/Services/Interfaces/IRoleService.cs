@@ -9,7 +9,7 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IRoleService
     {
-        Task<Role> AddAsync(Role role);
+        Task AddAsync(Role role);
         Task<Role> UpdateAsync(Role role);
         Task<IEnumerable<Role>> GetAll();
         Task<Role> GetById(long Id);

@@ -32,11 +32,9 @@ namespace ESG.API.Controllers
 
         // POST api/<RolesController>
         [HttpPost]
-        public async Task<Role> Post([FromBody] Role value)
+        public async Task Post([FromBody] Role value)
         {
-            var res = await _roleService.AddAsync(value);
-
-            return res;
+            await _roleService.AddAsync(value);
         }
 
         // PUT api/<RolesController>/5

@@ -20,11 +20,10 @@ namespace ESG.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Role> AddAsync(Role role)
+        public async Task AddAsync(Role role)
         {
-            var res = await _unitOfWork.Repository<Role>().AddAsync(role);
+            await _unitOfWork.Repository<Role>().AddAsync(role);
             await _unitOfWork.SaveAsync();
-            return res;
         }
 
         public async Task<bool> Delete(long Id)

@@ -15,8 +15,7 @@ namespace ESG.Infrastructure.Persistence
         #region Properties
         private readonly ApplicationDbContext _context;
         IDbContextTransaction dbContextTransaction;
-        private IGenericRepository<UnitOfMeasure> _unitOfMeasureRepo;
-        private IGenericRepository<UnitOfMeasureType> _unitOfMeasureTypeRepo;
+
         private Hashtable _repositories;
         #endregion
         #region Ctor
@@ -26,26 +25,6 @@ namespace ESG.Infrastructure.Persistence
         }
         #endregion
 
-        #region Repository/*
-        public IGenericRepository<UnitOfMeasure> UnitOfMeasureRepo
-        {
-            get
-            {
-                if (this._unitOfMeasureRepo == null)
-                    this._unitOfMeasureRepo = new GenericRepository<UnitOfMeasure>(_context);
-                return _unitOfMeasureRepo;
-            }
-        }
-        public IGenericRepository<UnitOfMeasureType> UnitOfMeasureTypeRepo
-        {
-            get
-            {
-                if (this._unitOfMeasureTypeRepo == null)
-                    this._unitOfMeasureTypeRepo = new GenericRepository<UnitOfMeasureType>(_context);
-                return _unitOfMeasureTypeRepo;
-            }
-        }
-        #endregion
         public async Task<int> SaveAsync()
         {
 

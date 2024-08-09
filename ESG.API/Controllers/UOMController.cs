@@ -34,9 +34,10 @@ namespace ESG.API.Controllers
 
         // POST api/<UOMController>
         [HttpPost]
-        public async Task<int> Post([FromBody] UnitOfMeasureDto value)
+        public async Task<IActionResult> Post([FromBody] UnitOfMeasureDto value)
         {
-            return await _unitOfMeasureService.Add(value);
+            await _unitOfMeasureService.Add(value);
+            return Ok(200);
         }
         // POST api/<UOMController>
         [HttpPost("AddRange")]

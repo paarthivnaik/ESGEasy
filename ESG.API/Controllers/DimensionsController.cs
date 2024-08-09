@@ -31,11 +31,9 @@ namespace ESG.API.Controllers
 
         // POST api/<DimensionsController>
         [HttpPost]
-        public async Task<Dimensions> Post([FromBody] Dimensions value)
+        public async Task Post([FromBody] Dimensions value)
         {
-            var res = await _dimensionsService.AddAsync(value);
-
-            return res;
+            await _dimensionsService.AddAsync(value);
         }
 
         // PUT api/<DimensionsController>/5

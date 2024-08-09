@@ -31,11 +31,9 @@ namespace ESG.API.Controllers
 
         // POST api/<DatapointValuesController>
         [HttpPost]
-        public async Task<DataPointValues> Post([FromBody] DataPointValues value)
+        public async Task Post([FromBody] DataPointValues value)
         {
-            var res = await _datapintValuesService.AddAsync(value);
-
-            return res;
+            await _datapintValuesService.AddAsync(value);
         }
 
         // PUT api/<DatapointValuesController>/5

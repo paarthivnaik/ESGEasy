@@ -19,11 +19,10 @@ namespace ESG.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<DimensionType> AddAsync(DimensionType dimentionType)
+        public async Task AddAsync(DimensionType dimentionType)
         {
-            var res = await _unitOfWork.Repository<DimensionType>().AddAsync(dimentionType);
+            await _unitOfWork.Repository<DimensionType>().AddAsync(dimentionType);
             await _unitOfWork.SaveAsync();
-            return res;
         }
 
         public async Task<bool> Delete(long Id)

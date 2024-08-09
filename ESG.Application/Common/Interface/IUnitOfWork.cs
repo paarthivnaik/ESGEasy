@@ -9,9 +9,6 @@ namespace ESG.Application.Common.Interface
 {
     public interface IUnitOfWork
     {
-
-        IGenericRepository<ESG.Domain.Entities.UnitOfMeasure> UnitOfMeasureRepo { get; }
-        IGenericRepository<UnitOfMeasureType> UnitOfMeasureTypeRepo { get; }
         Task<int> SaveAsync();
         int Save();
         void BeginTransaction();

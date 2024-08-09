@@ -3,6 +3,7 @@ using System;
 using ESG.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ESG.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240809104851_Added Translation updated")]
+    partial class AddedTranslationupdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,10 +138,7 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.DataPointTypes", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<long>("OrganizationId")
                         .HasColumnType("bigint");
@@ -187,7 +187,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 1L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3885),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(646),
                             IsActive = false,
                             LanguageId = 1L,
                             LongText = "Type 1",
@@ -199,7 +199,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 2L,
                             OrganizationId = 1L,
                             CreatedBy = 2L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3891),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(650),
                             IsActive = false,
                             LanguageId = 2L,
                             LongText = "Type 2",
@@ -211,7 +211,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 3L,
                             OrganizationId = 1L,
                             CreatedBy = 3L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3894),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(652),
                             IsActive = false,
                             LanguageId = 3L,
                             LongText = "Type 3",
@@ -223,7 +223,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 5L,
                             OrganizationId = 1L,
                             CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3896),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(654),
                             IsActive = false,
                             LanguageId = 1L,
                             LongText = "Type 5",
@@ -235,7 +235,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 6L,
                             OrganizationId = 1L,
                             CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3898),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(656),
                             IsActive = false,
                             LanguageId = 1L,
                             LongText = "Type 6",
@@ -247,7 +247,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 7L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3900),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(658),
                             IsActive = false,
                             LanguageId = 1L,
                             LongText = "Type 7",
@@ -259,7 +259,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 8L,
                             OrganizationId = 1L,
                             CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3902),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(660),
                             IsActive = false,
                             LanguageId = 1L,
                             LongText = "Type 8",
@@ -271,7 +271,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 9L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3904),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(662),
                             IsActive = false,
                             LanguageId = 1L,
                             LongText = "Type 9",
@@ -283,7 +283,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 10L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3906),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(665),
                             IsActive = false,
                             LanguageId = 1L,
                             LongText = "Type 10",
@@ -295,10 +295,7 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.DataPointValues", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<long>("OrganizationId")
                         .HasColumnType("bigint");
@@ -361,7 +358,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 1L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3935),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(696),
                             DatapointTypeId = 1L,
                             IsActive = false,
                             IsCurrency = true,
@@ -377,7 +374,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 2L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3939),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(700),
                             DatapointTypeId = 1L,
                             IsActive = false,
                             IsCurrency = false,
@@ -393,7 +390,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 3L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3941),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(703),
                             DatapointTypeId = 1L,
                             IsActive = false,
                             IsCurrency = true,
@@ -409,7 +406,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 4L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3944),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(705),
                             DatapointTypeId = 1L,
                             IsActive = false,
                             IsCurrency = false,
@@ -425,7 +422,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 5L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3946),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(708),
                             DatapointTypeId = 1L,
                             IsActive = false,
                             IsCurrency = true,
@@ -441,7 +438,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 6L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3949),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(711),
                             DatapointTypeId = 1L,
                             IsActive = false,
                             IsCurrency = false,
@@ -457,7 +454,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 7L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3951),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(713),
                             DatapointTypeId = 1L,
                             IsActive = false,
                             IsCurrency = true,
@@ -473,7 +470,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 8L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3954),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(716),
                             DatapointTypeId = 1L,
                             IsActive = false,
                             IsCurrency = false,
@@ -489,7 +486,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 9L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3956),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(719),
                             DatapointTypeId = 1L,
                             IsActive = false,
                             IsCurrency = true,
@@ -505,7 +502,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 10L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3959),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(722),
                             DatapointTypeId = 1L,
                             IsActive = false,
                             IsCurrency = false,
@@ -521,10 +518,7 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.DatapointModel", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<long>("OrganizationId")
                         .HasColumnType("bigint");
@@ -602,10 +596,7 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.DimensionType", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<long>("OrganizationId")
                         .HasColumnType("bigint");
@@ -656,7 +647,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 50L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3988),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(749),
                             IsActive = false,
                             IsHeirarchialDimention = true,
                             LanguageId = 1L,
@@ -669,7 +660,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 51L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3990),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(752),
                             IsActive = false,
                             IsHeirarchialDimention = false,
                             LanguageId = 1L,
@@ -682,7 +673,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 52L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3992),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(754),
                             IsActive = false,
                             IsHeirarchialDimention = true,
                             LanguageId = 1L,
@@ -695,7 +686,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 53L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3994),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(756),
                             IsActive = false,
                             IsHeirarchialDimention = true,
                             LanguageId = 1L,
@@ -708,7 +699,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 54L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3996),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(758),
                             IsActive = false,
                             IsHeirarchialDimention = true,
                             LanguageId = 1L,
@@ -721,7 +712,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 55L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(3998),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(760),
                             IsActive = false,
                             IsHeirarchialDimention = false,
                             LanguageId = 1L,
@@ -734,7 +725,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 56L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4000),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(762),
                             IsActive = false,
                             IsHeirarchialDimention = true,
                             LanguageId = 1L,
@@ -747,7 +738,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 57L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4002),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(764),
                             IsActive = false,
                             IsHeirarchialDimention = false,
                             LanguageId = 1L,
@@ -760,7 +751,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 58L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4004),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(766),
                             IsActive = false,
                             IsHeirarchialDimention = true,
                             LanguageId = 1L,
@@ -773,7 +764,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 59L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4006),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(768),
                             IsActive = false,
                             IsHeirarchialDimention = false,
                             LanguageId = 1L,
@@ -786,10 +777,7 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.Dimensions", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<long>("OrganizationId")
                         .HasColumnType("bigint");
@@ -1141,7 +1129,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4286),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(1081),
                             IsActive = false,
                             OrganizationId = 1L,
                             UserId = 1L
@@ -1150,7 +1138,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4288),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(1083),
                             IsActive = false,
                             OrganizationId = 1L,
                             UserId = 2L
@@ -1159,7 +1147,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4289),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(1084),
                             IsActive = false,
                             OrganizationId = 1L,
                             UserId = 3L
@@ -1227,10 +1215,7 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.UnitOfMeasure", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<long>("OrganizationId")
                         .HasColumnType("bigint");
@@ -1275,10 +1260,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 4L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4154),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(932),
                             IsActive = false,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4155),
+                            LastModifiedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(933),
                             LongText = "Kilogram",
                             ShortText = "kg",
                             UnitOfMeasureTypeId = 2L
@@ -1288,10 +1273,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 5L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4157),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(936),
                             IsActive = false,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4158),
+                            LastModifiedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(937),
                             LongText = "Gram",
                             ShortText = "gm",
                             UnitOfMeasureTypeId = 2L
@@ -1301,10 +1286,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 6L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4160),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(939),
                             IsActive = false,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4161),
+                            LastModifiedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(940),
                             LongText = "milliliter",
                             ShortText = "ml",
                             UnitOfMeasureTypeId = 3L
@@ -1314,10 +1299,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 7L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4163),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(943),
                             IsActive = false,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4164),
+                            LastModifiedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(943),
                             LongText = "meterpersecond",
                             ShortText = "m/s",
                             UnitOfMeasureTypeId = 1L
@@ -1327,10 +1312,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 8L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4166),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(946),
                             IsActive = false,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4167),
+                            LastModifiedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(946),
                             LongText = "kmperhour",
                             ShortText = "kmph",
                             UnitOfMeasureTypeId = 1L
@@ -1344,9 +1329,6 @@ namespace ESG.Infrastructure.Migrations
                         .HasColumnType("bigint");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("OrganizationId")
-                        .HasColumnType("bigint");
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -1370,6 +1352,9 @@ namespace ESG.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<long>("OrganizationId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("ShortText")
                         .IsRequired()
                         .HasColumnType("text");
@@ -1377,7 +1362,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("UnitOfMeasureId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id", "OrganizationId");
+                    b.HasKey("Id");
 
                     b.HasIndex("LanguageId");
 
@@ -1391,10 +1376,7 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.UnitOfMeasureType", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<long>("OrganizationId")
                         .HasColumnType("bigint");
@@ -1435,11 +1417,11 @@ namespace ESG.Infrastructure.Migrations
                             Id = 1L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4116),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(852),
                             IsActive = false,
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4117),
+                            LastModifiedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(853),
                             Name = "Speed"
                         },
                         new
@@ -1447,11 +1429,11 @@ namespace ESG.Infrastructure.Migrations
                             Id = 2L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4127),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(905),
                             IsActive = false,
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4128),
+                            LastModifiedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(906),
                             Name = "Weight"
                         },
                         new
@@ -1459,11 +1441,11 @@ namespace ESG.Infrastructure.Migrations
                             Id = 3L,
                             OrganizationId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4130),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(908),
                             IsActive = false,
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4131),
+                            LastModifiedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(909),
                             Name = "Amount"
                         });
                 });
@@ -1533,7 +1515,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4259),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(1037),
                             Email = "user1@example.com",
                             FirstName = "John",
                             IsActive = false,
@@ -1541,13 +1523,13 @@ namespace ESG.Infrastructure.Migrations
                             LastName = "Doe",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 49 },
                             PhoneNumber = "1234567890",
-                            SecurityStamp = new Guid("59b9e271-84f7-4aa7-95f6-56d5681f8b59")
+                            SecurityStamp = new Guid("1900fd8f-8020-4720-93bc-7a1018193880")
                         },
                         new
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4264),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(1055),
                             Email = "user2@example.com",
                             FirstName = "Jane",
                             IsActive = false,
@@ -1555,13 +1537,13 @@ namespace ESG.Infrastructure.Migrations
                             LastName = "Smith",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 50 },
                             PhoneNumber = "0987654321",
-                            SecurityStamp = new Guid("7b2ccab6-2173-4b16-b437-2fe2f3089f63")
+                            SecurityStamp = new Guid("4d0c0178-8d72-41b8-abf1-d3a993894fa0")
                         },
                         new
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4268),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(1059),
                             Email = "user3@example.com",
                             FirstName = "Alice",
                             IsActive = false,
@@ -1569,7 +1551,7 @@ namespace ESG.Infrastructure.Migrations
                             LastName = "Johnson",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 51 },
                             PhoneNumber = "2345678901",
-                            SecurityStamp = new Guid("f9e64930-94ac-48f5-a4ce-b5aa6f1a562c")
+                            SecurityStamp = new Guid("ab3f72cd-f67a-4a1e-a98a-7e364a96fef4")
                         });
                 });
 
@@ -1615,7 +1597,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4328),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(1124),
                             IsActive = false,
                             RoleId = 1L,
                             UserId = 1L
@@ -1624,7 +1606,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4329),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(1126),
                             IsActive = false,
                             RoleId = 2L,
                             UserId = 2L
@@ -1633,7 +1615,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 9, 11, 45, 41, 250, DateTimeKind.Utc).AddTicks(4331),
+                            CreatedDate = new DateTime(2024, 8, 9, 10, 48, 50, 762, DateTimeKind.Utc).AddTicks(1128),
                             IsActive = false,
                             RoleId = 3L,
                             UserId = 3L
