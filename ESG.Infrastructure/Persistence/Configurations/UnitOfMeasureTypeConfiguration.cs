@@ -15,7 +15,6 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<UnitOfMeasureType> builder)
         {
-
         }
     }
 }

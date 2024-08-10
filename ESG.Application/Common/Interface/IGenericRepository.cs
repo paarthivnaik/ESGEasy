@@ -11,7 +11,7 @@ namespace ESG.Application.Common.Interface
     public interface IGenericRepository<T> where T : class
     {
         #region CRUD Operations
-        void Add(T entity);
+        Task Add(T entity);
         Task AddAsync(T entity);
         Task AddRange(IEnumerable<T> entities);
         Task<T> Update(T entity);

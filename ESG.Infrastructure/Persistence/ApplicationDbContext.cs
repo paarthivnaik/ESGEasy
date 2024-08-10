@@ -26,6 +26,7 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<UnitOfMeasure> UnitOfMeasures { get; set; }
         public DbSet<UnitOfMeasureTranslations> UnitOfMeasureTranslations{ get; set; }
         public DbSet<UnitOfMeasureType> UnitOfMeasureTypes { get; set; }
+        public DbSet<UnitOfMeasureTypeTranslations> UnitOfMeasureTypeTranslations { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<DimensionType> DimensionTypes { get; set; }

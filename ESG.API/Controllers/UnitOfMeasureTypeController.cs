@@ -1,4 +1,6 @@
-﻿using ESG.Application.Services;
+﻿using ESG.Application.Dto.UnitOfMeasure;
+using ESG.Application.Dto.UnitOfMeasureType;
+using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -10,47 +12,50 @@ namespace ESG.API.Controllers
     public class UnitOfMeasureTypeController : ControllerBase
     {
         private readonly ILogger<UnitOfMeasureTypeController> _logger;
-        private readonly IUnitOfMeasureTypeService _unitOfMeasuretypeService;
+        private readonly IUnitOfMeasureTypeService _unitOfMeasureTypeService;
         public UnitOfMeasureTypeController(ILogger<UnitOfMeasureTypeController> logger, IUnitOfMeasureTypeService unitOfMeasureTypeService)
         {
             _logger = logger;
-            _unitOfMeasuretypeService = unitOfMeasureTypeService;
-        }
-        // GET: api/<UnitOfMeasureTypeController>
-        [HttpGet]
-        public async Task<IEnumerable<UnitOfMeasureType>> Get()
-        {
-            return await _unitOfMeasuretypeService.GetAll();
+            _unitOfMeasureTypeService = unitOfMeasureTypeService;
         }
 
-        // GET api/<UnitOfMeasureTypeController>/5
-        [HttpGet("{id}")]
-        public async Task<UnitOfMeasureType> Get(int id)
+        //POST api/<UOMController>
+        [HttpPost("Create UOM Type")]
+        public async Task<IActionResult> Post([FromBody] UnitOfMeasureTypeCreateRequestDto value)
         {
-            return await _unitOfMeasuretypeService.GetById(id);
+            await _unitOfMeasureTypeService.Add(value);
+            return Ok(200);
         }
 
-        // POST api/<UnitOfMeasureTypeController>
-        [HttpPost]
-        public async Task Post([FromBody] UnitOfMeasureType value)
+        //// PUT api/<UOMController>/5
+        [HttpPut("Update UOM Type")]
+        public async Task<IActionResult> Put(UnitOfMeasureTypeUpdateRequestDto value)
         {
-            await _unitOfMeasuretypeService.AddAsync(value);
+            await _unitOfMeasureTypeService.UpdateAsync(value);
+            return Ok(200);
         }
 
-        // PUT api/<UnitOfMeasureTypeController>/5
-        [HttpPut("{id}")]
-        public async Task<UnitOfMeasureType> Put([FromBody] UnitOfMeasureType value)
+        //// PUT api/<UOMController>/5
+        [HttpDelete("DeleteUOMType UOM Type")]
+        public async Task<IActionResult> Delete(UnitOfMeasureTypeDeleteRequestDto value)
         {
-            var res = await _unitOfMeasuretypeService.UpdateAsync(value);
-            return res;
+            await _unitOfMeasureTypeService.DeleteUOMType(value);
+            return Ok(200);
         }
 
-        // DELETE api/<UnitOfMeasureTypeController>/5
-        [HttpDelete("{id}")]
-        public async Task<bool> Delete(int id)
+        //// GET api/<UOMController>/5
+        [HttpGet("Get all UOMTypes")]
+        public async Task<IEnumerable<unitOfMeasureTypeResponseDto>> GetAllUOMTypes()
         {
-            var res = await _unitOfMeasuretypeService.Delete(id);
-            return res;
+            return await _unitOfMeasureTypeService.GetAll();
+        }
+
+        //// GET api/<UOMController>/5
+        [HttpGet("Get all UOM With Translatons")]
+        public async Task<IEnumerable<unitOfMeasureTypeResponseDto>> GetAllTranslations(long Id)
+        {
+            return await _unitOfMeasureTypeService.GetAllTranslations(Id);
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ESG.Domain.Entities;
+﻿using ESG.Application.Dto.UnitOfMeasureType;
+using ESG.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,11 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IUnitOfMeasureTypeService
     {
+        Task Add(UnitOfMeasureTypeCreateRequestDto unitOfMeasureType);
+        Task UpdateAsync(UnitOfMeasureTypeUpdateRequestDto unitOfMeasureType);
         Task AddAsync(UnitOfMeasureType unitOfMeasureType);
-        Task<UnitOfMeasureType> UpdateAsync(UnitOfMeasureType unitOfMeasureType);
-        Task<IEnumerable<UnitOfMeasureType>> GetAll();
-        Task<UnitOfMeasureType> GetById(long Id);
-        Task<bool> Delete(long Id);
+        Task<IEnumerable<unitOfMeasureTypeResponseDto>> GetAll();
+        Task<IEnumerable<unitOfMeasureTypeResponseDto>> GetAllTranslations(long Id);
+        Task DeleteUOMType(UnitOfMeasureTypeDeleteRequestDto unitOfMeasureType);
     }
 }

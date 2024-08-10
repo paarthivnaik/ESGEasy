@@ -8,8 +8,8 @@ namespace ESG.Domain.Entities
 {
     public enum StateEnum
     {
-        active = 0,
-        inActve = 1,
-        deleted = 2
+        active = 1,
+        inActve = 2,
+        deleted = 3
     }
 }

@@ -51,37 +51,35 @@ namespace ESG.Application.Services
             await _unitOfMeasure.Repository<UnitOfMeasure>().AddRange(data);
             await _unitOfMeasure.SaveAsync();
         }
-        public async Task Update(UnitOfMeasureUpdateRequestDto unitOfMeasure)
+        public async Task Update(UnitOfMeasureUpdateRequestDto unitOfMeasureType)
         {
-            var data = _mapper.Map<UnitOfMeasure>(unitOfMeasure);
-            var existingData = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(u => u.Id == unitOfMeasure.Id);
+            var existingData = await _unitOfMeasure.Repository<UnitOfMeasureType>().Get(u => u.Id == unitOfMeasureType.Id);
             if (existingData == null)
             {
-                throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasure.Id} not found.");
+                throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasureType.Id} not found.");
             }
-            existingData.ShortText = unitOfMeasure.ShortText;
-            existingData.LongText = unitOfMeasure.LongText;
-            existingData.Code = unitOfMeasure.Code;
-            existingData.LanguageId = unitOfMeasure.LanguageId;
-            existingData.State = unitOfMeasure.State;
-            existingData.Name = unitOfMeasure.Name;
+            existingData.ShortText = unitOfMeasureType.ShortText;
+            existingData.LongText = unitOfMeasureType.LongText;
+            existingData.Code = unitOfMeasureType.Code;
+            existingData.LanguageId = unitOfMeasureType.LanguageId;
+            existingData.State = unitOfMeasureType.State;
+            existingData.Name = unitOfMeasureType.Name;
 
-            await _unitOfMeasure.Repository<UnitOfMeasure>().Update(existingData);
-            //await _unitOfMeasure.Repository<UnitOfMeasure>().UpdateFieldsSave(data,c=>c.UnitOfMeasureTypeId,c=>c.LongText, c=>c.ShortText);
+            await _unitOfMeasure.Repository<UnitOfMeasureType>().Update(existingData);
             await _unitOfMeasure.SaveAsync();
         }
-        //public async Task UpdateRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure)
-        //{
-        //    var data = _mapper.Map<IEnumerable<UnitOfMeasure>>(unitOfMeasure);
-        //    await _unitOfMeasure.Repository<UnitOfMeasure>().UpdateRange(data);
-        //    await _unitOfMeasure.SaveAsync();
-        //}
-        //public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll()
-        //{
-        //    var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll();
-        //    var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(lst);
-        //    return data;
-        //}
+        public async Task UpdateRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure)
+        {
+            var data = _mapper.Map<IEnumerable<UnitOfMeasure>>(unitOfMeasure);
+            await _unitOfMeasure.Repository<UnitOfMeasure>().UpdateRange(data);
+            await _unitOfMeasure.SaveAsync();
+        }
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll()
+        {
+            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll();
+            var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(lst);
+            return data;
+        }
         public async Task<UnitOfMeasureResponseDto> GetById(long Id)
         {
             var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(u => u.Id == Id);

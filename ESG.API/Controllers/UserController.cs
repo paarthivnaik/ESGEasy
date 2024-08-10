@@ -43,7 +43,7 @@ namespace ESG.API.Controllers
         }
 
         // DELETE api/<UserController>/5
-        [HttpDelete("Delete/{id}")]
+        [HttpDelete("DeleteUOMType/{id}")]
         public async Task<IActionResult> Delete(long id)
         {
             await _userService.Delete(id);

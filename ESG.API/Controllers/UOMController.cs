@@ -35,8 +35,16 @@ namespace ESG.API.Controllers
             return Ok(200);
         }
 
+        //// PUT api/<UOMController>/5
+        //[HttpPut("Update UOM Translations")]
+        //public async Task<IActionResult> Put(UnitOfMeasureUpdateRequestDto value)
+        //{
+        //    await _unitOfMeasureService.Update(value);
+        //    return Ok(200);
+        //}
+
         // PUT api/<UOMController>/5
-        [HttpDelete("Delete UOM")]
+        [HttpDelete("DeleteUOMType UOM")]
         public async Task<IActionResult> Delete(UnitOfMeasureDeleteRequest value)
         {
             await _unitOfMeasureService.DeleteUOM(value);
@@ -44,7 +52,7 @@ namespace ESG.API.Controllers
         }
 
         // GET api/<UOMController>/5
-        [HttpGet("Get all UOM ByUOMTypeId")]
+        [HttpGet("Get all UOM By UOMTypeId")]
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetByTypeId(long id)
         {
             return await _unitOfMeasureService.GetAllUOMByUOMTypeId(id);

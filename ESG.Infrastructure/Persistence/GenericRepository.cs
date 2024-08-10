@@ -78,7 +78,7 @@ namespace ESG.Infrastructure.Persistence
             }
         }
         #region Add
-        public virtual void Add(T entity)
+        public async Task Add(T entity)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace ESG.Infrastructure.Persistence
         #endregion
 
         #region Read
-        public virtual async Task<T> Get(long id)
+        public async Task<T> Get(long id)
         {
             try
             {
@@ -128,7 +128,7 @@ namespace ESG.Infrastructure.Persistence
                 throw;
             }
         }
-        public virtual async Task<T> Get(Expression<Func<T, bool>> where)
+        public async Task<T> Get(Expression<Func<T, bool>> where)
         {
             try
             {
