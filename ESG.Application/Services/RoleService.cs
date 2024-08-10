@@ -44,7 +44,7 @@ namespace ESG.Application.Services
 
         public async Task<Role> UpdateAsync(Role role)
         {
-            var res = await _unitOfWork.Repository<Role>().Update(role);
+            var res = await _unitOfWork.Repository<Role>().UpdateAsync(role.Id,role);
             await _unitOfWork.SaveAsync();
             return res;
         }

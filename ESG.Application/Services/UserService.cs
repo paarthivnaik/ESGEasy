@@ -36,9 +36,19 @@ namespace ESG.Application.Services
             
         }
 
-        public Task<User> GetUser(UserDto user)
+        public async Task<User> Delete(long Id)
         {
-            throw new NotImplementedException();
+            var res = await _unitOfWork.Repository<User>().Get(Id);
+            res.IsActive = false;
+            await _unitOfWork.Repository<User>().UpdateAsync(Id, res);
+            await _unitOfWork.SaveAsync();
+            return res;
+        }
+
+        public async Task<User> GetUser(long userId)
+        {
+            var res = await _unitOfWork.Repository<User>().Get(userId);
+            return res;
         }
 
         public Task<User> Update(UserDto user)

@@ -1,16 +1,11 @@
-﻿using ESG.Application.Common.Interface.UnitOfMeasure;
-using ESG.Application.Services.Interfaces;
+﻿using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ESG.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TenantController : ControllerBase
+
+    public class TenantController : BaseController
     {
         private readonly ILogger<TenantController> _logger;
         private readonly ITenantService _tenantService;
@@ -21,18 +16,17 @@ namespace ESG.API.Controllers
         }
 
         [HttpGet]
-        public async Task< IEnumerable<Tenant>> Get()
+        public async Task<IActionResult> Get()
         {
             var res = await _tenantService.GetAll();
-            return res;
+            return Ok(res);
         }
 
-        // GET api/<TenantController>/5
         [HttpGet("{id}")]
-        public async Task<Tenant> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var res = await _tenantService.GetById(id);
-            return res;
+            return Ok(res);
         }
         [HttpPost]
         public async Task<IActionResult> Post(Tenant value)

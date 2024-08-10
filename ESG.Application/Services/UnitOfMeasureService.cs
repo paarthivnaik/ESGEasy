@@ -30,7 +30,6 @@ namespace ESG.Application.Services
                 await _unitOfMeasure.Repository<UnitOfMeasure>().AddAsync(uomdata);
                 uomdata.UnitOfMeasureTranslations = new List<UnitOfMeasureTranslations> { uomTranslationdata };
             }
-            
             await _unitOfMeasure.SaveAsync();
         }
 

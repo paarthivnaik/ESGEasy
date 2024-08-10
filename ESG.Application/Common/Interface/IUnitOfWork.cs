@@ -1,4 +1,5 @@
-﻿using ESG.Domain.Entities;
+﻿using ESG.Application.Common.Interface.UnitOfMeasure;
+using ESG.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace ESG.Application.Common.Interface
 {
     public interface IUnitOfWork
     {
+        IUnitOfMeasureRepo UnitOfMeasure { get; }
         Task<int> SaveAsync();
         int Save();
         void BeginTransaction();

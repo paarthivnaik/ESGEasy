@@ -1,29 +1,33 @@
 ﻿using ESG.Application.Common.Interface;
+using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ESG.Infrastructure.Persistence
 {
-    internal class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         #region Properties
         private readonly ApplicationDbContext _context;
         IDbContextTransaction dbContextTransaction;
-
         private Hashtable _repositories;
+        public IUnitOfMeasureRepo UnitOfMeasure { get; private set; }
         #endregion
         #region Ctor
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
+            UnitOfMeasure= new ESG.Infrastructure.Persistence.UnitOfMeasureRepo.UnitOfMeasureRepo(_context);
         }
         #endregion
+       
 
         public async Task<int> SaveAsync()
         {
@@ -53,6 +57,9 @@ namespace ESG.Infrastructure.Persistence
             }
         }
         private bool disposed = false;
+
+ 
+
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)

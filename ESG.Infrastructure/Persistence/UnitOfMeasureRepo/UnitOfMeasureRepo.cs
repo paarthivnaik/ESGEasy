@@ -8,19 +8,12 @@ using System.Threading.Tasks;
 
 namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
 {
-    public class UnitOfMeasureRepo : GenericRepository<UnitOfMeasure>, IUnitOfMeasure
+    public class UnitOfMeasureRepo : GenericRepository<UnitOfMeasure>, IUnitOfMeasureRepo
     {
         private readonly ApplicationDbContext _context;
         public UnitOfMeasureRepo(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
-
-
-        public async void AAA(long id)
-        {
-           var result = await base.Get(id);
-        }
-
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Common.Interface.UnitOfMeasure
 {
-    public interface IUnitOfMeasureType
+    public interface IUnitOfMeasureTypeRepo
     {
 
     }

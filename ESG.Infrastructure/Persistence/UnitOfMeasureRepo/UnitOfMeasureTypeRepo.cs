@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
 {
-    public class UnitOfMeasureTypeRepo : GenericRepository<UnitOfMeasureType>, IUnitOfMeasureType
+    public class UnitOfMeasureTypeRepo : GenericRepository<UnitOfMeasureType>, IUnitOfMeasureTypeRepo
     {
         public readonly ApplicationDbContext _applicationDb;
         public UnitOfMeasureTypeRepo(ApplicationDbContext context) : base(context)

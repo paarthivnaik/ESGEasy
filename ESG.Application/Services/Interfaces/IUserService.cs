@@ -12,6 +12,7 @@ namespace ESG.Application.Services.Interfaces
         Task Create(UserDto user);
         Task<User> Update(UserDto user);
         Task<User> UpdatePassword(UserDto user);
-        Task<User> GetUser(UserDto user);
+        Task<User> GetUser(long userId);
+        Task<User> Delete(long Id);
     }
 }

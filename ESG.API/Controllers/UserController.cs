@@ -3,13 +3,11 @@ using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ESG.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
+
+    public class UserController : BaseController
     {
         private readonly ILogger<UserController> _logger;
         private readonly IUserService  _userService;
@@ -18,38 +16,38 @@ namespace ESG.API.Controllers
             _logger = logger;
             _userService = userService;
         }
-        // GET: api/<UserController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<UserController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<UserController>
         [HttpPost("Create")]
-        public async Task<IActionResult> Post(UserDto user)
+        public async Task<IActionResult> Create(UserDto user)
         {
             await _userService.Create(user);
             return(Ok());
         }
 
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update(UserDto user)
         {
+            await _userService.Update(user);
+            return(Ok());
         }
 
         // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> Delete(long id)
         {
+            await _userService.Delete(id);
+            return (Ok());
         }
     }
 }

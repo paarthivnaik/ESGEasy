@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Common.Interface.UnitOfMeasure
 {
-    public interface IUnitOfMeasure:IGenericRepository<ESG.Domain.Entities.UnitOfMeasure>
+    public interface IUnitOfMeasureRepo:IGenericRepository<ESG.Domain.Entities.UnitOfMeasure>
     {
     }
 }
