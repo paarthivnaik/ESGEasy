@@ -34,9 +34,10 @@ namespace ESG.API.Controllers
 
         // POST api/<UserController>
         [HttpPost("Create")]
-        public async Task<long> Post(UserDto user)
+        public async Task<IActionResult> Post(UserDto user)
         {
-           return await _userService.Create(user);
+            await _userService.Create(user);
+            return(Ok());
         }
 
         // PUT api/<UserController>/5

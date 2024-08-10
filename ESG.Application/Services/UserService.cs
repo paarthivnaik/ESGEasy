@@ -20,7 +20,7 @@ namespace ESG.Application.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<long> Create(UserDto userDto)
+        public async Task Create(UserDto userDto)
         {
             var user= new User();
             user.FirstName = userDto.FirstName;
@@ -30,9 +30,9 @@ namespace ESG.Application.Services
             user.SecurityStamp= Guid.NewGuid();
             user.Password= Crypto.GenerateHash(userDto.Password, user.SecurityStamp.ToString());
             user.Email = userDto.Email.ToLowerInvariant();
-            var res= await _unitOfWork.Repository<User>().AddAsync(user);
+            await _unitOfWork.Repository<User>().AddAsync(user);
             await _unitOfWork.SaveAsync();
-            return res.Id;
+            
             
         }
 

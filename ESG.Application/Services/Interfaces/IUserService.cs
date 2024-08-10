@@ -9,7 +9,7 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<long> Create(UserDto user);
+        Task Create(UserDto user);
         Task<User> Update(UserDto user);
         Task<User> UpdatePassword(UserDto user);
         Task<User> GetUser(UserDto user);
