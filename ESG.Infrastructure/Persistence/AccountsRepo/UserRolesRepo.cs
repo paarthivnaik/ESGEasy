@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESG.Infrastructure.Persistence.Account
+namespace ESG.Infrastructure.Persistence.AccountsRepo
 {
     public class UserRolesRepo : GenericRepository<UserRole>, IUserRolesRepo
     {

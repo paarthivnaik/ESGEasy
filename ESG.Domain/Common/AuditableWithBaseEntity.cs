@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESG.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace ESG.Domain.Common
 {
     public abstract class AuditableWithBaseEntity<T> : BaseEntity<T>, IAuditableEntity
     {
-        public bool IsActive { get; set; } = false;
+        public StateEnum State { get; set; } = StateEnum.active;
         public long CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public long? LastModifiedBy { get; set; }

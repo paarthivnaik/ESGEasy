@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESG.Infrastructure.Persistence.Account
+namespace ESG.Infrastructure.Persistence.AccountsRepo
 {
-    public class UsersRepo : GenericRepository<User>, IUsersRepo
+    public class RoleRepo : GenericRepository<Role>, IRoleRepo
     {
         private readonly ApplicationDbContext _context;
-        public UsersRepo(ApplicationDbContext context) : base(context)
+        public RoleRepo(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }

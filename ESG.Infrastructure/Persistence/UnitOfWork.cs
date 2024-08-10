@@ -15,6 +15,7 @@ namespace ESG.Infrastructure.Persistence
     public class UnitOfWork : IUnitOfWork
     {
         #region Properties
+        public IUnitOfMeasureRepo UnitOfMeasure { get; private set; }
         private readonly ApplicationDbContext _context;
         IDbContextTransaction dbContextTransaction;
         private Hashtable _repositories;

@@ -1,4 +1,4 @@
-﻿using ESG.Application.Dto;
+﻿using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -18,39 +18,42 @@ namespace ESG.API.Controllers
             _logger = logger;
             _unitOfMeasureService = unitOfMeasureService;
         }
-        // GET: api/<UOMController>
-        [HttpGet]
-        public async Task<IEnumerable<UnitOfMeasureDto>> GetAll()
-        {
-            return await _unitOfMeasureService.GetAll();
-        }
-
-        // GET api/<UOMController>/5
-        [HttpGet("{id}")]
-        public async Task<UnitOfMeasureDto> Get(long id)
-        {
-            return await _unitOfMeasureService.GetById(id);
-        }
 
         // POST api/<UOMController>
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] UnitOfMeasureDto value)
+        [HttpPost("Create UOM")]
+        public async Task<IActionResult> Post([FromBody] UnitOfMeasureCreateRequestDto value)
         {
             await _unitOfMeasureService.Add(value);
             return Ok(200);
         }
-        // POST api/<UOMController>
-        [HttpPost("AddRange")]
-        public async Task AddRange([FromBody] IEnumerable<UnitOfMeasureDto> value)
-        {
-            await _unitOfMeasureService.AddRange(value);
-        }
+
         // PUT api/<UOMController>/5
-        [HttpPut]
-        public async Task Put(UnitOfMeasureDto value)
+        [HttpPut("Update UOM")]
+        public async Task<IActionResult> Put(UnitOfMeasureUpdateRequestDto value)
         {
-           await _unitOfMeasureService.Update(value);
+            await _unitOfMeasureService.Update(value);
+            return Ok(200);
         }
 
+        // PUT api/<UOMController>/5
+        [HttpPut("Delete UOM")]
+        public async Task Delete(UnitOfMeasureUpdateRequestDto value)
+        {
+            await _unitOfMeasureService.Update(value);
+        }
+
+        // GET api/<UOMController>/5
+        [HttpGet("Get all UOM ByUOMTypeId")]
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetByTypeId(long id)
+        {
+            return await _unitOfMeasureService.GetAllUOMByUOMTypeId(id);
+        }
+
+        // GET api/<UOMController>/5
+        [HttpGet("Get all UOM With Translatons")]
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslations(long id)
+        {
+            return await _unitOfMeasureService.GetAllUOMTranslations(id);
+        }
     }
 }

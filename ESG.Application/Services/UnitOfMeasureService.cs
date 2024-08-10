@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
 using ESG.Application.Common.Interface.UnitOfMeasure;
-using ESG.Application.Dto;
+using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace ESG.Application.Services
 {
@@ -16,7 +18,7 @@ namespace ESG.Application.Services
             _unitOfMeasure = unitOfMeasure;
             _mapper = mapper;
         }
-        public async Task Add(UnitOfMeasureDto unitOfMeasure)
+        public async Task Add(UnitOfMeasureCreateRequestDto unitOfMeasure)
         {
             if (unitOfMeasure.UnitOfMeasureId > 0)
             {
@@ -27,51 +29,60 @@ namespace ESG.Application.Services
             {
                 var uomdata = _mapper.Map<UnitOfMeasure>(unitOfMeasure);
                 var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasure);
-                await _unitOfMeasure.Repository<UnitOfMeasure>().AddAsync(uomdata);
+                uomTranslationdata.UnitOfMeasureId = uomdata.Id;
                 uomdata.UnitOfMeasureTranslations = new List<UnitOfMeasureTranslations> { uomTranslationdata };
+                await _unitOfMeasure.Repository<UnitOfMeasure>().AddAsync(uomdata);
             }
             await _unitOfMeasure.SaveAsync();
         }
 
-        public async Task AddRange(IEnumerable<UnitOfMeasureDto> unitOfMeasure)
+        public async Task AddRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure)
         {
             var data = _mapper.Map<IEnumerable<UnitOfMeasure>>(unitOfMeasure);
             await _unitOfMeasure.Repository<UnitOfMeasure>().AddRange(data);
             await _unitOfMeasure.SaveAsync();
         }
-        public async Task Update(UnitOfMeasureDto unitOfMeasure)
+        public async Task Update(UnitOfMeasureUpdateRequestDto unitOfMeasure)
         {
-
             var data = _mapper.Map<UnitOfMeasure>(unitOfMeasure);
-            var existingData = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(u=>u.Id==unitOfMeasure.Id && u.OrganizationId==unitOfMeasure.OrganizationId);
+            var existingData = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(u => u.Id == unitOfMeasure.Id);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasure.Id} not found.");
             }
             existingData.ShortText = unitOfMeasure.ShortText;
             existingData.LongText = unitOfMeasure.LongText;
-            existingData.UnitOfMeasureTypeId = unitOfMeasure.UnitOfMeasureTypeId;
+            existingData.Code = unitOfMeasure.Code;
+            existingData.LanguageId = unitOfMeasure.LanguageId;
+            existingData.State = unitOfMeasure.State;
+            existingData.Name = unitOfMeasure.Name;
 
             await _unitOfMeasure.Repository<UnitOfMeasure>().Update(existingData);
             //await _unitOfMeasure.Repository<UnitOfMeasure>().UpdateFieldsSave(data,c=>c.UnitOfMeasureTypeId,c=>c.LongText, c=>c.ShortText);
             await _unitOfMeasure.SaveAsync();
         }
-        public async Task UpdateRange(IEnumerable<UnitOfMeasureDto> unitOfMeasure)
+        //public async Task UpdateRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure)
+        //{
+        //    var data = _mapper.Map<IEnumerable<UnitOfMeasure>>(unitOfMeasure);
+        //    await _unitOfMeasure.Repository<UnitOfMeasure>().UpdateRange(data);
+        //    await _unitOfMeasure.SaveAsync();
+        //}
+        //public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll()
+        //{
+        //    var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll();
+        //    var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(lst);
+        //    return data;
+        //}
+        public async Task<UnitOfMeasureResponseDto> GetById(long Id)
         {
-            var data = _mapper.Map<IEnumerable<UnitOfMeasure>>(unitOfMeasure);
-            await _unitOfMeasure.Repository<UnitOfMeasure>().UpdateRange(data);
-            await _unitOfMeasure.SaveAsync();
-        }
-        public async Task<IEnumerable<UnitOfMeasureDto>> GetAll()
-        {
-            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll();
-            var data = _mapper.Map<IEnumerable<UnitOfMeasureDto>>(lst);
+            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(u => u.Id == Id);
+            var data = _mapper.Map<UnitOfMeasureResponseDto>(lst);
             return data;
         }
-        public async Task<UnitOfMeasureDto> GetById(long Id)
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMByUOMTypeId(long uomTypeId)
         {
-            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(u => u.Id == Id && u.OrganizationId ==1);
-            var data = _mapper.Map<UnitOfMeasureDto>(lst);
+            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll(u => u.UnitOfMeasureTypeId == uomTypeId);
+            var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(lst);
             return data;
         }
 
@@ -81,6 +92,11 @@ namespace ESG.Application.Services
             return count;
         }
 
-       
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslations(long id)
+        {
+            var list = await _unitOfMeasure.UnitOfMeasure.GetAllUOMTranslations(id);
+            var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(list);
+            return data;
+        }
     }
 }

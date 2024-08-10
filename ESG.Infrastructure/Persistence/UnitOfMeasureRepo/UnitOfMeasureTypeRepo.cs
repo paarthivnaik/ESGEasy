@@ -15,5 +15,6 @@ namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
         {
             _applicationDb = context;
         }
+        
     }
 }

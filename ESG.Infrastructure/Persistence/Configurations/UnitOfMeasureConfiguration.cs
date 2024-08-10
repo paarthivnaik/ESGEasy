@@ -14,10 +14,9 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<UnitOfMeasure> builder)
         {
-            builder.HasKey(x => new { x.Id, x.OrganizationId });
             builder.HasOne(dpv => dpv.UnitOfMeasureTypes)
                 .WithMany(dpt => dpt.UnitOfMeasure)
-                .HasForeignKey(dpv => new { dpv.UnitOfMeasureTypeId, dpv.OrganizationId });
+                .HasForeignKey(dpv => new { dpv.UnitOfMeasureTypeId});
         }
     }
 }

@@ -14,10 +14,18 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<UnitOfMeasureTranslations> builder)
         {
-            builder.HasKey(x => new { x.Id});
-            builder.HasOne(dpv => dpv.UnitOfMeasure)
-                .WithMany(dpt => dpt.UnitOfMeasureTranslations)
-                .HasForeignKey(pv => new { pv.UnitOfMeasureId, pv.LanguageId });
+            // Configure composite primary key
+            builder.HasKey(x => new { x.UnitOfMeasureId, x.LanguageId });
+
+            // Configure relationship with UnitOfMeasure
+            builder.HasOne(ut => ut.UnitOfMeasure)
+                .WithMany(u => u.UnitOfMeasureTranslations)
+                .HasForeignKey(ut => ut.UnitOfMeasureId);
+
+            // Configure relationship with Language
+            builder.HasOne(ut => ut.Language)
+                .WithMany()
+                .HasForeignKey(ut => ut.LanguageId);
         }
     }
 }

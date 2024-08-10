@@ -32,8 +32,7 @@ namespace ESG.Application.Services
             user.Email = userDto.Email.ToLowerInvariant();
             await _unitOfWork.Repository<User>().AddAsync(user);
             await _unitOfWork.SaveAsync();
-            
-            
+
         }
 
         public async Task<User> Delete(long Id)

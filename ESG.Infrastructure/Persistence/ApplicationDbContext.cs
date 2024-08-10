@@ -52,7 +52,17 @@ namespace ESG.Infrastructure.Persistence
                         break;
                 }
             }
-            return await base.SaveChangesAsync();
+            try
+            {
+                return await base.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log the exception or inspect the inner exception
+                Console.WriteLine(ex.InnerException?.Message);
+                throw;
+            }
+
         }
         public virtual new DbSet<TEntity> Set<TEntity>() where TEntity : class
         {
@@ -182,17 +192,17 @@ namespace ESG.Infrastructure.Persistence
        }
    );
 
-            modelBuilder.Entity<UnitOfMeasureType>().HasData(
-     new UnitOfMeasureType { Id = 1, Name = "Speed", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
-     new UnitOfMeasureType { Id = 2, Name = "Weight", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
-     new UnitOfMeasureType { Id = 3, Name = "Amount", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 });
+     //       modelBuilder.Entity<UnitOfMeasureType>().HasData(
+     //new UnitOfMeasureType { Id = 1, Name = "Speed", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
+     //new UnitOfMeasureType { Id = 2, Name = "Weight", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
+     //new UnitOfMeasureType { Id = 3, Name = "Amount", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 });
 
-            modelBuilder.Entity<UnitOfMeasure>().HasData(
-             new UnitOfMeasure { Id = 4, ShortText = "kg", LongText = "Kilogram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 },
-             new UnitOfMeasure { Id = 5, ShortText = "gm", LongText = "Gram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 },
-             new UnitOfMeasure { Id = 6, ShortText = "ml", LongText = "milliliter", UnitOfMeasureTypeId = 3, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1,  OrganizationId = 1 },
-             new UnitOfMeasure { Id = 7, ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1,  OrganizationId = 1 },
-             new UnitOfMeasure { Id = 8, ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 });
+            //modelBuilder.Entity<UnitOfMeasure>().HasData(
+            // new UnitOfMeasure { Id = 4, ShortText = "kg", LongText = "Kilogram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 },
+            // new UnitOfMeasure { Id = 5, ShortText = "gm", LongText = "Gram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 },
+            // new UnitOfMeasure { Id = 6, ShortText = "ml", LongText = "milliliter", UnitOfMeasureTypeId = 3, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1,  OrganizationId = 1 },
+            // new UnitOfMeasure { Id = 7, ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1,  OrganizationId = 1 },
+            // new UnitOfMeasure { Id = 8, ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 });
 
             modelBuilder.Entity<Tenant>().HasData(
             new Tenant { Id = 1, Name = "ESG" });

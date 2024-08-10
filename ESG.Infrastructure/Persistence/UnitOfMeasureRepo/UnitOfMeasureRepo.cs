@@ -1,5 +1,6 @@
 ﻿using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,13 @@ namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
         public UnitOfMeasureRepo(ApplicationDbContext context) : base(context)
         {
             _context = context;
+        }
+        public async Task<IEnumerable<UnitOfMeasureTranslations>> GetAllUOMTranslations(long id)
+        {
+            var list = await _context.UnitOfMeasureTranslations
+                                     .Where(uom => uom.UnitOfMeasureId == id)
+                                     .ToListAsync();
+            return list;
         }
     }
 }

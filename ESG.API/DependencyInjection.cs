@@ -1,6 +1,8 @@
 ﻿using ESG.Application.Common.Interface.Tenants;
+using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
+using ESG.Infrastructure.Persistence.UnitOfMeasureRepo;
 
 namespace ESG.API
 {
@@ -19,6 +21,7 @@ namespace ESG.API
             services.AddScoped<IDimensionsService, DimensionsService>();
             services.AddScoped<IDatapointTypesService, DatapointTypesService>();
             services.AddScoped<IDimensionsService, DimensionsService>();
+            services.AddScoped<IUnitOfMeasureRepo, UnitOfMeasureRepo>();
             services.AddScoped<IUserService, UserService>();
             return services;
         }
