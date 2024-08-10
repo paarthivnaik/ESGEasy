@@ -19,13 +19,13 @@ namespace ESG.Infrastructure.Persistence
         private readonly ApplicationDbContext _context;
         IDbContextTransaction dbContextTransaction;
         private Hashtable _repositories;
-        public IUnitOfMeasureRepo UnitOfMeasure { get; private set; }
+        public IUnitOfMeasureRepo _unitOfMeasure { get; private set; }
         #endregion
         #region Ctor
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
-            UnitOfMeasure= new ESG.Infrastructure.Persistence.UnitOfMeasureRepo.UnitOfMeasureRepo(_context);
+            _unitOfMeasure = new ESG.Infrastructure.Persistence.UnitOfMeasureRepo.UnitOfMeasureRepo(_context);
         }
         #endregion
        

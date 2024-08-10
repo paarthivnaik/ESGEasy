@@ -32,6 +32,7 @@ namespace ESG.API.Controllers
         public async Task<IActionResult> Create(UserDto user)
         {
            await _userService.Create(user);
+            return Ok(200);
         }
 
         [HttpPut("Update")]

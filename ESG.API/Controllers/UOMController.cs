@@ -36,10 +36,11 @@ namespace ESG.API.Controllers
         }
 
         // PUT api/<UOMController>/5
-        [HttpPut("Delete UOM")]
-        public async Task Delete(UnitOfMeasureUpdateRequestDto value)
+        [HttpDelete("Delete UOM")]
+        public async Task<IActionResult> Delete(UnitOfMeasureDeleteRequest value)
         {
-            await _unitOfMeasureService.Update(value);
+            await _unitOfMeasureService.DeleteUOM(value);
+            return Ok(200);
         }
 
         // GET api/<UOMController>/5

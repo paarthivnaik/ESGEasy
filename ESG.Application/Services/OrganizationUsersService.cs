@@ -32,7 +32,7 @@ namespace ESG.Application.Services
         public async Task<OrganizationUser> Delete(long Id)
         {
             var res = await _unitOfWork.Repository<OrganizationUser>().Get(Id);
-            res.IsActive = false;
+            res.State = StateEnum.deleted;
             await _unitOfWork.Repository<OrganizationUser>().UpdateAsync(Id, res);
             await _unitOfWork.SaveAsync();
             return res;

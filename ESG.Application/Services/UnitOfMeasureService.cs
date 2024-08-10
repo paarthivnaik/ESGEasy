@@ -35,7 +35,16 @@ namespace ESG.Application.Services
             }
             await _unitOfMeasure.SaveAsync();
         }
-
+        public async Task DeleteUOM(UnitOfMeasureDeleteRequest deleteRequest)
+        {
+            var uom = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(uom => uom.Id == deleteRequest.Id);
+            if (uom == null)
+            {
+                throw new KeyNotFoundException($"Unit of Measure with ID {uom.Id} not found.");
+            }
+            uom.State = StateEnum.deleted;
+            await _unitOfMeasure.SaveAsync();
+        }
         public async Task AddRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure)
         {
             var data = _mapper.Map<IEnumerable<UnitOfMeasure>>(unitOfMeasure);

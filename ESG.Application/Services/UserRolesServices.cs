@@ -26,7 +26,7 @@ namespace ESG.Application.Services
         public async Task<UserRole> Delete(long Id)
         {
             var res = await _unitOfWork.Repository<UserRole>().Get(Id);
-            res.IsActive = false;
+            res.State = StateEnum.deleted;
             await _unitOfWork.Repository<UserRole>().UpdateAsync(Id, res);
             await _unitOfWork.SaveAsync();
             return res;
