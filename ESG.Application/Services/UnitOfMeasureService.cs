@@ -61,12 +61,12 @@ namespace ESG.Application.Services
             existingData.ShortText = unitOfMeasureType.ShortText;
             existingData.LongText = unitOfMeasureType.LongText;
             existingData.Code = unitOfMeasureType.Code;
-            existingData.LanguageId = unitOfMeasureType.LanguageId;
             existingData.State = unitOfMeasureType.State;
             existingData.Name = unitOfMeasureType.Name;
 
             await _unitOfMeasure.Repository<UnitOfMeasureType>().Update(existingData);
             await _unitOfMeasure.SaveAsync();
+
         }
         public async Task UpdateRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure)
         {

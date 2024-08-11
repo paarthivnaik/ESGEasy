@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Dto.UnitOfMeasureType
 {
-    public class unitOfMeasureTypeResponseDto
+    public class UnitOfMeasureTypeResponseDto
     {
         public long Id { get; set; }
         public string Name { get; set; }
@@ -17,6 +17,5 @@ namespace ESG.Application.Dto.UnitOfMeasureType
         public long LanguageId { get; set; }
         public StateEnum State { get; set; }
         public long UserId { get; set; }
-
     }
 }

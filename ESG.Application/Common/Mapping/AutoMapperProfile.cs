@@ -135,10 +135,10 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
-                .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
+                //.ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.UserId));
 
-            CreateMap<UnitOfMeasureType, UnitOfMeasureResponseDto>()
+            CreateMap<UnitOfMeasureType, UnitOfMeasureTypeResponseDto>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
@@ -146,6 +146,23 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy));
+
+            CreateMap<UnitOfMeasureTypeTranslations, UnitOfMeasureTypeResponseDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
+                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
+                .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
+                .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy));
+            CreateMap<UnitOfMeasureTypeResponseDto, UnitOfMeasureTypeTranslations>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
+                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
+                .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
+                .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.UserId));
 
         }
     }

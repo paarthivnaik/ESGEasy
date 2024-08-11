@@ -55,26 +55,27 @@ namespace ESG.Application.Services
                 throw new KeyNotFoundException($"Unit of Measure with ID {uomType.Id} not found.");
             }
             uomType.State = StateEnum.deleted;
+            await _unitOfWork.Repository<UnitOfMeasureType>().Update(uomType);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<IEnumerable<unitOfMeasureTypeResponseDto>> GetAll()
+        public async Task<IEnumerable<UnitOfMeasureTypeResponseDto>> GetAll()
         {
             var list = await _unitOfWork.Repository<UnitOfMeasureType>().GetAll();
-            var data = _mapper.Map<IEnumerable<unitOfMeasureTypeResponseDto>>(list);
+            var data = _mapper.Map<IEnumerable<UnitOfMeasureTypeResponseDto>>(list);
             return data;
         }
 
-        public async Task<IEnumerable<unitOfMeasureTypeResponseDto>> GetAllTranslations(long Id)
+        public async Task<IEnumerable<UnitOfMeasureTypeResponseDto>> GetAllTranslations(long Id)
         {
             var list = await _unitOfWork.Repository<UnitOfMeasureTypeTranslations>().Get(a => a.UnitOfMeasureTypeId == Id);
-            var data = _mapper.Map<IEnumerable<unitOfMeasureTypeResponseDto>>(list);
+            var data = _mapper.Map<IEnumerable<UnitOfMeasureTypeResponseDto>>(list);
             return data;
         }
 
         public async Task UpdateAsync(UnitOfMeasureTypeUpdateRequestDto unitOfMeasureType)
         {
-            var existingData = await _unitOfWork.Repository<UnitOfMeasure>().Get(u => u.Id == unitOfMeasureType.Id);
+            var existingData = await _unitOfWork.Repository<UnitOfMeasureType>().Get(u => u.Id == unitOfMeasureType.Id);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasureType.Id} not found.");
@@ -82,11 +83,11 @@ namespace ESG.Application.Services
             existingData.ShortText = unitOfMeasureType.ShortText;
             existingData.LongText = unitOfMeasureType.LongText;
             existingData.Code = unitOfMeasureType.Code;
-            existingData.LanguageId = unitOfMeasureType.LanguageId;
+            //existingData.LanguageId = unitOfMeasureType.LanguageId;
             existingData.State = unitOfMeasureType.State;
             existingData.Name = unitOfMeasureType.Name;
 
-            await _unitOfWork.Repository<UnitOfMeasure>().Update(existingData);
+            await _unitOfWork.Repository<UnitOfMeasureType>().Update(existingData);
             await _unitOfWork.SaveAsync();
         }
     }
