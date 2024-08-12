@@ -23,6 +23,8 @@ namespace ESG.API
             services.AddScoped<IDimensionsService, DimensionsService>();
             services.AddScoped<IUnitOfMeasureRepo, UnitOfMeasureRepo>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUOMTranslationsService, UOMTranslationService>();
+            services.AddScoped<IUOMTypeTranslationsService, UOMTypeTranslationsService>();
             return services;
         }
     }
