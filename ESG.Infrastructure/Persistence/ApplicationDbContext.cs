@@ -25,9 +25,11 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<Language> Languages { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<DimensionType> DimensionTypes { get; set; }
-        public DbSet<Dimensions> Dimensions { get; set; }
+        public DbSet<ESG.Domain.Entities.Dimensions> Dimensions { get; set; }
         public DbSet<DataPointTypes> DataPointTypes { get; set; }
         public DbSet<DataPointValues> DataPointValues { get; set; }
+        public DbSet<DimensionTypeTranslations> DimensionTypeTranslations { get; set; }
+        public DbSet<DimensionTranslations> DimensionTranslations { get; set; }
         public DbSet<Audit> AuditLogs { get; set; }
         public DateTime _curretDateTime { get; set; }
 
@@ -192,41 +194,55 @@ namespace ESG.Infrastructure.Persistence
     new Currency { Id = 10, Name = "Russian Ruble", CurrencyCode = "RUB", ShortText = "RUB", LongText = "Russian Ruble" }
 );
 
+
+            //       modelBuilder.Entity<UnitOfMeasureType>().HasData(
+            //new UnitOfMeasureType { Id = 1,Code = "speed", Name = "Speed", ShortText = "T1", LongText = "Type 1",State = StateEnum.active, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1},
+            //new UnitOfMeasureType { Id = 2, Code = "weight", Name = "Weight", ShortText = "T2", LongText = "Type 2", State = StateEnum.active, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1},
+            //new UnitOfMeasureType { Id = 3, Code = "amount", Name = "Amount", ShortText = "T3", LongText = "Type 3", State = StateEnum.active, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1});
+
+            //modelBuilder.Entity<UnitOfMeasure>().HasData(
+            // new UnitOfMeasure { Id = 4,Name = "weight", Code = "weight", ShortText = "kg", LongText = "Kilogram", UnitOfMeasureTypeId = 2, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+            // new UnitOfMeasure { Id = 5, Name = "weight", Code = "weight", ShortText = "gm", LongText = "Gram", UnitOfMeasureTypeId = 2, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+            // new UnitOfMeasure { Id = 6, Name = "amount", Code = "weight", ShortText = "ml", LongText = "milliliter", UnitOfMeasureTypeId = 3, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+            // new UnitOfMeasure { Id = 7, Name = "speed", Code = "weight", ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureTypeId = 1, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+            // new UnitOfMeasure { Id = 8, Name = "speed", Code = "weight", ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureTypeId = 1, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 });
+
+
             modelBuilder.Entity<DataPointTypes>().HasData(
-    new DataPointTypes { Id = 1, Name = "DatapointType1", ShortText = "T1", LongText = "Type 1", LanguageId = 1, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointTypes { Id = 2, Name = "DatapointType2", ShortText = "T2", LongText = "Type 2", LanguageId = 2, OrganizationId = 1, CreatedBy = 2, CreatedDate = DateTime.UtcNow },
-    new DataPointTypes { Id = 3, Name = "DatapointType3", ShortText = "T3", LongText = "Type 3", LanguageId = 3, OrganizationId = 1, CreatedBy = 3, CreatedDate = DateTime.UtcNow },
-    new DataPointTypes { Id = 5, Name = "DatapointType5", ShortText = "T5", LongText = "Type 5", LanguageId = 1, OrganizationId = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointTypes { Id = 6, Name = "DatapointType6", ShortText = "T6", LongText = "Type 6", LanguageId = 1, OrganizationId = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointTypes { Id = 7, Name = "DatapointType7", ShortText = "T7", LongText = "Type 7", LanguageId = 1, OrganizationId = 1,  CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointTypes { Id = 8, Name = "DatapointType8", ShortText = "T8", LongText = "Type 8", LanguageId = 1, OrganizationId = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointTypes { Id = 9, Name = "DatapointType9", ShortText = "T9", LongText = "Type 9", LanguageId = 1, OrganizationId = 1,  CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointTypes { Id = 10, Name = "DatapointType10", ShortText = "T10", LongText = "Type 10", LanguageId = 1, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
+    new DataPointTypes { Id = 1, Name = "DatapointType1", ShortText = "T1", LongText = "Type 1", LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointTypes { Id = 2, Name = "DatapointType2", ShortText = "T2", LongText = "Type 2", LanguageId = 2,CreatedBy = 2, CreatedDate = DateTime.UtcNow },
+    new DataPointTypes { Id = 3, Name = "DatapointType3", ShortText = "T3", LongText = "Type 3", LanguageId = 3, CreatedBy = 3, CreatedDate = DateTime.UtcNow },
+    new DataPointTypes { Id = 5, Name = "DatapointType5", ShortText = "T5", LongText = "Type 5", LanguageId = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointTypes { Id = 6, Name = "DatapointType6", ShortText = "T6", LongText = "Type 6", LanguageId = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointTypes { Id = 7, Name = "DatapointType7", ShortText = "T7", LongText = "Type 7", LanguageId = 1,  CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointTypes { Id = 8, Name = "DatapointType8", ShortText = "T8", LongText = "Type 8", LanguageId = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointTypes { Id = 9, Name = "DatapointType9", ShortText = "T9", LongText = "Type 9", LanguageId = 1,  CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointTypes { Id = 10, Name = "DatapointType10", ShortText = "T10", LongText = "Type 10", LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
 );
             modelBuilder.Entity<DataPointValues>().HasData(
-    new DataPointValues { Id = 1, Name = "DataPointValue1", DatapointTypeId = 1, IsUOM = false, IsCurrency = true, IsNarrative = false, Value = "Value 1", Purpose = "Purpose 1", LanguageId = 1, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointValues { Id = 2, Name = "DataPointValue2", DatapointTypeId = 1, IsUOM = true, IsCurrency = false, IsNarrative = false, Value = "Value 2", Purpose = "Purpose 2", LanguageId = 1, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointValues { Id = 3, Name = "DataPointValue3", DatapointTypeId = 1, IsUOM = false, IsCurrency = true, IsNarrative = false, Value = "Value 3", Purpose = "Purpose 3", LanguageId = 1, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointValues { Id = 4, Name = "DataPointValue4", DatapointTypeId = 1, IsUOM = false, IsCurrency = false, IsNarrative = true, Value = "Value 4", Purpose = "Purpose 4", LanguageId = 1, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointValues { Id = 5, Name = "DataPointValue5", DatapointTypeId = 1, IsUOM = false, IsCurrency = true, IsNarrative = false, Value = "Value 5", Purpose = "Purpose 5", LanguageId = 1, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointValues { Id = 6, Name = "DataPointValue6", DatapointTypeId = 1, IsUOM = true, IsCurrency = false, IsNarrative = false, Value = "Value 6", Purpose = "Purpose 6", LanguageId = 1, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointValues { Id = 7, Name = "DataPointValue7", DatapointTypeId = 1, IsUOM = false, IsCurrency = true, IsNarrative = false, Value = "Value 7", Purpose = "Purpose 7", LanguageId = 2, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointValues { Id = 8, Name = "DataPointValue8", DatapointTypeId = 1, IsUOM = false, IsCurrency = false, IsNarrative = true, Value = "Value 8", Purpose = "Purpose 8", LanguageId = 2, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointValues { Id = 9, Name = "DataPointValue9", DatapointTypeId = 1, IsUOM = false, IsCurrency = true, IsNarrative = false, Value = "Value 9", Purpose = "Purpose 9", LanguageId = 2, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DataPointValues { Id = 10, Name = "DataPointValue10", DatapointTypeId = 1, IsUOM = true, IsCurrency = false, IsNarrative = false, Value = "Value 10", Purpose = "Purpose 10", LanguageId = 2, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
+    new DataPointValues { Id = 1, Name = "DataPointValue1", DatapointTypeId = 1, IsUOM = false, IsCurrency = true, IsNarrative = false, Value = "Value 1", Purpose = "Purpose 1", LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointValues { Id = 2, Name = "DataPointValue2", DatapointTypeId = 1, IsUOM = true, IsCurrency = false, IsNarrative = false, Value = "Value 2", Purpose = "Purpose 2", LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointValues { Id = 3, Name = "DataPointValue3", DatapointTypeId = 1, IsUOM = false, IsCurrency = true, IsNarrative = false, Value = "Value 3", Purpose = "Purpose 3", LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointValues { Id = 4, Name = "DataPointValue4", DatapointTypeId = 1, IsUOM = false, IsCurrency = false, IsNarrative = true, Value = "Value 4", Purpose = "Purpose 4", LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointValues { Id = 5, Name = "DataPointValue5", DatapointTypeId = 1, IsUOM = false, IsCurrency = true, IsNarrative = false, Value = "Value 5", Purpose = "Purpose 5", LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointValues { Id = 6, Name = "DataPointValue6", DatapointTypeId = 1, IsUOM = true, IsCurrency = false, IsNarrative = false, Value = "Value 6", Purpose = "Purpose 6", LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointValues { Id = 7, Name = "DataPointValue7", DatapointTypeId = 1, IsUOM = false, IsCurrency = true, IsNarrative = false, Value = "Value 7", Purpose = "Purpose 7", LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointValues { Id = 8, Name = "DataPointValue8", DatapointTypeId = 1, IsUOM = false, IsCurrency = false, IsNarrative = true, Value = "Value 8", Purpose = "Purpose 8", LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointValues { Id = 9, Name = "DataPointValue9", DatapointTypeId = 1, IsUOM = false, IsCurrency = true, IsNarrative = false, Value = "Value 9", Purpose = "Purpose 9", LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DataPointValues { Id = 10, Name = "DataPointValue10", DatapointTypeId = 1, IsUOM = true, IsCurrency = false, IsNarrative = false, Value = "Value 10", Purpose = "Purpose 10", LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
 );
-            modelBuilder.Entity<DimensionType>().HasData(
-    new DimensionType { Id = 50, Name = "DimensionType1", ShortText = "DT1", LongText = "Dimension Type 1", LanguageId = 1, IsHeirarchialDimention = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DimensionType { Id = 51, Name = "DimensionType2", ShortText = "DT2", LongText = "Dimension Type 2", LanguageId = 1, IsHeirarchialDimention = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DimensionType { Id = 52, Name = "DimensionType3", ShortText = "DT3", LongText = "Dimension Type 3", LanguageId = 1, IsHeirarchialDimention = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DimensionType { Id = 53, Name = "DimensionType4", ShortText = "DT4", LongText = "Dimension Type 4", LanguageId = 1, IsHeirarchialDimention = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DimensionType { Id = 54, Name = "DimensionType5", ShortText = "DT5", LongText = "Dimension Type 5", LanguageId = 1, IsHeirarchialDimention = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DimensionType { Id = 55, Name = "DimensionType6", ShortText = "DT6", LongText = "Dimension Type 6", LanguageId = 1, IsHeirarchialDimention = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DimensionType { Id = 56, Name = "DimensionType7", ShortText = "DT7", LongText = "Dimension Type 7", LanguageId = 1, IsHeirarchialDimention = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DimensionType { Id = 57, Name = "DimensionType8", ShortText = "DT8", LongText = "Dimension Type 8", LanguageId = 1, IsHeirarchialDimention = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DimensionType { Id = 58, Name = "DimensionType9", ShortText = "DT9", LongText = "Dimension Type 9", LanguageId = 1, IsHeirarchialDimention = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new DimensionType { Id = 59, Name = "DimensionType10", ShortText = "DT10", LongText = "Dimension Type 10", LanguageId = 1, IsHeirarchialDimention = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
-);
+//            modelBuilder.Entity<DimensionType>().HasData(
+//    new DimensionType { Id = 50, Name = "DimensionType1", ShortText = "DT1", LongText = "Dimension Type 1", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { Id = 51, Name = "DimensionType2", ShortText = "DT2", LongText = "Dimension Type 2", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { Id = 52, Name = "DimensionType3", ShortText = "DT3", LongText = "Dimension Type 3", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { Id = 53, Name = "DimensionType4", ShortText = "DT4", LongText = "Dimension Type 4", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { Id = 54, Name = "DimensionType5", ShortText = "DT5", LongText = "Dimension Type 5", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { Id = 55, Name = "DimensionType6", ShortText = "DT6", LongText = "Dimension Type 6", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { Id = 56, Name = "DimensionType7", ShortText = "DT7", LongText = "Dimension Type 7", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { Id = 57, Name = "DimensionType8", ShortText = "DT8", LongText = "Dimension Type 8", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { Id = 58, Name = "DimensionType9", ShortText = "DT9", LongText = "Dimension Type 9", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { Id = 59, Name = "DimensionType10", ShortText = "DT10", LongText = "Dimension Type 10", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
+//);
             modelBuilder.Entity<Organization>().HasData(
         new Organization
         {
@@ -244,53 +260,41 @@ namespace ESG.Infrastructure.Persistence
             LanguageId = 1 
         });
 
-            modelBuilder.Entity<Dimensions>().HasData(
-       new Dimensions
-       {
-           Id = 100,
-           Name = "Dimension 1",
-           ShortText = "Short 1",
-           LongText = "Long Description 1",
-           LanguageId = 1,
-           DimentionTypeId = 50, 
-           IsHeirarchialDimention = true,
-           OrganizationId = 1
-       },
-       new Dimensions
-       {
-           Id = 101,
-           Name = "Dimension 2",
-           ShortText = "Short 2",
-           LongText = "Long Description 2",
-           LanguageId = 1,  
-           DimentionTypeId = 50,
-           IsHeirarchialDimention = true,
-           OrganizationId = 1
-       },
-       new Dimensions
-       {
-           Id = 102,
-           Name = "Dimension 3",
-           ShortText = "Short 3",
-           LongText = "Long Description 3",
-           LanguageId = 1,
-           DimentionTypeId = 51,
-           IsHeirarchialDimention = true,
-           OrganizationId = 1
-       }
-   );
-
-     //       modelBuilder.Entity<UnitOfMeasureType>().HasData(
-     //new UnitOfMeasureType { Id = 1, Name = "Speed", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
-     //new UnitOfMeasureType { Id = 2, Name = "Weight", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 },
-     //new UnitOfMeasureType { Id = 3, Name = "Amount", CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1, OrganizationId = 1 });
-
-            //modelBuilder.Entity<UnitOfMeasure>().HasData(
-            // new UnitOfMeasure { Id = 4, ShortText = "kg", LongText = "Kilogram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 },
-            // new UnitOfMeasure { Id = 5, ShortText = "gm", LongText = "Gram", UnitOfMeasureTypeId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 },
-            // new UnitOfMeasure { Id = 6, ShortText = "ml", LongText = "milliliter", UnitOfMeasureTypeId = 3, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1,  OrganizationId = 1 },
-            // new UnitOfMeasure { Id = 7, ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1,  OrganizationId = 1 },
-            // new UnitOfMeasure { Id = 8, ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureTypeId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, OrganizationId = 1 });
+   //         modelBuilder.Entity<Dimensions>().HasData(
+   //    new Dimensions
+   //    {
+   //        Id = 100,
+   //        Name = "Dimension 1",
+   //        ShortText = "Short 1",
+   //        LongText = "Long Description 1",
+   //        LanguageId = 1,
+   //        DimensionTypeId = 50, 
+   //        IsHeirarchialDimension = true,
+   //        OrganizationId = 1
+   //    },
+   //    new Dimensions
+   //    {
+   //        Id = 101,
+   //        Name = "Dimension 2",
+   //        ShortText = "Short 2",
+   //        LongText = "Long Description 2",
+   //        LanguageId = 1,  
+   //        DimensionTypeId = 50,
+   //        IsHeirarchialDimension = true,
+   //        OrganizationId = 1
+   //    },
+   //    new Dimensions
+   //    {
+   //        Id = 102,
+   //        Name = "Dimension 3",
+   //        ShortText = "Short 3",
+   //        LongText = "Long Description 3",
+   //        LanguageId = 1,
+   //        DimensionTypeId = 51,
+   //        IsHeirarchialDimension = true,
+   //        OrganizationId = 1
+   //    }
+   //);
 
             modelBuilder.Entity<Tenant>().HasData(
             new Tenant { Id = 1, Name = "ESG" });
@@ -357,32 +361,29 @@ namespace ESG.Infrastructure.Persistence
      new UserRole { Id = 3, RoleId = 3, UserId = 3, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
 
      );
-            modelBuilder.Entity<DatapointModel>().HasData(
-        new DatapointModel
-        {
-            Id = 10,
-            DatapointId = 1,
-            DimentionsId = 100,
-            SortingType = SortingTypeEnum.RowType,
-            OrganizationId = 1
-        },
-        new DatapointModel
-        {
-            Id = 11,
-            DatapointId = 1,
-            DimentionsId = 101,
-            SortingType = SortingTypeEnum.ColumType,
-            OrganizationId = 1
-        },
-        new DatapointModel
-        {
-            Id = 12,
-            DatapointId = 1,
-            DimentionsId = 102,
-            SortingType = SortingTypeEnum.FilterType,
-            OrganizationId = 1
-        }
-    );
+    //        modelBuilder.Entity<DatapointModel>().HasData(
+    //    new DatapointModel
+    //    {
+    //        Id = 10,
+    //        DatapointId = 1,
+    //        DimentionsId = 100,
+    //        SortingType = SortingTypeEnum.RowType
+    //    },
+    //    new DatapointModel
+    //    {
+    //        Id = 11,
+    //        DatapointId = 1,
+    //        DimentionsId = 101,
+    //        SortingType = SortingTypeEnum.ColumType
+    //    },
+    //    new DatapointModel
+    //    {
+    //        Id = 12,
+    //        DatapointId = 1,
+    //        DimentionsId = 102,
+    //        SortingType = SortingTypeEnum.FilterType
+    //    }
+    //);
             base.OnModelCreating(modelBuilder);
         }
 

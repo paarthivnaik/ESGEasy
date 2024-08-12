@@ -1,6 +1,8 @@
 ﻿using ESG.Application.Common.Interface;
+using ESG.Application.Common.Interface.Dimensions;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Domain.Entities;
+using ESG.Infrastructure.Persistence.Dimensions;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections;
@@ -16,6 +18,7 @@ namespace ESG.Infrastructure.Persistence
     {
         #region Properties
         public IUnitOfMeasureRepo UnitOfMeasure { get; private set; }
+        public IDimensionRepo DimensionRepo { get; private set; }
         private readonly ApplicationDbContext _context;
         IDbContextTransaction dbContextTransaction;
         private Hashtable _repositories;
@@ -26,6 +29,7 @@ namespace ESG.Infrastructure.Persistence
         {
             _context = context;
             _unitOfMeasure = new ESG.Infrastructure.Persistence.UnitOfMeasureRepo.UnitOfMeasureRepo(_context);
+            DimensionRepo = new DimensionsRepo(_context);
         }
         #endregion
        

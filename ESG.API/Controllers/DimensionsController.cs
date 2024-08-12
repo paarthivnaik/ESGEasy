@@ -1,12 +1,11 @@
-﻿using ESG.Application.Services.Interfaces;
+﻿using ESG.Application.Dto.Dimensions;
+using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class DimensionsController : ControllerBase
+    public class DimensionsController : BaseController
     {
         private readonly ILogger<DimensionsController> _logger;
         private readonly IDimensionsService _dimensionsService;
@@ -15,41 +14,46 @@ namespace ESG.API.Controllers
             _logger = logger;
             _dimensionsService = dimensionsService;
         }
-        // GET: api/<DimensionsController>
-        [HttpGet]
-        public async Task<IEnumerable<Dimensions>> Get()
+        [HttpPost("Create")]
+        public async Task<IActionResult> Post([FromBody] DimensionsCreateRequestDto value)
+        {
+            await _dimensionsService.AddAsync(value);
+            return Ok();
+        }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> Put([FromBody] DimensionsUpdateRequestDto value)
+        {
+            await _dimensionsService.UpdateAsync(value);
+            return Ok();
+        }
+
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete(DimensionsDeleteRequestDto request)
+        {
+            await _dimensionsService.Delete(request);
+            return Ok();
+        }
+
+        [HttpGet("Get")]
+        public async Task<IEnumerable<DimensionsResponseDto>> Get()
         {
             return await _dimensionsService.GetAll();
         }
 
-        // GET api/<DimensionsController>/5
-        [HttpGet("{id}")]
-        public async Task<Dimensions> Get(int id)
+        [HttpGet("GetByTypeId")]
+        public async Task<IEnumerable<DimensionsResponseDto>> GetById(long id)
         {
             return await _dimensionsService.GetById(id);
         }
 
-        // POST api/<DimensionsController>
-        [HttpPost]
-        public async Task Post([FromBody] Dimensions value)
+        [HttpGet("GetAllTranslations")]
+
+        public async Task<IEnumerable<DimensionsResponseDto>> GetAllTranslations(long id)
         {
-            await _dimensionsService.AddAsync(value);
+            return await _dimensionsService.GetAllTranslations(id);
         }
 
-        // PUT api/<DimensionsController>/5
-        [HttpPut("{id}")]
-        public async Task<Dimensions> Put([FromBody] Dimensions value)
-        {
-            var res = await _dimensionsService.UpdateAsync(value);
-            return res;
-        }
 
-        // DELETE api/<DimensionsController>/5
-        [HttpDelete("{id}")]
-        public async Task<bool> Delete(int id)
-        {
-            var res = await _dimensionsService.Delete(id);
-            return res;
-        }
     }
 }

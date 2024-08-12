@@ -11,14 +11,17 @@ using System.Reflection.Emit;
 
 namespace ESG.Infrastructure.Persistence.Configurations
 {
-    public class DimensionsConfiguration : IEntityTypeConfiguration<Dimensions>
+    public class DimensionsConfiguration : IEntityTypeConfiguration<ESG.Domain.Entities.Dimensions>
     {
-        public void Configure(EntityTypeBuilder<Dimensions> builder)
+        public void Configure(EntityTypeBuilder<ESG.Domain.Entities.Dimensions> builder)
         {
-            builder.HasKey(x => new { x.Id, x.OrganizationId });
             builder.HasOne(d => d.DimensionType)
                 .WithMany(dpt => dpt.Dimensions)
-                .HasForeignKey(dpv => new { dpv.DimentionTypeId, dpv.OrganizationId });
+                .HasForeignKey(d =>d.DimensionTypeId);
+            builder.HasMany(d => d.DimensionTranslations)
+                .WithOne(dpt => dpt.Dimensions)
+                .HasForeignKey(d => d.DimentionsId);
+            
         }
     }
 }

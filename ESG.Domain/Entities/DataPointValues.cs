@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ESG.Domain.Entities
 {
-    public class DataPointValues : AuditableWithBaseEntityAndOrganization<long>
+    public class DataPointValues : AuditableWithBaseEntity<long>
     {
         public string Name { get; set; }
         public long DatapointTypeId { get; set; }

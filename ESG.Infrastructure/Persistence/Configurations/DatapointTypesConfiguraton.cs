@@ -14,7 +14,6 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DataPointTypes> builder)
         {
-            builder.HasKey(x => new { x.Id, x.OrganizationId });
             //builder.HasOne(dpt => dpt.Dimensions)
             //    .WithMany(d => d.DataPointTypes)
             //    .HasForeignKey(dpv => new { dpv.DimentionId, dpv.OrganizationId });

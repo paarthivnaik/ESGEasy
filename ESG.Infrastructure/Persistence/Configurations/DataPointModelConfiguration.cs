@@ -13,15 +13,14 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DatapointModel> builder)
         {
-            builder.HasKey(x => new { x.Id, x.OrganizationId });
 
             builder.HasOne(dpv => dpv.DataPointTypes)
                 .WithMany(dpt => dpt.DatapointModels)
-                .HasForeignKey(dpv => new { dpv.DatapointId, dpv.OrganizationId });
+                .HasForeignKey(dpv => dpv.DatapointId);
 
             builder.HasOne(dpv => dpv.Dimentions)
                 .WithMany(dpt => dpt.DatapointModels)
-                .HasForeignKey(dpv => new { dpv.DimentionsId, dpv.OrganizationId });
+                .HasForeignKey(dpv => dpv.DimentionsId);
         }
     }
 }

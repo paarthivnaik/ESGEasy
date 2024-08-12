@@ -13,7 +13,14 @@ namespace ESG.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(AutoMapperProfile));
+            services.AddAutoMapper(typeof(UnitOfMeasureProfile),
+                                    typeof(UnitOfMeasureTypeProfile),
+                                    typeof(UnitOfMeasureTranslationsProfile),
+                                    typeof(UnitOfMeasureTypeTranslationsProfile),
+                                    typeof(DimensionsProfile),
+                                    typeof(DimensionTypeProfile),
+                                    typeof(DimensionTranslationsProfile),
+                                    typeof(DimensionTypeTranslationsProfile));
             return services;
         }
     }

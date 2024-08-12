@@ -13,7 +13,12 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DimensionType> builder)
         {
-            builder.HasKey(x => new { x.Id, x.OrganizationId });
+            builder.HasMany(d => d.Dimensions)
+                .WithOne(dpt => dpt.DimensionType)
+                .HasForeignKey(d => d.DimensionTypeId);
+            builder.HasMany(d => d.DimensionTranslations)
+                .WithOne(dpt => dpt.DimensionType)
+                .HasForeignKey(d => d.DimensionTypeId);
         }
     }
 }

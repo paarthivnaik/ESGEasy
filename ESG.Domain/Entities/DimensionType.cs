@@ -14,7 +14,8 @@ namespace ESG.Domain.Entities
         public string LongText { get; set; }
         public long LanguageId { get; set; }
         public Language Language { get; set; }
-        public bool IsHeirarchialDimention { get; set; }
+        public bool IsHeirarchialDimension { get; set; }
         public IEnumerable<Dimensions> Dimensions { get; set; }
+        public IEnumerable<DimensionTypeTranslations> DimensionTranslations { get; set; }
     }
 }

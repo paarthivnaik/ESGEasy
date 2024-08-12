@@ -1,4 +1,5 @@
-﻿using ESG.Application.Common.Interface.UnitOfMeasure;
+﻿using ESG.Application.Common.Interface.Dimensions;
+using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace ESG.Application.Common.Interface
     public interface IUnitOfWork
     {
         IUnitOfMeasureRepo UnitOfMeasure { get; }
+        IDimensionRepo DimensionRepo { get; }
         Task<int> SaveAsync();
         int Save();
         void BeginTransaction();
