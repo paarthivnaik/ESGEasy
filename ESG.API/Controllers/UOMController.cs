@@ -7,9 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UOMController : ControllerBase
+    public class UOMController : BaseController
     {
         private readonly ILogger<UOMController> _logger;
         private readonly IUnitOfMeasureService _unitOfMeasureService;
