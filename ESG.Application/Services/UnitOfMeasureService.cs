@@ -51,20 +51,28 @@ namespace ESG.Application.Services
             await _unitOfMeasure.Repository<UnitOfMeasure>().AddRange(data);
             await _unitOfMeasure.SaveAsync();
         }
-        public async Task Update(UnitOfMeasureUpdateRequestDto unitOfMeasureType)
+        public async Task Update(UnitOfMeasureUpdateRequestDto unitOfMeasure)
         {
-            var existingData = await _unitOfMeasure.Repository<UnitOfMeasureType>().Get(u => u.Id == unitOfMeasureType.Id);
+            var existingData = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(u => u.Id == unitOfMeasure.Id);
+            var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTranslations>()
+                .Get(uom => uom.Id == unitOfMeasure.Id && uom.LanguageId == unitOfMeasure.LanguageId);
             if (existingData == null)
             {
-                throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasureType.Id} not found.");
+                throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasure.Id} not found.");
             }
-            existingData.ShortText = unitOfMeasureType.ShortText;
-            existingData.LongText = unitOfMeasureType.LongText;
-            existingData.Code = unitOfMeasureType.Code;
-            existingData.State = unitOfMeasureType.State;
-            existingData.Name = unitOfMeasureType.Name;
+            existingData.ShortText = unitOfMeasure.ShortText;
+            existingData.LongText = unitOfMeasure.LongText;
+            existingData.Code = unitOfMeasure.Code;
+            existingData.State = unitOfMeasure.State;
+            existingData.Name = unitOfMeasure.Name;
 
-            await _unitOfMeasure.Repository<UnitOfMeasureType>().Update(existingData);
+            translationsData.ShortText = unitOfMeasure.ShortText;
+            translationsData.LongText = unitOfMeasure.LongText;
+            translationsData.State = unitOfMeasure.State;
+            translationsData.Name = unitOfMeasure.Name;
+
+            await _unitOfMeasure.Repository<UnitOfMeasure>().Update(existingData);
+            await _unitOfMeasure.Repository<UnitOfMeasureTranslations>().Update(translationsData);
             await _unitOfMeasure.SaveAsync();
 
         }

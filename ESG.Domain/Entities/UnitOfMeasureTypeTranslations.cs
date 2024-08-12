@@ -16,5 +16,6 @@ namespace ESG.Domain.Entities
         public string LongText { get; set; } = string.Empty;
         public long LanguageId { get; set; }
         public Language Language { get; set; }
+        public  StateEnum State { get; set; }
     }
 }

@@ -68,7 +68,7 @@ namespace ESG.Application.Services
 
         public async Task<IEnumerable<UnitOfMeasureTypeResponseDto>> GetAllTranslations(long Id)
         {
-            var list = await _unitOfWork.Repository<UnitOfMeasureTypeTranslations>().Get(a => a.UnitOfMeasureTypeId == Id);
+            var list = await _unitOfWork.Repository<UnitOfMeasureTypeTranslations>().GetAll(a => a.UnitOfMeasureTypeId == Id);
             var data = _mapper.Map<IEnumerable<UnitOfMeasureTypeResponseDto>>(list);
             return data;
         }
@@ -76,6 +76,8 @@ namespace ESG.Application.Services
         public async Task UpdateAsync(UnitOfMeasureTypeUpdateRequestDto unitOfMeasureType)
         {
             var existingData = await _unitOfWork.Repository<UnitOfMeasureType>().Get(u => u.Id == unitOfMeasureType.Id);
+            var translationsData = await _unitOfWork.Repository<UnitOfMeasureTypeTranslations>()
+                .Get(uom => uom.Id == unitOfMeasureType.Id && uom.LanguageId == unitOfMeasureType.LanguageId);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasureType.Id} not found.");
@@ -83,11 +85,16 @@ namespace ESG.Application.Services
             existingData.ShortText = unitOfMeasureType.ShortText;
             existingData.LongText = unitOfMeasureType.LongText;
             existingData.Code = unitOfMeasureType.Code;
-            //existingData.LanguageId = unitOfMeasureType.LanguageId;
             existingData.State = unitOfMeasureType.State;
             existingData.Name = unitOfMeasureType.Name;
 
+            translationsData.ShortText = unitOfMeasureType.ShortText;
+            translationsData.LongText = unitOfMeasureType.LongText;
+            translationsData.State = unitOfMeasureType.State;
+            translationsData.Name = unitOfMeasureType.Name;
+
             await _unitOfWork.Repository<UnitOfMeasureType>().Update(existingData);
+            await _unitOfWork.Repository<UnitOfMeasureTypeTranslations>().Update(translationsData);
             await _unitOfWork.SaveAsync();
         }
     }
