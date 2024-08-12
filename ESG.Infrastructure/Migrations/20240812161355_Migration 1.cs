@@ -15,6 +15,26 @@ namespace ESG.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AuditLogs",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CreatedBy = table.Column<long>(type: "bigint", nullable: false),
+                    Type = table.Column<string>(type: "text", nullable: false),
+                    TableName = table.Column<string>(type: "text", nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    OldValues = table.Column<string>(type: "text", nullable: true),
+                    NewValues = table.Column<string>(type: "text", nullable: false),
+                    AffectedColumns = table.Column<string>(type: "text", nullable: true),
+                    PrimaryKey = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuditLogs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Currency",
                 columns: table => new
                 {
@@ -449,6 +469,7 @@ namespace ESG.Infrastructure.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Code = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     ShortText = table.Column<string>(type: "text", nullable: false),
                     LongText = table.Column<string>(type: "text", nullable: false),
@@ -651,15 +672,15 @@ namespace ESG.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "ShortText", "State" },
                 values: new object[,]
                 {
-                    { 1L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1545), 1L, null, null, "Type 1", "DatapointType1", "T1", 1 },
-                    { 2L, 2L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1547), 2L, null, null, "Type 2", "DatapointType2", "T2", 1 },
-                    { 3L, 3L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1548), 3L, null, null, "Type 3", "DatapointType3", "T3", 1 },
-                    { 5L, 0L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1549), 1L, null, null, "Type 5", "DatapointType5", "T5", 1 },
-                    { 6L, 0L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1575), 1L, null, null, "Type 6", "DatapointType6", "T6", 1 },
-                    { 7L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1576), 1L, null, null, "Type 7", "DatapointType7", "T7", 1 },
-                    { 8L, 0L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1577), 1L, null, null, "Type 8", "DatapointType8", "T8", 1 },
-                    { 9L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1579), 1L, null, null, "Type 9", "DatapointType9", "T9", 1 },
-                    { 10L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1580), 1L, null, null, "Type 10", "DatapointType10", "T10", 1 }
+                    { 1L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1419), 1L, null, null, "Type 1", "DatapointType1", "T1", 1 },
+                    { 2L, 2L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1422), 2L, null, null, "Type 2", "DatapointType2", "T2", 1 },
+                    { 3L, 3L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1423), 3L, null, null, "Type 3", "DatapointType3", "T3", 1 },
+                    { 5L, 0L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1424), 1L, null, null, "Type 5", "DatapointType5", "T5", 1 },
+                    { 6L, 0L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1426), 1L, null, null, "Type 6", "DatapointType6", "T6", 1 },
+                    { 7L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1427), 1L, null, null, "Type 7", "DatapointType7", "T7", 1 },
+                    { 8L, 0L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1428), 1L, null, null, "Type 8", "DatapointType8", "T8", 1 },
+                    { 9L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1429), 1L, null, null, "Type 9", "DatapointType9", "T9", 1 },
+                    { 10L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1431), 1L, null, null, "Type 10", "DatapointType10", "T10", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -672,9 +693,9 @@ namespace ESG.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "FirstName", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LastName", "OrganizationUserId", "Password", "PhoneNumber", "SecurityStamp", "State" },
                 values: new object[,]
                 {
-                    { 1L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1725), "user1@example.com", "John", 1L, null, null, "Doe", null, new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 49 }, "1234567890", new Guid("f259949d-ed76-4125-b36a-696af374cbe4"), 1 },
-                    { 2L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1729), "user2@example.com", "Jane", 1L, null, null, "Smith", null, new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 50 }, "0987654321", new Guid("a4f8d022-58c8-459e-90a4-051f39365f6d"), 1 },
-                    { 3L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1732), "user3@example.com", "Alice", 1L, null, null, "Johnson", null, new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 51 }, "2345678901", new Guid("894f2599-d36e-44ad-b69e-be593fcc90ff"), 1 }
+                    { 1L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1597), "user1@example.com", "John", 1L, null, null, "Doe", null, new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 49 }, "1234567890", new Guid("1e17ed00-4c61-45ff-b511-4789539766f6"), 1 },
+                    { 2L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1600), "user2@example.com", "Jane", 1L, null, null, "Smith", null, new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 50 }, "0987654321", new Guid("8a8f228e-a0d0-471a-9b7b-8ffa52b74969"), 1 },
+                    { 3L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1611), "user3@example.com", "Alice", 1L, null, null, "Johnson", null, new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 51 }, "2345678901", new Guid("89014db7-ed86-46b1-bfc6-9e4928dda12f"), 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -682,16 +703,16 @@ namespace ESG.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "DatapointTypeId", "IsCurrency", "IsNarrative", "IsUOM", "LanguageId", "LastModifiedBy", "LastModifiedDate", "Name", "Purpose", "State", "Value" },
                 values: new object[,]
                 {
-                    { 1L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1606), 1L, true, false, false, 1L, null, null, "DataPointValue1", "Purpose 1", 1, "Value 1" },
-                    { 2L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1609), 1L, false, false, true, 1L, null, null, "DataPointValue2", "Purpose 2", 1, "Value 2" },
-                    { 3L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1611), 1L, true, false, false, 1L, null, null, "DataPointValue3", "Purpose 3", 1, "Value 3" },
-                    { 4L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1613), 1L, false, true, false, 1L, null, null, "DataPointValue4", "Purpose 4", 1, "Value 4" },
-                    { 5L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1616), 1L, true, false, false, 1L, null, null, "DataPointValue5", "Purpose 5", 1, "Value 5" },
-                    { 6L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1617), 1L, false, false, true, 1L, null, null, "DataPointValue6", "Purpose 6", 1, "Value 6" },
-                    { 7L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1619), 1L, true, false, false, 2L, null, null, "DataPointValue7", "Purpose 7", 1, "Value 7" },
-                    { 8L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1621), 1L, false, true, false, 2L, null, null, "DataPointValue8", "Purpose 8", 1, "Value 8" },
-                    { 9L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1622), 1L, true, false, false, 2L, null, null, "DataPointValue9", "Purpose 9", 1, "Value 9" },
-                    { 10L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1624), 1L, false, false, true, 2L, null, null, "DataPointValue10", "Purpose 10", 1, "Value 10" }
+                    { 1L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1476), 1L, true, false, false, 1L, null, null, "DataPointValue1", "Purpose 1", 1, "Value 1" },
+                    { 2L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1480), 1L, false, false, true, 1L, null, null, "DataPointValue2", "Purpose 2", 1, "Value 2" },
+                    { 3L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1482), 1L, true, false, false, 1L, null, null, "DataPointValue3", "Purpose 3", 1, "Value 3" },
+                    { 4L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1483), 1L, false, true, false, 1L, null, null, "DataPointValue4", "Purpose 4", 1, "Value 4" },
+                    { 5L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1485), 1L, true, false, false, 1L, null, null, "DataPointValue5", "Purpose 5", 1, "Value 5" },
+                    { 6L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1487), 1L, false, false, true, 1L, null, null, "DataPointValue6", "Purpose 6", 1, "Value 6" },
+                    { 7L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1488), 1L, true, false, false, 2L, null, null, "DataPointValue7", "Purpose 7", 1, "Value 7" },
+                    { 8L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1490), 1L, false, true, false, 2L, null, null, "DataPointValue8", "Purpose 8", 1, "Value 8" },
+                    { 9L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1491), 1L, true, false, false, 2L, null, null, "DataPointValue9", "Purpose 9", 1, "Value 9" },
+                    { 10L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1493), 1L, false, false, true, 2L, null, null, "DataPointValue10", "Purpose 10", 1, "Value 10" }
                 });
 
             migrationBuilder.InsertData(
@@ -699,9 +720,9 @@ namespace ESG.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "OrganizationId", "State", "UserId" },
                 values: new object[,]
                 {
-                    { 1L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1747), null, null, 1L, 1, 1L },
-                    { 2L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1748), null, null, 1L, 1, 2L },
-                    { 3L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1750), null, null, 1L, 1, 3L }
+                    { 1L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1630), null, null, 1L, 1, 1L },
+                    { 2L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1631), null, null, 1L, 1, 2L },
+                    { 3L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1632), null, null, 1L, 1, 3L }
                 });
 
             migrationBuilder.InsertData(
@@ -709,9 +730,9 @@ namespace ESG.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "RoleId", "State", "UserId" },
                 values: new object[,]
                 {
-                    { 1L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1783), null, null, 1L, 1, 1L },
-                    { 2L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1784), null, null, 2L, 1, 2L },
-                    { 3L, 1L, new DateTime(2024, 8, 12, 10, 22, 57, 539, DateTimeKind.Utc).AddTicks(1785), null, null, 3L, 1, 3L }
+                    { 1L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1664), null, null, 1L, 1, 1L },
+                    { 2L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1666), null, null, 2L, 1, 2L },
+                    { 3L, 1L, new DateTime(2024, 8, 12, 16, 13, 55, 44, DateTimeKind.Utc).AddTicks(1667), null, null, 3L, 1, 3L }
                 });
 
             migrationBuilder.CreateIndex(
@@ -848,6 +869,9 @@ namespace ESG.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AuditLogs");
+
             migrationBuilder.DropTable(
                 name: "Currency");
 
