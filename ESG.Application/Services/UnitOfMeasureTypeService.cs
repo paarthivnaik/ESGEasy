@@ -27,8 +27,8 @@ namespace ESG.Application.Services
         {
             if (unitOfMeasureType.UnitOfMeasureTypeId > 0)
             {
-                var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasureType);
-                await _unitOfWork.Repository<UnitOfMeasureTranslations>().AddAsync(uomTypeTranslationdata);
+                var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslations>(unitOfMeasureType);
+                await _unitOfWork.Repository<UnitOfMeasureTypeTranslations>().AddAsync(uomTypeTranslationdata);
             }
             else
             {
@@ -87,6 +87,7 @@ namespace ESG.Application.Services
             existingData.Code = unitOfMeasureType.Code;
             existingData.State = unitOfMeasureType.State;
             existingData.Name = unitOfMeasureType.Name;
+            existingData.OrganizationId = unitOfMeasureType.OrganizationId;
 
             translationsData.ShortText = unitOfMeasureType.ShortText;
             translationsData.LongText = unitOfMeasureType.LongText;

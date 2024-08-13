@@ -15,6 +15,7 @@ namespace ESG.Application.Dto.UnitOfMeasure
         public string ShortText { get; set; } = string.Empty;
         public string LongText { get; set; } = string.Empty;
         public long LanguageId { get; set; }
+        public long OrganizationId { get; set; }
         public long UserId { get; set; }
         public long UnitOfMeasureId { get; set; }
     }

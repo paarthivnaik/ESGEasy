@@ -65,6 +65,7 @@ namespace ESG.Application.Services
             existingData.Code = unitOfMeasure.Code;
             existingData.State = unitOfMeasure.State;
             existingData.Name = unitOfMeasure.Name;
+            existingData.OrganizationId = unitOfMeasure.OrganizationId;
 
             translationsData.ShortText = unitOfMeasure.ShortText;
             translationsData.LongText = unitOfMeasure.LongText;

@@ -19,6 +19,7 @@ namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
         public async Task<IEnumerable<UnitOfMeasureTranslations>> GetAllUOMTranslations(long id)
         {
             var list = await _context.UnitOfMeasureTranslations
+                                     .AsNoTracking()
                                      .Where(uom => uom.UnitOfMeasureId == id)
                                      .ToListAsync();
             return list;

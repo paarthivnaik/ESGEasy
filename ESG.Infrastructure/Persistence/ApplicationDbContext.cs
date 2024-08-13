@@ -35,12 +35,12 @@ namespace ESG.Infrastructure.Persistence
 
         public async Task<int> SaveChangesAsync()
         {
-            
+
             try
             {
                 var auditEntries = OnBeforeSaveChanges();
                 var result = await base.SaveChangesAsync();
-                 await OnAfterSaveChanges(auditEntries);
+                await OnAfterSaveChanges(auditEntries);
                 return result;
             }
             catch (DbUpdateException ex)
@@ -49,7 +49,6 @@ namespace ESG.Infrastructure.Persistence
                 Console.WriteLine(ex.InnerException?.Message);
                 throw;
             }
-
         }
         public virtual new DbSet<TEntity> Set<TEntity>() where TEntity : class
         {
@@ -64,7 +63,7 @@ namespace ESG.Infrastructure.Persistence
                 switch (entity.State)
                 {
                     case EntityState.Added:
-                        entity.Entity.CreatedBy = 1;//GetCurrentUser
+                        //entity.Entity.CreatedBy = 1;//GetCurrentUser
                         entity.Entity.CreatedDate = _curretDateTime;
                         entity.Entity.LastModifiedBy = 1;
                         entity.Entity.LastModifiedDate = _curretDateTime;

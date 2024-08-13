@@ -5,6 +5,8 @@ using Serilog.Formatting.Json;
 using Serilog;
 using Serilog.Exceptions;
 using ESG.Application;
+using ESG.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -28,8 +30,13 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Host.UseSerilog();
-var app = builder.Build();
 
+var app = builder.Build();
+ using(var scope = app.Services.CreateScope())
+{
+    var dbContext= scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await dbContext.Database.MigrateAsync();
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -37,9 +44,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllers();
 app.UseExceptionHandler(opt => { });

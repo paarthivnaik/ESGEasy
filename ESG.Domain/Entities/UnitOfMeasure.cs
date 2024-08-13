@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ESG.Domain.Entities
 {
-    public class UnitOfMeasure : AuditableWithBaseEntity<long>
+    public class UnitOfMeasure : AuditableWithBaseEntityAndOrganization<long>
     {
         public string Name { get; set; }
         public string Code { get; set; }

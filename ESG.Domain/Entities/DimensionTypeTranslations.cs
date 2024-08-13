@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ESG.Domain.Entities
 {
-    public class DimensionTypeTranslations : AuditableWithBaseEntity<long>
+    public class DimensionTypeTranslations : AuditableWithBaseEntityAndOrganization<long>
     {
         public string Name { get; set; }
         public string ShortText { get; set; }
@@ -15,7 +15,6 @@ namespace ESG.Domain.Entities
         public string Code { get; set; }
         public long DimensionTypeId { get; set; }
         public DimensionType DimensionType { get; set; }
-        public IEnumerable<Dimensions> Dimensions { get; set; }
         public long LanguageId { get; set; }
         public Language Language { get; set; }
     }

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESG.Infrastructure.Persistence.Dimensions
+namespace ESG.Infrastructure.Persistence.DimensionRepo
 {
     public class DimensionsRepo : GenericRepository<UnitOfMeasure>, IDimensionRepo
     {

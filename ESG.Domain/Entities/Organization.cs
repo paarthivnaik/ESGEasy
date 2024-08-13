@@ -23,5 +23,9 @@ namespace ESG.Domain.Entities
         public Tenant Tenant { get; set; }
         public long LanguageId { get; set; }
         public Language Languages { get; set; }
+        public Dimensions Dimensions { get; set; }
+        public DimensionTranslations DimensionTranslations { get; set; }
+        public DimensionType DimensionType { get; set; }
+        public DimensionTypeTranslations DimensionTypeTranslations { get; set; }
     }
 }
