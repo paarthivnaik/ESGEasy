@@ -192,19 +192,107 @@ namespace ESG.Infrastructure.Persistence
     new Currency { Id = 9, Name = "Chinese Yuan", CurrencyCode = "CNY", ShortText = "CNY", LongText = "Chinese Yuan Renminbi" },
     new Currency { Id = 10, Name = "Russian Ruble", CurrencyCode = "RUB", ShortText = "RUB", LongText = "Russian Ruble" }
 );
+            modelBuilder.Entity<Tenant>().HasData(
+            new Tenant { Id = 1, Name = "ESG Global" });
 
+            modelBuilder.Entity<Organization>().HasData(
+       new Organization
+       {
+           Id = 1,
+           Name = "ESG Global",
+           RegistrationId = "REG-001",
+           FirstName = "John",
+           LatsName = "Doe",
+           StreetAddress = "123 Main St",
+           StreetNumber = "456",
+           PostalCode = "12345",
+           Country = "USA",
+           Email = "john.doe@org1.com",
+           TenantId = 1,
+           LanguageId = 1
+       });
+            modelBuilder.Entity<User>().HasData(
+    new User
+    {
+        Id = 1,
+        Password = Encoding.UTF8.GetBytes("password1"),
+        SecurityStamp = Guid.NewGuid(),
+        Email = "user1@example.com",
+        FirstName = "John",
+        LastName = "Doe",
+        LanguageId = 1,
+        PhoneNumber = "1234567890",
+        CreatedBy = 1,
+        CreatedDate = DateTime.UtcNow
+    },
+    new User
+    {
+        Id = 2,
+        Password = Encoding.UTF8.GetBytes("password2"),
+        SecurityStamp = Guid.NewGuid(),
+        Email = "user2@example.com",
+        FirstName = "Jane",
+        LastName = "Smith",
+        LanguageId = 1,
+        PhoneNumber = "0987654321",
+        CreatedBy = 1,
+        CreatedDate = DateTime.UtcNow
+    },
+    new User
+    {
+        Id = 3,
+        Password = Encoding.UTF8.GetBytes("password3"),
+        SecurityStamp = Guid.NewGuid(),
+        Email = "user3@example.com",
+        FirstName = "Alice",
+        LastName = "Johnson",
+        LanguageId = 1,
+        PhoneNumber = "2345678901",
+        CreatedBy = 1,
+        CreatedDate = DateTime.UtcNow
+    });
+            modelBuilder.Entity<Role>().HasData(
+    new Role { Id = 1, Name = "AdminEE" },
+    new Role { Id = 2, Name = "ClientAdmin" },
+    new Role { Id = 3, Name = "User" });
 
-            //       modelBuilder.Entity<UnitOfMeasureType>().HasData(
-            //new UnitOfMeasureType { Id = 1,Code = "speed", Name = "Speed", ShortText = "T1", LongText = "Type 1",State = StateEnum.active, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1},
-            //new UnitOfMeasureType { Id = 2, Code = "weight", Name = "Weight", ShortText = "T2", LongText = "Type 2", State = StateEnum.active, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1},
-            //new UnitOfMeasureType { Id = 3, Code = "amount", Name = "Amount", ShortText = "T3", LongText = "Type 3", State = StateEnum.active, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1});
+            modelBuilder.Entity<OrganizationUser>().HasData(
+   new OrganizationUser { Id = 1, OrganizationId = 1, UserId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+   new OrganizationUser { Id = 2, OrganizationId = 1, UserId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+   new OrganizationUser { Id = 3, OrganizationId = 1, UserId = 3, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
+   );
+            modelBuilder.Entity<UserRole>().HasData(
+     new UserRole { Id = 1, RoleId = 1, UserId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+     new UserRole { Id = 2, RoleId = 2, UserId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+     new UserRole { Id = 3, RoleId = 3, UserId = 3, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
+     );
 
-            //modelBuilder.Entity<UnitOfMeasure>().HasData(
-            // new UnitOfMeasure { Id = 4,Name = "weight", Code = "weight", ShortText = "kg", LongText = "Kilogram", UnitOfMeasureTypeId = 2, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
-            // new UnitOfMeasure { Id = 5, Name = "weight", Code = "weight", ShortText = "gm", LongText = "Gram", UnitOfMeasureTypeId = 2, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
-            // new UnitOfMeasure { Id = 6, Name = "amount", Code = "weight", ShortText = "ml", LongText = "milliliter", UnitOfMeasureTypeId = 3, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
-            // new UnitOfMeasure { Id = 7, Name = "speed", Code = "weight", ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureTypeId = 1, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
-            // new UnitOfMeasure { Id = 8, Name = "speed", Code = "weight", ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureTypeId = 1, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 });
+            modelBuilder.Entity<UnitOfMeasureType>().HasData(
+     new UnitOfMeasureType { Id = 1, Code = "speed", Name = "Speed", ShortText = "T1", LongText = "Type 1", OrganizationId = 1, State = StateEnum.active, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1 },
+     new UnitOfMeasureType { Id = 2, Code = "weight", Name = "Weight", ShortText = "T2", LongText = "Type 2", OrganizationId = 1, State = StateEnum.active, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1 },
+     new UnitOfMeasureType { Id = 3, Code = "amount", Name = "Amount", ShortText = "T3", LongText = "Type 3", OrganizationId = 1, State = StateEnum.active, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1, LanguageId = 1 });
+
+            modelBuilder.Entity<UnitOfMeasure>().HasData(
+    new UnitOfMeasure { Id = 4, Name = "weight", Code = "weight", ShortText = "kg", LongText = "Kilogram", UnitOfMeasureTypeId = 2, LanguageId = 1, OrganizationId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+    new UnitOfMeasure { Id = 5, Name = "weight", Code = "weight", ShortText = "gm", LongText = "Gram", UnitOfMeasureTypeId = 2, LanguageId = 1, OrganizationId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+    new UnitOfMeasure { Id = 6, Name = "amount", Code = "weight", ShortText = "ml", LongText = "milliliter", UnitOfMeasureTypeId = 3, LanguageId = 1, OrganizationId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+    new UnitOfMeasure { Id = 7, Name = "speed", Code = "weight", ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureTypeId = 1, LanguageId = 1, OrganizationId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+    new UnitOfMeasure { Id = 8, Name = "speed", Code = "weight", ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureTypeId = 1, LanguageId = 1, OrganizationId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 });
+
+            modelBuilder.Entity<UnitOfMeasureTranslations>().HasData(
+   new UnitOfMeasureTranslations { Id = 10, Name = "weight", ShortText = "kg", LongText = "Kilogram", UnitOfMeasureId = 4, LanguageId = 1,  CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+   new UnitOfMeasureTranslations { Id = 11, Name = "weight",  ShortText = "gm", LongText = "Gram", UnitOfMeasureId = 4, LanguageId = 2,  CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+   new UnitOfMeasureTranslations { Id = 12, Name = "amount",  ShortText = "ml", LongText = "milliliter", UnitOfMeasureId = 6, LanguageId = 1,  CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+   new UnitOfMeasureTranslations { Id = 13, Name = "speed",  ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureId = 7, LanguageId = 1,  CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+   new UnitOfMeasureTranslations { Id = 14, Name = "speed",  ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureId = 7, LanguageId = 2,  CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 });
+
+            modelBuilder.Entity<UnitOfMeasureTypeTranslations>().HasData(
+   new UnitOfMeasureTypeTranslations { Id = 10, Name = "weight", ShortText = "kg", LongText = "Kilogram", UnitOfMeasureTypeId = 2, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+   new UnitOfMeasureTypeTranslations { Id = 11, Name = "weight", ShortText = "gm", LongText = "Gram", UnitOfMeasureTypeId = 2, LanguageId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+   new UnitOfMeasureTypeTranslations { Id = 12, Name = "amount", ShortText = "ml", LongText = "milliliter", UnitOfMeasureTypeId = 3, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+   new UnitOfMeasureTypeTranslations { Id = 13, Name = "speed", ShortText = "m/s", LongText = "meterpersecond", UnitOfMeasureTypeId = 1, LanguageId = 1, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 },
+   new UnitOfMeasureTypeTranslations { Id = 14, Name = "speed", ShortText = "kmph", LongText = "kmperhour", UnitOfMeasureTypeId = 1, LanguageId = 2, CreatedDate = DateTime.UtcNow, CreatedBy = 1, LastModifiedDate = DateTime.UtcNow, LastModifiedBy = 1 });
+
 
 
             modelBuilder.Entity<DataPointTypes>().HasData(
@@ -242,22 +330,7 @@ namespace ESG.Infrastructure.Persistence
 //    new DimensionType { Id = 58, Name = "DimensionType9", ShortText = "DT9", LongText = "Dimension Type 9", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
 //    new DimensionType { Id = 59, Name = "DimensionType10", ShortText = "DT10", LongText = "Dimension Type 10", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
 //);
-            modelBuilder.Entity<Organization>().HasData(
-        new Organization
-        {
-            Id = 1,
-            Name = "ESG Organization",
-            RegistrationId = "REG-001",
-            FirstName = "John",
-            LatsName = "Doe",
-            StreetAddress = "123 Main St",
-            StreetNumber = "456",
-            PostalCode = "12345",
-            Country = "USA",
-            Email = "john.doe@org1.com",
-            TenantId = 1,
-            LanguageId = 1 
-        });
+           
 
    //         modelBuilder.Entity<Dimensions>().HasData(
    //    new Dimensions
@@ -294,72 +367,6 @@ namespace ESG.Infrastructure.Persistence
    //        OrganizationId = 1
    //    }
    //);
-
-            modelBuilder.Entity<Tenant>().HasData(
-            new Tenant { Id = 1, Name = "ESG" });
-
-
-            modelBuilder.Entity<User>().HasData(
-    new User
-    {
-        Id = 1,
-        Password = Encoding.UTF8.GetBytes("password1"),
-        SecurityStamp = Guid.NewGuid(),
-        Email = "user1@example.com",
-        FirstName = "John",
-        LastName = "Doe",
-        LanguageId=1,
-        PhoneNumber = "1234567890",
-       
-        CreatedBy = 1,
-        CreatedDate = DateTime.UtcNow
-    },
-    new User
-    {
-        Id = 2,
-        Password = Encoding.UTF8.GetBytes("password2"),
-        SecurityStamp = Guid.NewGuid(),
-        Email = "user2@example.com",
-        FirstName = "Jane",
-        LastName = "Smith",
-        LanguageId = 1,
-        PhoneNumber = "0987654321",
-        
-        CreatedBy = 1,
-        CreatedDate = DateTime.UtcNow
-    },
-    new User
-    {
-        Id = 3,
-        Password = Encoding.UTF8.GetBytes("password3"),
-        SecurityStamp = Guid.NewGuid(),
-        Email = "user3@example.com",
-        FirstName = "Alice",
-        LastName = "Johnson",
-        LanguageId = 1,
-        PhoneNumber = "2345678901",
-        
-        CreatedBy = 1,
-        CreatedDate = DateTime.UtcNow
-    });
-
-
-            modelBuilder.Entity<OrganizationUser>().HasData(
-    new OrganizationUser { Id = 1, OrganizationId = 1, UserId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new OrganizationUser { Id = 2, OrganizationId = 1, UserId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    new OrganizationUser { Id = 3, OrganizationId = 1, UserId = 3, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
-    );
-            modelBuilder.Entity<Role>().HasData(
-    new Role { Id = 1, Name = "AdminEE" },
-    new Role { Id = 2, Name = "ClientAdmin" },
-    new Role { Id = 3, Name = "User" });
-
-            modelBuilder.Entity<UserRole>().HasData(
-     new UserRole { Id = 1, RoleId = 1, UserId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-     new UserRole { Id = 2, RoleId = 2, UserId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-     new UserRole { Id = 3, RoleId = 3, UserId = 3, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
-
-     );
     //        modelBuilder.Entity<DatapointModel>().HasData(
     //    new DatapointModel
     //    {
