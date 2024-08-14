@@ -26,11 +26,17 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .Enrich.WithExceptionDetails()
     .WriteTo.Console()
-    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+    .WriteTo.File("D:\\EsgLog\\log.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
 builder.Host.UseSerilog();
-
+//services cors
+builder.Services.AddCors(p => p.AddPolicy("esgapp", builder =>
+{
+    builder.WithOrigins("*")
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+}));
 var app = builder.Build();
  using(var scope = app.Services.CreateScope())
 {
@@ -49,7 +55,7 @@ app.UseSwaggerUI();
 //app.UseHttpsRedirection();
 
 //app.UseAuthorization();
-
+app.UseCors("esgapp");
 app.MapControllers();
 app.UseExceptionHandler(opt => { });
 app.Run();
