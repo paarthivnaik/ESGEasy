@@ -23,7 +23,7 @@ namespace ESG.Application.Services
 
         public async Task AddAsync(DimensionsCreateRequestDto dimentions)
         {
-            if (dimentions.Id > 0)
+            if (dimentions.DimensionsId > 0)
             {
                 var dimensionsTranslateddata = _mapper.Map<DimensionTranslations>(dimentions);
                 await _unitOfWork.Repository<DimensionTranslations>().AddAsync(dimensionsTranslateddata);
@@ -32,7 +32,7 @@ namespace ESG.Application.Services
             {
                 var dimensonsdata = _mapper.Map<Dimensions>(dimentions);
                 var dimensonsTranslationdata = _mapper.Map<DimensionTranslations>(dimentions);
-                dimensonsTranslationdata.DimentionsId = dimensonsdata.Id;
+                dimensonsTranslationdata.DimensionsId = dimensonsdata.Id;
                 dimensonsdata.DimensionTranslations = new List<DimensionTranslations> { dimensonsTranslationdata };
                 await _unitOfWork.Repository<Dimensions>().AddAsync(dimensonsdata);
             }
@@ -64,9 +64,9 @@ namespace ESG.Application.Services
 
         public async Task UpdateAsync(DimensionsUpdateRequestDto dimentionsRequest)
         {
-            var existingData = await _unitOfWork.Repository<Dimensions>().Get(u => u.Id == dimentionsRequest.Id);
+            var existingData = await _unitOfWork.Repository<Dimensions>().Get(u => u.Id == dimentionsRequest.Id && u.LanguageId == dimentionsRequest.LanguageId);
             var translationsData = await _unitOfWork.Repository<DimensionTranslations>()
-                .Get(uom => uom.Id == dimentionsRequest.Id && uom.LanguageId == dimentionsRequest.LanguageId);
+                .Get(uom => uom.DimensionsId == dimentionsRequest.Id && uom.LanguageId == dimentionsRequest.LanguageId);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {dimentionsRequest.Id} not found.");

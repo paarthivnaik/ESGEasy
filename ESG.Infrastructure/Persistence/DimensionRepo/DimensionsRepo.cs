@@ -22,7 +22,7 @@ namespace ESG.Infrastructure.Persistence.DimensionRepo
         public async Task<IEnumerable<ESG.Domain.Entities.DimensionTranslations>> GetAllTranslations(long id)
         {
             var list = await _context.DimensionTranslations
-                                     .Where(uom => uom.DimentionsId == id)
+                                     .Where(uom => uom.DimensionsId == id)
                                      .ToListAsync();
             return list;
         }

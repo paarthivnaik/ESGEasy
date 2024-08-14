@@ -319,23 +319,23 @@ namespace ESG.Infrastructure.Persistence
     new DataPointValues { Id = 10, Name = "DataPointValue10", DatapointTypeId = 1, IsUOM = true, IsCurrency = false, IsNarrative = false, Value = "Value 10", Purpose = "Purpose 10", LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
 );
 //            modelBuilder.Entity<DimensionType>().HasData(
-//    new DimensionType { Id = 50, Name = "DimensionType1", ShortText = "DT1", LongText = "Dimension Type 1", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-//    new DimensionType { Id = 51, Name = "DimensionType2", ShortText = "DT2", LongText = "Dimension Type 2", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-//    new DimensionType { Id = 52, Name = "DimensionType3", ShortText = "DT3", LongText = "Dimension Type 3", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-//    new DimensionType { Id = 53, Name = "DimensionType4", ShortText = "DT4", LongText = "Dimension Type 4", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-//    new DimensionType { Id = 54, Name = "DimensionType5", ShortText = "DT5", LongText = "Dimension Type 5", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-//    new DimensionType { Id = 55, Name = "DimensionType6", ShortText = "DT6", LongText = "Dimension Type 6", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-//    new DimensionType { Id = 56, Name = "DimensionType7", ShortText = "DT7", LongText = "Dimension Type 7", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-//    new DimensionType { Id = 57, Name = "DimensionType8", ShortText = "DT8", LongText = "Dimension Type 8", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-//    new DimensionType { Id = 58, Name = "DimensionType9", ShortText = "DT9", LongText = "Dimension Type 9", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-//    new DimensionType { Id = 59, Name = "DimensionType10", ShortText = "DT10", LongText = "Dimension Type 10", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
+//    new DimensionType { DimensionsId = 50, Name = "DimensionType1", ShortText = "DT1", LongText = "Dimension Type 1", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { DimensionsId = 51, Name = "DimensionType2", ShortText = "DT2", LongText = "Dimension Type 2", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { DimensionsId = 52, Name = "DimensionType3", ShortText = "DT3", LongText = "Dimension Type 3", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { DimensionsId = 53, Name = "DimensionType4", ShortText = "DT4", LongText = "Dimension Type 4", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { DimensionsId = 54, Name = "DimensionType5", ShortText = "DT5", LongText = "Dimension Type 5", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { DimensionsId = 55, Name = "DimensionType6", ShortText = "DT6", LongText = "Dimension Type 6", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { DimensionsId = 56, Name = "DimensionType7", ShortText = "DT7", LongText = "Dimension Type 7", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { DimensionsId = 57, Name = "DimensionType8", ShortText = "DT8", LongText = "Dimension Type 8", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { DimensionsId = 58, Name = "DimensionType9", ShortText = "DT9", LongText = "Dimension Type 9", LanguageId = 1, IsHeirarchialDimension = true, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+//    new DimensionType { DimensionsId = 59, Name = "DimensionType10", ShortText = "DT10", LongText = "Dimension Type 10", LanguageId = 1, IsHeirarchialDimension = false, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
 //);
            
 
    //         modelBuilder.Entity<Dimensions>().HasData(
    //    new Dimensions
    //    {
-   //        Id = 100,
+   //        DimensionsId = 100,
    //        Name = "Dimension 1",
    //        ShortText = "Short 1",
    //        LongText = "Long Description 1",
@@ -346,7 +346,7 @@ namespace ESG.Infrastructure.Persistence
    //    },
    //    new Dimensions
    //    {
-   //        Id = 101,
+   //        DimensionsId = 101,
    //        Name = "Dimension 2",
    //        ShortText = "Short 2",
    //        LongText = "Long Description 2",
@@ -357,7 +357,7 @@ namespace ESG.Infrastructure.Persistence
    //    },
    //    new Dimensions
    //    {
-   //        Id = 102,
+   //        DimensionsId = 102,
    //        Name = "Dimension 3",
    //        ShortText = "Short 3",
    //        LongText = "Long Description 3",
@@ -370,23 +370,23 @@ namespace ESG.Infrastructure.Persistence
     //        modelBuilder.Entity<DatapointModel>().HasData(
     //    new DatapointModel
     //    {
-    //        Id = 10,
+    //        DimensionsId = 10,
     //        DatapointId = 1,
-    //        DimentionsId = 100,
+    //        DimensionsId = 100,
     //        SortingType = SortingTypeEnum.RowType
     //    },
     //    new DatapointModel
     //    {
-    //        Id = 11,
+    //        DimensionsId = 11,
     //        DatapointId = 1,
-    //        DimentionsId = 101,
+    //        DimensionsId = 101,
     //        SortingType = SortingTypeEnum.ColumType
     //    },
     //    new DatapointModel
     //    {
-    //        Id = 12,
+    //        DimensionsId = 12,
     //        DatapointId = 1,
-    //        DimentionsId = 102,
+    //        DimensionsId = 102,
     //        SortingType = SortingTypeEnum.FilterType
     //    }
     //);
