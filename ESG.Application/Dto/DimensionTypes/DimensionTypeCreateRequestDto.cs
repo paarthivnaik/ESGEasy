@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESG.Application.Dto
+namespace ESG.Application.Dto.DimensionTypes
 {
-    public class DimensionTypesDto
+    public class DimensionTypeCreateRequestDto
     {
         public long Id { get; set; }
         public string Name { get; set; }

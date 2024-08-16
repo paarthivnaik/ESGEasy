@@ -9,46 +9,48 @@ namespace ESG.API.Controllers
     public class DimensionTypeController : ControllerBase
     {
         private readonly ILogger<DimensionTypeController> _logger;
-        private readonly IDimentionTypeService _roleService;
-        public DimensionTypeController(ILogger<DimensionTypeController> logger, IDimentionTypeService roleService)
+        private readonly IDimentionTypeService _dimentionTypeService;
+        public DimensionTypeController(ILogger<DimensionTypeController> logger, IDimentionTypeService dimentionTypeService)
         {
             _logger = logger;
-            _roleService = roleService;
+            _dimentionTypeService = dimentionTypeService;
         }
-        // GET: api/<DimensionTypeController>
-        [HttpGet]
+
+        [HttpGet("GetAll")]
         public async Task<IEnumerable<DimensionType>> Get()
         {
-            return await _roleService.GetAll();
+            return await _dimentionTypeService.GetAll();
         }
 
-        // GET api/<DimensionTypeController>/5
-        [HttpGet("{id}")]
-        public async Task<DimensionType> Get(int id)
+        [HttpGet("GetById")]
+        public async Task<DimensionType> GetById(int id)
         {
-            return await _roleService.GetById(id);
+            return await _dimentionTypeService.GetById(id);
         }
 
-        // POST api/<DimensionTypeController>
-        [HttpPost]
+        [HttpGet("GetAllTranslations")]
+        public async Task<DimensionType> GetAllTranslations(int id)
+        {
+            return await _dimentionTypeService.GetById(id);
+        }
+
+        [HttpPost("Create")]
         public async Task Post([FromBody] DimensionType value)
         {
-            await _roleService.AddAsync(value);
+            await _dimentionTypeService.AddAsync(value);
         }
 
-        // PUT api/<DimensionTypeController>/5
-        [HttpPut("{id}")]
+        [HttpPut("Update")]
         public async Task<DimensionType> Put([FromBody] DimensionType value)
         {
-            var res = await _roleService.UpdateAsync(value);
+            var res = await _dimentionTypeService.UpdateAsync(value);
             return res;
         }
 
-        // DELETE api/<DimensionTypeController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete")]
         public async Task<bool> Delete(int id)
         {
-            var res = await _roleService.Delete(id);
+            var res = await _dimentionTypeService.Delete(id);
             return res;
         }
     }

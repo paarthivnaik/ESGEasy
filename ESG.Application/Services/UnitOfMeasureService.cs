@@ -43,6 +43,7 @@ namespace ESG.Application.Services
                 throw new KeyNotFoundException($"Unit of Measure with ID {uom.Id} not found.");
             }
             uom.State = StateEnum.deleted;
+            await _unitOfMeasure.Repository<UnitOfMeasure>().Update(uom);
             await _unitOfMeasure.SaveAsync();
         }
         public async Task AddRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure)
