@@ -75,9 +75,10 @@ namespace ESG.Application.Services
 
         public async Task UpdateAsync(UnitOfMeasureTypeUpdateRequestDto unitOfMeasureType)
         {
-            var existingData = await _unitOfWork.Repository<UnitOfMeasureType>().Get(u => u.Id == unitOfMeasureType.Id);
+            var existingData = await _unitOfWork.Repository<UnitOfMeasureType>()
+                .Get(u => u.Id == unitOfMeasureType.Id && u.LanguageId == unitOfMeasureType.LanguageId);
             var translationsData = await _unitOfWork.Repository<UnitOfMeasureTypeTranslations>()
-                .Get(uom => uom.Id == unitOfMeasureType.Id && uom.LanguageId == unitOfMeasureType.LanguageId);
+                .Get(uom => uom.UnitOfMeasureTypeId == unitOfMeasureType.Id && uom.LanguageId == unitOfMeasureType.LanguageId);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasureType.Id} not found.");
