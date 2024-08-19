@@ -19,5 +19,7 @@ namespace ESG.Domain.Entities
         public string Purpose { get; set; }
         public long LanguageId { get; set; }
         public Language Language { get; set; }
+        public long CreatedBy { get; set; }
+        public IEnumerable<DatapointTypeTranslations> DatapointTypeTranslations { get; set; }
     }
 }

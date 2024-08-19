@@ -5,18 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESG.Application.Dto.DimensionTypes
+namespace ESG.Application.Dto.Get
 {
-    public class DimensionTypeUpdateRequestDto
+    public class GetTranslationsResponseDto
     {
-        public long Id { get; set; }
-        public string Code { get; set; }
+        public long TranslationsId { get; set; }
+        public long LanguageId { get; set; }
         public string Name { get; set; }
         public string ShortText { get; set; }
         public string LongText { get; set; }
-        public long LanguageId { get; set; }
+        //public StateEnum State { get; set; }
         public long UserId { get; set; }
-        public bool IsHeirarchialDimension { get; set; }
-        public StateEnum State { get; set; }
     }
 }

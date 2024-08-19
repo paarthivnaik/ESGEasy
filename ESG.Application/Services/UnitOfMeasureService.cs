@@ -110,9 +110,9 @@ namespace ESG.Application.Services
             return count;
         }
 
-        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslations(long id)
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslationsByUOMId(long id)
         {
-            var list = await _unitOfMeasure.UnitOfMeasure.GetAllUOMTranslations(id);
+            var list = await _unitOfMeasure.UnitOfMeasure.GetAllUOMTranslationsByUOMId(id);
             var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(list);
             return data;
         }

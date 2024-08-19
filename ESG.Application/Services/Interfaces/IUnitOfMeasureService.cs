@@ -18,7 +18,7 @@ namespace ESG.Application.Services.Interfaces
         Task<long> Count();
         
         Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMByUOMTypeId(long uomTypeId);
-        Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslations(long id);
+        Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslationsByUOMId(long id);
         Task DeleteUOM(UnitOfMeasureDeleteRequest deleteRequest);
     }
 }

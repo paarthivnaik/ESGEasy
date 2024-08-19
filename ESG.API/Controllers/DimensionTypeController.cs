@@ -16,24 +16,6 @@ namespace ESG.API.Controllers
             _dimentionTypeService = dimentionTypeService;
         }
 
-        [HttpGet("GetAll")]
-        public async Task<IEnumerable<DimensionType>> Get()
-        {
-            return await _dimentionTypeService.GetAll();
-        }
-
-        [HttpGet("GetById")]
-        public async Task<DimensionType> GetById(int id)
-        {
-            return await _dimentionTypeService.GetById(id);
-        }
-
-        [HttpGet("GetAllTranslations")]
-        public async Task<DimensionType> GetAllTranslations(int id)
-        {
-            return await _dimentionTypeService.GetById(id);
-        }
-
         [HttpPost("Create")]
         public async Task Post([FromBody] DimensionType value)
         {
@@ -53,5 +35,24 @@ namespace ESG.API.Controllers
             var res = await _dimentionTypeService.Delete(id);
             return res;
         }
+
+        [HttpGet("GetAll")]
+        public async Task<IEnumerable<DimensionType>> Get()
+        {
+            return await _dimentionTypeService.GetAll();
+        }
+
+        [HttpGet("GetAllDimensionTypesById")]
+        public async Task<DimensionType> GetById(int id)
+        {
+            return await _dimentionTypeService.GetById(id);
+        }
+
+        [HttpGet("GetAllDimensionTranslationsById")]
+        public async Task<DimensionType> GetAllTranslations(int id)
+        {
+            return await _dimentionTypeService.GetById(id);
+        }
+
     }
 }

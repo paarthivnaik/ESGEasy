@@ -20,6 +20,10 @@ namespace ESG.Domain.Entities
         public virtual ICollection<DimensionTranslations> DimensionTranslations { get; set; }
         public virtual ICollection<DimensionType> DimensionTypes { get; set; }
         public virtual ICollection<DimensionTypeTranslations> DimensionTypeTranslations { get; set; }
+        public virtual ICollection<DataPointTypes> DataPointTypes { get; set; }
+        public virtual ICollection<DatapointTypeTranslations> DatapointTypeTranslations { get; set; }
+        public virtual ICollection<DataPointValues> DataPointValues { get; set; }
+        public virtual ICollection<DatapointValueTranslations> DatapointValueTranslations { get; set; }
 
     }
 }

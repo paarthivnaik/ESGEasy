@@ -16,5 +16,6 @@ namespace ESG.Domain.Entities
         public Dimensions Dimensions { get; set; }
         public long LanguageId { get; set; }
         public Language Language { get; set; }
+        public long CreatedBy { get; set; }
     }
 }

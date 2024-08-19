@@ -44,25 +44,25 @@ namespace ESG.API.Controllers
         }
 
         //// GET api/<UOMController>/5
-        [HttpGet("GetAllUOMTypes")]
+        [HttpGet("GetAllUOMs")]
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll()
         {
             return await _unitOfMeasureService.GetAll();
         }
 
         // GET api/<UOMController>/5
-        [HttpGet("GetAllUOM")]
-        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetByTypeId(long id)
+        [HttpGet("GetAllUOMsByUOMTypeId")]
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMByUOMTypeId(long id)
         {
             return await _unitOfMeasureService.GetAllUOMByUOMTypeId(id);
         }
 
         // GET api/<UOMController>/5
-        [HttpGet("GetAllUOMTranslatons")]
-        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslations(long id)
+        [HttpGet("GetAllUOMTranslatonsByUOMId")]
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslationsByUOMId(long id)
         {
 
-            return await _unitOfMeasureService.GetAllUOMTranslations(id);
+            return await _unitOfMeasureService.GetAllUOMTranslationsByUOMId(id);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
         {
             _context = context;
         }
-        public async Task<IEnumerable<UnitOfMeasureTranslations>> GetAllUOMTranslations(long id)
+        public async Task<IEnumerable<UnitOfMeasureTranslations>> GetAllUOMTranslationsByUOMId(long id)
         {
             var list = await _context.UnitOfMeasureTranslations
                                      .AsNoTracking()

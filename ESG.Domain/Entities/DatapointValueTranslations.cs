@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace ESG.Domain.Entities
 {
-    public class DimensionTypeTranslations : AuditableWithBaseEntity<long>
+    public class DatapointValueTranslations : AuditableWithBaseEntity<long>
     {
         public string Name { get; set; }
-        public string ShortText { get; set; }
-        public string LongText { get; set; }
-        public long DimensionTypeId { get; set; }
-        public DimensionType DimensionType { get; set; }
+        public long DatapointValueId { get; set; }
+        public DataPointValues DataPointValues { get; set; }
+        public string Value { get; set; }
+        public string Purpose { get; set; }
         public long LanguageId { get; set; }
         public Language Language { get; set; }
-        public long CreatedBy { get; set; }
     }
 }

@@ -27,7 +27,9 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<DimensionType> DimensionTypes { get; set; }
         public DbSet<ESG.Domain.Entities.Dimensions> Dimensions { get; set; }
         public DbSet<DataPointTypes> DataPointTypes { get; set; }
+        public DbSet<DatapointTypeTranslations> DatapointTypeTranslations { get; set; }
         public DbSet<DataPointValues> DataPointValues { get; set; }
+        public DbSet<DatapointValueTranslations> DatapointValueTranslations { get; set; }
         public DbSet<DimensionTypeTranslations> DimensionTypeTranslations { get; set; }
         public DbSet<DimensionTranslations> DimensionTranslations { get; set; }
         public DbSet<Audit> AuditLogs { get; set; }

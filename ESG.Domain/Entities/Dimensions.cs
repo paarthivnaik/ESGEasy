@@ -17,8 +17,9 @@ namespace ESG.Domain.Entities
         public Language Language { get; set; }
         public bool IsHeirarchialDimension { get; set; }
         public long DimensionTypeId { get; set; }
+        public long CreatedBy { get; set; }
         public DimensionType DimensionType { get; set; }
-        public IEnumerable<DatapointModel> DatapointModels { get; set; }
+        //public IEnumerable<DatapointModel> DatapointModels { get; set; }
         public IEnumerable<DimensionTranslations> DimensionTranslations { get; set; }
     }
 }

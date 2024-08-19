@@ -10,6 +10,6 @@ namespace ESG.Application.Common.Interface.UnitOfMeasure
 {
     public interface IUnitOfMeasureRepo:IGenericRepository<ESG.Domain.Entities.UnitOfMeasure>
     {
-        public Task<IEnumerable<UnitOfMeasureTranslations>> GetAllUOMTranslations(long id);
+        public Task<IEnumerable<UnitOfMeasureTranslations>> GetAllUOMTranslationsByUOMId(long id);
     }
 }

@@ -51,7 +51,7 @@ namespace ESG.API.Controllers
         }
 
         //// GET api/<UOMController>/5
-        [HttpGet("GetAllUOMTypeTranslations")]
+        [HttpGet("GetAllUOMTypeTranslationsByUOMTypeId")]
         public async Task<IEnumerable<UnitOfMeasureTypeResponseDto>> GetAllTranslations(long Id)
         {
             return await _unitOfMeasureTypeService.GetAllTranslations(Id);

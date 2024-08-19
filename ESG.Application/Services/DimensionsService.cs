@@ -47,6 +47,7 @@ namespace ESG.Application.Services
                 throw new KeyNotFoundException($"Unit of Measure with ID {dimension.Id} not found.");
             }
             dimension.State = StateEnum.deleted;
+            await _unitOfWork.Repository<Dimensions>().Update(dimension);
             await _unitOfWork.SaveAsync();
         }
 
@@ -64,25 +65,30 @@ namespace ESG.Application.Services
 
         public async Task UpdateAsync(DimensionsUpdateRequestDto dimentionsRequest)
         {
-            var existingData = await _unitOfWork.Repository<Dimensions>().Get(u => u.Id == dimentionsRequest.Id && u.LanguageId == dimentionsRequest.LanguageId);
+            var existingData = await _unitOfWork.Repository<Dimensions>()
+                .Get(u => u.Id == dimentionsRequest.Id && u.LanguageId == dimentionsRequest.LanguageId);
             var translationsData = await _unitOfWork.Repository<DimensionTranslations>()
                 .Get(uom => uom.DimensionsId == dimentionsRequest.Id && uom.LanguageId == dimentionsRequest.LanguageId);
-            if (existingData == null)
+            if (existingData == null || translationsData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {dimentionsRequest.Id} not found.");
             }
-            existingData.ShortText = dimentionsRequest.ShortText;
-            existingData.LongText = dimentionsRequest.LongText;
-            existingData.Code = dimentionsRequest.Code;
-            existingData.State = dimentionsRequest.State;
-            existingData.Name = dimentionsRequest.Name;
-            existingData.IsHeirarchialDimension = dimentionsRequest.IsHeirarchialDimension;
-
-            translationsData.ShortText = dimentionsRequest.ShortText;
-            translationsData.LongText = dimentionsRequest.LongText;
-            translationsData.State = dimentionsRequest.State;
-            translationsData.Name = dimentionsRequest.Name;
-
+            if (existingData != null)
+            {
+                existingData.ShortText = dimentionsRequest.ShortText;
+                existingData.LongText = dimentionsRequest.LongText;
+                existingData.Code = dimentionsRequest.Code;
+                existingData.State = dimentionsRequest.State;
+                existingData.Name = dimentionsRequest.Name;
+                existingData.IsHeirarchialDimension = dimentionsRequest.IsHeirarchialDimension;
+            }
+            if (translationsData != null)
+            {
+                translationsData.ShortText = dimentionsRequest.ShortText;
+                translationsData.LongText = dimentionsRequest.LongText;
+                translationsData.State = dimentionsRequest.State;
+                translationsData.Name = dimentionsRequest.Name;
+            }
             await _unitOfWork.Repository<Dimensions>().Update(existingData);
             await _unitOfWork.Repository<DimensionTranslations>().Update(translationsData);
             await _unitOfWork.SaveAsync();
