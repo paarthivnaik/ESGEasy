@@ -1,4 +1,7 @@
-﻿using ESG.Application.Services.Interfaces;
+﻿using ESG.Application.Dto.Dimensions;
+using ESG.Application.Dto.DimensionTypes;
+using ESG.Application.Services;
+using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,16 +20,17 @@ namespace ESG.API.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task Post([FromBody] DimensionType value)
+        public async Task<IActionResult> Post([FromBody] DimensionTypeCreateRequestDto value)
         {
             await _dimentionTypeService.AddAsync(value);
+            return Ok();
         }
 
         [HttpPut("Update")]
-        public async Task<DimensionType> Put([FromBody] DimensionType value)
+        public async Task Put([FromBody] DimensionTypeUpdateRequestDto value)
         {
-            var res = await _dimentionTypeService.UpdateAsync(value);
-            return res;
+            //var res = await _dimentionTypeService.UpdateAsync(value);
+            //return res;
         }
 
         [HttpDelete("Delete")]

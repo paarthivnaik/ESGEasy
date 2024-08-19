@@ -9,6 +9,7 @@ namespace ESG.Application.Dto.DimensionTypes
 {
     public class DimensionTypeCreateRequestDto
     {
+        public long DimensionTypeId { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public long OrganizationId { get; set; }
