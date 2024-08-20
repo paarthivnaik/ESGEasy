@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ESG.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240819135141_initial-migration")]
-    partial class initialmigration
+    [Migration("20240820064659_initial migration 3")]
+    partial class initialmigration3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -224,116 +224,6 @@ namespace ESG.Infrastructure.Migrations
                     b.HasIndex("OrganizationId");
 
                     b.ToTable("DataPointTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 99L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5411),
-                            LanguageId = 1L,
-                            LongText = "Type 1",
-                            Name = "DatapointType1",
-                            OrganizationId = 1L,
-                            ShortText = "T1",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 98L,
-                            CreatedBy = 2L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5414),
-                            LanguageId = 1L,
-                            LongText = "Type 2",
-                            Name = "DatapointType2",
-                            OrganizationId = 1L,
-                            ShortText = "T2",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 97L,
-                            CreatedBy = 3L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5416),
-                            LanguageId = 1L,
-                            LongText = "Type 3",
-                            Name = "DatapointType3",
-                            OrganizationId = 1L,
-                            ShortText = "T3",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 96L,
-                            CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5418),
-                            LanguageId = 1L,
-                            LongText = "Type 5",
-                            Name = "DatapointType5",
-                            OrganizationId = 1L,
-                            ShortText = "T5",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 95L,
-                            CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5421),
-                            LanguageId = 1L,
-                            LongText = "Type 6",
-                            Name = "DatapointType6",
-                            OrganizationId = 1L,
-                            ShortText = "T6",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 94L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5423),
-                            LanguageId = 1L,
-                            LongText = "Type 7",
-                            Name = "DatapointType7",
-                            OrganizationId = 1L,
-                            ShortText = "T7",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 93L,
-                            CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5425),
-                            LanguageId = 1L,
-                            LongText = "Type 8",
-                            Name = "DatapointType8",
-                            OrganizationId = 1L,
-                            ShortText = "T8",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 92L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5427),
-                            LanguageId = 1L,
-                            LongText = "Type 9",
-                            Name = "DatapointType9",
-                            OrganizationId = 1L,
-                            ShortText = "T9",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 91L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5430),
-                            LanguageId = 1L,
-                            LongText = "Type 10",
-                            Name = "DatapointType10",
-                            OrganizationId = 1L,
-                            ShortText = "T10",
-                            State = 1
-                        });
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DataPointValues", b =>
@@ -350,16 +240,16 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<long?>("CurrencyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CurrencyId1")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("DatapointTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool>("IsCurrency")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsNarrative")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsUOM")
+                    b.Property<bool?>("IsNarrative")
                         .HasColumnType("boolean");
 
                     b.Property<long>("LanguageId")
@@ -385,11 +275,17 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<long?>("UnitOfMeasureTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("UnitOfMeasureTypeId1")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CurrencyId");
+
+                    b.HasIndex("CurrencyId1");
 
                     b.HasIndex("DatapointTypeId");
 
@@ -397,169 +293,12 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("DataPointValues");
+                    b.HasIndex("UnitOfMeasureTypeId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5514),
-                            DatapointTypeId = 99L,
-                            IsCurrency = true,
-                            IsNarrative = false,
-                            IsUOM = false,
-                            LanguageId = 1L,
-                            Name = "DataPointValue1",
-                            OrganizationId = 1L,
-                            Purpose = "Purpose 1",
-                            State = 1,
-                            Value = "Value 1"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5519),
-                            DatapointTypeId = 99L,
-                            IsCurrency = false,
-                            IsNarrative = false,
-                            IsUOM = true,
-                            LanguageId = 1L,
-                            Name = "DataPointValue2",
-                            OrganizationId = 1L,
-                            Purpose = "Purpose 2",
-                            State = 1,
-                            Value = "Value 2"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5522),
-                            DatapointTypeId = 99L,
-                            IsCurrency = true,
-                            IsNarrative = false,
-                            IsUOM = false,
-                            LanguageId = 1L,
-                            Name = "DataPointValue3",
-                            OrganizationId = 1L,
-                            Purpose = "Purpose 3",
-                            State = 1,
-                            Value = "Value 3"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5525),
-                            DatapointTypeId = 98L,
-                            IsCurrency = false,
-                            IsNarrative = true,
-                            IsUOM = false,
-                            LanguageId = 1L,
-                            Name = "DataPointValue4",
-                            OrganizationId = 1L,
-                            Purpose = "Purpose 4",
-                            State = 1,
-                            Value = "Value 4"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5528),
-                            DatapointTypeId = 98L,
-                            IsCurrency = true,
-                            IsNarrative = false,
-                            IsUOM = false,
-                            LanguageId = 1L,
-                            Name = "DataPointValue5",
-                            OrganizationId = 1L,
-                            Purpose = "Purpose 5",
-                            State = 1,
-                            Value = "Value 5"
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5602),
-                            DatapointTypeId = 97L,
-                            IsCurrency = false,
-                            IsNarrative = false,
-                            IsUOM = true,
-                            LanguageId = 1L,
-                            Name = "DataPointValue6",
-                            OrganizationId = 1L,
-                            Purpose = "Purpose 6",
-                            State = 1,
-                            Value = "Value 6"
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5605),
-                            DatapointTypeId = 97L,
-                            IsCurrency = true,
-                            IsNarrative = false,
-                            IsUOM = false,
-                            LanguageId = 1L,
-                            Name = "DataPointValue7",
-                            OrganizationId = 1L,
-                            Purpose = "Purpose 7",
-                            State = 1,
-                            Value = "Value 7"
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5608),
-                            DatapointTypeId = 97L,
-                            IsCurrency = false,
-                            IsNarrative = true,
-                            IsUOM = false,
-                            LanguageId = 1L,
-                            Name = "DataPointValue8",
-                            OrganizationId = 1L,
-                            Purpose = "Purpose 8",
-                            State = 1,
-                            Value = "Value 8"
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5611),
-                            DatapointTypeId = 95L,
-                            IsCurrency = true,
-                            IsNarrative = false,
-                            IsUOM = false,
-                            LanguageId = 1L,
-                            Name = "DataPointValue9",
-                            OrganizationId = 1L,
-                            Purpose = "Purpose 9",
-                            State = 1,
-                            Value = "Value 9"
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5614),
-                            DatapointTypeId = 95L,
-                            IsCurrency = false,
-                            IsNarrative = false,
-                            IsUOM = true,
-                            LanguageId = 1L,
-                            Name = "DataPointValue10",
-                            OrganizationId = 1L,
-                            Purpose = "Purpose 10",
-                            State = 1,
-                            Value = "Value 10"
-                        });
+                    b.HasIndex("UnitOfMeasureTypeId1")
+                        .IsUnique();
+
+                    b.ToTable("DataPointValues");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DatapointModel", b =>
@@ -620,16 +359,10 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long?>("DataPointValuesId")
-                        .HasColumnType("bigint");
-
                     b.Property<long>("DatapointTypeId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("LanguageId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("LanguageId1")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("LastModifiedBy")
@@ -655,114 +388,12 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DataPointValuesId");
-
                     b.HasIndex("LanguageId");
-
-                    b.HasIndex("LanguageId1");
 
                     b.HasIndex("DatapointTypeId", "LanguageId")
                         .IsUnique();
 
-                    b.ToTable("DatapointTypeTranslations", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 101L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5464),
-                            DatapointTypeId = 99L,
-                            LanguageId = 1L,
-                            LongText = "Type 1",
-                            Name = "DatapointType1",
-                            ShortText = "T1",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 102L,
-                            CreatedBy = 2L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5467),
-                            DatapointTypeId = 99L,
-                            LanguageId = 2L,
-                            LongText = "Type 2",
-                            Name = "DatapointType1",
-                            ShortText = "T2",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 103L,
-                            CreatedBy = 3L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5469),
-                            DatapointTypeId = 99L,
-                            LanguageId = 3L,
-                            LongText = "Type 3",
-                            Name = "DatapointType2",
-                            ShortText = "T3",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 104L,
-                            CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5472),
-                            DatapointTypeId = 98L,
-                            LanguageId = 1L,
-                            LongText = "Type 5",
-                            Name = "DatapointType2",
-                            ShortText = "T5",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 105L,
-                            CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5474),
-                            DatapointTypeId = 98L,
-                            LanguageId = 2L,
-                            LongText = "Type 6",
-                            Name = "DatapointType3",
-                            ShortText = "T6",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 106L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5476),
-                            DatapointTypeId = 97L,
-                            LanguageId = 1L,
-                            LongText = "Type 7",
-                            Name = "DatapointType3",
-                            ShortText = "T7",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 107L,
-                            CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5478),
-                            DatapointTypeId = 96L,
-                            LanguageId = 1L,
-                            LongText = "Type 8",
-                            Name = "DatapointType5",
-                            ShortText = "T8",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 108L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5480),
-                            DatapointTypeId = 96L,
-                            LanguageId = 2L,
-                            LongText = "Type 9",
-                            Name = "DatapointType5",
-                            ShortText = "T9",
-                            State = 1
-                        });
+                    b.ToTable("DatapointTypeTranslations");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DatapointValueTranslations", b =>
@@ -783,9 +414,6 @@ namespace ESG.Infrastructure.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<long>("LanguageId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("LanguageId1")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("LastModifiedBy")
@@ -813,122 +441,10 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.HasIndex("LanguageId1");
-
                     b.HasIndex("DatapointValueId", "LanguageId")
                         .IsUnique();
 
-                    b.ToTable("DatapointValueTranslations", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 101L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5652),
-                            DatapointValueId = 1L,
-                            LanguageId = 1L,
-                            Name = "DataPointValue1",
-                            Purpose = "--",
-                            State = 1,
-                            Value = "10m"
-                        },
-                        new
-                        {
-                            Id = 102L,
-                            CreatedBy = 2L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5656),
-                            DatapointValueId = 1L,
-                            LanguageId = 2L,
-                            Name = "DataPointValue1",
-                            Purpose = "--",
-                            State = 1,
-                            Value = "10"
-                        },
-                        new
-                        {
-                            Id = 103L,
-                            CreatedBy = 3L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5659),
-                            DatapointValueId = 2L,
-                            LanguageId = 1L,
-                            Name = "DataPointValue2",
-                            Purpose = "--",
-                            State = 1,
-                            Value = "10"
-                        },
-                        new
-                        {
-                            Id = 104L,
-                            CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5661),
-                            DatapointValueId = 2L,
-                            LanguageId = 2L,
-                            Name = "DataPointValue2",
-                            Purpose = "--",
-                            State = 1,
-                            Value = "10"
-                        },
-                        new
-                        {
-                            Id = 105L,
-                            CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5663),
-                            DatapointValueId = 3L,
-                            LanguageId = 1L,
-                            Name = "DataPointValue3",
-                            Purpose = "--",
-                            State = 1,
-                            Value = "10"
-                        },
-                        new
-                        {
-                            Id = 106L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5665),
-                            DatapointValueId = 3L,
-                            LanguageId = 2L,
-                            Name = "DataPointValue3",
-                            Purpose = "--",
-                            State = 1,
-                            Value = "10"
-                        },
-                        new
-                        {
-                            Id = 107L,
-                            CreatedBy = 0L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5670),
-                            DatapointValueId = 5L,
-                            LanguageId = 1L,
-                            Name = "DataPointValue5",
-                            Purpose = "--",
-                            State = 1,
-                            Value = "10"
-                        },
-                        new
-                        {
-                            Id = 108L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5672),
-                            DatapointValueId = 5L,
-                            LanguageId = 2L,
-                            Name = "DataPointValue5",
-                            Purpose = "--",
-                            State = 1,
-                            Value = "10"
-                        },
-                        new
-                        {
-                            Id = 109L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5674),
-                            DatapointValueId = 5L,
-                            LanguageId = 3L,
-                            Name = "DataPointValue5",
-                            Purpose = "--",
-                            State = 1,
-                            Value = "10"
-                        });
+                    b.ToTable("DatapointValueTranslations");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DimensionTranslations", b =>
@@ -950,9 +466,6 @@ namespace ESG.Infrastructure.Migrations
                         .HasColumnType("bigint");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<long?>("LanguageId1")
-                        .HasColumnType("bigint");
 
                     b.Property<long?>("LastModifiedBy")
                         .HasColumnType("bigint");
@@ -979,8 +492,6 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.HasIndex("LanguageId1");
-
                     b.ToTable("DimensionTranslations");
 
                     b.HasData(
@@ -989,7 +500,7 @@ namespace ESG.Infrastructure.Migrations
                             DimensionsId = 100L,
                             LanguageId = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5805),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6589),
                             Id = 1L,
                             LongText = "Dimension Type 2",
                             Name = "Dimension2",
@@ -1001,7 +512,7 @@ namespace ESG.Infrastructure.Migrations
                             DimensionsId = 100L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5808),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6591),
                             Id = 2L,
                             LongText = "Dimension Type 3",
                             Name = "Dimension2",
@@ -1013,7 +524,7 @@ namespace ESG.Infrastructure.Migrations
                             DimensionsId = 101L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5810),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6593),
                             Id = 3L,
                             LongText = "Dimension Type 4",
                             Name = "Dimension2",
@@ -1025,7 +536,7 @@ namespace ESG.Infrastructure.Migrations
                             DimensionsId = 101L,
                             LanguageId = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5812),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6594),
                             Id = 4L,
                             LongText = "Dimension Type 5",
                             Name = "Dimension2",
@@ -1095,7 +606,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 50L,
                             Code = "code",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5708),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6530),
                             IsHeirarchialDimension = true,
                             LanguageId = 1L,
                             LongText = "Dimension Type 1",
@@ -1109,7 +620,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 51L,
                             Code = "code",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5712),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6532),
                             IsHeirarchialDimension = false,
                             LanguageId = 1L,
                             LongText = "Dimension Type 2",
@@ -1123,7 +634,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 52L,
                             Code = "code",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5715),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6534),
                             IsHeirarchialDimension = true,
                             LanguageId = 1L,
                             LongText = "Dimension Type 3",
@@ -1137,7 +648,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 53L,
                             Code = "code",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5718),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6536),
                             IsHeirarchialDimension = true,
                             LanguageId = 1L,
                             LongText = "Dimension Type 4",
@@ -1151,7 +662,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 54L,
                             Code = "code",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5721),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6537),
                             IsHeirarchialDimension = true,
                             LanguageId = 1L,
                             LongText = "Dimension Type 5",
@@ -1165,7 +676,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 55L,
                             Code = "code",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5723),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6539),
                             IsHeirarchialDimension = false,
                             LanguageId = 1L,
                             LongText = "Dimension Type 6",
@@ -1179,7 +690,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 56L,
                             Code = "code",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5726),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6540),
                             IsHeirarchialDimension = true,
                             LanguageId = 1L,
                             LongText = "Dimension Type 7",
@@ -1193,7 +704,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 57L,
                             Code = "code",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5729),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6542),
                             IsHeirarchialDimension = false,
                             LanguageId = 1L,
                             LongText = "Dimension Type 8",
@@ -1207,7 +718,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 58L,
                             Code = "code",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5731),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6544),
                             IsHeirarchialDimension = true,
                             LanguageId = 1L,
                             LongText = "Dimension Type 9",
@@ -1221,7 +732,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 59L,
                             Code = "code",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5735),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6545),
                             IsHeirarchialDimension = false,
                             LanguageId = 1L,
                             LongText = "Dimension Type 10",
@@ -1252,9 +763,6 @@ namespace ESG.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<long?>("LanguageId1")
-                        .HasColumnType("bigint");
-
                     b.Property<long?>("LastModifiedBy")
                         .HasColumnType("bigint");
 
@@ -1280,9 +788,57 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.HasIndex("LanguageId1");
-
                     b.ToTable("DimensionTypeTranslations");
+
+                    b.HasData(
+                        new
+                        {
+                            DimensionTypeId = 50L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6615),
+                            Id = 1L,
+                            LongText = "Dimension Type 2",
+                            Name = "Dimension2",
+                            ShortText = "DT2",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionTypeId = 50L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6616),
+                            Id = 2L,
+                            LongText = "Dimension Type 3",
+                            Name = "Dimension2",
+                            ShortText = "DT3",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionTypeId = 51L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6618),
+                            Id = 3L,
+                            LongText = "Dimension Type 4",
+                            Name = "Dimension2",
+                            ShortText = "DT4",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionTypeId = 51L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6619),
+                            Id = 4L,
+                            LongText = "Dimension Type 5",
+                            Name = "Dimension2",
+                            ShortText = "DT5",
+                            State = 1
+                        });
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.Dimensions", b =>
@@ -1668,7 +1224,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5053),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6328),
                             OrganizationId = 1L,
                             State = 1,
                             UserId = 1L
@@ -1677,7 +1233,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5055),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6330),
                             OrganizationId = 1L,
                             State = 1,
                             UserId = 2L
@@ -1686,7 +1242,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5057),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6331),
                             OrganizationId = 1L,
                             State = 1,
                             UserId = 3L
@@ -1815,10 +1371,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 4L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5252),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6401),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5253),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6402),
                             LongText = "Kilogram",
                             Name = "weight",
                             OrganizationId = 1L,
@@ -1831,10 +1387,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 5L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5257),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6405),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5258),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6405),
                             LongText = "Gram",
                             Name = "weight",
                             OrganizationId = 1L,
@@ -1847,10 +1403,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 6L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5261),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6407),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5262),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6408),
                             LongText = "milliliter",
                             Name = "amount",
                             OrganizationId = 1L,
@@ -1863,10 +1419,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 7L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5265),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6409),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5266),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6410),
                             LongText = "meterpersecond",
                             Name = "speed",
                             OrganizationId = 1L,
@@ -1879,10 +1435,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 8L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5271),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6412),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5272),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6412),
                             LongText = "kmperhour",
                             Name = "speed",
                             OrganizationId = 1L,
@@ -1945,10 +1501,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureId = 4L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5309),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6433),
                             Id = 10L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5310),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6434),
                             LongText = "Kilogram",
                             Name = "weight",
                             ShortText = "kg",
@@ -1959,10 +1515,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureId = 4L,
                             LanguageId = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5314),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6436),
                             Id = 11L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5315),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6436),
                             LongText = "Gram",
                             Name = "weight",
                             ShortText = "gm",
@@ -1973,10 +1529,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureId = 6L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5318),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6438),
                             Id = 12L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5319),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6439),
                             LongText = "milliliter",
                             Name = "amount",
                             ShortText = "ml",
@@ -1987,10 +1543,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureId = 7L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5322),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6440),
                             Id = 13L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5323),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6441),
                             LongText = "meterpersecond",
                             Name = "speed",
                             ShortText = "m/s",
@@ -2001,10 +1557,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureId = 7L,
                             LanguageId = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5326),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6442),
                             Id = 14L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5326),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6444),
                             LongText = "kmperhour",
                             Name = "speed",
                             ShortText = "kmph",
@@ -2071,10 +1627,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 1L,
                             Code = "speed",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5118),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6373),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5119),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6373),
                             LongText = "Type 1",
                             Name = "Speed",
                             OrganizationId = 1L,
@@ -2086,10 +1642,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 2L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5128),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6380),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5129),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6380),
                             LongText = "Type 2",
                             Name = "Weight",
                             OrganizationId = 1L,
@@ -2101,10 +1657,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 3L,
                             Code = "amount",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5132),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6383),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5133),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6383),
                             LongText = "Type 3",
                             Name = "Amount",
                             OrganizationId = 1L,
@@ -2133,9 +1689,6 @@ namespace ESG.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<long?>("LanguageId1")
-                        .HasColumnType("bigint");
-
                     b.Property<long?>("LastModifiedBy")
                         .HasColumnType("bigint");
 
@@ -2161,8 +1714,6 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.HasIndex("LanguageId1");
-
                     b.ToTable("UnitOfMeasureTypeTranslations");
 
                     b.HasData(
@@ -2171,10 +1722,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureTypeId = 2L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5359),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6464),
                             Id = 10L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5360),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6465),
                             LongText = "Kilogram",
                             Name = "weight",
                             ShortText = "kg",
@@ -2185,10 +1736,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureTypeId = 2L,
                             LanguageId = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5364),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6467),
                             Id = 11L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5365),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6468),
                             LongText = "Gram",
                             Name = "weight",
                             ShortText = "gm",
@@ -2199,10 +1750,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureTypeId = 3L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5367),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6505),
                             Id = 12L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5368),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6506),
                             LongText = "milliliter",
                             Name = "amount",
                             ShortText = "ml",
@@ -2213,10 +1764,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureTypeId = 1L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5371),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6508),
                             Id = 13L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5372),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6508),
                             LongText = "meterpersecond",
                             Name = "speed",
                             ShortText = "m/s",
@@ -2227,10 +1778,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureTypeId = 1L,
                             LanguageId = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5375),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6510),
                             Id = 14L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5376),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6511),
                             LongText = "kmperhour",
                             Name = "speed",
                             ShortText = "kmph",
@@ -2303,42 +1854,42 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(4984),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6282),
                             Email = "user1@example.com",
                             FirstName = "John",
                             LanguageId = 1L,
                             LastName = "Doe",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 49 },
                             PhoneNumber = "1234567890",
-                            SecurityStamp = new Guid("57652e87-15fb-425f-b490-3f7e8a9beca7"),
+                            SecurityStamp = new Guid("e21031b8-b6d6-4631-9f13-677f06790fee"),
                             State = 1
                         },
                         new
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(4992),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6286),
                             Email = "user2@example.com",
                             FirstName = "Jane",
                             LanguageId = 1L,
                             LastName = "Smith",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 50 },
                             PhoneNumber = "0987654321",
-                            SecurityStamp = new Guid("a554a0d5-fa1c-4ac8-9343-b887403bb846"),
+                            SecurityStamp = new Guid("584ce1b8-bf59-4c92-be77-652c859ad899"),
                             State = 1
                         },
                         new
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(4997),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6289),
                             Email = "user3@example.com",
                             FirstName = "Alice",
                             LanguageId = 1L,
                             LastName = "Johnson",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 51 },
                             PhoneNumber = "2345678901",
-                            SecurityStamp = new Guid("56e897c9-0dfd-48c3-ba01-2f1f644ff917"),
+                            SecurityStamp = new Guid("029114ec-4c51-4ac2-84f2-2a58ca4043c6"),
                             State = 1
                         });
                 });
@@ -2385,7 +1936,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5085),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6349),
                             RoleId = 1L,
                             State = 1,
                             UserId = 1L
@@ -2394,7 +1945,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5087),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6350),
                             RoleId = 2L,
                             State = 1,
                             UserId = 2L
@@ -2403,7 +1954,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 19, 13, 51, 41, 156, DateTimeKind.Utc).AddTicks(5090),
+                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6352),
                             RoleId = 3L,
                             State = 1,
                             UserId = 3L
@@ -2431,6 +1982,14 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DataPointValues", b =>
                 {
+                    b.HasOne("ESG.Domain.Entities.Currency", "Currency")
+                        .WithMany()
+                        .HasForeignKey("CurrencyId");
+
+                    b.HasOne("ESG.Domain.Entities.Currency", null)
+                        .WithMany("DataPointValues")
+                        .HasForeignKey("CurrencyId1");
+
                     b.HasOne("ESG.Domain.Entities.DataPointTypes", "DataPointType")
                         .WithMany("DataPointValues")
                         .HasForeignKey("DatapointTypeId")
@@ -2449,11 +2008,23 @@ namespace ESG.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ESG.Domain.Entities.UnitOfMeasureType", "UnitOfMeasureType")
+                        .WithMany()
+                        .HasForeignKey("UnitOfMeasureTypeId");
+
+                    b.HasOne("ESG.Domain.Entities.UnitOfMeasureType", null)
+                        .WithOne("DataPointValues")
+                        .HasForeignKey("ESG.Domain.Entities.DataPointValues", "UnitOfMeasureTypeId1");
+
+                    b.Navigation("Currency");
+
                     b.Navigation("DataPointType");
 
                     b.Navigation("Language");
 
                     b.Navigation("Organization");
+
+                    b.Navigation("UnitOfMeasureType");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DatapointModel", b =>
@@ -2477,25 +2048,23 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DatapointTypeTranslations", b =>
                 {
-                    b.HasOne("ESG.Domain.Entities.DataPointValues", null)
-                        .WithMany("DatapointTypeTranslations")
-                        .HasForeignKey("DataPointValuesId");
-
                     b.HasOne("ESG.Domain.Entities.DataPointTypes", "DataPointTypes")
                         .WithMany("DataPointTypeTranslations")
                         .HasForeignKey("DatapointTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ESG.Domain.Entities.Language", "Language")
-                        .WithMany()
-                        .HasForeignKey("LanguageId")
+                    b.HasOne("ESG.Domain.Entities.DataPointValues", null)
+                        .WithMany("DatapointTypeTranslations")
+                        .HasForeignKey("DatapointTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ESG.Domain.Entities.Language", null)
+                    b.HasOne("ESG.Domain.Entities.Language", "Language")
                         .WithMany("DatapointTypeTranslations")
-                        .HasForeignKey("LanguageId1");
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("DataPointTypes");
 
@@ -2511,14 +2080,10 @@ namespace ESG.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("ESG.Domain.Entities.Language", "Language")
-                        .WithMany()
+                        .WithMany("DatapointValueTranslations")
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("ESG.Domain.Entities.Language", null)
-                        .WithMany("DatapointValueTranslations")
-                        .HasForeignKey("LanguageId1");
 
                     b.Navigation("DataPointValues");
 
@@ -2534,14 +2099,10 @@ namespace ESG.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("ESG.Domain.Entities.Language", "Language")
-                        .WithMany()
+                        .WithMany("DimensionTranslations")
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("ESG.Domain.Entities.Language", null)
-                        .WithMany("DimensionTranslations")
-                        .HasForeignKey("LanguageId1");
 
                     b.Navigation("Dimensions");
 
@@ -2576,14 +2137,10 @@ namespace ESG.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("ESG.Domain.Entities.Language", "Language")
-                        .WithMany()
+                        .WithMany("DimensionTypeTranslations")
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("ESG.Domain.Entities.Language", null)
-                        .WithMany("DimensionTypeTranslations")
-                        .HasForeignKey("LanguageId1");
 
                     b.Navigation("DimensionType");
 
@@ -2714,14 +2271,10 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.UnitOfMeasureTypeTranslations", b =>
                 {
                     b.HasOne("ESG.Domain.Entities.Language", "Language")
-                        .WithMany()
+                        .WithMany("UnitOfMeasureTypeTranslations")
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("ESG.Domain.Entities.Language", null)
-                        .WithMany("UnitOfMeasureTypeTranslations")
-                        .HasForeignKey("LanguageId1");
 
                     b.HasOne("ESG.Domain.Entities.UnitOfMeasureType", "UnitOfMeasureType")
                         .WithMany("UnitOfMeasureTypeTranslations")
@@ -2766,6 +2319,11 @@ namespace ESG.Infrastructure.Migrations
                     b.Navigation("Roles");
 
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("ESG.Domain.Entities.Currency", b =>
+                {
+                    b.Navigation("DataPointValues");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DataPointTypes", b =>
@@ -2853,6 +2411,8 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.UnitOfMeasureType", b =>
                 {
+                    b.Navigation("DataPointValues");
+
                     b.Navigation("UnitOfMeasure");
 
                     b.Navigation("UnitOfMeasureTypeTranslations");

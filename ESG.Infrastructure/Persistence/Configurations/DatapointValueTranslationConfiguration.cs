@@ -18,12 +18,6 @@ namespace ESG.Infrastructure.Persistence.Configurations
                 .WithMany()
                 .HasForeignKey(dvt => dvt.DatapointValueId);
 
-            builder.HasOne(dvt => dvt.Language)
-                .WithMany()
-                .HasForeignKey(dvt => dvt.LanguageId);
-
-            // Configuring table name and indexes (if needed)
-            builder.ToTable("DatapointValueTranslations");
             builder.HasIndex(dvt => new { dvt.DatapointValueId, dvt.LanguageId }).IsUnique();
         }
     }

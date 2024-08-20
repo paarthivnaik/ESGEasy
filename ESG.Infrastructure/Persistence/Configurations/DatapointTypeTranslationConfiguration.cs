@@ -13,18 +13,10 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DatapointTypeTranslations> builder)
         {
-            // Configure relationships
             builder.HasOne(dpt => dpt.DataPointTypes)
                 .WithMany(d => d.DataPointTypeTranslations)
                 .HasForeignKey(dpt => dpt.DatapointTypeId);
 
-            // Additional configurations can be added here
-            builder.HasOne(dpt => dpt.Language)
-                .WithMany()
-                .HasForeignKey(dpt => dpt.LanguageId);
-
-            // Configuring table name and indexes (if needed)
-            builder.ToTable("DatapointTypeTranslations");
             builder.HasIndex(dpt => new { dpt.DatapointTypeId, dpt.LanguageId }).IsUnique();
         }
     }

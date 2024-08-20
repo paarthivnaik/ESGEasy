@@ -14,9 +14,6 @@ namespace ESG.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DimensionTranslations> builder)
         {
             builder.HasKey(x => new { x.DimensionsId, x.LanguageId });
-            builder.HasOne(ut => ut.Language)
-                .WithMany()
-                .HasForeignKey(ut => ut.LanguageId);
             builder.HasOne(d => d.Dimensions)
                 .WithMany(dpt => dpt.DimensionTranslations)
                 .HasForeignKey(d => d.DimensionsId);

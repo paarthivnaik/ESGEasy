@@ -19,9 +19,6 @@ namespace ESG.Infrastructure.Persistence.Configurations
                 .WithMany(u => u.UnitOfMeasureTypeTranslations)
                 .HasForeignKey(ut => ut.UnitOfMeasureTypeId);
 
-            builder.HasOne(ut => ut.Language)
-                .WithMany()
-                .HasForeignKey(ut => ut.LanguageId);
         }
     }
 }

@@ -17,6 +17,21 @@ namespace ESG.Infrastructure.Persistence.Configurations
             builder.HasOne(dpv => dpv.DataPointType)
                 .WithMany(dpt => dpt.DataPointValues)
                 .HasForeignKey(dpv => dpv.DatapointTypeId);
+            builder.HasOne(dp => dp.Organization)
+            .WithMany(a => a.DataPointValues)
+            .HasForeignKey(dp => dp.OrganizationId);
+            builder.HasMany(dp => dp.DatapointTypeTranslations)
+            .WithOne()
+            .HasForeignKey(dpt => dpt.DatapointTypeId);
+
+            builder.HasOne(dp => dp.Currency)
+            .WithMany()
+            .HasForeignKey(dp => dp.CurrencyId)
+            .IsRequired(false);
+            builder.HasOne(dp => dp.UnitOfMeasureType)
+            .WithMany()
+            .HasForeignKey(dp => dp.UnitOfMeasureTypeId)
+            .IsRequired(false);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace ESG.Domain.Entities
         public string CurrencyCode { get; set; }
         public string? ShortText { get; set; }
         public string LongText { get; set; }
+        public ICollection<DataPointValues> DataPointValues { get; set; }
 
     }
 }
