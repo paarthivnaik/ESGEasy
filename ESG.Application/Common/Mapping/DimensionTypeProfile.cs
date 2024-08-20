@@ -22,7 +22,7 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationaId))
-                .ForMember(dest => dest.IsHeirarchialDimension, opt => opt.MapFrom(src => src.isHierarchical))
+                .ForMember(dest => dest.isHierarchical, opt => opt.MapFrom(src => src.isHierarchical))
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
             CreateMap<DimensionType, DimensionsCreateRequestDto>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
@@ -31,7 +31,7 @@ namespace ESG.Application.Common.Mapping
                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                .ForMember(dest => dest.OrganizationaId, opt => opt.MapFrom(src => src.OrganizationId))
                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy))
-               .ForMember(dest => dest.isHierarchical, opt => opt.MapFrom(src => src.IsHeirarchialDimension))
+               .ForMember(dest => dest.isHierarchical, opt => opt.MapFrom(src => src.isHierarchical))
                .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
             //Update
             CreateMap<DimensionTypeUpdateRequestDto, DimensionType>()
@@ -40,7 +40,7 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.UserId))
-                .ForMember(dest => dest.IsHeirarchialDimension, opt => opt.MapFrom(src => src.isHierarchical))
+                .ForMember(dest => dest.isHierarchical, opt => opt.MapFrom(src => src.isHierarchical))
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
             CreateMap<DimensionType, DimensionTypeUpdateRequestDto>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
@@ -48,7 +48,7 @@ namespace ESG.Application.Common.Mapping
                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy))
-               .ForMember(dest => dest.isHierarchical, opt => opt.MapFrom(src => src.IsHeirarchialDimension))
+               .ForMember(dest => dest.isHierarchical, opt => opt.MapFrom(src => src.isHierarchical))
                .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
 
             //response

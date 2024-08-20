@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ESG.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240820064659_initial migration 3")]
-    partial class initialmigration3
+    [Migration("20240820121634_Initial migration 1")]
+    partial class Initialmigration1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -493,56 +493,6 @@ namespace ESG.Infrastructure.Migrations
                     b.HasIndex("LanguageId");
 
                     b.ToTable("DimensionTranslations");
-
-                    b.HasData(
-                        new
-                        {
-                            DimensionsId = 100L,
-                            LanguageId = 2L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6589),
-                            Id = 1L,
-                            LongText = "Dimension Type 2",
-                            Name = "Dimension2",
-                            ShortText = "DT2",
-                            State = 1
-                        },
-                        new
-                        {
-                            DimensionsId = 100L,
-                            LanguageId = 1L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6591),
-                            Id = 2L,
-                            LongText = "Dimension Type 3",
-                            Name = "Dimension2",
-                            ShortText = "DT3",
-                            State = 1
-                        },
-                        new
-                        {
-                            DimensionsId = 101L,
-                            LanguageId = 1L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6593),
-                            Id = 3L,
-                            LongText = "Dimension Type 4",
-                            Name = "Dimension2",
-                            ShortText = "DT4",
-                            State = 1
-                        },
-                        new
-                        {
-                            DimensionsId = 101L,
-                            LanguageId = 2L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6594),
-                            Id = 4L,
-                            LongText = "Dimension Type 5",
-                            Name = "Dimension2",
-                            ShortText = "DT5",
-                            State = 1
-                        });
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DimensionType", b =>
@@ -562,9 +512,6 @@ namespace ESG.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("isHierarchical")
-                        .HasColumnType("boolean");
 
                     b.Property<long>("LanguageId")
                         .HasColumnType("bigint");
@@ -592,6 +539,9 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
+                    b.Property<bool>("isHierarchical")
+                        .HasColumnType("boolean");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LanguageId");
@@ -603,143 +553,45 @@ namespace ESG.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 50L,
-                            Code = "code",
+                            Id = 1L,
+                            Code = "esg_topic",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6530),
-                            IsHeirarchialDimension = true,
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1690),
                             LanguageId = 1L,
                             LongText = "Dimension Type 1",
-                            Name = "DimensionType1",
+                            Name = "ESG Topic",
                             OrganizationId = 1L,
-                            ShortText = "DT1",
-                            State = 1
+                            ShortText = "DimensionType topic",
+                            State = 1,
+                            isHierarchical = true
                         },
                         new
                         {
-                            Id = 51L,
-                            Code = "code",
+                            Id = 2L,
+                            Code = "esg-standard",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6532),
-                            IsHeirarchialDimension = false,
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1693),
                             LanguageId = 1L,
                             LongText = "Dimension Type 2",
-                            Name = "DimensionType2",
+                            Name = "ESG Standard",
                             OrganizationId = 1L,
-                            ShortText = "DT2",
-                            State = 1
+                            ShortText = "dimensiontype standard",
+                            State = 1,
+                            isHierarchical = true
                         },
                         new
                         {
-                            Id = 52L,
-                            Code = "code",
+                            Id = 3L,
+                            Code = "esg-dq",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6534),
-                            IsHeirarchialDimension = true,
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1695),
                             LanguageId = 1L,
                             LongText = "Dimension Type 3",
-                            Name = "DimensionType3",
+                            Name = "ESG Disclosure Requirements",
                             OrganizationId = 1L,
-                            ShortText = "DT3",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 53L,
-                            Code = "code",
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6536),
-                            IsHeirarchialDimension = true,
-                            LanguageId = 1L,
-                            LongText = "Dimension Type 4",
-                            Name = "DimensionType4",
-                            OrganizationId = 1L,
-                            ShortText = "DT4",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 54L,
-                            Code = "code",
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6537),
-                            IsHeirarchialDimension = true,
-                            LanguageId = 1L,
-                            LongText = "Dimension Type 5",
-                            Name = "DimensionType5",
-                            OrganizationId = 1L,
-                            ShortText = "DT5",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 55L,
-                            Code = "code",
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6539),
-                            IsHeirarchialDimension = false,
-                            LanguageId = 1L,
-                            LongText = "Dimension Type 6",
-                            Name = "DimensionType6",
-                            OrganizationId = 1L,
-                            ShortText = "DT6",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 56L,
-                            Code = "code",
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6540),
-                            IsHeirarchialDimension = true,
-                            LanguageId = 1L,
-                            LongText = "Dimension Type 7",
-                            Name = "DimensionType7",
-                            OrganizationId = 1L,
-                            ShortText = "DT7",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 57L,
-                            Code = "code",
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6542),
-                            IsHeirarchialDimension = false,
-                            LanguageId = 1L,
-                            LongText = "Dimension Type 8",
-                            Name = "DimensionType8",
-                            OrganizationId = 1L,
-                            ShortText = "DT8",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 58L,
-                            Code = "code",
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6544),
-                            IsHeirarchialDimension = true,
-                            LanguageId = 1L,
-                            LongText = "Dimension Type 9",
-                            Name = "DimensionType9",
-                            OrganizationId = 1L,
-                            ShortText = "DT9",
-                            State = 1
-                        },
-                        new
-                        {
-                            Id = 59L,
-                            Code = "code",
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6545),
-                            IsHeirarchialDimension = false,
-                            LanguageId = 1L,
-                            LongText = "Dimension Type 10",
-                            Name = "DimensionType10",
-                            OrganizationId = 1L,
-                            ShortText = "DT10",
-                            State = 1
+                            ShortText = "dimensiontype disclosure requirement",
+                            State = 1,
+                            isHierarchical = true
                         });
                 });
 
@@ -789,56 +641,6 @@ namespace ESG.Infrastructure.Migrations
                     b.HasIndex("LanguageId");
 
                     b.ToTable("DimensionTypeTranslations");
-
-                    b.HasData(
-                        new
-                        {
-                            DimensionTypeId = 50L,
-                            LanguageId = 2L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6615),
-                            Id = 1L,
-                            LongText = "Dimension Type 2",
-                            Name = "Dimension2",
-                            ShortText = "DT2",
-                            State = 1
-                        },
-                        new
-                        {
-                            DimensionTypeId = 50L,
-                            LanguageId = 1L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6616),
-                            Id = 2L,
-                            LongText = "Dimension Type 3",
-                            Name = "Dimension2",
-                            ShortText = "DT3",
-                            State = 1
-                        },
-                        new
-                        {
-                            DimensionTypeId = 51L,
-                            LanguageId = 1L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6618),
-                            Id = 3L,
-                            LongText = "Dimension Type 4",
-                            Name = "Dimension2",
-                            ShortText = "DT4",
-                            State = 1
-                        },
-                        new
-                        {
-                            DimensionTypeId = 51L,
-                            LanguageId = 2L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6619),
-                            Id = 4L,
-                            LongText = "Dimension Type 5",
-                            Name = "Dimension2",
-                            ShortText = "DT5",
-                            State = 1
-                        });
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.Dimensions", b =>
@@ -861,9 +663,6 @@ namespace ESG.Infrastructure.Migrations
 
                     b.Property<long>("DimensionTypeId")
                         .HasColumnType("bigint");
-
-                    b.Property<bool>("isHierarchical")
-                        .HasColumnType("boolean");
 
                     b.Property<long>("LanguageId")
                         .HasColumnType("bigint");
@@ -892,6 +691,9 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
+                    b.Property<bool>("isHierarchical")
+                        .HasColumnType("boolean");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DimensionTypeId");
@@ -906,62 +708,452 @@ namespace ESG.Infrastructure.Migrations
                         new
                         {
                             Id = 100L,
-                            Code = "code",
+                            Code = "general",
                             CreatedBy = 0L,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DimensionTypeId = 50L,
-                            IsHeirarchialDimension = true,
+                            DimensionTypeId = 1L,
                             LanguageId = 1L,
-                            LongText = "Long Description 1",
-                            Name = "Dimension 1",
+                            LongText = "general",
+                            Name = "general",
                             OrganizationId = 1L,
-                            ShortText = "Short 1",
-                            State = 1
+                            ShortText = "general",
+                            State = 1,
+                            isHierarchical = true
                         },
                         new
                         {
                             Id = 101L,
-                            Code = "code",
+                            Code = "environment",
                             CreatedBy = 0L,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DimensionTypeId = 50L,
-                            IsHeirarchialDimension = true,
+                            DimensionTypeId = 1L,
                             LanguageId = 1L,
-                            LongText = "Long Description 2",
-                            Name = "Dimension 2",
+                            LongText = "environment",
+                            Name = "environment",
                             OrganizationId = 1L,
-                            ShortText = "Short 2",
-                            State = 1
+                            ShortText = "environment",
+                            State = 1,
+                            isHierarchical = true
                         },
                         new
                         {
                             Id = 102L,
-                            Code = "code",
+                            Code = "social",
                             CreatedBy = 0L,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DimensionTypeId = 51L,
-                            IsHeirarchialDimension = true,
+                            DimensionTypeId = 1L,
                             LanguageId = 1L,
-                            LongText = "Long Description 3",
-                            Name = "Dimension 3",
+                            LongText = "social",
+                            Name = "social",
                             OrganizationId = 1L,
-                            ShortText = "Short 3",
-                            State = 1
+                            ShortText = "social",
+                            State = 1,
+                            isHierarchical = true
                         },
                         new
                         {
                             Id = 103L,
-                            Code = "code",
+                            Code = "governance",
                             CreatedBy = 0L,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DimensionTypeId = 51L,
-                            IsHeirarchialDimension = true,
+                            DimensionTypeId = 1L,
                             LanguageId = 1L,
-                            LongText = "Long Description 4",
-                            Name = "Dimension 4",
+                            LongText = "governance",
+                            Name = "governance",
                             OrganizationId = 1L,
-                            ShortText = "Short 4",
-                            State = 1
+                            ShortText = "governance",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 104L,
+                            Code = "ESRS2_GP",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "General principles",
+                            Name = "ESRS2_GP",
+                            OrganizationId = 1L,
+                            ShortText = "General principles",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 105L,
+                            Code = "ESRS2_MDR",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "General disclosures",
+                            Name = "ESRS2_MDR",
+                            OrganizationId = 1L,
+                            ShortText = "General disclosures",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 106L,
+                            Code = "E1",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "Climate change",
+                            Name = "E1",
+                            OrganizationId = 1L,
+                            ShortText = "Climate change",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 107L,
+                            Code = "E2",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "Pollution",
+                            Name = "E2",
+                            OrganizationId = 1L,
+                            ShortText = "Pollution",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 108L,
+                            Code = "E3",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "Water & marine resources",
+                            Name = "E3",
+                            OrganizationId = 1L,
+                            ShortText = "Water & marine resources",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 109L,
+                            Code = "E4",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "Biodiversity and eco systems",
+                            Name = "E4",
+                            OrganizationId = 1L,
+                            ShortText = "Biodiversity and eco systems",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 110L,
+                            Code = "E5",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "Resourtce use and circular economy",
+                            Name = "E5",
+                            OrganizationId = 1L,
+                            ShortText = "Resourtce use and circular economy",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 111L,
+                            Code = "S1",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "Own workforce",
+                            Name = "s1",
+                            OrganizationId = 1L,
+                            ShortText = "Own workforce",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 112L,
+                            Code = "S2",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "Workers in value chain",
+                            Name = "s2",
+                            OrganizationId = 1L,
+                            ShortText = "Workers in value chain",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 113L,
+                            Code = "S3",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "Affected communities",
+                            Name = "s3",
+                            OrganizationId = 1L,
+                            ShortText = "Affected communities",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 114L,
+                            Code = "S4",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "Consumers and end-users",
+                            Name = "s4",
+                            OrganizationId = 1L,
+                            ShortText = "Consumers and end-users",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 115L,
+                            Code = "G1",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            LongText = "Business Conduct",
+                            Name = "G1",
+                            OrganizationId = 1L,
+                            ShortText = "Business Conduct",
+                            State = 1,
+                            isHierarchical = true
+                        },
+                        new
+                        {
+                            Id = 116L,
+                            Code = "BP-1",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "General basis for preparation of sustainability statements",
+                            Name = "BP-1",
+                            OrganizationId = 1L,
+                            ShortText = "General basis for preparation of sustainability statements",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 117L,
+                            Code = "BP-2",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Disclosures in relation to specific circumstances",
+                            Name = "BP-2",
+                            OrganizationId = 1L,
+                            ShortText = "Disclosures in relation to specific circumstances",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 118L,
+                            Code = "GOV-1",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "The role of the administrative, management and supervisory bodies",
+                            Name = "GOV-1",
+                            OrganizationId = 1L,
+                            ShortText = "The role of the administrative, management and supervisory bodies",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 119L,
+                            Code = "GOV-2",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Information provided to and sustainability matters addressed by the undertaking’s administrative, management and supervisory bodies",
+                            Name = "GOV-2",
+                            OrganizationId = 1L,
+                            ShortText = "Information provided to and sustainability matters addressed by the undertaking’s administrative, management and supervisory bodies",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 120L,
+                            Code = "GOV-3",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Integration of sustainability-related performance in incentive schemes",
+                            Name = "GOV-3",
+                            OrganizationId = 1L,
+                            ShortText = "Integration of sustainability-related performance in incentive schemes",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 121L,
+                            Code = "GOV-4",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Statement on due diligence",
+                            Name = "GOV-4",
+                            OrganizationId = 1L,
+                            ShortText = "Statement on due diligence",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 122L,
+                            Code = "GOV-5",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Risk management and internal controls over sustainability reporting",
+                            Name = "GOV-5",
+                            OrganizationId = 1L,
+                            ShortText = "Risk management and internal controls over sustainability reporting",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 123L,
+                            Code = "SBM-1",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Strategy, business model and value chain",
+                            Name = "SBM-1",
+                            OrganizationId = 1L,
+                            ShortText = "Strategy, business model and value chain",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 124L,
+                            Code = "SBM-2",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Interests and views of stakeholders",
+                            Name = "SBM-2",
+                            OrganizationId = 1L,
+                            ShortText = "Interests and views of stakeholders",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 125L,
+                            Code = "SBM-3",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Material impacts, risks and opportunities and their interaction with strategy and business model",
+                            Name = "SBM-3",
+                            OrganizationId = 1L,
+                            ShortText = "Material impacts, risks and opportunities and their interaction with strategy and business model",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 126L,
+                            Code = "IRO-1",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Description of the process to identify and assess material impacts, risks and opportunities",
+                            Name = "IRO-1",
+                            OrganizationId = 1L,
+                            ShortText = "Description of the process to identify and assess material impacts, risks and opportunities",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 127L,
+                            Code = "IRO-2",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Disclosure requirements in ESRS covered by the undertaking’s sustainability statement",
+                            Name = "IRO-2",
+                            OrganizationId = 1L,
+                            ShortText = "Disclosure requirements in ESRS covered by the undertaking’s sustainability statement",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 128L,
+                            Code = "IRO-3",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Material impacts, risks and opportunities and their interaction with strategy and business model",
+                            Name = "IRO-3",
+                            OrganizationId = 1L,
+                            ShortText = "Material impacts, risks and opportunities and their interaction with strategy and business model",
+                            State = 1,
+                            isHierarchical = false
+                        },
+                        new
+                        {
+                            Id = 129L,
+                            Code = "IRO-4",
+                            CreatedBy = 0L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            LongText = "Material impacts, risks and opportunities in the undertaking’s own operations and value chain",
+                            Name = "IRO-4",
+                            OrganizationId = 1L,
+                            ShortText = "Material impacts, risks and opportunities in the undertaking’s own operations and value chain",
+                            State = 1,
+                            isHierarchical = false
                         });
                 });
 
@@ -994,8 +1186,8 @@ namespace ESG.Infrastructure.Migrations
                         new
                         {
                             Id = 1L,
-                            IsoCode = "ru",
-                            Name = "Russian"
+                            IsoCode = "en",
+                            Name = "English"
                         },
                         new
                         {
@@ -1224,7 +1416,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6328),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1505),
                             OrganizationId = 1L,
                             State = 1,
                             UserId = 1L
@@ -1233,7 +1425,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6330),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1506),
                             OrganizationId = 1L,
                             State = 1,
                             UserId = 2L
@@ -1242,7 +1434,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6331),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1507),
                             OrganizationId = 1L,
                             State = 1,
                             UserId = 3L
@@ -1371,10 +1563,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 4L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6401),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1579),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6402),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1579),
                             LongText = "Kilogram",
                             Name = "weight",
                             OrganizationId = 1L,
@@ -1387,10 +1579,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 5L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6405),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1582),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6405),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1582),
                             LongText = "Gram",
                             Name = "weight",
                             OrganizationId = 1L,
@@ -1403,10 +1595,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 6L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6407),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1584),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6408),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1584),
                             LongText = "milliliter",
                             Name = "amount",
                             OrganizationId = 1L,
@@ -1419,10 +1611,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 7L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6409),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1586),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6410),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1587),
                             LongText = "meterpersecond",
                             Name = "speed",
                             OrganizationId = 1L,
@@ -1435,10 +1627,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 8L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6412),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1589),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6412),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1589),
                             LongText = "kmperhour",
                             Name = "speed",
                             OrganizationId = 1L,
@@ -1501,10 +1693,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureId = 4L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6433),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1609),
                             Id = 10L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6434),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1609),
                             LongText = "Kilogram",
                             Name = "weight",
                             ShortText = "kg",
@@ -1515,10 +1707,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureId = 4L,
                             LanguageId = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6436),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1611),
                             Id = 11L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6436),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1612),
                             LongText = "Gram",
                             Name = "weight",
                             ShortText = "gm",
@@ -1529,10 +1721,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureId = 6L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6438),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1614),
                             Id = 12L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6439),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1614),
                             LongText = "milliliter",
                             Name = "amount",
                             ShortText = "ml",
@@ -1543,10 +1735,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureId = 7L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6440),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1639),
                             Id = 13L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6441),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1640),
                             LongText = "meterpersecond",
                             Name = "speed",
                             ShortText = "m/s",
@@ -1557,10 +1749,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureId = 7L,
                             LanguageId = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6442),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1642),
                             Id = 14L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6444),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1643),
                             LongText = "kmperhour",
                             Name = "speed",
                             ShortText = "kmph",
@@ -1627,10 +1819,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 1L,
                             Code = "speed",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6373),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1548),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6373),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1549),
                             LongText = "Type 1",
                             Name = "Speed",
                             OrganizationId = 1L,
@@ -1642,10 +1834,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 2L,
                             Code = "weight",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6380),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1556),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6380),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1557),
                             LongText = "Type 2",
                             Name = "Weight",
                             OrganizationId = 1L,
@@ -1657,10 +1849,10 @@ namespace ESG.Infrastructure.Migrations
                             Id = 3L,
                             Code = "amount",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6383),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1559),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6383),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1560),
                             LongText = "Type 3",
                             Name = "Amount",
                             OrganizationId = 1L,
@@ -1722,10 +1914,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureTypeId = 2L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6464),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1661),
                             Id = 10L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6465),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1662),
                             LongText = "Kilogram",
                             Name = "weight",
                             ShortText = "kg",
@@ -1736,10 +1928,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureTypeId = 2L,
                             LanguageId = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6467),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1664),
                             Id = 11L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6468),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1665),
                             LongText = "Gram",
                             Name = "weight",
                             ShortText = "gm",
@@ -1750,10 +1942,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureTypeId = 3L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6505),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1666),
                             Id = 12L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6506),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1667),
                             LongText = "milliliter",
                             Name = "amount",
                             ShortText = "ml",
@@ -1764,10 +1956,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureTypeId = 1L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6508),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1668),
                             Id = 13L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6508),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1669),
                             LongText = "meterpersecond",
                             Name = "speed",
                             ShortText = "m/s",
@@ -1778,10 +1970,10 @@ namespace ESG.Infrastructure.Migrations
                             UnitOfMeasureTypeId = 1L,
                             LanguageId = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6510),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1670),
                             Id = 14L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6511),
+                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1671),
                             LongText = "kmperhour",
                             Name = "speed",
                             ShortText = "kmph",
@@ -1854,42 +2046,42 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6282),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1464),
                             Email = "user1@example.com",
                             FirstName = "John",
                             LanguageId = 1L,
                             LastName = "Doe",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 49 },
                             PhoneNumber = "1234567890",
-                            SecurityStamp = new Guid("e21031b8-b6d6-4631-9f13-677f06790fee"),
+                            SecurityStamp = new Guid("d14f8c4c-4c0a-4949-8312-ed11c98b7cdb"),
                             State = 1
                         },
                         new
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6286),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1468),
                             Email = "user2@example.com",
                             FirstName = "Jane",
                             LanguageId = 1L,
                             LastName = "Smith",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 50 },
                             PhoneNumber = "0987654321",
-                            SecurityStamp = new Guid("584ce1b8-bf59-4c92-be77-652c859ad899"),
+                            SecurityStamp = new Guid("c011e086-16ab-4df1-a239-6118c9082e48"),
                             State = 1
                         },
                         new
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6289),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1471),
                             Email = "user3@example.com",
                             FirstName = "Alice",
                             LanguageId = 1L,
                             LastName = "Johnson",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 51 },
                             PhoneNumber = "2345678901",
-                            SecurityStamp = new Guid("029114ec-4c51-4ac2-84f2-2a58ca4043c6"),
+                            SecurityStamp = new Guid("4ce48af1-c64f-42ec-8705-911a28da4556"),
                             State = 1
                         });
                 });
@@ -1936,7 +2128,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6349),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1527),
                             RoleId = 1L,
                             State = 1,
                             UserId = 1L
@@ -1945,7 +2137,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6350),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1528),
                             RoleId = 2L,
                             State = 1,
                             UserId = 2L
@@ -1954,7 +2146,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6352),
+                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1530),
                             RoleId = 3L,
                             State = 1,
                             UserId = 3L

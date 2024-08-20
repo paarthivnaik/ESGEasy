@@ -29,34 +29,34 @@ namespace ESG.API.Controllers
         [HttpPut("Update")]
         public async Task<IActionResult> Put([FromBody] DimensionTypeUpdateRequestDto value)
         {
-            //await _dimensionsService.UpdateAsync(value);
+            await _dimentionTypeService.UpdateAsync(value);
             return Ok();
         }
 
         [HttpDelete("Delete")]
-        public async Task<bool> Delete(int id)
+        public async Task<IActionResult> Delete(DimensionTypeDeleteRequestDto request)
         {
-            var res = await _dimentionTypeService.Delete(id);
-            return res;
+            await _dimentionTypeService.Delete(request);
+            return Ok();
         }
 
         [HttpGet("GetAll")]
-        public async Task<IEnumerable<DimensionType>> Get()
+        public async Task<IEnumerable<DimensionTypeResponseDto>> Get()
         {
             return await _dimentionTypeService.GetAll();
         }
 
-        [HttpGet("GetAllDimensionTypesById")]
-        public async Task<DimensionType> GetById(int id)
-        {
-            return await _dimentionTypeService.GetById(id);
-        }
+        //[HttpGet("GetAllDimensionTypesById")]
+        //public async Task<DimensionType> GetById(int id)
+        //{
+        //    return await _dimentionTypeService.GetById(id);
+        //}
 
-        [HttpGet("GetAllDimensionTranslationsById")]
-        public async Task<DimensionType> GetAllTranslations(int id)
-        {
-            return await _dimentionTypeService.GetById(id);
-        }
+        //[HttpGet("GetAllDimensionTranslationsById")]
+        //public async Task<DimensionType> GetAllTranslations(int id)
+        //{
+        //    return await _dimentionTypeService.GetById(id);
+        //}
 
     }
 }
