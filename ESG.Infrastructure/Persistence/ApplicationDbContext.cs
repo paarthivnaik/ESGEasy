@@ -405,18 +405,17 @@ namespace ESG.Infrastructure.Persistence
        }
    );
             modelBuilder.Entity<DimensionTranslations>().HasData(
-    //new DimensionTranslations { Id = 10, Name = "DimensionType1", ShortText = "DT1", LongText = "Dimension Type 1", DimensionsId = 100, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
     new DimensionTranslations { Id = 1, Name = "Dimension2",  ShortText = "DT2", LongText = "Dimension Type 2", DimensionsId = 100, LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
     new DimensionTranslations { Id = 2, Name = "Dimension2", ShortText = "DT3", LongText = "Dimension Type 3", DimensionsId = 100, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
     new DimensionTranslations {Id = 3, Name = "Dimension2", ShortText = "DT4", LongText = "Dimension Type 4", DimensionsId = 101, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
     new DimensionTranslations {Id = 4, Name = "Dimension2", ShortText = "DT5", LongText = "Dimension Type 5", DimensionsId = 101, LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
-    //new DimensionTranslations {Id = 5, Name = "Dimension2", ShortText = "DT6", LongText = "Dimension Type 6", DimensionsId = 102, LanguageId = 3, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    //new DimensionTranslations {Id = 6, Name = "Dimension2", ShortText = "DT7", LongText = "Dimension Type 7", DimensionsId = 102, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    //new DimensionTranslations {Id = 7, Name = "Dimension2", ShortText = "DT8", LongText = "Dimension Type 8", DimensionsId = 103, LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    //new DimensionTranslations {Id = 8, Name = "Dimension2", ShortText = "DT9", LongText = "Dimension Type 9", DimensionsId = 103, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
-    //new DimensionTranslations {Id = 9, Name = "Dimension2", ShortText = "DT10", LongText = "Dimension Type 10", DimensionsId = 103, LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
 );
-
+            modelBuilder.Entity<DimensionTypeTranslations>().HasData(
+    new DimensionTypeTranslations { Id = 1, Name = "Dimension2", ShortText = "DT2", LongText = "Dimension Type 2", DimensionTypeId = 50, LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DimensionTypeTranslations { Id = 2, Name = "Dimension2", ShortText = "DT3", LongText = "Dimension Type 3", DimensionTypeId = 50, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DimensionTypeTranslations { Id = 3, Name = "Dimension2", ShortText = "DT4", LongText = "Dimension Type 4", DimensionTypeId = 51, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+    new DimensionTypeTranslations { Id = 4, Name = "Dimension2", ShortText = "DT5", LongText = "Dimension Type 5", DimensionTypeId = 51, LanguageId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow }
+);
             //        modelBuilder.Entity<DatapointModel>().HasData(
             //    new DatapointModel
             //    {
