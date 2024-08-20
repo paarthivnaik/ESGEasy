@@ -27,10 +27,10 @@ namespace ESG.API.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task Put([FromBody] DimensionTypeUpdateRequestDto value)
+        public async Task<IActionResult> Put([FromBody] DimensionTypeUpdateRequestDto value)
         {
-            //var res = await _dimentionTypeService.UpdateAsync(value);
-            //return res;
+            //await _dimensionsService.UpdateAsync(value);
+            return Ok();
         }
 
         [HttpDelete("Delete")]

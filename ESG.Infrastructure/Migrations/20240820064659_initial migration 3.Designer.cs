@@ -563,7 +563,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<bool>("IsHeirarchialDimension")
+                    b.Property<bool>("isHierarchical")
                         .HasColumnType("boolean");
 
                     b.Property<long>("LanguageId")
@@ -862,7 +862,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("DimensionTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool>("IsHeirarchialDimension")
+                    b.Property<bool>("isHierarchical")
                         .HasColumnType("boolean");
 
                     b.Property<long>("LanguageId")

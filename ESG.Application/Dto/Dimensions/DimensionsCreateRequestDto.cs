@@ -17,7 +17,7 @@ namespace ESG.Application.Dto.Dimensions
         public string LongText { get; set; }
         public long LanguageId { get; set; }
         public long UserId { get; set; }
-        public long IsHeirarchialDimension { get; set; }
+        public long isHierarchical { get; set; }
         public long DimentionTypeId { get; set; }
         public StateEnum State { get; set; }
     }

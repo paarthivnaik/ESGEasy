@@ -364,7 +364,7 @@ namespace ESG.Infrastructure.Persistence
            LongText = "Long Description 1",
            LanguageId = 1,
            DimensionTypeId = 50,
-           IsHeirarchialDimension = true,
+           isHierarchical = true,
            OrganizationId = 1
        },
        new Dimensions
@@ -376,7 +376,7 @@ namespace ESG.Infrastructure.Persistence
            LongText = "Long Description 2",
            LanguageId = 1,
            DimensionTypeId = 50,
-           IsHeirarchialDimension = true,
+           isHierarchical = true,
            OrganizationId = 1
        },
        new Dimensions
@@ -388,7 +388,7 @@ namespace ESG.Infrastructure.Persistence
            LongText = "Long Description 3",
            LanguageId = 1,
            DimensionTypeId = 51,
-           IsHeirarchialDimension = true,
+           isHierarchical = true,
            OrganizationId = 1
        },
        new Dimensions
@@ -400,7 +400,7 @@ namespace ESG.Infrastructure.Persistence
            LongText = "Long Description 4",
            LanguageId = 1,
            DimensionTypeId = 51,
-           IsHeirarchialDimension = true,
+           isHierarchical = true,
            OrganizationId = 1
        }
    );

@@ -794,7 +794,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "DimensionTypes",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "IsHeirarchialDimension", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State" },
+                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "isHierarchical", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State" },
                 values: new object[,]
                 {
                     { 50L, "code", 1L, new DateTime(2024, 8, 20, 6, 46, 58, 943, DateTimeKind.Utc).AddTicks(6530), true, 1L, null, null, "Dimension Type 1", "DimensionType1", 1L, "DT1", 1 },
@@ -852,7 +852,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Dimensions",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "DimensionTypeId", "IsHeirarchialDimension", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State" },
+                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "DimensionTypeId", "isHierarchical", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State" },
                 values: new object[,]
                 {
                     { 100L, "code", 0L, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 50L, true, 1L, null, null, "Long Description 1", "Dimension 1", 1L, "Short 1", 1 },

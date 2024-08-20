@@ -80,7 +80,7 @@ namespace ESG.Application.Services
                 existingData.Code = dimentionsRequest.Code;
                 existingData.State = dimentionsRequest.State;
                 existingData.Name = dimentionsRequest.Name;
-                existingData.IsHeirarchialDimension = dimentionsRequest.IsHeirarchialDimension;
+                existingData.isHierarchical = dimentionsRequest.isHierarchical;
             }
             if (translationsData != null)
             {
