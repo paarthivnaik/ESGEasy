@@ -19,5 +19,6 @@ namespace ESG.Domain.Entities
         public long CreatedBy { get; set; }
         public IEnumerable<Dimensions> Dimensions { get; set; }
         public IEnumerable<DimensionTypeTranslations> DimensionTypeTranslations { get; set; }
+        //public IEnumerable<Hierarchy>? Hierarchy { get; set; }
     }
 }

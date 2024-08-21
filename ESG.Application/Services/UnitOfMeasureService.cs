@@ -88,7 +88,8 @@ namespace ESG.Application.Services
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll()
         {
             var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll();
-            var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(lst);
+            var orderedList = lst.OrderBy(u => u.Id);
+            var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
             return data;
         }
         public async Task<UnitOfMeasureResponseDto> GetById(long Id)
@@ -100,7 +101,8 @@ namespace ESG.Application.Services
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMByUOMTypeId(long uomTypeId)
         {
             var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll(u => u.UnitOfMeasureTypeId == uomTypeId);
-            var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(lst);
+            var orderedList = lst.OrderBy(u => u.Id);
+            var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
             return data;
         }
 
@@ -113,7 +115,8 @@ namespace ESG.Application.Services
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslationsByUOMId(long id)
         {
             var list = await _unitOfMeasure.UnitOfMeasure.GetAllUOMTranslationsByUOMId(id);
-            var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(list);
+            var orderedList = list.OrderBy(u => u.Id);
+            var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
             return data;
         }
     }

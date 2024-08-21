@@ -28,10 +28,6 @@ namespace ESG.Infrastructure.Persistence.Configurations
             .WithMany()
             .HasForeignKey(dp => dp.CurrencyId)
             .IsRequired(false);
-            builder.HasOne(dp => dp.UnitOfMeasureType)
-            .WithMany()
-            .HasForeignKey(dp => dp.UnitOfMeasureTypeId)
-            .IsRequired(false);
         }
     }
 }

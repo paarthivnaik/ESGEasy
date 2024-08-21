@@ -26,6 +26,7 @@ namespace ESG.API
             services.AddScoped<IUOMTranslationsService, UOMTranslationService>();
             services.AddScoped<IUOMTypeTranslationsService, UOMTypeTranslationsService>();
             services.AddScoped<IValuesService, ValuesService>();
+            services.AddScoped<IHierarchyService, HierarchyService>();
             return services;
         }
     }

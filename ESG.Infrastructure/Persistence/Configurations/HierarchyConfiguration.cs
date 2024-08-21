@@ -14,14 +14,10 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Hierarchy> builder)
         {
-           // builder
-           //.HasOne(h => h.DimensionType) // Ensure this matches the property name
-           //.WithMany() // Assuming DimensionType does not have a collection of Hierarchies
-           //.HasForeignKey(h => h.NodeId);
-           // builder
-           //.HasOne(h => h.Dimension) // Ensure this matches the property name
-           //.WithMany() // Assuming Dimension does not have a collection of Hierarchies
-           //.HasForeignKey(h => h.NodeId);
+            builder.Property(e => e.DimensionId)
+                 .IsRequired(false);
+            builder.Property(e => e.DataPointValuesId)
+                .IsRequired(false);
         }
     }
 }

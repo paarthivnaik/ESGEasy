@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ESG.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240820121634_Initial migration 1")]
-    partial class Initialmigration1
+    [Migration("20240821173105_Initial migration")]
+    partial class Initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -184,6 +184,10 @@ namespace ESG.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
 
@@ -224,6 +228,34 @@ namespace ESG.Infrastructure.Migrations
                     b.HasIndex("OrganizationId");
 
                     b.ToTable("DataPointTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Code = "text",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2835),
+                            LanguageId = 1L,
+                            LongText = "table",
+                            Name = "Table",
+                            OrganizationId = 1L,
+                            ShortText = "table",
+                            State = 1
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Code = "narrative",
+                            CreatedBy = 2L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2837),
+                            LanguageId = 1L,
+                            LongText = "narrative",
+                            Name = "Narrative",
+                            OrganizationId = 1L,
+                            ShortText = "narrative",
+                            State = 1
+                        });
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DataPointValues", b =>
@@ -233,6 +265,10 @@ namespace ESG.Infrastructure.Migrations
                         .HasColumnType("bigint");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -275,12 +311,6 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.Property<long?>("UnitOfMeasureTypeId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("UnitOfMeasureTypeId1")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CurrencyId");
@@ -293,12 +323,65 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.HasIndex("UnitOfMeasureTypeId");
-
-                    b.HasIndex("UnitOfMeasureTypeId1")
-                        .IsUnique();
-
                     b.ToTable("DataPointValues");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 100L,
+                            Code = "SBM-1_07",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2863),
+                            DatapointTypeId = 1L,
+                            IsNarrative = false,
+                            LanguageId = 1L,
+                            Name = "SBM-1_07",
+                            OrganizationId = 1L,
+                            Purpose = "Purpose 1",
+                            State = 1
+                        },
+                        new
+                        {
+                            Id = 101L,
+                            Code = "MDR-A_08",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2866),
+                            DatapointTypeId = 1L,
+                            IsNarrative = false,
+                            LanguageId = 1L,
+                            Name = "MDR-A_08",
+                            OrganizationId = 1L,
+                            Purpose = "Purpose 2",
+                            State = 1
+                        },
+                        new
+                        {
+                            Id = 102L,
+                            Code = "E1-8_02",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2868),
+                            DatapointTypeId = 2L,
+                            IsNarrative = true,
+                            LanguageId = 1L,
+                            Name = "E1-8_02",
+                            OrganizationId = 1L,
+                            Purpose = "Purpose 3",
+                            State = 1
+                        },
+                        new
+                        {
+                            Id = 103L,
+                            Code = "E1-8_03",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2871),
+                            DatapointTypeId = 2L,
+                            IsNarrative = true,
+                            LanguageId = 1L,
+                            Name = "E1-8_03",
+                            OrganizationId = 1L,
+                            Purpose = "Purpose 4",
+                            State = 1
+                        });
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DatapointModel", b =>
@@ -493,6 +576,548 @@ namespace ESG.Infrastructure.Migrations
                     b.HasIndex("LanguageId");
 
                     b.ToTable("DimensionTranslations");
+
+                    b.HasData(
+                        new
+                        {
+                            DimensionsId = 100L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 1L,
+                            LongText = "General",
+                            Name = "general",
+                            ShortText = "General",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 101L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 2L,
+                            LongText = "Environment",
+                            Name = "environment",
+                            ShortText = "Environment",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 102L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 3L,
+                            LongText = "Social",
+                            Name = "social",
+                            ShortText = "Social",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 103L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 4L,
+                            LongText = "Governance",
+                            Name = "governance",
+                            ShortText = "Governance",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 100L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 5L,
+                            LongText = "Généralités",
+                            Name = "general",
+                            ShortText = "Généralités",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 101L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 6L,
+                            LongText = "Environnement",
+                            Name = "environment",
+                            ShortText = "Environnement",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 102L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 7L,
+                            LongText = "Social",
+                            Name = "social",
+                            ShortText = "Social",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 103L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 8L,
+                            LongText = "Gouvernance",
+                            Name = "governance",
+                            ShortText = "Gouvernance",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 104L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 9L,
+                            LongText = "General principles",
+                            Name = "ESRS2_GP",
+                            ShortText = "General principles",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 105L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 10L,
+                            LongText = "General disclosures",
+                            Name = "ESRS2_MDR",
+                            ShortText = "General disclosures",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 106L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 11L,
+                            LongText = "Climate change",
+                            Name = "E1",
+                            ShortText = "Climate change",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 107L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 12L,
+                            LongText = "Pollution",
+                            Name = "E2",
+                            ShortText = "Pollution",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 108L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 13L,
+                            LongText = "Water & marine resources",
+                            Name = "E3",
+                            ShortText = "Water & marine resources",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 109L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 14L,
+                            LongText = "Biodiversity and eco systems",
+                            Name = "E4",
+                            ShortText = "Biodiversity and eco systems",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 110L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 15L,
+                            LongText = "Resource use and circular economy",
+                            Name = "E5",
+                            ShortText = "Resource use and circular economy",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 111L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 16L,
+                            LongText = "Own workforce",
+                            Name = "S1",
+                            ShortText = "Own workforce",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 112L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 17L,
+                            LongText = "Workers in value chain",
+                            Name = "S2",
+                            ShortText = "Workers in value chain",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 113L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 18L,
+                            LongText = "Affected communities",
+                            Name = "S3",
+                            ShortText = "Affected communities",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 114L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 19L,
+                            LongText = "Consumers and end-users",
+                            Name = "S4",
+                            ShortText = "Consumers and end-users",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 115L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 20L,
+                            LongText = "Business Conduct",
+                            Name = "G1",
+                            ShortText = "Business Conduct",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 104L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 21L,
+                            LongText = "Principes généraux",
+                            Name = "ESRS2_GP",
+                            ShortText = "Principes généraux",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 105L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 22L,
+                            LongText = "Informations générales",
+                            Name = "ESRS2_MDR",
+                            ShortText = "Informations générales",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 106L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 23L,
+                            LongText = "Changement climatique",
+                            Name = "E1",
+                            ShortText = "Changement climatique",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 107L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 24L,
+                            LongText = "Pollution",
+                            Name = "E2",
+                            ShortText = "Pollution",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 108L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 25L,
+                            LongText = "Ressources en eau et marines",
+                            Name = "E3",
+                            ShortText = "Ressources en eau et marines",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 109L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 26L,
+                            LongText = "Biodiversité et écosystèmes",
+                            Name = "E4",
+                            ShortText = "Biodiversité et écosystèmes",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 110L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 27L,
+                            LongText = "Utilisation des ressources et économie circulaire",
+                            Name = "E5",
+                            ShortText = "Utilisation des ressources et économie circulaire",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 111L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 28L,
+                            LongText = "Main-d'œuvre propre",
+                            Name = "S1",
+                            ShortText = "Main-d'œuvre propre",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 112L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 29L,
+                            LongText = "Travailleurs dans la chaîne de valeur",
+                            Name = "S2",
+                            ShortText = "Travailleurs dans la chaîne de valeur",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 113L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 30L,
+                            LongText = "Communautés affectées",
+                            Name = "S3",
+                            ShortText = "Communautés affectées",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 114L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 31L,
+                            LongText = "Consommateurs et utilisateurs finaux",
+                            Name = "S4",
+                            ShortText = "Consommateurs et utilisateurs finaux",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 115L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 32L,
+                            LongText = "Conduite des affaires",
+                            Name = "G1",
+                            ShortText = "Conduite des affaires",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 116L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 33L,
+                            LongText = "Base générale pour la préparation des déclarations de durabilité",
+                            Name = "BP-1",
+                            ShortText = "Base générale pour la préparation des déclarations de durabilité",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 117L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 34L,
+                            LongText = "Divulgations concernant des circonstances spécifiques",
+                            Name = "BP-2",
+                            ShortText = "Divulgations concernant des circonstances spécifiques",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 118L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 35L,
+                            LongText = "Le rôle des organes administratifs, de gestion et de surveillance",
+                            Name = "GOV-1",
+                            ShortText = "Le rôle des organes administratifs, de gestion et de surveillance",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 119L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 36L,
+                            LongText = "Informations fournies et questions de durabilité traitées par les organes administratifs, de gestion et de surveillance de l’entreprise",
+                            Name = "GOV-2",
+                            ShortText = "Informations fournies et questions de durabilité traitées par les organes administratifs, de gestion et de surveillance de l’entreprise",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 120L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 37L,
+                            LongText = "Intégration de la performance liée à la durabilité dans les systèmes de rémunération",
+                            Name = "GOV-3",
+                            ShortText = "Intégration de la performance liée à la durabilité dans les systèmes de rémunération",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 121L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 38L,
+                            LongText = "Déclaration sur la diligence raisonnable",
+                            Name = "GOV-4",
+                            ShortText = "Déclaration sur la diligence raisonnable",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 122L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 39L,
+                            LongText = "Gestion des risques et contrôles internes sur la déclaration de durabilité",
+                            Name = "GOV-5",
+                            ShortText = "Gestion des risques et contrôles internes sur la déclaration de durabilité",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 123L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 40L,
+                            LongText = "Stratégie, modèle économique et chaîne de valeur",
+                            Name = "SBM-1",
+                            ShortText = "Stratégie, modèle économique et chaîne de valeur",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 124L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 41L,
+                            LongText = "Intérêts et points de vue des parties prenantes",
+                            Name = "SBM-2",
+                            ShortText = "Intérêts et points de vue des parties prenantes",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 125L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 42L,
+                            LongText = "Impacts matériels, risques et opportunités et leur interaction avec la stratégie et le modèle économique",
+                            Name = "SBM-3",
+                            ShortText = "Impacts matériels, risques et opportunités et leur interaction avec la stratégie et le modèle économique",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 126L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 43L,
+                            LongText = "Description du processus pour identifier et évaluer les impacts matériels, risques et opportunités",
+                            Name = "IRO-1",
+                            ShortText = "Description du processus pour identifier et évaluer les impacts matériels, risques et opportunités",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 127L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 44L,
+                            LongText = "Exigences de divulgation dans les ESRS couvertes par la déclaration de durabilité de l’entreprise",
+                            Name = "IRO-2",
+                            ShortText = "Exigences de divulgation dans les ESRS couvertes par la déclaration de durabilité de l’entreprise",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionsId = 128L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 45L,
+                            LongText = "Impacts matériels, risques et opportunités et leur interaction avec la stratégie et le modèle économique",
+                            Name = "IRO-3",
+                            ShortText = "Impacts matériels, risques et opportunités et leur interaction avec la stratégie et le modèle économique",
+                            State = 1
+                        });
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DimensionType", b =>
@@ -556,7 +1181,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 1L,
                             Code = "esg_topic",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1690),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2485),
                             LanguageId = 1L,
                             LongText = "Dimension Type 1",
                             Name = "ESG Topic",
@@ -570,7 +1195,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 2L,
                             Code = "esg-standard",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1693),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2489),
                             LanguageId = 1L,
                             LongText = "Dimension Type 2",
                             Name = "ESG Standard",
@@ -584,7 +1209,7 @@ namespace ESG.Infrastructure.Migrations
                             Id = 3L,
                             Code = "esg-dq",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1695),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2492),
                             LanguageId = 1L,
                             LongText = "Dimension Type 3",
                             Name = "ESG Disclosure Requirements",
@@ -641,6 +1266,80 @@ namespace ESG.Infrastructure.Migrations
                     b.HasIndex("LanguageId");
 
                     b.ToTable("DimensionTypeTranslations");
+
+                    b.HasData(
+                        new
+                        {
+                            DimensionTypeId = 1L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2522),
+                            Id = 1L,
+                            LongText = "Dimension Type 1",
+                            Name = "ESG Topic",
+                            ShortText = "DimensionType topic",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionTypeId = 1L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2524),
+                            Id = 2L,
+                            LongText = "Type de dimension 1",
+                            Name = "Sujet ESG",
+                            ShortText = "Sujet de type de dimension",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionTypeId = 2L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2526),
+                            Id = 3L,
+                            LongText = "Dimension Type 2",
+                            Name = "ESG Standard",
+                            ShortText = "DimensionType standard",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionTypeId = 2L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2528),
+                            Id = 4L,
+                            LongText = "Type de dimension 2",
+                            Name = "Norme ESG",
+                            ShortText = "Norme de type de dimension",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionTypeId = 3L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2530),
+                            Id = 5L,
+                            LongText = "Dimension Type 3",
+                            Name = "ESG Disclosure Requirements",
+                            ShortText = "DimensionType disclosure requirement",
+                            State = 1
+                        },
+                        new
+                        {
+                            DimensionTypeId = 3L,
+                            LanguageId = 2L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2532),
+                            Id = 6L,
+                            LongText = "Type de dimension 3",
+                            Name = "Exigences de divulgation ESG",
+                            ShortText = "Exigences de divulgation de type de dimension",
+                            State = 1
+                        });
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.Dimensions", b =>
@@ -1157,6 +1856,32 @@ namespace ESG.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ESG.Domain.Entities.Hierarchy", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long?>("DataPointValuesId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DimensionId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("NodeId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataPointValuesId");
+
+                    b.HasIndex("DimensionId");
+
+                    b.ToTable("Hierarchy");
+                });
+
             modelBuilder.Entity("ESG.Domain.Entities.Language", b =>
                 {
                     b.Property<long>("Id")
@@ -1192,8 +1917,8 @@ namespace ESG.Infrastructure.Migrations
                         new
                         {
                             Id = 2L,
-                            IsoCode = "uk",
-                            Name = "Ukrainian"
+                            IsoCode = "fr",
+                            Name = "French"
                         },
                         new
                         {
@@ -1416,7 +2141,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1505),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(1989),
                             OrganizationId = 1L,
                             State = 1,
                             UserId = 1L
@@ -1425,7 +2150,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1506),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(1991),
                             OrganizationId = 1L,
                             State = 1,
                             UserId = 2L
@@ -1434,7 +2159,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1507),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(1993),
                             OrganizationId = 1L,
                             State = 1,
                             UserId = 3L
@@ -1560,83 +2285,483 @@ namespace ESG.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 4L,
-                            Code = "weight",
+                            Id = 101L,
+                            Code = "hh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1579),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2099),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1579),
-                            LongText = "Kilogram",
-                            Name = "weight",
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2100),
+                            LongText = "Hour",
+                            Name = "time",
                             OrganizationId = 1L,
-                            ShortText = "kg",
+                            ShortText = "Hr",
+                            State = 1,
+                            UnitOfMeasureTypeId = 4L
+                        },
+                        new
+                        {
+                            Id = 102L,
+                            Code = "mm",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2104),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2105),
+                            LongText = "Minute",
+                            Name = "time",
+                            OrganizationId = 1L,
+                            ShortText = "Min",
+                            State = 1,
+                            UnitOfMeasureTypeId = 4L
+                        },
+                        new
+                        {
+                            Id = 103L,
+                            Code = "ss",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2107),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2108),
+                            LongText = "Second",
+                            Name = "time",
+                            OrganizationId = 1L,
+                            ShortText = "Sec",
+                            State = 1,
+                            UnitOfMeasureTypeId = 4L
+                        },
+                        new
+                        {
+                            Id = 104L,
+                            Code = "d",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2111),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2111),
+                            LongText = "Day",
+                            Name = "time",
+                            OrganizationId = 1L,
+                            ShortText = "Day",
+                            State = 1,
+                            UnitOfMeasureTypeId = 4L
+                        },
+                        new
+                        {
+                            Id = 105L,
+                            Code = "m",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2114),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2115),
+                            LongText = "Month",
+                            Name = "time",
+                            OrganizationId = 1L,
+                            ShortText = "Month",
+                            State = 1,
+                            UnitOfMeasureTypeId = 4L
+                        },
+                        new
+                        {
+                            Id = 106L,
+                            Code = "q",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2117),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2118),
+                            LongText = "Quarter",
+                            Name = "time",
+                            OrganizationId = 1L,
+                            ShortText = "Qrtr",
+                            State = 1,
+                            UnitOfMeasureTypeId = 4L
+                        },
+                        new
+                        {
+                            Id = 107L,
+                            Code = "y",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2120),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2121),
+                            LongText = "Year",
+                            Name = "time",
+                            OrganizationId = 1L,
+                            ShortText = "Year",
+                            State = 1,
+                            UnitOfMeasureTypeId = 4L
+                        },
+                        new
+                        {
+                            Id = 108L,
+                            Code = "mMol/l",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2124),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2124),
+                            LongText = "Millimol per liter",
+                            Name = "acidbasecapacity",
+                            OrganizationId = 1L,
+                            ShortText = "mMol/l",
+                            State = 1,
+                            UnitOfMeasureTypeId = 1L
+                        },
+                        new
+                        {
+                            Id = 109L,
+                            Code = "Mol/m3",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2127),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2127),
+                            LongText = "Mol per cubic meter",
+                            Name = "acidbasecapacity",
+                            OrganizationId = 1L,
+                            ShortText = "Mol/m3",
+                            State = 1,
+                            UnitOfMeasureTypeId = 1L
+                        },
+                        new
+                        {
+                            Id = 110L,
+                            Code = "Mol/l",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2131),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2131),
+                            LongText = "Mol per liter",
+                            Name = "acidbasecapacity",
+                            OrganizationId = 1L,
+                            ShortText = "Mol/l",
+                            State = 1,
+                            UnitOfMeasureTypeId = 1L
+                        },
+                        new
+                        {
+                            Id = 111L,
+                            Code = "acre",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2165),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2165),
+                            LongText = "Acre",
+                            Name = "area",
+                            OrganizationId = 1L,
+                            ShortText = "Acre",
                             State = 1,
                             UnitOfMeasureTypeId = 2L
                         },
                         new
                         {
-                            Id = 5L,
-                            Code = "weight",
+                            Id = 112L,
+                            Code = "ha",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1582),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2168),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1582),
-                            LongText = "Gram",
-                            Name = "weight",
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2169),
+                            LongText = "Hectare",
+                            Name = "area",
                             OrganizationId = 1L,
-                            ShortText = "gm",
+                            ShortText = "Ha",
                             State = 1,
                             UnitOfMeasureTypeId = 2L
                         },
                         new
                         {
-                            Id = 6L,
-                            Code = "weight",
+                            Id = 113L,
+                            Code = "yd2",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1584),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2171),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1584),
-                            LongText = "milliliter",
-                            Name = "amount",
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2172),
+                            LongText = "Square Yard",
+                            Name = "area",
                             OrganizationId = 1L,
-                            ShortText = "ml",
+                            ShortText = "Yd2",
+                            State = 1,
+                            UnitOfMeasureTypeId = 2L
+                        },
+                        new
+                        {
+                            Id = 114L,
+                            Code = "cm2",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2175),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2175),
+                            LongText = "Square centimeter",
+                            Name = "area",
+                            OrganizationId = 1L,
+                            ShortText = "Cm2",
+                            State = 1,
+                            UnitOfMeasureTypeId = 2L
+                        },
+                        new
+                        {
+                            Id = 115L,
+                            Code = "ft2",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2178),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2178),
+                            LongText = "Square foot",
+                            Name = "area",
+                            OrganizationId = 1L,
+                            ShortText = "Ft2",
+                            State = 1,
+                            UnitOfMeasureTypeId = 2L
+                        },
+                        new
+                        {
+                            Id = 116L,
+                            Code = "Inch2",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2181),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2181),
+                            LongText = "Square inch",
+                            Name = "area",
+                            OrganizationId = 1L,
+                            ShortText = "Inch2",
+                            State = 1,
+                            UnitOfMeasureTypeId = 2L
+                        },
+                        new
+                        {
+                            Id = 117L,
+                            Code = "km2",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2184),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2185),
+                            LongText = "Square kilometer",
+                            Name = "area",
+                            OrganizationId = 1L,
+                            ShortText = "Km2",
+                            State = 1,
+                            UnitOfMeasureTypeId = 2L
+                        },
+                        new
+                        {
+                            Id = 118L,
+                            Code = "m2",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2188),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2189),
+                            LongText = "Square meter",
+                            Name = "area",
+                            OrganizationId = 1L,
+                            ShortText = "M2",
+                            State = 1,
+                            UnitOfMeasureTypeId = 2L
+                        },
+                        new
+                        {
+                            Id = 119L,
+                            Code = "Mile2",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2191),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2192),
+                            LongText = "Square mile",
+                            Name = "area",
+                            OrganizationId = 1L,
+                            ShortText = "Mile2",
+                            State = 1,
+                            UnitOfMeasureTypeId = 2L
+                        },
+                        new
+                        {
+                            Id = 120L,
+                            Code = "mm2",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2194),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2195),
+                            LongText = "Square millimeter",
+                            Name = "area",
+                            OrganizationId = 1L,
+                            ShortText = "Mm2",
+                            State = 1,
+                            UnitOfMeasureTypeId = 2L
+                        },
+                        new
+                        {
+                            Id = 121L,
+                            Code = "g/m3",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2197),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2198),
+                            LongText = "Gram/Cubic meter",
+                            Name = "density",
+                            OrganizationId = 1L,
+                            ShortText = "G/M3",
                             State = 1,
                             UnitOfMeasureTypeId = 3L
                         },
                         new
                         {
-                            Id = 7L,
-                            Code = "weight",
+                            Id = 122L,
+                            Code = "g/cm3",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1586),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2200),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1587),
-                            LongText = "meterpersecond",
-                            Name = "speed",
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2201),
+                            LongText = "Gram/cubic centimeter",
+                            Name = "density",
                             OrganizationId = 1L,
-                            ShortText = "m/s",
+                            ShortText = "G/Cm3",
                             State = 1,
-                            UnitOfMeasureTypeId = 1L
+                            UnitOfMeasureTypeId = 3L
                         },
                         new
                         {
-                            Id = 8L,
-                            Code = "weight",
+                            Id = 123L,
+                            Code = "g/l",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1589),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2204),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1589),
-                            LongText = "kmperhour",
-                            Name = "speed",
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2204),
+                            LongText = "Gram/liter",
+                            Name = "density",
                             OrganizationId = 1L,
-                            ShortText = "kmph",
+                            ShortText = "G/L",
                             State = 1,
-                            UnitOfMeasureTypeId = 1L
+                            UnitOfMeasureTypeId = 3L
+                        },
+                        new
+                        {
+                            Id = 124L,
+                            Code = "kg/scf",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2207),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2207),
+                            LongText = "Kilogram/Standard Cubic Foot",
+                            Name = "density",
+                            OrganizationId = 1L,
+                            ShortText = "Kg/Scf",
+                            State = 1,
+                            UnitOfMeasureTypeId = 3L
+                        },
+                        new
+                        {
+                            Id = 125L,
+                            Code = "kg/bbl",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2211),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2211),
+                            LongText = "Kilogram/US Barrel",
+                            Name = "density",
+                            OrganizationId = 1L,
+                            ShortText = "Kg/Bbl",
+                            State = 1,
+                            UnitOfMeasureTypeId = 3L
+                        },
+                        new
+                        {
+                            Id = 126L,
+                            Code = "kg/dm3",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2214),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2214),
+                            LongText = "Kilogram/cubic decimeter",
+                            Name = "density",
+                            OrganizationId = 1L,
+                            ShortText = "Kg/Dm3",
+                            State = 1,
+                            UnitOfMeasureTypeId = 3L
+                        },
+                        new
+                        {
+                            Id = 127L,
+                            Code = "kg/m3",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2217),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2217),
+                            LongText = "Kilogram/cubic meter",
+                            Name = "density",
+                            OrganizationId = 1L,
+                            ShortText = "Kg/M3",
+                            State = 1,
+                            UnitOfMeasureTypeId = 3L
+                        },
+                        new
+                        {
+                            Id = 128L,
+                            Code = "µg/m3",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2220),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2221),
+                            LongText = "Microgram/cubic meter",
+                            Name = "density",
+                            OrganizationId = 1L,
+                            ShortText = "µg/M3",
+                            State = 1,
+                            UnitOfMeasureTypeId = 3L
+                        },
+                        new
+                        {
+                            Id = 129L,
+                            Code = "µg/l",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2223),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2224),
+                            LongText = "Microgram/liter",
+                            Name = "density",
+                            OrganizationId = 1L,
+                            ShortText = "µg/L",
+                            State = 1,
+                            UnitOfMeasureTypeId = 3L
+                        },
+                        new
+                        {
+                            Id = 130L,
+                            Code = "mg/m3",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2226),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2227),
+                            LongText = "Milligram/cubic meter",
+                            Name = "density",
+                            OrganizationId = 1L,
+                            ShortText = "Mg/M3",
+                            State = 1,
+                            UnitOfMeasureTypeId = 4L
                         });
                 });
 
@@ -1690,73 +2815,423 @@ namespace ESG.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            UnitOfMeasureId = 4L,
+                            UnitOfMeasureId = 101L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1609),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2270),
+                            Id = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2271),
+                            LongText = "Hour",
+                            Name = "Hour",
+                            ShortText = "Hr",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 102L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2274),
+                            Id = 2L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2275),
+                            LongText = "Minute",
+                            Name = "Minute",
+                            ShortText = "Min",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 103L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2279),
+                            Id = 3L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2280),
+                            LongText = "Second",
+                            Name = "Second",
+                            ShortText = "Sec",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 104L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2283),
+                            Id = 4L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2283),
+                            LongText = "Day",
+                            Name = "Day",
+                            ShortText = "Day",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 105L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2286),
+                            Id = 5L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2287),
+                            LongText = "Month",
+                            Name = "Month",
+                            ShortText = "Month",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 106L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2289),
+                            Id = 6L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2290),
+                            LongText = "Quarter",
+                            Name = "Quarter",
+                            ShortText = "Qrtr",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 107L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2293),
+                            Id = 7L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2293),
+                            LongText = "Year",
+                            Name = "Year",
+                            ShortText = "Year",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 108L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2296),
+                            Id = 8L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2297),
+                            LongText = "Millimol per liter",
+                            Name = "Millimol per liter",
+                            ShortText = "mMol/l",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 109L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2299),
+                            Id = 9L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2300),
+                            LongText = "Mol per cubic meter",
+                            Name = "Mol per cubic meter",
+                            ShortText = "Mol/m3",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 110L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2302),
                             Id = 10L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1609),
-                            LongText = "Kilogram",
-                            Name = "weight",
-                            ShortText = "kg",
-                            State = 0
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2303),
+                            LongText = "Mol per liter",
+                            Name = "Mol per liter",
+                            ShortText = "Mol/l",
+                            State = 1
                         },
                         new
                         {
-                            UnitOfMeasureId = 4L,
-                            LanguageId = 2L,
+                            UnitOfMeasureId = 111L,
+                            LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1611),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2307),
                             Id = 11L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1612),
-                            LongText = "Gram",
-                            Name = "weight",
-                            ShortText = "gm",
-                            State = 0
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2307),
+                            LongText = "Acre",
+                            Name = "Acre",
+                            ShortText = "Acre",
+                            State = 1
                         },
                         new
                         {
-                            UnitOfMeasureId = 6L,
+                            UnitOfMeasureId = 112L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1614),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2310),
                             Id = 12L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1614),
-                            LongText = "milliliter",
-                            Name = "amount",
-                            ShortText = "ml",
-                            State = 0
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2311),
+                            LongText = "Hectare",
+                            Name = "Hectare",
+                            ShortText = "Ha",
+                            State = 1
                         },
                         new
                         {
-                            UnitOfMeasureId = 7L,
+                            UnitOfMeasureId = 113L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1639),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2313),
                             Id = 13L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1640),
-                            LongText = "meterpersecond",
-                            Name = "speed",
-                            ShortText = "m/s",
-                            State = 0
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2314),
+                            LongText = "Square Yard",
+                            Name = "Square Yard",
+                            ShortText = "Yd2",
+                            State = 1
                         },
                         new
                         {
-                            UnitOfMeasureId = 7L,
-                            LanguageId = 2L,
+                            UnitOfMeasureId = 114L,
+                            LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1642),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2316),
                             Id = 14L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1643),
-                            LongText = "kmperhour",
-                            Name = "speed",
-                            ShortText = "kmph",
-                            State = 0
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2317),
+                            LongText = "Square centimeter",
+                            Name = "Square centimeter",
+                            ShortText = "Cm2",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 115L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2320),
+                            Id = 15L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2320),
+                            LongText = "Square foot",
+                            Name = "Square foot",
+                            ShortText = "Ft2",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 116L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2323),
+                            Id = 16L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2323),
+                            LongText = "Square inch",
+                            Name = "Square inch",
+                            ShortText = "Inch2",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 117L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2326),
+                            Id = 17L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2327),
+                            LongText = "Square kilometer",
+                            Name = "Square kilometer",
+                            ShortText = "Km2",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 118L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2329),
+                            Id = 18L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2330),
+                            LongText = "Square meter",
+                            Name = "Square meter",
+                            ShortText = "M2",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 119L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2332),
+                            Id = 19L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2333),
+                            LongText = "Square mile",
+                            Name = "Square mile",
+                            ShortText = "Mile2",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 120L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2336),
+                            Id = 20L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2337),
+                            LongText = "Square millimeter",
+                            Name = "Square millimeter",
+                            ShortText = "Mm2",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 121L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2339),
+                            Id = 21L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2339),
+                            LongText = "Gram/Cubic meter",
+                            Name = "Gram/Cubic meter",
+                            ShortText = "G/M3",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 122L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2342),
+                            Id = 22L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2342),
+                            LongText = "Gram/cubic centimeter",
+                            Name = "Gram/cubic centimeter",
+                            ShortText = "G/Cm3",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 123L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2345),
+                            Id = 23L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2346),
+                            LongText = "Gram/liter",
+                            Name = "Gram/liter",
+                            ShortText = "G/L",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 124L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2348),
+                            Id = 24L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2349),
+                            LongText = "Kilogram/Standard Cubic Foot",
+                            Name = "Kilogram/Standard Cubic Foot",
+                            ShortText = "Kg/Scf",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 125L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2351),
+                            Id = 25L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2352),
+                            LongText = "Kilogram/US Barrel",
+                            Name = "Kilogram/US Barrel",
+                            ShortText = "Kg/Bbl",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 126L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2384),
+                            Id = 26L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2385),
+                            LongText = "Kilogram/cubic decimeter",
+                            Name = "Kilogram/cubic decimeter",
+                            ShortText = "Kg/Dm3",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 127L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2388),
+                            Id = 27L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2389),
+                            LongText = "Kilogram/cubic meter",
+                            Name = "Kilogram/cubic meter",
+                            ShortText = "Kg/M3",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 128L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2392),
+                            Id = 28L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2393),
+                            LongText = "Microgram/cubic meter",
+                            Name = "Microgram/cubic meter",
+                            ShortText = "µg/M3",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 129L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2395),
+                            Id = 29L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2396),
+                            LongText = "Microgram/liter",
+                            Name = "Microgram/liter",
+                            ShortText = "µg/L",
+                            State = 1
+                        },
+                        new
+                        {
+                            UnitOfMeasureId = 130L,
+                            LanguageId = 1L,
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2398),
+                            Id = 30L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2399),
+                            LongText = "Milligram/cubic meter",
+                            Name = "Milligram/cubic meter",
+                            ShortText = "Mg/M3",
+                            State = 1
                         });
                 });
 
@@ -1817,46 +3292,61 @@ namespace ESG.Infrastructure.Migrations
                         new
                         {
                             Id = 1L,
-                            Code = "speed",
+                            Code = "acidbasecapacity",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1548),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2053),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1549),
-                            LongText = "Type 1",
-                            Name = "Speed",
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2054),
+                            LongText = "",
+                            Name = "Acid/Base capacity",
                             OrganizationId = 1L,
-                            ShortText = "T1",
+                            ShortText = "Acid/Base capacity",
                             State = 1
                         },
                         new
                         {
                             Id = 2L,
-                            Code = "weight",
+                            Code = "area",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1556),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2063),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1557),
-                            LongText = "Type 2",
-                            Name = "Weight",
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2064),
+                            LongText = "",
+                            Name = "Area",
                             OrganizationId = 1L,
-                            ShortText = "T2",
+                            ShortText = "Area",
                             State = 1
                         },
                         new
                         {
                             Id = 3L,
-                            Code = "amount",
+                            Code = "density",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1559),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2067),
                             LanguageId = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1560),
-                            LongText = "Type 3",
-                            Name = "Amount",
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2068),
+                            LongText = "",
+                            Name = "Density",
                             OrganizationId = 1L,
-                            ShortText = "T3",
+                            ShortText = "Density",
+                            State = 1
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Code = "time",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2070),
+                            LanguageId = 1L,
+                            LastModifiedBy = 1L,
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2071),
+                            LongText = "",
+                            Name = "Time",
+                            OrganizationId = 1L,
+                            ShortText = "Time",
                             State = 1
                         });
                 });
@@ -1911,73 +3401,59 @@ namespace ESG.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            UnitOfMeasureTypeId = 2L,
+                            UnitOfMeasureTypeId = 1L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1661),
-                            Id = 10L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2445),
+                            Id = 1L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1662),
-                            LongText = "Kilogram",
-                            Name = "weight",
-                            ShortText = "kg",
-                            State = 0
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2446),
+                            LongText = "Acid/Base capacity",
+                            Name = "Acid/Base capacity",
+                            ShortText = "Acid/Base capacity",
+                            State = 1
                         },
                         new
                         {
                             UnitOfMeasureTypeId = 2L,
-                            LanguageId = 2L,
+                            LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1664),
-                            Id = 11L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2449),
+                            Id = 2L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1665),
-                            LongText = "Gram",
-                            Name = "weight",
-                            ShortText = "gm",
-                            State = 0
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2450),
+                            LongText = "Area",
+                            Name = "Area",
+                            ShortText = "Area",
+                            State = 1
                         },
                         new
                         {
                             UnitOfMeasureTypeId = 3L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1666),
-                            Id = 12L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2453),
+                            Id = 3L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1667),
-                            LongText = "milliliter",
-                            Name = "amount",
-                            ShortText = "ml",
-                            State = 0
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2453),
+                            LongText = "Density",
+                            Name = "Density",
+                            ShortText = "Density",
+                            State = 1
                         },
                         new
                         {
-                            UnitOfMeasureTypeId = 1L,
+                            UnitOfMeasureTypeId = 4L,
                             LanguageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1668),
-                            Id = 13L,
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2456),
+                            Id = 4L,
                             LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1669),
-                            LongText = "meterpersecond",
-                            Name = "speed",
-                            ShortText = "m/s",
-                            State = 0
-                        },
-                        new
-                        {
-                            UnitOfMeasureTypeId = 1L,
-                            LanguageId = 2L,
-                            CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1670),
-                            Id = 14L,
-                            LastModifiedBy = 1L,
-                            LastModifiedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1671),
-                            LongText = "kmperhour",
-                            Name = "speed",
-                            ShortText = "kmph",
-                            State = 0
+                            LastModifiedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2457),
+                            LongText = "Time",
+                            Name = "Time",
+                            ShortText = "Time",
+                            State = 1
                         });
                 });
 
@@ -2046,42 +3522,42 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1464),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(1928),
                             Email = "user1@example.com",
                             FirstName = "John",
                             LanguageId = 1L,
                             LastName = "Doe",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 49 },
                             PhoneNumber = "1234567890",
-                            SecurityStamp = new Guid("d14f8c4c-4c0a-4949-8312-ed11c98b7cdb"),
+                            SecurityStamp = new Guid("26a697e1-99fc-4b7a-ab11-768d2a375917"),
                             State = 1
                         },
                         new
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1468),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(1935),
                             Email = "user2@example.com",
                             FirstName = "Jane",
                             LanguageId = 1L,
                             LastName = "Smith",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 50 },
                             PhoneNumber = "0987654321",
-                            SecurityStamp = new Guid("c011e086-16ab-4df1-a239-6118c9082e48"),
+                            SecurityStamp = new Guid("71949c43-005a-4aa1-81fb-3f473a6a6484"),
                             State = 1
                         },
                         new
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1471),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(1939),
                             Email = "user3@example.com",
                             FirstName = "Alice",
                             LanguageId = 1L,
                             LastName = "Johnson",
                             Password = new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 51 },
                             PhoneNumber = "2345678901",
-                            SecurityStamp = new Guid("4ce48af1-c64f-42ec-8705-911a28da4556"),
+                            SecurityStamp = new Guid("c81b46ff-eddd-40df-9f5a-e8146f4d03a1"),
                             State = 1
                         });
                 });
@@ -2128,7 +3604,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1527),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2020),
                             RoleId = 1L,
                             State = 1,
                             UserId = 1L
@@ -2137,7 +3613,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 2L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1528),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2022),
                             RoleId = 2L,
                             State = 1,
                             UserId = 2L
@@ -2146,7 +3622,7 @@ namespace ESG.Infrastructure.Migrations
                         {
                             Id = 3L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTime(2024, 8, 20, 12, 16, 34, 10, DateTimeKind.Utc).AddTicks(1530),
+                            CreatedDate = new DateTime(2024, 8, 21, 17, 31, 4, 693, DateTimeKind.Utc).AddTicks(2024),
                             RoleId = 3L,
                             State = 1,
                             UserId = 3L
@@ -2200,14 +3676,6 @@ namespace ESG.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ESG.Domain.Entities.UnitOfMeasureType", "UnitOfMeasureType")
-                        .WithMany()
-                        .HasForeignKey("UnitOfMeasureTypeId");
-
-                    b.HasOne("ESG.Domain.Entities.UnitOfMeasureType", null)
-                        .WithOne("DataPointValues")
-                        .HasForeignKey("ESG.Domain.Entities.DataPointValues", "UnitOfMeasureTypeId1");
-
                     b.Navigation("Currency");
 
                     b.Navigation("DataPointType");
@@ -2215,8 +3683,6 @@ namespace ESG.Infrastructure.Migrations
                     b.Navigation("Language");
 
                     b.Navigation("Organization");
-
-                    b.Navigation("UnitOfMeasureType");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DatapointModel", b =>
@@ -2364,6 +3830,21 @@ namespace ESG.Infrastructure.Migrations
                     b.Navigation("Language");
 
                     b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("ESG.Domain.Entities.Hierarchy", b =>
+                {
+                    b.HasOne("ESG.Domain.Entities.DataPointValues", "DataPointValues")
+                        .WithMany("Hierarchies")
+                        .HasForeignKey("DataPointValuesId");
+
+                    b.HasOne("ESG.Domain.Entities.Dimensions", "Dimension")
+                        .WithMany("Hierarchies")
+                        .HasForeignKey("DimensionId");
+
+                    b.Navigation("DataPointValues");
+
+                    b.Navigation("Dimension");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.Language", b =>
@@ -2528,6 +4009,8 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.DataPointValues", b =>
                 {
                     b.Navigation("DatapointTypeTranslations");
+
+                    b.Navigation("Hierarchies");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DimensionType", b =>
@@ -2540,6 +4023,8 @@ namespace ESG.Infrastructure.Migrations
             modelBuilder.Entity("ESG.Domain.Entities.Dimensions", b =>
                 {
                     b.Navigation("DimensionTranslations");
+
+                    b.Navigation("Hierarchies");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.Language", b =>
@@ -2603,8 +4088,6 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.UnitOfMeasureType", b =>
                 {
-                    b.Navigation("DataPointValues");
-
                     b.Navigation("UnitOfMeasure");
 
                     b.Navigation("UnitOfMeasureTypeTranslations");
