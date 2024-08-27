@@ -45,6 +45,7 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
+               .ForMember(dest => dest.isHierarchical, opt => opt.MapFrom(src => src.isHierarchical))
                .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
         }
     }

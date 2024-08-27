@@ -13,6 +13,8 @@ namespace ESG.Domain.Entities
         public string Name { get; set; }
         public long DatapointTypeId { get; set; }
         public DataPointTypes DataPointType { get; set; }
+        public long? UnitOfMeasureId { get; set; }
+        public UnitOfMeasure UnitOfMeasure { get; set; }
         public long? CurrencyId { get; set; }
         public bool? IsNarrative { get; set; }
         //public string Value { get; set; }

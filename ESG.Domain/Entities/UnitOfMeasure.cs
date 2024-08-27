@@ -17,6 +17,7 @@ namespace ESG.Domain.Entities
         public long LanguageId { get; set; }
         public Language Language { get; set; }
         public UnitOfMeasureType UnitOfMeasureTypes { get; set; }
+        public IEnumerable<DataPointValues>? DataPointValues { get; set; }
         public ICollection<UnitOfMeasureTranslations> UnitOfMeasureTranslations { get; set; }
     }
 }
