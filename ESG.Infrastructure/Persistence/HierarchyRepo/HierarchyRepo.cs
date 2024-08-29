@@ -2,6 +2,7 @@
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Dto.Hierarchy;
 using ESG.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,5 +54,39 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
             }
         }
 
+        public async Task<IEnumerable<DataPointValues>> GetDatapoints(long? disReqId)
+        {
+            var datapoints = await _context.DataPointValues
+                .AsNoTracking()
+                .Where(t => t.DisclosureRequirementId == disReqId)
+                .ToListAsync();
+            return datapoints;
+        }
+
+        public async Task<IEnumerable<DisclosureRequirement>> GetDisclosureRequirements(long? standarddId)
+        {
+            var disreq = await _context.DisclosureRequirement
+                .AsNoTracking()
+                .Where(t => t.StandardId == standarddId)
+                .ToListAsync();
+            return disreq;
+        }
+
+        public async Task<IEnumerable<Standard>> GetStandards(long? topicId)
+        {
+            var standard = await _context.Standard
+                .AsNoTracking()
+                .Where(t => t.TopicId == topicId)
+                .ToListAsync();
+            return standard;
+        }
+
+        public async Task<IEnumerable<Topic>> GetTopics()
+        {
+            var topic = await _context.Topic
+                .AsNoTracking()
+                .ToListAsync();
+            return topic;
+        }
     }
 }

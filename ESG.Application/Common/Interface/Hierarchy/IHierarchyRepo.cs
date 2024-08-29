@@ -1,4 +1,5 @@
 ﻿using ESG.Application.Dto.Hierarchy;
+using ESG.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,9 @@ namespace ESG.Application.Common.Interface.Hierarchy
     {
         //Task AddHierarchy(HierarchyCreateRequestDto request);
         Task AddHierarchyRecursive(HierarchyCreateRequestDto request, long? parentId);
+        Task<IEnumerable<Topic>> GetTopics();
+        Task<IEnumerable<Standard>> GetStandards(long? topicId);
+        Task<IEnumerable<DisclosureRequirement>> GetDisclosureRequirements(long? standardId);
+        Task<IEnumerable<DataPointValues>> GetDatapoints(long? disReqId);
     }
 }

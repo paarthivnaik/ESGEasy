@@ -1,6 +1,7 @@
 ﻿using ESG.Application.Common.Interface;
 using ESG.Domain.Common;
 using ESG.Domain.Entities;
+using ESG.Infrastructure.Persistence.DataBaseSeeder;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 
@@ -34,6 +35,9 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<DimensionTranslations> DimensionTranslations { get; set; }
         public DbSet<Audit> AuditLogs { get; set; }
         public DbSet<Hierarchy> Hierarchy { get; set; }
+        public DbSet<Topic> Topic { get; set; }
+        public DbSet<Standard> Standard { get; set; }
+        public DbSet<DisclosureRequirement> DisclosureRequirement { get; set; }
         public DateTime _curretDateTime { get; set; }
 
         public async Task<int> SaveChangesAsync()
@@ -161,16 +165,24 @@ namespace ESG.Infrastructure.Persistence
 
             return SaveChangesAsync();
         }
-        public void TruncateTable(string tableName)
-        {
-            // Ensure tableName is sanitized to avoid SQL injection
-            Database.ExecuteSqlRaw($"TRUNCATE TABLE \"{tableName}\" RESTART IDENTITY CASCADE;");
-        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
-            DatabaseSeeder.Seed(modelBuilder);
+            CurrencySeed.Seed(modelBuilder);
+            DataPointSeed.Seed(modelBuilder);
+            DimensionsSeed.Seed(modelBuilder);
+            DisclosureRequirementSeed.Seed(modelBuilder);
+            LanguageSeed.Seed(modelBuilder);
+            OrganizationSeed.Seed(modelBuilder);
+            OrganizationUsersSeed.Seed(modelBuilder);
+            RoleSeed.Seed(modelBuilder);
+            StandardSeed.Seed(modelBuilder);
+            TenantSeed.Seed(modelBuilder);
+            TopicSeed.Seed(modelBuilder);
+            UnitOfMeasureSeed.Seed(modelBuilder);
+            UserRolesSeed.Seed(modelBuilder);
+            UserSeed.Seed(modelBuilder);
         }
 
     }

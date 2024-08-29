@@ -24,6 +24,9 @@ namespace ESG.Domain.Entities
         public virtual ICollection<DatapointTypeTranslations> DatapointTypeTranslations { get; set; }
         public virtual ICollection<DataPointValues> DataPointValues { get; set; }
         public virtual ICollection<DatapointValueTranslations> DatapointValueTranslations { get; set; }
+        public virtual ICollection<Topic> ESGTopics { get; set; }
+        public virtual ICollection<Standard> ESGStandards { get; set; }
+        public virtual ICollection<DisclosureRequirement> DisclosureRequirements { get; set; }
 
     }
 }

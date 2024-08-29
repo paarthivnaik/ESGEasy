@@ -1,4 +1,6 @@
-﻿using ESG.Application.Dto.Hierarchy;
+﻿using ESG.Application.Dto.Get;
+using ESG.Application.Dto.Hierarchy;
+using ESG.Application.Dto.Topics;
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
@@ -23,6 +25,12 @@ namespace ESG.API.Controllers
         {
             await _hierarchyService.AddHierarchy(value);
             return Ok();
+        }
+        [HttpGet("GetHierarchy")]
+        public async Task<IEnumerable<TopicsResponseDto>> GetHeirarchy(int tableType, long? Id)
+        {
+            var list = await _hierarchyService.GetMethod(tableType, Id);
+            return list;
         }
     }
 }
