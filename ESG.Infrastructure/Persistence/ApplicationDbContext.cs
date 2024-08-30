@@ -38,6 +38,7 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<Topic> Topic { get; set; }
         public DbSet<Standard> Standard { get; set; }
         public DbSet<DisclosureRequirement> DisclosureRequirement { get; set; }
+        public DbSet<OrganizationHeirarchies> OrganizationHeirarchies { get; set; }
         public DateTime _curretDateTime { get; set; }
 
         public async Task<int> SaveChangesAsync()

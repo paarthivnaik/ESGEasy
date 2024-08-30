@@ -85,7 +85,6 @@ namespace ESG.Application.Services
             }
             existingData.ShortText = unitOfMeasureType.ShortText;
             existingData.LongText = unitOfMeasureType.LongText;
-            existingData.Code = unitOfMeasureType.Code;
             existingData.State = unitOfMeasureType.State;
             existingData.Name = unitOfMeasureType.Name;
             existingData.OrganizationId = unitOfMeasureType.OrganizationId;

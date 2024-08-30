@@ -8,9 +8,13 @@ namespace ESG.Application.Dto.Hierarchy
 {
     public class HierarchyCreateRequestDto
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public bool IsDataPoint { get; set; }
-        public IEnumerable<HierarchyCreateRequestDto> Children { get; set; } = new List<HierarchyCreateRequestDto>();
+        public List<HierarchyEntryDto> Entries { get; set; }
     }
+
+    public class HierarchyEntryDto
+    {
+        public long HierarchyId { get; set; }
+        public long DataPointValuesId { get; set; }
+    }
+
 }

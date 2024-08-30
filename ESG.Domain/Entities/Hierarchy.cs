@@ -9,11 +9,9 @@ namespace ESG.Domain.Entities
 {
     public class Hierarchy : BaseEntity<long>
     {
-        public long? NodeId { get; set; }
-        public long? DimensionId { get; set; }
-        public Dimensions Dimension { get; set; }
+        public long HierarchyId { get; set; }
         public long? DataPointValuesId { get; set; }
         public DataPointValues DataPointValues { get; set; }
-
+        public IEnumerable<OrganizationHeirarchies> OrganizationHeirarchies { get; set; }
     }
 }

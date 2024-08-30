@@ -1,6 +1,5 @@
 ﻿using ESG.Application.Dto.Get;
 using ESG.Application.Dto.Hierarchy;
-using ESG.Application.Dto.Topics;
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
@@ -27,9 +26,24 @@ namespace ESG.API.Controllers
             return Ok();
         }
         [HttpGet("GetHierarchy")]
-        public async Task<IEnumerable<TopicsResponseDto>> GetHeirarchy(int tableType, long? Id)
+        /// <summary>
+        /// when we pass table type 1 we need to get topic data
+        /// when we pass tableType 2, Id as topic Id we get standard Data for that topic Id
+        /// when we pass tableType 3, Id as standard Id we get disclosurerequirement Data for that standard Id
+        /// when we pass tableType 4, Id as disclosurerequirement Id we get datapoint Data for that disclosurerequirement Id
+        /// </summary>
+        /// <param name="tableType">1- Topic, 2-Standard, 3-DisclousureRequirement, 4- Datapoint</param>
+        /// <param name="Id">this Id is tableType foreign key</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<HeirarchyDataResponseDto>> GetHeirarchy(int tableType, long? Id)
         {
             var list = await _hierarchyService.GetMethod(tableType, Id);
+            return list;
+        }
+        [HttpGet("GetSavedHeirarchy")]
+        public async Task<IEnumerable<HierarchyResponseDto>> GetSavedHeirarchy(long hierachyId)
+        {
+            var list = await _hierarchyService.GetSavedHeirarchy(hierachyId);
             return list;
         }
     }

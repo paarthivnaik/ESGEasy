@@ -21,6 +21,5 @@ namespace ESG.Domain.Entities
         public DimensionType DimensionType { get; set; }
         //public IEnumerable<DatapointModel> DatapointModels { get; set; }
         public IEnumerable<DimensionTranslations> DimensionTranslations { get; set; }
-        public IEnumerable<Hierarchy>? Hierarchies { get; set; }
     }
 }

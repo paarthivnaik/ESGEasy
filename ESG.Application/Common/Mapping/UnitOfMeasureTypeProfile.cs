@@ -25,7 +25,6 @@ namespace ESG.Application.Common.Mapping
 
             //update
             CreateMap<UnitOfMeasureTypeUpdateRequestDto, UnitOfMeasureType>()
-                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId))

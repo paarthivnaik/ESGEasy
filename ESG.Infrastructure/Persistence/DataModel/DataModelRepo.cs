@@ -1,0 +1,19 @@
+﻿using ESG.Application.Common.Interface.DataModel;
+using ESG.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ESG.Infrastructure.Persistence.DataModel
+{
+    public class DataModelRepo : GenericRepository<DataPointValues>, IDataModelRepo
+    {
+        private readonly ApplicationDbContext _context;
+        public DataModelRepo(ApplicationDbContext context) : base(context)
+        {
+            _context = context;
+        }
+    }
+}

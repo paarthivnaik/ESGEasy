@@ -21,37 +21,29 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
         public async Task AddHierarchy(HierarchyCreateRequestDto request)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            if (request != null && request.Entries != null)
+            {
+                foreach (var res in request.Entries)
+                {
+                    var hierarchy = new Hierarchy
+                    {
+                        HierarchyId = res.HierarchyId,
+                        DataPointValuesId = res.DataPointValuesId
+                    };
+                    _context.Hierarchy.Add(hierarchy);
+                }
 
-            await AddHierarchyRecursive(request, null);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public async Task AddHierarchyRecursive(HierarchyCreateRequestDto request, long? parentId)
+        public async Task<IEnumerable<Hierarchy>> GetSavedHeirarchies(long hierarchyId)
         {
-            long nodeId = parentId.HasValue && parentId.Value != 0 ? parentId.Value : 0;
-            //long? nodeId = parentId;
-            long? dataPointValuesId = request.IsDataPoint ? request.Id : null;
-            long? dimensionId = request.IsDataPoint ? null : request.Id == 0 ? null : request.Id;
-
-            var hierarchy = new Hierarchy
-            {
-                NodeId = nodeId,
-                DimensionId = dimensionId,
-                DataPointValuesId = dataPointValuesId,
-            };
-
-            _context.Hierarchy.Add(hierarchy);
-            await _context.SaveChangesAsync();
-
-            nodeId = request.Id;
-            if (request.Children != null && request.Children.Any())
-            {
-                foreach (var child in request.Children)
-                {
-                    await AddHierarchyRecursive(child, nodeId);
-                }
-            }
+            var heirarchy = await _context.Hierarchy
+                .AsNoTracking()
+                .Where(t => t.HierarchyId == hierarchyId)
+                .ToListAsync();
+            return heirarchy;
         }
 
         public async Task<IEnumerable<DataPointValues>> GetDatapoints(long? disReqId)

@@ -14,8 +14,6 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Hierarchy> builder)
         {
-            builder.Property(e => e.DimensionId)
-                 .IsRequired(false);
             builder.Property(e => e.DataPointValuesId)
                 .IsRequired(false);
         }

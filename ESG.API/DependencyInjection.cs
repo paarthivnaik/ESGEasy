@@ -20,6 +20,7 @@ namespace ESG.API
             services.AddScoped<IDimentionTypeService, DimentionTypeService>();
             services.AddScoped<IDimensionsService, DimensionsService>();
             services.AddScoped<IDatapointTypesService, DatapointTypesService>();
+            services.AddScoped<IDatapointValuesService, DatapointValuesService>();
             services.AddScoped<IDimensionsService, DimensionsService>();
             services.AddScoped<IUnitOfMeasureRepo, UnitOfMeasureRepo>();
             services.AddScoped<IUserService, UserService>();

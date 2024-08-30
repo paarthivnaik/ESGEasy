@@ -1,4 +1,5 @@
-﻿using ESG.Application.Common.Interface.Dimensions;
+﻿using ESG.Application.Common.Interface.DataModel;
+using ESG.Application.Common.Interface.Dimensions;
 using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Common.Interface.Value;
@@ -18,6 +19,7 @@ namespace ESG.Application.Common.Interface
         IDimensionRepo DimensionRepo { get; }
         IValuesRepo ValuesRepo { get; }
         IHierarchyRepo HierarchyRepo { get; }
+        IDataModelRepo DataModelRepo { get; }
         Task<int> SaveAsync();
         int Save();
         void BeginTransaction();

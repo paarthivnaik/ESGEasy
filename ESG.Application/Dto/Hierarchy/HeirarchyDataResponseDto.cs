@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESG.Application.Dto.Topics
+namespace ESG.Application.Dto.Hierarchy
 {
-    public class TopicsResponseDto
+    public class HeirarchyDataResponseDto
     {
         public long Id { get; set; }
         public string Code { get; set; }

@@ -1,4 +1,5 @@
 ﻿using ESG.Application.Common.Interface;
+using ESG.Application.Common.Interface.DataModel;
 using ESG.Application.Common.Interface.Dimensions;
 using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
@@ -25,6 +26,8 @@ namespace ESG.Infrastructure.Persistence
         public IDimensionRepo DimensionRepo { get; private set; }
         public IValuesRepo ValuesRepo { get; private set; }
         public IHierarchyRepo HierarchyRepo { get; private set; }
+        public IDataModelRepo DataModelRepo { get; private set; }
+
         private readonly ApplicationDbContext _context;
         IDbContextTransaction dbContextTransaction;
         private Hashtable _repositories;
