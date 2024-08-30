@@ -13,7 +13,6 @@ namespace ESG.Application.Dto.Hierarchy
 
     public class HierarchyEntryDto
     {
-        public long HierarchyId { get; set; }
         public long DataPointValuesId { get; set; }
     }
 

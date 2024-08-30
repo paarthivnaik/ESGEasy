@@ -21,13 +21,17 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
         public async Task AddHierarchy(HierarchyCreateRequestDto request)
         {
+            var hierarchyId = await _context.Hierarchy
+                .AsNoTracking()
+                .MaxAsync(a => a.HierarchyId);
+
             if (request != null && request.Entries != null)
             {
                 foreach (var res in request.Entries)
                 {
                     var hierarchy = new Hierarchy
                     {
-                        HierarchyId = res.HierarchyId,
+                        HierarchyId = hierarchyId + 1,
                         DataPointValuesId = res.DataPointValuesId
                     };
                     _context.Hierarchy.Add(hierarchy);
