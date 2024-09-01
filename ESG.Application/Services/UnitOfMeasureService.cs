@@ -27,6 +27,9 @@ namespace ESG.Application.Services
             }
             else
             {
+
+            }
+            {
                 var uomdata = _mapper.Map<UnitOfMeasure>(unitOfMeasure);
                 var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasure);
                 uomTranslationdata.UnitOfMeasureId = uomdata.Id;

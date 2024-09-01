@@ -39,6 +39,11 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<Standard> Standard { get; set; }
         public DbSet<DisclosureRequirement> DisclosureRequirement { get; set; }
         public DbSet<OrganizationHeirarchies> OrganizationHeirarchies { get; set; }
+        public DbSet<ESG.Domain.Entities.DataModel> DataModels { get; set; }
+        public DbSet<ModelDimensionTypes> ModelDimensionTypes { get; set; }
+        public DbSet<ModelDimensionValues> ModelDimensionValues { get; set; }
+        public DbSet<ModelDatapoints> ModelDatapoints { get; set; }
+        public DbSet<ModelConfiguration> ModelConfiguration { get; set; }
         public DateTime _curretDateTime { get; set; }
 
         public async Task<int> SaveChangesAsync()

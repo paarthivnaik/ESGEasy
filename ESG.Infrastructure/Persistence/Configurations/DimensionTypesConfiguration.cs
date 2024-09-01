@@ -16,9 +16,6 @@ namespace ESG.Infrastructure.Persistence.Configurations
             builder.HasMany(d => d.Dimensions)
                 .WithOne(dpt => dpt.DimensionType)
                 .HasForeignKey(d => d.DimensionTypeId);
-            builder.HasMany(d => d.DimensionTypeTranslations)
-                .WithOne(dpt => dpt.DimensionType)
-                .HasForeignKey(d => d.DimensionTypeId);
         }
     }
 }

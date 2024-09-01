@@ -1,4 +1,7 @@
-﻿using ESG.Application.Services.Interfaces;
+﻿using ESG.Application.Dto.DataModel;
+using ESG.Application.Services;
+using ESG.Application.Services.Interfaces;
+using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers
@@ -11,6 +14,12 @@ namespace ESG.API.Controllers
         {
             _logger = logger;
             _dataModelService = dataModelService;
+        }
+        [HttpPost("CreateDatamodel")]
+        public async Task<IActionResult> Get(DataModelCreateRequestDto dataModelCreateRequestDto)
+        {
+            await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
+            return Ok();
         }
     }
 }

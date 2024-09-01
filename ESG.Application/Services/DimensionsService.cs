@@ -33,7 +33,7 @@ namespace ESG.Application.Services
                 var dimensonsdata = _mapper.Map<Dimensions>(dimentions);
                 var dimensonsTranslationdata = _mapper.Map<DimensionTranslations>(dimentions);
                 dimensonsTranslationdata.DimensionsId = dimensonsdata.Id;
-                dimensonsdata.DimensionTranslations = new List<DimensionTranslations> { dimensonsTranslationdata };
+                //dimensonsdata.DimensionTranslations = new List<DimensionTranslations> { dimensonsTranslationdata };
                 await _unitOfWork.Repository<Dimensions>().AddAsync(dimensonsdata);
             }
             await _unitOfWork.SaveAsync();
@@ -79,8 +79,6 @@ namespace ESG.Application.Services
                 existingData.LongText = dimentionsRequest.LongText;
                 existingData.Code = dimentionsRequest.Code;
                 existingData.State = dimentionsRequest.State;
-                existingData.Name = dimentionsRequest.Name;
-                existingData.isHierarchical = dimentionsRequest.isHierarchical;
             }
             if (translationsData != null)
             {

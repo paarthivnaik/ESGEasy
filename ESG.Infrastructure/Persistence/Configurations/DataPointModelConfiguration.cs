@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ESG.Infrastructure.Persistence.Configurations
 {
-    public class DataPointModelConfiguration : IEntityTypeConfiguration<DatapointModel>
+    public class DataPointModelConfiguration : IEntityTypeConfiguration<Domain.Entities.DataModel>
     {
-        public void Configure(EntityTypeBuilder<DatapointModel> builder)
+        public void Configure(EntityTypeBuilder<Domain.Entities.DataModel> builder)
         {
 
             //builder.HasOne(dpv => dpv.DataPointTypes)

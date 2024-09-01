@@ -9,15 +9,12 @@ namespace ESG.Domain.Entities
 {
     public class DimensionType : AuditableWithBaseEntityAndOrganization<long>
     {
-        public string Name { get; set; }
         public string Code { get; set; }
         public string? ShortText { get; set; }
         public string LongText { get; set; }
         public long LanguageId { get; set; }
+        public bool IsType {  get; set; }
         public Language Language { get; set; }
-        public bool isHierarchical { get; set; }
-        public long CreatedBy { get; set; }
         public IEnumerable<Dimensions> Dimensions { get; set; }
-        public IEnumerable<DimensionTypeTranslations> DimensionTypeTranslations { get; set; }
     }
 }
