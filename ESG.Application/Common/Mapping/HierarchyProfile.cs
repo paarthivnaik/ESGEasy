@@ -34,9 +34,10 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+
             //for hierarchydata
             CreateMap<Hierarchy, HierarchyResponseDto>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.HierarchyId, opt => opt.MapFrom(src => src.HierarchyId))
                 .ForMember(dest => dest.DatapointId, opt => opt.MapFrom(src => src.DataPointValuesId));
         }
     }

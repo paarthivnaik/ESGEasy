@@ -12,6 +12,5 @@ namespace ESG.Domain.Entities
         public long HierarchyId { get; set; }
         public long? DataPointValuesId { get; set; }
         public DataPointValues DataPointValues { get; set; }
-        public IEnumerable<OrganizationHeirarchies> OrganizationHeirarchies { get; set; }
     }
 }

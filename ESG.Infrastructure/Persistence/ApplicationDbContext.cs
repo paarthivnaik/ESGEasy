@@ -189,6 +189,7 @@ namespace ESG.Infrastructure.Persistence
             UnitOfMeasureSeed.Seed(modelBuilder);
             UserRolesSeed.Seed(modelBuilder);
             UserSeed.Seed(modelBuilder);
+            DataModelSeeder.Seed(modelBuilder);
         }
 
     }

@@ -4,6 +4,7 @@ using ESG.Application.Dto.Get;
 using ESG.Application.Dto.Hierarchy;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,32 @@ namespace ESG.Application.Services
 
         public async Task AddHierarchy(HierarchyCreateRequestDto request)
         {
-            await _unitOfWork.HierarchyRepo.AddHierarchy(request);
+            if (request == null)
+                throw new ArgumentNullException(nameof(request), "Request cannot be null");
+
+            var hierarchyId = await _unitOfWork.HierarchyRepo.GetNextHierarchyIdAsync();
+            var hierarchies = new List<Hierarchy>();
+            if (request.DatapointIds != null && request.DatapointIds.Any())
+            {
+                foreach (var datapointId in request.DatapointIds)
+                {
+                    hierarchies.Add(new Hierarchy
+                    {
+                        HierarchyId = hierarchyId,
+                        DataPointValuesId = datapointId
+                    });
+                }
+                await _unitOfWork.Repository<Hierarchy>().AddRange(hierarchies);
+                var organizationHierarchy = new OrganizationHeirarchies
+                {
+                    HierarchyId = hierarchyId,
+                    OrganizationId = request.OrganizationId,
+                    CreatedBy = request.UserId,
+                    CreatedDate = DateTime.UtcNow,
+                };
+                await _unitOfWork.Repository<OrganizationHeirarchies>().AddAsync(organizationHierarchy);
+                await _unitOfWork.SaveAsync();
+            }
         }
 
         public async Task<IEnumerable<HeirarchyDataResponseDto>> GetMethod(int tableType, long? Id)
@@ -68,9 +94,10 @@ namespace ESG.Application.Services
             return result;
         }
 
-        public async Task<IEnumerable<HierarchyResponseDto>> GetSavedHeirarchy(long hierachyId)
+        public async Task<IEnumerable<HierarchyResponseDto>> GetHierarchydata(long organiizationId)
         {
-            var heirarchy = await _unitOfWork.HierarchyRepo.GetSavedHeirarchies(hierachyId);
+            var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organiizationId);
+            var heirarchy = await _unitOfWork.HierarchyRepo.GetHierarchydata(hierarchyId);
             return _mapper.Map<IEnumerable<HierarchyResponseDto>>(heirarchy);
         }
     }

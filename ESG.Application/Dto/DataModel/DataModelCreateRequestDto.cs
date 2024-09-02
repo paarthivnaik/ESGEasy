@@ -8,20 +8,17 @@ namespace ESG.Application.Dto.DataModel
 {
     public class DataModelCreateRequestDto
     {
-        public long DataPointId { get; set; }
         public long UserId { get; set; }
         public long OrganizationId { get; set; }
-        public List<DimensionTypeDataDTO> DimensionTypes { get; set; } = new List<DimensionTypeDataDTO>();
+        public string? ModelName { get; set; }
+        public List<long> Datapoints { get; set; } = new List<long>();
+        public List<DimensionTypeDTO> DimensionTypes { get; set; } = new List<DimensionTypeDTO>();
 
-        public class DimensionTypeDataDTO
+        public class DimensionTypeDTO
         {
             public long DimensionTypeId { get; set; }
-            public List<DimensionValueDTO> DimensionValues { get; set; } = new List<DimensionValueDTO>();
-        }
-
-        public class DimensionValueDTO
-        {
-            public long DimensionValueId { get; set; }
+            public List<long> DimensionValues { get; set; } = new List<long>();
         }
     }
+
 }

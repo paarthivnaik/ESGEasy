@@ -47,7 +47,6 @@ namespace ESG.Infrastructure.Persistence
 
         public async Task<int> SaveAsync()
         {
-
             return await _context.SaveChangesAsync();
         }
         public int Save()

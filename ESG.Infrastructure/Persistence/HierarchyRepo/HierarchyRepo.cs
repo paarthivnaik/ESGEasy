@@ -19,37 +19,24 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
             _context = context;
         }
 
-        public async Task AddHierarchy(HierarchyCreateRequestDto request)
+        public async Task<long> GetNextHierarchyIdAsync()
         {
-            var hierarchyId = await _context.Hierarchy
+            var maxHierarchyId = await _context.Hierarchy
                 .AsNoTracking()
-                .MaxAsync(a => a.HierarchyId);
-
-            if (request != null && request.Entries != null)
-            {
-                foreach (var res in request.Entries)
-                {
-                    var hierarchy = new Hierarchy
-                    {
-                        HierarchyId = hierarchyId + 1,
-                        DataPointValuesId = res.DataPointValuesId
-                    };
-                    _context.Hierarchy.Add(hierarchy);
-                }
-
-                await _context.SaveChangesAsync();
-            }
+                .Select(a => (long?)a.HierarchyId) 
+                .MaxAsync();
+            return maxHierarchyId.HasValue ? maxHierarchyId.Value + 1 : 1; 
         }
-
-        public async Task<IEnumerable<Hierarchy>> GetSavedHeirarchies(long hierarchyId)
+        public async Task<long> GetHierarchyIdByOrgId(long organizationId)
         {
-            var heirarchy = await _context.Hierarchy
+            var hierarchyId = await _context.OrganizationHeirarchies
                 .AsNoTracking()
-                .Where(t => t.HierarchyId == hierarchyId)
-                .ToListAsync();
-            return heirarchy;
-        }
+                .Where(t => t.OrganizationId == organizationId)
+                .Select(a => a.HierarchyId)
+                .FirstOrDefaultAsync(); 
 
+            return hierarchyId;
+        }
         public async Task<IEnumerable<DataPointValues>> GetDatapoints(long? disReqId)
         {
             var datapoints = await _context.DataPointValues
@@ -83,6 +70,15 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
                 .AsNoTracking()
                 .ToListAsync();
             return topic;
+        }
+
+        public async Task<IEnumerable<Hierarchy>> GetHierarchydata(long hierarchyId)
+        {
+            var hierarchies = await _context.Hierarchy
+                .AsNoTracking()
+                .Where(a => a.HierarchyId == hierarchyId)
+                .ToListAsync();
+            return hierarchies;
         }
     }
 }

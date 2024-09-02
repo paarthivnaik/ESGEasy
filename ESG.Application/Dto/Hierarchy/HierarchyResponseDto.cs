@@ -8,7 +8,7 @@ namespace ESG.Application.Dto.Hierarchy
 {
     public class HierarchyResponseDto
     {
-        public long Id { get; set; }
+        public long HierarchyId { get; set; }
         public long DatapointId { get; set; }
     }
 }

@@ -40,10 +40,10 @@ namespace ESG.API.Controllers
             var list = await _hierarchyService.GetMethod(tableType, Id);
             return list;
         }
-        [HttpGet("GetSavedHeirarchy")]
-        public async Task<IEnumerable<HierarchyResponseDto>> GetSavedHeirarchy(long hierachyId)
+        [HttpGet("GetHierarchyIdByOrgId")]
+        public async Task<IEnumerable<HierarchyResponseDto>> GetHierarchyData(long organizationId)
         {
-            var list = await _hierarchyService.GetSavedHeirarchy(hierachyId);
+            var list = await _hierarchyService.GetHierarchydata(organizationId);
             return list;
         }
     }

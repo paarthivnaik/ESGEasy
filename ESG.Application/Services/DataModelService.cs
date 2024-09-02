@@ -23,85 +23,86 @@ namespace ESG.Application.Services
         public async Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto)
         {
             if (dataModelCreateRequestDto == null)
-                throw new ArgumentException("Invalid JSON data");
+                throw new ArgumentNullException(nameof(dataModelCreateRequestDto), "Invalid JSON data");
 
-            // Create DataModel
+            if (string.IsNullOrWhiteSpace(dataModelCreateRequestDto.ModelName))
+                throw new ArgumentException("Model name cannot be empty");
+
+            if (dataModelCreateRequestDto.UserId <= 0)
+                throw new ArgumentException("Invalid user ID");
+
+            var utcNow = DateTime.UtcNow;
+
             var dataModel = new ESG.Domain.Entities.DataModel
             {
-                ModelId = 1,
-                OrganizationId = dataModelCreateRequestDto.OrganizationId,
+                ModelName = dataModelCreateRequestDto.ModelName,
                 CreatedBy = dataModelCreateRequestDto.UserId,
-                CreatedDate = DateTime.UtcNow,
+                CreatedDate = utcNow,
                 LastModifiedBy = dataModelCreateRequestDto.UserId,
-                LastModifiedDate = DateTime.UtcNow,
+                LastModifiedDate = utcNow,
                 State = StateEnum.active
             };
 
-            // Add DataModel to the context
             await _unitOfWork.Repository<ESG.Domain.Entities.DataModel>().AddAsync(dataModel);
             await _unitOfWork.SaveAsync();
 
-            // Get the ID of the created DataModel
             var dataModelId = dataModel.Id;
-
-            // Create and add ModelDatapoints
-            var modelDatapoint = new ModelDatapoints
-            {
-                DataModelId = dataModelId,
-                DatapointValuesId = dataModelCreateRequestDto.DataPointId,
-                State = StateEnum.active,
-                CreatedBy = dataModelCreateRequestDto.UserId,
-                CreatedDate = DateTime.UtcNow,
-                LastModifiedBy = dataModelCreateRequestDto.UserId,
-                LastModifiedDate = DateTime.UtcNow
-            };
-
-            await _unitOfWork.Repository<ModelDatapoints>().AddAsync(modelDatapoint);
-            await _unitOfWork.SaveAsync();
-
-            // Create and add ModelDimensionTypes
+            var modelDatapoints = new List<ModelDatapoints>();
             var modelDimensionTypes = new List<ModelDimensionTypes>();
+            var modelDimensionValues = new List<ModelDimensionValues>();
+
+            // Processing datapoints directly as list of longs
+            foreach (var datapointId in dataModelCreateRequestDto.Datapoints)
+            {
+                modelDatapoints.Add(new ModelDatapoints
+                {
+                    DataModelId = dataModelId,
+                    DatapointValuesId = datapointId,
+                    State = StateEnum.active,
+                    CreatedBy = dataModelCreateRequestDto.UserId,
+                    CreatedDate = utcNow,
+                    LastModifiedBy = dataModelCreateRequestDto.UserId,
+                    LastModifiedDate = utcNow
+                });
+            }
+
+            // Processing dimension types and dimension values
             foreach (var dimensionType in dataModelCreateRequestDto.DimensionTypes)
             {
-                var modelDimensionType = new ModelDimensionTypes
+                modelDimensionTypes.Add(new ModelDimensionTypes
                 {
                     DataModelId = dataModelId,
                     DimensionTypeId = dimensionType.DimensionTypeId,
                     State = StateEnum.active,
                     CreatedBy = dataModelCreateRequestDto.UserId,
-                    CreatedDate = DateTime.UtcNow,
+                    CreatedDate = utcNow,
                     LastModifiedBy = dataModelCreateRequestDto.UserId,
-                    LastModifiedDate = DateTime.UtcNow
-                };
-                modelDimensionTypes.Add(modelDimensionType);
-            }
+                    LastModifiedDate = utcNow
+                });
 
-            await _unitOfWork.Repository<ModelDimensionTypes>().AddRange(modelDimensionTypes);
-            await _unitOfWork.SaveAsync();
-
-            // Create and add ModelDimensionValues
-            var modelDimensionValues = new List<ModelDimensionValues>();
-            foreach (var dimensionType in dataModelCreateRequestDto.DimensionTypes)
-            {
-                foreach (var dimValue in dimensionType.DimensionValues)
+                foreach (var dimensionValueId in dimensionType.DimensionValues)
                 {
-                    var modelDimensionValue = new ModelDimensionValues
+                    modelDimensionValues.Add(new ModelDimensionValues
                     {
                         DataModelId = dataModelId,
-                        DimensionsId = dimValue.DimensionValueId,
+                        DimensionsId = dimensionValueId,
                         State = StateEnum.active,
                         CreatedBy = dataModelCreateRequestDto.UserId,
-                        CreatedDate = DateTime.UtcNow,
+                        CreatedDate = utcNow,
                         LastModifiedBy = dataModelCreateRequestDto.UserId,
-                        LastModifiedDate = DateTime.UtcNow
-                    };
-                    modelDimensionValues.Add(modelDimensionValue);
+                        LastModifiedDate = utcNow
+                    });
                 }
             }
 
+            // Adding all to the database
+            await _unitOfWork.Repository<ModelDatapoints>().AddRange(modelDatapoints);
+            await _unitOfWork.Repository<ModelDimensionTypes>().AddRange(modelDimensionTypes);
             await _unitOfWork.Repository<ModelDimensionValues>().AddRange(modelDimensionValues);
             await _unitOfWork.SaveAsync();
         }
+
+
 
     }
 }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ESG.Domain.Entities
 {
-    public class DataModel : AuditableWithBaseEntityAndOrganization<long>
+    public class DataModel : AuditableWithBaseEntity<long>
     {
-        public long? ModelId { get; set; }
+        public string? ModelName { get; set; }
         public IEnumerable<ModelDatapoints> ModelDatapoints { get; set; }
         public IEnumerable<ModelDimensionTypes> ModelDimensionTypes { get; set; }
         public IEnumerable<ModelDimensionValues> ModelDimensionValues { get; set; }

@@ -10,12 +10,12 @@ namespace ESG.Application.Common.Interface.Hierarchy
 {
     public interface IHierarchyRepo
     {
-        //Task AddHierarchy(HierarchyCreateRequestDto request);
-        Task AddHierarchy(HierarchyCreateRequestDto request);
+        Task<long> GetNextHierarchyIdAsync();
         Task<IEnumerable<Topic>> GetTopics();
         Task<IEnumerable<Standard>> GetStandards(long? topicId);
         Task<IEnumerable<DisclosureRequirement>> GetDisclosureRequirements(long? standardId);
         Task<IEnumerable<DataPointValues>> GetDatapoints(long? disReqId);
-        Task<IEnumerable<ESG.Domain.Entities.Hierarchy>> GetSavedHeirarchies(long hierarchyId);
+        Task<long> GetHierarchyIdByOrgId(long organizationId);
+        Task<IEnumerable<ESG.Domain.Entities.Hierarchy>> GetHierarchydata(long hierarchyId);
     }
 }
