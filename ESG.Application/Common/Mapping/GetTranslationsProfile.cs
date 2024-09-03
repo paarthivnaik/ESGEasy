@@ -35,7 +35,6 @@ namespace ESG.Application.Common.Mapping
 
             //Dimnesions
             CreateMap<DimensionTranslations, GetTranslationsResponseDto>()
-              .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
               .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
               .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
               .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy))
@@ -44,7 +43,6 @@ namespace ESG.Application.Common.Mapping
               .ForMember(dest => dest.TranslationsId, opt => opt.MapFrom(src => src.Id));
             //DimensionType
             CreateMap<DimensionTypeTranslations, GetTranslationsResponseDto>()
-              .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
               .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
               .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
               .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy))

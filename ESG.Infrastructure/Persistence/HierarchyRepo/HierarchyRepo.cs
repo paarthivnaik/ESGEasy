@@ -27,7 +27,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
                 .MaxAsync();
             return maxHierarchyId.HasValue ? maxHierarchyId.Value + 1 : 1; 
         }
-        public async Task<long> GetHierarchyIdByOrgId(long organizationId)
+        public async Task<long?> GetHierarchyIdByOrgId(long organizationId)
         {
             var hierarchyId = await _context.OrganizationHeirarchies
                 .AsNoTracking()
@@ -72,7 +72,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
             return topic;
         }
 
-        public async Task<IEnumerable<Hierarchy>> GetHierarchydata(long hierarchyId)
+        public async Task<IEnumerable<Hierarchy>> GetHierarchyById(long? hierarchyId)
         {
             var hierarchies = await _context.Hierarchy
                 .AsNoTracking()
@@ -80,5 +80,16 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
                 .ToListAsync();
             return hierarchies;
         }
+
+        public async Task<long> GetHierarchyIdByUserIdOrgId(long userId, long orgId)
+        {
+            var hierarchyId = await _context.OrganizationHeirarchies
+                .AsNoTracking()
+                .Where(a => a.CreatedBy == userId && a.OrganizationId == orgId)
+                .Select(a => a.HierarchyId)
+                .FirstOrDefaultAsync();
+            return hierarchyId;
+        }
+
     }
 }

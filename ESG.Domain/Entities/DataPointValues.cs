@@ -16,12 +16,12 @@ namespace ESG.Domain.Entities
         public long? UnitOfMeasureId { get; set; }
         public UnitOfMeasure UnitOfMeasure { get; set; }
         public long? CurrencyId { get; set; }
+        public Currency Currency { get; set; }
         public bool? IsNarrative { get; set; }
         public string Purpose { get; set; }
         public long LanguageId { get; set; }
         public long? DisclosureRequirementId { get; set; }
         public DisclosureRequirement DisclosureRequirement { get; set; }
-        public Currency Currency { get; set; }
         public Language Language { get; set; }
         public IEnumerable<DatapointTypeTranslations> DatapointTypeTranslations { get; set; }
         public IEnumerable<Hierarchy>? Hierarchies { get; set; }

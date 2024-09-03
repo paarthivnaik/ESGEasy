@@ -58,7 +58,6 @@ namespace ESG.Application.Services
             translationsData.ShortText = dimentionType.ShortText;
             translationsData.LongText = dimentionType.LongText;
             translationsData.State = dimentionType.State;
-            translationsData.Name = dimentionType.Name;
             await _unitOfWork.Repository<DimensionType>().Update(existingData);
             await _unitOfWork.Repository<DimensionTypeTranslations>().Update(translationsData);
             await _unitOfWork.SaveAsync();

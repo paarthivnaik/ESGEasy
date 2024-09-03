@@ -10,7 +10,7 @@ namespace ESG.Domain.Entities
     public class Hierarchy : BaseEntity<long>
     {
         public long HierarchyId { get; set; }
-        public long? DataPointValuesId { get; set; }
+        public long DataPointValuesId { get; set; }
         public DataPointValues DataPointValues { get; set; }
     }
 }

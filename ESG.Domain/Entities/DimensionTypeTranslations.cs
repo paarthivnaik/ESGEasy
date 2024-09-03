@@ -9,7 +9,7 @@ namespace ESG.Domain.Entities
 {
     public class DimensionTypeTranslations : AuditableWithBaseEntity<long>
     {
-        public string Name { get; set; }
+        //public string Name { get; set; }
         public string ShortText { get; set; }
         public string LongText { get; set; }
         public long DimensionTypeId { get; set; }

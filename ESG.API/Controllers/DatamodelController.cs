@@ -16,10 +16,11 @@ namespace ESG.API.Controllers
             _dataModelService = dataModelService;
         }
         [HttpPost("CreateDatamodel")]
-        public async Task<IActionResult> Get(DataModelCreateRequestDto dataModelCreateRequestDto)
+        public async Task<IActionResult> CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto)
         {
             await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
             return Ok();
         }
+
     }
 }

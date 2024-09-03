@@ -41,10 +41,16 @@ namespace ESG.API.Controllers
             return list;
         }
         [HttpGet("GetHierarchyIdByOrgId")]
-        public async Task<IEnumerable<HierarchyResponseDto>> GetHierarchyData(long organizationId)
+        public async Task<HierarchyResponseDto> GetHierarchyData(long organizationId)
         {
             var list = await _hierarchyService.GetHierarchydata(organizationId);
             return list;
         }
+        //[HttpGet("GetUserDatapoints")]
+        //public async Task<HierarchyResponseDto> GetUserDatapoints(long userId, long organizationId)
+        //{
+        //    var list = await _hierarchyService.GetUserDatapoints(userId, organizationId);
+        //    return list;
+        //}
     }
 }

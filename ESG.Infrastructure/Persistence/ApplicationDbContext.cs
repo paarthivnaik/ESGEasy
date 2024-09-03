@@ -190,6 +190,7 @@ namespace ESG.Infrastructure.Persistence
             UserRolesSeed.Seed(modelBuilder);
             UserSeed.Seed(modelBuilder);
             DataModelSeeder.Seed(modelBuilder);
+            HierarchySeed.Seed(modelBuilder);
         }
 
     }
