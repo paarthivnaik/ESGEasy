@@ -1,4 +1,5 @@
 ﻿using ESG.Application.Dto.DataModel;
+using ESG.Application.Dto.DimensionTypes;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
@@ -21,6 +22,21 @@ namespace ESG.API.Controllers
             await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
             return Ok();
         }
-
+        [HttpPost("ConfiguringModel")]
+        public async Task<IActionResult> ConfiguringModel(ConfiguringDataModelRequestDto configuringDataModelRequestDto)
+        {
+            await _dataModelService.ConfiguringModel(configuringDataModelRequestDto);
+            return Ok();
+        }
+        [HttpGet("GetDimensionTypesByModelId")]
+        public async Task<List<long>?> GetDimensionTypeByModelId(long id)
+        {
+            return await _dataModelService.GetDimensionTypeByModelId(id);
+        }
+        [HttpGet("GetDimensionValuesByModelId")]
+        public async Task<List<long>?> GetDimensionValuesByModelId(long id)
+        {
+            return await _dataModelService.GetDimensionValuesByModelId(id);
+        }
     }
 }

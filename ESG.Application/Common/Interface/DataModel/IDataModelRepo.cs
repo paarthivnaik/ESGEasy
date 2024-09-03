@@ -10,5 +10,7 @@ namespace ESG.Application.Common.Interface.DataModel
     public interface IDataModelRepo
     {
         //Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto);
+        Task<List<long>?> GetDimensionTypesByModelId(long modelId);
+        Task<List<long>?> GetDimensionValuesByModelId(long modelId);
     }
 }

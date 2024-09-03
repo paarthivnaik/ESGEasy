@@ -16,6 +16,5 @@ namespace ESG.Application.Dto.Dimensions
         public string LongText { get; set; }
         public long UserId { get; set; }
         public string LanguageId { get; set; }
-        public bool isHierarchical { get; set; }
     }
 }

@@ -18,71 +18,28 @@ namespace ESG.Infrastructure.Persistence.DataModel
         {
             _context = context;
         }
-        //public async Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto)
-        //{
-        //    if (dataModelCreateRequestDto == null)
-        //        throw new ArgumentException("Invalid JSON data");
 
-        //    // Create DataModels
-        //    var dataModels = new List<ESG.Domain.Entities.DataModel>();
-        //    var modelDatapoint = new ModelDatapoints();
-        //    var modelDimensionTypes = new ModelDimensionTypes();
-        //    var modelDimensionValues = new ModelDimensionValues();
+        public async Task<List<long>?> GetDimensionTypesByModelId(long modelId)
+        {
+            var list = await _context.ModelDimensionTypes
+                .AsNoTracking()
+                .Where(a => a.DataModelId == modelId)
+                .Select(a => a.DimensionTypeId)
+                .ToListAsync();
 
-        //    foreach (var dimensionTypeDto in dataModelCreateRequestDto.DimensionTypes)
-        //    {
-        //        var dataModel = new ESG.Domain.Entities.DataModel
-        //        {
-        //            OrganizationId = dataModelCreateRequestDto.OrganizationId,
-        //            CreatedBy = dataModelCreateRequestDto.UserId,
-        //            CreatedDate = DateTime.UtcNow,
-        //            LastModifiedBy = dataModelCreateRequestDto.UserId,
-        //            LastModifiedDate = DateTime.UtcNow,
-        //            State = StateEnum.active
-        //        };
-        //        foreach (var dimensionType in dataModelCreateRequestDto.DimensionTypes)
-        //        {
-        //            modelDimensionTypes.DataModelId = dataModel.Id;
-        //            modelDimensionTypes.DimensionTypeId = dimensionTypeDto.DimensionTypeId;
-        //            dataModel.ModelDimensionTypes = new List<ModelDimensionTypes> { modelDimensionTypes };
-        //            foreach (var dimvalues in dimensionType.DimensionValues)
-        //            {
-        //                modelDimensionValues.DataModelId = dataModel.Id;
-        //                modelDimensionValues.DimensionsId = dimvalues.DimensionValueId;
-        //                dataModel.ModelDimensionValues = new List<ModelDimensionValues> { modelDimensionValues };
-        //            }
-        //        }
-        //        dataModels.Add(dataModel);
-        //    }
+            return list;
+        }
 
-        //    // Add DataModels to the context
-        //    _context.DataModels.AddRange(dataModels);
-        //    await _context.SaveChangesAsync();
 
-            //// Insert DataModels
-            //var dataModels = new ESG.Domain.Entities.DataModel();
+        public async Task<List<long>?> GetDimensionValuesByModelId(long modelId)
+        {
+            var list = await _context.ModelDimensionValues
+                .AsNoTracking()
+                .Where(a => a.DataModelId == modelId)
+                .Select(a => a.DimensionsId)
+                .ToListAsync();
+            return list;
+        }
 
-            //dataModels = new ESG.Domain.Entities.DataModel
-            //{
-            //    OrganizationId = dataModelCreateRequestDto.OrganizationId,
-            //    CreatedBy = dataModelCreateRequestDto.UserId,
-            //};
-            //foreach (var dimansionType in dataModelCreateRequestDto.DimensionTypes)
-            //{
-            //    modelDimensionTypes.DataModelId = dataModels.Id;
-            //    modelDimensionTypes.DimensionTypeId = dimansionType.DimensionTypeId;
-            //    foreach (var dimvalue in dimansionType.DimensionValues)
-            //    {
-            //        modelDimensionValues.DataModelId = dataModels.Id;
-            //        modelDimensionValues.DimensionsId = dimvalue.DimensionValueId;
-            //    }
-            //    dataModels.Add(dataModels);
-            ////}
-
-            //_context.DataModels.AddRange(dataModels);
-            //await _context.SaveChangesAsync();
-
-            
-        
     }
 }

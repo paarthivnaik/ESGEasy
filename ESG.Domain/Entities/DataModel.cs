@@ -14,6 +14,5 @@ namespace ESG.Domain.Entities
         public IEnumerable<ModelDimensionTypes> ModelDimensionTypes { get; set; }
         public IEnumerable<ModelDimensionValues> ModelDimensionValues { get; set; }
         public IEnumerable<ModelConfiguration> ModelConfiguration { get; set; }
-
     }
 }

@@ -12,8 +12,8 @@ namespace ESG.Domain.Entities
         public long DataModelId { get; set; }
         public DataModel DataModel { get; set; }
         public long RowId { get; set; }
-        public long ColumnId { get; set; }
-        public long FilterId { get; set; }
+        public long? ColumnId { get; set; }
         public ModelViewTypeEnum ViewType { get; set; }
+        public IEnumerable<DataModelFilters> DataModelFilters { get; set; }
     }
 }

@@ -16,5 +16,6 @@ namespace ESG.Domain.Entities
         public bool IsType {  get; set; }
         public Language Language { get; set; }
         public IEnumerable<Dimensions> Dimensions { get; set; }
+        public IEnumerable<ModelDimensionTypes> DimensionTypes { get; set; }
     }
 }

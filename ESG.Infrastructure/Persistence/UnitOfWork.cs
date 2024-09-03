@@ -5,6 +5,7 @@ using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Common.Interface.Value;
 using ESG.Domain.Entities;
+using ESG.Infrastructure.Persistence.DataModel;
 using ESG.Infrastructure.Persistence.DimensionRepo;
 using ESG.Infrastructure.Persistence.HierarchyRepo;
 using ESG.Infrastructure.Persistence.ValueRepo;
@@ -41,6 +42,7 @@ namespace ESG.Infrastructure.Persistence
             DimensionRepo = new DimensionsRepo(_context);
             ValuesRepo = new ValuesRepo(_context);
             HierarchyRepo = new ESG.Infrastructure.Persistence.HierarchyRepo.HierarchyRepo(_context);
+            DataModelRepo = new DataModelRepo(_context);
         }
         #endregion
        

@@ -8,7 +8,7 @@ namespace ESG.Domain.Entities
 {
     public enum ModelViewTypeEnum
     {
-        Narrative = 1,
-        Value = 2,
+        Fact = 1,
+        Narrative = 2,
     }
 }

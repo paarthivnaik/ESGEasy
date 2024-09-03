@@ -4,6 +4,7 @@ using ESG.Application.Dto.DataModel;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,39 @@ namespace ESG.Application.Services
         {
             _unitOfWork = unitOfWork;
         }
+
+        public async Task ConfiguringModel(ConfiguringDataModelRequestDto configuringDataModelRequestDto)
+        {
+            if (configuringDataModelRequestDto == null)
+            {
+                throw new ArgumentNullException(nameof(configuringDataModelRequestDto), "Invalid JSON data");
+            }
+            var modelConfiguration = new Domain.Entities.ModelConfiguration
+            {
+                DataModelId = configuringDataModelRequestDto.DataModelId,
+                ViewType = configuringDataModelRequestDto.ViewType,
+                RowId = configuringDataModelRequestDto.RowId,
+                ColumnId = configuringDataModelRequestDto.ColumnId,
+                State = StateEnum.active,
+                CreatedBy = configuringDataModelRequestDto.UserId,
+            };
+            await _unitOfWork.Repository<Domain.Entities.ModelConfiguration>().AddAsync(modelConfiguration);
+            var dataModelFilters = configuringDataModelRequestDto.FilterIds
+                .Select(filter => new DataModelFilters
+                {
+                    ModelConfigurationId = modelConfiguration.Id,
+                    FilterId = filter,
+                    CreatedBy = modelConfiguration.CreatedBy,
+                }).ToList();
+            foreach (var filter in dataModelFilters)
+            {
+                modelConfiguration.DataModelFilters = new List<DataModelFilters> { filter };
+            }
+            await _unitOfWork.Repository<DataModelFilters>().AddRange(dataModelFilters);
+            await _unitOfWork.SaveAsync();
+        }
+
+
 
         public async Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto)
         {
@@ -45,13 +79,10 @@ namespace ESG.Application.Services
 
             await _unitOfWork.Repository<ESG.Domain.Entities.DataModel>().AddAsync(dataModel);
             await _unitOfWork.SaveAsync();
-
             var dataModelId = dataModel.Id;
             var modelDatapoints = new List<ModelDatapoints>();
             var modelDimensionTypes = new List<ModelDimensionTypes>();
             var modelDimensionValues = new List<ModelDimensionValues>();
-
-            // Processing datapoints directly as list of longs
             foreach (var datapointId in dataModelCreateRequestDto.Datapoints)
             {
                 modelDatapoints.Add(new ModelDatapoints
@@ -65,8 +96,6 @@ namespace ESG.Application.Services
                     LastModifiedDate = utcNow
                 });
             }
-
-            // Processing dimension types and dimension values
             foreach (var dimensionType in dataModelCreateRequestDto.DimensionTypes)
             {
                 modelDimensionTypes.Add(new ModelDimensionTypes
@@ -94,8 +123,6 @@ namespace ESG.Application.Services
                     });
                 }
             }
-
-            // Adding all to the database
             await _unitOfWork.Repository<ModelDatapoints>().AddRange(modelDatapoints);
             await _unitOfWork.Repository<ModelDimensionTypes>().AddRange(modelDimensionTypes);
             await _unitOfWork.Repository<ModelDimensionValues>().AddRange(modelDimensionValues);
@@ -103,6 +130,33 @@ namespace ESG.Application.Services
         }
 
 
+        public async Task<List<long>> GetDimensionTypeByModelId(long modelId)
+        {
+            if (modelId <= 0)
+            {
+                throw new ArgumentException("Invalid ModelId");
+            }
+            var list = await _unitOfWork.DataModelRepo.GetDimensionTypesByModelId(modelId);
+            if (list == null || !list.Any())
+            {
+                throw new ArgumentException("ModelId not linked with dimensionTypes");
+            }
+            return list;
+        }
 
+
+        public async Task<List<long>> GetDimensionValuesByModelId(long modelId)
+        {
+            if (modelId <= 0)
+            {
+                throw new ArgumentException("Invalid ModelId");
+            }
+            var list = await _unitOfWork.DataModelRepo.GetDimensionValuesByModelId(modelId);
+            if (list == null || !list.Any())
+            {
+                throw new ArgumentException("ModelId not linked with dimensionValues");
+            }
+            return list;
+        }
     }
 }
