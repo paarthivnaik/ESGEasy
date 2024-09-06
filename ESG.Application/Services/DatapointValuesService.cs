@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
+using ESG.Application.Dto.DatapointValue;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using System;
@@ -13,16 +14,18 @@ namespace ESG.Application.Services
     public class DatapointValuesService : IDatapointValuesService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
         public DatapointValuesService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public async Task AddAsync(DataPointValues dataPointValues)
+        public async Task AddAsync(DatapointValueCreateRequestDto dataPointValues)
         {
-           await _unitOfWork.Repository<DataPointValues>().AddAsync(dataPointValues);
+            var list = _mapper.Map<DataPointValues>(dataPointValues);
+            await _unitOfWork.Repository<DataPointValues>().AddAsync(list);
             await _unitOfWork.SaveAsync();
-           
         }
 
         public async Task<bool> Delete(long Id)
@@ -31,9 +34,11 @@ namespace ESG.Application.Services
             return res;
         }
 
-        public async Task<IEnumerable<DataPointValues>> GetAll()
+        public async Task<IEnumerable<DatapointValuesResponseDto>> GetAll()
         {
-            return await _unitOfWork.Repository<DataPointValues>().GetAll();
+            var datapointValues = await _unitOfWork.Repository<DataPointValues>().GetAll();
+            var list = _mapper.Map<IEnumerable<DatapointValuesResponseDto>>(datapointValues);
+            return list;
         }
 
         public async Task<DataPointValues> GetById(long Id)

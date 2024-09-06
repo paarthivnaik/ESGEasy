@@ -1,4 +1,5 @@
-﻿using ESG.Application.Services.Interfaces;
+﻿using ESG.Application.Dto.DatapointValue;
+using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,14 +16,13 @@ namespace ESG.API.Controllers
             _logger = logger;
             _datapintValuesService = datapintValuesService;
         }
-        // GET: api/<DatapointValuesController>
+        
         [HttpGet]
-        public async Task<IEnumerable<DataPointValues>> Get()
+        public async Task<IEnumerable<DatapointValuesResponseDto>> Get()
         {
             return await _datapintValuesService.GetAll();
         }
 
-        // GET api/<DatapointValuesController>/5
         [HttpGet("{id}")]
         public async Task<DataPointValues> Get(int id)
         {
@@ -31,7 +31,7 @@ namespace ESG.API.Controllers
 
         // POST api/<DatapointValuesController>
         [HttpPost]
-        public async Task Post([FromBody] DataPointValues value)
+        public async Task Post([FromBody] DatapointValueCreateRequestDto value)
         {
             await _datapintValuesService.AddAsync(value);
         }
