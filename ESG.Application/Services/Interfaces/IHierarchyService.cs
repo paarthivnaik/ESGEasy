@@ -12,7 +12,7 @@ namespace ESG.Application.Services.Interfaces
     {
         Task AddHierarchy(HierarchyCreateRequestDto request);
         Task<IEnumerable<HeirarchyDataResponseDto>> GetMethod(int tableType, long? Id);
-        Task<HierarchyResponseDto> GetHierarchydata(long organizationId);
+        Task<HierarchyResponseDto> GetHierarchyData(long organizationId);
         //Task<HierarchyResponseDto> GetUserDatapoints(long UserId, long organizationId);
     }
 }

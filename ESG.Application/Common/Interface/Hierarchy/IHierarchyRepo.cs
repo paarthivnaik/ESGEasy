@@ -11,6 +11,7 @@ namespace ESG.Application.Common.Interface.Hierarchy
     public interface IHierarchyRepo
     {
         Task<long> GetNextHierarchyIdAsync();
+        Task<IEnumerable<long>> GetDatapointsByHierarchyId(long? hierarchyId);
         Task<IEnumerable<Topic>> GetTopics();
         Task<IEnumerable<Standard>> GetStandards(long? topicId);
         Task<IEnumerable<DisclosureRequirement>> GetDisclosureRequirements(long? standardId);

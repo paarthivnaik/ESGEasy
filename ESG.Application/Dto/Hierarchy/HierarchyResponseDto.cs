@@ -8,7 +8,31 @@ namespace ESG.Application.Dto.Hierarchy
 {
     public class HierarchyResponseDto
     {
-        public long HierarchyId { get; set; }
-        public List<long> DatapointId { get; set; }
+        public List<TopicDto> Topics { get; set; }
+        public List<SubTopicDto> SubTopics { get; set; }
+        public List<DisclosureRequirementDto> DisclosureRequirements { get; set; }
+        public List<DataPointDto> DataPoints { get; set; }
+        public class TopicDto
+        {
+            public long Id { get; set; }
+        }
+
+        public class SubTopicDto
+        {
+            public long Id { get; set; }
+            public long TopicId { get; set; }
+        }
+
+        public class DisclosureRequirementDto
+        {
+            public long Id { get; set; }
+            public long SubTopicId { get; set; }
+        }
+
+        public class DataPointDto
+        {
+            public long Id { get; set; }
+            public long DisclosureRequirementId { get; set; }
+        }
     }
 }
