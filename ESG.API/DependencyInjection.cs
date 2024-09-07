@@ -29,6 +29,8 @@ namespace ESG.API
             services.AddScoped<IValuesService, ValuesService>();
             services.AddScoped<IHierarchyService, HierarchyService>();
             services.AddScoped<IDataModelService, DataModelService>();
+            services.AddScoped<ICurrencyService, CurrencyService>();
+            services.AddScoped<IDisclosureRequirementService, DisclosureRequirementService>();
             return services;
         }
     }

@@ -51,9 +51,6 @@ namespace ESG.Application.Services
             await _unitOfWork.Repository<DataModelFilters>().AddRange(dataModelFilters);
             await _unitOfWork.SaveAsync();
         }
-
-
-
         public async Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto)
         {
             if (dataModelCreateRequestDto == null)
