@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace ESG.Domain.Entities
 {
-    public class DataModel : AuditableWithBaseEntity<long>
+    public class DataModel : AuditableWithBaseEntityAndOrganization<long>
     {
         public string? ModelName { get; set; }
         public IEnumerable<ModelDatapoints> ModelDatapoints { get; set; }
         public IEnumerable<ModelDimensionTypes> ModelDimensionTypes { get; set; }
         public IEnumerable<ModelDimensionValues> ModelDimensionValues { get; set; }
         public IEnumerable<ModelConfiguration> ModelConfiguration { get; set; }
+        public IEnumerable<ModelFilterCombinations> ModelFilterCombinations { get; set; }
     }
 }

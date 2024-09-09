@@ -29,5 +29,6 @@ namespace ESG.Domain.Entities
         public IEnumerable<DimensionType> DimensionType { get; set; }
         public IEnumerable<DataPointValues> DataPointValues { get; set; }
         public IEnumerable<DataPointTypes> DataPointTypes { get; set; }
+        public IEnumerable<DataModel> DataModel { get; set; }
     }
 }

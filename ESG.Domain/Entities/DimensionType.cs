@@ -17,5 +17,7 @@ namespace ESG.Domain.Entities
         public Language Language { get; set; }
         public IEnumerable<Dimensions> Dimensions { get; set; }
         public IEnumerable<ModelDimensionTypes> DimensionTypes { get; set; }
+        public IEnumerable<ModelConfiguration> ModelConfigurations { get; set; }
+        public IEnumerable<ModelFilterCombinationalValues> ModelFilterCombinationalValues { get; set; }
     }
 }
