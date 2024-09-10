@@ -24,32 +24,100 @@ namespace ESG.Application.Services
             _mapper = mapper;
         }
 
+        //public async Task AddHierarchy(HierarchyCreateRequestDto request)
+        //{
+        //    if (request == null)
+        //        throw new ArgumentNullException(nameof(request), "Request cannot be null");
+        //    var hierarchyId = await _unitOfWork.HierarchyRepo.GetNextHierarchyIdAsync();
+        //    var hierarchies = new List<Hierarchy>();
+        //    if (request.DatapointIds != null && request.DatapointIds.Any())
+        //    {
+        //        foreach (var datapointId in request.DatapointIds)
+        //        {
+        //            hierarchies.Add(new Hierarchy
+        //            {
+        //                HierarchyId = hierarchyId,
+        //                DataPointValuesId = datapointId
+        //            });
+        //        }
+        //        await _unitOfWork.Repository<Hierarchy>().AddRange(hierarchies);
+        //        var organizationHierarchy = new OrganizationHeirarchies
+        //        {
+        //            HierarchyId = hierarchyId,
+        //            OrganizationId = request.OrganizationId,
+        //            CreatedBy = request.UserId,
+        //            CreatedDate = DateTime.UtcNow,
+        //        };
+        //        await _unitOfWork.Repository<OrganizationHeirarchies>().AddAsync(organizationHierarchy);
+        //        await _unitOfWork.SaveAsync();
+        //    }
+        //}
         public async Task AddHierarchy(HierarchyCreateRequestDto request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request), "Request cannot be null");
-
-            var hierarchyId = await _unitOfWork.HierarchyRepo.GetNextHierarchyIdAsync();
+            var existinghierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(request.OrganizationId);
             var hierarchies = new List<Hierarchy>();
-            if (request.DatapointIds != null && request.DatapointIds.Any())
+
+            if (existinghierarchyId != null && existinghierarchyId >= 0)
             {
-                foreach (var datapointId in request.DatapointIds)
+                var existingHierarchies = await _unitOfWork.HierarchyRepo.GetHierarchies(existinghierarchyId.Value);
+                if (request.DatapointIds != null && request.DatapointIds.Any())
                 {
-                    hierarchies.Add(new Hierarchy
+                    var toAddOrUpdate = new List<Hierarchy>();
+                    var toRemove = new List<Hierarchy>();
+                    var existingDatapointIds = existingHierarchies.Select(h => h.DataPointValuesId).ToList();
+                    var requestDatapointIds = request.DatapointIds.ToHashSet();
+                    foreach (var datapointId in request.DatapointIds)
                     {
-                        HierarchyId = hierarchyId,
-                        DataPointValuesId = datapointId
-                    });
+                        toAddOrUpdate = request.DatapointIds
+                            .Where(datapointId => !existingDatapointIds.Contains(datapointId))
+                            .Select(datapointId => new Hierarchy
+                            {
+                                HierarchyId = existinghierarchyId.Value,
+                                DataPointValuesId = datapointId
+                            }).ToList();
+
+                        toRemove = existingHierarchies
+                            .Where(h => !requestDatapointIds.Contains(h.DataPointValuesId))
+                            .ToList();
+                    }
+                    if (toRemove.Any())
+                    {
+                        await _unitOfWork.Repository<Hierarchy>().RemoveRangeAsync(toRemove);
+                    }
+                    if (toAddOrUpdate.Any())
+                    {
+                        await _unitOfWork.Repository<Hierarchy>().UpsertRangeAsync(toAddOrUpdate);
+                    }
                 }
-                await _unitOfWork.Repository<Hierarchy>().AddRange(hierarchies);
+                await _unitOfWork.SaveAsync();
+            }
+            else 
+            {
+                var hierarchyId = await _unitOfWork.HierarchyRepo.GetNextHierarchyIdAsync();
+                if (request.DatapointIds != null && request.DatapointIds.Any())
+                {
+                    foreach (var datapointId in request.DatapointIds)
+                    {
+                        hierarchies.Add(new Hierarchy
+                        {
+                            HierarchyId = hierarchyId,
+                            DataPointValuesId = datapointId
+                        });
+                    }
+                    await _unitOfWork.Repository<Hierarchy>().AddRange(hierarchies);
+                }
                 var organizationHierarchy = new OrganizationHeirarchies
                 {
                     HierarchyId = hierarchyId,
                     OrganizationId = request.OrganizationId,
                     CreatedBy = request.UserId,
-                    CreatedDate = DateTime.UtcNow,
+                    CreatedDate = DateTime.UtcNow
                 };
+
                 await _unitOfWork.Repository<OrganizationHeirarchies>().AddAsync(organizationHierarchy);
+
                 await _unitOfWork.SaveAsync();
             }
         }
@@ -153,34 +221,6 @@ namespace ESG.Application.Services
             return mainDto;
         
         }
-
-
-        //public async Task<HierarchyResponseDto> GetHierarchydata(long organizationId)
-        //{
-        //    var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
-        //    var response = new HierarchyResponseDto();
-        //    if (hierarchyId != null && hierarchyId > 0)
-        //    {
-        //        var hierarchy = await _unitOfWork.HierarchyRepo.GetHierarchyById(hierarchyId);
-        //        response.HierarchyId = hierarchyId!.Value;
-        //        response.DatapointId = new List<long>();
-        //        foreach (var item in hierarchy)
-        //        {
-        //            response.DatapointId.Add(item.DataPointValuesId);
-        //        }
-        //    }
-        //    if (hierarchyId == 0 || hierarchyId == null)
-        //    {
-        //        var hierarchy = await _unitOfWork.HierarchyRepo.GetHierarchyById(1);
-        //        response.HierarchyId = 1;
-        //        response.DatapointId = new List<long>();
-        //        foreach (var item in hierarchy)
-        //        {
-        //            response.DatapointId.Add(item.DataPointValuesId);
-        //        }
-        //    }
-        //    return response; 
-        //}
 
 
     }

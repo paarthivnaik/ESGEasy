@@ -13,5 +13,6 @@ namespace ESG.Domain.Entities
         public DataModel DataModel { get; set; }
         public long DimensionTypeId { get; set; }
         public DimensionType DimensionType { get; set; }
+        public IEnumerable<ModelDimensionValues> ModelDimensionValues { get; set; }
     }
 }

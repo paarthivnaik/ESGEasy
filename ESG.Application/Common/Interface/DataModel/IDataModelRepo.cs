@@ -11,6 +11,6 @@ namespace ESG.Application.Common.Interface.DataModel
     {
         //Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto);
         Task<List<long>?> GetDimensionTypesByModelId(long modelId);
-        Task<List<long>?> GetDimensionValuesByModelId(long modelId);
+        Task<List<long>?> GetDimensionValuesByTypeId(long dimensioTypeId);
     }
 }

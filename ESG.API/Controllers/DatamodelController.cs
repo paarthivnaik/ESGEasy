@@ -28,15 +28,15 @@ namespace ESG.API.Controllers
             await _dataModelService.ConfiguringModel(configuringDataModelRequestDto);
             return Ok();
         }
-        [HttpGet("GetDimensionTypesByModelId")]
-        public async Task<List<long>?> GetDimensionTypeByModelId(long id)
+        [HttpGet("GetModelDimensionTypesByModelId")]
+        public async Task<List<long>?> GetModelDimensionTypeByModelId(long id)
         {
             return await _dataModelService.GetDimensionTypeByModelId(id);
         }
-        [HttpGet("GetDimensionValuesByModelId")]
-        public async Task<List<long>?> GetDimensionValuesByModelId(long id)
+        [HttpGet("GetModelDimensionValuesByTypeId")]
+        public async Task<List<long>?> GetModelDimensionValuesByDimensionTypeId(long id)
         {
-            return await _dataModelService.GetDimensionValuesByModelId(id);
+            return await _dataModelService.GetDimensionValuesByTypeId(id);
         }
     }
 }

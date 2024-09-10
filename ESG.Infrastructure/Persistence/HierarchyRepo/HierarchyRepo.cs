@@ -101,5 +101,13 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
             return hierarchyId;
         }
 
+        public async Task<IEnumerable<Hierarchy>> GetHierarchies(long hierarchyId)
+        {
+            var hierarchies = await _context.Hierarchy
+                .AsNoTracking()
+                .Where(a => a.HierarchyId == hierarchyId)
+                .ToListAsync();
+            return hierarchies;
+        }
     }
 }

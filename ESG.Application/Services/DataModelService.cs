@@ -59,27 +59,30 @@ namespace ESG.Application.Services
             if (string.IsNullOrWhiteSpace(dataModelCreateRequestDto.ModelName))
                 throw new ArgumentException("Model name cannot be empty");
 
-            if (dataModelCreateRequestDto.UserId <= 0)
+            if (dataModelCreateRequestDto.CreatedBy <= 0)
                 throw new ArgumentException("Invalid user ID");
 
             var utcNow = DateTime.UtcNow;
 
             var dataModel = new ESG.Domain.Entities.DataModel
             {
+                OrganizationId = dataModelCreateRequestDto.OrganizationId,
                 ModelName = dataModelCreateRequestDto.ModelName,
-                CreatedBy = dataModelCreateRequestDto.UserId,
+                CreatedBy = dataModelCreateRequestDto.CreatedBy,
                 CreatedDate = utcNow,
-                LastModifiedBy = dataModelCreateRequestDto.UserId,
+                LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                 LastModifiedDate = utcNow,
                 State = StateEnum.active
             };
-
             await _unitOfWork.Repository<ESG.Domain.Entities.DataModel>().AddAsync(dataModel);
             await _unitOfWork.SaveAsync();
+
             var dataModelId = dataModel.Id;
             var modelDatapoints = new List<ModelDatapoints>();
-            var modelDimensionTypes = new List<ModelDimensionTypes>();
+            var modelDimensionTypes = new ModelDimensionTypes();
             var modelDimensionValues = new List<ModelDimensionValues>();
+            var modelConfigurations = new ESG.Domain.Entities.ModelConfiguration();
+            var modelFilters = new List<DataModelFilters>();
             foreach (var datapointId in dataModelCreateRequestDto.Datapoints)
             {
                 modelDatapoints.Add(new ModelDatapoints
@@ -87,42 +90,103 @@ namespace ESG.Application.Services
                     DataModelId = dataModelId,
                     DatapointValuesId = datapointId,
                     State = StateEnum.active,
-                    CreatedBy = dataModelCreateRequestDto.UserId,
+                    CreatedBy = dataModelCreateRequestDto.CreatedBy,
                     CreatedDate = utcNow,
-                    LastModifiedBy = dataModelCreateRequestDto.UserId,
+                    LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                     LastModifiedDate = utcNow
                 });
             }
-            foreach (var dimensionType in dataModelCreateRequestDto.DimensionTypes)
+            foreach (var dimensionType in dataModelCreateRequestDto.Dimensions)
             {
-                modelDimensionTypes.Add(new ModelDimensionTypes
+                modelDimensionTypes = new ModelDimensionTypes
                 {
                     DataModelId = dataModelId,
-                    DimensionTypeId = dimensionType.DimensionTypeId,
+                    DimensionTypeId = dimensionType.TypeId,
                     State = StateEnum.active,
-                    CreatedBy = dataModelCreateRequestDto.UserId,
+                    CreatedBy = dataModelCreateRequestDto.CreatedBy,
                     CreatedDate = utcNow,
-                    LastModifiedBy = dataModelCreateRequestDto.UserId,
+                    LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                     LastModifiedDate = utcNow
-                });
-
-                foreach (var dimensionValueId in dimensionType.DimensionValues)
+                };
+                await _unitOfWork.Repository<ESG.Domain.Entities.ModelDimensionTypes>().AddAsync(modelDimensionTypes);
+                await _unitOfWork.SaveAsync();
+                foreach (var dimensionValueId in dimensionType.Values)
                 {
                     modelDimensionValues.Add(new ModelDimensionValues
                     {
-                        DataModelId = dataModelId,
+                        ModelDimensionTypesId = modelDimensionTypes.Id,
                         DimensionsId = dimensionValueId,
                         State = StateEnum.active,
-                        CreatedBy = dataModelCreateRequestDto.UserId,
+                        CreatedBy = dataModelCreateRequestDto.CreatedBy,
                         CreatedDate = utcNow,
-                        LastModifiedBy = dataModelCreateRequestDto.UserId,
+                        LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                        LastModifiedDate = utcNow
+                    });
+                }
+            }
+            if (dataModelCreateRequestDto.Fact != null)
+            {
+                modelConfigurations = new Domain.Entities.ModelConfiguration
+                {
+                    DataModelId = dataModelId,
+                    RowId = dataModelCreateRequestDto.Fact.RowId,
+                    ColumnId = dataModelCreateRequestDto.Fact.ColumnId,
+                    ViewType = ModelViewTypeEnum.Fact,
+                    State = StateEnum.active,
+                    CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                    CreatedDate = utcNow,
+                    LastModifiedBy= dataModelCreateRequestDto.CreatedBy,
+                    LastModifiedDate = utcNow
+                };
+                await _unitOfWork.Repository<ESG.Domain.Entities.ModelConfiguration>().AddAsync(modelConfigurations);
+                await _unitOfWork.SaveAsync();
+                foreach (var filters in dataModelCreateRequestDto.Fact.Filters)
+                {
+                    modelFilters.Add(new DataModelFilters
+                    {
+                        ModelConfigurationId = modelConfigurations.Id,
+                        FilterId = filters,
+                        State = StateEnum.active,
+                        CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                        CreatedDate = utcNow,
+                        LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                        LastModifiedDate = utcNow
+                    });
+                }
+            }
+            if (dataModelCreateRequestDto.Narrative != null)
+            {
+                modelConfigurations = new Domain.Entities.ModelConfiguration
+                {
+                    DataModelId = dataModelId,
+                    RowId = dataModelCreateRequestDto.Narrative.RowId,
+                    ColumnId = null,
+                    ViewType = ModelViewTypeEnum.Fact,
+                    State = StateEnum.active,
+                    CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                    CreatedDate = utcNow,
+                    LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                    LastModifiedDate = utcNow
+                };
+                await _unitOfWork.Repository<ESG.Domain.Entities.ModelConfiguration>().AddAsync(modelConfigurations);
+                await _unitOfWork.SaveAsync();
+                foreach (var filters in dataModelCreateRequestDto.Fact.Filters)
+                {
+                    modelFilters.Add(new DataModelFilters
+                    {
+                        ModelConfigurationId = modelConfigurations.Id,
+                        FilterId = filters,
+                        State = StateEnum.active,
+                        CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                        CreatedDate = utcNow,
+                        LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                         LastModifiedDate = utcNow
                     });
                 }
             }
             await _unitOfWork.Repository<ModelDatapoints>().AddRange(modelDatapoints);
-            await _unitOfWork.Repository<ModelDimensionTypes>().AddRange(modelDimensionTypes);
             await _unitOfWork.Repository<ModelDimensionValues>().AddRange(modelDimensionValues);
+            await _unitOfWork.Repository<DataModelFilters>().AddRange(modelFilters);
             await _unitOfWork.SaveAsync();
         }
 
@@ -142,13 +206,13 @@ namespace ESG.Application.Services
         }
 
 
-        public async Task<List<long>> GetDimensionValuesByModelId(long modelId)
+        public async Task<List<long>> GetDimensionValuesByTypeId(long dimensionTypeId)
         {
-            if (modelId <= 0)
+            if (dimensionTypeId <= 0)
             {
                 throw new ArgumentException("Invalid ModelId");
             }
-            var list = await _unitOfWork.DataModelRepo.GetDimensionValuesByModelId(modelId);
+            var list = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(dimensionTypeId);
             if (list == null || !list.Any())
             {
                 throw new ArgumentException("ModelId not linked with dimensionValues");

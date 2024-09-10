@@ -17,9 +17,12 @@ namespace ESG.Application.Common.Interface
         Task<T> Update(T entity);
         Task UpdateRange(IEnumerable<T> entities);
         Task<T> UpdateAsync(long Id, T entity);
+        Task UpsertAsync(T entity);
+        Task UpsertRangeAsync(IEnumerable<T> entities);
         Task UpdateFieldsSave(T entity, params Expression<Func<T, object>>[] includeProperties);
         Task<bool> Delete(long Id);
         Task<bool> Delete(T entity);
+        Task RemoveRangeAsync(IEnumerable<T> entities);
         Task<bool> Delete(Expression<Func<T,bool>> where);
         Task<T> Get(long Id);
         Task<T> Get(Expression<Func<T, bool>> where);

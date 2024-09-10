@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using EFCore.BulkExtensions;
 
 namespace ESG.Infrastructure.Persistence
 {
@@ -194,6 +195,16 @@ namespace ESG.Infrastructure.Persistence
             _context.Entry(exist).CurrentValues.SetValues(entity);
             return entity;
         }
+        public async Task UpsertAsync(T entity)
+        {
+            // Use BulkInsertOrUpdateAsync for upserting a single entity
+            await _context.BulkInsertOrUpdateAsync(new List<T> { entity });
+        }
+        public async Task UpsertRangeAsync(IEnumerable<T> entities)
+        {
+            // Use BulkInsertOrUpdateAsync for upserting a range of entities
+            await _context.BulkInsertOrUpdateAsync(entities.ToList());
+        }
         #endregion
 
         #region Delete
@@ -239,6 +250,17 @@ namespace ESG.Infrastructure.Persistence
             catch (DbUpdateException exception)
             {
                 //ensure that the detailed error text is saved in the Log
+                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+            }
+        }
+        public async Task RemoveRangeAsync(IEnumerable<T> entities)
+        {
+            try
+            {
+                Entities.RemoveRange(entities);
+            }
+            catch (DbUpdateException exception)
+            {
                 throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
             }
         }

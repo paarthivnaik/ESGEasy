@@ -31,11 +31,11 @@ namespace ESG.Infrastructure.Persistence.DataModel
         }
 
 
-        public async Task<List<long>?> GetDimensionValuesByModelId(long modelId)
+        public async Task<List<long>?> GetDimensionValuesByTypeId(long dimensionTypeId)
         {
             var list = await _context.ModelDimensionValues
                 .AsNoTracking()
-                .Where(a => a.DataModelId == modelId)
+                .Where(a => a.ModelDimensionTypesId == dimensionTypeId)
                 .Select(a => a.DimensionsId)
                 .ToListAsync();
             return list;
