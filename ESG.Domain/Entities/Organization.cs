@@ -30,5 +30,6 @@ namespace ESG.Domain.Entities
         public IEnumerable<DataPointValues> DataPointValues { get; set; }
         public IEnumerable<DataPointTypes> DataPointTypes { get; set; }
         public IEnumerable<DataModel> DataModel { get; set; }
+        public OrganizationHeirarchies OrganizationHeirarchies { get; set; }
     }
 }

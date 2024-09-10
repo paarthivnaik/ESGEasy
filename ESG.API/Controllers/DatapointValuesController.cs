@@ -17,38 +17,36 @@ namespace ESG.API.Controllers
             _datapintValuesService = datapintValuesService;
         }
         
-        [HttpGet]
+        [HttpGet("GetAllDatapoints")]
         public async Task<IEnumerable<DatapointValuesResponseDto>> Get()
         {
             return await _datapintValuesService.GetAll();
         }
 
-        [HttpGet("{id}")]
-        public async Task<DataPointValues> Get(int id)
-        {
-            return await _datapintValuesService.GetById(id);
-        }
+        //[HttpGet("{id}")]
+        //public async Task<DataPointValues> Get(int id)
+        //{
+        //    return await _datapintValuesService.GetById(id);
+        //}
 
         // POST api/<DatapointValuesController>
-        [HttpPost]
+        [HttpPost("CreateOrUpdateDatapoint")]
         public async Task Post([FromBody] DatapointValueCreateRequestDto value)
         {
             await _datapintValuesService.AddAsync(value);
         }
 
-        // PUT api/<DatapointValuesController>/5
-        [HttpPut("{id}")]
-        public async Task<DataPointValues> Put([FromBody] DataPointValues value)
+        [HttpDelete("DeleteDataPoint")]
+        public async Task<IActionResult> Delete(DatapointDeleteRequestDto datapointDeleteRequestDto)
         {
-            var res = await _datapintValuesService.UpdateAsync(value);
-            return res;
+            await _datapintValuesService.DeleteDatapoint(datapointDeleteRequestDto);
+            return Ok();
         }
 
-        // DELETE api/<DatapointValuesController>/5
-        [HttpDelete("{id}")]
-        public async Task<bool> Delete(int id)
+        [HttpGet("GetDataPointsByOrganizationId")]
+        public async Task<IEnumerable<DatapointsByOrgIdResponseDto>> GetDataPointsByOrganizationId(long organizationId)
         {
-            var res = await _datapintValuesService.Delete(id);
+            var res = await _datapintValuesService.GetDataPointsByOrganizationId(organizationId);
             return res;
         }
     }

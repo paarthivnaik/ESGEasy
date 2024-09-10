@@ -1,5 +1,6 @@
 ﻿using ESG.Application.Common.Interface;
 using ESG.Application.Common.Interface.DataModel;
+using ESG.Application.Common.Interface.DataPoint;
 using ESG.Application.Common.Interface.Dimensions;
 using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
@@ -28,6 +29,7 @@ namespace ESG.Infrastructure.Persistence
         public IValuesRepo ValuesRepo { get; private set; }
         public IHierarchyRepo HierarchyRepo { get; private set; }
         public IDataModelRepo DataModelRepo { get; private set; }
+        public IDatapointValueRepo DatapointValueRepo { get; private set; }
 
         private readonly ApplicationDbContext _context;
         IDbContextTransaction dbContextTransaction;
@@ -43,6 +45,7 @@ namespace ESG.Infrastructure.Persistence
             ValuesRepo = new ValuesRepo(_context);
             HierarchyRepo = new ESG.Infrastructure.Persistence.HierarchyRepo.HierarchyRepo(_context);
             DataModelRepo = new DataModelRepo(_context);
+            DatapointValueRepo = new ESG.Infrastructure.Persistence.DatapointRepo.DatapointValueRepo(_context);
         }
         #endregion
        
