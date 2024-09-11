@@ -18,6 +18,6 @@ namespace ESG.Application.Dto.DimensionTypes
         public bool isHierarchical { get; set; }
         public StateEnum State { get; set; }
         public long UserId { get; set; }
-        public long IsHeirarchialDimension { get; set; }
+        //public long IsHeirarchialDimension { get; set; }
     }
 }
