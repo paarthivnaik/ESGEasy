@@ -14,11 +14,11 @@ namespace ESG.Infrastructure.Persistence.DataBaseSeeder
         {
             modelBuilder.Entity<ESG.Domain.Entities.DataModel>().HasData(
                 new Domain.Entities.DataModel { Id = 1, ModelName = "Default Model", State = StateEnum.active, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow });
-            modelBuilder.Entity<ModelDatapoints>().HasData(
-                new ModelDatapoints { Id = 1, DataModelId = 1, DatapointValuesId = 10032, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new ModelDatapoints { Id = 2, DataModelId = 1, DatapointValuesId = 10033, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new ModelDatapoints { Id = 3, DataModelId = 1, DatapointValuesId = 10034, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow }
-                );
+            //modelBuilder.Entity<ModelDatapoints>().HasData(
+            //    new ModelDatapoints { Id = 1, DataModelId = 1, DatapointValuesId = 10032, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+            //    new ModelDatapoints { Id = 2, DataModelId = 1, DatapointValuesId = 10033, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+            //    new ModelDatapoints { Id = 3, DataModelId = 1, DatapointValuesId = 10034, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow }
+            //    );
             modelBuilder.Entity<ModelDimensionTypes>().HasData(
                 new ModelDimensionTypes { Id = 1, DataModelId = 1, DimensionTypeId = 1, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
                 new ModelDimensionTypes { Id = 2, DataModelId = 5, DimensionTypeId = 5, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow }
