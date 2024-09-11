@@ -12,13 +12,14 @@ namespace ESG.Application.Common.Interface.DataModel
     {
         //Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto);
         Task<List<ESG.Domain.Entities.DataModel>?> GetDataModelsByOrgId(long OrgId);
-        Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId);
+        Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum);
         Task<(long Id, string Name)> GetColumnDimensionTypeIdAndNameByDimensionTypeId(long typeId);
         Task<IEnumerable<(long Id, string Name)>> GetFilterDimensionTypeByConfigurationId(long configurationId);
-        Task<long?> GetColumnIdInModelCnfigurationByModelId(long modelId);
+        Task<long?> GetColumnIdInModelCnfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum);
         Task<IEnumerable<(long Id, string Name)>> GetDimensionValuesByTypeId(long? modelDimensionTypeId);
-        Task<long> GetModelconfigurationIdByModelId(long modelId);
+        Task<long> GetModelconfigurationIdByModelId(long modelId, ModelViewTypeEnum viewTypeEnum);
         Task<long?> GetModelDimensionTypeIdByDimensiionTypeID(long dimensionTypeId);
+        Task<List<ModelConfiguration>> GetConfigurationViewTypesForDataModel(long datamodelId);
         //Task<List<DimensionType>?> GetDimensionTypesByModelId(long modelId);
 
     }

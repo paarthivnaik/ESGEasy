@@ -10,16 +10,28 @@ namespace ESG.Application.Dto.DataModel
     {
         public long Id { get; set; }
         public string Name { get; set; }
+        public List<FactViewDto> FactView { get; set; } 
+        public List<NarrativeViewDto> NarrativeView { get; set; }
+    }
+
+    public class FactViewDto
+    {
         public DimensionTypeDto RowDimension { get; set; }
-        public DimensionTypeDto? ColumnDimension { get; set; }
+        public DimensionTypeDto ColumnDimension { get; set; }
         public List<DimensionTypeDto>? FilterDimension { get; set; }
+    }
+
+    public class NarrativeViewDto
+    {
+        public DimensionTypeDto RowDimension { get; set; } 
+        public List<DimensionTypeDto>? FilterDimension { get; set; } 
     }
 
     public class DimensionTypeDto
     {
         public long DimensionTypeId { get; set; }
-        public string DimensionsTypeName { get; set; }
-        public List<DimensionValueDto> DimensionValues { get; set; }
+        public string DimensionsTypeName { get; set; } 
+        public List<DimensionValueDto> DimensionValues { get; set; } 
     }
 
     public class DimensionValueDto

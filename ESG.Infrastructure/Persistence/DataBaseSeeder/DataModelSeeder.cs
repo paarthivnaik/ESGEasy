@@ -34,13 +34,10 @@ namespace ESG.Infrastructure.Persistence.DataBaseSeeder
 
             modelBuilder.Entity<ModelConfiguration>().HasData(
                 new ModelConfiguration { Id = 10000, DataModelId = 1, RowId = 1, ColumnId = 5, ViewType = ModelViewTypeEnum.Fact, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new ModelConfiguration { Id = 10001, DataModelId = 1, RowId = 1, ColumnId = 5, ViewType = ModelViewTypeEnum.Narrative, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow });
-            //modelBuilder.Entity<DataModelFilters>().HasData(
-            //    new DataModelFilters {Id = 1000, ModelConfigurationId = 10000, FilterId = 6 },
-            //    new DataModelFilters {Id = 1001, ModelConfigurationId = 10001, FilterId = 6 },
-            //    new DataModelFilters {Id = 1002, ModelConfigurationId = 10002, FilterId = 6 },
-            //    new DataModelFilters {Id = 1003, ModelConfigurationId = 10003, FilterId = 6 }
-            //    );
+                new ModelConfiguration { Id = 10001, DataModelId = 1, RowId = 1, ColumnId = null, ViewType = ModelViewTypeEnum.Narrative, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow });
+            modelBuilder.Entity<DataModelFilters>().HasData(
+                new DataModelFilters { Id = 1000, ModelConfigurationId = 10001, FilterId = 5 }
+                );
 
         }
     }

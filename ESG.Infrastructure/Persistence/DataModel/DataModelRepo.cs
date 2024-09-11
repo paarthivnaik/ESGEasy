@@ -47,12 +47,12 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .ToListAsync();
             return list;
         }
-        public async Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId)
+        public async Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var result = await _context.ModelConfiguration
                 .AsNoTracking()
                 .Include(a => a.Row) 
-                .Where(a => a.DataModelId == modelId)
+                .Where(a => a.DataModelId == modelId && a.ViewType == viewTypeEnum)
                 .Select(a => new
                 {
                     a.RowId,
@@ -82,11 +82,11 @@ namespace ESG.Infrastructure.Persistence.DataModel
             }
             return (default(long), string.Empty);
         }
-        public async Task<long> GetModelconfigurationIdByModelId(long modelId)
+        public async Task<long> GetModelconfigurationIdByModelId(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var ids = await _context.ModelConfiguration
                 .AsNoTracking()
-                .Where(a => a.DataModelId == modelId)
+                .Where(a => a.DataModelId == modelId && a.ViewType == viewTypeEnum)
                 .Select(a => a.Id)
                 .FirstOrDefaultAsync();
             return ids;
@@ -110,11 +110,11 @@ namespace ESG.Infrastructure.Persistence.DataModel
             }
             return Enumerable.Empty<(long, string)>();
         }
-        public async Task<long?> GetColumnIdInModelCnfigurationByModelId(long modelId)
+        public async Task<long?> GetColumnIdInModelCnfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var columnId = await _context.ModelConfiguration
                 .AsNoTracking()
-                .Where(md => md.DataModelId == modelId)
+                .Where(md => md.DataModelId == modelId && md.ViewType == viewTypeEnum)
                 .Select(a => a.ColumnId)
                 .FirstOrDefaultAsync();
             return columnId;
@@ -147,6 +147,14 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 return result.Select(x => (x.Id, x.Name));
             }
             return Enumerable.Empty<(long, string)>();
+        }
+        public async Task<List<ModelConfiguration>> GetConfigurationViewTypesForDataModel(long datamodelId)
+        {
+            var modeldimensionTypeId = await _context.ModelConfiguration
+                .AsNoTracking()
+                .Where(md => md.DataModelId == datamodelId)
+                .ToListAsync();
+            return modeldimensionTypeId;
         }
     }
 }
