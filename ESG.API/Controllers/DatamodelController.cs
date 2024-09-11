@@ -9,9 +9,9 @@ namespace ESG.API.Controllers
 {
     public class DatamodelController : BaseController
     {
-        private readonly ILogger<UOMController> _logger;
+        private readonly ILogger<DatamodelController> _logger;
         private readonly IDataModelService _dataModelService;
-        public DatamodelController(ILogger<UOMController> logger, IDataModelService dataModelService)
+        public DatamodelController(ILogger<DatamodelController> logger, IDataModelService dataModelService)
         {
             _logger = logger;
             _dataModelService = dataModelService;
@@ -22,21 +22,26 @@ namespace ESG.API.Controllers
             await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
             return Ok();
         }
-        [HttpPost("ConfiguringModel")]
-        public async Task<IActionResult> ConfiguringModel(ConfiguringDataModelRequestDto configuringDataModelRequestDto)
+        [HttpGet("GetDataModelsForOrganization")]
+        public async Task<IEnumerable<DataModelsResponseDto>> GetDataModelsForOrganization(long OrganizationId)
         {
-            await _dataModelService.ConfiguringModel(configuringDataModelRequestDto);
-            return Ok();
+            return await _dataModelService.GetDataModelsResponsesByOrgId(OrganizationId);
         }
-        [HttpGet("GetModelDimensionTypesByModelId")]
-        public async Task<List<long>?> GetModelDimensionTypeByModelId(long id)
-        {
-            return await _dataModelService.GetDimensionTypeByModelId(id);
-        }
-        [HttpGet("GetModelDimensionValuesByTypeId")]
-        public async Task<List<long>?> GetModelDimensionValuesByDimensionTypeId(long id)
-        {
-            return await _dataModelService.GetDimensionValuesByTypeId(id);
-        }
+        //[HttpPost("ConfiguringModel")]
+        //public async Task<IActionResult> ConfiguringModel(ConfiguringDataModelRequestDto configuringDataModelRequestDto)
+        //{
+        //    await _dataModelService.ConfiguringModel(configuringDataModelRequestDto);
+        //    return Ok();
+        //}
+        //[HttpGet("GetModelDimensionTypesByModelId")]
+        //public async Task<List<long>?> GetModelDimensionTypeByModelId(long id)
+        //{
+        //    return await _dataModelService.GetDimensionTypeByModelId(id);
+        //}
+        //[HttpGet("GetModelDimensionValuesByTypeId")]
+        //public async Task<List<long>?> GetModelDimensionValuesByDimensionTypeId(long id)
+        //{
+        //    return await _dataModelService.GetDimensionValuesByTypeId(id);
+        //}
     }
 }

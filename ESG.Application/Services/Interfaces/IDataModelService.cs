@@ -11,8 +11,9 @@ namespace ESG.Application.Services.Interfaces
     public interface IDataModelService
     {
         Task CreateDataModel(DataModelCreateRequestDto requestdto);
+        Task<IEnumerable<DataModelsResponseDto>> GetDataModelsResponsesByOrgId(long OrganizationId);
         Task ConfiguringModel(ConfiguringDataModelRequestDto configuringDataModelRequestDto);
-        Task<List<long>> GetDimensionTypeByModelId(long modelId);
-        Task<List<long>> GetDimensionValuesByTypeId(long dimensionTypeId);
+        //Task<List<long>> GetDimensionTypeByModelId(long modelId);
+        //Task<List<long>> GetDimensionValuesByTypeId(long dimensionTypeId);
     }
 }

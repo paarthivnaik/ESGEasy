@@ -12,5 +12,6 @@ namespace ESG.Domain.Entities
         public long ModelConfigurationId { get; set; }
         public ModelConfiguration ModelConfiguration { get; set; }
         public long FilterId { get; set; }
+        public DimensionType DimensionType { get; set; }
     }
 }

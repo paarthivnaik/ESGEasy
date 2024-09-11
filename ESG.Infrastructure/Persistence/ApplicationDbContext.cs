@@ -47,6 +47,7 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<ModelFilterCombinations> ModelFilterCombinations    { get; set; }
         public DbSet<ModelFilterCombinationalValues> ModelFilterCombinationalValues    { get; set; }
         public DbSet<DataModelValues> DataModelValues    { get; set; }
+        public DbSet<DataModelFilters> DataModelFilters    { get; set; }
         public DateTime _curretDateTime { get; set; }
 
         public async Task<int> SaveChangesAsync()
