@@ -11,7 +11,7 @@ namespace ESG.Domain.Entities
     {
         public long RowId { get; set; }
         public Dimensions Row { get; set; }
-        public long ColumnId { get; set; }
+        public long? ColumnId { get; set; }
         public Dimensions Column { get; set; }
         public long CombinationId { get; set; }
         public ModelCombinations Combination { get; set; }

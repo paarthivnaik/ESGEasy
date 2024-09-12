@@ -11,7 +11,7 @@ namespace ESG.Application.Services.Interfaces
     public interface IDataModelService
     {
         Task CreateDataModel(DataModelCreateRequestDto requestdto);
-        Task SaveDatapointDataInModel(DatapointValuesSavingRequestDto requestdto);
+        Task SaveDatapointDataInModel(DataPointValuesSavingRequestDto requestdto);
         Task<IEnumerable<DataModelsResponseDto>> GetDataModelsResponsesByOrgId(long OrganizationId);
         Task<DataModelsResponseDto> GetingDataModelLinkedtoDatapoint(long datapointId, long organizationId);
         Task ConfiguringModel(ConfiguringDataModelRequestDto configuringDataModelRequestDto);
