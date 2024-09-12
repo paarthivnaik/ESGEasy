@@ -98,7 +98,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             }
             return (default(long), string.Empty);
         }
-        public async Task<long> GetModelconfigurationIdByModelId(long modelId, ModelViewTypeEnum viewTypeEnum)
+        public async Task<long> GetModelconfigurationIdByModelIdAndViewType(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var ids = await _context.ModelConfiguration
                 .AsNoTracking()
@@ -126,7 +126,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             }
             return Enumerable.Empty<(long, string)>();
         }
-        public async Task<long?> GetColumnIdInModelCnfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum)
+        public async Task<long?> GetColumnIdInModelCnfigurationByModelIdAndViewType(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var columnId = await _context.ModelConfiguration
                 .AsNoTracking()
@@ -171,6 +171,26 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(md => md.DataModelId == datamodelId)
                 .ToListAsync();
             return modeldimensionTypeId;
+        }
+
+        public async Task<bool?> GetDatapointViewType(long datapointId)
+        {
+            var viewType = await _context.DataPointValues
+                .AsNoTracking()
+                .Where(md => md.Id == datapointId)
+                .Select(md => md.IsNarrative)
+                .FirstOrDefaultAsync();
+
+            return viewType;
+        }
+
+        public async Task<IEnumerable<DataModelFilters>> GetModelFiltersByConfigId(long configId)
+        {
+            var filters = await _context.DataModelFilters
+                .AsNoTracking()
+                .Where(md => md.ModelConfigurationId == configId)
+                .ToListAsync();
+            return filters;
         }
     }
 }

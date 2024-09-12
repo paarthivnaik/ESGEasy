@@ -296,7 +296,7 @@ namespace ESG.Application.Services
         private async Task<DimensionTypeDto?> GetColumnDimensionDto(long modelId, ModelViewTypeEnum viewType)
         {
             DimensionTypeDto? dimTypeDto = null;
-            var columnId = await _unitOfWork.DataModelRepo.GetColumnIdInModelCnfigurationByModelId(modelId, viewType);
+            var columnId = await _unitOfWork.DataModelRepo.GetColumnIdInModelCnfigurationByModelIdAndViewType(modelId, viewType);
             if (columnId == null)
                 return null;
 
@@ -319,7 +319,7 @@ namespace ESG.Application.Services
         private async Task<List<DimensionTypeDto>?> GetFilterDimensions(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var responsedto = new List<DimensionTypeDto>();
-            var configurationId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelId(modelId, viewTypeEnum);
+            var configurationId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(modelId, viewTypeEnum);
             if (configurationId >= 0 || configurationId != null)
             {
                 var filterDimensions = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId);
@@ -367,11 +367,39 @@ namespace ESG.Application.Services
             var dataModelValues = new List<DataModelValues>();
             if (requestdto.ModelId != 0)
             {
-                var modelConfigurations = await _unitOfWork.DataModelRepo.GetConfigurationViewTypesForDataModel(requestdto.ModelId);
-
+                var datapointviewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(requestdto.DatapointId);
+                if (datapointviewtype != null && datapointviewtype == false)
+                {
+                    var modelConfiguration = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(requestdto.ModelId , ModelViewTypeEnum.Fact);
+                    var modelFilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(modelConfiguration);
+                    foreach ( var reqfilter in requestdto.Filters)
+                    {
+                        var matchingFilter = modelFilters.FirstOrDefault(filter => filter.FilterId == reqfilter.TypeId);
+                        if (matchingFilter != null)
+                        {
+                            modelFilterCombinationalValues.Add(new ModelFilterCombinationalValues
+                            {
+                                ModelFilterCombinationsId = modelcombination.Id,
+                                DataModelFiltersId = matchingFilter.Id,
+                                DimensionsId = reqfilter.ValueId,
+                            });
+                        }
+                    }
+                    foreach (var values in requestdto.Data)
+                    {
+                        dataModelValues.Add(new DataModelValues
+                        {
+                            RowId = values.RowId,
+                            ColumnId = values.ColumnId,
+                            CombinationId = modelcombination.Id,
+                            Value = values.Value,
+                        });
+                    }
+                }
             }
-
-
+            await _unitOfWork.Repository<ModelFilterCombinationalValues>().AddRange(modelFilterCombinationalValues);
+            await _unitOfWork.Repository<DataModelValues>().AddRange(dataModelValues);
+            await _unitOfWork.SaveAsync();
         }
     }
 }
