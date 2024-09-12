@@ -19,6 +19,9 @@ namespace ESG.Infrastructure.Persistence.Configurations
             builder.HasOne(mc => mc.Column)
                   .WithMany()
                   .HasForeignKey(mc => mc.ColumnId);
+            builder.HasOne(mc => mc.Combination)
+                  .WithMany()
+                  .HasForeignKey(mc => mc.CombinationId);
         }
     }
 }

@@ -44,7 +44,7 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<ModelDimensionValues> ModelDimensionValues { get; set; }
         public DbSet<ModelDatapoints> ModelDatapoints { get; set; }
         public DbSet<ModelConfiguration> ModelConfiguration { get; set; }
-        public DbSet<ModelFilterCombinations> ModelFilterCombinations    { get; set; }
+        public DbSet<ModelCombinations> ModelFilterCombinations    { get; set; }
         public DbSet<ModelFilterCombinationalValues> ModelFilterCombinationalValues    { get; set; }
         public DbSet<DataModelValues> DataModelValues    { get; set; }
         public DbSet<DataModelFilters> DataModelFilters    { get; set; }

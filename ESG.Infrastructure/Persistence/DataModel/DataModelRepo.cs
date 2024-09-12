@@ -135,12 +135,12 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .FirstOrDefaultAsync();
             return columnId;
         }
-        public async Task<long?> GetModelDimensionTypeIdByDimensiionTypeID(long dimensionTypeId)
+        public async Task<long?> GetModelDimensionTypeIdByDimensiionTypeID(long modelId, long dimensionTypeId)
         {
             var modeldimensionTypeId = await _context.ModelDimensionTypes
                 .AsNoTracking()
                 .Include(a => a.ModelDimensionValues)
-                .Where(md => md.DimensionTypeId == dimensionTypeId)
+                .Where(md => md.DimensionTypeId == dimensionTypeId && md.DataModelId == modelId)
                 .Select(a => a.Id)
                 .FirstOrDefaultAsync();
             return modeldimensionTypeId;

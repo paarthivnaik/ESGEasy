@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace ESG.Domain.Entities
 {
-    public class ModelFilterCombinations : AuditableWithBaseEntity<long>
+    public class ModelCombinations : AuditableWithBaseEntity<long>
     {
+        public long DataPointValuesId { get; set; }
+        public DataPointValues DataPointValues { get; set; }
         public long DataModelId { get; set; }
         public DataModel DataModel { get; set; }
         public IEnumerable<ModelFilterCombinationalValues> ModelFilterCombinationalValues { get; set; }

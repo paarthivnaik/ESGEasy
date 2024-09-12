@@ -19,7 +19,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<long?> GetColumnIdInModelCnfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum);
         Task<IEnumerable<(long Id, string Name)>> GetDimensionValuesByTypeId(long? modelDimensionTypeId);
         Task<long> GetModelconfigurationIdByModelId(long modelId, ModelViewTypeEnum viewTypeEnum);
-        Task<long?> GetModelDimensionTypeIdByDimensiionTypeID(long dimensionTypeId);
+        Task<long?> GetModelDimensionTypeIdByDimensiionTypeID(long modelId,long dimensionTypeId);
         Task<List<ModelConfiguration>> GetConfigurationViewTypesForDataModel(long datamodelId);
         //Task<List<DimensionType>?> GetDimensionTypesByModelId(long modelId);
 

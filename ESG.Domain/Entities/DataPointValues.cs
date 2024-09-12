@@ -25,5 +25,6 @@ namespace ESG.Domain.Entities
         public Language Language { get; set; }
         public IEnumerable<DatapointTypeTranslations> DatapointTypeTranslations { get; set; }
         public IEnumerable<Hierarchy>? Hierarchies { get; set; }
+        public DataPointValues? DataPointValue { get; set; }
     }
 }

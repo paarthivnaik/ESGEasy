@@ -12,9 +12,6 @@ namespace ESG.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Domain.Entities.ModelFilterCombinationalValues> builder)
         {
-            builder.HasOne(mc => mc.ModelFilter)
-                          .WithMany()
-                          .HasForeignKey(mc => mc.ModelFilterId);
         }
     }
 }

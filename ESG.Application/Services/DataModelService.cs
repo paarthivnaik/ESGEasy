@@ -280,7 +280,7 @@ namespace ESG.Application.Services
         {
             var filterdimresponsedto = new List<DimensionTypeDto>();
             var dimensionType = await _unitOfWork.DataModelRepo.GetRowDimensionTypeIdAndNameFromConfigurationByModelId(modelId, viewType);
-            var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(dimensionType.Id);
+            var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, dimensionType.Id);
             var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
             return new DimensionTypeDto
             {
@@ -301,7 +301,7 @@ namespace ESG.Application.Services
                 return null;
 
             var dimensionType = await _unitOfWork.DataModelRepo.GetColumnDimensionTypeIdAndNameByDimensionTypeId(columnId!.Value);
-            var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(dimensionType.Id);
+            var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, dimensionType.Id);
             var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
 
             dimTypeDto = new DimensionTypeDto
@@ -325,7 +325,7 @@ namespace ESG.Application.Services
                 var filterDimensions = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId);
                 foreach (var filterdim in filterDimensions)
                 {
-                    var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(filterdim.Id);
+                    var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, filterdim.Id);
                     var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
                     var res = new DimensionTypeDto
                     {
@@ -341,6 +341,37 @@ namespace ESG.Application.Services
                 }
             }
             return responsedto;
+        }
+
+        public async Task SaveDatapointDataInModel(DatapointValuesSavingRequestDto requestdto)
+        {
+            if (requestdto == null)
+                throw new ArgumentNullException(nameof(requestdto), "Invalid JSON data");
+
+            if (long.IsNegative(requestdto.ModelId))
+                throw new ArgumentException("Model name cannot be empty");
+            var utcNow = DateTime.UtcNow;
+            var modelcombination = new ModelCombinations
+            {
+                DataModelId = requestdto.ModelId,
+                DataPointValuesId = requestdto.DatapointId,
+                CreatedBy = requestdto.UserId,
+                CreatedDate = utcNow,
+                LastModifiedBy = requestdto.UserId,
+                LastModifiedDate = utcNow,
+                State = StateEnum.active
+            };
+            await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelcombination);
+            await _unitOfWork.SaveAsync();
+            var modelFilterCombinationalValues = new List<ModelFilterCombinationalValues>();
+            var dataModelValues = new List<DataModelValues>();
+            if (requestdto.ModelId != 0)
+            {
+                var modelConfigurations = await _unitOfWork.DataModelRepo.GetConfigurationViewTypesForDataModel(requestdto.ModelId);
+
+            }
+
+
         }
     }
 }

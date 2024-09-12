@@ -33,9 +33,9 @@ namespace ESG.API.Controllers
             return await _dataModelService.GetingDataModelLinkedtoDatapoint(datapointId, OrganizationId);
         }
         [HttpPost("SavingDatapointDataInModel")]
-        public async Task<IActionResult> SaveDatapointDataInModel(DataModelCreateRequestDto dataModelCreateRequestDto)
+        public async Task<IActionResult> SaveDatapointDataInModel(DatapointValuesSavingRequestDto datapointValuesSavingRequestDto)
         {
-            //await _dataModelService.SaveDatapointDataInModel(dataModelCreateRequestDto);
+            await _dataModelService.SaveDatapointDataInModel(datapointValuesSavingRequestDto);
             return Ok();
         }
         //[HttpPost("ConfiguringModel")]
