@@ -14,8 +14,8 @@ namespace ESG.Application.Dto.DataModel
         public long CreatedBy { get; set; } 
         public List<long> Datapoints { get; set; } 
         public List<DimensionDTO> Dimensions { get; set; }
-        public FactDTO Fact { get; set; } = new FactDTO();
-        public NarrativeDTO Narrative { get; set; }
+        public FactDTO? Fact { get; set; } = new FactDTO();
+        public NarrativeDTO? Narrative { get; set; }
 
         public class DimensionDTO
         {
@@ -25,15 +25,15 @@ namespace ESG.Application.Dto.DataModel
 
         public class FactDTO
         {
-            public long RowId { get; set; }
-            public long ColumnId { get; set; }
-            public List<long> Filters { get; set; }
+            public long? RowId { get; set; }
+            public long? ColumnId { get; set; }
+            public List<long>? Filters { get; set; }
         }
 
         public class NarrativeDTO
         {
-            public long RowId { get; set; }
-            public List<long> Filters { get; set; }
+            public long? RowId { get; set; }
+            public List<long>? Filters { get; set; }
         }
     }
 

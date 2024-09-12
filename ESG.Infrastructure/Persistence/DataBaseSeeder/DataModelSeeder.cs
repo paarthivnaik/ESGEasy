@@ -13,7 +13,7 @@ namespace ESG.Infrastructure.Persistence.DataBaseSeeder
         public static void Seed(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ESG.Domain.Entities.DataModel>().HasData(
-                new Domain.Entities.DataModel { Id = 1, ModelName = "Default Model", State = StateEnum.active, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow });
+                new Domain.Entities.DataModel { Id = 1, ModelName = "Default Model",Purpose = "This Model is default model", State = StateEnum.active, OrganizationId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow });
             //modelBuilder.Entity<ModelDatapoints>().HasData(
             //    new ModelDatapoints { Id = 1, DataModelId = 1, DatapointValuesId = 10032, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
             //    new ModelDatapoints { Id = 2, DataModelId = 1, DatapointValuesId = 10033, State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },

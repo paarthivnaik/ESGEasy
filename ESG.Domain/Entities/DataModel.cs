@@ -10,6 +10,7 @@ namespace ESG.Domain.Entities
     public class DataModel : AuditableWithBaseEntityAndOrganization<long>
     {
         public string? ModelName { get; set; }
+        public string? Purpose { get; set; }
         public IEnumerable<ModelDatapoints> ModelDatapoints { get; set; }
         public IEnumerable<ModelDimensionTypes> ModelDimensionTypes { get; set; }
         public IEnumerable<ModelConfiguration> ModelConfiguration { get; set; }

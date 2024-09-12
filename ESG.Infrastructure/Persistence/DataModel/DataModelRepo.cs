@@ -47,6 +47,22 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .ToListAsync();
             return list;
         }
+        public async Task<ESG.Domain.Entities.DataModel?> GetDataModelIdByDatapointIdAndOrgId(long datapointId, long orgId)
+        {
+            var dataModel = await _context.DataModels
+                .AsNoTracking()
+                .Include(a => a.ModelDatapoints)
+                .Where(a => a.OrganizationId == orgId && a.ModelDatapoints.Any(md => md.DatapointValuesId == datapointId))
+                .Select(dp => new ESG.Domain.Entities.DataModel
+                {
+                    Id = dp.Id,
+                    ModelName = dp.ModelName
+                })
+                .FirstOrDefaultAsync();
+
+            return dataModel;
+        }
+
         public async Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var result = await _context.ModelConfiguration

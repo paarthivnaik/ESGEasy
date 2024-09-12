@@ -12,6 +12,7 @@ namespace ESG.Application.Common.Interface.DataModel
     {
         //Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto);
         Task<List<ESG.Domain.Entities.DataModel>?> GetDataModelsByOrgId(long OrgId);
+        Task<ESG.Domain.Entities.DataModel?> GetDataModelIdByDatapointIdAndOrgId(long datapointId, long orgId);
         Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum);
         Task<(long Id, string Name)> GetColumnDimensionTypeIdAndNameByDimensionTypeId(long typeId);
         Task<IEnumerable<(long Id, string Name)>> GetFilterDimensionTypeByConfigurationId(long configurationId);
