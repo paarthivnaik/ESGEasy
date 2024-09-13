@@ -33,8 +33,15 @@ namespace ESG.Application.Services
                 {
                     if (uomType.UnitOfMeasureTypeId > 0)
                     {
-                        var olduomtype = _mapper.Map<UnitOfMeasureType>(uomType);
-                        oldUomTypes.Add(olduomtype);
+                        var existingUOMtype = await _unitOfWork.Repository<UnitOfMeasureType>().Get(a => a.Id == uomType.UnitOfMeasureTypeId);
+                        existingUOMtype.Name = uomType.Name;
+                        existingUOMtype.ShortText = uomType.ShortText;
+                        existingUOMtype.LongText = uomType.LongText;
+                        existingUOMtype.LanguageId = uomType.LanguageId;
+                        existingUOMtype.OrganizationId = uomType.OrganizationId;
+                        existingUOMtype.LastModifiedBy = uomType.UserId;
+                        existingUOMtype.LastModifiedDate = DateTime.UtcNow;
+                        oldUomTypes.Add(existingUOMtype);
                         //var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslations>(unitOfMeasureType);
                         //await _unitOfWork.Repository<UnitOfMeasureTypeTranslations>().AddAsync(uomTypeTranslationdata);
                     }
@@ -43,13 +50,13 @@ namespace ESG.Application.Services
                         var newuomtype = _mapper.Map<UnitOfMeasureType>(uomType);
                         newUomTypes.Add(newuomtype);
                         //var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslations>(unitOfMeasureType);
-                        //uomTypeTranslationdata.UnitOfMeasureTypeId = uomType.Id;
+                        //uomTypeTranslationdata.UnitOfMeasureTypeId = uomType.DatapointId;
                         //uomType.UnitOfMeasureTypeTranslations = new List<UnitOfMeasureTypeTranslations> { uomTypeTranslationdata };
 
                     }
                 }
             }
-            await _unitOfWork.Repository<UnitOfMeasureType>().AddRange(oldUomTypes);
+            await _unitOfWork.Repository<UnitOfMeasureType>().UpdateRange(oldUomTypes);
             await _unitOfWork.Repository<UnitOfMeasureType>().AddRange(newUomTypes);
             await _unitOfWork.SaveAsync();
         }

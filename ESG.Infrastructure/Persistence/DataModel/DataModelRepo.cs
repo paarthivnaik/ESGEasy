@@ -27,7 +27,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
         //        .SelectMany(a => a.DimensionType) 
         //        .Select(dt => new DimensionType
         //        {
-        //            Id = dt.Id, 
+        //            DatapointId = dt.DatapointId, 
         //            ShortText = dt.ShortText 
         //        })
         //        .ToListAsync();

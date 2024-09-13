@@ -33,8 +33,12 @@ namespace ESG.Application.Services
                 {
                     if (dimensionType.DimensionTypeId > 0)
                     {
-                        var oldDimensionType = _mapper.Map<DimensionType>(dimensionType);
-                        oldDimensionTypes.Add(oldDimensionType);
+                        var existingdimType = await _unitOfWork.Repository<DimensionType>().Get(a => a.Id == dimensionType.DimensionTypeId);
+                        existingdimType.ShortText = dimensionType.ShortText;
+                        existingdimType.LongText = dimensionType.LongText;
+                        existingdimType.LanguageId = dimensionType.LanguageId;
+                        existingdimType.OrganizationId = dimensionType.OrganizationId;
+                        oldDimensionTypes.Add(existingdimType);
                         //var dimensionsTranslateddata = _mapper.Map<DimensionTypeTranslations>(dimensionType);
                         //await _unitOfWork.Repository<DimensionTypeTranslations>().AddAsync(dimensionsTranslateddata);
                     }
@@ -43,14 +47,14 @@ namespace ESG.Application.Services
                         var dimensonsdata = _mapper.Map<DimensionType>(dimensionType);
                         newDimensionTypes.Add(dimensonsdata);
                         //var dimensonsTranslationdata = _mapper.Map<DimensionTypeTranslations>(dimentionType);
-                        //dimensonsTranslationdata.DimensionTypeId = dimensonsdata.Id;
+                        //dimensonsTranslationdata.DimensionTypeId = dimensonsdata.DatapointId;
                         //dimensonsdata.DimensionTypeTranslations = new List<DimensionTypeTranslations> { dimensonsTranslationdata };
                         await _unitOfWork.Repository<DimensionType>().AddAsync(dimensonsdata);
                     }
                 }
             }
             await _unitOfWork.Repository<DimensionType>().AddRange(newDimensionTypes);
-            await _unitOfWork.Repository<DimensionType>().AddRange(oldDimensionTypes);
+            await _unitOfWork.Repository<DimensionType>().UpdateRange(oldDimensionTypes);
             await _unitOfWork.SaveAsync();
         }
         public async Task UpdateAsync(DimensionTypeUpdateRequestDto dimentionType)

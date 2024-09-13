@@ -8,6 +8,7 @@ namespace ESG.Application.Dto.DatapointType
 {
     public class DatapointTypeCreateRequestDto
     {
+        public long DatapointTypeId { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public long LanguageId { get; set; }

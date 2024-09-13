@@ -42,11 +42,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.Audit", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("AffectedColumns")
                         .HasColumnType("text");
@@ -75,18 +75,18 @@ namespace ESG.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.ToTable("AuditLogs");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.Currency", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("CurrencyCode")
                         .IsRequired()
@@ -103,7 +103,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<string>("ShortText")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.ToTable("Currency");
 
@@ -272,11 +272,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DataModel", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -299,7 +299,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("OrganizationId");
 
@@ -321,11 +321,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DataModelFilters", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -351,7 +351,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("DimensionTypeId");
 
@@ -364,11 +364,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DataModelValues", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("ColumnId")
                         .HasColumnType("bigint");
@@ -398,7 +398,7 @@ namespace ESG.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("ColumnId");
 
@@ -411,11 +411,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DataPointTypes", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -454,7 +454,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("LanguageId");
 
@@ -542,11 +542,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DataPointValues", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -599,7 +599,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long?>("UnitOfMeasureId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("CurrencyId");
 
@@ -17639,11 +17639,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DatapointTypeTranslations", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -17678,7 +17678,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("LanguageId");
 
@@ -17690,11 +17690,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DatapointValueTranslations", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -17725,7 +17725,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("LanguageId");
 
@@ -17749,11 +17749,11 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long?>("LastModifiedBy")
                         .HasColumnType("bigint");
@@ -17781,11 +17781,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DimensionType", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -17822,7 +17822,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("LanguageId");
 
@@ -18057,11 +18057,11 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long?>("LastModifiedBy")
                         .HasColumnType("bigint");
@@ -18089,11 +18089,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.Dimensions", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -18131,7 +18131,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("DimensionTypeId");
 
@@ -18341,11 +18341,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DisclosureRequirement", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -18380,7 +18380,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("LanguageId");
 
@@ -19818,11 +19818,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.Hierarchy", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("DataPointValuesId")
                         .HasColumnType("bigint");
@@ -19830,7 +19830,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("HierarchyId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("DataPointValuesId");
 
@@ -20009,11 +20009,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.Language", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("IsoCode")
                         .IsRequired()
@@ -20026,7 +20026,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long?>("OrganizationId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("OrganizationId");
 
@@ -20049,11 +20049,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.ModelConfiguration", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long?>("ColumnId")
                         .HasColumnType("bigint");
@@ -20085,7 +20085,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("ViewType")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("ColumnId");
 
@@ -20128,11 +20128,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.ModelDatapoints", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -20155,7 +20155,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("DataModelId");
 
@@ -20166,11 +20166,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.ModelDimensionTypes", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -20193,7 +20193,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("DataModelId");
 
@@ -20226,11 +20226,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.ModelDimensionValues", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -20253,7 +20253,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("DimensionsId");
 
@@ -20332,11 +20332,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.ModelFilterCombinationalValues", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -20365,7 +20365,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("DimensionTypeId");
 
@@ -20380,11 +20380,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.ModelFilterCombinations", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -20404,7 +20404,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("DataModelId");
 
@@ -20413,11 +20413,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.Organization", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Country")
                         .HasColumnType("text");
@@ -20473,7 +20473,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("TenantId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("TenantId");
 
@@ -20502,11 +20502,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.OrganizationHeirarchies", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -20529,7 +20529,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("OrganizationId")
                         .IsUnique();
@@ -20552,11 +20552,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.OrganizationUser", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -20579,7 +20579,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("OrganizationId");
 
@@ -20617,17 +20617,17 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.Role", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.ToTable("Roles");
 
@@ -20651,11 +20651,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.Standard", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -20690,7 +20690,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("TopicId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("LanguageId");
 
@@ -20871,17 +20871,17 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.Tenant", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.ToTable("Tenants");
 
@@ -20895,11 +20895,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.Topic", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -20931,7 +20931,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("LanguageId");
 
@@ -20994,11 +20994,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.UnitOfMeasure", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -21040,7 +21040,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("UnitOfMeasureTypeId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("LanguageId");
 
@@ -23387,11 +23387,11 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long?>("LastModifiedBy")
                         .HasColumnType("bigint");
@@ -25455,11 +25455,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.UnitOfMeasureType", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -25498,7 +25498,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("LanguageId");
 
@@ -25928,11 +25928,11 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long?>("LastModifiedBy")
                         .HasColumnType("bigint");
@@ -26344,11 +26344,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -26394,7 +26394,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("LanguageId");
 
@@ -26449,11 +26449,11 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.UserRole", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("DatapointId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("DatapointId"));
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -26476,7 +26476,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("DatapointId");
 
                     b.HasIndex("RoleId");
 

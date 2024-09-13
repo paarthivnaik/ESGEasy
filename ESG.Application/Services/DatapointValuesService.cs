@@ -26,28 +26,38 @@ namespace ESG.Application.Services
             _mapper = mapper;
         }
 
-        public async Task AddAsync(DatapointValueCreateRequestDto dataPointValues)
+        public async Task AddAsync(List<DatapointValueCreateRequestDto> dataPointValues)
         {
-            var datapoint = new DataPointValues();
-            if (dataPointValues != null && dataPointValues.Id > 0)
+            var oldDatapoints = new List<DataPointValues>();
+            var newDatapoints = new List<DataPointValues>();
+            if (dataPointValues != null)
             {
-                var existingdatapoint = await _unitOfWork.Repository<DataPointValues>().Get(a => a.Id == dataPointValues.Id);
-                existingdatapoint.Name = dataPointValues.Name;
-                existingdatapoint.DatapointTypeId = dataPointValues.DatapointTypeId;
-                existingdatapoint.UnitOfMeasureId = dataPointValues.UnitOfMeasureId;
-                existingdatapoint.CurrencyId = dataPointValues.CurrencyId;
-                existingdatapoint.IsNarrative = dataPointValues.IsNarrative;
-                existingdatapoint.Purpose = dataPointValues.Purpose;
-                existingdatapoint.LanguageId = dataPointValues.LanguageId;
-                existingdatapoint.DisclosureRequirementId = dataPointValues.DisclosureRequirementId;
-                await _unitOfWork.Repository<DataPointValues>().Update(existingdatapoint);
+                foreach (var datapoint in dataPointValues)
+                {
+                    if (dataPointValues != null && datapoint.DatapointId > 0)
+                    {
+                        var existingdatapoint = await _unitOfWork.Repository<DataPointValues>().Get(a => a.Id == datapoint.DatapointId);
+                        existingdatapoint.Name = datapoint.Name;
+                        existingdatapoint.DatapointTypeId = datapoint.DatapointTypeId;
+                        existingdatapoint.UnitOfMeasureId = datapoint.UnitOfMeasureId;
+                        existingdatapoint.CurrencyId = datapoint.CurrencyId;
+                        existingdatapoint.IsNarrative = datapoint.IsNarrative;
+                        existingdatapoint.Purpose = datapoint.Purpose;
+                        existingdatapoint.LanguageId = datapoint.LanguageId;
+                        existingdatapoint.DisclosureRequirementId = datapoint.DisclosureRequirementId;
+                        oldDatapoints.Add(existingdatapoint);
+                    }
+                    else
+                    {
+                        var dp = _mapper.Map<DataPointValues>(dataPointValues);
+                        newDatapoints.Add(dp);
+                        
+                    }
+                }
             }
-            else
-            {
-                datapoint = _mapper.Map<DataPointValues>(dataPointValues);
-                await _unitOfWork.Repository<DataPointValues>().AddAsync(datapoint);
-            }
-            
+            await _unitOfWork.Repository<DataPointValues>().UpdateRange(oldDatapoints);
+            await _unitOfWork.Repository<DataPointValues>().AddRange(newDatapoints);
+
             await _unitOfWork.SaveAsync();
         }
 

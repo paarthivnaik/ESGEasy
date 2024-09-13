@@ -1,4 +1,5 @@
-﻿using ESG.Domain.Entities;
+﻿using ESG.Application.Dto.DatapointType;
+using ESG.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IDatapointTypesService
     {
-        Task AddAsync(DataPointTypes datapointTypes);
+        Task AddAsync(List<DatapointTypeCreateRequestDto> datapointTypes);
         Task<DataPointTypes> UpdateAsync(DataPointTypes datapointTypes);
         Task<IEnumerable<DataPointTypes>> GetAll();
         Task<DataPointTypes> GetById(long Id);

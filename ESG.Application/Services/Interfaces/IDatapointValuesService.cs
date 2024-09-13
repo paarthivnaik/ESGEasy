@@ -10,7 +10,7 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IDatapointValuesService
     {
-        Task AddAsync(DatapointValueCreateRequestDto datapointValues);
+        Task AddAsync(List<DatapointValueCreateRequestDto> datapointValues);
         Task<DataPointValues> UpdateAsync(DataPointValues datapointValues);
         Task<IEnumerable<DatapointValuesResponseDto>> GetAll();
         Task<IEnumerable<DatapointsByOrgIdResponseDto>> GetDataPointsByOrganizationId(long organizationId);

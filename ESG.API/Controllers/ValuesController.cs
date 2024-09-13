@@ -24,8 +24,8 @@ namespace ESG.API.Controllers
         /// table Type and TypeId are mandatory parameters, valueId is optional parameter.
         /// </summary>
         /// <param name="tableType">1-UOM, 2-DataPoint, 3-Dimension</param>
-        /// <param name="typeId">this Id is tableType Primary key</param>
-        /// <param name="valueId">this Id is translation table primary key</param>
+        /// <param name="typeId">this DatapointId is tableType Primary key</param>
+        /// <param name="valueId">this DatapointId is translation table primary key</param>
         /// <returns></returns>
         public async Task<IEnumerable<GetTranslationsResponseDto>> GetTranslations(int tableType, long typeId, long? valueId)
         {

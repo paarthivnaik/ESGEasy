@@ -158,7 +158,7 @@ namespace ESG.Application.Services
                     break;
 
                 default:
-                    throw new ArgumentException("Invalid tableType provided or Id not provided.");
+                    throw new ArgumentException("Invalid tableType provided or DatapointId not provided.");
             }
             return result;
         }

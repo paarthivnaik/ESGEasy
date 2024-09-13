@@ -31,7 +31,7 @@ namespace ESG.API.Controllers
 
         // POST api/<DatapointValuesController>
         [HttpPost("CreateOrUpdateDatapoint")]
-        public async Task Post([FromBody] DatapointValueCreateRequestDto value)
+        public async Task Post([FromBody] List<DatapointValueCreateRequestDto> value)
         {
             await _datapintValuesService.AddAsync(value);
         }

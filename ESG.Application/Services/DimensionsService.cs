@@ -32,8 +32,13 @@ namespace ESG.Application.Services
                 {
                     if (dimention.DimensionsId > 0)
                     {
-                        var dimensonsdata = _mapper.Map<Dimensions>(dimention);
-                        olddimensions.Add(dimensonsdata);                        
+                        var existingDimension = await _unitOfWork.Repository<Dimensions>().Get(a => a.Id == dimention.DimensionsId);
+                        existingDimension.DimensionTypeId = dimention.DimensionTypeId;
+                        existingDimension.LanguageId = dimention.LanguageId;
+                        existingDimension.OrganizationId = dimention.OrganizationId;
+                        existingDimension.ShortText = dimention.ShortText;
+                        existingDimension.LongText = dimention.LongText;
+                        olddimensions.Add(existingDimension);                        
 
                         //var dimensionsTranslateddata = _mapper.Map<DimensionTranslations>(dimentions);
                         //await _unitOfWork.Repository<DimensionTranslations>().AddAsync(dimensionsTranslateddata);
@@ -42,7 +47,7 @@ namespace ESG.Application.Services
                     {
                         var dimensonsdata = _mapper.Map<Dimensions>(dimention);
                         //var dimensonsTranslationdata = _mapper.Map<DimensionTranslations>(dimentions);
-                        //dimensonsTranslationdata.DimensionsId = dimensonsdata.Id;
+                        //dimensonsTranslationdata.DimensionsId = dimensonsdata.DatapointId;
                         //dimensonsdata.DimensionTranslations = new List<DimensionTranslations> { dimensonsTranslationdata };
                         newdimensions.Add(dimensonsdata);
                     }

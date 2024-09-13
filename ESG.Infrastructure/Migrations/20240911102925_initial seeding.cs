@@ -107,7 +107,7 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_Organizations_Tenants_TenantId",
                         column: x => x.TenantId,
                         principalTable: "Tenants",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -132,7 +132,7 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DataModels_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -153,7 +153,7 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_Languages_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                 });
 
             migrationBuilder.CreateTable(
@@ -177,7 +177,7 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_OrganizationHeirarchies_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -202,7 +202,7 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_OrganizationUsers_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -227,7 +227,7 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_ModelDimensionTypes_DataModels_DataModelId",
                         column: x => x.DataModelId,
                         principalTable: "DataModels",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -251,7 +251,7 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_ModelFilterCombinations_DataModels_DataModelId",
                         column: x => x.DataModelId,
                         principalTable: "DataModels",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -280,13 +280,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DataPointTypes_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DataPointTypes_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -315,13 +315,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DimensionTypes_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DimensionTypes_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -348,7 +348,7 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_Topic_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -377,13 +377,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_UnitOfMeasureTypes_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UnitOfMeasureTypes_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -414,13 +414,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_Users_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Users_OrganizationUsers_OrganizationUserId",
                         column: x => x.OrganizationUserId,
                         principalTable: "OrganizationUsers",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                 });
 
             migrationBuilder.CreateTable(
@@ -448,19 +448,19 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_Dimensions_DimensionTypes_DimensionTypeId",
                         column: x => x.DimensionTypeId,
                         principalTable: "DimensionTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Dimensions_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Dimensions_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -478,13 +478,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DimensionTypeModelDimensionTypes_DimensionTypes_DimensionTy~",
                         column: x => x.DimensionTypeId,
                         principalTable: "DimensionTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DimensionTypeModelDimensionTypes_ModelDimensionTypes_Dimens~",
                         column: x => x.DimensionTypesId,
                         principalTable: "ModelDimensionTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -511,13 +511,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DimensionTypeTranslations_DimensionTypes_DimensionTypeId",
                         column: x => x.DimensionTypeId,
                         principalTable: "DimensionTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DimensionTypeTranslations_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -545,23 +545,23 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_ModelConfiguration_DataModels_DataModelId",
                         column: x => x.DataModelId,
                         principalTable: "DataModels",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ModelConfiguration_DimensionTypes_ColumnId",
                         column: x => x.ColumnId,
                         principalTable: "DimensionTypes",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                     table.ForeignKey(
                         name: "FK_ModelConfiguration_DimensionTypes_DimensionTypeId",
                         column: x => x.DimensionTypeId,
                         principalTable: "DimensionTypes",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                     table.ForeignKey(
                         name: "FK_ModelConfiguration_DimensionTypes_RowId",
                         column: x => x.RowId,
                         principalTable: "DimensionTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -589,13 +589,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_Standard_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Standard_Topic_TopicId",
                         column: x => x.TopicId,
                         principalTable: "Topic",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -625,19 +625,19 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_UnitOfMeasures_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UnitOfMeasures_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UnitOfMeasures_UnitOfMeasureTypes_UnitOfMeasureTypeId",
                         column: x => x.UnitOfMeasureTypeId,
                         principalTable: "UnitOfMeasureTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -665,13 +665,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_UnitOfMeasureTypeTranslations_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UnitOfMeasureTypeTranslations_UnitOfMeasureTypes_UnitOfMeas~",
                         column: x => x.UnitOfMeasureTypeId,
                         principalTable: "UnitOfMeasureTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -696,13 +696,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_UserRoles_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UserRoles_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -729,13 +729,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DimensionTranslations_Dimensions_DimensionsId",
                         column: x => x.DimensionsId,
                         principalTable: "Dimensions",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DimensionTranslations_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -760,13 +760,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_ModelDimensionValues_Dimensions_DimensionsId",
                         column: x => x.DimensionsId,
                         principalTable: "Dimensions",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ModelDimensionValues_ModelDimensionTypes_ModelDimensionType~",
                         column: x => x.ModelDimensionTypesId,
                         principalTable: "ModelDimensionTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -793,24 +793,24 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_ModelFilterCombinationalValues_DimensionTypes_DimensionType~",
                         column: x => x.DimensionTypeId,
                         principalTable: "DimensionTypes",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                     table.ForeignKey(
                         name: "FK_ModelFilterCombinationalValues_DimensionTypes_ModelFilterId",
                         column: x => x.ModelFilterId,
                         principalTable: "DimensionTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ModelFilterCombinationalValues_Dimensions_DimensionsId",
                         column: x => x.DimensionsId,
                         principalTable: "Dimensions",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ModelFilterCombinationalValues_ModelFilterCombinations_Mode~",
                         column: x => x.ModelFilterCombinationsId,
                         principalTable: "ModelFilterCombinations",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -836,18 +836,18 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DataModelFilters_DimensionTypes_DimensionTypeId",
                         column: x => x.DimensionTypeId,
                         principalTable: "DimensionTypes",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                     table.ForeignKey(
                         name: "FK_DataModelFilters_DimensionTypes_FilterId",
                         column: x => x.FilterId,
                         principalTable: "DimensionTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DataModelFilters_ModelConfiguration_ModelConfigurationId",
                         column: x => x.ModelConfigurationId,
                         principalTable: "ModelConfiguration",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -875,13 +875,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DisclosureRequirement_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DisclosureRequirement_Standard_StandardId",
                         column: x => x.StandardId,
                         principalTable: "Standard",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                 });
 
             migrationBuilder.CreateTable(
@@ -908,13 +908,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_UnitOfMeasureTranslations_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UnitOfMeasureTranslations_UnitOfMeasures_UnitOfMeasureId",
                         column: x => x.UnitOfMeasureId,
                         principalTable: "UnitOfMeasures",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -941,19 +941,19 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DataModelValues_Dimensions_ColumnId",
                         column: x => x.ColumnId,
                         principalTable: "Dimensions",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DataModelValues_Dimensions_RowId",
                         column: x => x.RowId,
                         principalTable: "Dimensions",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DataModelValues_ModelFilterCombinationalValues_CombinationId",
                         column: x => x.CombinationId,
                         principalTable: "ModelFilterCombinationalValues",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -987,39 +987,39 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DataPointValues_Currency_CurrencyId",
                         column: x => x.CurrencyId,
                         principalTable: "Currency",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                     table.ForeignKey(
                         name: "FK_DataPointValues_Currency_CurrencyId1",
                         column: x => x.CurrencyId1,
                         principalTable: "Currency",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                     table.ForeignKey(
                         name: "FK_DataPointValues_DataPointTypes_DatapointTypeId",
                         column: x => x.DatapointTypeId,
                         principalTable: "DataPointTypes",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                     table.ForeignKey(
                         name: "FK_DataPointValues_DisclosureRequirement_DisclosureRequirement~",
                         column: x => x.DisclosureRequirementId,
                         principalTable: "DisclosureRequirement",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                     table.ForeignKey(
                         name: "FK_DataPointValues_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DataPointValues_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DataPointValues_UnitOfMeasures_UnitOfMeasureId",
                         column: x => x.UnitOfMeasureId,
                         principalTable: "UnitOfMeasures",
-                        principalColumn: "Id");
+                        principalColumn: "DatapointId");
                 });
 
             migrationBuilder.CreateTable(
@@ -1046,19 +1046,19 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DatapointTypeTranslations_DataPointTypes_DatapointTypeId",
                         column: x => x.DatapointTypeId,
                         principalTable: "DataPointTypes",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DatapointTypeTranslations_DataPointValues_DatapointTypeId",
                         column: x => x.DatapointTypeId,
                         principalTable: "DataPointValues",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DatapointTypeTranslations_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -1085,13 +1085,13 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_DatapointValueTranslations_DataPointValues_DatapointValueId",
                         column: x => x.DatapointValueId,
                         principalTable: "DataPointValues",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DatapointValueTranslations_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -1111,7 +1111,7 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_Hierarchy_DataPointValues_DataPointValuesId",
                         column: x => x.DataPointValuesId,
                         principalTable: "DataPointValues",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -1136,19 +1136,19 @@ namespace ESG.Infrastructure.Migrations
                         name: "FK_ModelDatapoints_DataModels_DataModelId",
                         column: x => x.DataModelId,
                         principalTable: "DataModels",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ModelDatapoints_DataPointValues_DatapointValuesId",
                         column: x => x.DatapointValuesId,
                         principalTable: "DataPointValues",
-                        principalColumn: "Id",
+                        principalColumn: "DatapointId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Currency",
-                columns: new[] { "Id", "CurrencyCode", "LongText", "Name", "ShortText" },
+                columns: new[] { "DatapointId", "CurrencyCode", "LongText", "Name", "ShortText" },
                 values: new object[,]
                 {
                     { 1L, "USD", "United States Dollar", "US Dollar", "USD" },
@@ -1175,7 +1175,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Languages",
-                columns: new[] { "Id", "IsoCode", "Name", "OrganizationId" },
+                columns: new[] { "DatapointId", "IsoCode", "Name", "OrganizationId" },
                 values: new object[,]
                 {
                     { 1L, "en", "English", null },
@@ -1184,7 +1184,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Roles",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "DatapointId", "Name" },
                 values: new object[,]
                 {
                     { 1L, "AdminEE" },
@@ -1194,12 +1194,12 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Tenants",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "DatapointId", "Name" },
                 values: new object[] { 1L, "ESG Global" });
 
             migrationBuilder.InsertData(
                 table: "DisclosureRequirement",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "ShortText", "StandardId", "State" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "ShortText", "StandardId", "State" },
                 values: new object[,]
                 {
                     { 57L, "S1.SBM-2", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4323), 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4324), "Interests and views of stakeholders", "Interests and views of stakeholders", null, 1 },
@@ -1209,12 +1209,12 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Organizations",
-                columns: new[] { "Id", "Country", "CreatedBy", "CreatedDate", "Email", "FirstName", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LatsName", "LogoUrl", "Name", "PostalCode", "RegistrationId", "State", "StreetAddress", "StreetNumber", "TenantId" },
+                columns: new[] { "DatapointId", "Country", "CreatedBy", "CreatedDate", "Email", "FirstName", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LatsName", "LogoUrl", "Name", "PostalCode", "RegistrationId", "State", "StreetAddress", "StreetNumber", "TenantId" },
                 values: new object[] { 1L, "USA", 0L, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "john.doe@org1.com", "John", 1L, null, null, "Doe", null, "ESG Global", "12345", "REG-001", 1, "123 Main St", "456", 1L });
 
             migrationBuilder.InsertData(
                 table: "Topic",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "ShortText", "State" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "ShortText", "State" },
                 values: new object[,]
                 {
                     { 1L, "general", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4636), 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4636), "General", "General", 1 },
@@ -1225,7 +1225,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "FirstName", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LastName", "OrganizationUserId", "Password", "PhoneNumber", "SecurityStamp", "State" },
+                columns: new[] { "DatapointId", "CreatedBy", "CreatedDate", "Email", "FirstName", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LastName", "OrganizationUserId", "Password", "PhoneNumber", "SecurityStamp", "State" },
                 values: new object[,]
                 {
                     { 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5766), "user1@example.com", "John", 1L, null, null, "Doe", null, new byte[] { 112, 97, 115, 115, 119, 111, 114, 100, 49 }, "1234567890", new Guid("632eb0a4-822a-4b14-9293-4b2e40801748"), 1 },
@@ -1235,12 +1235,12 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "DataModels",
-                columns: new[] { "Id", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "ModelName", "OrganizationId", "State" },
+                columns: new[] { "DatapointId", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "ModelName", "OrganizationId", "State" },
                 values: new object[] { 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5796), 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5796), "Default Model", 1L, 1 });
 
             migrationBuilder.InsertData(
                 table: "DataPointTypes",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State" },
                 values: new object[,]
                 {
                     { 1L, "table", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(858), 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(861), "Table", "Table", 1L, "Table", 1 },
@@ -1252,7 +1252,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "DimensionTypes",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "IsType", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "OrganizationId", "ShortText", "State" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "IsType", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "OrganizationId", "ShortText", "State" },
                 values: new object[,]
                 {
                     { 1L, "yyyy", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4072), true, 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4073), "Year", 1L, "Year", 1 },
@@ -1273,12 +1273,12 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "OrganizationHeirarchies",
-                columns: new[] { "Id", "CreatedBy", "CreatedDate", "HierarchyId", "LastModifiedBy", "LastModifiedDate", "OrganizationId", "State" },
+                columns: new[] { "DatapointId", "CreatedBy", "CreatedDate", "HierarchyId", "LastModifiedBy", "LastModifiedDate", "OrganizationId", "State" },
                 values: new object[] { 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5930), 2L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5930), 1L, 1 });
 
             migrationBuilder.InsertData(
                 table: "OrganizationUsers",
-                columns: new[] { "Id", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "OrganizationId", "State", "UserId" },
+                columns: new[] { "DatapointId", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "OrganizationId", "State", "UserId" },
                 values: new object[,]
                 {
                     { 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4524), null, null, 1L, 1, 1L },
@@ -1288,7 +1288,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Standard",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "ShortText", "State", "TopicId" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "ShortText", "State", "TopicId" },
                 values: new object[,]
                 {
                     { 1L, "ESRS2_GP", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4565), 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4566), "General principles", "General principles", 1, 1L },
@@ -1307,7 +1307,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "UnitOfMeasureTypes",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State" },
                 values: new object[,]
                 {
                     { 1L, "acidbasecapacity", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4673), 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4674), "Acid/Base capacity", "Acid/Base capacity", 1L, "Acid/Base capacity", 1 },
@@ -1341,7 +1341,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
-                columns: new[] { "Id", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "RoleId", "State", "UserId" },
+                columns: new[] { "DatapointId", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "RoleId", "State", "UserId" },
                 values: new object[,]
                 {
                     { 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5699), null, null, 1L, 1, 1L },
@@ -1351,7 +1351,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "DataPointValues",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "CurrencyId", "CurrencyId1", "DatapointTypeId", "DisclosureRequirementId", "IsNarrative", "LanguageId", "LastModifiedBy", "LastModifiedDate", "Name", "OrganizationId", "Purpose", "State", "UnitOfMeasureId" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "CurrencyId", "CurrencyId1", "DatapointTypeId", "DisclosureRequirementId", "IsNarrative", "LanguageId", "LastModifiedBy", "LastModifiedDate", "Name", "OrganizationId", "Purpose", "State", "UnitOfMeasureId" },
                 values: new object[,]
                 {
                     { 10044L, "E1.MDR-P_07-08", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(1018), null, null, 2L, null, null, 1L, null, null, "Disclosures to be reported in case the undertaking has not adopted policies", 1L, "", 1, null },
@@ -1389,7 +1389,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Dimensions",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "DimensionTypeId", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "OrganizationId", "ShortText", "State" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "DimensionTypeId", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "OrganizationId", "ShortText", "State" },
                 values: new object[,]
                 {
                     { 1000L, "act", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4130), 5L, 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4130), "Actual", 1L, "Actual", 1 },
@@ -1409,7 +1409,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "DisclosureRequirement",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "ShortText", "StandardId", "State" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "ShortText", "StandardId", "State" },
                 values: new object[,]
                 {
                     { 1L, "BP-1", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4194), 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4195), "General basis for preparation of sustainability statements", "General basis for preparation of sustainability statements", 1L, 1 },
@@ -1515,7 +1515,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "ModelConfiguration",
-                columns: new[] { "Id", "ColumnId", "CreatedBy", "CreatedDate", "DataModelId", "DimensionTypeId", "LastModifiedBy", "LastModifiedDate", "RowId", "State", "ViewType" },
+                columns: new[] { "DatapointId", "ColumnId", "CreatedBy", "CreatedDate", "DataModelId", "DimensionTypeId", "LastModifiedBy", "LastModifiedDate", "RowId", "State", "ViewType" },
                 values: new object[,]
                 {
                     { 10000L, 5L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5872), 1L, null, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5872), 1L, 1, 1 },
@@ -1524,7 +1524,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "ModelDimensionTypes",
-                columns: new[] { "Id", "CreatedBy", "CreatedDate", "DataModelId", "DimensionTypeId", "LastModifiedBy", "LastModifiedDate", "State" },
+                columns: new[] { "DatapointId", "CreatedBy", "CreatedDate", "DataModelId", "DimensionTypeId", "LastModifiedBy", "LastModifiedDate", "State" },
                 values: new object[,]
                 {
                     { 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5815), 1L, 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5815), 1 },
@@ -1533,7 +1533,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "UnitOfMeasureTypeTranslations",
-                columns: new[] { "LanguageId", "UnitOfMeasureTypeId", "CreatedBy", "CreatedDate", "Id", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "ShortText", "State" },
+                columns: new[] { "LanguageId", "UnitOfMeasureTypeId", "CreatedBy", "CreatedDate", "DatapointId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "ShortText", "State" },
                 values: new object[,]
                 {
                     { 1L, 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5188), 1001L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5189), "Acid/Base capacity", "Acid/Base capacity", "Acid/Base capacity", 1 },
@@ -1567,7 +1567,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "UnitOfMeasures",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State", "UnitOfMeasureTypeId" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State", "UnitOfMeasureTypeId" },
                 values: new object[,]
                 {
                     { 1L, "hh", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4767), 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(4767), "Hour", "Hour", 1L, "Hr", 1, 20L },
@@ -1719,7 +1719,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "DataPointValues",
-                columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "CurrencyId", "CurrencyId1", "DatapointTypeId", "DisclosureRequirementId", "IsNarrative", "LanguageId", "LastModifiedBy", "LastModifiedDate", "Name", "OrganizationId", "Purpose", "State", "UnitOfMeasureId" },
+                columns: new[] { "DatapointId", "Code", "CreatedBy", "CreatedDate", "CurrencyId", "CurrencyId1", "DatapointTypeId", "DisclosureRequirementId", "IsNarrative", "LanguageId", "LastModifiedBy", "LastModifiedDate", "Name", "OrganizationId", "Purpose", "State", "UnitOfMeasureId" },
                 values: new object[,]
                 {
                     { 10000L, "E1.GOV-3_01", 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(911), null, null, null, 17L, true, 1L, null, null, "Disclosure of whether and how climate-related considerations are factored into remuneration of members of administrative, management and supervisory bodies", 1L, "", 1, null },
@@ -2869,7 +2869,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "ModelDimensionValues",
-                columns: new[] { "Id", "CreatedBy", "CreatedDate", "DimensionsId", "LastModifiedBy", "LastModifiedDate", "ModelDimensionTypesId", "State" },
+                columns: new[] { "DatapointId", "CreatedBy", "CreatedDate", "DimensionsId", "LastModifiedBy", "LastModifiedDate", "ModelDimensionTypesId", "State" },
                 values: new object[,]
                 {
                     { 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5840), 1010L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5841), 1L, 1 },
@@ -2882,7 +2882,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "UnitOfMeasureTranslations",
-                columns: new[] { "LanguageId", "UnitOfMeasureId", "CreatedBy", "CreatedDate", "Id", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "ShortText", "State" },
+                columns: new[] { "LanguageId", "UnitOfMeasureId", "CreatedBy", "CreatedDate", "DatapointId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "ShortText", "State" },
                 values: new object[,]
                 {
                     { 1L, 1L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5282), 1001L, 1L, new DateTime(2024, 9, 11, 10, 29, 24, 886, DateTimeKind.Utc).AddTicks(5282), "Hour", "Hour", "Hr", 1 },
@@ -3034,7 +3034,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hierarchy",
-                columns: new[] { "Id", "DataPointValuesId", "HierarchyId" },
+                columns: new[] { "DatapointId", "DataPointValuesId", "HierarchyId" },
                 values: new object[,]
                 {
                     { 1L, 10032L, 1L },

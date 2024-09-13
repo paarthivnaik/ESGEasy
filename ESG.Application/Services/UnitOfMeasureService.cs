@@ -28,22 +28,19 @@ namespace ESG.Application.Services
                 {
                     if (uom.UnitOfMeasureId > 0)
                     {
-                        var uomdata = new UnitOfMeasure
-                        {
-                            Code = uom.Code,
-                            Name = uom.Name,
-                            ShortText = uom.ShortText,
-                            LongText = uom.LongText,
-                            OrganizationId = uom.OrganizationId,
-                            LanguageId = uom.LanguageId,
-                            UnitOfMeasureTypeId = uom.UnitOfMeasureTypeId,
-                            CreatedBy = uom.UserId,
-                            LastModifiedBy = uom.UserId,
-                            CreatedDate = DateTime.UtcNow,
-                            LastModifiedDate = DateTime.UtcNow,
-                            State = StateEnum.active
-                        };
-                        oldUoms.Add(uomdata);
+                        var existingUOM = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(a => a.Id == uom.UnitOfMeasureId);
+                        existingUOM.Name = uom.Name;
+                        existingUOM.ShortText = uom.ShortText;
+                        existingUOM.LongText = uom.LongText;
+                        existingUOM.OrganizationId = uom.OrganizationId;
+                        existingUOM.LanguageId = uom.LanguageId;
+                        existingUOM.UnitOfMeasureTypeId = uom.UnitOfMeasureTypeId;
+                        existingUOM.CreatedBy = uom.UserId;
+                        existingUOM.LastModifiedBy = uom.UserId;
+                        existingUOM.CreatedDate = DateTime.UtcNow;
+                        existingUOM.LastModifiedDate = DateTime.UtcNow;
+                        existingUOM.State = StateEnum.active;
+                        oldUoms.Add(existingUOM);
                         //var uomTranslationdataOnly = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasures);
                         //await _unitOfMeasure.Repository<UnitOfMeasureTranslations>().AddAsync(uomTranslationdataOnly);
                     }
@@ -66,12 +63,12 @@ namespace ESG.Application.Services
                         };
                         newUoms.Add(uomdata);
                         //var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasures);
-                        //uomTranslationdata.UnitOfMeasureId = uomdata.Id;
+                        //uomTranslationdata.UnitOfMeasureId = uomdata.DatapointId;
                         //uomdata.UnitOfMeasureTranslations = new List<UnitOfMeasureTranslations> { uomTranslationdata };
                     }
                 }
             }
-            await _unitOfMeasure.Repository<UnitOfMeasure>().AddRange(oldUoms);
+            await _unitOfMeasure.Repository<UnitOfMeasure>().UpdateRange(oldUoms);
             await _unitOfMeasure.Repository<UnitOfMeasure>().AddRange(newUoms);
             await _unitOfMeasure.SaveAsync();
         }

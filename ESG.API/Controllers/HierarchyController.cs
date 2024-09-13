@@ -28,12 +28,12 @@ namespace ESG.API.Controllers
         [HttpGet("GetHierarchy")]
         /// <summary>
         /// when we pass table type 1 we need to get topic data
-        /// when we pass tableType 2, Id as topic Id we get standard Data for that topic Id
-        /// when we pass tableType 3, Id as standard Id we get disclosurerequirement Data for that standard Id
-        /// when we pass tableType 4, Id as disclosurerequirement Id we get datapoint Data for that disclosurerequirement Id
+        /// when we pass tableType 2, DatapointId as topic DatapointId we get standard Data for that topic DatapointId
+        /// when we pass tableType 3, DatapointId as standard DatapointId we get disclosurerequirement Data for that standard DatapointId
+        /// when we pass tableType 4, DatapointId as disclosurerequirement DatapointId we get datapoint Data for that disclosurerequirement DatapointId
         /// </summary>
         /// <param name="tableType">1- Topic, 2-Standard, 3-DisclousureRequirement, 4- Datapoint</param>
-        /// <param name="Id">this Id is tableType foreign key</param>
+        /// <param name="Id">this DatapointId is tableType foreign key</param>
         /// <returns></returns>
         public async Task<IEnumerable<HeirarchyDataResponseDto>> GetHeirarchy(int tableType, long? Id)
         {

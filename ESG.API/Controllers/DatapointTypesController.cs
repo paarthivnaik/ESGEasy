@@ -1,4 +1,5 @@
-﻿using ESG.Application.Services.Interfaces;
+﻿using ESG.Application.Dto.DatapointType;
+using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,7 +32,7 @@ namespace ESG.API.Controllers
 
         // POST api/<DatapointTypesController>
         [HttpPost]
-        public async Task Post([FromBody] DataPointTypes value)
+        public async Task Post([FromBody] List<DatapointTypeCreateRequestDto> value)
         {
             await _datapointTypesService.AddAsync(value);
         }
