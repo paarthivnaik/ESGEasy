@@ -14,13 +14,13 @@ namespace ESG.Application.Common.Mapping
         public DimensionTranslationsProfile()
         {
             //create
-            CreateMap<DimensionsCreateRequestDto, DimensionTranslations>()
+            CreateMap<DimensionCreateRequestDto, DimensionTranslations>()
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.DimensionsId, opt => opt.MapFrom(src => src.DimensionsId))
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
-            CreateMap<DimensionTranslations, DimensionsCreateRequestDto>()
+            CreateMap<DimensionTranslations, DimensionCreateRequestDto>()
                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy))

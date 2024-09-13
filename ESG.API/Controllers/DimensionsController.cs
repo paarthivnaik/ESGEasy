@@ -15,7 +15,7 @@ namespace ESG.API.Controllers
             _dimensionsService = dimensionsService;
         }
         [HttpPost("Create")]
-        public async Task<IActionResult> Post([FromBody] DimensionsCreateRequestDto value)
+        public async Task<IActionResult> Post([FromBody] List<DimensionCreateRequestDto> value)
         {
             await _dimensionsService.AddAsync(value);
             return Ok();

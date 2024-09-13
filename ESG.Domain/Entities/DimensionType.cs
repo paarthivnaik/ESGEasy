@@ -13,7 +13,7 @@ namespace ESG.Domain.Entities
         public string? ShortText { get; set; }
         public string LongText { get; set; }
         public long LanguageId { get; set; }
-        public bool IsType {  get; set; }
+        //public bool IsType {  get; set; }
         public Language Language { get; set; }
         public IEnumerable<Dimensions> Dimensions { get; set; }
         public IEnumerable<ModelDimensionTypes> DimensionTypes { get; set; }

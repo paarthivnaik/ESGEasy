@@ -10,7 +10,7 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IDimentionTypeService
     {
-        Task AddAsync(DimensionTypeCreateRequestDto dimentionType);
+        Task AddAsync(List<DimensionTypeCreateRequestDto> dimentionType);
         Task UpdateAsync(DimensionTypeUpdateRequestDto dimentionType);
         Task<IEnumerable<DimensionTypeResponseDto>> GetAll();
         Task<DimensionType> GetById(long Id);

@@ -23,21 +23,34 @@ namespace ESG.Application.Services
             _mapper = mapper;
         }
 
-        public async Task Add(UnitOfMeasureTypeCreateRequestDto unitOfMeasureType)
+        public async Task Add(List<UnitOfMeasureTypeCreateRequestDto> unitOfMeasureType)
         {
-            if (unitOfMeasureType.UnitOfMeasureTypeId > 0)
+            var oldUomTypes = new List<UnitOfMeasureType>();
+            var newUomTypes = new List<UnitOfMeasureType>();
+            if (unitOfMeasureType != null)
             {
-                var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslations>(unitOfMeasureType);
-                await _unitOfWork.Repository<UnitOfMeasureTypeTranslations>().AddAsync(uomTypeTranslationdata);
+                foreach (var uomType in unitOfMeasureType)
+                {
+                    if (uomType.UnitOfMeasureTypeId > 0)
+                    {
+                        var olduomtype = _mapper.Map<UnitOfMeasureType>(uomType);
+                        oldUomTypes.Add(olduomtype);
+                        //var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslations>(unitOfMeasureType);
+                        //await _unitOfWork.Repository<UnitOfMeasureTypeTranslations>().AddAsync(uomTypeTranslationdata);
+                    }
+                    else
+                    {
+                        var newuomtype = _mapper.Map<UnitOfMeasureType>(uomType);
+                        newUomTypes.Add(newuomtype);
+                        //var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslations>(unitOfMeasureType);
+                        //uomTypeTranslationdata.UnitOfMeasureTypeId = uomType.Id;
+                        //uomType.UnitOfMeasureTypeTranslations = new List<UnitOfMeasureTypeTranslations> { uomTypeTranslationdata };
+
+                    }
+                }
             }
-            else
-            {
-                var uomType = _mapper.Map<UnitOfMeasureType>(unitOfMeasureType);
-                var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslations>(unitOfMeasureType);
-                uomTypeTranslationdata.UnitOfMeasureTypeId = uomType.Id;
-                uomType.UnitOfMeasureTypeTranslations = new List<UnitOfMeasureTypeTranslations> { uomTypeTranslationdata };
-                await _unitOfWork.Repository<UnitOfMeasureType>().AddAsync(uomType);
-            }
+            await _unitOfWork.Repository<UnitOfMeasureType>().AddRange(oldUomTypes);
+            await _unitOfWork.Repository<UnitOfMeasureType>().AddRange(newUomTypes);
             await _unitOfWork.SaveAsync();
         }
 

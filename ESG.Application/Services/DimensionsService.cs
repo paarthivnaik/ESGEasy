@@ -5,6 +5,7 @@ using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,21 +22,34 @@ namespace ESG.Application.Services
             _mapper = mapper;
         }
 
-        public async Task AddAsync(DimensionsCreateRequestDto dimentions)
+        public async Task AddAsync(List<DimensionCreateRequestDto> dimentions)
         {
-            if (dimentions.DimensionsId > 0)
+            var olddimensions = new List<Dimensions>();
+            var newdimensions = new List<Dimensions>();
+            if (dimentions != null)
             {
-                var dimensionsTranslateddata = _mapper.Map<DimensionTranslations>(dimentions);
-                await _unitOfWork.Repository<DimensionTranslations>().AddAsync(dimensionsTranslateddata);
+                foreach (var dimention in dimentions)
+                {
+                    if (dimention.DimensionsId > 0)
+                    {
+                        var dimensonsdata = _mapper.Map<Dimensions>(dimention);
+                        olddimensions.Add(dimensonsdata);                        
+
+                        //var dimensionsTranslateddata = _mapper.Map<DimensionTranslations>(dimentions);
+                        //await _unitOfWork.Repository<DimensionTranslations>().AddAsync(dimensionsTranslateddata);
+                    }
+                    else
+                    {
+                        var dimensonsdata = _mapper.Map<Dimensions>(dimention);
+                        //var dimensonsTranslationdata = _mapper.Map<DimensionTranslations>(dimentions);
+                        //dimensonsTranslationdata.DimensionsId = dimensonsdata.Id;
+                        //dimensonsdata.DimensionTranslations = new List<DimensionTranslations> { dimensonsTranslationdata };
+                        newdimensions.Add(dimensonsdata);
+                    }
+                }
             }
-            else
-            {
-                var dimensonsdata = _mapper.Map<Dimensions>(dimentions);
-                var dimensonsTranslationdata = _mapper.Map<DimensionTranslations>(dimentions);
-                dimensonsTranslationdata.DimensionsId = dimensonsdata.Id;
-                //dimensonsdata.DimensionTranslations = new List<DimensionTranslations> { dimensonsTranslationdata };
-                await _unitOfWork.Repository<Dimensions>().AddAsync(dimensonsdata);
-            }
+            await _unitOfWork.Repository<Dimensions>().AddRange(newdimensions);
+            await _unitOfWork.Repository<Dimensions>().UpdateRange(olddimensions);
             await _unitOfWork.SaveAsync();
         }
 

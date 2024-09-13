@@ -18,24 +18,61 @@ namespace ESG.Application.Services
             _unitOfMeasure = unitOfMeasure;
             _mapper = mapper;
         }
-        public async Task Add(UnitOfMeasureCreateRequestDto unitOfMeasure)
+        public async Task Add(List<UnitOfMeasureCreateRequestDto> unitOfMeasures)
         {
-            if (unitOfMeasure.UnitOfMeasureId > 0)
+            var oldUoms = new List<UnitOfMeasure>();
+            var newUoms = new List<UnitOfMeasure>();
+            if (unitOfMeasures != null)
             {
-                var uomTranslationdataOnly = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasure);
-                await _unitOfMeasure.Repository<UnitOfMeasureTranslations>().AddAsync(uomTranslationdataOnly);
+                foreach(var uom in unitOfMeasures)
+                {
+                    if (uom.UnitOfMeasureId > 0)
+                    {
+                        var uomdata = new UnitOfMeasure
+                        {
+                            Code = uom.Code,
+                            Name = uom.Name,
+                            ShortText = uom.ShortText,
+                            LongText = uom.LongText,
+                            OrganizationId = uom.OrganizationId,
+                            LanguageId = uom.LanguageId,
+                            UnitOfMeasureTypeId = uom.UnitOfMeasureTypeId,
+                            CreatedBy = uom.UserId,
+                            LastModifiedBy = uom.UserId,
+                            CreatedDate = DateTime.UtcNow,
+                            LastModifiedDate = DateTime.UtcNow,
+                            State = StateEnum.active
+                        };
+                        oldUoms.Add(uomdata);
+                        //var uomTranslationdataOnly = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasures);
+                        //await _unitOfMeasure.Repository<UnitOfMeasureTranslations>().AddAsync(uomTranslationdataOnly);
+                    }
+                    else
+                    {
+                        var uomdata = new UnitOfMeasure
+                        {
+                            Code = uom.Code,
+                            Name = uom.Name,
+                            ShortText = uom.ShortText,
+                            LongText = uom.LongText,
+                            OrganizationId = uom.OrganizationId,
+                            LanguageId = uom.LanguageId,
+                            UnitOfMeasureTypeId = uom.UnitOfMeasureTypeId,
+                            CreatedBy = uom.UserId,
+                            LastModifiedBy = uom.UserId,
+                            CreatedDate = DateTime.UtcNow,
+                            LastModifiedDate = DateTime.UtcNow,
+                            State = StateEnum.active
+                        };
+                        newUoms.Add(uomdata);
+                        //var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasures);
+                        //uomTranslationdata.UnitOfMeasureId = uomdata.Id;
+                        //uomdata.UnitOfMeasureTranslations = new List<UnitOfMeasureTranslations> { uomTranslationdata };
+                    }
+                }
             }
-            else
-            {
-
-            }
-            {
-                var uomdata = _mapper.Map<UnitOfMeasure>(unitOfMeasure);
-                var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasure);
-                uomTranslationdata.UnitOfMeasureId = uomdata.Id;
-                uomdata.UnitOfMeasureTranslations = new List<UnitOfMeasureTranslations> { uomTranslationdata };
-                await _unitOfMeasure.Repository<UnitOfMeasure>().AddAsync(uomdata);
-            }
+            await _unitOfMeasure.Repository<UnitOfMeasure>().AddRange(oldUoms);
+            await _unitOfMeasure.Repository<UnitOfMeasure>().AddRange(newUoms);
             await _unitOfMeasure.SaveAsync();
         }
         public async Task DeleteUOM(UnitOfMeasureDeleteRequest deleteRequest)

@@ -23,21 +23,34 @@ namespace ESG.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task AddAsync(DimensionTypeCreateRequestDto dimentionType)
+        public async Task AddAsync(List<DimensionTypeCreateRequestDto> dimentionTypes)
         {
-            if (dimentionType.DimensionTypeId > 0)
+            var oldDimensionTypes = new List<DimensionType>();
+            var newDimensionTypes = new List<DimensionType>();
+            if (dimentionTypes != null)
             {
-                var dimensionsTranslateddata = _mapper.Map<DimensionTypeTranslations>(dimentionType);
-                await _unitOfWork.Repository<DimensionTypeTranslations>().AddAsync(dimensionsTranslateddata);
+                foreach (var dimensionType in dimentionTypes)
+                {
+                    if (dimensionType.DimensionTypeId > 0)
+                    {
+                        var oldDimensionType = _mapper.Map<DimensionType>(dimensionType);
+                        oldDimensionTypes.Add(oldDimensionType);
+                        //var dimensionsTranslateddata = _mapper.Map<DimensionTypeTranslations>(dimensionType);
+                        //await _unitOfWork.Repository<DimensionTypeTranslations>().AddAsync(dimensionsTranslateddata);
+                    }
+                    else
+                    {
+                        var dimensonsdata = _mapper.Map<DimensionType>(dimensionType);
+                        newDimensionTypes.Add(dimensonsdata);
+                        //var dimensonsTranslationdata = _mapper.Map<DimensionTypeTranslations>(dimentionType);
+                        //dimensonsTranslationdata.DimensionTypeId = dimensonsdata.Id;
+                        //dimensonsdata.DimensionTypeTranslations = new List<DimensionTypeTranslations> { dimensonsTranslationdata };
+                        await _unitOfWork.Repository<DimensionType>().AddAsync(dimensonsdata);
+                    }
+                }
             }
-            else
-            {
-                var dimensonsdata = _mapper.Map<DimensionType>(dimentionType);
-                var dimensonsTranslationdata = _mapper.Map<DimensionTypeTranslations>(dimentionType);
-                dimensonsTranslationdata.DimensionTypeId = dimensonsdata.Id;
-                //dimensonsdata.DimensionTypeTranslations = new List<DimensionTypeTranslations> { dimensonsTranslationdata };
-                await _unitOfWork.Repository<DimensionType>().AddAsync(dimensonsdata);
-            }
+            await _unitOfWork.Repository<DimensionType>().AddRange(newDimensionTypes);
+            await _unitOfWork.Repository<DimensionType>().AddRange(oldDimensionTypes);
             await _unitOfWork.SaveAsync();
         }
         public async Task UpdateAsync(DimensionTypeUpdateRequestDto dimentionType)

@@ -25,6 +25,7 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId))
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
+                .ForMember(dest => dest.LastModifiedBy, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.UnitOfMeasureTypeId, opt => opt.MapFrom(src => src.UnitOfMeasureTypeId));
             CreateMap<UnitOfMeasure, UnitOfMeasureCreateRequestDto>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))

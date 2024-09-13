@@ -21,7 +21,7 @@ namespace ESG.API.Controllers
 
         // POST api/<UOMController>
         [HttpPost("Create")]
-        public async Task<IActionResult> Post([FromBody] UnitOfMeasureCreateRequestDto value)
+        public async Task<IActionResult> Post([FromBody] List<UnitOfMeasureCreateRequestDto> value)
         {
             await _unitOfMeasureService.Add(value);
             return Ok();

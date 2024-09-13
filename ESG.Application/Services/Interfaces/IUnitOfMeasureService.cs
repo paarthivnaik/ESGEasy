@@ -10,7 +10,7 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IUnitOfMeasureService
     {
-        Task Add(UnitOfMeasureCreateRequestDto unitOfMeasure);
+        Task Add(List<UnitOfMeasureCreateRequestDto> unitOfMeasure);
         Task AddRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure);
         Task Update(UnitOfMeasureUpdateRequestDto unitOfMeasure);
         //Task UpdateRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure);
