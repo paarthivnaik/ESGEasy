@@ -3,6 +3,7 @@ using ESG.Application.Common.Interface;
 using ESG.Application.Dto.DatapointType;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

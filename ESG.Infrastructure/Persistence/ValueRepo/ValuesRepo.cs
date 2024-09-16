@@ -1,7 +1,7 @@
 ﻿using ESG.Application.Common.Interface.Dimensions;
 using ESG.Application.Common.Interface.Value;
 using ESG.Application.Dto.Get;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

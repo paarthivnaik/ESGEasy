@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.TenantAndUsers;
 
 namespace ESG.Application.Services
 {

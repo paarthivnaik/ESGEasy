@@ -1,7 +1,8 @@
 ﻿using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Dto.Hierarchy;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Entities.Hierarchies;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

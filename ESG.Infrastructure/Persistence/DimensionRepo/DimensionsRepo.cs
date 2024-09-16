@@ -1,7 +1,7 @@
 ﻿using ESG.Application.Common.Interface.Dimensions;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Dto.Dimensions;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace ESG.Infrastructure.Persistence.DimensionRepo
             _context = context;
         }
 
-        public async Task<IEnumerable<ESG.Domain.Entities.DimensionTranslations>> GetAllTranslations(long id)
+        public async Task<IEnumerable<DimensionTranslations>> GetAllTranslations(long id)
         {
             var list = await _context.DimensionTranslations
                                      .Where(uom => uom.DimensionsId == id)

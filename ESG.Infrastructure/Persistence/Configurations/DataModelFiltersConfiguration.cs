@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ESG.Domain.Entities.DataModels;
 
 namespace ESG.Infrastructure.Persistence.Configurations
 {
-    public class DataModelFiltersConfiguration : IEntityTypeConfiguration<Domain.Entities.DataModelFilters>
+    public class DataModelFiltersConfiguration : IEntityTypeConfiguration<DataModelFilters>
     {
-        public void Configure(EntityTypeBuilder<Domain.Entities.DataModelFilters> builder)
+        public void Configure(EntityTypeBuilder<DataModelFilters> builder)
         {
             builder.HasOne(mc => mc.DimensionType)
                           .WithMany()

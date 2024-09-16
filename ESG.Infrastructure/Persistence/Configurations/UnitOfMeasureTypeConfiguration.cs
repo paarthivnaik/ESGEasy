@@ -1,5 +1,4 @@
-﻿
-using ESG.Domain.Entities;
+﻿using ESG.Domain.Entities.DomainEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

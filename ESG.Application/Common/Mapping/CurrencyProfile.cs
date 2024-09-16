@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ESG.Application.Dto.Currency;
 using ESG.Application.Dto.DisclosureRequirement;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

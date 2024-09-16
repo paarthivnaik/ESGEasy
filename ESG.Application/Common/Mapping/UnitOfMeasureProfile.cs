@@ -3,7 +3,7 @@ using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Dto.UnitOfMeasureType;
 using ESG.Application.Dto.UOMTranslations;
 using ESG.Application.Dto.UOMTypeTranslations;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

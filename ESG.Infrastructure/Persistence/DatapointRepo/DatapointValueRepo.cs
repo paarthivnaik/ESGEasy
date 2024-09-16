@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface.DataPoint;
 using ESG.Application.Dto.DatapointValue;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;

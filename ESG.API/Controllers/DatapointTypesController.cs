@@ -1,6 +1,6 @@
 ﻿using ESG.Application.Dto.DatapointType;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers

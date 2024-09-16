@@ -1,4 +1,4 @@
-﻿using ESG.Domain.Entities;
+﻿using ESG.Domain.Entities.TenantAndUsers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,8 @@ namespace ESG.Infrastructure.Persistence.DataBaseSeeder
         public static void Seed(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Tenant>().HasData(
-                new Tenant { Id = 1, Name = "ESG Global" });
+                new Tenant { Id = 1, Name = "ESG Global1" },
+                new Tenant { Id = 2, Name = "ESG Global2" });
         }
     }
 }

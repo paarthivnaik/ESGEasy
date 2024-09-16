@@ -1,5 +1,5 @@
 ﻿using ESG.Application.Dto.DatapointType;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

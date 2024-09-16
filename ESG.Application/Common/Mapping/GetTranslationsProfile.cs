@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ESG.Application.Dto.Get;
 using ESG.Application.Dto.UnitOfMeasure;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

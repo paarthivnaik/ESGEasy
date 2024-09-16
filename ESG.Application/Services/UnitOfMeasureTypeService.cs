@@ -4,6 +4,7 @@ using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Dto.UnitOfMeasureType;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

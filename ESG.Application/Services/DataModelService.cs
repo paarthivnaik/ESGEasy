@@ -3,6 +3,8 @@ using ESG.Application.Common.Interface;
 using ESG.Application.Dto.DataModel;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
+using ESG.Domain.Entities.DataModels;
+using ESG.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
@@ -28,7 +30,7 @@ namespace ESG.Application.Services
             {
                 throw new ArgumentNullException(nameof(configuringDataModelRequestDto), "Invalid JSON data");
             }
-            var modelConfiguration = new Domain.Entities.ModelConfiguration
+            var modelConfiguration = new Domain.Entities.DataModels.ModelConfiguration
             {
                 DataModelId = configuringDataModelRequestDto.DataModelId,
                 ViewType = configuringDataModelRequestDto.ViewType,
@@ -37,7 +39,7 @@ namespace ESG.Application.Services
                 State = StateEnum.active,
                 CreatedBy = configuringDataModelRequestDto.UserId,
             };
-            await _unitOfWork.Repository<Domain.Entities.ModelConfiguration>().AddAsync(modelConfiguration);
+            await _unitOfWork.Repository<Domain.Entities.DataModels.ModelConfiguration>().AddAsync(modelConfiguration);
             var dataModelFilters = configuringDataModelRequestDto.FilterIds
                 .Select(filter => new DataModelFilters
                 {
@@ -65,7 +67,7 @@ namespace ESG.Application.Services
 
             var utcNow = DateTime.UtcNow;
 
-            var dataModel = new ESG.Domain.Entities.DataModel
+            var dataModel = new ESG.Domain.Entities.DataModels.DataModel
             {
                 OrganizationId = dataModelCreateRequestDto.OrganizationId,
                 ModelName = dataModelCreateRequestDto.ModelName,
@@ -76,14 +78,14 @@ namespace ESG.Application.Services
                 LastModifiedDate = utcNow,
                 State = StateEnum.active
             };
-            await _unitOfWork.Repository<ESG.Domain.Entities.DataModel>().AddAsync(dataModel);
+            await _unitOfWork.Repository<DataModel>().AddAsync(dataModel);
             await _unitOfWork.SaveAsync();
 
             var dataModelId = dataModel.Id;
             var modelDatapoints = new List<ModelDatapoints>();
             var modelDimensionTypes = new ModelDimensionTypes();
             var modelDimensionValues = new List<ModelDimensionValues>();
-            var modelConfigurations = new ESG.Domain.Entities.ModelConfiguration();
+            var modelConfigurations = new ESG.Domain.Entities.DataModels.ModelConfiguration();
             var modelFilters = new List<DataModelFilters>();
             foreach (var datapointId in dataModelCreateRequestDto.Datapoints)
             {
@@ -110,7 +112,7 @@ namespace ESG.Application.Services
                     LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                     LastModifiedDate = utcNow
                 };
-                await _unitOfWork.Repository<ESG.Domain.Entities.ModelDimensionTypes>().AddAsync(modelDimensionTypes);
+                await _unitOfWork.Repository<ModelDimensionTypes>().AddAsync(modelDimensionTypes);
                 await _unitOfWork.SaveAsync();
                 foreach (var dimensionValueId in dimensionType.Values)
                 {
@@ -128,7 +130,7 @@ namespace ESG.Application.Services
             }
             if (dataModelCreateRequestDto.Fact.RowId != null && dataModelCreateRequestDto.Fact.ColumnId != null)
             {
-                modelConfigurations = new Domain.Entities.ModelConfiguration
+                modelConfigurations = new Domain.Entities.DataModels.ModelConfiguration
                 {
                     DataModelId = dataModelId,
                     RowId = dataModelCreateRequestDto.Fact.RowId!.Value,
@@ -140,7 +142,7 @@ namespace ESG.Application.Services
                     LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                     LastModifiedDate = utcNow
                 };
-                await _unitOfWork.Repository<ESG.Domain.Entities.ModelConfiguration>().AddAsync(modelConfigurations);
+                await _unitOfWork.Repository<Domain.Entities.DataModels.ModelConfiguration>().AddAsync(modelConfigurations);
                 await _unitOfWork.SaveAsync();
                 if (dataModelCreateRequestDto.Fact.Filters != null)
                 {
@@ -161,7 +163,7 @@ namespace ESG.Application.Services
             }
             if (dataModelCreateRequestDto.Narrative.RowId != null && dataModelCreateRequestDto.Fact.Filters != null)
             {
-                modelConfigurations = new Domain.Entities.ModelConfiguration
+                modelConfigurations = new Domain.Entities.DataModels.ModelConfiguration
                 {
                     DataModelId = dataModelId,
                     RowId = dataModelCreateRequestDto.Narrative.RowId!.Value,
@@ -173,7 +175,7 @@ namespace ESG.Application.Services
                     LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                     LastModifiedDate = utcNow
                 };
-                await _unitOfWork.Repository<ESG.Domain.Entities.ModelConfiguration>().AddAsync(modelConfigurations);
+                await _unitOfWork.Repository<Domain.Entities.DataModels.ModelConfiguration>().AddAsync(modelConfigurations);
                 await _unitOfWork.SaveAsync();
                 if (dataModelCreateRequestDto.Fact.Filters != null)
                 {

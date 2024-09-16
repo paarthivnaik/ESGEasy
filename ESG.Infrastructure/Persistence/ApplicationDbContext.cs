@@ -1,6 +1,9 @@
 ﻿using ESG.Application.Common.Interface;
 using ESG.Domain.Common;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DataModels;
+using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Entities.Hierarchies;
+using ESG.Domain.Entities.TenantAndUsers;
 using ESG.Infrastructure.Persistence.DataBaseSeeder;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
@@ -26,7 +29,7 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<Language> Languages { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<DimensionType> DimensionTypes { get; set; }
-        public DbSet<ESG.Domain.Entities.Dimensions> Dimensions { get; set; }
+        public DbSet<Dimensions> Dimensions { get; set; }
         public DbSet<DataPointTypes> DataPointTypes { get; set; }
         public DbSet<DatapointTypeTranslations> DatapointTypeTranslations { get; set; }
         public DbSet<DataPointValues> DataPointValues { get; set; }
@@ -39,7 +42,7 @@ namespace ESG.Infrastructure.Persistence
         public DbSet<Standard> Standard { get; set; }
         public DbSet<DisclosureRequirement> DisclosureRequirement { get; set; }
         public DbSet<OrganizationHeirarchies> OrganizationHeirarchies { get; set; }
-        public DbSet<ESG.Domain.Entities.DataModel> DataModels { get; set; }
+        public DbSet<Domain.Entities.DataModels.DataModel> DataModels { get; set; }
         public DbSet<ModelDimensionTypes> ModelDimensionTypes { get; set; }
         public DbSet<ModelDimensionValues> ModelDimensionValues { get; set; }
         public DbSet<ModelDatapoints> ModelDatapoints { get; set; }

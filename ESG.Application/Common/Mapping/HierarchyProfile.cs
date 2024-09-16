@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using ESG.Application.Dto.Dimensions;
 using ESG.Application.Dto.Hierarchy;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Entities.Hierarchies;
 using System;
 using System.Collections.Generic;
 using System.Linq;

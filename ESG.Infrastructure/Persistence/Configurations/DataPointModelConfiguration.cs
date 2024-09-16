@@ -1,5 +1,4 @@
-﻿using ESG.Domain.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ESG.Infrastructure.Persistence.Configurations
 {
-    public class DataPointModelConfiguration : IEntityTypeConfiguration<Domain.Entities.DataModel>
+    public class DataPointModelConfiguration : IEntityTypeConfiguration<Domain.Entities.DataModels.DataModel>
     {
-        public void Configure(EntityTypeBuilder<Domain.Entities.DataModel> builder)
+        public void Configure(EntityTypeBuilder<Domain.Entities.DataModels.DataModel> builder)
         {
 
             //builder.HasOne(dpv => dpv.DataPointTypes)

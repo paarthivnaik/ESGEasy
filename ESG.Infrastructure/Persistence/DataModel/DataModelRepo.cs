@@ -1,6 +1,8 @@
 ﻿using ESG.Application.Common.Interface.DataModel;
 using ESG.Application.Dto.DataModel;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DataModels;
+using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -34,12 +36,12 @@ namespace ESG.Infrastructure.Persistence.DataModel
         //    return dimensionTypes;
         //}
 
-        public async Task<List<ESG.Domain.Entities.DataModel>?> GetDataModelsByOrgId(long OrgId)
+        public async Task<List<Domain.Entities.DataModels.DataModel>?> GetDataModelsByOrgId(long OrgId)
         {
             var list = await _context.DataModels
                 .AsNoTracking()
                 .Where(a => a.OrganizationId == OrgId)
-                .Select(dp => new ESG.Domain.Entities.DataModel
+                .Select(dp => new ESG.Domain.Entities.DataModels.DataModel
                 {
                     Id = dp.Id,
                     ModelName = dp.ModelName
@@ -47,13 +49,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .ToListAsync();
             return list;
         }
-        public async Task<ESG.Domain.Entities.DataModel?> GetDataModelIdByDatapointIdAndOrgId(long datapointId, long orgId)
+        public async Task<Domain.Entities.DataModels.DataModel?> GetDataModelIdByDatapointIdAndOrgId(long datapointId, long orgId)
         {
             var dataModel = await _context.DataModels
                 .AsNoTracking()
                 .Include(a => a.ModelDatapoints)
                 .Where(a => a.OrganizationId == orgId && a.ModelDatapoints.Any(md => md.DatapointValuesId == datapointId))
-                .Select(dp => new ESG.Domain.Entities.DataModel
+                .Select(dp => new ESG.Domain.Entities.DataModels.DataModel
                 {
                     Id = dp.Id,
                     ModelName = dp.ModelName

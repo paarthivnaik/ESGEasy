@@ -1,4 +1,4 @@
-﻿using ESG.Domain.Entities;
+﻿using ESG.Domain.Entities.DomainEntities;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Newtonsoft.Json;
 

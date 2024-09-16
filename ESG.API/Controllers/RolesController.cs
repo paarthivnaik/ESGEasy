@@ -1,5 +1,5 @@
 ﻿using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.TenantAndUsers;
 using Microsoft.AspNetCore.Mvc;
 
 

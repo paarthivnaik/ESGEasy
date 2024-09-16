@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using ESG.Application.Dto.DatapointValue;
 using ESG.Application.Dto.Dimensions;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ESG.Application.Common.Mapping
 {
@@ -37,6 +38,7 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId))
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.LastModifiedBy, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.DisclosureRequirementId, opt => opt.MapFrom(src => src.DisclosureRequirementId))
                 .ForMember(dest => dest.IsNarrative, opt => opt.MapFrom(src => src.IsNarrative));
 

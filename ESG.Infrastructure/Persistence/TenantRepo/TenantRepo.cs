@@ -1,5 +1,5 @@
 ﻿using ESG.Application.Common.Interface.Tenants;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.TenantAndUsers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

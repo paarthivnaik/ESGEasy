@@ -1,4 +1,4 @@
-﻿using ESG.Domain.Entities;
+﻿using ESG.Domain.Entities.TenantAndUsers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

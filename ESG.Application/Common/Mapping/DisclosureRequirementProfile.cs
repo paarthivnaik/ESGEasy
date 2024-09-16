@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ESG.Application.Dto.DatapointValue;
 using ESG.Application.Dto.DisclosureRequirement;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.Hierarchies;
 using System;
 using System.Collections.Generic;
 using System.Linq;

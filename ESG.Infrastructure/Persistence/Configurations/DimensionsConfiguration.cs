@@ -1,5 +1,4 @@
-﻿using ESG.Domain.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,12 +7,13 @@ using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.Emit;
+using ESG.Domain.Entities.DomainEntities;
 
 namespace ESG.Infrastructure.Persistence.Configurations
 {
-    public class DimensionsConfiguration : IEntityTypeConfiguration<ESG.Domain.Entities.Dimensions>
+    public class DimensionsConfiguration : IEntityTypeConfiguration<Dimensions>
     {
-        public void Configure(EntityTypeBuilder<ESG.Domain.Entities.Dimensions> builder)
+        public void Configure(EntityTypeBuilder<Dimensions> builder)
         {
             builder.HasOne(d => d.DimensionType)
                 .WithMany(dpt => dpt.Dimensions)

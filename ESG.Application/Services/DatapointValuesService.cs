@@ -3,7 +3,7 @@ using ESG.Application.Common.Interface;
 using ESG.Application.Dto.DatapointValue;
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
+using ESG.Domain.Entities.DomainEntities;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -49,8 +49,24 @@ namespace ESG.Application.Services
                     }
                     else
                     {
-                        var dp = _mapper.Map<DataPointValues>(dataPointValues);
-                        newDatapoints.Add(dp);
+                        //var newDP = new DataPointValues{
+                        //    Name = datapoint.Name,
+                        //    Code = datapoint.Code,
+                        //    DatapointTypeId = datapoint.DatapointTypeId,
+                        //    UnitOfMeasureId = datapoint.UnitOfMeasureId,
+                        //    CurrencyId = datapoint.CurrencyId,
+                        //    IsNarrative = datapoint.IsNarrative,
+                        //    Purpose = datapoint.Purpose,
+                        //    LanguageId = datapoint.LanguageId,
+                        //    OrganizationId = datapoint.OrganizationId,
+                        //    CreatedBy = datapoint.UserId,
+                        //    LastModifiedBy = datapoint.UserId,
+                        //    CreatedDate = DateTime.UtcNow,
+                        //    LastModifiedDate = DateTime.UtcNow,
+                        //    DisclosureRequirementId = datapoint.DisclosureRequirementId,
+                        //};
+                        var newDP = _mapper.Map<DataPointValues>(datapoint);
+                        newDatapoints.Add(newDP);
                         
                     }
                 }
