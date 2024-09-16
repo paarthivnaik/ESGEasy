@@ -9,5 +9,6 @@ namespace ESG.Application.Common.Interface.Account
 {
     public interface IUsersRepo : IGenericRepository<User>
     {
+        Task<string> GenerateToken(long userId);
     }
 }

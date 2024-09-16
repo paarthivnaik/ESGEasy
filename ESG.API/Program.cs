@@ -17,6 +17,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
 builder.Services.AddAPIDependancies();
 builder.Services.AddApplication();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();

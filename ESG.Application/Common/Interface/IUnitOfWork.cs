@@ -1,4 +1,5 @@
-﻿using ESG.Application.Common.Interface.DataModel;
+﻿using ESG.Application.Common.Interface.Account;
+using ESG.Application.Common.Interface.DataModel;
 using ESG.Application.Common.Interface.DataPoint;
 using ESG.Application.Common.Interface.Dimensions;
 using ESG.Application.Common.Interface.Hierarchy;
@@ -22,6 +23,7 @@ namespace ESG.Application.Common.Interface
         IHierarchyRepo HierarchyRepo { get; }
         IDataModelRepo DataModelRepo { get; }
         IDatapointValueRepo DatapointValueRepo { get; }
+        IUsersRepo UsersRepo { get; }
         Task<int> SaveAsync();
         int Save();
         void BeginTransaction();

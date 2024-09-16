@@ -20,6 +20,12 @@ namespace ESG.Application
                                     typeof(DimensionsProfile),
                                     typeof(DimensionTypeProfile),
                                     typeof(DimensionTranslationsProfile),
+                                    typeof(CurrencyProfile),
+                                    typeof(DataPointValuesProfile),
+                                    typeof(GetTranslationsProfile),
+                                    typeof(HierarchyProfile),
+                                    typeof(DisclosureRequirementProfile),
+                                    typeof(UserProfile),
                                     typeof(DimensionTypeTranslationsProfile));
             return services;
         }

@@ -1,4 +1,5 @@
 ﻿using ESG.Application.Common.Interface;
+using ESG.Application.Common.Interface.Account;
 using ESG.Application.Common.Interface.DataModel;
 using ESG.Application.Common.Interface.DataPoint;
 using ESG.Application.Common.Interface.Dimensions;
@@ -11,6 +12,7 @@ using ESG.Infrastructure.Persistence.DimensionRepo;
 using ESG.Infrastructure.Persistence.HierarchyRepo;
 using ESG.Infrastructure.Persistence.ValueRepo;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,22 +32,26 @@ namespace ESG.Infrastructure.Persistence
         public IHierarchyRepo HierarchyRepo { get; private set; }
         public IDataModelRepo DataModelRepo { get; private set; }
         public IDatapointValueRepo DatapointValueRepo { get; private set; }
+        public IUsersRepo UsersRepo { get; private set; }
 
         private readonly ApplicationDbContext _context;
+        private readonly IConfiguration _configuration;
         IDbContextTransaction dbContextTransaction;
         private Hashtable _repositories;
         //public IUnitOfMeasureRepo _unitOfMeasure { get; private set; }
         #endregion
         #region Ctor
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
             UnitOfMeasure = new ESG.Infrastructure.Persistence.UnitOfMeasureRepo.UnitOfMeasureRepo(_context);
             DimensionRepo = new DimensionsRepo(_context);
             ValuesRepo = new ValuesRepo(_context);
             HierarchyRepo = new ESG.Infrastructure.Persistence.HierarchyRepo.HierarchyRepo(_context);
             DataModelRepo = new DataModelRepo(_context);
             DatapointValueRepo = new ESG.Infrastructure.Persistence.DatapointRepo.DatapointValueRepo(_context);
+            UsersRepo = new ESG.Infrastructure.Persistence.AccountsRepo.UsersRepo(_context, _configuration);
         }
         #endregion
        

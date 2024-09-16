@@ -1,4 +1,5 @@
-﻿using ESG.Domain.Entities.TenantAndUsers;
+﻿using ESG.Application.Dto.User;
+using ESG.Domain.Entities.TenantAndUsers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,12 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IUserService
     {
-        Task Create(UserDto user);
-        Task<User> Update(UserDto user);
-        Task<User> UpdatePassword(UserDto user);
-        Task<User> GetUser(long userId);
+        Task<IEnumerable<UserResponseDto>> GetAllUsers();
+        Task<UserResponseDto> GetUser(long userId);
+        Task Create(UserCreationRequestDto user);
+        Task<string> UserLogin(UserLogInRequestDto userLogInRequestDto);
+        Task<User> Update(UserCreationRequestDto user);
+        Task<User> UpdatePassword(UserCreationRequestDto user);
         Task<User> Delete(long Id);
     }
 }

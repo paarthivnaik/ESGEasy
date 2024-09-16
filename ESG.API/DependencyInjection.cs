@@ -1,8 +1,13 @@
-﻿using ESG.Application.Common.Interface.Tenants;
+﻿using ESG.Application.Common.Interface.Account;
+using ESG.Application.Common.Interface;
+using ESG.Application.Common.Interface.Tenants;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
+using ESG.Infrastructure.Persistence.AccountsRepo;
+using ESG.Infrastructure.Persistence;
 using ESG.Infrastructure.Persistence.UnitOfMeasureRepo;
+using Microsoft.Extensions.Configuration;
 
 namespace ESG.API
 {
@@ -31,6 +36,8 @@ namespace ESG.API
             services.AddScoped<IDataModelService, DataModelService>();
             services.AddScoped<ICurrencyService, CurrencyService>();
             services.AddScoped<IDisclosureRequirementService, DisclosureRequirementService>();
+            services.AddScoped<IUsersRepo, UsersRepo>();
+            //services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }

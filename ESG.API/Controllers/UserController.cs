@@ -1,4 +1,5 @@
 ﻿ using ESG.Application;
+using ESG.Application.Dto.User;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -16,27 +17,34 @@ namespace ESG.API.Controllers
             _logger = logger;
             _userService = userService;
         }
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("GetUsers")]
+        public async Task<IEnumerable<UserResponseDto>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _userService.GetAllUsers();
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("GetUserDetails")]
+        public async Task<UserResponseDto> Get(int id)
         {
-            return "value";
+            return await _userService.GetUser(id);
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create(UserDto user)
+        public async Task<IActionResult> Create(UserCreationRequestDto user)
         {
            await _userService.Create(user);
             return Ok(200);
         }
 
+        [HttpPost("UserLogIn")]
+        public async Task<string> UserLogIn(UserLogInRequestDto user)
+        {
+            var token = await _userService.UserLogin(user);
+            return token;
+        }
+
         [HttpPut("Update")]
-        public async Task<IActionResult> Update(UserDto user)
+        public async Task<IActionResult> Update(UserCreationRequestDto user)
         {
             await _userService.Update(user);
             return(Ok());

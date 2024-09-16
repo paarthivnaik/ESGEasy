@@ -10,5 +10,6 @@ namespace ESG.Domain.Entities.TenantAndUsers
     public class Role : BaseEntity<long>
     {
         public string Name { get; set; }
+        public IEnumerable<UserRole> Users { get; set; }
     }
 }
