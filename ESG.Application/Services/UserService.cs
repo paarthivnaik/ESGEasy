@@ -42,7 +42,7 @@ namespace ESG.Application.Services
             var response = _mapper.Map<IEnumerable<UserResponseDto>>(users);
             return response;
         }
-        public async Task<UserResponseDto> GetUser(long userId)
+        public async Task<UserResponseDto> GetUserById(long userId)
         {
             var user = await _unitOfWork.Repository<User>().Get(userId);
             if (user == null)
@@ -52,13 +52,51 @@ namespace ESG.Application.Services
             var response = _mapper.Map<UserResponseDto>(user);
             return response;
         }
+        public async Task<List<long>> GetUserOrganizations(long userId)
+        {
+            var userOrganizations = await _unitOfWork.Repository<OrganizationUser>()
+                .GetAll(orgUser => orgUser.UserId == userId);
+
+            if (userOrganizations == null || !userOrganizations.Any())
+            {
+                throw new System.Exception("User not found or not associated with any organizations");
+            }
+
+            var response = userOrganizations.Select(orgUser => orgUser.OrganizationId).ToList();
+
+            return response;
+        }
+
+        public async Task<UserDetailsResponeDto> GetUserDetails(long userId)
+        {
+            var user = await _unitOfWork.UsersRepo.GetUserDetails(userId);
+            if (user == null)
+            {
+                throw new System.Exception("User not found");
+            }
+            var organizationUser = user.OrganizationUsers.FirstOrDefault();
+            if (organizationUser == null)
+            {
+                throw new System.Exception("User is not associated with the specified organization");
+            }
+            var response = new UserDetailsResponeDto
+            {
+                UserId = userId,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                RoleId = user.Role.RoleId,
+                OrganizationId = organizationUser.OrganizationId
+            };
+            return response;
+        }
         public async Task Create(UserCreationRequestDto userDto)
         {
             var user = new User();
             user = _mapper.Map<User>(userDto);
             user.SecurityStamp = Guid.NewGuid();
             //user.Password= Crypto.GenerateHash(userDto.Password, user.SecurityStamp.ToString());
-            user.Email = userDto.Email.ToLowerInvariant();
+            user.Email = userDto.Email;
             await _unitOfWork.Repository<User>().AddAsync(user);
             await _unitOfWork.SaveAsync();
         }
@@ -69,7 +107,8 @@ namespace ESG.Application.Services
             {
                 throw new System.Exception("User not valid, please enter valid credentials");
             }
-            var token = await _unitOfWork.UsersRepo.GenerateToken(validUser.Id);
+            var user = await GetUserDetails(validUser.Id);
+            var token = await _unitOfWork.UsersRepo.GenerateToken(user.UserId, user.Email, user.OrganizationId, user.RoleId);
             return token.ToString();
         }
         public Task<User> Update(UserCreationRequestDto user)

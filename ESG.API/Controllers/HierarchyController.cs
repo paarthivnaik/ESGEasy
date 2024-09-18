@@ -3,6 +3,7 @@ using ESG.Application.Dto.Hierarchy;
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

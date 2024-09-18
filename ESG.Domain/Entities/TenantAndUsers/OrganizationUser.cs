@@ -13,8 +13,8 @@ namespace ESG.Domain.Entities.TenantAndUsers
     {
         public long OrganizationId { get; set; }
         public long UserId { get; set; }
-        public Organization Organizations { get; set; }
+        public User User { get; set; }
+        public Organization Organization { get; set; }
 
-        public IEnumerable<User> Users { get; set; }
     }
 }

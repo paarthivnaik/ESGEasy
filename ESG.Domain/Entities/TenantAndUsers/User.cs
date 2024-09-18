@@ -22,5 +22,6 @@ namespace ESG.Domain.Entities.TenantAndUsers
         public long LanguageId { get; set; }
         public Language Languages { get; set; }
         public UserRole Role { get; set; }
+        public IEnumerable<OrganizationUser> OrganizationUsers { get; set; }
     }
 }

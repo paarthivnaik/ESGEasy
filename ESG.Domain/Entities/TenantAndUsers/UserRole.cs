@@ -13,7 +13,7 @@ namespace ESG.Domain.Entities.TenantAndUsers
     {
         public long RoleId { get; set; }
         public long UserId { get; set; }
-        public Role Roles { get; set; }
-        public User Users { get; set; }
+        public Role Role { get; set; }
+        public User User { get; set; }
     }
 }

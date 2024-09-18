@@ -33,6 +33,7 @@ namespace ESG.Domain.Entities.TenantAndUsers
         public IEnumerable<DataPointValues> DataPointValues { get; set; }
         public IEnumerable<DataPointTypes> DataPointTypes { get; set; }
         public IEnumerable<DataModel> DataModel { get; set; }
+        public IEnumerable<OrganizationUser> OrganizationUsers { get; set; }
         public OrganizationHeirarchies OrganizationHeirarchies { get; set; }
     }
 }
