@@ -4,6 +4,7 @@ using ESG.Application.Dto.DatapointValue;
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Entities.Hierarchies;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -101,11 +102,11 @@ namespace ESG.Application.Services
             return await _unitOfWork.Repository<DataPointValues>().Get(Id);
         }
 
-        public async Task<IEnumerable<DatapointsByOrgIdResponseDto>> GetDataPointsByOrganizationId(long organizationId)
+        public async Task<DatapointsByOrgIdResponseDto> GetDataPointsByOrganizationId(long organizationId)
         {
+            var response = new DatapointsByOrgIdResponseDto();
             List<long> filteredDatapoints = new List<long>();
             long? HierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
-
             if (HierarchyId != null)
             {
                 var datapoints = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(HierarchyId); 
@@ -116,8 +117,56 @@ namespace ESG.Application.Services
                     .ToList();
             }
             var datapointslist = await _unitOfWork.DatapointValueRepo.GetNamesForFilteredIds(filteredDatapoints);
-            var list = _mapper.Map<IEnumerable<DatapointsByOrgIdResponseDto>>(datapointslist);
-            return list;
+            var disclosureRequirementIds = datapointslist.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
+            var disclosureRequirements = await _unitOfWork.Repository<DisclosureRequirement>() .GetAll(dr => disclosureRequirementIds.Contains(dr.Id));
+            var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
+            var subTopics = await _unitOfWork.Repository<Standard>().GetAll(st => subTopicIds.Contains(st.Id));
+            var topicIds = subTopics.Select(st => st.TopicId).Distinct().ToList();
+            var topics = await _unitOfWork.Repository<Topic>().GetAll(t => topicIds.Contains(t.Id));
+            foreach (var topic in topics)
+            {
+                var topicDto = new TopicDto
+                {
+                    Id = topic.Id,
+                    Name = topic.ShortText,
+                    StandardDto = new List<StandardDto>()
+                };
+                var relatedSubTopics = subTopics.Where(st => st.TopicId == topic.Id).ToList();
+                foreach (var subTopic in relatedSubTopics)
+                {
+                    var standardDto = new StandardDto
+                    {
+                        Id = subTopic.Id,
+                        Name = subTopic.ShortText,
+                        DisclosureRequirement = new List<DisclosureRequirementDto>()
+                    };
+                    var relatedDisclosureRequirements = disclosureRequirements.Where(dr => dr.StandardId == subTopic.Id).ToList();
+                    foreach (var disclosureRequirement in relatedDisclosureRequirements)
+                    {
+                        var disclosureRequirementDto = new DisclosureRequirementDto
+                        {
+                            Id = disclosureRequirement.Id,
+                            Name = disclosureRequirement.ShortText,
+                            DatapointDto = new List<DatapointDto>()
+                        };
+                        var relatedDatapoints = datapointslist.Where(dp => dp.DisclosureRequirementId == disclosureRequirement.Id).ToList();
+                        foreach (var datapoint in relatedDatapoints)
+                        {
+                            var datapointDto = new DatapointDto
+                            {
+                                Id = datapoint.Id,
+                                Name = datapoint.Name,
+                                IsNarrative = datapoint.IsNarrative!.Value
+                            };
+                            disclosureRequirementDto.DatapointDto.Add(datapointDto);
+                        }
+                        standardDto.DisclosureRequirement.Add(disclosureRequirementDto);
+                    }
+                    topicDto.StandardDto.Add(standardDto);
+                }
+                response.TopicDto.Add(topicDto);
+            }
+            return response;
         }
 
 

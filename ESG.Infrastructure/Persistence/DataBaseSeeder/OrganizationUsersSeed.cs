@@ -17,6 +17,8 @@ namespace ESG.Infrastructure.Persistence.DataBaseSeeder
                 new OrganizationUser { Id = 1, OrganizationId = 1, UserId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
                 new OrganizationUser { Id = 2, OrganizationId = 1, UserId = 2, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
                 new OrganizationUser { Id = 3, OrganizationId = 1, UserId = 3, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+                new OrganizationUser { Id = 19, OrganizationId = 1, UserId = 101, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
+                new OrganizationUser { Id = 20, OrganizationId = 1, UserId = 102, CreatedBy = 1, CreatedDate = DateTime.UtcNow },
 
                 // Organization 2 users
                 new OrganizationUser { Id = 4, OrganizationId = 2, UserId = 4, CreatedBy = 1, CreatedDate = DateTime.UtcNow },

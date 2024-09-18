@@ -2,11 +2,13 @@
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace ESG.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class DatapointValuesController : ControllerBase
     {
         private readonly ILogger<DatapointValuesController> _logger;
@@ -22,14 +24,26 @@ namespace ESG.API.Controllers
         {
             return await _datapintValuesService.GetAll();
         }
-
-        //[HttpGet("{id}")]
-        //public async Task<DataPointValues> Get(int id)
+        //[HttpGet("GetDataPointsByOrganizationId")]
+        //public async Task GetDataPointsByOrganizationId(long organizationId)
         //{
-        //    return await _datapintValuesService.GetById(id);
         //}
 
-        // POST api/<DatapointValuesController>
+
+        //[HttpGet("GetDataPointDataByOrganizationId")]
+        //public async Task<DatapointsByOrgIdResponseDto> GetDataPointDataByOrganizationId(long organizationId)
+        //{
+        //   var res =  new DatapointsByOrgIdResponseDto();
+        //    return  res;
+        //}
+
+        //[HttpGet("GetDataPointsByOrganizationId")]
+        //public async Task<DatapointsByOrgIdResponseDto> Get(long organizationId)
+        //{
+        //    var res = await _datapintValuesService.GetDataPointsByOrganizationId(organizationId);
+        //    return res;
+        //}
+
         [HttpPost("CreateOrUpdateDatapoint")]
         public async Task Post([FromBody] List<DatapointValueCreateRequestDto> value)
         {
@@ -43,11 +57,7 @@ namespace ESG.API.Controllers
             return Ok();
         }
 
-        //[HttpGet("GetDataPointsByOrganizationId")]
-        //public async Task<IEnumerable<DatapointsByOrgIdResponseDto>> GetDataPointsByOrganizationId(long organizationId)
-        //{
-        //    var res = await _datapintValuesService.GetDataPointsByOrganizationId(organizationId);
-        //    return res;
-        //}
+        
+
     }
 }

@@ -37,7 +37,9 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 .Select(dp => new DataPointValues
                 {
                     Id = dp.Id,
-                    Name = dp.Name
+                    Name = dp.Name,
+                    IsNarrative = dp.IsNarrative,
+                    DisclosureRequirementId = dp.DisclosureRequirementId
                 })
                 .ToListAsync();
             return names;
