@@ -23,11 +23,11 @@ namespace ESG.API.Controllers
             return await _userService.GetAllUsers();
         }
 
-        [HttpGet("GetUserById")]
-        public async Task<UserResponseDto> Get(long id)
-        {
-            return await _userService.GetUserById(id);
-        }
+        //[HttpGet("GetUserById")]
+        //public async Task<UserResponseDto> Get(long id)
+        //{
+        //    return await _userService.GetUserById(id);
+        //}
         [HttpGet("GetUserOrganizations")]
         public async Task<List<long>> GetUserOrganizations(long id)
         {

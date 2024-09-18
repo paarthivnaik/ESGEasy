@@ -43,11 +43,11 @@ namespace ESG.API.Controllers
             return Ok();
         }
 
-        [HttpGet("GetDataPointsByOrganizationId")]
-        public async Task<IEnumerable<DatapointsByOrgIdResponseDto>> GetDataPointsByOrganizationId(long organizationId)
-        {
-            var res = await _datapintValuesService.GetDataPointsByOrganizationId(organizationId);
-            return res;
-        }
+        //[HttpGet("GetDataPointsByOrganizationId")]
+        //public async Task<IEnumerable<DatapointsByOrgIdResponseDto>> GetDataPointsByOrganizationId(long organizationId)
+        //{
+        //    var res = await _datapintValuesService.GetDataPointsByOrganizationId(organizationId);
+        //    return res;
+        //}
     }
 }

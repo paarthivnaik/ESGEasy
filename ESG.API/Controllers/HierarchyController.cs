@@ -26,7 +26,7 @@ namespace ESG.API.Controllers
             await _hierarchyService.AddHierarchy(value);
             return Ok();
         }
-        [HttpGet("GetHierarchy")]
+        [HttpGet("GetHierarchyData")]
         /// <summary>
         /// when we pass table type 1 we need to get topic data
         /// when we pass tableType 2, DatapointId as topic DatapointId we get standard Data for that topic DatapointId
@@ -41,7 +41,7 @@ namespace ESG.API.Controllers
             var list = await _hierarchyService.GetMethod(tableType, Id);
             return list;
         }
-        [HttpGet("GetHierarchyIdByOrgId")]
+        [HttpGet("GetHierarchyDataWithDatapointsByOrgId")]
         public async Task<HierarchyResponseDto> GetHierarchyData(long organizationId)
         {
             var list = await _hierarchyService.GetHierarchyData(organizationId);

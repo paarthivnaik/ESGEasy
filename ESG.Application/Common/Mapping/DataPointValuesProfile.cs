@@ -42,9 +42,6 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.DisclosureRequirementId, opt => opt.MapFrom(src => src.DisclosureRequirementId))
                 .ForMember(dest => dest.IsNarrative, opt => opt.MapFrom(src => src.IsNarrative));
 
-            CreateMap<DataPointValues, DatapointsByOrgIdResponseDto>()
-               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
         }
     }
 }

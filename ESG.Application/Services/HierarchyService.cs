@@ -184,12 +184,14 @@ namespace ESG.Application.Services
                 var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
 
                 var subTopics = await _unitOfWork.Repository<Standard>()
-                    .GetAll(st => subTopicIds.Contains(st.Id)); 
+                    .GetAll(st => subTopicIds.Contains(st.Id));
 
-                var topicIds = subTopics.Select(st => st.TopicId).Distinct().ToList();
+                //var topicIds = subTopics.Select(st => st.TopicId).Distinct().ToList();
 
+                //var topics = await _unitOfWork.Repository<Topic>()
+                //    .GetAll(t => topicIds.Contains(t.Id));
                 var topics = await _unitOfWork.Repository<Topic>()
-                    .GetAll(t => topicIds.Contains(t.Id));
+                   .GetAll();
 
                 var topicDtos = topics.Select(t => new TopicDto
                 {
