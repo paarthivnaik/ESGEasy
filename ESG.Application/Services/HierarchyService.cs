@@ -60,7 +60,7 @@ namespace ESG.Application.Services
             var existinghierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(request.OrganizationId);
             var hierarchies = new List<Hierarchy>();
 
-            if (existinghierarchyId != null && existinghierarchyId >= 0)
+            if (existinghierarchyId != null && existinghierarchyId > 0)
             {
                 var existingHierarchies = await _unitOfWork.HierarchyRepo.GetHierarchies(existinghierarchyId.Value);
                 if (request.DatapointIds != null && request.DatapointIds.Any())
@@ -164,7 +164,7 @@ namespace ESG.Application.Services
             return result;
         }
 
-        public async Task<HierarchyResponseDto> GetHierarchyData(long organizationId)
+        public async Task<HierarchyResponseDto> GetHierarchyByOrganizationId(long organizationId)
         {
             var mainDto = new HierarchyResponseDto();
             var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
@@ -228,6 +228,90 @@ namespace ESG.Application.Services
             return mainDto;
         
         }
+        public async Task<List<DatapointsForDataModelResponseDto>> GetDatapointsForDataModel(long organizationId)
+        {
+            var response = new List<DatapointsForDataModelResponseDto>(); // List of root topics
+            List<long> filteredDatapoints = new List<long>();
+
+            long? HierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
+
+            if (HierarchyId != null)
+            {
+                var datapoints = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(HierarchyId);
+                var datamodelDatapoints = await _unitOfWork.DatapointValueRepo.GetModelDatapointsByOrgId(organizationId);
+
+                filteredDatapoints = datapoints
+                    .Where(dp => !datamodelDatapoints.Any(dmd => dmd == dp))
+                    .ToList();
+            }
+
+            var datapointslist = await _unitOfWork.DatapointValueRepo.GetNamesForFilteredIds(filteredDatapoints);
+            var disclosureRequirementIds = datapointslist.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
+            var disclosureRequirements = (await _unitOfWork.Repository<DisclosureRequirement>()
+                .GetAll(dr => disclosureRequirementIds.Contains(dr.Id))).ToList();
+
+            var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
+            var subTopics = (await _unitOfWork.Repository<Standard>().GetAll(st => subTopicIds.Contains(st.Id))).ToList();
+
+            var topicIds = subTopics.Select(st => st.TopicId).Distinct().ToList();
+            var topics = (await _unitOfWork.Repository<Topic>().GetAll(t => topicIds.Contains(t.Id))).ToList();
+
+            // Iterate through each topic and populate the hierarchy
+            foreach (var topic in topics)
+            {
+                var topicDto = new DatapointsForDataModelResponseDto
+                {
+                    Id = topic.Id,
+                    Name = topic.ShortText,
+                    Children = new List<HierarchyStandard>() // Initialize the list of children
+                };
+
+                var relatedSubTopics = subTopics.Where(st => st.TopicId == topic.Id).ToList();
+                foreach (var subTopic in relatedSubTopics)
+                {
+                    var standardDto = new HierarchyStandard
+                    {
+                        Id = subTopic.Id,
+                        Name = subTopic.ShortText,
+                        Children = new List<HierarchyDisclosureRequirement>() // Initialize the list of children
+                    };
+
+                    var relatedDisclosureRequirements = disclosureRequirements.Where(dr => dr.StandardId == subTopic.Id).ToList();
+                    foreach (var disclosureRequirement in relatedDisclosureRequirements)
+                    {
+                        var disclosureRequirementDto = new HierarchyDisclosureRequirement
+                        {
+                            Id = disclosureRequirement.Id,
+                            Name = disclosureRequirement.ShortText,
+                            children = new List<HierarchyDatapoint>() // Initialize the list of children
+                        };
+
+                        var relatedDatapoints = datapointslist.Where(dp => dp.DisclosureRequirementId == disclosureRequirement.Id).ToList();
+                        foreach (var datapoint in relatedDatapoints)
+                        {
+                            if (datapoint != null)
+                            {
+                                var datapointDto = new HierarchyDatapoint
+                                {
+                                    Id = datapoint.Id,
+                                    Name = datapoint.Name,
+                                    IsNarrative = datapoint.IsNarrative
+                                };
+
+                                disclosureRequirementDto.children.Add(datapointDto); // Add datapoint to disclosure requirement
+                            }
+                        }
+                        standardDto.Children.Add(disclosureRequirementDto); // Add disclosure requirement to standard
+                    }
+                    topicDto.Children.Add(standardDto); // Add standard to topic
+                }
+                response.Add(topicDto); // Add topic to response list
+            }
+
+            return response;
+        }
+
+
 
 
     }
