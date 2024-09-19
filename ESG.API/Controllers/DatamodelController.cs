@@ -38,21 +38,5 @@ namespace ESG.API.Controllers
             await _dataModelService.SaveDatapointDataInModel(datapointValuesSavingRequestDto);
             return Ok();
         }
-        //[HttpPost("ConfiguringModel")]
-        //public async Task<IActionResult> ConfiguringModel(ConfiguringDataModelRequestDto configuringDataModelRequestDto)
-        //{
-        //    await _dataModelService.ConfiguringModel(configuringDataModelRequestDto);
-        //    return Ok();
-        //}
-        //[HttpGet("GetModelDimensionTypesByModelId")]
-        //public async Task<List<long>?> GetModelDimensionTypeByModelId(long id)
-        //{
-        //    return await _dataModelService.GetDimensionTypeByModelId(id);
-        //}
-        //[HttpGet("GetModelDimensionValuesByTypeId")]
-        //public async Task<List<long>?> GetModelDimensionValuesByDimensionTypeId(long id)
-        //{
-        //    return await _dataModelService.GetDimensionValuesByTypeId(id);
-        //}
     }
 }

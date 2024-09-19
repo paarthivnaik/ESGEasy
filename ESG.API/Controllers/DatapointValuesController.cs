@@ -38,8 +38,5 @@ namespace ESG.API.Controllers
             await _datapintValuesService.DeleteDatapoint(datapointDeleteRequestDto);
             return Ok();
         }
-
-        
-
     }
 }

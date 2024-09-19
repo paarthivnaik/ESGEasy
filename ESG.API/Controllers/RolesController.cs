@@ -21,30 +21,30 @@ namespace ESG.API.Controllers
              return await _roleService.GetAll();
         }
 
-        [HttpGet("{id}")]
-        public async Task<Role> Get(int id)
-        {
-            return await _roleService.GetById(id);
-        }
+        //[HttpGet("{id}")]
+        //public async Task<Role> Get(int id)
+        //{
+        //    return await _roleService.GetById(id);
+        //}
 
-        [HttpPost]
-        public async Task Post([FromBody] Role value)
-        {
-            await _roleService.AddAsync(value);
-        }
+        //[HttpPost]
+        //public async Task Post([FromBody] Role value)
+        //{
+        //    await _roleService.AddAsync(value);
+        //}
 
-        [HttpPut("{id}")]
-        public async Task<Role> Put([FromBody] Role value)
-        {
-            var res = await _roleService.UpdateAsync(value);
-            return res;
-        }
+        //[HttpPut("{id}")]
+        //public async Task<Role> Put([FromBody] Role value)
+        //{
+        //    var res = await _roleService.UpdateAsync(value);
+        //    return res;
+        //}
 
-        [HttpDelete("{id}")]
-        public async Task<bool> Delete(int id)
-        {
-            var res = await _roleService.Delete(id);
-            return res;
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<bool> Delete(int id)
+        //{
+        //    var res = await _roleService.Delete(id);
+        //    return res;
+        //}
     }
 }

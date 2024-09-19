@@ -22,32 +22,32 @@ namespace ESG.API.Controllers
             return Ok(res);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-            var res = await _organizationUsersService.GetById(id);
-            return Ok(res);
-        }
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> Get(int id)
+        //{
+        //    var res = await _organizationUsersService.GetById(id);
+        //    return Ok(res);
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> Post(OrganizationUser organizationUser)
-        {
-            await _organizationUsersService.AddAsync(organizationUser);
-            return Ok();
-        }
+        //[HttpPost]
+        //public async Task<IActionResult> Post(OrganizationUser organizationUser)
+        //{
+        //    await _organizationUsersService.AddAsync(organizationUser);
+        //    return Ok();
+        //}
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(OrganizationUser organizationUser)
-        {
-            var res = await _organizationUsersService.UpdateAsync(organizationUser);
-            return Ok(res);
-        }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> Put(OrganizationUser organizationUser)
+        //{
+        //    var res = await _organizationUsersService.UpdateAsync(organizationUser);
+        //    return Ok(res);
+        //}
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            await _organizationUsersService.Delete(id);
-            return Ok();
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    await _organizationUsersService.Delete(id);
+        //    return Ok();
+        //}
     }
 }

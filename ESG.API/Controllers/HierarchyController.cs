@@ -53,11 +53,5 @@ namespace ESG.API.Controllers
             var list = await _hierarchyService.GetDatapointsForDataModel(organizationId);
             return list;
         }
-        //[HttpGet("GetUserDatapoints")]
-        //public async Task<HierarchyResponseDto> GetUserDatapoints(long userId, long organizationId)
-        //{
-        //    var list = await _hierarchyService.GetUserDatapoints(userId, organizationId);
-        //    return list;
-        //}
     }
 }

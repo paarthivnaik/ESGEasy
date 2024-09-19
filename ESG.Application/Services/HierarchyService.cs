@@ -24,35 +24,6 @@ namespace ESG.Application.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-
-        //public async Task AddHierarchy(HierarchyCreateRequestDto request)
-        //{
-        //    if (request == null)
-        //        throw new ArgumentNullException(nameof(request), "Request cannot be null");
-        //    var hierarchyId = await _unitOfWork.HierarchyRepo.GetNextHierarchyIdAsync();
-        //    var hierarchies = new List<Hierarchy>();
-        //    if (request.DatapointIds != null && request.DatapointIds.Any())
-        //    {
-        //        foreach (var datapointId in request.DatapointIds)
-        //        {
-        //            hierarchies.Add(new Hierarchy
-        //            {
-        //                HierarchyId = hierarchyId,
-        //                DataPointValuesId = datapointId
-        //            });
-        //        }
-        //        await _unitOfWork.Repository<Hierarchy>().AddRange(hierarchies);
-        //        var organizationHierarchy = new OrganizationHeirarchies
-        //        {
-        //            HierarchyId = hierarchyId,
-        //            OrganizationId = request.OrganizationId,
-        //            CreatedBy = request.UserId,
-        //            CreatedDate = DateTime.UtcNow,
-        //        };
-        //        await _unitOfWork.Repository<OrganizationHeirarchies>().AddAsync(organizationHierarchy);
-        //        await _unitOfWork.SaveAsync();
-        //    }
-        //}
         public async Task AddHierarchy(HierarchyCreateRequestDto request)
         {
             if (request == null)
@@ -168,28 +139,17 @@ namespace ESG.Application.Services
         {
             var mainDto = new HierarchyResponseDto();
             var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
-
             if (hierarchyId != 0)
             {
                 var datapointIds = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(hierarchyId);
-
                 var datapointValues = await _unitOfWork.Repository<DataPointValues>()
                     .GetAll(dp => datapointIds.Contains(dp.Id));
-
                 var disclosureRequirementIds = datapointValues.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
-
                 var disclosureRequirements = await _unitOfWork.Repository<DisclosureRequirement>()
                     .GetAll(dr => disclosureRequirementIds.Contains(dr.Id));
-
                 var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
-
                 var subTopics = await _unitOfWork.Repository<Standard>()
                     .GetAll(st => subTopicIds.Contains(st.Id));
-
-                //var topicIds = subTopics.Select(st => st.TopicId).Distinct().ToList();
-
-                //var topics = await _unitOfWork.Repository<Topic>()
-                //    .GetAll(t => topicIds.Contains(t.Id));
                 var topics = await _unitOfWork.Repository<Topic>()
                    .GetAll();
 
@@ -230,7 +190,7 @@ namespace ESG.Application.Services
         }
         public async Task<List<DatapointsForDataModelResponseDto>> GetDatapointsForDataModel(long organizationId)
         {
-            var response = new List<DatapointsForDataModelResponseDto>(); // List of root topics
+            var response = new List<DatapointsForDataModelResponseDto>();
             List<long> filteredDatapoints = new List<long>();
 
             long? HierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
@@ -249,23 +209,19 @@ namespace ESG.Application.Services
             var disclosureRequirementIds = datapointslist.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
             var disclosureRequirements = (await _unitOfWork.Repository<DisclosureRequirement>()
                 .GetAll(dr => disclosureRequirementIds.Contains(dr.Id))).ToList();
-
             var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
             var subTopics = (await _unitOfWork.Repository<Standard>().GetAll(st => subTopicIds.Contains(st.Id))).ToList();
-
             var topicIds = subTopics.Select(st => st.TopicId).Distinct().ToList();
             var topics = (await _unitOfWork.Repository<Topic>().GetAll(t => topicIds.Contains(t.Id))).ToList();
 
-            // Iterate through each topic and populate the hierarchy
             foreach (var topic in topics)
             {
                 var topicDto = new DatapointsForDataModelResponseDto
                 {
                     Id = topic.Id,
                     Name = topic.ShortText,
-                    Children = new List<HierarchyStandard>() // Initialize the list of children
+                    Children = new List<HierarchyStandard>() 
                 };
-
                 var relatedSubTopics = subTopics.Where(st => st.TopicId == topic.Id).ToList();
                 foreach (var subTopic in relatedSubTopics)
                 {
@@ -273,7 +229,7 @@ namespace ESG.Application.Services
                     {
                         Id = subTopic.Id,
                         Name = subTopic.ShortText,
-                        Children = new List<HierarchyDisclosureRequirement>() // Initialize the list of children
+                        Children = new List<HierarchyDisclosureRequirement>() 
                     };
 
                     var relatedDisclosureRequirements = disclosureRequirements.Where(dr => dr.StandardId == subTopic.Id).ToList();
@@ -283,7 +239,7 @@ namespace ESG.Application.Services
                         {
                             Id = disclosureRequirement.Id,
                             Name = disclosureRequirement.ShortText,
-                            children = new List<HierarchyDatapoint>() // Initialize the list of children
+                            children = new List<HierarchyDatapoint>()
                         };
 
                         var relatedDatapoints = datapointslist.Where(dp => dp.DisclosureRequirementId == disclosureRequirement.Id).ToList();
@@ -298,21 +254,16 @@ namespace ESG.Application.Services
                                     IsNarrative = datapoint.IsNarrative
                                 };
 
-                                disclosureRequirementDto.children.Add(datapointDto); // Add datapoint to disclosure requirement
+                                disclosureRequirementDto.children.Add(datapointDto); 
                             }
                         }
-                        standardDto.Children.Add(disclosureRequirementDto); // Add disclosure requirement to standard
+                        standardDto.Children.Add(disclosureRequirementDto);
                     }
-                    topicDto.Children.Add(standardDto); // Add standard to topic
+                    topicDto.Children.Add(standardDto);
                 }
-                response.Add(topicDto); // Add topic to response list
+                response.Add(topicDto);
             }
-
             return response;
         }
-
-
-
-
     }
 }

@@ -16,6 +16,7 @@ namespace ESG.API.Controllers
             _logger = (Logger<DisclosureRequirementController>?)logger;
             _disclosureRequirementService = disclosureRequirementService;
         }
+
         [HttpGet("GetAllDisclosureRequirements")]
         public async Task<IEnumerable<DisclosureRequirementResponseDto>> GetAll()
         {

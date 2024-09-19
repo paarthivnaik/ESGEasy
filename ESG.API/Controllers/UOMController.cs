@@ -19,7 +19,6 @@ namespace ESG.API.Controllers
             _unitOfMeasureService = unitOfMeasureService;
         }
 
-        // POST api/<UOMController>
         [HttpPost("Create")]
         public async Task<IActionResult> Post([FromBody] List<UnitOfMeasureCreateRequestDto> value)
         {
@@ -27,7 +26,6 @@ namespace ESG.API.Controllers
             return Ok();
         }
 
-        // PUT api/<UOMController>/5
         [HttpPut("Update")]
         public async Task<IActionResult> Put(UnitOfMeasureUpdateRequestDto value)
         {
@@ -35,7 +33,6 @@ namespace ESG.API.Controllers
             return Ok();
         }
 
-        // PUT api/<UOMController>/5
         [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(UnitOfMeasureDeleteRequest value)
         {
@@ -43,21 +40,18 @@ namespace ESG.API.Controllers
             return Ok();
         }
 
-        //// GET api/<UOMController>/5
         [HttpGet("GetAllUOMs")]
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll()
         {
             return await _unitOfMeasureService.GetAll();
         }
 
-        // GET api/<UOMController>/5
         [HttpGet("GetAllUOMsByUOMTypeId")]
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMByUOMTypeId(long id)
         {
             return await _unitOfMeasureService.GetAllUOMByUOMTypeId(id);
         }
 
-        // GET api/<UOMController>/5
         [HttpGet("GetAllUOMTranslatonsByUOMId")]
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslationsByUOMId(long id)
         {

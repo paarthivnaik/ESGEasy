@@ -46,17 +46,6 @@ namespace ESG.API.Controllers
             return await _dimentionTypeService.GetAll();
         }
 
-        //[HttpGet("GetAllDimensionTypesById")]
-        //public async Task<DimensionType> GetById(int id)
-        //{
-        //    return await _dimentionTypeService.GetById(id);
-        //}
-
-        //[HttpGet("GetAllDimensionTranslationsById")]
-        //public async Task<DimensionType> GetAllTranslations(int id)
-        //{
-        //    return await _dimentionTypeService.GetById(id);
-        //}
 
     }
 }

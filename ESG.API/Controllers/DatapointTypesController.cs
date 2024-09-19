@@ -16,42 +16,19 @@ namespace ESG.API.Controllers
             _logger = logger;
             _datapointTypesService = datapointTypesService;
         }
-        // GET: api/<DatapointTypesController>
+
         [HttpGet]
         public async Task<IEnumerable<DataPointTypes>> Get()
         {
             return await _datapointTypesService.GetAll();
         }
 
-        //// GET api/<DatapointTypesController>/5
-        //[HttpGet("{id}")]
-        //public async Task<DataPointTypes> Get(int id)
-        //{
-        //    return await _datapointTypesService.GetById(id);
-        //}
-
-        // POST api/<DatapointTypesController>
         [HttpPost]
         public async Task Post([FromBody] List<DatapointTypeCreateRequestDto> value)
         {
             await _datapointTypesService.AddAsync(value);
         }
 
-        //// PUT api/<DatapointTypesController>/5
-        //[HttpPut("{id}")]
-        //public async Task<DataPointTypes> Put([FromBody] DataPointTypes value)
-        //{
-        //    var res = await _datapointTypesService.UpdateAsync(value);
-        //    return res;
-        //}
-
-        //// DELETE api/<DatapointTypesController>/5
-        //[HttpDelete("{id}")]
-        //public async Task<bool> Delete(int id)
-        //{
-        //    var res = await _datapointTypesService.Delete(id);
-        //    return res;
-        //}
     }
 }
 

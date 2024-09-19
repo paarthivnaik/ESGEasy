@@ -22,24 +22,24 @@ namespace ESG.API.Controllers
             return Ok(res);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-            var res = await _tenantService.GetById(id);
-            return Ok(res);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Post(Tenant value)
-        {
-            await _tenantService.AddAsync(value);
-            return Ok();
-        }
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> Get(int id)
+        //{
+        //    var res = await _tenantService.GetById(id);
+        //    return Ok(res);
+        //}
+        //[HttpPost]
+        //public async Task<IActionResult> Post(Tenant value)
+        //{
+        //    await _tenantService.AddAsync(value);
+        //    return Ok();
+        //}
 
-        [HttpPut]
-        public async Task<Tenant> Put(Tenant value)
-        {
-            var res = await _tenantService.UpdateAsync(value);
-            return res;
-        }
+        //[HttpPut]
+        //public async Task<Tenant> Put(Tenant value)
+        //{
+        //    var res = await _tenantService.UpdateAsync(value);
+        //    return res;
+        //}
     }
 }
