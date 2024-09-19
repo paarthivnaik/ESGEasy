@@ -21,24 +21,9 @@ namespace ESG.Infrastructure.Persistence.DataModel
             _context = context;
         }
 
-        //public async Task<List<DimensionType>> GetDimensionTypesByModelId(long modelId)
-        //{
-        //    var dimensionTypes = await _context.ModelDimensionTypes
-        //        .AsNoTracking()
-        //        .Where(a => a.DataModelId == modelId)
-        //        .SelectMany(a => a.DimensionType) 
-        //        .Select(dt => new DimensionType
-        //        {
-        //            DatapointId = dt.DatapointId, 
-        //            ShortText = dt.ShortText 
-        //        })
-        //        .ToListAsync();
-        //    return dimensionTypes;
-        //}
-
-        public async Task<List<Domain.Entities.DataModels.DataModel>?> GetDataModelsByOrgId(long OrgId)
+        public async Task<List<Domain.Entities.DataModels.DataModel>> GetDataModelsIncludingDefaultByOrgId(long OrgId)
         {
-            var list = await _context.DataModels
+            var organizationDataModels = await _context.DataModels
                 .AsNoTracking()
                 .Where(a => a.OrganizationId == OrgId)
                 .Select(dp => new ESG.Domain.Entities.DataModels.DataModel
@@ -47,8 +32,22 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     ModelName = dp.ModelName
                 })
                 .ToListAsync();
-            return list;
+            var defaultDataModel = await _context.DataModels
+                .AsNoTracking()
+                .Where(a => a.IsDefaultModel == true)
+                .Select(dp => new ESG.Domain.Entities.DataModels.DataModel
+                {
+                    Id = dp.Id,
+                    ModelName = dp.ModelName
+                })
+                .FirstOrDefaultAsync();
+            if (defaultDataModel != null && !organizationDataModels.Any(dm => dm.Id == defaultDataModel.Id))
+            {
+                organizationDataModels.Add(defaultDataModel);
+            }
+            return organizationDataModels;
         }
+
         public async Task<Domain.Entities.DataModels.DataModel?> GetDataModelIdByDatapointIdAndOrgId(long datapointId, long orgId)
         {
             var dataModel = await _context.DataModels

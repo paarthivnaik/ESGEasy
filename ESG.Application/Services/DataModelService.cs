@@ -72,6 +72,7 @@ namespace ESG.Application.Services
                 OrganizationId = dataModelCreateRequestDto.OrganizationId,
                 ModelName = dataModelCreateRequestDto.ModelName,
                 Purpose = dataModelCreateRequestDto.Purpose,
+                IsDefaultModel = false,
                 CreatedBy = dataModelCreateRequestDto.CreatedBy,
                 CreatedDate = utcNow,
                 LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
@@ -203,7 +204,7 @@ namespace ESG.Application.Services
         public async Task<IEnumerable<DataModelsResponseDto>> GetDataModelsResponsesByOrgId(long organizationId)
         {
             var responseobj = new List<DataModelsResponseDto>();
-            var datamodels = await _unitOfWork.DataModelRepo.GetDataModelsByOrgId(organizationId);
+            var datamodels = await _unitOfWork.DataModelRepo.GetDataModelsIncludingDefaultByOrgId(organizationId);
             if (datamodels != null)
             {
                 foreach (var datamodel in datamodels)

@@ -12,7 +12,7 @@ namespace ESG.Application.Common.Interface.DataModel
     public interface IDataModelRepo
     {
         //Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto);
-        Task<List<Domain.Entities.DataModels.DataModel>?> GetDataModelsByOrgId(long OrgId);
+        Task<List<Domain.Entities.DataModels.DataModel>> GetDataModelsIncludingDefaultByOrgId(long OrgId);
         Task<Domain.Entities.DataModels.DataModel?> GetDataModelIdByDatapointIdAndOrgId(long datapointId, long orgId);
         Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum);
         Task<(long Id, string Name)> GetColumnDimensionTypeIdAndNameByDimensionTypeId(long typeId);
