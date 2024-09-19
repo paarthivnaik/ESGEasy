@@ -28,15 +28,16 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
                 .MaxAsync();
             return maxHierarchyId.HasValue ? maxHierarchyId.Value + 1 : 1; 
         }
-        public async Task<long?> GetHierarchyIdByOrgId(long organizationId)
+        public async Task<long> GetHierarchyIdByOrgId(long organizationId)
         {
+            
             var hierarchyId = await _context.OrganizationHeirarchies
                 .AsNoTracking()
                 .Where(t => t.OrganizationId == organizationId)
                 .Select(a => a.HierarchyId)
-                .FirstOrDefaultAsync(); 
-
-            return hierarchyId;
+                .FirstOrDefaultAsync();
+             return hierarchyId > 0 ? hierarchyId : 1;
+            
         }
         public async Task<IEnumerable<long>> GetDatapointsByHierarchyId(long? hierarchyId)
         {
