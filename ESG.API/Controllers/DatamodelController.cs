@@ -32,6 +32,11 @@ namespace ESG.API.Controllers
         {
             return await _dataModelService.GetingDataModelLinkedtoDatapoint(datapointId, OrganizationId);
         }
+        [HttpGet("GetDatapointMetricDetailsForDataModel")]
+        public async Task<DatapointMetricResponseDto> GetHierarchyDatapointsMetricDetails(long datapointId, long OrganizationId)
+        {
+            return await _dataModelService.GetDatapointMetric(datapointId, OrganizationId);
+        }
         [HttpPost("SavingDatapointDataInModel")]
         public async Task<IActionResult> SaveDatapointDataInModel(DataPointValuesSavingRequestDto datapointValuesSavingRequestDto)
         {

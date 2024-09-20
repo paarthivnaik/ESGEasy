@@ -199,5 +199,17 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .ToListAsync();
             return filters;
         }
+
+        public async Task<DataPointValues> GetDatapointMetric(long datapointId, long organizationId)
+        {
+            var dataModel = await _context.DataPointValues
+               .AsNoTracking()
+               .Include(a => a.UnitOfMeasure)
+               .Include(c => c.Currency)
+               .Include(d => d.DataPointType)
+               .Where(a => a.OrganizationId == organizationId && a.Id == datapointId)
+               .FirstOrDefaultAsync();
+            return dataModel;
+        }
     }
 }

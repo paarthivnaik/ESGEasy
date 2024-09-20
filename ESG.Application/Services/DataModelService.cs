@@ -533,5 +533,29 @@ namespace ESG.Application.Services
             }
             return responsedto;
         }
+
+        public async Task<DatapointMetricResponseDto> GetDatapointMetric(long datapointId, long organizationId)
+        {
+            var metric = new DatapointMetricResponseDto();
+            var datapoint = await _unitOfWork.DataModelRepo.GetDatapointMetric(datapointId, organizationId);
+            metric.Id = datapointId;
+            metric.Name = datapoint.Name;
+            if (datapoint.IsNarrative == true)
+            {
+                metric.MetricId = datapoint.DatapointTypeId!.Value;
+                metric.MetricCode = datapoint.DataPointType.Code;
+            }
+            else if (datapoint.UnitOfMeasureId != null)
+            {
+                metric.MetricId = datapoint.UnitOfMeasureId!.Value;
+                metric.MetricCode = datapoint.UnitOfMeasure.Code;
+            }
+            else if (datapoint.UnitOfMeasureId == null)
+            {
+                metric.MetricId = datapoint.CurrencyId!.Value;
+                metric.MetricCode = datapoint.Currency.CurrencyCode;
+            }
+            return metric;
+        }
     }
 }

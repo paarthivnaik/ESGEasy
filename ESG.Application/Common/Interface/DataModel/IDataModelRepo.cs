@@ -1,5 +1,6 @@
 ﻿using ESG.Application.Dto.DataModel;
 using ESG.Domain.Entities.DataModels;
+using ESG.Domain.Entities.DomainEntities;
 using ESG.Domain.Enum;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<ModelConfiguration>> GetConfigurationViewTypesForDataModel(long datamodelId);
         Task<bool?> GetDatapointViewType(long datapointId);
         Task<IEnumerable<DataModelFilters>> GetModelFiltersByConfigId(long configId);
+        Task<DataPointValues> GetDatapointMetric(long datapointId, long organizationId);
         //Task<List<DimensionType>?> GetDimensionTypesByModelId(long modelId);
 
     }
