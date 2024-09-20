@@ -361,6 +361,8 @@ namespace ESG.Application.Services
             if (requestdto.ModelId != 0)
             {
                 var datapointviewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(requestdto.DatapointId);
+                if (datapointviewtype == null)
+                    throw new ArgumentException("datapoint view type is NULL");
                 if (datapointviewtype != null && datapointviewtype == false)
                 {
                     var modelConfiguration = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(requestdto.ModelId, ModelViewTypeEnum.Fact);

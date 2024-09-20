@@ -33,7 +33,7 @@ namespace ESG.Application.Services
 
             if (existinghierarchyId != null && existinghierarchyId > 0)
             {
-                var existingHierarchies = await _unitOfWork.HierarchyRepo.GetHierarchies(existinghierarchyId.Value);
+                var existingHierarchies = await _unitOfWork.HierarchyRepo.GetHierarchies(existinghierarchyId);
                 if (request.DatapointIds != null && request.DatapointIds.Any())
                 {
                     var toAddOrUpdate = new List<Hierarchy>();
@@ -46,7 +46,7 @@ namespace ESG.Application.Services
                             .Where(datapointId => !existingDatapointIds.Contains(datapointId))
                             .Select(datapointId => new Hierarchy
                             {
-                                HierarchyId = existinghierarchyId.Value,
+                                HierarchyId = existinghierarchyId,
                                 DataPointValuesId = datapointId
                             }).ToList();
 
