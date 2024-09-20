@@ -11,13 +11,8 @@ namespace ESG.Application.Dto.DataModel
         public int UserId { get; set; }
         public int DatapointId { get; set; }
         public int ModelId { get; set; }
-        public List<FilterCombinationsDto> FilterCombinations { get; set; }
-    }
-
-    public class FilterCombinationsDto
-    {
-        public List<FilterDto> Filters { get; set; }
-        public List<DataDto> Data { get; set; }
+        public List<FilterDto> FilterDtos { get; set; }
+        public List<DataDto> DataDtos { get; set; }
     }
 
     public class FilterDto

@@ -365,46 +365,29 @@ namespace ESG.Application.Services
                 {
                     var modelConfiguration = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(requestdto.ModelId, ModelViewTypeEnum.Fact);
                     var modelFilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(modelConfiguration);
-                    foreach(var filtercombo in requestdto.FilterCombinations)
+
+                    modelcombination = new ModelCombinations
                     {
-                        modelcombination = new ModelCombinations
+                        DataModelId = requestdto.ModelId,
+                        DataPointValuesId = requestdto.DatapointId,
+                        CreatedBy = requestdto.UserId,
+                        CreatedDate = utcNow,
+                        LastModifiedBy = requestdto.UserId,
+                        LastModifiedDate = utcNow,
+                        State = StateEnum.active
+                    };
+                    await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelcombination);
+                    await _unitOfWork.SaveAsync();
+                    foreach (var reqfilter in requestdto.FilterDtos)
+                    {
+                        var matchingFilter = modelFilters.FirstOrDefault(filter => filter.FilterId == reqfilter.TypeId);
+                        if (matchingFilter != null)
                         {
-                            DataModelId = requestdto.ModelId,
-                            DataPointValuesId = requestdto.DatapointId,
-                            CreatedBy = requestdto.UserId,
-                            CreatedDate = utcNow,
-                            LastModifiedBy = requestdto.UserId,
-                            LastModifiedDate = utcNow,
-                            State = StateEnum.active
-                        };
-                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelcombination);
-                        await _unitOfWork.SaveAsync();
-                        foreach (var reqfilter in filtercombo.Filters)
-                        {
-                            var matchingFilter = modelFilters.FirstOrDefault(filter => filter.FilterId == reqfilter.TypeId);
-                            if (matchingFilter != null)
+                            modelFilterCombinationalValues.Add(new ModelFilterCombinationalValues
                             {
-                                modelFilterCombinationalValues.Add(new ModelFilterCombinationalValues
-                                {
-                                    ModelFilterCombinationsId = modelcombination.Id,
-                                    DataModelFiltersId = matchingFilter.Id,
-                                    DimensionsId = reqfilter.ValueId,
-                                    CreatedBy = requestdto.UserId,
-                                    CreatedDate = utcNow,
-                                    LastModifiedBy = requestdto.UserId,
-                                    LastModifiedDate = utcNow,
-                                    State = StateEnum.active
-                                });
-                            }
-                        }
-                        foreach (var values in filtercombo.Data)
-                        {
-                            dataModelValues.Add(new DataModelValues
-                            {
-                                RowId = values.RowId,
-                                ColumnId = values.ColumnId,
-                                CombinationId = modelcombination.Id,
-                                Value = values.Value,
+                                ModelFilterCombinationsId = modelcombination.Id,
+                                DataModelFiltersId = matchingFilter.Id,
+                                DimensionsId = reqfilter.ValueId,
                                 CreatedBy = requestdto.UserId,
                                 CreatedDate = utcNow,
                                 LastModifiedBy = requestdto.UserId,
@@ -413,52 +396,50 @@ namespace ESG.Application.Services
                             });
                         }
                     }
+                    foreach (var values in requestdto.DataDtos)
+                    {
+                        dataModelValues.Add(new DataModelValues
+                        {
+                            RowId = values.RowId,
+                            ColumnId = values.ColumnId,
+                            CombinationId = modelcombination.Id,
+                            Value = values.Value,
+                            CreatedBy = requestdto.UserId,
+                            CreatedDate = utcNow,
+                            LastModifiedBy = requestdto.UserId,
+                            LastModifiedDate = utcNow,
+                            State = StateEnum.active
+                        });
+                    }
+                    
                     
                 }
                 else if(datapointviewtype != null && datapointviewtype == true)
                 {
                     var modelConfiguration = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(requestdto.ModelId, ModelViewTypeEnum.Narrative);
                     var modelFilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(modelConfiguration);
-                    foreach (var filtercombo in requestdto.FilterCombinations)
+                    modelcombination = new ModelCombinations
                     {
-                        modelcombination = new ModelCombinations
+                        DataModelId = requestdto.ModelId,
+                        DataPointValuesId = requestdto.DatapointId,
+                        CreatedBy = requestdto.UserId,
+                        CreatedDate = utcNow,
+                        LastModifiedBy = requestdto.UserId,
+                        LastModifiedDate = utcNow,
+                        State = StateEnum.active
+                    };
+                    await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelcombination);
+                    await _unitOfWork.SaveAsync();
+                    foreach (var reqfilter in requestdto.FilterDtos)
+                    {
+                        var matchingFilter = modelFilters.FirstOrDefault(filter => filter.FilterId == reqfilter.TypeId);
+                        if (matchingFilter != null)
                         {
-                            DataModelId = requestdto.ModelId,
-                            DataPointValuesId = requestdto.DatapointId,
-                            CreatedBy = requestdto.UserId,
-                            CreatedDate = utcNow,
-                            LastModifiedBy = requestdto.UserId,
-                            LastModifiedDate = utcNow,
-                            State = StateEnum.active
-                        };
-                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelcombination);
-                        await _unitOfWork.SaveAsync();
-                        foreach (var reqfilter in filtercombo.Filters)
-                        {
-                            var matchingFilter = modelFilters.FirstOrDefault(filter => filter.FilterId == reqfilter.TypeId);
-                            if (matchingFilter != null)
+                            modelFilterCombinationalValues.Add(new ModelFilterCombinationalValues
                             {
-                                modelFilterCombinationalValues.Add(new ModelFilterCombinationalValues
-                                {
-                                    ModelFilterCombinationsId = modelcombination.Id,
-                                    DataModelFiltersId = matchingFilter.Id,
-                                    DimensionsId = reqfilter.ValueId,
-                                    CreatedBy = requestdto.UserId,
-                                    CreatedDate = utcNow,
-                                    LastModifiedBy = requestdto.UserId,
-                                    LastModifiedDate = utcNow,
-                                    State = StateEnum.active
-                                });
-                            }
-                        }
-                        foreach (var values in filtercombo.Data)
-                        {
-                            dataModelValues.Add(new DataModelValues
-                            {
-                                RowId = values.RowId,
-                                ColumnId = null,
-                                CombinationId = modelcombination.Id,
-                                Value = values.Value,
+                                ModelFilterCombinationsId = modelcombination.Id,
+                                DataModelFiltersId = matchingFilter.Id,
+                                DimensionsId = reqfilter.ValueId,
                                 CreatedBy = requestdto.UserId,
                                 CreatedDate = utcNow,
                                 LastModifiedBy = requestdto.UserId,
@@ -467,6 +448,22 @@ namespace ESG.Application.Services
                             });
                         }
                     }
+                    foreach (var values in requestdto.DataDtos)
+                    {
+                        dataModelValues.Add(new DataModelValues
+                        {
+                            RowId = values.RowId,
+                            ColumnId = null,
+                            CombinationId = modelcombination.Id,
+                            Value = values.Value,
+                            CreatedBy = requestdto.UserId,
+                            CreatedDate = utcNow,
+                            LastModifiedBy = requestdto.UserId,
+                            LastModifiedDate = utcNow,
+                            State = StateEnum.active
+                        });
+                    }
+                    
                 }
             }
             await _unitOfWork.Repository<ModelFilterCombinationalValues>().AddRange(modelFilterCombinationalValues);
