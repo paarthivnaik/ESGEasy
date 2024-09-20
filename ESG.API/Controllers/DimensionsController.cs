@@ -28,7 +28,7 @@ namespace ESG.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("Delete")]
+        [HttpPut("Delete")]
         public async Task<IActionResult> Delete(DimensionsDeleteRequestDto request)
         {
             await _dimensionsService.Delete(request);

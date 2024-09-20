@@ -33,7 +33,7 @@ namespace ESG.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("Delete")]
+        [HttpPut("Delete")]
         public async Task<IActionResult> Delete(UnitOfMeasureTypeDeleteRequestDto value)
         {
             await _unitOfMeasureTypeService.DeleteUOMType(value);
