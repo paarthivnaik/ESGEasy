@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -53,14 +54,19 @@ namespace ESG.Infrastructure.Persistence.DataModel
             var dataModel = await _context.DataModels
                 .AsNoTracking()
                 .Include(a => a.ModelDatapoints)
-                .Where(a => a.OrganizationId == orgId && a.ModelDatapoints.Any(md => md.DatapointValuesId == datapointId))
+                .Where(a => a.OrganizationId == orgId && a.IsDefaultModel == false && a.ModelDatapoints.Any(md => md.DatapointValuesId == datapointId))
                 .Select(dp => new ESG.Domain.Entities.DataModels.DataModel
                 {
                     Id = dp.Id,
                     ModelName = dp.ModelName
                 })
                 .FirstOrDefaultAsync();
-
+            if (dataModel == null)
+                return new Domain.Entities.DataModels.DataModel
+                {
+                    Id = 1,
+                    ModelName = "Default Model"
+                };
             return dataModel;
         }
 

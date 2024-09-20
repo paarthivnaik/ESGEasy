@@ -28,7 +28,7 @@ namespace ESG.API.Controllers
             return await _dataModelService.GetDataModelsResponsesByOrgId(OrganizationId);
         }
         [HttpGet("GetingDataModelLinkedtoDatapoint")]
-        public async Task<DataModelsResponseDto> GetingDataModelLinkedtoDatapoint(long datapointId, long OrganizationId)
+        public async Task<DataModelLinkedtoDatapointResponseDto> GetingDataModelLinkedtoDatapoint(long datapointId, long OrganizationId)
         {
             return await _dataModelService.GetingDataModelLinkedtoDatapoint(datapointId, OrganizationId);
         }
