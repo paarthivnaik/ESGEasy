@@ -32,10 +32,10 @@ namespace ESG.API.Controllers
             await _datapintValuesService.AddAsync(value);
         }
 
-        [HttpPut("DeleteDataPoint")]
-        public async Task<IActionResult> Delete(DatapointDeleteRequestDto datapointDeleteRequestDto)
+        [HttpPut("DeleteDataPoint{id}")]
+        public async Task<IActionResult> Delete(long id)
         {
-            await _datapintValuesService.DeleteDatapoint(datapointDeleteRequestDto);
+            await _datapintValuesService.DeleteDatapoint(id);
             return Ok();
         }
     }

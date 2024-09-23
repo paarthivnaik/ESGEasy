@@ -78,14 +78,14 @@ namespace ESG.Application.Services
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task DeleteDatapoint(DatapointDeleteRequestDto deleteRequest)
+        public async Task DeleteDatapoint(long id)
         {
-            var dataPoint = await _unitOfWork.Repository<DataPointValues>().Get(uom => uom.Id == deleteRequest.Id);
+            var dataPoint = await _unitOfWork.Repository<DataPointValues>().Get(uom => uom.Id == id);
             if (dataPoint == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {dataPoint.Id} not found.");
             }
-            dataPoint.State = deleteRequest.State;
+            dataPoint.State = Domain.Entities.StateEnum.deleted;
             await _unitOfWork.Repository<DataPointValues>().Update(dataPoint);
             await _unitOfWork.SaveAsync();
         }
