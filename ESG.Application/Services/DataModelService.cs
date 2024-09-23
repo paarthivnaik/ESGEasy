@@ -4,13 +4,17 @@ using ESG.Application.Dto.DataModel;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using ESG.Domain.Entities.DataModels;
+using ESG.Domain.Entities.DomainEntities;
 using ESG.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static ESG.Application.Dto.DataModel.DataModelCreateRequestDto;
 
@@ -349,8 +353,59 @@ namespace ESG.Application.Services
             if (long.IsNegative(requestdto.ModelId))
                 throw new ArgumentException("Model name cannot be empty");
             var utcNow = DateTime.UtcNow;
+
+            var modelCombinations = await _unitOfWork.DataModelRepo.GetModelCombinationsByModelIdandDatapointId(requestdto.ModelId, requestdto.DatapointId);
+            if (modelCombinations == null || !modelCombinations.Any())
+            {
+                await SaveDatamodelData(requestdto);
+                await _unitOfWork.SaveAsync();
+                return;
+            }
+            foreach (var combination in modelCombinations)
+            {
+                var isMatch = combination.ModelFilterCombinationalValues.All(combinationValue =>
+                    requestdto.FilterDtos.Any(inputFilter =>
+                        inputFilter.TypeId == combinationValue.DataModelFilters.FilterId &&
+                        inputFilter.ValueId == combinationValue.DimensionsId));
+
+                if (isMatch)
+                {
+                    var modelCombinationId = combination.Id;
+
+                    var existingDatapointData = await _unitOfWork.DataModelRepo.GetDataModelValuesByCombinationId(modelCombinationId);
+                    var updatedValues = new List<DataModelValues>();
+
+                    foreach (var value in existingDatapointData)
+                    {
+                        var matchingFilter = requestdto.DataDtos.FirstOrDefault(filter =>
+                            filter.RowId == value.RowId && filter.ColumnId == value.ColumnId);
+
+                        if (matchingFilter != null)
+                        {
+                            value.Value = matchingFilter.Value;
+                            value.LastModifiedBy = requestdto.UserId;
+                            value.LastModifiedDate = utcNow;
+                            updatedValues.Add(value);
+                        }
+                    }
+
+                    if (updatedValues.Any())
+                    {
+                        await _unitOfWork.Repository<DataModelValues>().UpdateRange(updatedValues);
+                    }
+                }
+                else
+                {
+                    await SaveDatamodelData(requestdto);
+                }
+            }
+            await _unitOfWork.SaveAsync();
+        }
+
+        private async Task SaveDatamodelData(DataPointValuesSavingRequestDto requestdto)
+        {
+            var utcNow = DateTime.UtcNow;
             var modelcombination = new ModelCombinations();
-            
             var modelFilterCombinationalValues = new List<ModelFilterCombinationalValues>();
             var dataModelValues = new List<DataModelValues>();
             if (requestdto.ModelId != 0)
@@ -408,10 +463,8 @@ namespace ESG.Application.Services
                             State = StateEnum.active
                         });
                     }
-                    
-                    
                 }
-                else if(datapointviewtype != null && datapointviewtype == true)
+                else if (datapointviewtype != null && datapointviewtype == true)
                 {
                     var modelConfiguration = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(requestdto.ModelId, ModelViewTypeEnum.Narrative);
                     var modelFilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(modelConfiguration);
@@ -460,12 +513,10 @@ namespace ESG.Application.Services
                             State = StateEnum.active
                         });
                     }
-                    
                 }
             }
             await _unitOfWork.Repository<ModelFilterCombinationalValues>().AddRange(modelFilterCombinationalValues);
             await _unitOfWork.Repository<DataModelValues>().AddRange(dataModelValues);
-            await _unitOfWork.SaveAsync();
         }
         private async Task<DimensionTypeDto> GetRowDimensionDto(long modelId, ModelViewTypeEnum viewType)
         {
@@ -542,20 +593,73 @@ namespace ESG.Application.Services
             metric.Name = datapoint.Name;
             if (datapoint.IsNarrative == true)
             {
+                metric.IsNarrative = true;
                 metric.MetricId = datapoint.DatapointTypeId!.Value;
                 metric.MetricCode = datapoint.DataPointType.Code;
             }
             else if (datapoint.UnitOfMeasureId != null)
             {
+                metric.IsNarrative = false;
                 metric.MetricId = datapoint.UnitOfMeasureId!.Value;
                 metric.MetricCode = datapoint.UnitOfMeasure.Code;
             }
             else if (datapoint.UnitOfMeasureId == null)
             {
+                metric.IsNarrative = false;
                 metric.MetricId = datapoint.CurrencyId!.Value;
                 metric.MetricCode = datapoint.Currency.CurrencyCode;
             }
             return metric;
+        }
+
+        public async Task<DatapointSavedValuesResponseDto> GetDatapointSavedValues(DatapointSavedValuesRequestDto datapointSavedValuesRequestDto)
+        {
+            var response = new DatapointSavedValuesResponseDto();
+            long modelCombinationId = 0;
+            bool isMatch = false;
+            var modelId = await _unitOfWork.DataModelRepo.GetDataModelIdByDatapointIdAndOrgId(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
+            if (modelId == null)
+                throw new ArgumentNullException("There is no model linked to datapoint");
+
+            var modelCombinations = await _unitOfWork.DataModelRepo.GetModelCombinationsByModelIdandDatapointId(modelId.Id, datapointSavedValuesRequestDto.DatapointId);
+            if (modelCombinations == null || !modelCombinations.Any())
+                throw new ArgumentNullException("there are no combinations present for that datapoinr");
+            if (datapointSavedValuesRequestDto.SavedDataPointFilters == null || !datapointSavedValuesRequestDto.SavedDataPointFilters.Any())
+            {
+                throw new ArgumentException("No filters provided in the request.");
+            }
+            foreach (var combination in modelCombinations)
+            {
+                isMatch = combination.ModelFilterCombinationalValues.All(combinationValue =>
+                datapointSavedValuesRequestDto.SavedDataPointFilters.Any(inputFilter =>
+                inputFilter.TypeId == combinationValue.DataModelFilters.FilterId &&  
+                inputFilter.ValueId == combinationValue.DimensionsId));
+                if (isMatch)
+                {
+                    modelCombinationId = combination.Id;
+                    break;
+                }
+                if (!isMatch)
+                    throw new InvalidOperationException("No matching model filter combination Values found with ");
+            }
+            
+            var datamodelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByCombinationId(modelCombinationId);
+            var datapointdetails = await GetDatapointMetric(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
+            response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
+            response.Name = datapointdetails.Name;
+            response.UOMCode = datapointdetails.MetricCode;
+            response.IsNarrative = datapointdetails.IsNarrative;
+            response.DatapointSavedValues = new List<DatapointSavedValues>();
+            foreach (var datamodelValue in datamodelValues)
+            {
+                response.DatapointSavedValues.Add(new DatapointSavedValues
+                {
+                    RowId = datamodelValue.RowId,
+                    ColumnId = datamodelValue.ColumnId,
+                    Value = datamodelValue.Value,
+                });
+            }
+            return response;
         }
     }
 }

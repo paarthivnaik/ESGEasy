@@ -43,5 +43,10 @@ namespace ESG.API.Controllers
             await _dataModelService.SaveDatapointDataInModel(datapointValuesSavingRequestDto);
             return Ok();
         }
+        [HttpPost("GetDatapointSavedValues")]
+        public async Task<DatapointSavedValuesResponseDto> GetDatapointSavedValues(DatapointSavedValuesRequestDto datapointSavedValuesRequestDto)
+        {
+            return await _dataModelService.GetDatapointSavedValues(datapointSavedValuesRequestDto);
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace ESG.Application.Dto.DataModel
         public string Name { get; set; }
         public long MetricId { get; set; }
         public string MetricCode { get; set; }
+        public bool IsNarrative { get; set; }
     }
 }

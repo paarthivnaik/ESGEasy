@@ -211,5 +211,25 @@ namespace ESG.Infrastructure.Persistence.DataModel
                .FirstOrDefaultAsync();
             return dataModel;
         }
+
+        public async Task<IEnumerable<ModelCombinations>> GetModelCombinationsByModelIdandDatapointId(long modelId, long datapointId)
+        {
+            var modelCombinations = await _context.ModelFilterCombinations
+                    .AsNoTracking()
+                    .Include(a => a.ModelFilterCombinationalValues)
+                    .ThenInclude(cv => cv.DataModelFilters) 
+                    .Where(dp => dp.DataPointValuesId == datapointId && dp.DataModelId == modelId)
+                    .ToListAsync();
+            return modelCombinations;
+        }
+
+        public async Task<IEnumerable<DataModelValues>> GetDataModelValuesByCombinationId(long combinationId)
+        {
+            var modelvalues = await _context.DataModelValues
+                .AsNoTracking()
+                .Where(a => a.CombinationId == combinationId)
+                .ToListAsync();
+            return modelvalues;
+        }
     }
 }
