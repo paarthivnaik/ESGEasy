@@ -28,7 +28,7 @@ namespace ESG.API.Controllers
             return Ok();
         }
 
-        [HttpPut("Delete")]
+        [HttpPatch("Delete")]
         public async Task<IActionResult> Delete(DimensionsDeleteRequestDto request)
         {
             await _dimensionsService.Delete(request);
@@ -41,7 +41,7 @@ namespace ESG.API.Controllers
             return await _dimensionsService.GetAll();
         }
 
-        [HttpGet("GetAllByDimensionTypeId")]
+        [HttpGet("GetDimensionByTypeId")]
         public async Task<IEnumerable<DimensionsResponseDto>> GetById(long id)
         {
             return await _dimensionsService.GetById(id);
