@@ -62,31 +62,31 @@ namespace ESG.Application.Services
         {
             var existingData = await _unitOfWork.Repository<DimensionType>()
                 .Get(u => u.Id == dimentionType.Id && u.LanguageId == dimentionType.LanguageId);
-            var translationsData = await _unitOfWork.Repository<DimensionTypeTranslations>()
-                .Get(uom => uom.DimensionTypeId == dimentionType.Id && uom.LanguageId == dimentionType.LanguageId);
-            if (existingData == null || translationsData == null)
+            //var translationsData = await _unitOfWork.Repository<DimensionTypeTranslations>()
+            //    .Get(uom => uom.DimensionTypeId == dimentionType.Id && uom.LanguageId == dimentionType.LanguageId);
+            if (existingData == null)
             {
-                throw new KeyNotFoundException($"Unit of Measure with ID {dimentionType.Id} not found.");
+                throw new KeyNotFoundException($"DimensionType with ID {dimentionType.Id} not found.");
             }
             existingData.ShortText = dimentionType.ShortText;
             existingData.LongText = dimentionType.LongText;
             existingData.Code = dimentionType.Code;
             existingData.State = dimentionType.State;
             
-            translationsData.ShortText = dimentionType.ShortText;
-            translationsData.LongText = dimentionType.LongText;
-            translationsData.State = dimentionType.State;
+            //translationsData.ShortText = dimentionType.ShortText;
+            //translationsData.LongText = dimentionType.LongText;
+            //translationsData.State = dimentionType.State;
             await _unitOfWork.Repository<DimensionType>().Update(existingData);
-            await _unitOfWork.Repository<DimensionTypeTranslations>().Update(translationsData);
+            //await _unitOfWork.Repository<DimensionTypeTranslations>().Update(translationsData);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task Delete(DimensionTypeDeleteRequestDto request)
+        public async Task SoftDelete(DimensionTypeDeleteRequestDto request)
         {
             var dimension = await _unitOfWork.Repository<DimensionType>().Get(uom => uom.Id == request.Id);
             if (dimension == null)
             {
-                throw new KeyNotFoundException($"Unit of Measure with ID {dimension.Id} not found.");
+                throw new KeyNotFoundException($"DimensionType ID {dimension.Id} not found.");
             }
             dimension.State = StateEnum.deleted;
             await _unitOfWork.Repository<DimensionType>().Update(dimension);

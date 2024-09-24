@@ -33,10 +33,10 @@ namespace ESG.API.Controllers
             return Ok();
         }
 
-        [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete(DimensionTypeDeleteRequestDto request)
+        [HttpPatch("Delete")]
+        public async Task<IActionResult> Delete([FromBody] DimensionTypeDeleteRequestDto request)
         {
-            await _dimentionTypeService.Delete(request);
+            await _dimentionTypeService.SoftDelete(request);
             return Ok();
         }
 
