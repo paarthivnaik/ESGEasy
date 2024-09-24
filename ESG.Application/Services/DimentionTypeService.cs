@@ -39,6 +39,7 @@ namespace ESG.Application.Services
                         existingdimType.LongText = dimensionType.LongText;
                         existingdimType.LanguageId = dimensionType.LanguageId;
                         existingdimType.OrganizationId = dimensionType.OrganizationId;
+                        existingdimType.State = dimensionType.State;
                         oldDimensionTypes.Add(existingdimType);
                         //var dimensionsTranslateddata = _mapper.Map<DimensionTypeTranslations>(dimensionType);
                         //await _unitOfWork.Repository<DimensionTypeTranslations>().AddAsync(dimensionsTranslateddata);

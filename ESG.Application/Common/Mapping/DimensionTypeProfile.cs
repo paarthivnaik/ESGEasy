@@ -14,7 +14,6 @@ namespace ESG.Application.Common.Mapping
     {
         public DimensionTypeProfile()
         {
-            //create
             CreateMap<DimensionTypeCreateRequestDto, DimensionType>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
