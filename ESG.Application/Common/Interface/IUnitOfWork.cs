@@ -24,6 +24,7 @@ namespace ESG.Application.Common.Interface
         IDataModelRepo DataModelRepo { get; }
         IDatapointValueRepo DatapointValueRepo { get; }
         IUsersRepo UsersRepo { get; }
+        IOrganizationRepo OrganizationRepo { get; }
         Task<int> SaveAsync();
         int Save();
         void BeginTransaction();

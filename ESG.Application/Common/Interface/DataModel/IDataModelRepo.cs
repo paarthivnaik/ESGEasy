@@ -29,8 +29,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<IEnumerable<ModelCombinations>> GetModelCombinationsByModelIdandDatapointId(long modelId, long datapointId);
         Task<IEnumerable<DataModelValues>> GetDataModelValuesByCombinationId(long combinationId);
 
-
-
+        Task<List<ModelDimensionTypes>?> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId);
         //Task<List<DimensionType>?> GetDimensionTypesByModelId(long modelId);
 
     }

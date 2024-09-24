@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
+using ESG.Application.Dto.Organization;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities;
 using ESG.Domain.Entities.TenantAndUsers;
@@ -44,10 +45,27 @@ namespace ESG.Application.Services
             return res;
         }
 
+
         public async Task<Organization> UpdateAsync(Organization organization)
         {
             var res = await _unitOfWork.Repository<Organization>().UpdateAsync(organization.Id, organization);
             return res;
+        }
+        public async Task<List<OrganizationUsersResponseDto>> GetOrganizationalUsers(long Id)
+        {
+            var response = new List<OrganizationUsersResponseDto>();
+            var res = await _unitOfWork.OrganizationRepo.GetOrganizationUsers(Id);
+            foreach (var user in res)
+            {
+                var obj = new OrganizationUsersResponseDto
+                {
+                    UserId = user.UserId,
+                    FirstName = user.User.FirstName,
+                    LastName = user.User.LastName,
+                };
+                response.Add(obj);
+            }
+            return response;
         }
     }
 }

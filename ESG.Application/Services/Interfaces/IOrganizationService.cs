@@ -1,4 +1,5 @@
-﻿using ESG.Domain.Entities.TenantAndUsers;
+﻿using ESG.Application.Dto.Organization;
+using ESG.Domain.Entities.TenantAndUsers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace ESG.Application.Services.Interfaces
         Task<Organization> GetById(long Id);
         Task<long> Count();
         Task<Organization> Delete(long Id);
+        Task<List<OrganizationUsersResponseDto>> GetOrganizationalUsers(long Id);
     }
 }

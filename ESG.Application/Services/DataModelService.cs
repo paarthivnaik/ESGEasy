@@ -92,6 +92,9 @@ namespace ESG.Application.Services
             var modelDimensionValues = new List<ModelDimensionValues>();
             var modelConfigurations = new ESG.Domain.Entities.DataModels.ModelConfiguration();
             var modelFilters = new List<DataModelFilters>();
+            var modelCombinations = new List<ModelCombinations>();
+            var modelFilterCombinationalValues = new List<ModelFilterCombinationalValues>();
+            var dataModelValues = new List<DataModelValues>();
             foreach (var datapointId in dataModelCreateRequestDto.Datapoints)
             {
                 modelDatapoints.Add(new ModelDatapoints
@@ -203,8 +206,190 @@ namespace ESG.Application.Services
             await _unitOfWork.Repository<ModelDimensionValues>().AddRange(modelDimensionValues);
             await _unitOfWork.Repository<DataModelFilters>().AddRange(modelFilters);
             await _unitOfWork.SaveAsync();
+
+            //getting all dimenstion types and looping through the filters
+
+            var modeldimTypes = await _unitOfWork.DataModelRepo.GetDimensionTypesByModelIdAndOrgId(dataModelId, dataModelCreateRequestDto.OrganizationId);
+            if (modeldimTypes == null)
+                throw new ArgumentException("Model configurtion not set properly");
+            //for fact
+            var factRowDimensionType = modeldimTypes.FirstOrDefault(d => d.DimensionTypeId == dataModelCreateRequestDto.Fact.RowId);
+            var factColumnDimensionType = modeldimTypes.FirstOrDefault(d => d.DimensionTypeId == dataModelCreateRequestDto.Fact.ColumnId);
+            var factFilterDimensionTypes = modeldimTypes.Where(d => dataModelCreateRequestDto.Fact.Filters.Contains(d.DimensionTypeId)).ToList();
+            if (factRowDimensionType == null)
+                throw new ArgumentException("Fact row configurtion not set properly");
+            
+            foreach (var datapoint in dataModelCreateRequestDto.Datapoints)
+            {
+                var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(datapoint);
+                if (viewtype == null)
+                    throw new ArgumentException($"datapoint view type set to null, expected: {datapoint}");
+                if (viewtype  == false)//factview of datapoint
+                {
+                    var datamodelConfigId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(dataModelId, ModelViewTypeEnum.Fact);
+                    var datamodelfilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(datamodelConfigId);
+                    var valueLists = new Dictionary<long, List<long>>();
+                    foreach (var dimension in dataModelCreateRequestDto.Dimensions)
+                    {
+                        if (factFilterDimensionTypes.Any(f => f.DimensionTypeId == dimension.TypeId))
+                        {
+                            valueLists.Add(dimension.TypeId, dimension.Values.ToList());
+                        }
+                    }
+                    var allCombinations = GetCombinations(valueLists);
+                    foreach (var combination in allCombinations)
+                    {
+                        var modelCombination = new ModelCombinations
+                        {
+                            DataModelId = dataModelId,
+                            DataPointValuesId = datapoint,
+                            State = StateEnum.active,
+                            CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                            CreatedDate = utcNow,
+                            LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                            LastModifiedDate = utcNow
+                        };
+                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
+                        await _unitOfWork.SaveAsync();
+
+                        foreach (var comboType in combination)
+                        {
+                            var datamodelfilterId = datamodelfilters
+                                .Where(a => a.FilterId == comboType.DimensionTypeId && a.ModelConfigurationId == datamodelConfigId)
+                                .FirstOrDefault();
+                            var modelFilterCombinationValue = new ModelFilterCombinationalValues
+                            {
+                                ModelFilterCombinationsId = modelCombination.Id, 
+                                DimensionsId = comboType.Value,
+                                DataModelFiltersId = datamodelfilterId.Id,
+                                State = StateEnum.active,
+                                CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                                CreatedDate = utcNow,
+                                LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                                LastModifiedDate = utcNow
+                            };
+                            modelFilterCombinationalValues.Add(modelFilterCombinationValue);
+                        }
+                        await _unitOfWork.Repository<ModelFilterCombinationalValues>().AddRange(modelFilterCombinationalValues);
+                        await _unitOfWork.SaveAsync();
+                        foreach (var dimensionId in modeldimTypes
+                            .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.RowId)
+                            .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
+                        {
+                            foreach (var columnDimension in modeldimTypes
+                                .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.ColumnId)
+                                .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
+                            {
+                                var dataModelValue = new DataModelValues
+                                {
+                                    CombinationId = modelCombination.Id,
+                                    RowId = dimensionId,
+                                    ColumnId = columnDimension == null ? (long?)null : columnDimension,
+                                    CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                                    CreatedDate = utcNow,
+                                };
+                                dataModelValues.Add(dataModelValue);
+                            }
+                        }
+                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
+                        await _unitOfWork.SaveAsync();
+                    }
+                }
+                if (viewtype == true)
+                {
+                    var datamodelConfigId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(dataModelId, ModelViewTypeEnum.Fact);
+                    var datamodelfilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(datamodelConfigId);
+                    var valueLists = new Dictionary<long, List<long>>();
+                    foreach (var dimension in dataModelCreateRequestDto.Dimensions)
+                    {
+                        if (factFilterDimensionTypes.Any(f => f.DimensionTypeId == dimension.TypeId))
+                        {
+                            valueLists.Add(dimension.TypeId, dimension.Values.ToList());
+                        }
+                    }
+                    var allCombinations = GetCombinations(valueLists);
+                    foreach (var combination in allCombinations)
+                    {
+                        var modelCombination = new ModelCombinations
+                        {
+                            DataModelId = dataModelId,
+                            DataPointValuesId = datapoint,
+                            State = StateEnum.active,
+                            CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                            CreatedDate = utcNow,
+                            LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                            LastModifiedDate = utcNow
+                        };
+                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
+                        await _unitOfWork.SaveAsync();
+
+                        foreach (var comboType in combination)
+                        {
+                            var datamodelfilterId = datamodelfilters.Where(a => a.FilterId == comboType.DimensionTypeId);
+                            var modelFilterCombinationValue = new ModelFilterCombinationalValues
+                            {
+                                ModelFilterCombinationsId = modelCombination.Id,
+                                DimensionsId = comboType.Value,
+                                DataModelFiltersId = comboType.DimensionTypeId,
+                                State = StateEnum.active,
+                                CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                                CreatedDate = utcNow,
+                                LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                                LastModifiedDate = utcNow
+                            };
+                            modelFilterCombinationalValues.Add(modelFilterCombinationValue);
+                        }
+                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
+                        await _unitOfWork.SaveAsync();
+                        foreach (var dimensionId in modeldimTypes
+                            .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Narrative.RowId)
+                            .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
+                        {
+                            var dataModelValue = new DataModelValues
+                            {
+                                CombinationId = modelCombination.Id,
+                                RowId = dimensionId,
+                                ColumnId = null,
+                                CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                                CreatedDate = utcNow,
+                            };
+                            dataModelValues.Add(dataModelValue);
+                        }
+                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
+                       
+                    }
+                }
+                await _unitOfWork.SaveAsync();
+            }
+        }
+        public static List<List<(long DimensionTypeId, long Value)>> GetCombinations(Dictionary<long, List<long>> dimensionValues)
+        {
+            var keys = dimensionValues.Keys.ToList(); 
+            var result = new List<List<(long, long)>>();
+            Combine(keys, dimensionValues, 0, new List<(long, long)>(), result);
+            return result;
         }
 
+        private static void Combine(List<long> keys,
+                                    Dictionary<long, List<long>> dimensionValues,
+                                    int index,
+                                    List<(long DimensionTypeId, long Value)> currentCombination,
+                                    List<List<(long, long)>> result)
+        {
+            if (index == keys.Count)
+            {
+                result.Add(new List<(long, long)>(currentCombination));
+                return;
+            }
+            var currentKey = keys[index];
+            var values = dimensionValues[currentKey];
+            foreach (var value in values)
+            {
+                currentCombination.Add((currentKey, value));
+                Combine(keys, dimensionValues, index + 1, currentCombination, result);
+                currentCombination.RemoveAt(currentCombination.Count - 1);
+            }
+        }
         public async Task<IEnumerable<DataModelsResponseDto>> GetDataModelsResponsesByOrgId(long organizationId)
         {
             var responseobj = new List<DataModelsResponseDto>();

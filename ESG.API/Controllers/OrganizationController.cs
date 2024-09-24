@@ -1,4 +1,5 @@
-﻿using ESG.Application.Services.Interfaces;
+﻿using ESG.Application.Dto.Organization;
+using ESG.Application.Services.Interfaces;
 using ESG.Domain.Entities.TenantAndUsers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,12 +22,12 @@ namespace ESG.API.Controllers
             return Ok(res);
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> Get(int id)
-        //{
-        //    var res = await _organizationService.GetById(id);
-        //    return Ok(res);
-        //}
+        [HttpGet("GetOrganizationalUsersByOrgId")]
+        public async Task<List<OrganizationUsersResponseDto>> GetOrganizationalUsers(long id)
+        {
+            var res = await _organizationService.GetOrganizationalUsers(id);
+            return res;
+        }
 
         //[HttpPost]
         //public async Task<IActionResult> Post(Organization organization)

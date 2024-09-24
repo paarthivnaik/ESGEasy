@@ -33,6 +33,7 @@ namespace ESG.Infrastructure.Persistence
         public IDataModelRepo DataModelRepo { get; private set; }
         public IDatapointValueRepo DatapointValueRepo { get; private set; }
         public IUsersRepo UsersRepo { get; private set; }
+        public IOrganizationRepo OrganizationRepo { get; private set; }
 
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
@@ -52,6 +53,7 @@ namespace ESG.Infrastructure.Persistence
             DataModelRepo = new DataModelRepo(_context);
             DatapointValueRepo = new ESG.Infrastructure.Persistence.DatapointRepo.DatapointValueRepo(_context);
             UsersRepo = new ESG.Infrastructure.Persistence.AccountsRepo.UsersRepo(_context, _configuration);
+            OrganizationRepo = new ESG.Infrastructure.Persistence.Account.OrganizationRepo(_context);
         }
         #endregion
        

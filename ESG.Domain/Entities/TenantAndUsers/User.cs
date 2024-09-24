@@ -23,5 +23,6 @@ namespace ESG.Domain.Entities.TenantAndUsers
         public Language Languages { get; set; }
         public UserRole Role { get; set; }
         public IEnumerable<OrganizationUser> OrganizationUsers { get; set; }
+        public IEnumerable<DataPointValues> DataPointValues { get; set; }
     }
 }

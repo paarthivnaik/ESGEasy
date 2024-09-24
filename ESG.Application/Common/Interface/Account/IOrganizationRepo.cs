@@ -9,5 +9,6 @@ namespace ESG.Application.Common.Interface.Account
 {
     public interface IOrganizationRepo : IGenericRepository<Organization>
     {
+        Task<List<OrganizationUser>> GetOrganizationUsers(long id);
     }
 }

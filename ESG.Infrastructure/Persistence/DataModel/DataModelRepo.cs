@@ -107,12 +107,12 @@ namespace ESG.Infrastructure.Persistence.DataModel
         }
         public async Task<long> GetModelconfigurationIdByModelIdAndViewType(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
-            var ids = await _context.ModelConfiguration
+            var id = await _context.ModelConfiguration
                 .AsNoTracking()
                 .Where(a => a.DataModelId == modelId && a.ViewType == viewTypeEnum)
                 .Select(a => a.Id)
                 .FirstOrDefaultAsync();
-            return ids;
+            return id;
         }
 
         public async Task<IEnumerable<(long Id, string Name)>> GetDimensionValuesByTypeId(long? modelDimensionTypeId)
@@ -228,6 +228,18 @@ namespace ESG.Infrastructure.Persistence.DataModel
             var modelvalues = await _context.DataModelValues
                 .AsNoTracking()
                 .Where(a => a.CombinationId == combinationId)
+                .ToListAsync();
+            return modelvalues;
+        }
+
+        public async Task<List<ModelDimensionTypes>?> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId)
+        {
+            var modelvalues = await _context.ModelDimensionTypes
+                .AsNoTracking()
+                .Include(d => d.DimensionType)
+                .Include(a => a.ModelDimensionValues)
+                .ThenInclude(c => c.Dimensions)
+                .Where(a => a.DataModelId == modelId && a.DataModel.OrganizationId == orgId)
                 .ToListAsync();
             return modelvalues;
         }

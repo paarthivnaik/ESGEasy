@@ -14,15 +14,20 @@ namespace ESG.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataModelValues> builder)
         {
             builder.HasOne(mc => mc.Row)
-                          .WithMany()
-                          .HasForeignKey(mc => mc.RowId);
-
+                  .WithMany()
+                  .HasForeignKey(mc => mc.RowId);
             builder.HasOne(mc => mc.Column)
                   .WithMany()
                   .HasForeignKey(mc => mc.ColumnId);
             builder.HasOne(mc => mc.Combination)
                   .WithMany()
                   .HasForeignKey(mc => mc.CombinationId);
+            builder.HasOne(mc => mc.User)
+                  .WithMany()
+                  .HasForeignKey(mc => mc.Responsible);
+            builder.HasOne(mc => mc.User)
+                  .WithMany()
+                  .HasForeignKey(mc => mc.Accountable);
         }
     }
 }
