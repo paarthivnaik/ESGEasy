@@ -22,12 +22,12 @@ namespace ESG.Infrastructure.Persistence.Configurations
             builder.HasOne(mc => mc.Combination)
                   .WithMany()
                   .HasForeignKey(mc => mc.CombinationId);
-            builder.HasOne(mc => mc.User)
+            builder.HasOne(mc => mc.ResponsibleUser)
                   .WithMany()
-                  .HasForeignKey(mc => mc.Responsible);
-            builder.HasOne(mc => mc.User)
+                  .HasForeignKey(mc => mc.ResponsibleUserId);
+            builder.HasOne(mc => mc.AccountableUser)
                   .WithMany()
-                  .HasForeignKey(mc => mc.Accountable);
+                  .HasForeignKey(mc => mc.AccountableUserId);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ESG.Domain.Entities.DataModels
         public long DataModelFiltersId { get; set; }
         public DataModelFilters DataModelFilters { get; set; }
         public long DimensionsId { get; set; }
-        public Dimensions Dimensions;
+        public List<Dimensions> Dimensions;
         public long ModelFilterCombinationsId { get; set; }
         public ModelCombinations ModelFilterCombinations { get; set; }
     }

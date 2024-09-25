@@ -254,14 +254,27 @@ namespace ESG.Application.Services
 
                         foreach (var comboType in combination)
                         {
-                            var datamodelfilterId = datamodelfilters
+                            var datamodelfilter = datamodelfilters
                                 .Where(a => a.FilterId == comboType.DimensionTypeId && a.ModelConfigurationId == datamodelConfigId)
                                 .FirstOrDefault();
+                            if (datamodelfilter == null)
+                            {
+                                throw new ArgumentNullException($"No matching DataModelFilter found for FilterId {comboType.DimensionTypeId} and ModelConfigurationId {datamodelConfigId}.");
+                            }
+                            //var modelCombinationExists = modelFilterCombinations
+                            //    .Where(mfc => mfc.Id == modelCombination.Id)
+                            //    .FirstOrDefault();
+
+                            //if (modelCombinationExists == null)
+                            //{
+                            //    // Handle the case where modelCombination.Id does not exist in ModelFilterCombinations
+                            //    throw new ArgumentNullException($"No matching ModelFilterCombinations found for Id {modelCombination.Id}.");
+                            //}
                             var modelFilterCombinationValue = new ModelFilterCombinationalValues
                             {
                                 ModelFilterCombinationsId = modelCombination.Id, 
                                 DimensionsId = comboType.Value,
-                                DataModelFiltersId = datamodelfilterId.Id,
+                                DataModelFiltersId = datamodelfilter.Id,
                                 State = StateEnum.active,
                                 CreatedBy = dataModelCreateRequestDto.CreatedBy,
                                 CreatedDate = utcNow,
@@ -550,7 +563,7 @@ namespace ESG.Application.Services
             {
                 var isMatch = combination.ModelFilterCombinationalValues.All(combinationValue =>
                     requestdto.FilterDtos.Any(inputFilter =>
-                        inputFilter.TypeId == combinationValue.DataModelFilters.FilterId &&
+                       // inputFilter.TypeId == combinationValue.DataModelFilters.FilterId &&
                         inputFilter.ValueId == combinationValue.DimensionsId));
 
                 if (isMatch)
@@ -817,7 +830,7 @@ namespace ESG.Application.Services
             {
                 isMatch = combination.ModelFilterCombinationalValues.All(combinationValue =>
                 datapointSavedValuesRequestDto.SavedDataPointFilters.Any(inputFilter =>
-                inputFilter.TypeId == combinationValue.DataModelFilters.FilterId &&  
+                //inputFilter.TypeId == combinationValue.DataModelFilters.FilterId &&  
                 inputFilter.ValueId == combinationValue.DimensionsId));
                 if (isMatch)
                 {

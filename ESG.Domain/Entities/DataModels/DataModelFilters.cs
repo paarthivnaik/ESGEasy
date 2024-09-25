@@ -14,5 +14,6 @@ namespace ESG.Domain.Entities.DataModels
         public ModelConfiguration ModelConfiguration { get; set; }
         public long FilterId { get; set; }
         public DimensionType DimensionType { get; set; }
+        public IEnumerable<ModelFilterCombinationalValues> ModelFilterCombinationalValues { get; set; }
     }
 }

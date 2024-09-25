@@ -15,6 +15,6 @@ namespace ESG.Domain.Entities.DataModels
         public IEnumerable<ModelDatapoints> ModelDatapoints { get; set; }
         public IEnumerable<ModelDimensionTypes> ModelDimensionTypes { get; set; }
         public IEnumerable<ModelConfiguration> ModelConfiguration { get; set; }
-        public IEnumerable<ModelCombinations> ModelFilterCombinations { get; set; }
+        public IEnumerable<ModelCombinations> ModelCombinations { get; set; }
     }
 }
