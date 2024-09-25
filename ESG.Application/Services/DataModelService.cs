@@ -261,15 +261,6 @@ namespace ESG.Application.Services
                             {
                                 throw new ArgumentNullException($"No matching DataModelFilter found for FilterId {comboType.DimensionTypeId} and ModelConfigurationId {datamodelConfigId}.");
                             }
-                            //var modelCombinationExists = modelFilterCombinations
-                            //    .Where(mfc => mfc.Id == modelCombination.Id)
-                            //    .FirstOrDefault();
-
-                            //if (modelCombinationExists == null)
-                            //{
-                            //    // Handle the case where modelCombination.Id does not exist in ModelFilterCombinations
-                            //    throw new ArgumentNullException($"No matching ModelFilterCombinations found for Id {modelCombination.Id}.");
-                            //}
                             var modelFilterCombinationValue = new ModelFilterCombinationalValues
                             {
                                 ModelFilterCombinationsId = modelCombination.Id, 
