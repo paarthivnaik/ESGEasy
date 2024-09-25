@@ -15,10 +15,10 @@ namespace ESG.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<ModelFilterCombinationalValues> builder)
         {
             //builder.HasKey(mfcv => new { mfcv.DataModelFiltersId, mfcv.DimensionsId, mfcv.ModelFilterCombinationsId });
-            builder.HasMany(mfcv => mfcv.DataModelFilters)
-                .WithMany(a => a.ModelFilterCombinationalValues);
-            builder.HasMany(mfdc => mfdc.ModelFilterCombinations)
-                .WithMany(builder => builder.ModelFilterCombinationalValues);
+            //builder.HasMany(mfcv => mfcv.DataModelFilters)
+            //    .WithMany(a => a.ModelFilterCombinationalValues);
+            //builder.HasMany(mfdc => mfdc.ModelFilterCombinations)
+            //    .WithMany(builder => builder.ModelFilterCombinationalValues);
 
         }
     }

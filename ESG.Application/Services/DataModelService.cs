@@ -237,9 +237,10 @@ namespace ESG.Application.Services
                         }
                     }
                     var allCombinations = GetCombinations(valueLists);
+                    var modelCombination = new ModelCombinations();
                     foreach (var combination in allCombinations)
                     {
-                        var modelCombination = new ModelCombinations
+                        modelCombination = new ModelCombinations
                         {
                             DataModelId = dataModelId,
                             DataPointValuesId = datapoint,
@@ -274,8 +275,7 @@ namespace ESG.Application.Services
                             };
                             modelFilterCombinationalValues.Add(modelFilterCombinationValue);
                         }
-                        await _unitOfWork.Repository<ModelFilterCombinationalValues>().AddRange(modelFilterCombinationalValues);
-                        await _unitOfWork.SaveAsync();
+                        
                         foreach (var dimensionId in modeldimTypes
                             .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.RowId)
                             .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
@@ -295,9 +295,10 @@ namespace ESG.Application.Services
                                 dataModelValues.Add(dataModelValue);
                             }
                         }
-                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
-                        await _unitOfWork.SaveAsync();
                     }
+                    await _unitOfWork.Repository<ModelFilterCombinationalValues>().AddRange(modelFilterCombinationalValues);
+                    await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
+                    await _unitOfWork.SaveAsync();
                 }
                 if (viewtype == true)
                 {
