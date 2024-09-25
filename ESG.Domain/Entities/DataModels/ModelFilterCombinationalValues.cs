@@ -15,6 +15,6 @@ namespace ESG.Domain.Entities.DataModels
         public long DimensionsId { get; set; }
         public List<Dimensions> Dimensions;
         public long ModelFilterCombinationsId { get; set; }
-        public ModelCombinations ModelFilterCombinations { get; set; }
+        public List<ModelCombinations> ModelFilterCombinations { get; set; }
     }
 }
