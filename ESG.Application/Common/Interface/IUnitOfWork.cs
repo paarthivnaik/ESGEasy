@@ -1,12 +1,12 @@
 ﻿using ESG.Application.Common.Interface.Account;
 using ESG.Application.Common.Interface.DataModel;
 using ESG.Application.Common.Interface.DataPoint;
-using ESG.Application.Common.Interface.Dimensions;
+using ESG.Application.Common.Interface.Dimension;
 using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Common.Interface.Value;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
+using ESG.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;

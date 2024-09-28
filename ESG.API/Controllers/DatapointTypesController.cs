@@ -1,6 +1,6 @@
 ﻿using ESG.Application.Dto.DatapointType;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers
@@ -18,7 +18,7 @@ namespace ESG.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<DataPointTypes>> Get()
+        public async Task<IEnumerable<DataPointType>> Get()
         {
             return await _datapointTypesService.GetAll();
         }

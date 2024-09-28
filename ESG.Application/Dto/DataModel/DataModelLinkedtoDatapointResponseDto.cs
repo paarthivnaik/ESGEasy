@@ -17,7 +17,7 @@ namespace ESG.Application.Dto.DataModel
     public class DatapointDimensionType
     {
         public long DimensionTypeId { get; set; }
-        public string DimensionsTypeName { get; set; }
+        public string DimensionTypeName { get; set; }
         public List<DatapointDimensionValue> DimensionValues { get; set; }
     }
 

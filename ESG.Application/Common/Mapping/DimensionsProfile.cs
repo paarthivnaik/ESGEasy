@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using ESG.Application.Dto.Dimensions;
+using ESG.Application.Dto.Dimension;
 using ESG.Application.Dto.UnitOfMeasure;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Common.Mapping
 {
-    public class DimensionsProfile : Profile
+    public class DimensionProfile : Profile
     {
-        public DimensionsProfile()
+        public DimensionProfile()
         {
             //create
-            CreateMap<DimensionCreateRequestDto, Dimensions>()
+            CreateMap<DimensionCreateRequestDto, Dimension>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
@@ -23,7 +23,7 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.DimensionTypeId, opt => opt.MapFrom(src => src.DimensionTypeId))
                 .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId))
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
-            CreateMap<Dimensions, DimensionCreateRequestDto>()
+            CreateMap<Dimension, DimensionCreateRequestDto>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
@@ -33,7 +33,7 @@ namespace ESG.Application.Common.Mapping
                .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
 
             //response
-            CreateMap<Dimensions, DimensionsResponseDto>()
+            CreateMap<Dimension, DimensionResponseDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy))

@@ -1,5 +1,5 @@
 ﻿using ESG.Application.Dto.DatapointValue;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,6 @@ namespace ESG.Application.Common.Interface.DataPoint
     public interface IDatapointValueRepo
     {
         Task<IEnumerable<long>> GetModelDatapointsByOrgId(long orgId);
-        Task<IEnumerable<DataPointValues>> GetNamesForFilteredIds(IEnumerable<long> filteredIds);
+        Task<IEnumerable<DataPointValue>> GetNamesForFilteredIds(IEnumerable<long> filteredIds);
     }
 }

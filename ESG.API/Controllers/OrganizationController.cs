@@ -1,6 +1,6 @@
 ﻿using ESG.Application.Dto.Organization;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities.TenantAndUsers;
+using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers

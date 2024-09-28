@@ -1,15 +1,15 @@
-﻿using ESG.Application.Dto.Dimensions;
-using ESG.Domain.Entities.DomainEntities;
+﻿using ESG.Application.Dto.Dimension;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESG.Application.Common.Interface.Dimensions
+namespace ESG.Application.Common.Interface.Dimension
 {
     public interface IDimensionRepo
     {
-        Task<IEnumerable<DimensionTranslations>> GetAllTranslations(long id);
+        Task<IEnumerable<DimensionTranslation>> GetAllTranslations(long id);
     }
 }

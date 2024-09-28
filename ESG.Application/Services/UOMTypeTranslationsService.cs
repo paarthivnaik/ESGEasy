@@ -3,7 +3,7 @@ using ESG.Application.Common.Interface;
 using ESG.Application.Dto.UOMTranslations;
 using ESG.Application.Dto.UOMTypeTranslations;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,15 +25,15 @@ namespace ESG.Application.Services
         {
             if (uomTypeTranslationsCreateRequestDto != null)
             {
-                var uomTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslations>(uomTypeTranslationsCreateRequestDto);
-                await _unitOfMeasure.Repository<UnitOfMeasureTypeTranslations>().AddAsync(uomTranslationdata);
+                var uomTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslation>(uomTypeTranslationsCreateRequestDto);
+                await _unitOfMeasure.Repository<UnitOfMeasureTypeTranslation>().AddAsync(uomTranslationdata);
                 await _unitOfMeasure.SaveAsync();
             }
         }
 
         public async Task Update(UOMTypeTranslationsUpdateRequestDto uomTypeTranslationsUpdateRequestDto)
         {
-            var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTypeTranslations>()
+            var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTypeTranslation>()
                 .Get(uom => uom.UnitOfMeasureTypeId == uomTypeTranslationsUpdateRequestDto.UnitOfMeasureTypeId && uom.LanguageId == uomTypeTranslationsUpdateRequestDto.LanguageId);
             if (translationsData == null)
             {
@@ -45,7 +45,7 @@ namespace ESG.Application.Services
             translationsData.Name = uomTypeTranslationsUpdateRequestDto.Name;
             translationsData.CreatedBy = uomTypeTranslationsUpdateRequestDto.UserId;
 
-            await _unitOfMeasure.Repository<UnitOfMeasureTypeTranslations>().Update(translationsData);
+            await _unitOfMeasure.Repository<UnitOfMeasureTypeTranslation>().Update(translationsData);
             await _unitOfMeasure.SaveAsync();
         }
     }

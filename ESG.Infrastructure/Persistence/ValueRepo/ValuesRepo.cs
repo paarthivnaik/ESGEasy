@@ -1,7 +1,6 @@
-﻿using ESG.Application.Common.Interface.Dimensions;
-using ESG.Application.Common.Interface.Value;
+﻿using ESG.Application.Common.Interface.Value;
 using ESG.Application.Dto.Get;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,9 @@ namespace ESG.Infrastructure.Persistence.ValueRepo
         {
             _context = context;
         }
-        public async Task<IEnumerable<UnitOfMeasureTranslations>> GetUOMTranslations(long? valueId)
+
+       
+        public async Task<IEnumerable<UnitOfMeasureTranslation>> GetUOMTranslations(long? valueId)
         {
             var uomTranslations = await _context.UnitOfMeasureTranslations
                 .AsNoTracking()
@@ -27,15 +28,16 @@ namespace ESG.Infrastructure.Persistence.ValueRepo
             return uomTranslations;
         }
 
-        public async Task<IEnumerable<UnitOfMeasureTypeTranslations>> GetUOMTypeTranslations(long typeId)
+        public async Task<IEnumerable<UnitOfMeasureTypeTranslation>> GetUOMTypeTranslations(long typeId)
         {
             var uomTranslation = await _context.UnitOfMeasureTypeTranslations
-                            .AsNoTracking()
-                            .Where(t => t.UnitOfMeasureTypeId == typeId)
-                            .ToListAsync();
+                             .AsNoTracking()
+                             .Where(t => t.UnitOfMeasureTypeId == typeId)
+                             .ToListAsync();
             return uomTranslation;
         }
-        public async Task<IEnumerable<DimensionTranslations>> GetDimensionsTranslations(long typeId, long? valueId)
+
+        public async Task<IEnumerable<DimensionTranslation>> GetDimensionTranslations(long typeId, long? valueId)
         {
             var uomTranslation = await _context.DimensionTranslations
                             .AsNoTracking()
@@ -43,7 +45,8 @@ namespace ESG.Infrastructure.Persistence.ValueRepo
                             .ToListAsync();
             return uomTranslation;
         }
-        public async Task<IEnumerable<DimensionTypeTranslations>> GetDimensionTypeTranslations(long typeId)
+
+        public async Task<IEnumerable<DimensionTypeTranslation>> GetDimensionTypeTranslation(long typeId)
         {
             var uomTranslation = await _context.DimensionTypeTranslations
                             .AsNoTracking()
@@ -51,7 +54,8 @@ namespace ESG.Infrastructure.Persistence.ValueRepo
                             .ToListAsync();
             return uomTranslation;
         }
-        public async Task<IEnumerable<DatapointValueTranslations>> GetDatapointTranslations(long typeId, long? valueId)
+
+        public async Task<IEnumerable<DatapointValueTranslation>> GetDatapointTranslations(long typeId, long? valueId)
         {
             var uomTranslation = await _context.DatapointValueTranslations
                             .AsNoTracking()
@@ -59,7 +63,8 @@ namespace ESG.Infrastructure.Persistence.ValueRepo
                             .ToListAsync();
             return uomTranslation;
         }
-        public async Task<IEnumerable<DatapointTypeTranslations>> GetDatapointTypeTranslations(long typeId)
+
+        public async Task<IEnumerable<DatapointTypeTranslation>> GetDatapointTypeTranslations(long typeId)
         {
             var uomTranslation = await _context.DatapointTypeTranslations
                             .AsNoTracking()

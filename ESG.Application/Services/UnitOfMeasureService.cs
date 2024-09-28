@@ -3,8 +3,8 @@ using ESG.Application.Common.Interface;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Enum;
+using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
@@ -42,8 +42,8 @@ namespace ESG.Application.Services
                         existingUOM.LastModifiedDate = DateTime.UtcNow;
                         existingUOM.State = StateEnum.active;
                         oldUoms.Add(existingUOM);
-                        //var uomTranslationdataOnly = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasures);
-                        //await _unitOfMeasure.Repository<UnitOfMeasureTranslations>().AddAsync(uomTranslationdataOnly);
+                        //var uomTranslationdataOnly = _mapper.Map<UnitOfMeasureTranslation>(unitOfMeasures);
+                        //await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().AddAsync(uomTranslationdataOnly);
                     }
                     else
                     {
@@ -63,9 +63,9 @@ namespace ESG.Application.Services
                             State = StateEnum.active
                         };
                         newUoms.Add(uomdata);
-                        //var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslations>(unitOfMeasures);
+                        //var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslation>(unitOfMeasures);
                         //uomTranslationdata.UnitOfMeasureId = uomdata.DatapointId;
-                        //uomdata.UnitOfMeasureTranslations = new List<UnitOfMeasureTranslations> { uomTranslationdata };
+                        //uomdata.UnitOfMeasureTranslation = new List<UnitOfMeasureTranslation> { uomTranslationdata };
                     }
                 }
             }
@@ -94,7 +94,7 @@ namespace ESG.Application.Services
         {
             var existingData = await _unitOfMeasure.Repository<UnitOfMeasure>()
                 .Get(u => u.Id == unitOfMeasure.Id && u.LanguageId == unitOfMeasure.LanguageId);
-            var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTranslations>()
+            var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTranslation>()
                 .Get(uom => uom.UnitOfMeasureId == unitOfMeasure.Id && uom.LanguageId == unitOfMeasure.LanguageId);
             if (existingData == null)
             {
@@ -113,7 +113,7 @@ namespace ESG.Application.Services
             translationsData.Name = unitOfMeasure.Name;
 
             await _unitOfMeasure.Repository<UnitOfMeasure>().Update(existingData);
-            await _unitOfMeasure.Repository<UnitOfMeasureTranslations>().Update(translationsData);
+            await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().Update(translationsData);
             await _unitOfMeasure.SaveAsync();
 
         }

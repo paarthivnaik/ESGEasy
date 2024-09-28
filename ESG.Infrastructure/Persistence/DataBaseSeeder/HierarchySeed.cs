@@ -1,5 +1,5 @@
-﻿using ESG.Domain.Entities;
-using ESG.Domain.Entities.Hierarchies;
+﻿using ESG.Domain.Models;
+using ESG.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -44,8 +44,8 @@ namespace ESG.Infrastructure.Persistence.DataBaseSeeder
                 new Hierarchy { Id = 27, HierarchyId = 2, DataPointValuesId = 10729 },
                 new Hierarchy { Id = 28, HierarchyId = 2, DataPointValuesId = 10730 }
                 );
-            modelBuilder.Entity<OrganizationHeirarchies>().HasData(
-                new OrganizationHeirarchies {Id = 1, HierarchyId = 2, OrganizationId = 1,  State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow }
+            modelBuilder.Entity<OrganizationHeirarchy>().HasData(
+                new OrganizationHeirarchy {Id = 1, HierarchyId = 2, OrganizationId = 1,  State = StateEnum.active, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow }
                 );
         }
     }

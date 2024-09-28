@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using ESG.Application.Dto.Currency;
 using ESG.Application.Dto.User;
-using ESG.Domain.Entities.DomainEntities;
-using ESG.Domain.Entities.TenantAndUsers;
+using ESG.Domain.Models;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

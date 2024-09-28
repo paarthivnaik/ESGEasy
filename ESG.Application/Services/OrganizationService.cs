@@ -2,8 +2,8 @@
 using ESG.Application.Common.Interface;
 using ESG.Application.Dto.Organization;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
-using ESG.Domain.Entities.TenantAndUsers;
+using ESG.Domain.Enum;
+using ESG.Domain.Models;
 
 namespace ESG.Application.Services
 {

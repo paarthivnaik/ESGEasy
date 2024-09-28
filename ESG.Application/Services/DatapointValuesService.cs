@@ -3,8 +3,8 @@ using ESG.Application.Common.Interface;
 using ESG.Application.Dto.DatapointValue;
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities.DomainEntities;
-using ESG.Domain.Entities.Hierarchies;
+using ESG.Domain.Models;
+using ESG.Domain.Models;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -14,30 +14,30 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Services
 {
-    public class DatapointValuesService : IDatapointValuesService
+    public class DataPointValueService : IDataPointValueService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IHierarchyService _hierarchyService;
 
         private readonly IMapper _mapper;
-        public DatapointValuesService(IUnitOfWork unitOfWork, IHierarchyService hierarchyService, IMapper mapper)
+        public DataPointValueService(IUnitOfWork unitOfWork, IHierarchyService hierarchyService, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _hierarchyService = hierarchyService;
             _mapper = mapper;
         }
 
-        public async Task AddAsync(List<DatapointValueCreateRequestDto> dataPointValues)
+        public async Task AddAsync(List<DatapointValueCreateRequestDto> DataPointValue)
         {
-            var oldDatapoints = new List<DataPointValues>();
-            var newDatapoints = new List<DataPointValues>();
-            if (dataPointValues != null)
+            var oldDatapoints = new List<DataPointValue>();
+            var newDatapoints = new List<DataPointValue>();
+            if (DataPointValue != null)
             {
-                foreach (var datapoint in dataPointValues)
+                foreach (var datapoint in DataPointValue)
                 {
-                    if (dataPointValues != null && datapoint.DatapointId > 0)
+                    if (DataPointValue != null && datapoint.DatapointId > 0)
                     {
-                        var existingdatapoint = await _unitOfWork.Repository<DataPointValues>().Get(a => a.Id == datapoint.DatapointId);
+                        var existingdatapoint = await _unitOfWork.Repository<DataPointValue>().Get(a => a.Id == datapoint.DatapointId);
                         existingdatapoint.Name = datapoint.Name;
                         existingdatapoint.DatapointTypeId = datapoint.DatapointTypeId;
                         existingdatapoint.UnitOfMeasureId = datapoint.UnitOfMeasureId;
@@ -50,7 +50,7 @@ namespace ESG.Application.Services
                     }
                     else
                     {
-                        //var newDP = new DataPointValues{
+                        //var newDP = new DataPointValue{
                         //    Name = datapoint.Name,
                         //    Code = datapoint.Code,
                         //    DatapointTypeId = datapoint.DatapointTypeId,
@@ -66,46 +66,46 @@ namespace ESG.Application.Services
                         //    LastModifiedDate = DateTime.UtcNow,
                         //    DisclosureRequirementId = datapoint.DisclosureRequirementId,
                         //};
-                        var newDP = _mapper.Map<DataPointValues>(datapoint);
+                        var newDP = _mapper.Map<DataPointValue>(datapoint);
                         newDatapoints.Add(newDP);
                         
                     }
                 }
             }
-            await _unitOfWork.Repository<DataPointValues>().UpdateRange(oldDatapoints);
-            await _unitOfWork.Repository<DataPointValues>().AddRange(newDatapoints);
+            await _unitOfWork.Repository<DataPointValue>().UpdateRange(oldDatapoints);
+            await _unitOfWork.Repository<DataPointValue>().AddRange(newDatapoints);
 
             await _unitOfWork.SaveAsync();
         }
 
         public async Task DeleteDatapoint(long id)
         {
-            var dataPoint = await _unitOfWork.Repository<DataPointValues>().Get(uom => uom.Id == id);
+            var dataPoint = await _unitOfWork.Repository<DataPointValue>().Get(uom => uom.Id == id);
             if (dataPoint == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {dataPoint.Id} not found.");
             }
-            dataPoint.State = Domain.Entities.StateEnum.deleted;
-            await _unitOfWork.Repository<DataPointValues>().Update(dataPoint);
+            dataPoint.State = Domain.Enum.StateEnum.deleted;
+            await _unitOfWork.Repository<DataPointValue>().Update(dataPoint);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<IEnumerable<DatapointValuesResponseDto>> GetAll()
+        public async Task<IEnumerable<DataPointValueResponseDto>> GetAll()
         {
-            var datapointValues = await _unitOfWork.Repository<DataPointValues>().GetAll();
-            var list = _mapper.Map<IEnumerable<DatapointValuesResponseDto>>(datapointValues);
+            var DataPointValue = await _unitOfWork.Repository<DataPointValue>().GetAll();
+            var list = _mapper.Map<IEnumerable<DataPointValueResponseDto>>(DataPointValue);
             return list;
         }
 
-        public async Task<DataPointValues> GetById(long Id)
+        public async Task<DataPointValue> GetById(long Id)
         {
-            return await _unitOfWork.Repository<DataPointValues>().Get(Id);
+            return await _unitOfWork.Repository<DataPointValue>().Get(Id);
         }
 
 
-        public async Task<DataPointValues> UpdateAsync(DataPointValues dataPointValues)
+        public async Task<DataPointValue> UpdateAsync(DataPointValue DataPointValue)
         {
-            var res = await _unitOfWork.Repository<DataPointValues>().Update(dataPointValues);
+            var res = await _unitOfWork.Repository<DataPointValue>().Update(DataPointValue);
             await _unitOfWork.SaveAsync();
             return res;
         }

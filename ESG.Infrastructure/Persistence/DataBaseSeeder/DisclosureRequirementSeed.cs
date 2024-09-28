@@ -1,5 +1,5 @@
-﻿using ESG.Domain.Entities;
-using ESG.Domain.Entities.Hierarchies;
+﻿using ESG.Domain.Models;
+using ESG.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

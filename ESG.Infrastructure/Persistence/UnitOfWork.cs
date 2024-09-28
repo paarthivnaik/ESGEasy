@@ -2,11 +2,11 @@
 using ESG.Application.Common.Interface.Account;
 using ESG.Application.Common.Interface.DataModel;
 using ESG.Application.Common.Interface.DataPoint;
-using ESG.Application.Common.Interface.Dimensions;
+using ESG.Application.Common.Interface.Dimension;
 using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Common.Interface.Value;
-using ESG.Domain.Entities;
+using ESG.Domain.Models;
 using ESG.Infrastructure.Persistence.DataModel;
 using ESG.Infrastructure.Persistence.DimensionRepo;
 using ESG.Infrastructure.Persistence.HierarchyRepo;

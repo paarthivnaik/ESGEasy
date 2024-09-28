@@ -1,6 +1,6 @@
 ﻿using ESG.Application.Dto.DatapointValue;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
+using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -12,15 +12,15 @@ namespace ESG.API.Controllers
     public class DatapointValuesController : ControllerBase
     {
         private readonly ILogger<DatapointValuesController> _logger;
-        private readonly IDatapointValuesService _datapintValuesService;
-        public DatapointValuesController(ILogger<DatapointValuesController> logger, IDatapointValuesService datapintValuesService)
+        private readonly IDataPointValueService _datapintValuesService;
+        public DatapointValuesController(ILogger<DatapointValuesController> logger, IDataPointValueService datapintValuesService)
         {
             _logger = logger;
             _datapintValuesService = datapintValuesService;
         }
         
         [HttpGet("GetAllDatapoints")]
-        public async Task<IEnumerable<DatapointValuesResponseDto>> Get()
+        public async Task<IEnumerable<DataPointValueResponseDto>> Get()
         {
             return await _datapintValuesService.GetAll();
         }

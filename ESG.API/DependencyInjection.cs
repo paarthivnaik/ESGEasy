@@ -23,10 +23,10 @@ namespace ESG.API
             services.AddScoped<IOrganizationUsersService, OrganizationUsersService>();
             services.AddScoped<IUnitOfMeasureTypeService, UnitOfMeasureTypeService>();
             services.AddScoped<IDimentionTypeService, DimentionTypeService>();
-            services.AddScoped<IDimensionsService, DimensionsService>();
-            services.AddScoped<IDatapointTypesService, DatapointTypesService>();
-            services.AddScoped<IDatapointValuesService, DatapointValuesService>();
-            services.AddScoped<IDimensionsService, DimensionsService>();
+            services.AddScoped<IDimensionService, DimensionService>();
+            services.AddScoped<IDatapointTypesService, DataPointTypeService>();
+            services.AddScoped<IDataPointValueService, DataPointValueService>();
+            services.AddScoped<IDimensionService, DimensionService>();
             services.AddScoped<IUnitOfMeasureRepo, UnitOfMeasureRepo>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUOMTranslationsService, UOMTranslationService>();

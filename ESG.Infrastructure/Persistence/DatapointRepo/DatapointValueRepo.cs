@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface.DataPoint;
 using ESG.Application.Dto.DatapointValue;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ESG.Infrastructure.Persistence.DatapointRepo
 {
-    public class DatapointValueRepo : GenericRepository<DataPointValues>, IDatapointValueRepo
+    public class DatapointValueRepo : GenericRepository<DataPointValue>, IDatapointValueRepo
     {
         private readonly ApplicationDbContext _context;
         public DatapointValueRepo(ApplicationDbContext context): base(context)
@@ -25,16 +25,16 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
             var list = await _context.DataModels
                 .AsNoTracking()
                 .Where(x => x.OrganizationId == orgId)
-                .SelectMany(a => a.ModelDatapoints.Select(md => md.DataPointValues.Id))
+                .SelectMany(a => a.ModelDatapoints.Select(md => md.DatapointValuesId))
                 .ToListAsync();
 
             return list;
         }
-        public async Task<IEnumerable<DataPointValues>> GetNamesForFilteredIds(IEnumerable<long> filteredIds)
+        public async Task<IEnumerable<DataPointValue>> GetNamesForFilteredIds(IEnumerable<long> filteredIds)
         {
-            var names = await _context.DataPointValues
+            var names = await _context.DataPointValue
                 .Where(dp => filteredIds.Contains(dp.Id))
-                .Select(dp => new DataPointValues
+                .Select(dp => new DataPointValue
                 {
                     Id = dp.Id,
                     Name = dp.Name,

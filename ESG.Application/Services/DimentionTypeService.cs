@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
-using ESG.Application.Dto.Dimensions;
+using ESG.Application.Dto.Dimension;
 using ESG.Application.Dto.DimensionTypes;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Enum;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -41,16 +41,16 @@ namespace ESG.Application.Services
                         existingdimType.OrganizationId = dimensionType.OrganizationId;
                         existingdimType.State = dimensionType.State;
                         oldDimensionTypes.Add(existingdimType);
-                        //var dimensionsTranslateddata = _mapper.Map<DimensionTypeTranslations>(dimensionType);
-                        //await _unitOfWork.Repository<DimensionTypeTranslations>().AddAsync(dimensionsTranslateddata);
+                        //var DimensionTranslateddata = _mapper.Map<DimensionTypeTranslation>(dimensionType);
+                        //await _unitOfWork.Repository<DimensionTypeTranslation>().AddAsync(DimensionTranslateddata);
                     }
                     else
                     {
                         var dimensonsdata = _mapper.Map<DimensionType>(dimensionType);
                         newDimensionTypes.Add(dimensonsdata);
-                        //var dimensonsTranslationdata = _mapper.Map<DimensionTypeTranslations>(dimentionType);
+                        //var dimensonsTranslationdata = _mapper.Map<DimensionTypeTranslation>(dimentionType);
                         //dimensonsTranslationdata.DimensionTypeId = dimensonsdata.DatapointId;
-                        //dimensonsdata.DimensionTypeTranslations = new List<DimensionTypeTranslations> { dimensonsTranslationdata };
+                        //dimensonsdata.DimensionTypeTranslation = new List<DimensionTypeTranslation> { dimensonsTranslationdata };
                         await _unitOfWork.Repository<DimensionType>().AddAsync(dimensonsdata);
                     }
                 }
@@ -63,7 +63,7 @@ namespace ESG.Application.Services
         {
             var existingData = await _unitOfWork.Repository<DimensionType>()
                 .Get(u => u.Id == dimentionType.Id && u.LanguageId == dimentionType.LanguageId);
-            //var translationsData = await _unitOfWork.Repository<DimensionTypeTranslations>()
+            //var translationsData = await _unitOfWork.Repository<DimensionTypeTranslation>()
             //    .Get(uom => uom.DimensionTypeId == dimentionType.Id && uom.LanguageId == dimentionType.LanguageId);
             if (existingData == null)
             {
@@ -78,7 +78,7 @@ namespace ESG.Application.Services
             //translationsData.LongText = dimentionType.LongText;
             //translationsData.State = dimentionType.State;
             await _unitOfWork.Repository<DimensionType>().Update(existingData);
-            //await _unitOfWork.Repository<DimensionTypeTranslations>().Update(translationsData);
+            //await _unitOfWork.Repository<DimensionTypeTranslation>().Update(translationsData);
             await _unitOfWork.SaveAsync();
         }
 

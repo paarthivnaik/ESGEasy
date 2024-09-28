@@ -1,4 +1,4 @@
-﻿using ESG.Domain.Entities.DomainEntities;
+﻿using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Newtonsoft.Json;
 
@@ -20,9 +20,9 @@ namespace ESG.Domain.Common
         public List<string> ChangedColumns { get; } = new List<string>();
         public List<PropertyEntry> TemporaryProperties { get; } = new List<PropertyEntry>();
         public bool HasTemporaryProperties => TemporaryProperties.Any();
-        public Audit ToAudit()
+        public AuditLog ToAudit()
         {
-            var audit = new Audit
+            var audit = new AuditLog
             {
                 CreatedBy = CreatedBy,
                 Type = AuditType.ToString(),

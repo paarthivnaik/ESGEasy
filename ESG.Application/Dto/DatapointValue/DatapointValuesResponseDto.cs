@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Dto.DatapointValue
 {
-    public class DatapointValuesResponseDto
+    public class DataPointValueResponseDto
     {
         public long Id { get; set; }
         public string Code { get; set; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 
 namespace ESG.Application.Common.Interface.UnitOfMeasure
 {

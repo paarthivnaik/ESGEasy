@@ -2,7 +2,7 @@
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
+using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers

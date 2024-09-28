@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ESG.Application.Dto.DatapointValue;
-using ESG.Application.Dto.Dimensions;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Application.Dto.Dimension;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +11,11 @@ using System.Xml.Linq;
 
 namespace ESG.Application.Common.Mapping
 {
-    internal class DataPointValuesProfile : Profile
+    internal class DataPointValueProfile : Profile
     {
-        public DataPointValuesProfile()
+        public DataPointValueProfile()
         {
-            CreateMap<DataPointValues, DatapointValuesResponseDto>()
+            CreateMap<DataPointValue, DataPointValueResponseDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
@@ -28,7 +28,7 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.DisclosureRequirementId, opt => opt.MapFrom(src => src.DisclosureRequirementId))
                 .ForMember(dest => dest.IsNarrative, opt => opt.MapFrom(src => src.IsNarrative));
 
-            CreateMap<DatapointValueCreateRequestDto, DataPointValues>()
+            CreateMap<DatapointValueCreateRequestDto, DataPointValue>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.DatapointTypeId, opt => opt.MapFrom(src => src.DatapointTypeId))

@@ -2,8 +2,7 @@
 using ESG.Application.Common.Interface;
 using ESG.Application.Dto.DatapointType;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,25 +11,25 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Services
 {
-    public class DatapointTypesService : IDatapointTypesService
+    public class DataPointTypeService : IDatapointTypesService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public DatapointTypesService(IUnitOfWork unitOfWork, IMapper mapper)
+        public DataPointTypeService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public async Task AddAsync(List<DatapointTypeCreateRequestDto> dataPointTypes)
+        public async Task AddAsync(List<DatapointTypeCreateRequestDto> DataPointType)
         {
-            var oldDatapointTypes = new List<DataPointTypes>();
-            var newDatapointTypes = new List<DataPointTypes>();
-            if (dataPointTypes != null)
+            var oldDataPointType = new List<DataPointType>();
+            var newDataPointType = new List<DataPointType>();
+            if (DataPointType != null)
             {
-                foreach (var datapointType in dataPointTypes)
+                foreach (var datapointType in DataPointType)
                 {
                     if (datapointType.DatapointTypeId > 0)
                     {
-                        var existingDatapointType = await _unitOfWork.Repository<DataPointTypes>().Get(a => a.Id == datapointType.DatapointTypeId);
+                        var existingDatapointType = await _unitOfWork.Repository<DataPointType>().Get(a => a.Id == datapointType.DatapointTypeId);
                         existingDatapointType.Name = datapointType.Name;
                         existingDatapointType.ShortText = datapointType.ShortText;
                         existingDatapointType.LongText = datapointType.LongText;
@@ -39,11 +38,11 @@ namespace ESG.Application.Services
                         existingDatapointType.LastModifiedBy = datapointType.UserId;
                         existingDatapointType.LastModifiedDate = DateTime.UtcNow;
                         
-                        oldDatapointTypes.Add(existingDatapointType);
+                        oldDataPointType.Add(existingDatapointType);
                     }
                     else
                     {
-                        var dpType = new DataPointTypes
+                        var dpType = new DataPointType
                         {
                             Code = datapointType.Code,
                             Name = datapointType.Name,
@@ -55,36 +54,36 @@ namespace ESG.Application.Services
                             LastModifiedBy = datapointType.UserId,
                             CreatedDate = DateTime.UtcNow,
                             LastModifiedDate = DateTime.UtcNow,
-                            State = StateEnum.active
+                            State = ESG.Domain.Enum.StateEnum.active
                         };
-                        newDatapointTypes.Add(dpType);
+                        newDataPointType.Add(dpType);
                     }
                 }
             }
-            await _unitOfWork.Repository<DataPointTypes>().UpdateRange(oldDatapointTypes);
-            await _unitOfWork.Repository<DataPointTypes>().AddRange(newDatapointTypes);
+            await _unitOfWork.Repository<DataPointType>().UpdateRange(oldDataPointType);
+            await _unitOfWork.Repository<DataPointType>().AddRange(newDataPointType);
             await _unitOfWork.SaveAsync();
         }
 
         public async Task<bool> Delete(long Id)
         {
-            var res = await _unitOfWork.Repository<DataPointTypes>().Delete(Id);
+            var res = await _unitOfWork.Repository<DataPointType>().Delete(Id);
             return res;
         }
 
-        public async Task<IEnumerable<DataPointTypes>> GetAll()
+        public async Task<IEnumerable<DataPointType>> GetAll()
         {
-            return await _unitOfWork.Repository<DataPointTypes>().GetAll();
+            return await _unitOfWork.Repository<DataPointType>().GetAll();
         }
 
-        public async Task<DataPointTypes> GetById(long Id)
+        public async Task<DataPointType> GetById(long Id)
         {
-            return await _unitOfWork.Repository<DataPointTypes>().Get(Id);
+            return await _unitOfWork.Repository<DataPointType>().Get(Id);
         }
 
-        public async Task<DataPointTypes> UpdateAsync(DataPointTypes dataPointTypes)
+        public async Task<DataPointType> UpdateAsync(DataPointType DataPointType)
         {
-            var res = await _unitOfWork.Repository<DataPointTypes>().Update(dataPointTypes);
+            var res = await _unitOfWork.Repository<DataPointType>().Update(DataPointType);
             await _unitOfWork.SaveAsync();
             return res;
         }

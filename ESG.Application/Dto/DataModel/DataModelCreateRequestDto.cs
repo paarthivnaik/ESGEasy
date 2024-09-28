@@ -13,7 +13,7 @@ namespace ESG.Application.Dto.DataModel
         public string Purpose { get; set; }
         public long CreatedBy { get; set; } 
         public List<long> Datapoints { get; set; } 
-        public List<DimensionDTO> Dimensions { get; set; }
+        public List<DimensionDTO> Dimension { get; set; }
         public FactDTO? Fact { get; set; } = new FactDTO();
         public NarrativeDTO? Narrative { get; set; }
 

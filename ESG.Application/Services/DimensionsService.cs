@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
-using ESG.Application.Dto.Dimensions;
+using ESG.Application.Dto.Dimension;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Enum;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Services
 {
-    public class DimensionsService : IDimensionsService
+    public class DimensionService : IDimensionService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public DimensionsService(IUnitOfWork unitOfWork, IMapper mapper)
+        public DimensionService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -25,69 +25,69 @@ namespace ESG.Application.Services
 
         public async Task AddAsync(List<DimensionCreateRequestDto> dimentions)
         {
-            var olddimensions = new List<Dimensions>();
-            var newdimensions = new List<Dimensions>();
+            var oldDimension = new List<Dimension>();
+            var newDimension = new List<Dimension>();
             if (dimentions != null)
             {
                 foreach (var dimention in dimentions)
                 {
-                    if (dimention.DimensionsId > 0)
+                    if (dimention.DimensionId > 0)
                     {
-                        var existingDimension = await _unitOfWork.Repository<Dimensions>().Get(a => a.Id == dimention.DimensionsId);
+                        var existingDimension = await _unitOfWork.Repository<Dimension>().Get(a => a.Id == dimention.DimensionId);
                         existingDimension.DimensionTypeId = dimention.DimensionTypeId;
                         existingDimension.LanguageId = dimention.LanguageId;
                         existingDimension.OrganizationId = dimention.OrganizationId;
                         existingDimension.ShortText = dimention.ShortText;
                         existingDimension.LongText = dimention.LongText;
-                        olddimensions.Add(existingDimension);                        
+                        oldDimension.Add(existingDimension);                        
 
-                        //var dimensionsTranslateddata = _mapper.Map<DimensionTranslations>(dimentions);
-                        //await _unitOfWork.Repository<DimensionTranslations>().AddAsync(dimensionsTranslateddata);
+                        //var DimensionTranslateddata = _mapper.Map<DimensionTranslation>(dimentions);
+                        //await _unitOfWork.Repository<DimensionTranslation>().AddAsync(DimensionTranslateddata);
                     }
                     else
                     {
-                        var dimensonsdata = _mapper.Map<Dimensions>(dimention);
-                        //var dimensonsTranslationdata = _mapper.Map<DimensionTranslations>(dimentions);
-                        //dimensonsTranslationdata.DimensionsId = dimensonsdata.DatapointId;
-                        //dimensonsdata.DimensionTranslations = new List<DimensionTranslations> { dimensonsTranslationdata };
-                        newdimensions.Add(dimensonsdata);
+                        var dimensonsdata = _mapper.Map<Dimension>(dimention);
+                        //var dimensonsTranslationdata = _mapper.Map<DimensionTranslation>(dimentions);
+                        //dimensonsTranslationdata.DimensionId = dimensonsdata.DatapointId;
+                        //dimensonsdata.DimensionTranslation = new List<DimensionTranslation> { dimensonsTranslationdata };
+                        newDimension.Add(dimensonsdata);
                     }
                 }
             }
-            await _unitOfWork.Repository<Dimensions>().AddRange(newdimensions);
-            await _unitOfWork.Repository<Dimensions>().UpdateRange(olddimensions);
+            await _unitOfWork.Repository<Dimension>().AddRange(newDimension);
+            await _unitOfWork.Repository<Dimension>().UpdateRange(oldDimension);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task Delete(DimensionsDeleteRequestDto request)
+        public async Task Delete(DimensionDeleteRequestDto request)
         {
-            var dimension = await _unitOfWork.Repository<Dimensions>().Get(uom => uom.Id == request.Id);
+            var dimension = await _unitOfWork.Repository<Dimension>().Get(uom => uom.Id == request.Id);
             if (dimension == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {dimension.Id} not found.");
             }
-            dimension.State = StateEnum.deleted;
-            await _unitOfWork.Repository<Dimensions>().Update(dimension);
+            dimension.State = ESG.Domain.Enum.StateEnum.deleted;
+            await _unitOfWork.Repository<Dimension>().Update(dimension);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<IEnumerable<DimensionsResponseDto>> GetAll()
+        public async Task<IEnumerable<DimensionResponseDto>> GetAll()
         {
-            var list = await _unitOfWork.Repository<Dimensions>().GetAll();
-            return _mapper.Map<IEnumerable<DimensionsResponseDto>>(list);
+            var list = await _unitOfWork.Repository<Dimension>().GetAll();
+            return _mapper.Map<IEnumerable<DimensionResponseDto>>(list);
         }
 
-        public async Task<IEnumerable<DimensionsResponseDto>> GetById(long Id)
+        public async Task<IEnumerable<DimensionResponseDto>> GetById(long Id)
         {
-            var list = await _unitOfWork.Repository<Dimensions>().GetAll(d => d.DimensionTypeId == Id);
-            return _mapper.Map<IEnumerable<DimensionsResponseDto>>(list);
+            var list = await _unitOfWork.Repository<Dimension>().GetAll(d => d.DimensionTypeId == Id);
+            return _mapper.Map<IEnumerable<DimensionResponseDto>>(list);
         }
 
-        public async Task UpdateAsync(DimensionsUpdateRequestDto dimentionsRequest)
+        public async Task UpdateAsync(DimensionUpdateRequestDto dimentionsRequest)
         {
-            var existingData = await _unitOfWork.Repository<Dimensions>()
+            var existingData = await _unitOfWork.Repository<Dimension>()
                 .Get(u => u.Id == dimentionsRequest.Id && u.LanguageId == dimentionsRequest.LanguageId);
-            var translationsData = await _unitOfWork.Repository<DimensionTranslations>()
+            var translationsData = await _unitOfWork.Repository<DimensionTranslation>()
                 .Get(uom => uom.DimensionsId == dimentionsRequest.Id && uom.LanguageId == dimentionsRequest.LanguageId);
             if (existingData == null || translationsData == null)
             {
@@ -106,15 +106,15 @@ namespace ESG.Application.Services
                 translationsData.LongText = dimentionsRequest.LongText;
                 translationsData.State = dimentionsRequest.State;
             }
-            await _unitOfWork.Repository<Dimensions>().Update(existingData);
-            await _unitOfWork.Repository<DimensionTranslations>().Update(translationsData);
+            await _unitOfWork.Repository<Dimension>().Update(existingData);
+            await _unitOfWork.Repository<DimensionTranslation>().Update(translationsData);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<IEnumerable<DimensionsResponseDto>> GetAllTranslations(long id)
+        public async Task<IEnumerable<DimensionResponseDto>> GetAllTranslations(long id)
         {
             var list = await _unitOfWork.DimensionRepo.GetAllTranslations(id);
-            return _mapper.Map<IEnumerable<DimensionsResponseDto>>(list);
+            return _mapper.Map<IEnumerable<DimensionResponseDto>>(list);
         }
     }
 }

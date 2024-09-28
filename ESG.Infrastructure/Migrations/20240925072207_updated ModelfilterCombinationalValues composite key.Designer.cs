@@ -264,7 +264,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("DataModelId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("DataPointValuesId")
+                    b.Property<long>("DataPointValueId")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("LastModifiedBy")
@@ -376,7 +376,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("DataModelId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("DatapointValuesId")
+                    b.Property<long>("DataPointValueId")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("LastModifiedBy")
@@ -392,7 +392,7 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex("DataModelId");
 
-                    b.HasIndex("DatapointValuesId");
+                    b.HasIndex("DataPointValueId");
 
                     b.ToTable("ModelDatapoints");
                 });
@@ -844,7 +844,7 @@ namespace ESG.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointTypes", b =>
+            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointType", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -895,7 +895,7 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("DataPointTypes");
+                    b.ToTable("DataPointType");
 
                     b.HasData(
                         new
@@ -975,7 +975,7 @@ namespace ESG.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointValues", b =>
+            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointValue", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -1065,7 +1065,7 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("DataPointValues");
+                    b.ToTable("DataPointValue");
 
                     b.HasData(
                         new
@@ -25649,7 +25649,7 @@ namespace ESG.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<long>("DataPointValuesId")
+                    b.Property<long>("DataPointValueId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("HierarchyId")
@@ -25657,7 +25657,7 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DataPointValuesId");
+                    b.HasIndex("DataPointValueId");
 
                     b.ToTable("Hierarchy");
 
@@ -25665,169 +25665,169 @@ namespace ESG.Infrastructure.Migrations
                         new
                         {
                             Id = 1L,
-                            DataPointValuesId = 10032L,
+                            DataPointValueId = 10032L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 2L,
-                            DataPointValuesId = 10033L,
+                            DataPointValueId = 10033L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 3L,
-                            DataPointValuesId = 10074L,
+                            DataPointValueId = 10074L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 4L,
-                            DataPointValuesId = 10075L,
+                            DataPointValueId = 10075L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 5L,
-                            DataPointValuesId = 10249L,
+                            DataPointValueId = 10249L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 6L,
-                            DataPointValuesId = 10250L,
+                            DataPointValueId = 10250L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 7L,
-                            DataPointValuesId = 10286L,
+                            DataPointValueId = 10286L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 8L,
-                            DataPointValuesId = 10287L,
+                            DataPointValueId = 10287L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 9L,
-                            DataPointValuesId = 10416L,
+                            DataPointValueId = 10416L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 10L,
-                            DataPointValuesId = 10417L,
+                            DataPointValueId = 10417L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 11L,
-                            DataPointValuesId = 10583L,
+                            DataPointValueId = 10583L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 12L,
-                            DataPointValuesId = 10584L,
+                            DataPointValueId = 10584L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 13L,
-                            DataPointValuesId = 10729L,
+                            DataPointValueId = 10729L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 14L,
-                            DataPointValuesId = 10730L,
+                            DataPointValueId = 10730L,
                             HierarchyId = 1L
                         },
                         new
                         {
                             Id = 15L,
-                            DataPointValuesId = 10032L,
+                            DataPointValueId = 10032L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 16L,
-                            DataPointValuesId = 10033L,
+                            DataPointValueId = 10033L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 17L,
-                            DataPointValuesId = 10074L,
+                            DataPointValueId = 10074L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 18L,
-                            DataPointValuesId = 10075L,
+                            DataPointValueId = 10075L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 19L,
-                            DataPointValuesId = 10249L,
+                            DataPointValueId = 10249L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 20L,
-                            DataPointValuesId = 10250L,
+                            DataPointValueId = 10250L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 21L,
-                            DataPointValuesId = 10286L,
+                            DataPointValueId = 10286L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 22L,
-                            DataPointValuesId = 10287L,
+                            DataPointValueId = 10287L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 23L,
-                            DataPointValuesId = 10416L,
+                            DataPointValueId = 10416L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 24L,
-                            DataPointValuesId = 10417L,
+                            DataPointValueId = 10417L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 25L,
-                            DataPointValuesId = 10583L,
+                            DataPointValueId = 10583L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 26L,
-                            DataPointValuesId = 10584L,
+                            DataPointValueId = 10584L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 27L,
-                            DataPointValuesId = 10729L,
+                            DataPointValueId = 10729L,
                             HierarchyId = 2L
                         },
                         new
                         {
                             Id = 28L,
-                            DataPointValuesId = 10730L,
+                            DataPointValueId = 10730L,
                             HierarchyId = 2L
                         });
                 });
@@ -27379,15 +27379,15 @@ namespace ESG.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointValues", "DataPointValues")
+                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointValue", "DataPointValue")
                         .WithMany()
-                        .HasForeignKey("DatapointValuesId")
+                        .HasForeignKey("DataPointValueId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("DataModel");
 
-                    b.Navigation("DataPointValues");
+                    b.Navigation("DataPointValue");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DataModels.ModelDimensionTypes", b =>
@@ -27454,16 +27454,16 @@ namespace ESG.Infrastructure.Migrations
                     b.Navigation("ModelFilterCombinations");
                 });
 
-            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointTypes", b =>
+            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointType", b =>
                 {
                     b.HasOne("ESG.Domain.Entities.DomainEntities.Language", "Language")
-                        .WithMany("DataPointTypes")
+                        .WithMany("DataPointType")
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ESG.Domain.Entities.TenantAndUsers.Organization", "Organization")
-                        .WithMany("DataPointTypes")
+                        .WithMany("DataPointType")
                         .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -27473,22 +27473,22 @@ namespace ESG.Infrastructure.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointValues", b =>
+            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointValue", b =>
                 {
                     b.HasOne("ESG.Domain.Entities.DomainEntities.Currency", "Currency")
                         .WithMany()
                         .HasForeignKey("CurrencyId");
 
                     b.HasOne("ESG.Domain.Entities.DomainEntities.Currency", null)
-                        .WithMany("DataPointValues")
+                        .WithMany("DataPointValue")
                         .HasForeignKey("CurrencyId1");
 
-                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointValues", "DataPointValue")
+                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointValue", "DataPointValue")
                         .WithMany()
                         .HasForeignKey("DataPointValueId");
 
-                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointTypes", "DataPointType")
-                        .WithMany("DataPointValues")
+                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointType", "DataPointType")
+                        .WithMany("DataPointValue")
                         .HasForeignKey("DatapointTypeId");
 
                     b.HasOne("ESG.Domain.Entities.Hierarchies.DisclosureRequirement", "DisclosureRequirement")
@@ -27496,27 +27496,27 @@ namespace ESG.Infrastructure.Migrations
                         .HasForeignKey("DisclosureRequirementId");
 
                     b.HasOne("ESG.Domain.Entities.DomainEntities.Language", "Language")
-                        .WithMany("DataPointValues")
+                        .WithMany("DataPointValue")
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ESG.Domain.Entities.DataModels.ModelCombinations", null)
-                        .WithMany("DataPointValues")
+                        .WithMany("DataPointValue")
                         .HasForeignKey("ModelCombinationsId");
 
                     b.HasOne("ESG.Domain.Entities.TenantAndUsers.Organization", "Organization")
-                        .WithMany("DataPointValues")
+                        .WithMany("DataPointValue")
                         .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ESG.Domain.Entities.DomainEntities.UnitOfMeasure", "UnitOfMeasure")
-                        .WithMany("DataPointValues")
+                        .WithMany("DataPointValue")
                         .HasForeignKey("UnitOfMeasureId");
 
                     b.HasOne("ESG.Domain.Entities.TenantAndUsers.User", null)
-                        .WithMany("DataPointValues")
+                        .WithMany("DataPointValue")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Currency");
@@ -27536,13 +27536,13 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DatapointTypeTranslations", b =>
                 {
-                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointTypes", "DataPointTypes")
+                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointType", "DataPointType")
                         .WithMany("DataPointTypeTranslations")
                         .HasForeignKey("DatapointTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointValues", null)
+                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointValue", null)
                         .WithMany("DatapointTypeTranslations")
                         .HasForeignKey("DatapointTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -27554,14 +27554,14 @@ namespace ESG.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("DataPointTypes");
+                    b.Navigation("DataPointType");
 
                     b.Navigation("Language");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DatapointValueTranslations", b =>
                 {
-                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointValues", "DataPointValues")
+                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointValue", "DataPointValue")
                         .WithMany()
                         .HasForeignKey("DatapointValueId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -27573,7 +27573,7 @@ namespace ESG.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("DataPointValues");
+                    b.Navigation("DataPointValue");
 
                     b.Navigation("Language");
                 });
@@ -27772,13 +27772,13 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.Hierarchies.Hierarchy", b =>
                 {
-                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointValues", "DataPointValues")
+                    b.HasOne("ESG.Domain.Entities.DomainEntities.DataPointValue", "DataPointValue")
                         .WithMany("Hierarchies")
-                        .HasForeignKey("DataPointValuesId")
+                        .HasForeignKey("DataPointValueId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("DataPointValues");
+                    b.Navigation("DataPointValue");
                 });
 
             modelBuilder.Entity("ESG.Domain.Entities.Hierarchies.OrganizationHeirarchies", b =>
@@ -27898,7 +27898,7 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DataModels.ModelCombinations", b =>
                 {
-                    b.Navigation("DataPointValues");
+                    b.Navigation("DataPointValue");
 
                     b.Navigation("ModelFilterCombinationalValues");
                 });
@@ -27915,17 +27915,17 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.Currency", b =>
                 {
-                    b.Navigation("DataPointValues");
+                    b.Navigation("DataPointValue");
                 });
 
-            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointTypes", b =>
+            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointType", b =>
                 {
                     b.Navigation("DataPointTypeTranslations");
 
-                    b.Navigation("DataPointValues");
+                    b.Navigation("DataPointValue");
                 });
 
-            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointValues", b =>
+            modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.DataPointValue", b =>
                 {
                     b.Navigation("DatapointTypeTranslations");
 
@@ -27952,9 +27952,9 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.Language", b =>
                 {
-                    b.Navigation("DataPointTypes");
+                    b.Navigation("DataPointType");
 
-                    b.Navigation("DataPointValues");
+                    b.Navigation("DataPointValue");
 
                     b.Navigation("DatapointTypeTranslations");
 
@@ -27985,7 +27985,7 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.DomainEntities.UnitOfMeasure", b =>
                 {
-                    b.Navigation("DataPointValues");
+                    b.Navigation("DataPointValue");
 
                     b.Navigation("UnitOfMeasureTranslations");
                 });
@@ -28016,9 +28016,9 @@ namespace ESG.Infrastructure.Migrations
                 {
                     b.Navigation("DataModel");
 
-                    b.Navigation("DataPointTypes");
+                    b.Navigation("DataPointType");
 
-                    b.Navigation("DataPointValues");
+                    b.Navigation("DataPointValue");
 
                     b.Navigation("DimensionType");
 
@@ -28048,7 +28048,7 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Entities.TenantAndUsers.User", b =>
                 {
-                    b.Navigation("DataPointValues");
+                    b.Navigation("DataPointValue");
 
                     b.Navigation("OrganizationUsers");
 

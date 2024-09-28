@@ -2,7 +2,6 @@
 using ESG.Application.Dto.DimensionTypes;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers
@@ -38,7 +37,7 @@ namespace ESG.API.Controllers
             return await _dataModelService.GetDatapointMetric(datapointId, OrganizationId);
         }
         [HttpPost("SavingDatapointDataInModel")]
-        public async Task<IActionResult> SaveDatapointDataInModel(DataPointValuesSavingRequestDto datapointValuesSavingRequestDto)
+        public async Task<IActionResult> SaveDatapointDataInModel(DataPointValueSavingRequestDto datapointValuesSavingRequestDto)
         {
             await _dataModelService.SaveDatapointDataInModel(datapointValuesSavingRequestDto);
             return Ok();

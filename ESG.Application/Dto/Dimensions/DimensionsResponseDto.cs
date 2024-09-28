@@ -1,13 +1,13 @@
-﻿using ESG.Domain.Entities;
+﻿using ESG.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESG.Application.Dto.Dimensions
+namespace ESG.Application.Dto.Dimension
 {
-    public class DimensionsResponseDto
+    public class DimensionResponseDto
     {
         public long Id {  get; set; }
         public string Code { get; set; }

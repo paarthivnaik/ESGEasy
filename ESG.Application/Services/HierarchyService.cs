@@ -3,8 +3,8 @@ using ESG.Application.Common.Interface;
 using ESG.Application.Dto.Get;
 using ESG.Application.Dto.Hierarchy;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities.DomainEntities;
-using ESG.Domain.Entities.Hierarchies;
+using ESG.Domain.Models;
+using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -80,7 +80,7 @@ namespace ESG.Application.Services
                     }
                     await _unitOfWork.Repository<Hierarchy>().AddRange(hierarchies);
                 }
-                var organizationHierarchy = new OrganizationHeirarchies
+                var organizationHierarchy = new OrganizationHeirarchy
                 {
                     HierarchyId = hierarchyId,
                     OrganizationId = request.OrganizationId,
@@ -88,7 +88,7 @@ namespace ESG.Application.Services
                     CreatedDate = DateTime.UtcNow
                 };
 
-                await _unitOfWork.Repository<OrganizationHeirarchies>().AddAsync(organizationHierarchy);
+                await _unitOfWork.Repository<OrganizationHeirarchy>().AddAsync(organizationHierarchy);
 
                 await _unitOfWork.SaveAsync();
             }
@@ -142,9 +142,9 @@ namespace ESG.Application.Services
             if (hierarchyId != 0)
             {
                 var datapointIds = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(hierarchyId);
-                var datapointValues = await _unitOfWork.Repository<DataPointValues>()
+                var DataPointValue = await _unitOfWork.Repository<DataPointValue>()
                     .GetAll(dp => datapointIds.Contains(dp.Id));
-                var disclosureRequirementIds = datapointValues.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
+                var disclosureRequirementIds = DataPointValue.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
                 var disclosureRequirements = await _unitOfWork.Repository<DisclosureRequirement>()
                     .GetAll(dr => disclosureRequirementIds.Contains(dr.Id));
                 var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
@@ -173,7 +173,7 @@ namespace ESG.Application.Services
                     SubTopicId = (long)dr.StandardId,
                 }).ToList();
 
-                var dataPointDtos = datapointValues.Select(dp => new DataPointDto
+                var dataPointDtos = DataPointValue.Select(dp => new DataPointDto
                 {
                     Id = dp.Id,
                     Name = dp.Name,

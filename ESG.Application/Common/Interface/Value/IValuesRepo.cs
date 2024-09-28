@@ -1,4 +1,4 @@
-﻿using ESG.Domain.Entities.DomainEntities;
+﻿using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,11 @@ namespace ESG.Application.Common.Interface.Value
 {
     public interface IValuesRepo
     {
-        Task<IEnumerable<UnitOfMeasureTranslations>> GetUOMTranslations(long? valueId);
-        Task<IEnumerable<UnitOfMeasureTypeTranslations>> GetUOMTypeTranslations(long typeId);
-        Task<IEnumerable<DimensionTranslations>> GetDimensionsTranslations(long typeId, long? valueId);
-        Task<IEnumerable<DimensionTypeTranslations>> GetDimensionTypeTranslations(long typeId);
-        Task<IEnumerable<DatapointValueTranslations>> GetDatapointTranslations(long typeId, long? valueId);
-        Task<IEnumerable<DatapointTypeTranslations>> GetDatapointTypeTranslations(long typeId);
+        Task<IEnumerable<UnitOfMeasureTranslation>> GetUOMTranslations(long? valueId);
+        Task<IEnumerable<UnitOfMeasureTypeTranslation>> GetUOMTypeTranslations(long typeId);
+        Task<IEnumerable<DimensionTranslation>> GetDimensionTranslations(long typeId, long? valueId);
+        Task<IEnumerable<DimensionTypeTranslation>> GetDimensionTypeTranslation(long typeId);
+        Task<IEnumerable<DatapointValueTranslation>> GetDatapointTranslations(long typeId, long? valueId);
+        Task<IEnumerable<DatapointTypeTranslation>> GetDatapointTypeTranslations(long typeId);
     }
 }

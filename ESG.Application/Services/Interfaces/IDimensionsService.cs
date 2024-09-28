@@ -1,5 +1,5 @@
-﻿using ESG.Application.Dto.Dimensions;
-using ESG.Domain.Entities;
+﻿using ESG.Application.Dto.Dimension;
+using ESG.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Services.Interfaces
 {
-    public interface IDimensionsService
+    public interface IDimensionService
     {
         Task AddAsync(List<DimensionCreateRequestDto> dimentions);
-        Task UpdateAsync(DimensionsUpdateRequestDto dimentions);
-        Task<IEnumerable<DimensionsResponseDto>> GetAll();
-        Task<IEnumerable<DimensionsResponseDto>> GetById(long Id);
-        Task Delete(DimensionsDeleteRequestDto request);
-        Task<IEnumerable<DimensionsResponseDto>> GetAllTranslations(long id);
+        Task UpdateAsync(DimensionUpdateRequestDto dimentions);
+        Task<IEnumerable<DimensionResponseDto>> GetAll();
+        Task<IEnumerable<DimensionResponseDto>> GetById(long Id);
+        Task Delete(DimensionDeleteRequestDto request);
+        Task<IEnumerable<DimensionResponseDto>> GetAllTranslations(long id);
     }
 }

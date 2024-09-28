@@ -1,4 +1,4 @@
-﻿using ESG.Domain.Entities.TenantAndUsers;
+﻿using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace ESG.Application.Common.Interface.Account
 {
     public interface IUsersRepo : IGenericRepository<User>
     {
-        Task<string> GenerateToken(long userId,string esmail, long? organizationId, long roleId);
+        Task<string> GenerateToken(long userId,string esmail, long? organizationId, long? roleId);
         Task<User?> GetUserDetails(long userId);
     }
 }

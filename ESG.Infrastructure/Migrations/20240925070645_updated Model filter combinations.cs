@@ -56,7 +56,7 @@ namespace ESG.Infrastructure.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    DataPointValuesId = table.Column<long>(type: "bigint", nullable: false),
+                    DataPointValueId = table.Column<long>(type: "bigint", nullable: false),
                     DataModelId = table.Column<long>(type: "bigint", nullable: false),
                     State = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<long>(type: "bigint", nullable: false),
@@ -252,7 +252,7 @@ namespace ESG.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DataPointTypes",
+                name: "DataPointType",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -271,15 +271,15 @@ namespace ESG.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DataPointTypes", x => x.Id);
+                    table.PrimaryKey("PK_DataPointType", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DataPointTypes_Languages_LanguageId",
+                        name: "FK_DataPointType_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DataPointTypes_Organizations_OrganizationId",
+                        name: "FK_DataPointType_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
                         principalColumn: "Id",
@@ -998,7 +998,7 @@ namespace ESG.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DataPointValues",
+                name: "DataPointValue",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -1025,56 +1025,56 @@ namespace ESG.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DataPointValues", x => x.Id);
+                    table.PrimaryKey("PK_DataPointValue", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DataPointValues_Currency_CurrencyId",
+                        name: "FK_DataPointValue_Currency_CurrencyId",
                         column: x => x.CurrencyId,
                         principalTable: "Currency",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_DataPointValues_Currency_CurrencyId1",
+                        name: "FK_DataPointValue_Currency_CurrencyId1",
                         column: x => x.CurrencyId1,
                         principalTable: "Currency",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_DataPointValues_DataPointTypes_DatapointTypeId",
+                        name: "FK_DataPointValue_DataPointType_DatapointTypeId",
                         column: x => x.DatapointTypeId,
-                        principalTable: "DataPointTypes",
+                        principalTable: "DataPointType",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_DataPointValues_DataPointValues_DataPointValueId",
+                        name: "FK_DataPointValue_DataPointValue_DataPointValueId",
                         column: x => x.DataPointValueId,
-                        principalTable: "DataPointValues",
+                        principalTable: "DataPointValue",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_DataPointValues_DisclosureRequirement_DisclosureRequirement~",
+                        name: "FK_DataPointValue_DisclosureRequirement_DisclosureRequirement~",
                         column: x => x.DisclosureRequirementId,
                         principalTable: "DisclosureRequirement",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_DataPointValues_Languages_LanguageId",
+                        name: "FK_DataPointValue_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DataPointValues_ModelFilterCombinations_ModelCombinationsId",
+                        name: "FK_DataPointValue_ModelFilterCombinations_ModelCombinationsId",
                         column: x => x.ModelCombinationsId,
                         principalTable: "ModelFilterCombinations",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_DataPointValues_Organizations_OrganizationId",
+                        name: "FK_DataPointValue_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DataPointValues_UnitOfMeasures_UnitOfMeasureId",
+                        name: "FK_DataPointValue_UnitOfMeasures_UnitOfMeasureId",
                         column: x => x.UnitOfMeasureId,
                         principalTable: "UnitOfMeasures",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_DataPointValues_Users_UserId",
+                        name: "FK_DataPointValue_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
@@ -1101,15 +1101,15 @@ namespace ESG.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_DatapointTypeTranslations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DatapointTypeTranslations_DataPointTypes_DatapointTypeId",
+                        name: "FK_DatapointTypeTranslations_DataPointType_DatapointTypeId",
                         column: x => x.DatapointTypeId,
-                        principalTable: "DataPointTypes",
+                        principalTable: "DataPointType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DatapointTypeTranslations_DataPointValues_DatapointTypeId",
+                        name: "FK_DatapointTypeTranslations_DataPointValue_DatapointTypeId",
                         column: x => x.DatapointTypeId,
-                        principalTable: "DataPointValues",
+                        principalTable: "DataPointValue",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -1140,9 +1140,9 @@ namespace ESG.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_DatapointValueTranslations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DatapointValueTranslations_DataPointValues_DatapointValueId",
+                        name: "FK_DatapointValueTranslations_DataPointValue_DatapointValueId",
                         column: x => x.DatapointValueId,
-                        principalTable: "DataPointValues",
+                        principalTable: "DataPointValue",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -1160,15 +1160,15 @@ namespace ESG.Infrastructure.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     HierarchyId = table.Column<long>(type: "bigint", nullable: false),
-                    DataPointValuesId = table.Column<long>(type: "bigint", nullable: false)
+                    DataPointValueId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Hierarchy", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Hierarchy_DataPointValues_DataPointValuesId",
-                        column: x => x.DataPointValuesId,
-                        principalTable: "DataPointValues",
+                        name: "FK_Hierarchy_DataPointValue_DataPointValueId",
+                        column: x => x.DataPointValueId,
+                        principalTable: "DataPointValue",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1180,7 +1180,7 @@ namespace ESG.Infrastructure.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     DataModelId = table.Column<long>(type: "bigint", nullable: false),
-                    DatapointValuesId = table.Column<long>(type: "bigint", nullable: false),
+                    DataPointValueId = table.Column<long>(type: "bigint", nullable: false),
                     State = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<long>(type: "bigint", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -1197,9 +1197,9 @@ namespace ESG.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ModelDatapoints_DataPointValues_DatapointValuesId",
-                        column: x => x.DatapointValuesId,
-                        principalTable: "DataPointValues",
+                        name: "FK_ModelDatapoints_DataPointValue_DataPointValueId",
+                        column: x => x.DataPointValueId,
+                        principalTable: "DataPointValue",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1326,7 +1326,7 @@ namespace ESG.Infrastructure.Migrations
                 values: new object[] { 1L, 1L, new DateTime(2024, 9, 25, 7, 6, 44, 477, DateTimeKind.Utc).AddTicks(3851), true, 1L, new DateTime(2024, 9, 25, 7, 6, 44, 477, DateTimeKind.Utc).AddTicks(3852), "Default Model", 1L, "This Model is default model", 1 });
 
             migrationBuilder.InsertData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "LanguageId", "LastModifiedBy", "LastModifiedDate", "LongText", "Name", "OrganizationId", "ShortText", "State" },
                 values: new object[,]
                 {
@@ -1471,7 +1471,7 @@ namespace ESG.Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "CurrencyId", "CurrencyId1", "DataPointValueId", "DatapointTypeId", "DisclosureRequirementId", "IsNarrative", "LanguageId", "LastModifiedBy", "LastModifiedDate", "ModelCombinationsId", "Name", "OrganizationId", "Purpose", "State", "UnitOfMeasureId", "UserId" },
                 values: new object[,]
                 {
@@ -1844,7 +1844,7 @@ namespace ESG.Infrastructure.Migrations
                 values: new object[] { 1000L, 0L, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 5L, null, null, 10001L, 1 });
 
             migrationBuilder.InsertData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 columns: new[] { "Id", "Code", "CreatedBy", "CreatedDate", "CurrencyId", "CurrencyId1", "DataPointValueId", "DatapointTypeId", "DisclosureRequirementId", "IsNarrative", "LanguageId", "LastModifiedBy", "LastModifiedDate", "ModelCombinationsId", "Name", "OrganizationId", "Purpose", "State", "UnitOfMeasureId", "UserId" },
                 values: new object[,]
                 {
@@ -3160,7 +3160,7 @@ namespace ESG.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hierarchy",
-                columns: new[] { "Id", "DataPointValuesId", "HierarchyId" },
+                columns: new[] { "Id", "DataPointValueId", "HierarchyId" },
                 values: new object[,]
                 {
                     { 1L, 10032L, 1L },
@@ -3244,13 +3244,13 @@ namespace ESG.Infrastructure.Migrations
                 column: "RowId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointTypes_LanguageId",
-                table: "DataPointTypes",
+                name: "IX_DataPointType_LanguageId",
+                table: "DataPointType",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointTypes_OrganizationId",
-                table: "DataPointTypes",
+                name: "IX_DataPointType_OrganizationId",
+                table: "DataPointType",
                 column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
@@ -3265,53 +3265,53 @@ namespace ESG.Infrastructure.Migrations
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointValues_CurrencyId",
-                table: "DataPointValues",
+                name: "IX_DataPointValue_CurrencyId",
+                table: "DataPointValue",
                 column: "CurrencyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointValues_CurrencyId1",
-                table: "DataPointValues",
+                name: "IX_DataPointValue_CurrencyId1",
+                table: "DataPointValue",
                 column: "CurrencyId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointValues_DatapointTypeId",
-                table: "DataPointValues",
+                name: "IX_DataPointValue_DatapointTypeId",
+                table: "DataPointValue",
                 column: "DatapointTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointValues_DataPointValueId",
-                table: "DataPointValues",
+                name: "IX_DataPointValue_DataPointValueId",
+                table: "DataPointValue",
                 column: "DataPointValueId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointValues_DisclosureRequirementId",
-                table: "DataPointValues",
+                name: "IX_DataPointValue_DisclosureRequirementId",
+                table: "DataPointValue",
                 column: "DisclosureRequirementId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointValues_LanguageId",
-                table: "DataPointValues",
+                name: "IX_DataPointValue_LanguageId",
+                table: "DataPointValue",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointValues_ModelCombinationsId",
-                table: "DataPointValues",
+                name: "IX_DataPointValue_ModelCombinationsId",
+                table: "DataPointValue",
                 column: "ModelCombinationsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointValues_OrganizationId",
-                table: "DataPointValues",
+                name: "IX_DataPointValue_OrganizationId",
+                table: "DataPointValue",
                 column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointValues_UnitOfMeasureId",
-                table: "DataPointValues",
+                name: "IX_DataPointValue_UnitOfMeasureId",
+                table: "DataPointValue",
                 column: "UnitOfMeasureId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataPointValues_UserId",
-                table: "DataPointValues",
+                name: "IX_DataPointValue_UserId",
+                table: "DataPointValue",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -3376,9 +3376,9 @@ namespace ESG.Infrastructure.Migrations
                 column: "StandardId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Hierarchy_DataPointValuesId",
+                name: "IX_Hierarchy_DataPointValueId",
                 table: "Hierarchy",
-                column: "DataPointValuesId");
+                column: "DataPointValueId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Languages_OrganizationId",
@@ -3411,9 +3411,9 @@ namespace ESG.Infrastructure.Migrations
                 column: "DataModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ModelDatapoints_DatapointValuesId",
+                name: "IX_ModelDatapoints_DataPointValueId",
                 table: "ModelDatapoints",
-                column: "DatapointValuesId");
+                column: "DataPointValueId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ModelDimensionTypes_DataModelId",
@@ -3598,7 +3598,7 @@ namespace ESG.Infrastructure.Migrations
                 name: "UserRoles");
 
             migrationBuilder.DropTable(
-                name: "DataPointValues");
+                name: "DataPointValue");
 
             migrationBuilder.DropTable(
                 name: "ModelDimensionTypes");
@@ -3616,7 +3616,7 @@ namespace ESG.Infrastructure.Migrations
                 name: "Currency");
 
             migrationBuilder.DropTable(
-                name: "DataPointTypes");
+                name: "DataPointType");
 
             migrationBuilder.DropTable(
                 name: "DisclosureRequirement");

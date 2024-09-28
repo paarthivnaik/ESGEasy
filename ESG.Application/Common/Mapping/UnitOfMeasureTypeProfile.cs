@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ESG.Application.Dto.UnitOfMeasureType;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

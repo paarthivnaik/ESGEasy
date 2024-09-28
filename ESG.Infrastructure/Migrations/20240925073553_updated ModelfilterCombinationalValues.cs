@@ -65,8253 +65,8253 @@ namespace ESG.Infrastructure.Migrations
                 values: new object[] { new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(7015), new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(7016) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 keyColumn: "Id",
                 keyValue: 1L,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
                 values: new object[] { new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1252), new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1256) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 keyColumn: "Id",
                 keyValue: 2L,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
                 values: new object[] { new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1261), new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1262) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 keyColumn: "Id",
                 keyValue: 3L,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
                 values: new object[] { new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1264), new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1265) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 keyColumn: "Id",
                 keyValue: 4L,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
                 values: new object[] { new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1267), new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1268) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 keyColumn: "Id",
                 keyValue: 5L,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
                 values: new object[] { new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1270), new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1271) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10000L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1312));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10001L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1315));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10002L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1318));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10003L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1320));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10004L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1323));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10005L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1325));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10006L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1328));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10007L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1330));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10008L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1333));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10009L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1336));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10010L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1338));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10011L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1340));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10012L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1343));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10013L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1345));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10014L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1347));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10015L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1355));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10016L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1357));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10017L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1359));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10018L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1362));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10019L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1364));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10020L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1366));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10021L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1369));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10022L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1372));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10023L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1374));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10024L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1377));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10025L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1379));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10026L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1381));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10027L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1384));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10028L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1386));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10029L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1389));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10030L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1391));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10031L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1394));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10032L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1396));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10033L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1399));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10034L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1401));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10035L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1403));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10036L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1406));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10037L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1409));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10038L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1411));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10039L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1413));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10040L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1416));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10041L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1418));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10042L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1421));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10043L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1424));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10044L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1426));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10045L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1428));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10046L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1434));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10047L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1436));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10048L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1438));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10049L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1442));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10050L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1444));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10051L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1446));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10052L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1448));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10053L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1451));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10054L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1453));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10055L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1455));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10056L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1459));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10057L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1461));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10058L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1464));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10059L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1466));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10060L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1468));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10061L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1470));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10062L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1473));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10063L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1476));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10064L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1478));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10065L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1480));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10066L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1483));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10067L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1485));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10068L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1487));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10069L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1489));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10070L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1493));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10071L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1495));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10072L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1497));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10073L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1500));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10074L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1502));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10075L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1504));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10076L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1507));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10077L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1515));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10078L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1518));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10079L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1520));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10080L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1522));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10081L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1524));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10082L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1526));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10083L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1529));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10084L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1532));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10085L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1535));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10086L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1537));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10087L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1539));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10088L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1541));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10089L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1544));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10090L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1546));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10091L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1549));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10092L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1551));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10093L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1554));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10094L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1556));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10095L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1558));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10096L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1560));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10097L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1563));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10098L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1566));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10099L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1568));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10100L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1570));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10101L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1572));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10102L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1575));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10103L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1577));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10104L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1580));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10105L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1583));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10106L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1585));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10107L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1588));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10108L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1591));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10109L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1597));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10110L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1599));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10111L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1603));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10112L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1605));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10113L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1607));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10114L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1609));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10115L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1612));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10116L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1614));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10117L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1616));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10118L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1620));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10119L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1622));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10120L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1624));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10121L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1627));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10122L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1629));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10123L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1631));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10124L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1634));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10125L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1637));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10126L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1639));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10127L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1641));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10128L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1644));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10129L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1646));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10130L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1648));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10131L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1651));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10132L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1654));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10133L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1656));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10134L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1658));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10135L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1661));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10136L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1663));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10137L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1665));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10138L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1668));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10139L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1671));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10140L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1679));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10141L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1681));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10142L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1684));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10143L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1686));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10144L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1688));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10145L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1691));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10146L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1694));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10147L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1696));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10148L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1698));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10149L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1701));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10150L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1703));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10151L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1705));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10152L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1708));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10153L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1711));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10154L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1713));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10155L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1715));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10156L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1718));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10157L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1720));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10158L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1722));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10159L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1726));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10160L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1729));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10161L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1731));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10162L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1734));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10163L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1736));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10164L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1739));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10165L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1741));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10166L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1744));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10167L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1746));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10168L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1749));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10169L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1751));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10170L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1753));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10171L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1762));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10172L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1764));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10173L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1767));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10174L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1769));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10175L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1772));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10176L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1774));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10177L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1776));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10178L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1779));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10179L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1782));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10180L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1785));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10181L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1787));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10182L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1789));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10183L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1792));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10184L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1794));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10185L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1796));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10186L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1799));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10187L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1802));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10188L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1804));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10189L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1807));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10190L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1809));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10191L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1811));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10192L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1814));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10193L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1818));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10194L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1820));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10195L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1822));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10196L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1825));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10197L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1827));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10198L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1829));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10199L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1832));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10200L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1835));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10201L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1837));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10202L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1844));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10203L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1846));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10204L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1848));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10205L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1851));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10206L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1853));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10207L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1856));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10208L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1859));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10209L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1861));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10210L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1863));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10211L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1865));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10212L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1868));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10213L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1870));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10214L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1873));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10215L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1876));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10216L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1878));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10217L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1880));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10218L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1883));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10219L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1885));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10220L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1887));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10221L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1890));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10222L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1893));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10223L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1895));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10224L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1897));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10225L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1899));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10226L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1902));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10227L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1904));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10228L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1907));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10229L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1910));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10230L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1912));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10231L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1914));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10232L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1917));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10233L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1923));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10234L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1925));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10235L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1928));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10236L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1930));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10237L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1932));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10238L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1935));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10239L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1937));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10240L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1939));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10241L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1943));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10242L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1945));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10243L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1947));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10244L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1949));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10245L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1952));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10246L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1954));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10247L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1957));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10248L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1960));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10249L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1962));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10250L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1964));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10251L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1966));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10252L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1969));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10253L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1971));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10254L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1973));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10255L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1976));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10256L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1979));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10257L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1981));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10258L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1983));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10259L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1985));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10260L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1988));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10261L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1991));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10262L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1993));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10263L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(1996));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10264L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2002));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10265L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2004));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10266L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2007));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10267L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2009));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10268L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2013));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10269L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2016));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10270L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2018));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10271L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2020));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10272L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2023));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10273L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2025));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10274L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2027));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10275L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2030));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10276L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2032));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10277L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2035));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10278L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2037));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10279L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2039));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10280L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2042));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10281L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2045));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10282L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2047));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10283L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2050));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10284L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2052));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10285L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2054));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10286L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2056));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10287L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2058));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10288L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2064));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10289L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2066));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10290L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2068));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10291L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2070));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10292L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2073));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10293L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2075));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10294L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2077));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10295L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2087));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10296L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2089));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10297L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2091));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10298L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2093));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10299L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2096));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10300L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2098));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10301L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2100));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10302L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2103));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10303L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2106));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10304L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2108));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10305L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2110));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10306L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2113));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10307L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2115));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10308L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2117));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10309L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2120));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10310L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2123));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10311L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2125));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10312L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2127));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10313L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2130));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10314L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2132));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10315L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2135));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10316L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2138));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10317L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2140));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10318L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2143));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10319L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2145));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10320L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2147));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10321L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2149));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10322L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2153));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10323L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2155));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10324L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2157));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10325L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2160));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10326L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2167));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10327L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2170));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10328L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2172));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10329L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2176));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10330L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2178));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10331L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2180));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10332L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2183));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10333L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2185));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10334L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2187));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10335L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2190));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10336L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2193));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10337L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2195));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10338L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2197));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10339L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2200));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10340L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2202));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10341L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2204));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10342L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2208));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10343L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2210));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10344L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2212));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10345L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2215));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10346L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2217));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10347L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2219));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10348L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2221));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10349L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2225));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10350L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2227));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10351L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2229));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10352L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2232));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10353L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2234));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10354L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2236));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10355L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2238));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10356L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2242));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10357L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2249));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10358L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2251));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10359L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2253));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10360L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2256));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10361L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2258));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10362L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2261));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10363L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2263));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10364L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2265));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10365L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2268));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10366L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2270));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10367L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2273));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10368L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2275));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10369L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2278));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10370L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2280));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10371L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2282));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10372L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2285));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10373L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2287));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10374L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2289));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10375L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2292));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10376L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2295));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10377L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2297));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10378L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2299));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10379L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2302));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10380L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2304));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10381L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2306));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10382L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2309));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10383L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2312));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10384L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2314));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10385L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2316));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10386L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2319));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10387L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2321));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10388L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2329));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10389L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2331));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10390L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2333));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10391L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2336));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10392L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2338));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10393L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2340));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10394L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2343));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10395L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2345));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10396L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2350));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10397L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2352));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10398L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2355));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10399L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2357));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10400L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2359));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10401L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2362));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10402L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2364));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10403L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2368));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10404L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2370));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10405L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2372));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10406L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2374));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10407L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2377));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10408L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2379));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10409L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2381));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10410L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2384));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10411L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2386));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10412L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2388));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10413L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2391));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10414L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2393));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10415L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2395));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10416L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2399));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10417L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2401));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10418L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2403));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10419L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2411));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10420L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2414));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10421L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2416));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10422L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2419));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10423L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2421));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10424L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2423));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10425L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2426));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10426L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2428));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10427L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2431));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10428L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2433));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10429L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2435));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10430L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2439));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10431L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2441));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10432L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2444));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10433L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2446));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10434L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2448));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10435L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2451));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10436L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2453));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10437L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2456));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10438L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2458));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10439L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2461));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10440L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2463));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10441L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2465));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10442L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2468));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10443L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2470));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10444L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2473));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10445L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2476));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10446L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2478));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10447L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2480));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10448L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2483));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10449L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2485));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10450L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2492));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10451L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2494));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10452L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2497));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10453L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2499));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10454L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2501));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10455L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2504));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10456L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2506));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10457L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2509));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10458L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2511));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10459L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2514));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10460L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2516));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10461L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2518));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10462L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2520));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10463L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2523));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10464L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2526));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10465L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2528));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10466L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2531));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10467L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2533));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10468L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2535));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10469L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2538));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10470L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2540));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10471L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2543));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10472L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2546));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10473L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2548));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10474L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2550));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10475L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2553));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10476L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2555));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10477L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2557));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10478L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2561));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10479L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2563));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10480L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2565));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10481L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2571));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10482L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2574));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10483L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2576));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10484L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2578));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10485L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2581));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10486L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2583));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10487L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2586));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10488L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2588));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10489L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2590));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10490L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2592));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10491L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2595));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10492L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2598));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10493L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2601));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10494L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2603));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10495L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2605));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10496L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2607));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10497L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2609));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10498L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2613));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10499L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2615));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10500L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2617));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10501L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2619));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10502L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2622));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10503L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2624));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10504L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2626));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10505L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2630));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10506L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2632));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10507L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2634));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10508L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2636));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10509L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2639));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10510L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2641));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10511L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2643));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10512L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2649));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10513L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2651));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10514L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2654));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10515L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2656));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10516L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2658));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10517L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2661));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10518L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2663));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10519L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2666));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10520L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2669));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10521L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2671));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10522L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2673));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10523L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2676));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10524L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2678));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10525L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2680));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10526L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2683));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10527L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2686));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10528L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2688));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10529L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2691));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10530L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2693));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10531L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2695));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10532L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2698));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10533L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2701));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10534L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2703));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10535L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2705));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10536L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2708));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10537L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2710));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10538L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2712));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10539L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2714));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10540L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2717));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10541L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2719));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10542L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2721));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10543L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2728));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10544L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2730));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10545L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2732));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10546L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2736));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10547L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2738));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10548L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2740));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10549L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2743));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10550L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2745));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10551L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2747));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10552L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2751));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10553L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2753));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10554L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2755));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10555L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2758));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10556L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2760));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10557L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2762));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10558L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2765));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10559L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2768));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10560L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2770));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10561L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2773));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10562L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2775));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10563L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2777));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10564L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2780));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10565L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2782));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10566L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2785));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10567L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2787));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10568L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2790));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10569L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2792));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10570L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2794));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10571L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2797));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10572L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2800));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10573L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2803));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10574L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2810));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10575L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2812));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10576L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2814));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10577L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2817));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10578L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2819));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10579L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2822));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10580L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2824));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10581L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2826));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10582L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2828));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10583L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2831));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10584L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2833));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10585L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2835));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10586L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2838));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10587L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2841));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10588L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2843));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10589L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2845));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10590L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2848));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10591L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2850));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10592L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2852));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10593L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2855));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10594L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2858));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10595L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2860));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10596L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2862));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10597L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2865));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10598L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2867));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10599L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2869));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10600L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2872));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10601L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2875));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10602L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2877));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10603L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2879));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10604L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2882));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10605L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2888));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10606L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2892));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10607L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2894));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10608L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2896));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10609L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2898));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10610L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2901));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10611L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2903));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10612L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2905));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10613L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2907));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10614L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2910));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10615L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2913));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10616L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2915));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10617L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2917));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10618L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2920));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10619L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2922));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10620L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2925));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10621L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2927));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10622L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2930));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10623L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2932));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10624L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2934));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10625L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2936));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10626L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2938));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10627L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2942));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10628L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2944));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10629L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2946));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10630L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2949));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10631L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2951));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10632L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2953));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10633L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2956));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10634L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2960));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10635L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2962));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10636L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2965));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10637L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2972));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10638L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2975));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10639L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2977));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10640L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2980));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10641L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2983));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10642L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2985));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10643L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2987));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10644L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2990));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10645L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2992));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10646L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2994));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10647L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(2997));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10648L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3000));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10649L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3002));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10650L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3004));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10651L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3007));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10652L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3009));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10653L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3011));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10654L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3015));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10655L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3017));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10656L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3020));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10657L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3022));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10658L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3024));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10659L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3027));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10660L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3029));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10661L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3032));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10662L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3034));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10663L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3037));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10664L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3039));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10665L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3041));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10666L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3043));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10667L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3046));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10668L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3054));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10669L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3056));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10670L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3058));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10671L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3061));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10672L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3063));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10673L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3065));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10674L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3069));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10675L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3071));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10676L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3073));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10677L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3076));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10678L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3078));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10679L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3080));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10680L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3082));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10681L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3086));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10682L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3088));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10683L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3091));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10684L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3093));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10685L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3095));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10686L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3098));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10687L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3100));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10688L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3103));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10689L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3106));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10690L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3108));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10691L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3110));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10692L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3112));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10693L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3115));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10694L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3117));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10695L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3120));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10696L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3122));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10697L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3125));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10698L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3127));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10699L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3133));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10700L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3136));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10701L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3144));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10702L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3146));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10703L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3148));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10704L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3151));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10705L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3153));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10706L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3155));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10707L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3157));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10708L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3161));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10709L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3163));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10710L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3166));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10711L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3168));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10712L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3170));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10713L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3172));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10714L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3174));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10715L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3178));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10716L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3180));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10717L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3182));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10718L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3185));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10719L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3187));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10720L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3189));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10721L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3192));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10722L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3195));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10723L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3197));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10724L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3200));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10725L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3202));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10726L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3204));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10727L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3206));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10728L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3209));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10729L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3212));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10730L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3221));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10731L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3223));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10732L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3225));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10733L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3227));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10734L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3230));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10735L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3233));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10736L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3235));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10737L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3238));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10738L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3240));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10739L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3242));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10740L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3244));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10741L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3247));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10742L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3250));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10743L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3252));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10744L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3255));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10745L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3257));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10746L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3259));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10747L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3261));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10748L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3263));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10749L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3267));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10750L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3269));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10751L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3271));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10752L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3274));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10753L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3276));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10754L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3278));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10755L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3281));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10756L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3285));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10757L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3287));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10758L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3290));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10759L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3292));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10760L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3295));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10761L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3301));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10762L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3304));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10763L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3306));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10764L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3309));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10765L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3311));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10766L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3313));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10767L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3316));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10768L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3318));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10769L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3322));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10770L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3324));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10771L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3326));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10772L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3329));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10773L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3331));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10774L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3334));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10775L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3336));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10776L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3340));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10777L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3342));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10778L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3344));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10779L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3347));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10780L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3349));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10781L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3351));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10782L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3356));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10783L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3358));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10784L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3361));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10785L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3363));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10786L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3365));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10787L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3368));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10788L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3370));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10789L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3373));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10790L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3376));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10791L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3378));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10792L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3386));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10793L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3389));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10794L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3391));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10795L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3393));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10796L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3396));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10797L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3398));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10798L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3401));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10799L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3403));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10800L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3405));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10801L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3408));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10802L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3410));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10803L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3413));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10804L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3415));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10805L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3417));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10806L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3419));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10807L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3422));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10808L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3424));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10809L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3426));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10810L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3429));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10811L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3431));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10812L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3434));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10813L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3436));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10814L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3438));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10815L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3440));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10816L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3444));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10817L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3446));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10818L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3448));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10819L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3450));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10820L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3453));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10821L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3455));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10822L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3457));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10823L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3464));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10824L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3466));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10825L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3468));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10826L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3470));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10827L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3473));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10828L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3475));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10829L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3477));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10830L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3481));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10831L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3483));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10832L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3485));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10833L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3487));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10834L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3490));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10835L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3492));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10836L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3494));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10837L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3497));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10838L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3500));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10839L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3502));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10840L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3505));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10841L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3507));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10842L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3509));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10843L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3511));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10844L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3514));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10845L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3517));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10846L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3519));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10847L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3521));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10848L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3523));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10849L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3525));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10850L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3528));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10851L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3531));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10852L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3533));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10853L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3535));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10854L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3542));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10855L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3545));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10856L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3547));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10857L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3549));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10858L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3552));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10859L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3554));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10860L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3557));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10861L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3559));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10862L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3561));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10863L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3564));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10864L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3567));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10865L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3570));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10866L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3572));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10867L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3574));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10868L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3576));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10869L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3578));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10870L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3581));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10871L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3584));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10872L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3586));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10873L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3588));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10874L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3590));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10875L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3593));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10876L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3595));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10877L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3597));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10878L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3600));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10879L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3602));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10880L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3605));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10881L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3607));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10882L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3609));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10883L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3611));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10884L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3614));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10885L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3620));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10886L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3623));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10887L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3625));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10888L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3627));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10889L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3629));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10890L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3632));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10891L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3634));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10892L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3639));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10893L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3641));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10894L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3643));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10895L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3646));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10896L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3648));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10897L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3650));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10898L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3653));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10899L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3656));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10900L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3658));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10901L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3661));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10902L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3663));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10903L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3665));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10904L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3668));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10905L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3670));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10906L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3673));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10907L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3675));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10908L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3678));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10909L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3680));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10910L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3682));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10911L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3684));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10912L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3688));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10913L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3690));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10914L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3692));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10915L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3694));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10916L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3701));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10917L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3703));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10918L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3706));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10919L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3709));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10920L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3711));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10921L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3714));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10922L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3716));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10923L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3718));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10924L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3721));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10925L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3723));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10926L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3726));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10927L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3728));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10928L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3730));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10929L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3733));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10930L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3735));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10931L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3738));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10932L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3740));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10933L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3743));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10934L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3745));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10935L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3748));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10936L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3750));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10937L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3752));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10938L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3755));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10939L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3758));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10940L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3760));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10941L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3762));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10942L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3765));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10943L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3767));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10944L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3769));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10945L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3772));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10946L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3775));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10947L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3782));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10948L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3784));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10949L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3787));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10950L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3789));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10951L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3791));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10952L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3793));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10953L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3797));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10954L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3799));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10955L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3801));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10956L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3804));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10957L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3806));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10958L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3808));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10959L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3811));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10960L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3814));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10961L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3816));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10962L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3819));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10963L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3821));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10964L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3823));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10965L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3826));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10966L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3829));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10967L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3831));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10968L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3834));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10969L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3836));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10970L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3838));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10971L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3841));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10972L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3843));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10973L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3846));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10974L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3848));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10975L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3850));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10976L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3853));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10977L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3855));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10978L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3861));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10979L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3864));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10980L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3866));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10981L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3868));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10982L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3870));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10983L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3873));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10984L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3875));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10985L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3877));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10986L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3879));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10987L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3882));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10988L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3885));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10989L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3887));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10990L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3889));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10991L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3892));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10992L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3894));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10993L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3897));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10994L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3900));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10995L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3902));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10996L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3904));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10997L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3906));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10998L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3909));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10999L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3911));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11000L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3914));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11001L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3916));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11002L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3918));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11003L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3921));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11004L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3923));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11005L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3925));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11006L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3928));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11007L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3931));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11008L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3933));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11009L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3940));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11010L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3942));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11011L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3945));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11012L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3947));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11013L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3950));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11014L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3952));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11015L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3955));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11016L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3957));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11017L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3959));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11018L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3962));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11019L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3964));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11020L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3967));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11021L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3969));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11022L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3972));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11023L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3974));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11024L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3976));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11025L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3978));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11026L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3981));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11027L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3984));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11028L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3987));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11029L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3989));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11030L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3991));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11031L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3993));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11032L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3996));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11033L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(3999));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11034L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4001));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11035L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4004));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11036L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4006));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11037L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4008));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11038L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4011));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11039L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4013));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11040L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4022));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11041L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4024));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11042L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4026));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11043L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4029));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11044L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4031));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11045L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4033));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11046L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4035));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11047L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4039));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11048L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4041));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11049L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4043));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11050L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4045));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11051L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4047));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11052L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4050));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11053L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4052));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11054L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4055));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11055L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4058));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11056L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4060));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11057L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4062));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11058L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4065));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11059L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4067));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11060L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4069));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11061L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4072));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11062L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4075));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11063L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4077));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11064L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4082));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11065L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4084));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11066L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4087));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11067L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4091));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11068L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4096));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11069L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4099));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11070L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4101));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11071L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4108));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11072L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4110));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11073L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4117));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11074L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4119));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11075L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4121));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11076L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4124));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11077L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4126));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11078L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4128));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11079L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4132));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11080L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4135));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11081L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4139));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11082L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4142));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11083L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4144));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11084L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4146));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11085L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4148));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11086L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4151));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11087L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4155));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11088L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4159));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11089L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4162));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11090L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4164));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11091L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4167));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11092L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4169));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11093L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4171));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11094L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4175));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11095L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4177));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11096L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4179));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11097L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4182));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11098L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4184));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11099L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4186));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11100L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4188));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11101L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4194));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11102L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4200));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11103L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4203));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11104L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4205));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11105L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4207));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11106L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4209));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11107L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4213));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11108L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4215));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11109L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4217));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11110L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4219));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11111L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4221));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11112L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4224));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11113L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4226));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11114L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4229));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11115L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4231));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11116L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4234));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11117L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4236));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11118L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4238));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11119L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4240));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11120L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4243));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11121L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4246));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11122L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4248));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11123L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4250));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11124L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4253));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11125L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4255));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11126L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4257));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11127L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4259));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11128L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4263));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11129L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4265));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11130L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4267));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11131L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4270));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11132L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4272));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11133L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4274));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11134L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4306));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11135L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4309));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11136L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4311));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11137L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4313));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11138L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4316));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11139L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4318));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11140L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4321));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11141L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4323));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11142L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4327));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11143L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4329));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11144L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4332));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11145L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4334));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11146L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4336));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11147L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4339));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11148L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4342));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11149L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4344));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11150L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4347));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11151L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4349));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11152L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4351));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11153L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4354));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11154L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4356));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11155L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4359));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11156L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4362));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11157L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4364));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11158L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4366));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11159L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4369));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11160L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4371));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11161L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4373));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11162L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4377));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11163L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4379));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11164L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4381));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11165L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4388));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11166L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4390));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11167L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4393));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11168L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4395));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11169L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4397));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11170L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4399));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11171L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4401));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11172L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 35, 50, 819, DateTimeKind.Utc).AddTicks(4404));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11173L,
                 column: "CreatedDate",
@@ -12263,8253 +12263,8253 @@ namespace ESG.Infrastructure.Migrations
                 values: new object[] { new DateTime(2024, 9, 25, 7, 22, 5, 452, DateTimeKind.Utc).AddTicks(174), new DateTime(2024, 9, 25, 7, 22, 5, 452, DateTimeKind.Utc).AddTicks(175) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 keyColumn: "Id",
                 keyValue: 1L,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
                 values: new object[] { new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5047), new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5051) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 keyColumn: "Id",
                 keyValue: 2L,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
                 values: new object[] { new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5056), new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5057) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 keyColumn: "Id",
                 keyValue: 3L,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
                 values: new object[] { new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5059), new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5060) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 keyColumn: "Id",
                 keyValue: 4L,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
                 values: new object[] { new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5063), new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5063) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointTypes",
+                table: "DataPointType",
                 keyColumn: "Id",
                 keyValue: 5L,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
                 values: new object[] { new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5065), new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5066) });
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10000L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5102));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10001L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5107));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10002L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5110));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10003L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5113));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10004L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5115));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10005L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5117));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10006L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5120));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10007L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5122));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10008L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5125));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10009L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5151));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10010L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5154));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10011L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5156));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10012L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5159));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10013L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5161));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10014L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5163));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10015L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5167));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10016L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5169));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10017L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5175));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10018L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5177));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10019L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5179));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10020L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5181));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10021L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5183));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10022L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5187));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10023L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5189));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10024L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5191));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10025L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5193));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10026L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5195));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10027L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5197));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10028L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5199));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10029L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5202));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10030L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5204));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10031L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5206));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10032L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5208));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10033L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5210));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10034L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5212));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10035L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5214));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10036L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5217));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10037L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5219));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10038L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5221));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10039L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5223));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10040L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5230));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10041L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5232));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10042L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5235));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10043L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5237));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10044L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5239));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10045L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5241));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10046L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5243));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10047L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5245));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10048L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5247));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10049L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5249));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10050L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5252));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10051L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5254));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10052L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5256));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10053L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5258));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10054L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5260));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10055L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5261));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10056L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5264));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10057L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5266));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10058L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5268));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10059L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5270));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10060L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5272));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10061L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5274));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10062L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5276));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10063L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5279));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10064L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5281));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10065L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5283));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10066L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5285));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10067L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5287));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10068L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5290));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10069L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5292));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10070L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5294));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10071L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5303));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10072L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5305));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10073L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5307));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10074L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5309));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10075L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5311));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10076L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5313));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10077L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5316));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10078L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5318));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10079L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5320));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10080L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5322));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10081L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5324));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10082L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5326));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10083L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5328));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10084L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5331));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10085L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5333));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10086L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5335));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10087L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5337));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10088L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5338));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10089L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5340));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10090L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5342));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10091L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5346));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10092L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5348));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10093L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5350));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10094L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5352));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10095L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5354));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10096L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5356));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10097L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5358));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10098L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5361));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10099L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5363));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10100L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5365));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10101L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5367));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10102L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5373));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10103L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5376));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10104L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5380));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10105L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5382));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10106L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5384));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10107L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5386));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10108L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5388));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10109L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5390));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10110L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5392));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10111L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5395));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10112L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5397));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10113L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5399));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10114L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5401));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10115L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5403));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10116L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5405));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10117L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5407));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10118L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5410));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10119L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5413));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10120L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5417));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10121L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5420));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10122L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5422));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10123L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5424));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10124L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5426));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10125L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5429));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10126L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5432));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10127L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5434));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10128L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5436));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10129L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5438));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10130L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5440));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10131L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5442));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10132L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5445));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10133L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5451));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10134L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5453));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10135L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5455));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10136L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5457));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10137L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5459));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10138L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5461));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10139L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5464));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10140L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5466));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10141L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5468));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10142L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5470));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10143L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5472));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10144L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5474));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10145L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5476));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10146L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5478));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10147L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5480));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10148L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5482));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10149L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5484));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10150L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5486));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10151L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5488));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10152L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5491));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10153L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5493));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10154L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5495));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10155L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5497));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10156L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5499));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10157L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5501));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10158L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5503));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10159L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5506));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10160L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5508));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10161L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5510));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10162L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5512));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10163L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5514));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10164L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5520));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10165L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5522));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10166L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5525));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10167L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5527));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10168L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5529));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10169L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5531));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10170L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5533));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10171L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5535));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10172L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5537));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10173L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5540));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10174L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5542));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10175L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5544));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10176L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5546));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10177L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5548));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10178L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5550));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10179L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5552));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10180L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5555));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10181L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5557));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10182L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5559));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10183L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5561));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10184L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5563));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10185L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5565));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10186L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5567));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10187L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5571));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10188L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5573));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10189L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5574));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10190L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5577));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10191L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5579));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10192L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5581));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10193L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5584));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10194L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5586));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10195L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5594));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10196L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5596));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10197L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5598));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10198L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5600));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10199L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5602));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10200L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5605));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10201L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5607));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10202L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5609));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10203L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5611));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10204L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5613));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10205L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5615));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10206L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5617));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10207L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5620));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10208L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5622));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10209L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5624));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10210L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5626));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10211L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5628));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10212L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5630));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10213L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5632));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10214L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5635));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10215L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5637));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10216L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5639));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10217L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5641));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10218L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5643));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10219L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5645));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10220L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5648));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10221L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5649));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10222L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5651));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10223L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5654));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10224L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5656));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10225L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5658));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10226L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5665));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10227L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5667));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10228L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5670));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10229L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5672));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10230L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5674));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10231L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5676));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10232L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5678));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10233L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5680));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10234L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5683));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10235L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5685));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10236L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5687));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10237L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5689));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10238L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5691));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10239L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5693));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10240L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5695));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10241L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5698));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10242L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5700));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10243L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5702));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10244L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5704));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10245L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5706));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10246L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5708));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10247L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5710));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10248L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5713));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10249L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5715));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10250L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5717));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10251L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5719));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10252L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5721));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10253L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5723));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10254L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5725));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10255L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5727));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10256L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5729));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10257L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5736));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10258L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5738));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10259L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5740));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10260L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5742));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10261L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5745));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10262L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5747));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10263L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5749));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10264L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5751));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10265L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5753));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10266L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5755));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10267L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5757));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10268L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5761));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10269L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5763));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10270L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5765));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10271L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5767));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10272L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5769));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10273L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5771));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10274L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5773));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10275L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5777));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10276L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5779));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10277L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5781));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10278L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5785));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10279L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5787));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10280L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5789));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10281L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5792));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10282L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5796));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10283L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5800));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10284L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5802));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10285L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5804));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10286L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5806));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10287L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5808));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10288L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5815));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10289L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5817));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10290L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5819));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10291L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5823));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10292L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5827));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10293L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5829));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10294L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5831));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10295L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5834));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10296L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5836));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10297L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5838));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10298L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5840));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10299L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5842));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10300L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5844));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10301L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5846));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10302L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5849));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10303L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5851));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10304L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5853));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10305L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5855));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10306L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5857));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10307L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5859));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10308L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5861));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10309L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5864));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10310L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5866));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10311L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5868));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10312L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5870));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10313L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5872));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10314L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5874));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10315L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5877));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10316L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5879));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10317L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5881));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10318L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5883));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10319L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5892));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10320L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5894));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10321L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5896));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10322L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5899));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10323L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5901));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10324L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5903));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10325L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5905));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10326L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5907));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10327L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5909));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10328L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5911));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10329L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5914));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10330L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5916));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10331L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5918));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10332L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5920));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10333L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5922));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10334L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5924));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10335L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5928));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10336L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5930));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10337L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5932));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10338L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5934));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10339L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5936));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10340L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5938));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10341L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5940));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10342L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5943));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10343L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5945));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10344L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5947));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10345L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5949));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10346L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5951));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10347L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5953));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10348L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5955));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10349L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5958));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10350L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5964));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10351L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5966));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10352L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5968));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10353L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5970));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10354L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5972));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10355L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5975));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10356L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5977));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10357L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5979));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10358L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5981));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10359L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5984));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10360L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5985));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10361L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5988));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10362L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5990));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10363L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5992));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10364L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5994));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10365L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5996));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10366L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(5998));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10367L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6000));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10368L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6002));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10369L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6005));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10370L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6007));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10371L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6009));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10372L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6011));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10373L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6013));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10374L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6015));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10375L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6017));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10376L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6020));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10377L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6022));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10378L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6024));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10379L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6026));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10380L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6028));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10381L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6034));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10382L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6036));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10383L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6038));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10384L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6041));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10385L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6043));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10386L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6044));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10387L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6046));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10388L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6048));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10389L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6051));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10390L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6053));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10391L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6055));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10392L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6057));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10393L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6059));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10394L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6061));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10395L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6063));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10396L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6066));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10397L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6068));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10398L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6070));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10399L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6072));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10400L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6074));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10401L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6076));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10402L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6078));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10403L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6082));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10404L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6084));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10405L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6085));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10406L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6087));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10407L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6089));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10408L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6091));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10409L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6093));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10410L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6096));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10411L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6098));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10412L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6106));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10413L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6108));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10414L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6110));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10415L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6112));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10416L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6115));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10417L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6117));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10418L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6119));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10419L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6121));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10420L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6123));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10421L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6125));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10422L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6127));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10423L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6130));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10424L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6132));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10425L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6133));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10426L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6135));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10427L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6137));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10428L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6139));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10429L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6141));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10430L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6144));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10431L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6146));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10432L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6149));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10433L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6151));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10434L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6153));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10435L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6155));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10436L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6156));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10437L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6159));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10438L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6161));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10439L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6163));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10440L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6165));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10441L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6167));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10442L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6169));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10443L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6175));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10444L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6177));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10445L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6179));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10446L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6181));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10447L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6183));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10448L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6185));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10449L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6187));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10450L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6189));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10451L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6192));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10452L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6193));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10453L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6196));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10454L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6198));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10455L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6200));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10456L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6202));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10457L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6204));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10458L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6206));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10459L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6208));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10460L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6210));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10461L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6212));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10462L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6214));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10463L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6216));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10464L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6219));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10465L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6221));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10466L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6223));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10467L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6225));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10468L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6227));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10469L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6229));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10470L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6231));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10471L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6234));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10472L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6236));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10473L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6238));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10474L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6243));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10475L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6245));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10476L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6247));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10477L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6249));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10478L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6252));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10479L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6254));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10480L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6256));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10481L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6258));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10482L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6260));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10483L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6262));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10484L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6264));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10485L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6267));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10486L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6269));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10487L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6271));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10488L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6273));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10489L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6274));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10490L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6276));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10491L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6278));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10492L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6281));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10493L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6283));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10494L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6285));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10495L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6287));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10496L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6289));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10497L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6291));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10498L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6294));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10499L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6295));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10500L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6297));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10501L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6299));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10502L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6301));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10503L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6303));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10504L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6305));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10505L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6313));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10506L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6315));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10507L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6317));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10508L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6319));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10509L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6321));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10510L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6323));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10511L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6325));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10512L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6328));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10513L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6330));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10514L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6332));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10515L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6335));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10516L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6337));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10517L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6339));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10518L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6341));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10519L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6343));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10520L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6346));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10521L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6348));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10522L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6350));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10523L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6352));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10524L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6354));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10525L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6355));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10526L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6358));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10527L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6360));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10528L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6362));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10529L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6364));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10530L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6366));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10531L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6368));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10532L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6371));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10533L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6373));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10534L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6375));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10535L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6377));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10536L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6379));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10537L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6386));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10538L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6388));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10539L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6390));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10540L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6392));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10541L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6394));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10542L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6397));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10543L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6399));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10544L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6401));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10545L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6403));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10546L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6406));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10547L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6408));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10548L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6410));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10549L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6412));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10550L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6414));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10551L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6416));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10552L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6419));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10553L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6421));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10554L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6423));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10555L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6425));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10556L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6427));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10557L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6429));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10558L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6431));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10559L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6434));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10560L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6436));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10561L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6438));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10562L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6440));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10563L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6442));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10564L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6444));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10565L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6446));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10566L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6449));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10567L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6451));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10568L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6456));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10569L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6458));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10570L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6460));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10571L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6462));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10572L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6465));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10573L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6467));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10574L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6469));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10575L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6471));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10576L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6473));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10577L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6475));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10578L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6477));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10579L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6480));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10580L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6482));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10581L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6483));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10582L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6485));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10583L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6487));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10584L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6489));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10585L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6491));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10586L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6494));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10587L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6496));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10588L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6498));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10589L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6500));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10590L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6503));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10591L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6505));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10592L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6507));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10593L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6510));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10594L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6513));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10595L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6515));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10596L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6517));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10597L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6519));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10598L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6521));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10599L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6527));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10600L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6529));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10601L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6531));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10602L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6533));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10603L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6535));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10604L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6537));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10605L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6539));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10606L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6541));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10607L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6544));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10608L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6546));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10609L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6548));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10610L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6549));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10611L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6552));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10612L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6554));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10613L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6556));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10614L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6559));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10615L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6561));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10616L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6563));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10617L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6565));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10618L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6567));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10619L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6569));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10620L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6572));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10621L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6574));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10622L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6576));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10623L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6578));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10624L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6580));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10625L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6582));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10626L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6584));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10627L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6587));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10628L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6588));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10629L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6590));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10630L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6597));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10631L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6599));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10632L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6601));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10633L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6604));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10634L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6606));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10635L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6608));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10636L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6612));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10637L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6614));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10638L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6617));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10639L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6621));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10640L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6623));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10641L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6626));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10642L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6630));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10643L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6633));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10644L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6635));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10645L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6638));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10646L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6641));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10647L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6643));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10648L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6645));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10649L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6648));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10650L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6650));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10651L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6653));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10652L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6655));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10653L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6656));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10654L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6659));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10655L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6661));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10656L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6663));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10657L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6665));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10658L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6667));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10659L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6669));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10660L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6671));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10661L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6678));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10662L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6680));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10663L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6682));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10664L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6684));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10665L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6685));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10666L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6687));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10667L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6690));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10668L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6692));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10669L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6695));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10670L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6697));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10671L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6698));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10672L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6701));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10673L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6703));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10674L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6705));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10675L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6707));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10676L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6709));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10677L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6711));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10678L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6713));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10679L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6715));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10680L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6717));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10681L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6720));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10682L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6722));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10683L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6724));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10684L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6726));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10685L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6728));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10686L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6730));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10687L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6732));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10688L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6736));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10689L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6738));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10690L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6740));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10691L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6742));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10692L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6746));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10693L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6748));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10694L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6751));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10695L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6753));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10696L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6755));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10697L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6757));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10698L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6759));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10699L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6761));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10700L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6763));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10701L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6766));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10702L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6768));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10703L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6770));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10704L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6772));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10705L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6774));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10706L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6776));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10707L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6778));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10708L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6781));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10709L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6783));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10710L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6785));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10711L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6787));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10712L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6789));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10713L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6791));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10714L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6793));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10715L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6796));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10716L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6798));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10717L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6800));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10718L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6802));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10719L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6804));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10720L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6806));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10721L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6808));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10722L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6811));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10723L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6818));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10724L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6820));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10725L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6822));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10726L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6824));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10727L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6826));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10728L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6828));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10729L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6830));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10730L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6833));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10731L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6835));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10732L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6837));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10733L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6839));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10734L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6840));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10735L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6844));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10736L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6846));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10737L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6848));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10738L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6850));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10739L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6852));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10740L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6854));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10741L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6856));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10742L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6859));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10743L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6861));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10744L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6863));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10745L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6865));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10746L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6867));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10747L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6869));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10748L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6871));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10749L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6873));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10750L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6876));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10751L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6877));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10752L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6879));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10753L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6882));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10754L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6889));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10755L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6891));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10756L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6894));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10757L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6896));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10758L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6898));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10759L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6900));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10760L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6902));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10761L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6904));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10762L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6907));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10763L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6910));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10764L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6912));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10765L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6914));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10766L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6916));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10767L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6917));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10768L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6919));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10769L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6923));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10770L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6925));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10771L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6927));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10772L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6929));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10773L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6931));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10774L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6933));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10775L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6935));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10776L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6938));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10777L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6940));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10778L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6942));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10779L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6944));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10780L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6946));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10781L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6948));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10782L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6951));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10783L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6953));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10784L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6955));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10785L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6960));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10786L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6962));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10787L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6964));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10788L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6967));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10789L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6969));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10790L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6971));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10791L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6973));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10792L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6975));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10793L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6977));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10794L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6979));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10795L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6981));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10796L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6984));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10797L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6986));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10798L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6988));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10799L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6990));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10800L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6992));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10801L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6994));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10802L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6996));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10803L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(6999));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10804L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7001));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10805L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7002));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10806L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7004));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10807L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7006));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10808L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7008));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10809L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7010));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10810L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7013));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10811L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7015));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10812L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7017));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10813L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7019));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10814L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7021));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10815L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7023));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10816L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7028));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10817L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7030));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10818L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7032));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10819L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7034));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10820L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7036));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10821L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7038));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10822L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7039));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10823L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7043));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10824L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7045));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10825L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7047));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10826L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7049));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10827L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7051));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10828L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7053));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10829L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7055));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10830L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7057));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10831L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7059));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10832L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7061));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10833L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7063));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10834L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7065));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10835L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7067));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10836L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7069));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10837L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7071));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10838L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7073));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10839L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7075));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10840L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7077));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10841L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7079));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10842L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7081));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10843L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7083));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10844L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7086));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10845L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7088));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10846L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7090));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10847L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7095));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10848L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7097));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10849L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7099));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10850L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7101));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10851L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7104));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10852L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7106));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10853L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7108));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10854L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7110));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10855L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7112));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10856L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7114));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10857L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7116));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10858L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7119));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10859L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7121));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10860L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7123));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10861L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7125));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10862L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7127));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10863L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7129));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10864L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7132));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10865L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7134));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10866L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7136));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10867L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7137));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10868L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7139));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10869L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7141));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10870L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7143));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10871L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7146));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10872L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7148));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10873L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7150));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10874L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7152));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10875L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7154));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10876L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7156));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10877L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7158));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10878L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7163));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10879L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7165));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10880L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7167));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10881L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7169));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10882L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7171));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10883L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7173));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10884L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7175));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10885L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7178));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10886L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7180));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10887L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7182));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10888L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7184));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10889L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7186));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10890L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7188));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10891L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7190));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10892L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7193));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10893L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7195));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10894L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7197));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10895L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7199));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10896L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7201));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10897L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7203));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10898L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7205));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10899L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7207));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10900L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7209));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10901L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7211));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10902L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7213));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10903L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7215));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10904L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7217));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10905L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7219));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10906L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7222));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10907L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7224));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10908L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7226));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10909L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7231));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10910L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7233));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10911L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7235));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10912L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7238));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10913L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7240));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10914L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7242));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10915L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7244));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10916L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7246));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10917L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7248));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10918L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7250));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10919L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7253));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10920L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7255));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10921L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7257));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10922L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7259));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10923L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7261));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10924L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7263));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10925L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7265));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10926L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7268));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10927L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7270));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10928L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7272));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10929L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7274));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10930L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7276));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10931L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7278));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10932L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7280));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10933L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7283));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10934L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7285));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10935L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7287));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10936L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7289));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10937L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7291));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10938L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7293));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10939L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7296));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10940L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7304));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10941L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7306));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10942L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7308));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10943L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7310));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10944L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7312));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10945L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7314));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10946L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7317));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10947L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7319));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10948L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7321));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10949L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7323));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10950L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7325));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10951L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7326));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10952L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7328));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10953L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7331));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10954L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7333));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10955L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7335));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10956L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7337));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10957L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7339));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10958L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7341));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10959L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7343));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10960L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7346));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10961L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7348));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10962L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7350));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10963L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7352));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10964L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7354));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10965L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7356));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10966L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7358));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10967L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7360));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10968L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7362));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10969L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7364));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10970L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7366));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10971L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7373));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10972L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7375));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10973L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7378));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10974L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7380));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10975L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7382));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10976L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7384));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10977L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7386));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10978L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7388));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10979L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7390));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10980L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7393));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10981L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7395));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10982L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7397));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10983L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7399));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10984L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7400));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10985L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7403));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10986L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7405));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10987L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7407));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10988L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7409));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10989L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7411));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10990L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7413));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10991L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7415));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10992L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7417));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10993L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7420));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10994L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7423));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10995L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7425));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10996L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7427));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10997L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7429));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10998L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7431));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 10999L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7434));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11000L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7438));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11001L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7440));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11002L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7446));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11003L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7448));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11004L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7450));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11005L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7452));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11006L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7454));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11007L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7457));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11008L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7459));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11009L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7461));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11010L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7463));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11011L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7466));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11012L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7468));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11013L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7471));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11014L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7473));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11015L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7475));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11016L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7477));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11017L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7479));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11018L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7481));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11019L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7483));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11020L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7486));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11021L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7488));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11022L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7490));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11023L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7492));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11024L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7494));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11025L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7496));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11026L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7498));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11027L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7501));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11028L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7503));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11029L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7505));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11030L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7507));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11031L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7509));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11032L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7511));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11033L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7514));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11034L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7519));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11035L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7521));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11036L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7523));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11037L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7525));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11038L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7528));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11039L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7530));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11040L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7532));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11041L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7534));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11042L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7537));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11043L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7539));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11044L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7541));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11045L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7543));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11046L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7545));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11047L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7547));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11048L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7549));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11049L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7551));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11050L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7553));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11051L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7555));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11052L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7557));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11053L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7559));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11054L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7563));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11055L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7565));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11056L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7567));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11057L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7569));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11058L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7571));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11059L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7573));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11060L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7575));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11061L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7578));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11062L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7580));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11063L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7582));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11064L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7584));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11065L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7589));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11066L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7591));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11067L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7594));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11068L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7596));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11069L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7597));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11070L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7599));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11071L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7602));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11072L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7604));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11073L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7605));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11074L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7608));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11075L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7610));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11076L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7612));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11077L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7614));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11078L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7616));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11079L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7618));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11080L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7620));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11081L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7624));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11082L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7626));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11083L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7628));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11084L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7630));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11085L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7632));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11086L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7634));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11087L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7637));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11088L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7639));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11089L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7641));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11090L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7643));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11091L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7644));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11092L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7646));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11093L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7649));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11094L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7651));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11095L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7654));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11096L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7662));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11097L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7664));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11098L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7666));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11099L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7668));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11100L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7670));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11101L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7673));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11102L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7675));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11103L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7677));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11104L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7679));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11105L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7681));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11106L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7683));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11107L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7685));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11108L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7688));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11109L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7690));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11110L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7691));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11111L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7693));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11112L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7695));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11113L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7697));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11114L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7700));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11115L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7701));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11116L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7703));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11117L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7705));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11118L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7707));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11119L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7709));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11120L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7711));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11121L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7714));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11122L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7716));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11123L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7718));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11124L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7720));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11125L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7722));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11126L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7724));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11127L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7729));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11128L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7731));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11129L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7733));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11130L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7735));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11131L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7737));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11132L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7739));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11133L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7741));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11134L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7743));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11135L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7746));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11136L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7748));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11137L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7750));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11138L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7752));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11139L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7753));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11140L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7755));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11141L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7757));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11142L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7760));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11143L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7762));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11144L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7764));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11145L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7766));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11146L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7768));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11147L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7770));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11148L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7773));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11149L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7775));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11150L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7777));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11151L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7779));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11152L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7781));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11153L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7783));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11154L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7785));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11155L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7788));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11156L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7790));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11157L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7792));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11158L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7797));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11159L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7799));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11160L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7801));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11161L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7802));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11162L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7805));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11163L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7807));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11164L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7809));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11165L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7811));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11166L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7813));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11167L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7815));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11168L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7817));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11169L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7819));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11170L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7821));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11171L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7823));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11172L,
                 column: "CreatedDate",
                 value: new DateTime(2024, 9, 25, 7, 22, 5, 451, DateTimeKind.Utc).AddTicks(7825));
 
             migrationBuilder.UpdateData(
-                table: "DataPointValues",
+                table: "DataPointValue",
                 keyColumn: "Id",
                 keyValue: 11173L,
                 column: "CreatedDate",

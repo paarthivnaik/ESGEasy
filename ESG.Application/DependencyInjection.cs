@@ -15,18 +15,18 @@ namespace ESG.Application
         {
             services.AddAutoMapper(typeof(UnitOfMeasureProfile),
                                     typeof(UnitOfMeasureTypeProfile),
-                                    typeof(UnitOfMeasureTranslationsProfile),
+                                    typeof(UnitOfMeasureTranslationProfile),
                                     typeof(UnitOfMeasureTypeTranslationsProfile),
-                                    typeof(DimensionsProfile),
+                                    typeof(DimensionProfile),
                                     typeof(DimensionTypeProfile),
-                                    typeof(DimensionTranslationsProfile),
+                                    typeof(DimensionTranslationProfile),
                                     typeof(CurrencyProfile),
-                                    typeof(DataPointValuesProfile),
+                                    typeof(DataPointValueProfile),
                                     typeof(GetTranslationsProfile),
                                     typeof(HierarchyProfile),
                                     typeof(DisclosureRequirementProfile),
                                     typeof(UserProfile),
-                                    typeof(DimensionTypeTranslationsProfile));
+                                    typeof(DimensionTypeTranslationProfile));
             return services;
         }
     }

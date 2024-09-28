@@ -30,7 +30,7 @@ namespace ESG.Application.Dto.DataModel
     public class DimensionTypeDto
     {
         public long DimensionTypeId { get; set; }
-        public string DimensionsTypeName { get; set; } 
+        public string DimensionTypeName { get; set; } 
         public List<DimensionValueDto> DimensionValues { get; set; } 
     }
 

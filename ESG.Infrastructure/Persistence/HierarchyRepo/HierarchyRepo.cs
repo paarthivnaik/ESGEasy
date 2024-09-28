@@ -1,8 +1,7 @@
 ﻿using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Dto.Hierarchy;
-using ESG.Domain.Entities.DomainEntities;
-using ESG.Domain.Entities.Hierarchies;
+using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,7 +21,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
         public async Task<long> GetNextHierarchyIdAsync()
         {
-            var maxHierarchyId = await _context.Hierarchy
+            var maxHierarchyId = await _context.Hierarchies
                 .AsNoTracking()
                 .Select(a => (long?)a.HierarchyId) 
                 .MaxAsync();
@@ -41,7 +40,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
         }
         public async Task<IEnumerable<long>> GetDatapointsByHierarchyId(long? hierarchyId)
         {
-            var datapointIds = await _context.Hierarchy
+            var datapointIds = await _context.Hierarchies
                     .AsNoTracking()
                     .Where(t => t.HierarchyId == hierarchyId)
                     .Select(dp => dp.DataPointValuesId) 
@@ -49,9 +48,9 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
             return datapointIds;
         }
-        public async Task<IEnumerable<DataPointValues>> GetDatapoints(long? disReqId)
+        public async Task<IEnumerable<DataPointValue>> GetDatapoints(long? disReqId)
         {
-            var datapoints = await _context.DataPointValues
+            var datapoints = await _context.DataPointValue
                 .AsNoTracking()
                 .Where(t => t.DisclosureRequirementId == disReqId)
                 .ToListAsync();
@@ -60,7 +59,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
         public async Task<IEnumerable<DisclosureRequirement>> GetDisclosureRequirements(long? standarddId)
         {
-            var disreq = await _context.DisclosureRequirement
+            var disreq = await _context.DisclosureRequirements
                 .AsNoTracking()
                 .Where(t => t.StandardId == standarddId)
                 .ToListAsync();
@@ -69,7 +68,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
         public async Task<IEnumerable<Standard>> GetStandards(long? topicId)
         {
-            var standard = await _context.Standard
+            var standard = await _context.Standards
                 .AsNoTracking()
                 .Where(t => t.TopicId == topicId)
                 .ToListAsync();
@@ -78,7 +77,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
         public async Task<IEnumerable<Topic>> GetTopics()
         {
-            var topic = await _context.Topic
+            var topic = await _context.Topics
                 .AsNoTracking()
                 .ToListAsync();
             return topic;
@@ -86,7 +85,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
         public async Task<IEnumerable<Hierarchy>> GetHierarchyById(long? hierarchyId)
         {
-            var hierarchies = await _context.Hierarchy
+            var hierarchies = await _context.Hierarchies
                 .AsNoTracking()
                 .Where(a => a.HierarchyId == hierarchyId)
                 .ToListAsync();
@@ -105,7 +104,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
         public async Task<IEnumerable<Hierarchy>> GetHierarchies(long hierarchyId)
         {
-            var hierarchies = await _context.Hierarchy
+            var hierarchies = await _context.Hierarchies
                 .AsNoTracking()
                 .Where(a => a.HierarchyId == hierarchyId)
                 .ToListAsync();

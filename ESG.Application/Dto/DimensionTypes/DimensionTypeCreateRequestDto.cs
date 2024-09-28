@@ -1,4 +1,4 @@
-﻿using ESG.Domain.Entities;
+﻿using ESG.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;

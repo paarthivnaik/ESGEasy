@@ -1,58 +1,19 @@
 ﻿using ESG.Application.Common.Interface;
 using ESG.Domain.Common;
-using ESG.Domain.Entities.DataModels;
-using ESG.Domain.Entities.DomainEntities;
-using ESG.Domain.Entities.Hierarchies;
-using ESG.Domain.Entities.TenantAndUsers;
+using ESG.Domain.Models;
 using ESG.Infrastructure.Persistence.DataBaseSeeder;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 namespace ESG.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : DbContext, IApplicationDbContext
+    public partial class ApplicationDbContext : DbContext, IApplicationDbContext
     {
+        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            _curretDateTime = DateTime.UtcNow;
         }
-        public DbSet<Tenant> Tenants { get; set; }
-        public DbSet<Organization> Organizations { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
-        public DbSet<OrganizationUser> OrganizationUsers { get; set; }
-        public DbSet<UnitOfMeasure> UnitOfMeasures { get; set; }
-        public DbSet<UnitOfMeasureTranslations> UnitOfMeasureTranslations{ get; set; }
-        public DbSet<UnitOfMeasureType> UnitOfMeasureTypes { get; set; }
-        public DbSet<UnitOfMeasureTypeTranslations> UnitOfMeasureTypeTranslations { get; set; }
-        public DbSet<Language> Languages { get; set; }
-        public DbSet<Currency> Currency { get; set; }
-        public DbSet<DimensionType> DimensionTypes { get; set; }
-        public DbSet<Dimensions> Dimensions { get; set; }
-        public DbSet<DataPointTypes> DataPointTypes { get; set; }
-        public DbSet<DatapointTypeTranslations> DatapointTypeTranslations { get; set; }
-        public DbSet<DataPointValues> DataPointValues { get; set; }
-        public DbSet<DatapointValueTranslations> DatapointValueTranslations { get; set; }
-        public DbSet<DimensionTypeTranslations> DimensionTypeTranslations { get; set; }
-        public DbSet<DimensionTranslations> DimensionTranslations { get; set; }
-        public DbSet<Audit> AuditLogs { get; set; }
-        public DbSet<Hierarchy> Hierarchy { get; set; }
-        public DbSet<Topic> Topic { get; set; }
-        public DbSet<Standard> Standard { get; set; }
-        public DbSet<DisclosureRequirement> DisclosureRequirement { get; set; }
-        public DbSet<OrganizationHeirarchies> OrganizationHeirarchies { get; set; }
-        public DbSet<Domain.Entities.DataModels.DataModel> DataModels { get; set; }
-        public DbSet<ModelDimensionTypes> ModelDimensionTypes { get; set; }
-        public DbSet<ModelDimensionValues> ModelDimensionValues { get; set; }
-        public DbSet<ModelDatapoints> ModelDatapoints { get; set; }
-        public DbSet<ModelConfiguration> ModelConfiguration { get; set; }
-        public DbSet<ModelCombinations> ModelFilterCombinations    { get; set; }
-        public DbSet<ModelFilterCombinationalValues> ModelFilterCombinationalValues    { get; set; }
-        public DbSet<DataModelValues> DataModelValues    { get; set; }
-        public DbSet<DataModelFilters> DataModelFilters    { get; set; }
-        public DateTime _curretDateTime { get; set; }
-
+        
         public async Task<int> SaveChangesAsync()
         {
 
@@ -77,7 +38,7 @@ namespace ESG.Infrastructure.Persistence
         private List<AuditEntry> OnBeforeSaveChanges()
         {
 
-
+            var _curretDateTime = DateTime.UtcNow;
             foreach (var entity in ChangeTracker.Entries<IAuditableEntity>())
             {
                 switch (entity.State)
@@ -100,7 +61,7 @@ namespace ESG.Infrastructure.Persistence
             var auditEntries = new List<AuditEntry>();
             foreach (var entry in ChangeTracker.Entries())
             {
-                if (entry.Entity is Audit || entry.State == EntityState.Detached || entry.State == EntityState.Unchanged)
+                if (entry.Entity is AuditLog || entry.State == EntityState.Detached || entry.State == EntityState.Unchanged)
                     continue;
                 var auditEntry = new AuditEntry(entry);
                 auditEntry.TableName = entry.Entity.GetType().Name;
@@ -178,13 +139,14 @@ namespace ESG.Infrastructure.Persistence
 
             return SaveChangesAsync();
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        
+        public void SeedingCreation(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
             CurrencySeed.Seed(modelBuilder);
             DataPointSeed.Seed(modelBuilder);
-            DimensionsSeed.Seed(modelBuilder);
+            DimensionSeed.Seed(modelBuilder);
             DisclosureRequirementSeed.Seed(modelBuilder);
             LanguageSeed.Seed(modelBuilder);
             OrganizationSeed.Seed(modelBuilder);

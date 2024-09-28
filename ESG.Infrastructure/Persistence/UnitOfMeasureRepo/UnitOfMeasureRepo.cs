@@ -1,5 +1,5 @@
 ﻿using ESG.Application.Common.Interface.UnitOfMeasure;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
         {
             _context = context;
         }
-        public async Task<IEnumerable<UnitOfMeasureTranslations>> GetAllUOMTranslationsByUOMId(long id)
+        public async Task<IEnumerable<UnitOfMeasureTranslation>> GetAllUOMTranslationsByUOMId(long id)
         {
             var list = await _context.UnitOfMeasureTranslations
                                      .AsNoTracking()

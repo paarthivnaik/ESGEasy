@@ -7,8 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entities\DataModels\**" />
+    <Compile Remove="Entities\DomainEntities\**" />
+    <Compile Remove="Entities\Hierarchies\**" />
+    <Compile Remove="Entities\TenantAndUsers\**" />
+    <EmbeddedResource Remove="Entities\DataModels\**" />
+    <EmbeddedResource Remove="Entities\DomainEntities\**" />
+    <EmbeddedResource Remove="Entities\Hierarchies\**" />
+    <EmbeddedResource Remove="Entities\TenantAndUsers\**" />
+    <None Remove="Entities\DataModels\**" />
+    <None Remove="Entities\DomainEntities\**" />
+    <None Remove="Entities\Hierarchies\**" />
+    <None Remove="Entities\TenantAndUsers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\" />
   </ItemGroup>
 
 </Project>

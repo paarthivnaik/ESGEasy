@@ -1,11 +1,11 @@
-﻿using ESG.Domain.Entities;
-using ESG.Domain.Entities.DomainEntities;
+﻿using ESG.Domain.Models;
+using ESG.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace ESG.Infrastructure.Persistence.DataBaseSeeder
 {
-    public static class DimensionsSeed
+    public static class DimensionSeed
     {
         public static void Seed(ModelBuilder modelBuilder)
         {
@@ -26,20 +26,20 @@ namespace ESG.Infrastructure.Persistence.DataBaseSeeder
                 new DimensionType { Id = 14, Code = "factory", ShortText = "Factory", LongText = "Factory", State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow }
             );
 
-            modelBuilder.Entity<Dimensions>().HasData(
-                new Dimensions { Id = 1000, Code = "act", ShortText = "Actual", LongText = "Actual", DimensionTypeId = 5, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1001, Code = "base", ShortText = "Baseline", LongText = "Baseline", DimensionTypeId = 5, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1002, Code = "target", ShortText = "Target", LongText = "Target", DimensionTypeId = 5, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1003, Code = "de", ShortText = "DE", LongText = "Germany", DimensionTypeId = 6, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1004, Code = "nl", ShortText = "NL", LongText = "The Netherlands", DimensionTypeId = 6, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1005, Code = "dap", ShortText = "DAP", LongText = "Domestic Appliances", DimensionTypeId = 12, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1006, Code = "pms", ShortText = "PMS", LongText = "Medical systems", DimensionTypeId = 12, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1007, Code = "eur", ShortText = "EUR", LongText = "Europe", DimensionTypeId = 13, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1008, Code = "ame", ShortText = "AME", LongText = "Africa, Middle East", DimensionTypeId = 13, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1009, Code = "tern", ShortText = "Terneuzen", LongText = "Terneuzen", DimensionTypeId = 14, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1010, Code = "2023", ShortText = "2023", LongText = "2023", DimensionTypeId = 1, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1011, Code = "2024", ShortText = "2024", LongText = "2024", DimensionTypeId = 1, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
-                new Dimensions { Id = 1012, Code = "2025", ShortText = "2025", LongText = "2025", DimensionTypeId = 1, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow }
+            modelBuilder.Entity<Dimension>().HasData(
+                new Dimension { Id = 1000, Code = "act", ShortText = "Actual", LongText = "Actual", DimensionTypeId = 5, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1001, Code = "base", ShortText = "Baseline", LongText = "Baseline", DimensionTypeId = 5, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1002, Code = "target", ShortText = "Target", LongText = "Target", DimensionTypeId = 5, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1003, Code = "de", ShortText = "DE", LongText = "Germany", DimensionTypeId = 6, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1004, Code = "nl", ShortText = "NL", LongText = "The Netherlands", DimensionTypeId = 6, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1005, Code = "dap", ShortText = "DAP", LongText = "Domestic Appliances", DimensionTypeId = 12, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1006, Code = "pms", ShortText = "PMS", LongText = "Medical systems", DimensionTypeId = 12, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1007, Code = "eur", ShortText = "EUR", LongText = "Europe", DimensionTypeId = 13, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1008, Code = "ame", ShortText = "AME", LongText = "Africa, Middle East", DimensionTypeId = 13, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1009, Code = "tern", ShortText = "Terneuzen", LongText = "Terneuzen", DimensionTypeId = 14, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1010, Code = "2023", ShortText = "2023", LongText = "2023", DimensionTypeId = 1, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1011, Code = "2024", ShortText = "2024", LongText = "2024", DimensionTypeId = 1, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow },
+                new Dimension { Id = 1012, Code = "2025", ShortText = "2025", LongText = "2025", DimensionTypeId = 1, State = StateEnum.active, OrganizationId = 1, LanguageId = 1, CreatedBy = 1, CreatedDate = DateTime.UtcNow, LastModifiedBy = 1, LastModifiedDate = DateTime.UtcNow }
 
             );
         }

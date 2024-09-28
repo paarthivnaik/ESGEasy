@@ -1,5 +1,5 @@
 ﻿using ESG.Application.Dto.DatapointValue;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Services.Interfaces
 {
-    public interface IDatapointValuesService
+    public interface IDataPointValueService
     {
-        Task AddAsync(List<DatapointValueCreateRequestDto> datapointValues);
-        Task<DataPointValues> UpdateAsync(DataPointValues datapointValues);
-        Task<IEnumerable<DatapointValuesResponseDto>> GetAll();
+        Task AddAsync(List<DatapointValueCreateRequestDto> DataPointValue);
+        Task<DataPointValue> UpdateAsync(DataPointValue DataPointValue);
+        Task<IEnumerable<DataPointValueResponseDto>> GetAll();
         
-        Task<DataPointValues> GetById(long Id);
+        Task<DataPointValue> GetById(long Id);
         Task DeleteDatapoint(long id);
     }
 }

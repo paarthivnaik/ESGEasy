@@ -3,7 +3,7 @@ using ESG.Application.Common.Interface;
 using ESG.Application.Dto.Get;
 using ESG.Application.Exception;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
+using ESG.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -37,8 +37,8 @@ namespace ESG.Application.Services
                     result = await GetDataPointTranslations(typeId, valueId);
                     break;
 
-                case 3: // Dimensions
-                    result = await GetDimensionTranslations(typeId, valueId);
+                case 3: // Dimension
+                    result = await GetDimensionTranslation(typeId, valueId);
                     break;
 
                 default:
@@ -74,16 +74,16 @@ namespace ESG.Application.Services
             }
         }
 
-        private async Task<IEnumerable<GetTranslationsResponseDto>> GetDimensionTranslations(long typeId, long? valueId)
+        private async Task<IEnumerable<GetTranslationsResponseDto>> GetDimensionTranslation(long typeId, long? valueId)
         {
             if (valueId.HasValue)
             {
-                var dimensionTranslation = await _unitOfWork.ValuesRepo.GetDimensionsTranslations(typeId, valueId);
+                var dimensionTranslation = await _unitOfWork.ValuesRepo.GetDimensionTranslations(typeId, valueId);
                 return _mapper.Map<IEnumerable<GetTranslationsResponseDto>>(dimensionTranslation);
             }
             else
             {
-                var dimensionTypeData = await _unitOfWork.ValuesRepo.GetDimensionTypeTranslations(typeId);
+                var dimensionTypeData = await _unitOfWork.ValuesRepo.GetDimensionTypeTranslation(typeId);
                 return _mapper.Map<IEnumerable<GetTranslationsResponseDto>>(dimensionTypeData);
             }
         }

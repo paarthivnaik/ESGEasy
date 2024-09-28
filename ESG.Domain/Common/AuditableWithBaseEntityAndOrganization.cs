@@ -1,5 +1,5 @@
-﻿using ESG.Domain.Entities;
-using ESG.Domain.Entities.TenantAndUsers;
+﻿using ESG.Domain.Enum;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

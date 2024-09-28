@@ -3,8 +3,8 @@ using ESG.Application.Common.Interface;
 using ESG.Application.Common.Jwt;
 using ESG.Application.Dto.User;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
-using ESG.Domain.Entities.TenantAndUsers;
+using ESG.Domain.Enum;
+using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -85,7 +85,7 @@ namespace ESG.Application.Services
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                RoleId = user.Role.RoleId,
+                RoleId = user.UserRole.RoleId,
                 OrganizationId = organizationUser.OrganizationId
             };
             return response;
@@ -108,7 +108,7 @@ namespace ESG.Application.Services
                 throw new System.Exception("User not valid, please enter valid credentials");
             }
             var user = await GetUserDetails(validUser.Id);
-            var token = await _unitOfWork.UsersRepo.GenerateToken(user.UserId, user.Email, user.OrganizationId, user.RoleId);
+            var token = await _unitOfWork.UsersRepo.GenerateToken(user.UserId, user.Email, user.OrganizationId, user.RoleId.Value);
             return token.ToString();
         }
         public Task<User> Update(UserCreationRequestDto user)

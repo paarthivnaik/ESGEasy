@@ -2,7 +2,7 @@
 using ESG.Application.Common.Interface;
 using ESG.Application.Dto.DisclosureRequirement;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities.Hierarchies;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -15,5 +15,7 @@ namespace ESG.Domain.Entities.DataModels
         public long DataModelId { get; set; }
         public List<DataModel> DataModel { get; set; }
         public List<ModelFilterCombinationalValues> ModelFilterCombinationalValues { get; set; }
+        public List<DataModelValues> DataModelValues { get; set; }
+        public IEnumerable<SampleModelFilterCombinationValues> SampleModelFilterCombinationValues { get;set; }
     }
 }

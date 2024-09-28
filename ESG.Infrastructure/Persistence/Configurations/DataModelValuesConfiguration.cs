@@ -11,7 +11,7 @@ namespace ESG.Infrastructure.Persistence.Configurations
 {
     public class DataModelValuesConfiguration : IEntityTypeConfiguration<DataModelValues>
     {
-        public void Configure(EntityTypeBuilder<DataModelValues> builder)
+        public void Configure(EntityTypeBuilder<DataModelValue> builder)
         {
             builder.HasOne(mc => mc.Row)
                   .WithMany()

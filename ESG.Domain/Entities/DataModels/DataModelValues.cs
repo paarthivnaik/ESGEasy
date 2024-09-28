@@ -17,11 +17,11 @@ namespace ESG.Domain.Entities.DataModels
         public Dimensions Column { get; set; }
         public long CombinationId { get; set; }
         public ModelCombinations Combination { get; set; }
-        public string Value { get; set; }
-        public bool IsBlocked { get; set; }
-        public long ResponsibleUserId { get; set; }
+        public string? Value { get; set; }
+        public bool? IsBlocked { get; set; }
+        public long? ResponsibleUserId { get; set; }
         public User ResponsibleUser { get; set; }
-        public long AccountableUserId { get; set; }
+        public long? AccountableUserId { get; set; }
         public User AccountableUser { get; set; }
     }
 }

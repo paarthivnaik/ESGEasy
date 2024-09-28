@@ -2,7 +2,7 @@
 using ESG.Application.Common.Interface;
 using ESG.Application.Dto.UOMTranslations;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,14 +25,14 @@ namespace ESG.Application.Services
         {
             if (uOMTranslationsCreateRequestDto != null)
             {
-                var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslations>(uOMTranslationsCreateRequestDto);
-                await _unitOfMeasure.Repository<UnitOfMeasureTranslations>().AddAsync(uomTranslationdata);
+                var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslation>(uOMTranslationsCreateRequestDto);
+                await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().AddAsync(uomTranslationdata);
                 await _unitOfMeasure.SaveAsync();
             }
         }
         public async Task Update(UOMTranslationsUpdateRequestDto uomTranslationrequest)
         {
-            var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTranslations>()
+            var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTranslation>()
                 .Get(uom => uom.UnitOfMeasureId == uomTranslationrequest.UnitOfMeasureId && uom.LanguageId == uomTranslationrequest.LanguageId);
             if (translationsData == null)
             {
@@ -44,7 +44,7 @@ namespace ESG.Application.Services
             translationsData.Name = uomTranslationrequest.Name;
             translationsData.CreatedBy = uomTranslationrequest.UserId;
 
-            await _unitOfMeasure.Repository<UnitOfMeasureTranslations>().Update(translationsData);
+            await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().Update(translationsData);
             await _unitOfMeasure.SaveAsync();
         }
     }

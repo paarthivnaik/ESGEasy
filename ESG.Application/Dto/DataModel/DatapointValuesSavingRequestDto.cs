@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ESG.Application.Dto.DataModel
 {
-    public class DataPointValuesSavingRequestDto
+    public class DataPointValueSavingRequestDto
     {
         public int UserId { get; set; }
         public int DatapointId { get; set; }

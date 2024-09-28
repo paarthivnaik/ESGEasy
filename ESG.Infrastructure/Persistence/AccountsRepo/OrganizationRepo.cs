@@ -1,5 +1,5 @@
 ﻿using ESG.Application.Common.Interface.Account;
-using ESG.Domain.Entities.TenantAndUsers;
+using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using ESG.Domain.Entities.TenantAndUsers;
+﻿using ESG.Domain.Models;
 
 namespace ESG.Application.Common.Interface.Tenants
 {

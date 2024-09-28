@@ -1,5 +1,6 @@
 ﻿using ESG.Application.Common.Interface.Account;
-using ESG.Domain.Entities.TenantAndUsers;
+using ESG.Domain.Enum;
+using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -28,13 +29,13 @@ namespace ESG.Infrastructure.Persistence.AccountsRepo
             var user = await _context.Users
                 .AsNoTracking()
                 .Include(a => a.OrganizationUsers)
-                .Include(r => r.Role)
+                .Include(r => r.UserRole)
                 .Where(u => u.Id == userId )
                 .FirstOrDefaultAsync();
 
             return user;
         }
-        public async Task<string> GenerateToken(long userId,string email, long? organizationId, long roleId)
+        public async Task<string> GenerateToken(long userId,string email, long? organizationId, long? roleId)
         {
             var key = _configuration["Configuration:JwtTokenConfig:Secret"];
             var issuer = _configuration["Configuration:JwtTokenConfig:Issuer"];

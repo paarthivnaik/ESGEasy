@@ -13,6 +13,6 @@ namespace ESG.Application.Dto.User
         public string LastName { get; set; }
         public string Email { get; set; }
         public long OrganizationId { get; set; }
-        public long RoleId { get; set; }
+        public long? RoleId { get; set; }
     }
 }

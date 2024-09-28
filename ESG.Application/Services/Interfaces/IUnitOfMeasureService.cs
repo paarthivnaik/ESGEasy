@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ESG.Application.Dto.UnitOfMeasure;
-using ESG.Domain.Entities;
+using ESG.Domain.Enum;
 
 namespace ESG.Application.Services.Interfaces
 {

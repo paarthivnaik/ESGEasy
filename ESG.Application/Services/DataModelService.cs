@@ -2,9 +2,8 @@
 using ESG.Application.Common.Interface;
 using ESG.Application.Dto.DataModel;
 using ESG.Application.Services.Interfaces;
-using ESG.Domain.Entities;
-using ESG.Domain.Entities.DataModels;
-using ESG.Domain.Entities.DomainEntities;
+using ESG.Domain.Enum;
+using ESG.Domain.Models;
 using ESG.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -34,7 +33,7 @@ namespace ESG.Application.Services
             {
                 throw new ArgumentNullException(nameof(configuringDataModelRequestDto), "Invalid JSON data");
             }
-            var modelConfiguration = new Domain.Entities.DataModels.ModelConfiguration
+            var modelConfiguration = new Domain.Models.ModelConfiguration
             {
                 DataModelId = configuringDataModelRequestDto.DataModelId,
                 ViewType = configuringDataModelRequestDto.ViewType,
@@ -43,9 +42,9 @@ namespace ESG.Application.Services
                 State = StateEnum.active,
                 CreatedBy = configuringDataModelRequestDto.UserId,
             };
-            await _unitOfWork.Repository<Domain.Entities.DataModels.ModelConfiguration>().AddAsync(modelConfiguration);
+            await _unitOfWork.Repository<Domain.Models.ModelConfiguration>().AddAsync(modelConfiguration);
             var dataModelFilters = configuringDataModelRequestDto.FilterIds
-                .Select(filter => new DataModelFilters
+                .Select(filter => new DataModelFilter
                 {
                     ModelConfigurationId = modelConfiguration.Id,
                     FilterId = filter,
@@ -53,9 +52,9 @@ namespace ESG.Application.Services
                 }).ToList();
             foreach (var filter in dataModelFilters)
             {
-                modelConfiguration.DataModelFilters = new List<DataModelFilters> { filter };
+                modelConfiguration.DataModelFilters = new List<DataModelFilter> { filter };
             }
-            await _unitOfWork.Repository<DataModelFilters>().AddRange(dataModelFilters);
+            await _unitOfWork.Repository<DataModelFilter>().AddRange(dataModelFilters);
             await _unitOfWork.SaveAsync();
         }
         public async Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto)
@@ -71,7 +70,7 @@ namespace ESG.Application.Services
 
             var utcNow = DateTime.UtcNow;
 
-            var dataModel = new ESG.Domain.Entities.DataModels.DataModel
+            var dataModel = new ESG.Domain.Models.DataModel
             {
                 OrganizationId = dataModelCreateRequestDto.OrganizationId,
                 ModelName = dataModelCreateRequestDto.ModelName,
@@ -87,17 +86,17 @@ namespace ESG.Application.Services
             await _unitOfWork.SaveAsync();
 
             var dataModelId = dataModel.Id;
-            var modelDatapoints = new List<ModelDatapoints>();
-            var modelDimensionTypes = new ModelDimensionTypes();
-            var modelDimensionValues = new List<ModelDimensionValues>();
-            var modelConfigurations = new ESG.Domain.Entities.DataModels.ModelConfiguration();
-            var modelFilters = new List<DataModelFilters>();
-            var modelCombinations = new List<ModelCombinations>();
-            var modelFilterCombinationalValues = new List<ModelFilterCombinationalValues>();
-            var dataModelValues = new List<DataModelValues>();
+            var modelDatapoints = new List<ModelDatapoint>();
+            var modelDimensionTypes = new ModelDimensionType();
+            var modelDimensionValues = new List<ModelDimensionValue>();
+            var modelConfigurations = new ESG.Domain.Models.ModelConfiguration();
+            var modelFilters = new List<DataModelFilter>();
+            var ModelFilterCombinations = new List<ModelFilterCombination>();
+            var samplemodelFilterCombinationalValues = new List<SampleModelFilterCombinationValue>();
+            var dataModelValues = new List<DataModelValue>();
             foreach (var datapointId in dataModelCreateRequestDto.Datapoints)
             {
-                modelDatapoints.Add(new ModelDatapoints
+                modelDatapoints.Add(new ModelDatapoint
                 {
                     DataModelId = dataModelId,
                     DatapointValuesId = datapointId,
@@ -108,9 +107,9 @@ namespace ESG.Application.Services
                     LastModifiedDate = utcNow
                 });
             }
-            foreach (var dimensionType in dataModelCreateRequestDto.Dimensions)
+            foreach (var dimensionType in dataModelCreateRequestDto.Dimension)
             {
-                modelDimensionTypes = new ModelDimensionTypes
+                modelDimensionTypes = new ModelDimensionType
                 {
                     DataModelId = dataModelId,
                     DimensionTypeId = dimensionType.TypeId,
@@ -120,11 +119,11 @@ namespace ESG.Application.Services
                     LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                     LastModifiedDate = utcNow
                 };
-                await _unitOfWork.Repository<ModelDimensionTypes>().AddAsync(modelDimensionTypes);
+                await _unitOfWork.Repository<ModelDimensionType>().AddAsync(modelDimensionTypes);
                 await _unitOfWork.SaveAsync();
                 foreach (var dimensionValueId in dimensionType.Values)
                 {
-                    modelDimensionValues.Add(new ModelDimensionValues
+                    modelDimensionValues.Add(new ModelDimensionValue
                     {
                         ModelDimensionTypesId = modelDimensionTypes.Id,
                         DimensionsId = dimensionValueId,
@@ -136,9 +135,9 @@ namespace ESG.Application.Services
                     });
                 }
             }
-            if (dataModelCreateRequestDto.Fact.RowId != null && dataModelCreateRequestDto.Fact.ColumnId != null)
+            if (dataModelCreateRequestDto.Fact.RowId != null)
             {
-                modelConfigurations = new Domain.Entities.DataModels.ModelConfiguration
+                modelConfigurations = new Domain.Models.ModelConfiguration
                 {
                     DataModelId = dataModelId,
                     RowId = dataModelCreateRequestDto.Fact.RowId!.Value,
@@ -150,13 +149,13 @@ namespace ESG.Application.Services
                     LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                     LastModifiedDate = utcNow
                 };
-                await _unitOfWork.Repository<Domain.Entities.DataModels.ModelConfiguration>().AddAsync(modelConfigurations);
+                await _unitOfWork.Repository<Domain.Models.ModelConfiguration>().AddAsync(modelConfigurations);
                 await _unitOfWork.SaveAsync();
                 if (dataModelCreateRequestDto.Fact.Filters != null)
                 {
                     foreach (var filters in dataModelCreateRequestDto.Fact.Filters)
                     {
-                        modelFilters.Add(new DataModelFilters
+                        modelFilters.Add(new DataModelFilter
                         {
                             ModelConfigurationId = modelConfigurations.Id,
                             FilterId = filters,
@@ -169,9 +168,9 @@ namespace ESG.Application.Services
                     }
                 } 
             }
-            if (dataModelCreateRequestDto.Narrative.RowId != null && dataModelCreateRequestDto.Fact.Filters != null)
+            if (dataModelCreateRequestDto.Narrative.RowId != null )
             {
-                modelConfigurations = new Domain.Entities.DataModels.ModelConfiguration
+                modelConfigurations = new Domain.Models.ModelConfiguration
                 {
                     DataModelId = dataModelId,
                     RowId = dataModelCreateRequestDto.Narrative.RowId!.Value,
@@ -183,13 +182,13 @@ namespace ESG.Application.Services
                     LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                     LastModifiedDate = utcNow
                 };
-                await _unitOfWork.Repository<Domain.Entities.DataModels.ModelConfiguration>().AddAsync(modelConfigurations);
+                await _unitOfWork.Repository<Domain.Models.ModelConfiguration>().AddAsync(modelConfigurations);
                 await _unitOfWork.SaveAsync();
                 if (dataModelCreateRequestDto.Fact.Filters != null)
                 {
                     foreach (var filters in dataModelCreateRequestDto.Fact.Filters)
                     {
-                        modelFilters.Add(new DataModelFilters
+                        modelFilters.Add(new DataModelFilter
                         {
                             ModelConfigurationId = modelConfigurations.Id,
                             FilterId = filters,
@@ -202,9 +201,10 @@ namespace ESG.Application.Services
                     }
                 }
             }
-            await _unitOfWork.Repository<ModelDatapoints>().AddRange(modelDatapoints);
-            await _unitOfWork.Repository<ModelDimensionValues>().AddRange(modelDimensionValues);
-            await _unitOfWork.Repository<DataModelFilters>().AddRange(modelFilters);
+            await _unitOfWork.Repository<ModelDatapoint>().AddRange(modelDatapoints);
+            await _unitOfWork.Repository<ModelDimensionValue>().AddRange(modelDimensionValues);
+            await _unitOfWork.Repository<DataModelFilter>().AddRange(modelFilters);
+
             await _unitOfWork.SaveAsync();
 
             //getting all dimenstion types and looping through the filters
@@ -224,47 +224,54 @@ namespace ESG.Application.Services
                 var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(datapoint);
                 if (viewtype == null)
                     throw new ArgumentException($"datapoint view type set to null, expected: {datapoint}");
+                var valueLists = new Dictionary<long, List<long>>();
+                foreach (var dimension in dataModelCreateRequestDto.Dimension)
+                {
+                    if (factFilterDimensionTypes.Any(f => f.DimensionTypeId == dimension.TypeId))
+                    {
+                        valueLists.Add(dimension.TypeId, dimension.Values.ToList());
+                    }
+                }
+                var allCombinations = GetCombinations(valueLists);
+                var generatedCombinations = new List<ModelFilterCombination>();
                 if (viewtype  == false)//factview of datapoint
                 {
                     var datamodelConfigId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(dataModelId, ModelViewTypeEnum.Fact);
                     var datamodelfilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(datamodelConfigId);
-                    var valueLists = new Dictionary<long, List<long>>();
-                    foreach (var dimension in dataModelCreateRequestDto.Dimensions)
-                    {
-                        if (factFilterDimensionTypes.Any(f => f.DimensionTypeId == dimension.TypeId))
-                        {
-                            valueLists.Add(dimension.TypeId, dimension.Values.ToList());
-                        }
-                    }
-                    var allCombinations = GetCombinations(valueLists);
-                    var modelCombination = new ModelCombinations();
+                    
                     foreach (var combination in allCombinations)
                     {
-                        modelCombination = new ModelCombinations
+                        var ModelFilterCombination = new ModelFilterCombination
                         {
                             DataModelId = dataModelId,
-                            DataPointValuesId = datapoint,
                             State = StateEnum.active,
                             CreatedBy = dataModelCreateRequestDto.CreatedBy,
                             CreatedDate = utcNow,
                             LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                             LastModifiedDate = utcNow
                         };
-                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
-                        await _unitOfWork.SaveAsync();
-
+                        generatedCombinations.Add(ModelFilterCombination);
+                        
+                    }
+                    await _unitOfWork.Repository<ModelFilterCombination>().AddRange(generatedCombinations);
+                    await _unitOfWork.SaveAsync();
+                    var processedCombinations = new List<List<(long DimensionTypeId, long Value)>>();
+                    foreach (var dbcombination in generatedCombinations)
+                    {
+                        var combination = allCombinations.FirstOrDefault(ac => !processedCombinations.Contains(ac));
                         foreach (var comboType in combination)
                         {
                             var datamodelfilter = datamodelfilters
-                                .Where(a => a.FilterId == comboType.DimensionTypeId && a.ModelConfigurationId == datamodelConfigId)
-                                .FirstOrDefault();
+                            .Where(a => a.FilterId == comboType.DimensionTypeId && a.ModelConfigurationId == datamodelConfigId)
+                            .FirstOrDefault();
                             if (datamodelfilter == null)
                             {
                                 throw new ArgumentNullException($"No matching DataModelFilter found for FilterId {comboType.DimensionTypeId} and ModelConfigurationId {datamodelConfigId}.");
                             }
-                            var modelFilterCombinationValue = new ModelFilterCombinationalValues
+
+                            var samplemodelFilterCombinationValue = new SampleModelFilterCombinationValue
                             {
-                                ModelFilterCombinationsId = modelCombination.Id, 
+                                ModelFilterCombinationsId = dbcombination.Id,
                                 DimensionsId = comboType.Value,
                                 DataModelFiltersId = datamodelfilter.Id,
                                 State = StateEnum.active,
@@ -273,9 +280,8 @@ namespace ESG.Application.Services
                                 LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                                 LastModifiedDate = utcNow
                             };
-                            modelFilterCombinationalValues.Add(modelFilterCombinationValue);
+                            samplemodelFilterCombinationalValues.Add(samplemodelFilterCombinationValue);
                         }
-                        
                         foreach (var dimensionId in modeldimTypes
                             .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.RowId)
                             .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
@@ -284,9 +290,9 @@ namespace ESG.Application.Services
                                 .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.ColumnId)
                                 .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
                             {
-                                var dataModelValue = new DataModelValues
+                                var dataModelValue = new DataModelValue
                                 {
-                                    CombinationId = modelCombination.Id,
+                                    CombinationId = dbcombination.Id,
                                     RowId = dimensionId,
                                     ColumnId = columnDimension == null ? (long?)null : columnDimension,
                                     CreatedBy = dataModelCreateRequestDto.CreatedBy,
@@ -295,76 +301,78 @@ namespace ESG.Application.Services
                                 dataModelValues.Add(dataModelValue);
                             }
                         }
+                        processedCombinations.Add(combination);
                     }
-                    await _unitOfWork.Repository<ModelFilterCombinationalValues>().AddRange(modelFilterCombinationalValues);
-                    await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
+                    await _unitOfWork.Repository<SampleModelFilterCombinationValue>().AddRange(samplemodelFilterCombinationalValues);
+                    await _unitOfWork.Repository<DataModelValue>().AddRange(dataModelValues);
                     await _unitOfWork.SaveAsync();
                 }
                 if (viewtype == true)
                 {
                     var datamodelConfigId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(dataModelId, ModelViewTypeEnum.Fact);
                     var datamodelfilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(datamodelConfigId);
-                    var valueLists = new Dictionary<long, List<long>>();
-                    foreach (var dimension in dataModelCreateRequestDto.Dimensions)
+                    foreach (var generatedcombination in allCombinations)
                     {
-                        if (factFilterDimensionTypes.Any(f => f.DimensionTypeId == dimension.TypeId))
-                        {
-                            valueLists.Add(dimension.TypeId, dimension.Values.ToList());
-                        }
-                    }
-                    var allCombinations = GetCombinations(valueLists);
-                    foreach (var combination in allCombinations)
-                    {
-                        var modelCombination = new ModelCombinations
+                        var ModelFilterCombination = new ModelFilterCombination
                         {
                             DataModelId = dataModelId,
-                            DataPointValuesId = datapoint,
                             State = StateEnum.active,
                             CreatedBy = dataModelCreateRequestDto.CreatedBy,
                             CreatedDate = utcNow,
                             LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                             LastModifiedDate = utcNow
                         };
-                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
+                        await _unitOfWork.Repository<ModelFilterCombination>().AddAsync(ModelFilterCombination);
                         await _unitOfWork.SaveAsync();
+                        var processedCombinations = new List<List<(long DimensionTypeId, long Value)>>();
+                        foreach (var dbcombination in generatedCombinations)
+                        {
+                            var combination = allCombinations.FirstOrDefault(ac => !processedCombinations.Contains(ac));
+                            foreach (var comboType in combination)
+                            {
+                                var datamodelfilter = datamodelfilters
+                                .Where(a => a.FilterId == comboType.DimensionTypeId && a.ModelConfigurationId == datamodelConfigId)
+                                .FirstOrDefault();
+                                if (datamodelfilter == null)
+                                {
+                                    throw new ArgumentNullException($"No matching DataModelFilter found for FilterId {comboType.DimensionTypeId} and ModelConfigurationId {datamodelConfigId}.");
+                                }
 
-                        foreach (var comboType in combination)
-                        {
-                            var datamodelfilterId = datamodelfilters.Where(a => a.FilterId == comboType.DimensionTypeId);
-                            var modelFilterCombinationValue = new ModelFilterCombinationalValues
+                                var samplemodelFilterCombinationValue = new SampleModelFilterCombinationValue
+                                {
+                                    ModelFilterCombinationsId = dbcombination.Id,
+                                    DimensionsId = comboType.Value,
+                                    DataModelFiltersId = datamodelfilter.Id,
+                                    State = StateEnum.active,
+                                    CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                                    CreatedDate = utcNow,
+                                    LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                                    LastModifiedDate = utcNow
+                                };
+                                samplemodelFilterCombinationalValues.Add(samplemodelFilterCombinationValue);
+                            }
+                            foreach (var dimensionId in modeldimTypes
+                                .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Narrative.RowId)
+                                .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
                             {
-                                ModelFilterCombinationsId = modelCombination.Id,
-                                DimensionsId = comboType.Value,
-                                DataModelFiltersId = comboType.DimensionTypeId,
-                                State = StateEnum.active,
-                                CreatedBy = dataModelCreateRequestDto.CreatedBy,
-                                CreatedDate = utcNow,
-                                LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
-                                LastModifiedDate = utcNow
-                            };
-                            modelFilterCombinationalValues.Add(modelFilterCombinationValue);
+                                var dataModelValue = new DataModelValue
+                                {
+                                    CombinationId = dbcombination.Id,
+                                    RowId = dimensionId,
+                                    ColumnId = null,
+                                    CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                                    CreatedDate = utcNow,
+                                };
+                                dataModelValues.Add(dataModelValue);
+                            }
+                            processedCombinations.Add(combination);
                         }
-                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
+                        await _unitOfWork.Repository<SampleModelFilterCombinationValue>().AddRange(samplemodelFilterCombinationalValues);
+                        await _unitOfWork.Repository<DataModelValue>().AddRange(dataModelValues);
                         await _unitOfWork.SaveAsync();
-                        foreach (var dimensionId in modeldimTypes
-                            .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Narrative.RowId)
-                            .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
-                        {
-                            var dataModelValue = new DataModelValues
-                            {
-                                CombinationId = modelCombination.Id,
-                                RowId = dimensionId,
-                                ColumnId = null,
-                                CreatedBy = dataModelCreateRequestDto.CreatedBy,
-                                CreatedDate = utcNow,
-                            };
-                            dataModelValues.Add(dataModelValue);
-                        }
-                        await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelCombination);
-                       
                     }
                 }
-                await _unitOfWork.SaveAsync();
+                
             }
         }
         public static List<List<(long DimensionTypeId, long Value)>> GetCombinations(Dictionary<long, List<long>> dimensionValues)
@@ -419,7 +427,7 @@ namespace ESG.Application.Services
                             {
                                 RowDimension = await GetRowDimensionDto(datamodel.Id, viewType.ViewType),
                                 ColumnDimension = await GetColumnDimensionDto(datamodel.Id,viewType.ViewType),
-                                FilterDimension = await GetFilterDimensionsDto(datamodel.Id, viewType.ViewType)
+                                FilterDimension = await GetFilterDimensionDto(datamodel.Id, viewType.ViewType)
                             };
                         }
                         else if (viewType.ViewType == ModelViewTypeEnum.Narrative)
@@ -427,7 +435,7 @@ namespace ESG.Application.Services
                             response.NarrativeView = new NarrativeViewDto
                             {
                                 RowDimension = await GetRowDimensionDto(datamodel.Id, viewType.ViewType),
-                                FilterDimension = await GetFilterDimensionsDto(datamodel.Id, viewType.ViewType)
+                                FilterDimension = await GetFilterDimensionDto(datamodel.Id, viewType.ViewType)
                             };
                         }
                     }
@@ -457,14 +465,14 @@ namespace ESG.Application.Services
                 {
                     responseobj.RowDimensionType = await GetRowDimension(datamodel.Id, ModelViewTypeEnum.Fact);
                     responseobj.ColumnDimensionType = await GetColumnDimension(datamodel.Id, ModelViewTypeEnum.Fact);
-                    responseobj.FilterDimensionTypes = await GetFilterDimensions(datamodel.Id, ModelViewTypeEnum.Fact);
+                    responseobj.FilterDimensionTypes = await GetFilterDimension(datamodel.Id, ModelViewTypeEnum.Fact);
                     
                 }
                 else if (datapointviewtype == true)
                 {
 
                     responseobj.RowDimensionType = await GetRowDimension(datamodel.Id, ModelViewTypeEnum.Narrative);
-                    responseobj.FilterDimensionTypes = await GetFilterDimensions(datamodel.Id, ModelViewTypeEnum.Narrative);
+                    responseobj.FilterDimensionTypes = await GetFilterDimension(datamodel.Id, ModelViewTypeEnum.Narrative);
                 } 
             }
             return responseobj;
@@ -477,7 +485,7 @@ namespace ESG.Application.Services
             return new DatapointDimensionType
             {
                 DimensionTypeId = dimensionType.Id,
-                DimensionsTypeName = dimensionType.Name,
+                DimensionTypeName = dimensionType.Name,
                 DimensionValues = dimensionValues.Select(dv => new DatapointDimensionValue
                 {
                     DimensionValueId = dv.Id,
@@ -499,7 +507,7 @@ namespace ESG.Application.Services
             dimTypeDto = new DatapointDimensionType
             {
                 DimensionTypeId = dimensionType.Id,
-                DimensionsTypeName = dimensionType.Name,
+                DimensionTypeName = dimensionType.Name,
                 DimensionValues = dimensionValues.Select(dv => new DatapointDimensionValue
                 {
                     DimensionValueId = dv.Id,
@@ -508,21 +516,21 @@ namespace ESG.Application.Services
             };
             return dimTypeDto;
         }
-        private async Task<List<DatapointDimensionType>?> GetFilterDimensions(long modelId, ModelViewTypeEnum viewTypeEnum)
+        private async Task<List<DatapointDimensionType>?> GetFilterDimension(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var responsedto = new List<DatapointDimensionType>();
             var configurationId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(modelId, viewTypeEnum);
             if (configurationId >= 0 || configurationId != null)
             {
-                var filterDimensions = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId);
-                foreach (var filterdim in filterDimensions)
+                var filterDimension = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId);
+                foreach (var filterdim in filterDimension)
                 {
                     var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, filterdim.Id);
                     var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
                     var res = new DatapointDimensionType
                     {
                         DimensionTypeId = filterdim.Id, 
-                        DimensionsTypeName = filterdim.Name, 
+                        DimensionTypeName = filterdim.Name, 
                         DimensionValues = dimensionValues.Select(dv => new DatapointDimensionValue
                         {
                             DimensionValueId = dv.Id,
@@ -535,7 +543,7 @@ namespace ESG.Application.Services
             return responsedto;
         }
 
-        public async Task SaveDatapointDataInModel(DataPointValuesSavingRequestDto requestdto)
+        public async Task SaveDatapointDataInModel(DataPointValueSavingRequestDto requestdto)
         {
             if (requestdto == null)
                 throw new ArgumentNullException(nameof(requestdto), "Invalid JSON data");
@@ -544,14 +552,14 @@ namespace ESG.Application.Services
                 throw new ArgumentException("Model name cannot be empty");
             var utcNow = DateTime.UtcNow;
 
-            var modelCombinations = await _unitOfWork.DataModelRepo.GetModelCombinationsByModelIdandDatapointId(requestdto.ModelId, requestdto.DatapointId);
-            if (modelCombinations == null || !modelCombinations.Any())
+            var ModelFilterCombinations = await _unitOfWork.DataModelRepo.GetModelFilterCombinationsByModelIdandDatapointId(requestdto.ModelId, requestdto.DatapointId);
+            if (ModelFilterCombinations == null || !ModelFilterCombinations.Any())
             {
                 await SaveDatamodelData(requestdto);
                 await _unitOfWork.SaveAsync();
                 return;
             }
-            foreach (var combination in modelCombinations)
+            foreach (var combination in ModelFilterCombinations)
             {
                 var isMatch = combination.ModelFilterCombinationalValues.All(combinationValue =>
                     requestdto.FilterDtos.Any(inputFilter =>
@@ -560,10 +568,10 @@ namespace ESG.Application.Services
 
                 if (isMatch)
                 {
-                    var modelCombinationId = combination.Id;
+                    var ModelFilterCombinationId = combination.Id;
 
-                    var existingDatapointData = await _unitOfWork.DataModelRepo.GetDataModelValuesByCombinationId(modelCombinationId);
-                    var updatedValues = new List<DataModelValues>();
+                    var existingDatapointData = await _unitOfWork.DataModelRepo.GetDataModelValuesByCombinationId(ModelFilterCombinationId);
+                    var updatedValues = new List<DataModelValue>();
 
                     foreach (var value in existingDatapointData)
                     {
@@ -581,7 +589,7 @@ namespace ESG.Application.Services
 
                     if (updatedValues.Any())
                     {
-                        await _unitOfWork.Repository<DataModelValues>().UpdateRange(updatedValues);
+                        await _unitOfWork.Repository<DataModelValue>().UpdateRange(updatedValues);
                     }
                 }
                 else
@@ -592,12 +600,12 @@ namespace ESG.Application.Services
             await _unitOfWork.SaveAsync();
         }
 
-        private async Task SaveDatamodelData(DataPointValuesSavingRequestDto requestdto)
+        private async Task SaveDatamodelData(DataPointValueSavingRequestDto requestdto)
         {
             var utcNow = DateTime.UtcNow;
-            var modelcombination = new ModelCombinations();
-            var modelFilterCombinationalValues = new List<ModelFilterCombinationalValues>();
-            var dataModelValues = new List<DataModelValues>();
+            var ModelFilterCombination = new ModelFilterCombination();
+            var modelFilterCombinationalValues = new List<SampleModelFilterCombinationValue>();
+            var dataModelValues = new List<DataModelValue>();
             if (requestdto.ModelId != 0)
             {
                 var datapointviewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(requestdto.DatapointId);
@@ -608,26 +616,25 @@ namespace ESG.Application.Services
                     var modelConfiguration = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(requestdto.ModelId, ModelViewTypeEnum.Fact);
                     var modelFilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(modelConfiguration);
 
-                    modelcombination = new ModelCombinations
+                    ModelFilterCombination = new ModelFilterCombination
                     {
                         DataModelId = requestdto.ModelId,
-                        DataPointValuesId = requestdto.DatapointId,
                         CreatedBy = requestdto.UserId,
                         CreatedDate = utcNow,
                         LastModifiedBy = requestdto.UserId,
                         LastModifiedDate = utcNow,
                         State = StateEnum.active
                     };
-                    await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelcombination);
+                    await _unitOfWork.Repository<ModelFilterCombination>().AddAsync(ModelFilterCombination);
                     await _unitOfWork.SaveAsync();
                     foreach (var reqfilter in requestdto.FilterDtos)
                     {
                         var matchingFilter = modelFilters.FirstOrDefault(filter => filter.FilterId == reqfilter.TypeId);
                         if (matchingFilter != null)
                         {
-                            modelFilterCombinationalValues.Add(new ModelFilterCombinationalValues
+                            modelFilterCombinationalValues.Add(new SampleModelFilterCombinationValue
                             {
-                                ModelFilterCombinationsId = modelcombination.Id,
+                                ModelFilterCombinationsId = ModelFilterCombination.Id,
                                 DataModelFiltersId = matchingFilter.Id,
                                 DimensionsId = reqfilter.ValueId,
                                 CreatedBy = requestdto.UserId,
@@ -640,11 +647,11 @@ namespace ESG.Application.Services
                     }
                     foreach (var values in requestdto.DataDtos)
                     {
-                        dataModelValues.Add(new DataModelValues
+                        dataModelValues.Add(new DataModelValue
                         {
                             RowId = values.RowId,
                             ColumnId = values.ColumnId,
-                            CombinationId = modelcombination.Id,
+                            CombinationId = ModelFilterCombination.Id,
                             Value = values.Value,
                             CreatedBy = requestdto.UserId,
                             CreatedDate = utcNow,
@@ -658,26 +665,25 @@ namespace ESG.Application.Services
                 {
                     var modelConfiguration = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(requestdto.ModelId, ModelViewTypeEnum.Narrative);
                     var modelFilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(modelConfiguration);
-                    modelcombination = new ModelCombinations
+                    ModelFilterCombination = new ModelFilterCombination
                     {
                         DataModelId = requestdto.ModelId,
-                        DataPointValuesId = requestdto.DatapointId,
                         CreatedBy = requestdto.UserId,
                         CreatedDate = utcNow,
                         LastModifiedBy = requestdto.UserId,
                         LastModifiedDate = utcNow,
                         State = StateEnum.active
                     };
-                    await _unitOfWork.Repository<ModelCombinations>().AddAsync(modelcombination);
+                    await _unitOfWork.Repository<ModelFilterCombination>().AddAsync(ModelFilterCombination);
                     await _unitOfWork.SaveAsync();
                     foreach (var reqfilter in requestdto.FilterDtos)
                     {
                         var matchingFilter = modelFilters.FirstOrDefault(filter => filter.FilterId == reqfilter.TypeId);
                         if (matchingFilter != null)
                         {
-                            modelFilterCombinationalValues.Add(new ModelFilterCombinationalValues
+                            modelFilterCombinationalValues.Add(new SampleModelFilterCombinationValue
                             {
-                                ModelFilterCombinationsId = modelcombination.Id,
+                                ModelFilterCombinationsId = ModelFilterCombination.Id,
                                 DataModelFiltersId = matchingFilter.Id,
                                 DimensionsId = reqfilter.ValueId,
                                 CreatedBy = requestdto.UserId,
@@ -690,11 +696,11 @@ namespace ESG.Application.Services
                     }
                     foreach (var values in requestdto.DataDtos)
                     {
-                        dataModelValues.Add(new DataModelValues
+                        dataModelValues.Add(new DataModelValue
                         {
                             RowId = values.RowId,
                             ColumnId = null,
-                            CombinationId = modelcombination.Id,
+                            CombinationId = ModelFilterCombination.Id,
                             Value = values.Value,
                             CreatedBy = requestdto.UserId,
                             CreatedDate = utcNow,
@@ -705,8 +711,8 @@ namespace ESG.Application.Services
                     }
                 }
             }
-            await _unitOfWork.Repository<ModelFilterCombinationalValues>().AddRange(modelFilterCombinationalValues);
-            await _unitOfWork.Repository<DataModelValues>().AddRange(dataModelValues);
+            await _unitOfWork.Repository<SampleModelFilterCombinationValue>().AddRange(modelFilterCombinationalValues);
+            await _unitOfWork.Repository<DataModelValue>().AddRange(dataModelValues);
         }
         private async Task<DimensionTypeDto> GetRowDimensionDto(long modelId, ModelViewTypeEnum viewType)
         {
@@ -717,7 +723,7 @@ namespace ESG.Application.Services
             return new DimensionTypeDto
             {
                 DimensionTypeId = dimensionType.Id,
-                DimensionsTypeName = dimensionType.Name,
+                DimensionTypeName = dimensionType.Name,
                 DimensionValues = dimensionValues.Select(dv => new DimensionValueDto
                 {
                     DimensionValueId = dv.Id,
@@ -739,7 +745,7 @@ namespace ESG.Application.Services
             dimTypeDto = new DimensionTypeDto
             {
                 DimensionTypeId = dimensionType.Id,
-                DimensionsTypeName = dimensionType.Name,
+                DimensionTypeName = dimensionType.Name,
                 DimensionValues = dimensionValues.Select(dv => new DimensionValueDto
                 {
                     DimensionValueId = dv.Id,
@@ -748,21 +754,21 @@ namespace ESG.Application.Services
             };
             return dimTypeDto;
         }
-        private async Task<List<DimensionTypeDto>?> GetFilterDimensionsDto(long modelId, ModelViewTypeEnum viewTypeEnum)
+        private async Task<List<DimensionTypeDto>?> GetFilterDimensionDto(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var responsedto = new List<DimensionTypeDto>();
             var configurationId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(modelId, viewTypeEnum);
             if (configurationId >= 0 || configurationId != null)
             {
-                var filterDimensions = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId);
-                foreach (var filterdim in filterDimensions)
+                var filterDimension = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId);
+                foreach (var filterdim in filterDimension)
                 {
                     var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, filterdim.Id);
                     var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
                     var res = new DimensionTypeDto
                     {
                         DimensionTypeId = filterdim.Id,
-                        DimensionsTypeName = filterdim.Name,
+                        DimensionTypeName = filterdim.Name,
                         DimensionValues = dimensionValues.Select(dv => new DimensionValueDto
                         {
                             DimensionValueId = dv.Id,
@@ -785,7 +791,7 @@ namespace ESG.Application.Services
             {
                 metric.IsNarrative = true;
                 metric.MetricId = datapoint.DatapointTypeId!.Value;
-                metric.MetricCode = datapoint.DataPointType.Code;
+                metric.MetricCode = "Narrative";
             }
             else if (datapoint.UnitOfMeasureId != null)
             {
@@ -805,20 +811,20 @@ namespace ESG.Application.Services
         public async Task<DatapointSavedValuesResponseDto> GetDatapointSavedValues(DatapointSavedValuesRequestDto datapointSavedValuesRequestDto)
         {
             var response = new DatapointSavedValuesResponseDto();
-            long modelCombinationId = 0;
+            long ModelFilterCombinationId = 0;
             bool isMatch = false;
             var modelId = await _unitOfWork.DataModelRepo.GetDataModelIdByDatapointIdAndOrgId(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
             if (modelId == null)
                 throw new ArgumentNullException("There is no model linked to datapoint");
 
-            var modelCombinations = await _unitOfWork.DataModelRepo.GetModelCombinationsByModelIdandDatapointId(modelId.Id, datapointSavedValuesRequestDto.DatapointId);
-            if (modelCombinations == null || !modelCombinations.Any())
+            var ModelFilterCombinations = await _unitOfWork.DataModelRepo.GetModelFilterCombinationsByModelIdandDatapointId(modelId.Id, datapointSavedValuesRequestDto.DatapointId);
+            if (ModelFilterCombinations == null || !ModelFilterCombinations.Any())
                 throw new ArgumentNullException("there are no combinations present for that datapoinr");
             if (datapointSavedValuesRequestDto.SavedDataPointFilters == null || !datapointSavedValuesRequestDto.SavedDataPointFilters.Any())
             {
                 throw new ArgumentException("No filters provided in the request.");
             }
-            foreach (var combination in modelCombinations)
+            foreach (var combination in ModelFilterCombinations)
             {
                 isMatch = combination.ModelFilterCombinationalValues.All(combinationValue =>
                 datapointSavedValuesRequestDto.SavedDataPointFilters.Any(inputFilter =>
@@ -826,14 +832,14 @@ namespace ESG.Application.Services
                 inputFilter.ValueId == combinationValue.DimensionsId));
                 if (isMatch)
                 {
-                    modelCombinationId = combination.Id;
+                    ModelFilterCombinationId = combination.Id;
                     break;
                 }
                 if (!isMatch)
                     throw new InvalidOperationException("No matching model filter combination Values found with ");
             }
             
-            var datamodelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByCombinationId(modelCombinationId);
+            var datamodelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByCombinationId(ModelFilterCombinationId);
             var datapointdetails = await GetDatapointMetric(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
             response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
             response.Name = datapointdetails.Name;
