@@ -30,6 +30,8 @@ public partial class DataModel
 
     public virtual ICollection<ModelDatapoint> ModelDatapoints { get; set; } = new List<ModelDatapoint>();
 
+    public virtual ICollection<DataModelValue> DataModelValues { get; set; } = new List<DataModelValue>();
+
     public virtual ICollection<ModelDimensionType> ModelDimensionTypes { get; set; } = new List<ModelDimensionType>();
 
     public virtual ICollection<ModelFilterCombination> ModelFilterCombinations { get; set; } = new List<ModelFilterCombination>();

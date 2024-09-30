@@ -190,15 +190,15 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return viewType;
         }
 
-        public async Task<IEnumerable<DataModelFilter>> GetModelFiltersByConfigId(long configId)
+        public async Task<List<long>> GetDatapointsByViewType(List<long> datapointIds)
         {
-            var filters = await _context.DataModelFilters
+            var narrativeDatapoints = await _context.DataPointValue
                 .AsNoTracking()
-                .Where(md => md.ModelConfigurationId == configId)
+                .Where(md => datapointIds.Contains(md.Id) && md.IsNarrative == true) 
+                .Select(md => md.Id) 
                 .ToListAsync();
-            return filters;
+            return narrativeDatapoints;
         }
-
         public async Task<DataPointValue> GetDatapointMetric(long datapointId, long organizationId)
         {
             var dataModel = await _context.DataPointValue
@@ -209,17 +209,6 @@ namespace ESG.Infrastructure.Persistence.DataModel
                .Where(a => a.OrganizationId == organizationId && a.Id == datapointId)
                .FirstOrDefaultAsync();
             return dataModel;
-        }
-
-        public async Task<IEnumerable<ModelFilterCombination>> GetModelCombinationsByModelIdandDatapointId(long modelId, long datapointId)
-        {
-            var modelCombinations = await _context.ModelFilterCombinations
-                    .AsNoTracking()
-                    .Include(a => a.ModelFilterCombinationalValues)
-                    .ThenInclude(cv => cv.DataModelFilters) 
-                    .Where(dp => dp.DataModelId == modelId)
-                    .ToListAsync();
-            return modelCombinations;
         }
 
 
@@ -244,14 +233,24 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return modelvalues;
         }
 
-        Task<IEnumerable<DataModelFilter>> IDataModelRepo.GetModelFiltersByConfigId(long configId)
+        public async Task<IEnumerable<DataModelFilter>> GetModelFiltersByConfigId(long configId)
         {
-            throw new NotImplementedException();
+            var filters = await _context.DataModelFilters
+                .AsNoTracking()
+                .Where(md => md.ModelConfigurationId == configId)
+                .ToListAsync();
+            return filters;
         }
 
-        public Task<IEnumerable<ModelFilterCombination>> GetModelFilterCombinationsByModelIdandDatapointId(long modelId, long datapointId)
+        public async Task<IEnumerable<ModelFilterCombination>> GetModelFilterCombinationsByModelIdandDatapointId(long modelId, long datapointId)
         {
-            throw new NotImplementedException();
+            var modelCombinations = await _context.ModelFilterCombinations
+                    .AsNoTracking()
+                    .Include(a => a.ModelFilterCombinationalValues)
+                    .ThenInclude(cv => cv.DataModelFilters)
+                    .Where(dp => dp.DataModelId == modelId)
+                    .ToListAsync();
+            return modelCombinations;
         }
 
 

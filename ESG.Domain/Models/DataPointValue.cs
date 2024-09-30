@@ -26,10 +26,6 @@ public partial class DataPointValue
 
     public long? DisclosureRequirementId { get; set; }
 
-    public long? DataPointValueId { get; set; }
-
-    public long? ModelCombinationsId { get; set; }
-
     public long? UserId { get; set; }
 
     public long OrganizationId { get; set; }
@@ -48,8 +44,6 @@ public partial class DataPointValue
 
     public virtual ICollection<DataModelValue> DataModelValues { get; set; } = new List<DataModelValue>();
 
-    public virtual DataPointValue? DataPointValueNavigation { get; set; }
-
     public virtual DataPointType? DatapointType { get; set; }
 
     public virtual ICollection<DatapointTypeTranslation> DatapointTypeTranslations { get; set; } = new List<DatapointTypeTranslation>();
@@ -60,11 +54,7 @@ public partial class DataPointValue
 
     public virtual ICollection<Hierarchy> Hierarchies { get; set; } = new List<Hierarchy>();
 
-    public virtual ICollection<DataPointValue> InverseDataPointValueNavigation { get; set; } = new List<DataPointValue>();
-
     public virtual Language Language { get; set; } = null!;
-
-    public virtual ModelFilterCombination? ModelCombinations { get; set; }
 
     public virtual ICollection<ModelDatapoint> ModelDatapoints { get; set; } = new List<ModelDatapoint>();
 

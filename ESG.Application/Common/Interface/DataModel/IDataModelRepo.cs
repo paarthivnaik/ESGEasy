@@ -24,12 +24,14 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<long?> GetModelDimensionTypeIdByDimensiionTypeID(long modelId,long dimensionTypeId);
         Task<List<ModelConfiguration>> GetConfigurationViewTypesForDataModel(long datamodelId);
         Task<bool?> GetDatapointViewType(long datapointId);
+        Task<List<long>> GetDatapointsByViewType(List<long> datapointIds);
         Task<IEnumerable<DataModelFilter>> GetModelFiltersByConfigId(long configId);
         Task<DataPointValue> GetDatapointMetric(long datapointId, long organizationId);
         Task<IEnumerable<ModelFilterCombination>> GetModelFilterCombinationsByModelIdandDatapointId(long modelId, long datapointId);
         Task<IEnumerable<DataModelValue>> GetDataModelValuesByCombinationId(long combinationId);
 
         Task<List<ModelDimensionType>?> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId);
+       // Task<List<ModelFilterCombination>?> GetModelFIlterCombinationsByModelId(long modelId, long orgId);
         //Task<List<DimensionType>?> GetDimensionTypesByModelId(long modelId);
 
     }

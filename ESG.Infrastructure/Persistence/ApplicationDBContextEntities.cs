@@ -1,4 +1,5 @@
 ﻿using ESG.Domain.Models;
+using ESG.Infrastructure.Persistence.DataBaseSeeder;
 using Microsoft.EntityFrameworkCore;
 using NetTopologySuite.Geometries;
 using System;
@@ -85,6 +86,7 @@ namespace ESG.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            SeedingCreation(modelBuilder);
             modelBuilder.Entity<Currency>(entity =>
             {
                 entity.ToTable("Currency");
@@ -130,17 +132,29 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasIndex(e => e.RowId, "IX_DataModelValues_RowId");
 
+                entity.HasIndex(e => e.DataModelId, "fki_FK_DataModelValues_DataModel_DataModelId");
+
                 entity.HasIndex(e => e.DataPointValuesId, "fki_FK_DataPointValues_DatapointValuesId");
+
+                entity.HasIndex(e => e.DataModelId, "idx_datamodelvalues_datamodel_datamodelid");
 
                 entity.HasIndex(e => e.DataPointValuesId, "idx_datamodelvalues_datapointvaluesid");
 
                 entity.HasIndex(e => e.Id, "idx_datamodelvalues_id");
 
+                entity.HasIndex(e => new { e.RowId, e.ColumnId, e.CombinationId, e.DataPointValuesId }, "unq_contraint_oncombinational_datapoint").IsUnique();
+
                 entity.HasOne(d => d.AccountableUser).WithMany(p => p.DataModelValueAccountableUsers).HasForeignKey(d => d.AccountableUserId);
 
                 entity.HasOne(d => d.Column).WithMany(p => p.DataModelValueColumns).HasForeignKey(d => d.ColumnId);
 
-                entity.HasOne(d => d.Combination).WithMany(p => p.DataModelValues).HasForeignKey(d => d.CombinationId);
+                entity.HasOne(d => d.Combination).WithMany(p => p.DataModelValues)
+                    .HasForeignKey(d => d.CombinationId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(d => d.DataModel).WithMany(p => p.DataModelValues)
+                    .HasForeignKey(d => d.DataModelId)
+                    .HasConstraintName("FK_DataModelValues_DataModel_DataModelId");
 
                 entity.HasOne(d => d.DataPointValues).WithMany(p => p.DataModelValues)
                     .HasForeignKey(d => d.DataPointValuesId)
@@ -153,6 +167,8 @@ namespace ESG.Infrastructure.Persistence
 
             modelBuilder.Entity<DataPointType>(entity =>
             {
+                entity.ToTable("DataPointType");
+
                 entity.HasIndex(e => e.LanguageId, "IX_DataPointTypes_LanguageId");
 
                 entity.HasIndex(e => e.OrganizationId, "IX_DataPointTypes_OrganizationId");
@@ -166,17 +182,15 @@ namespace ESG.Infrastructure.Persistence
 
             modelBuilder.Entity<DataPointValue>(entity =>
             {
-                entity.HasIndex(e => e.CurrencyId, "IX_DataPointValues_CurrencyId");
+                entity.ToTable("DataPointValue");
 
-                entity.HasIndex(e => e.DataPointValueId, "IX_DataPointValues_DataPointValueId");
+                entity.HasIndex(e => e.CurrencyId, "IX_DataPointValues_CurrencyId");
 
                 entity.HasIndex(e => e.DatapointTypeId, "IX_DataPointValues_DatapointTypeId");
 
                 entity.HasIndex(e => e.DisclosureRequirementId, "IX_DataPointValues_DisclosureRequirementId");
 
                 entity.HasIndex(e => e.LanguageId, "IX_DataPointValues_LanguageId");
-
-                entity.HasIndex(e => e.ModelCombinationsId, "IX_DataPointValues_ModelCombinationsId");
 
                 entity.HasIndex(e => e.OrganizationId, "IX_DataPointValues_OrganizationId");
 
@@ -188,8 +202,6 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasOne(d => d.Currency).WithMany(p => p.DataPointValues).HasForeignKey(d => d.CurrencyId);
 
-                entity.HasOne(d => d.DataPointValueNavigation).WithMany(p => p.InverseDataPointValueNavigation).HasForeignKey(d => d.DataPointValueId);
-
                 entity.HasOne(d => d.DatapointType).WithMany(p => p.DataPointValues).HasForeignKey(d => d.DatapointTypeId);
 
                 entity.HasOne(d => d.DisclosureRequirement).WithMany(p => p.DataPointValues)
@@ -197,8 +209,6 @@ namespace ESG.Infrastructure.Persistence
                     .HasConstraintName("FK_DataPointValues_DisclosureRequirement_DisclosureRequirement~");
 
                 entity.HasOne(d => d.Language).WithMany(p => p.DataPointValues).HasForeignKey(d => d.LanguageId);
-
-                entity.HasOne(d => d.ModelCombinations).WithMany(p => p.DataPointValues).HasForeignKey(d => d.ModelCombinationsId);
 
                 entity.HasOne(d => d.Organization).WithMany(p => p.DataPointValues).HasForeignKey(d => d.OrganizationId);
 
@@ -590,6 +600,7 @@ namespace ESG.Infrastructure.Persistence
 
             OnModelCreatingPartial(modelBuilder);
         }
+
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
