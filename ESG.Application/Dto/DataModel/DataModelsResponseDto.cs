@@ -17,7 +17,7 @@ namespace ESG.Application.Dto.DataModel
     public class FactViewDto
     {
         public DimensionTypeDto RowDimension { get; set; }
-        public DimensionTypeDto ColumnDimension { get; set; }
+        public DimensionTypeDto? ColumnDimension { get; set; }
         public List<DimensionTypeDto>? FilterDimension { get; set; }
     }
 
@@ -31,7 +31,7 @@ namespace ESG.Application.Dto.DataModel
     {
         public long DimensionTypeId { get; set; }
         public string DimensionTypeName { get; set; } 
-        public List<DimensionValueDto> DimensionValues { get; set; } 
+        public List<DimensionValueDto>? DimensionValues { get; set; } 
     }
 
     public class DimensionValueDto

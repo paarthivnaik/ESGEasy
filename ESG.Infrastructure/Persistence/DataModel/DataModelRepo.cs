@@ -152,24 +152,37 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return modeldimensionTypeId;
         }
 
-        public async Task<IEnumerable<(long Id, string Name)>> GetFilterDimensionTypeByConfigurationId(long configurationId)
+        public async Task<List<(long Id, string? Name)>?> GetFilterDimensionTypeByConfigurationId(long configurationId)
         {
-            var result = await _context.DataModelFilters
-                 .AsNoTracking()
-                 .Where(md => md.ModelConfigurationId == configurationId)
-                 .Include(a => a.DimensionType)
-                 .Select(md => new
-                 {
-                     Id = md.DimensionType.Id,
-                     Name = md.DimensionType.ShortText
-                 })
-                 .ToListAsync();
-            if (result != null)
+            if (_context.DataModelFilters == null)
             {
-                return result.Select(x => (x.Id, x.Name));
+                return null; 
             }
-            return Enumerable.Empty<(long, string)>();
+
+            var result = await _context.DataModelFilters
+                .AsNoTracking()
+                .Where(md => md.ModelConfigurationId == configurationId)
+                .Include(a => a.DimensionType)
+                .Select(md => new
+                {
+                    Id = (long?)md.FilterId,  
+                    Name = md.Filter.ShortText
+                })
+                .ToListAsync();
+
+            if (result == null || !result.Any())
+            {
+                return null;
+            }
+
+            return result
+                .Where(x => x.Id.HasValue && !string.IsNullOrEmpty(x.Name))
+                .Select(x => (x.Id.Value, x.Name))
+                .ToList();
         }
+
+
+
         public async Task<List<ModelConfiguration>> GetConfigurationViewTypesForDataModel(long datamodelId)
         {
             var modeldimensionTypeId = await _context.ModelConfigurations
@@ -246,14 +259,75 @@ namespace ESG.Infrastructure.Persistence.DataModel
         {
             var modelCombinations = await _context.ModelFilterCombinations
                     .AsNoTracking()
-                    .Include(a => a.ModelFilterCombinationalValues)
+                    .Include(a => a.SampleModelFilterCombinationValues)
                     .ThenInclude(cv => cv.DataModelFilters)
                     .Where(dp => dp.DataModelId == modelId)
                     .ToListAsync();
             return modelCombinations;
         }
+        public async Task<List<long>?> GetModelFilterCombinations(long modelId)
+        {
+            return await _context.ModelFilterCombinations
+                .Where(mfc => mfc.DataModelId == modelId)
+                .Include(mfc => mfc.ModelFilterCombinationalValues)
+                .Select(a => a.Id)
+                .ToListAsync();
+        }
 
+        public async Task<List<DataModelValue>?> GetDataModelValue(long modelId, long datapointId, List<long> rowId, List<long?> columnId, long? filterCombinationId)
+        {
+            return await _context.DataModelValues
+                .Where(dmv =>
+                    dmv.DataModelId == modelId &&
+                    dmv.DataPointValuesId == datapointId &&
+                    rowId.Contains(dmv.RowId) &&
+                    (columnId.Contains(dmv.ColumnId) || (dmv.ColumnId == null && columnId.Contains(null))) &&
+                    dmv.CombinationId == filterCombinationId)
+                .ToListAsync();
+        }
+        public async Task<List<DataModelFilter>?> GetDataModelFiltersByConfigId(long configId)
+        {
+            return await _context.DataModelFilters
+                .Where(dmf => dmf.ModelConfigurationId == configId)
+                .ToListAsync();
+        }
+        public async Task<List<SampleModelFilterCombinationValue>?> GetDataModelCombinationalValuesByModelFilterCombinationIds(List<long> combinationalIds)
+        {
+            return await _context.SampleModelFilterCombinationValues
+                .Where(dmf => combinationalIds.Contains(dmf.ModelFilterCombinationsId))
+                .ToListAsync();
+        }
+        public async Task<IEnumerable<(long Id, string Name)>> GetModelDimensionValuesByModelDimTypeId(List<long?> modelDimensionTypeIds)
+        {
+            var result = await _context.ModelDimensionValues
+                .AsNoTracking()
+                .Where(md => modelDimensionTypeIds.Contains(md.ModelDimensionTypesId))
+                .Include(a => a.Dimensions)
+                .Select(md => new
+                {
+                    Id = md.Dimensions.Id,
+                    Name = md.Dimensions.ShortText
+                })
+                .ToListAsync();
 
-        
+            return result.Any() ? result.Select(x => (x.Id, x.Name)) : Enumerable.Empty<(long, string)>();
+        }
+
+        public async Task<IEnumerable<(long Id, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId)
+        {
+            var result = await _context.ModelDimensionTypes
+                .AsNoTracking()
+                .Where(md => md.DataModelId == modelId && md.DataModel.OrganizationId == organizationId)
+                .Include(a => a.DimensionType)
+                .Select(md => new
+                {
+                    Id = md.DimensionType.Id,
+                    Name = md.DimensionType.ShortText
+                })
+                .ToListAsync();
+
+            return result.Any() ? result.Select(x => (x.Id, x.Name)) : Enumerable.Empty<(long, string)>();
+        }
+
     }
 }

@@ -17,7 +17,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<Domain.Models.DataModel?> GetDataModelIdByDatapointIdAndOrgId(long datapointId, long orgId);
         Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum);
         Task<(long Id, string Name)> GetColumnDimensionTypeIdAndNameByDimensionTypeId(long typeId);
-        Task<IEnumerable<(long Id, string Name)>> GetFilterDimensionTypeByConfigurationId(long configurationId);
+        Task<List<(long Id, string? Name)>?> GetFilterDimensionTypeByConfigurationId(long configurationId);
         Task<long?> GetColumnIdInModelCnfigurationByModelIdAndViewType(long modelId, ModelViewTypeEnum viewTypeEnum);
         Task<IEnumerable<(long Id, string Name)>> GetDimensionValuesByTypeId(long? modelDimensionTypeId);
         Task<long> GetModelconfigurationIdByModelIdAndViewType(long modelId, ModelViewTypeEnum viewTypeEnum);
@@ -31,8 +31,11 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<IEnumerable<DataModelValue>> GetDataModelValuesByCombinationId(long combinationId);
 
         Task<List<ModelDimensionType>?> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId);
-       // Task<List<ModelFilterCombination>?> GetModelFIlterCombinationsByModelId(long modelId, long orgId);
-        //Task<List<DimensionType>?> GetDimensionTypesByModelId(long modelId);
-
+        Task<List<DataModelValue>?> GetDataModelValue(long modelId, long datapointId, List<long> rowId, List<long?> columnId, long? filterCombinationId);
+        Task<List<long>?> GetModelFilterCombinations(long modelId);
+        Task<List<DataModelFilter>?> GetDataModelFiltersByConfigId(long configId);
+        Task<List<SampleModelFilterCombinationValue>?> GetDataModelCombinationalValuesByModelFilterCombinationIds(List<long> combinationalIds);
+        Task<IEnumerable<(long Id, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId);
+        Task<IEnumerable<(long Id, string Name)>> GetModelDimensionValuesByModelDimTypeId(List<long?> modelDimensionTypeIds);
     }
 }
