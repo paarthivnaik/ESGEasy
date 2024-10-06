@@ -577,7 +577,6 @@ namespace ESG.Application.Services
                 }
                 else if (datapointviewtype == true)
                 {
-
                     responseobj.RowDimensionType = await GetRowDimension(datamodel.Id, ModelViewTypeEnum.Narrative);
                     responseobj.FilterDimensionTypes = await GetFilterDimension(datamodel.Id, ModelViewTypeEnum.Narrative);
                 } 
@@ -657,7 +656,7 @@ namespace ESG.Application.Services
                 throw new ArgumentNullException($"Datapoint Id {requestDto.DatapointId} viewtype is set to null");
             var modelconfiguration = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType
                 (requestDto.ModelId, (datapointViewType == true) ? ModelViewTypeEnum.Narrative : ModelViewTypeEnum.Fact);
-            if (requestDto.FilterDtos != null)
+            if (requestDto.FilterDtos != null || requestDto.FilterDtos.Count() != 0)
             {
                 var modelCombinations = await _unitOfWork.DataModelRepo.GetModelFilterCombinations(requestDto.ModelId);
                 //var datamodelfilters = await _unitOfWork.DataModelRepo.GetDataModelFiltersByConfigId(modelconfiguration);
@@ -681,7 +680,7 @@ namespace ESG.Application.Services
                 }
                 var rowIds = requestDto.DataDtos.Select(d => d.RowId).ToList();
                 var columnIds = requestDto.DataDtos.Select(d => d.ColumnId).ToList();
-                var existingDataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValue(requestDto.ModelId,requestDto.DatapointId, rowIds, columnIds, combinationId);
+                var existingDataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValues(requestDto.ModelId,requestDto.DatapointId, rowIds, columnIds, combinationId);
                 foreach (var dataDto in requestDto.DataDtos)
                 {
                     var existingValue = existingDataModelValues.FirstOrDefault(dmv =>
@@ -697,12 +696,27 @@ namespace ESG.Application.Services
                         throw new SystemException($"no such row column combination found for row - {dataDto.RowId} and column - {dataDto.ColumnId}");
                     }
                 }
+                var amendment = new Amendment();
+                var existingAmendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(requestDto.DatapointId, combinationId);
+                if (existingAmendment != null)
+                {
+                    existingAmendment.Value = requestDto.Amendment;
+                    await _unitOfWork.Repository<Amendment>().Update(existingAmendment);
+                }
+                else
+                {
+                    amendment.DatapointId = requestDto.DatapointId;
+                    amendment.FilterCombinationId = combinationId;
+                    amendment.Value = requestDto.Amendment;
+                    await _unitOfWork.Repository<Amendment>().Add(amendment);
+                }
+                
             }
             else
             {
                 var rowIds = requestDto.DataDtos.Select(d => d.RowId).ToList();
                 var columnIds = requestDto.DataDtos.Select(d => d.ColumnId).ToList();
-                var existingDataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValue(requestDto.ModelId, requestDto.DatapointId, rowIds, columnIds, null);
+                var existingDataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValues(requestDto.ModelId, requestDto.DatapointId, rowIds, columnIds, null);
                 foreach (var dataDto in requestDto.DataDtos)
                 {
                     var existingValue = existingDataModelValues.FirstOrDefault(dmv =>
@@ -717,6 +731,20 @@ namespace ESG.Application.Services
                     {
                         throw new SystemException($"no such row column combination found for row - {dataDto.RowId} and column - {dataDto.ColumnId}");
                     }
+                }
+                var amendment = new Amendment();
+                var existingAmendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(requestDto.DatapointId, null);
+                if (existingAmendment != null)
+                {
+                    existingAmendment.Value = requestDto.Amendment;
+                    await _unitOfWork.Repository<Amendment>().Update(existingAmendment);
+                }
+                else
+                {
+                    amendment.DatapointId = requestDto.DatapointId;
+                    amendment.FilterCombinationId = null;
+                    amendment.Value = requestDto.Amendment;
+                    await _unitOfWork.Repository<Amendment>().Add(amendment);
                 }
             }
             await _unitOfWork.SaveAsync();
@@ -1043,29 +1071,53 @@ namespace ESG.Application.Services
             return response;
         }
 
-        public Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId)
-        {
-            throw new NotImplementedException();
-        }
-
-        //public async Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId)
+        //public Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId)
         //{
-        //    var responsedto = new GetDataModelValuesForAssigningUsersResponseDto();
-        //    var dimensionTypes = await _unitOfWork.DataModelRepo.GetModelDimensionTypesByModelDimTypeId(ModelId, organizationId);
-        //    var dimensionValues = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByModelDimTypeId(
-        //        dimensionTypes.Select(a => (long?)a.Id).ToList());
-        //    var modelDimenstionTypesWithValues = new List<DataModelDimenstionTypesWithValues>();
-        //    foreach (var dimtype in dimensionTypes)
-        //    {
-        //        var modeldimtype = new DataModelDimenstionTypesWithValues
-        //        {
-        //            TypeId = dimtype.Id,
-        //            TypeName = dimtype.Name,
-        //            ValueIds = dimensionValues
-        //        };
-        //    }
-
-
+        //    throw new NotImplementedException();
         //}
+
+        public async Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId)
+        {
+            var responsedto = new GetDataModelValuesForAssigningUsersResponseDto();
+            var dimensionTypes = await _unitOfWork.DataModelRepo.GetModelDimensionTypesByModelDimTypeId(ModelId, organizationId);
+            var dimensionValues = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByModelDimTypeId(
+                dimensionTypes.Select(a => (long?)a.Id).ToList());
+            var dataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(ModelId, organizationId);
+            var modelDimenstionTypesWithValues = new List<DataModelDimenstionTypesWithValues>();
+            var modelDatamodelValues = new List<DataModelValuesForAssigning>();
+            foreach (var dimtype in dimensionTypes)
+            {
+                var valueIds = dimensionValues
+                    .Where(dv => dv.TypeId == dimtype.Id)
+                    .Select(dv => new DataModelDimenstionValues
+                    {
+                        DimensionValueId = dv.Id,
+                        DimensionValueName = dv.Name 
+                    })
+                    .ToList();
+                var modeldimtype = new DataModelDimenstionTypesWithValues
+                {
+                    TypeId = dimtype.Id,
+                    TypeName = dimtype.Name,
+                    ValueIds = valueIds, 
+                };
+                modelDimenstionTypesWithValues.Add(modeldimtype);
+            }
+            responsedto.DataModelDimenstionTypesWithValues = modelDimenstionTypesWithValues;
+            foreach (var datamodelvalue in dataModelValues)
+            {
+                var rowdimdto = dimensionValues.Where(a => a.Id == datamodelvalue.RowId).FirstOrDefault();
+                var coldimdto = dimensionValues.Where(a => a.Id == datamodelvalue.ColumnId).FirstOrDefault();
+
+                var modelvalue = new DataModelValuesForAssigning
+                {
+                    //DatapointId = datamodelvalue.DataPointValuesId,
+                    //DatapointName = datamodelvalue.DataPointValues.Name,
+                    //DatapointCode = datamodelvalue.DataPointValues.Code,
+                };
+            }
+
+            return responsedto;
+        }
     }
 }

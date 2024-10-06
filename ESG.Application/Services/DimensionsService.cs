@@ -64,7 +64,7 @@ namespace ESG.Application.Services
             var dimension = await _unitOfWork.Repository<Dimension>().Get(uom => uom.Id == request.Id);
             if (dimension == null)
             {
-                throw new KeyNotFoundException($"Unit of Measure with ID {dimension.Id} not found.");
+                throw new KeyNotFoundException($"Dimension with ID {dimension.Id} not found.");
             }
             dimension.State = ESG.Domain.Enum.StateEnum.deleted;
             await _unitOfWork.Repository<Dimension>().Update(dimension);
@@ -89,9 +89,9 @@ namespace ESG.Application.Services
                 .Get(u => u.Id == dimentionsRequest.Id && u.LanguageId == dimentionsRequest.LanguageId);
             var translationsData = await _unitOfWork.Repository<DimensionTranslation>()
                 .Get(uom => uom.DimensionsId == dimentionsRequest.Id && uom.LanguageId == dimentionsRequest.LanguageId);
-            if (existingData == null || translationsData == null)
+            if (existingData == null)
             {
-                throw new KeyNotFoundException($"Unit of Measure with ID {dimentionsRequest.Id} not found.");
+                throw new KeyNotFoundException($"Dimension with ID {dimentionsRequest.Id} not found.");
             }
             if (existingData != null)
             {

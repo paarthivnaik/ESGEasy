@@ -10,9 +10,9 @@ namespace ESG.Infrastructure.Persistence
     public partial class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {
-        }
+        //public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        //{
+        //}
         
         public async Task<int> SaveChangesAsync()
         {

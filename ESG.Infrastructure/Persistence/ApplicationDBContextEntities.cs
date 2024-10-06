@@ -1,6 +1,7 @@
 ﻿using ESG.Domain.Models;
 using ESG.Infrastructure.Persistence.DataBaseSeeder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using NetTopologySuite.Geometries;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,14 @@ namespace ESG.Infrastructure.Persistence
 {
     public partial class ApplicationDbContext
     {
+        private readonly IConfiguration _configuration;
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IConfiguration configuration)
+        : base(options)
+        {
+            _configuration = configuration;
+        }
 
+        public virtual DbSet<Amendment> Amendments { get; set; }
         public virtual DbSet<AuditLog> AuditLogs { get; set; }
 
         public virtual DbSet<Currency> Currencies { get; set; }
@@ -81,12 +89,38 @@ namespace ESG.Infrastructure.Persistence
         public virtual DbSet<UserRole> UserRoles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost;Database=ESGEasy;Username=postgres;Password=root;Include Error Detail=true;");
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connectionString = _configuration.GetConnectionString("DefaultConnection");
+                optionsBuilder.UseNpgsql(connectionString);
+            }
+        }
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+//        => optionsBuilder.UseNpgsql("Host=localhost;Database=ESGEasy;Username=postgres;Password=root;Include Error Detail=true;");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             SeedingCreation(modelBuilder);
+            modelBuilder.Entity<Amendment>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("Amendments_pkey");
+
+                entity.HasIndex(e => e.FilterCombinationId, "fki_FK_Amendments_Combinations_CombinationId");
+
+                entity.HasIndex(e => e.DatapointId, "fki_FK_Amendments_DatapointValues_DatapointId");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(d => d.Datapoint).WithMany(p => p.Amendments)
+                    .HasForeignKey(d => d.DatapointId)
+                    .HasConstraintName("FK_Amendments_DatapointValues_DatapointId");
+
+                entity.HasOne(d => d.FilterCombination).WithMany(p => p.Amendments)
+                    .HasForeignKey(d => d.FilterCombinationId)
+                    .HasConstraintName("FK_Amendments_Combinations_CombinationId");
+            });
+
             modelBuilder.Entity<Currency>(entity =>
             {
                 entity.ToTable("Currency");
@@ -134,6 +168,10 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasIndex(e => e.DataModelId, "fki_FK_DataModelValues_DataModel_DataModelId");
 
+                entity.HasIndex(e => e.Consult, "fki_FK_DataModelValues_Users_Consult");
+
+                entity.HasIndex(e => e.Inform, "fki_FK_DataModelValues_Users_Inform");
+
                 entity.HasIndex(e => e.DataPointValuesId, "fki_FK_DataPointValues_DatapointValuesId");
 
                 entity.HasIndex(e => e.DataModelId, "idx_datamodelvalues_datamodel_datamodelid");
@@ -152,6 +190,8 @@ namespace ESG.Infrastructure.Persistence
                     .HasForeignKey(d => d.CombinationId)
                     .OnDelete(DeleteBehavior.Cascade);
 
+                entity.HasOne(d => d.ConsultNavigation).WithMany(p => p.DataModelValueConsultNavigations).HasForeignKey(d => d.Consult);
+
                 entity.HasOne(d => d.DataModel).WithMany(p => p.DataModelValues)
                     .HasForeignKey(d => d.DataModelId)
                     .HasConstraintName("FK_DataModelValues_DataModel_DataModelId");
@@ -159,6 +199,8 @@ namespace ESG.Infrastructure.Persistence
                 entity.HasOne(d => d.DataPointValues).WithMany(p => p.DataModelValues)
                     .HasForeignKey(d => d.DataPointValuesId)
                     .HasConstraintName("FK_DataPointValues_DatapointValuesId");
+
+                entity.HasOne(d => d.InformNavigation).WithMany(p => p.DataModelValueInformNavigations).HasForeignKey(d => d.Inform);
 
                 entity.HasOne(d => d.ResponsibleUser).WithMany(p => p.DataModelValueResponsibleUsers).HasForeignKey(d => d.ResponsibleUserId);
 

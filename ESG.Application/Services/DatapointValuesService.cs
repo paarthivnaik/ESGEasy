@@ -83,7 +83,7 @@ namespace ESG.Application.Services
             var dataPoint = await _unitOfWork.Repository<DataPointValue>().Get(uom => uom.Id == id);
             if (dataPoint == null)
             {
-                throw new KeyNotFoundException($"Unit of Measure with ID {dataPoint.Id} not found.");
+                throw new KeyNotFoundException($"Datapoint with ID {dataPoint.Id} not found.");
             }
             dataPoint.State = Domain.Enum.StateEnum.deleted;
             await _unitOfWork.Repository<DataPointValue>().Update(dataPoint);

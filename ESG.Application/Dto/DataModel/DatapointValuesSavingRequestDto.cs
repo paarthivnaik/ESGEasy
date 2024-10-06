@@ -12,6 +12,7 @@ namespace ESG.Application.Dto.DataModel
         public long DatapointId { get; set; }
         public long ModelId { get; set; }
         public long OrganizationId { get; set; }
+        public string? Amendment { get; set; }
         public List<FilterDto>? FilterDtos { get; set; }
         public List<DataDto> DataDtos { get; set; }
     }
