@@ -47,7 +47,7 @@ namespace ESG.API.Controllers
         {
             return await _dataModelService.GetDatapointSavedValues(datapointSavedValuesRequestDto);
         }
-        [HttpPost("GetDataModelValuesForAssigningUsers")]
+        [HttpGet("GetDataModelValuesForAssigningUsers")]
         public async Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long dataModelId, long organizationId)
         {
             return await _dataModelService.GetDataModelValuesForAssigningUsers(dataModelId, organizationId);

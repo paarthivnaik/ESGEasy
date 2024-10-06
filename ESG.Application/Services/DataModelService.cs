@@ -1027,20 +1027,20 @@ namespace ESG.Application.Services
             bool isMatch = false;
             var modelId = await _unitOfWork.DataModelRepo.GetDataModelIdByDatapointIdAndOrgId(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
             if (modelId == null)
-                throw new ArgumentNullException("There is no model linked to datapoint");
-
+                //throw new ArgumentNullException("There is no model linked to datapoint");
+                return response;
             var ModelFilterCombinations = await _unitOfWork.DataModelRepo.GetModelFilterCombinationsByModelIdandDatapointId(modelId.Id, datapointSavedValuesRequestDto.DatapointId);
             if (ModelFilterCombinations == null || !ModelFilterCombinations.Any())
-                throw new ArgumentNullException("there are no combinations present for that datapoinr");
+                //throw new ArgumentNullException("there are no combinations present for that datapoinr");
+                return response;
             if (datapointSavedValuesRequestDto.SavedDataPointFilters == null || !datapointSavedValuesRequestDto.SavedDataPointFilters.Any())
-            {
-                throw new ArgumentException("No filters provided in the request.");
-            }
+                //throw new ArgumentException("No filters provided in the request.");
+                return response;
             foreach (var combination in ModelFilterCombinations)
             {
-                isMatch = combination.ModelFilterCombinationalValues.All(combinationValue =>
+                isMatch = combination.SampleModelFilterCombinationValues.All(combinationValue =>
                 datapointSavedValuesRequestDto.SavedDataPointFilters.Any(inputFilter =>
-                //inputFilter.TypeId == combinationValue.DataModelFilters.FilterId &&  
+                inputFilter.TypeId == combinationValue.DataModelFilters.FilterId &&  
                 inputFilter.ValueId == combinationValue.DimensionsId));
                 if (isMatch)
                 {
@@ -1048,9 +1048,11 @@ namespace ESG.Application.Services
                     break;
                 }
                 if (!isMatch)
-                    throw new InvalidOperationException("No matching model filter combination Values found with ");
+                    //throw new InvalidOperationException("No matching model filter combination Values found with ");
+                    return response;
             }
-            
+            var amendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(datapointSavedValuesRequestDto.DatapointId, ModelFilterCombinationId);
+            response.Amendment = amendment?.Value;
             var datamodelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByCombinationId(ModelFilterCombinationId);
             var datapointdetails = await GetDatapointMetric(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
             response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
