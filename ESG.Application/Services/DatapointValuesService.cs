@@ -78,21 +78,21 @@ namespace ESG.Application.Services
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task DeleteDatapoint(long id)
+        public async Task DeleteDatapoint(DatapointValueDeleteRequestDto datapointValueDeleteRequestDto)
         {
-            var dataPoint = await _unitOfWork.Repository<DataPointValue>().Get(uom => uom.Id == id);
+            var dataPoint = await _unitOfWork.Repository<DataPointValue>().Get(uom => uom.Id == datapointValueDeleteRequestDto.DatapointId);
             if (dataPoint == null)
             {
                 throw new KeyNotFoundException($"Datapoint with ID {dataPoint.Id} not found.");
             }
-            dataPoint.State = Domain.Enum.StateEnum.deleted;
+            dataPoint.State = datapointValueDeleteRequestDto.State;
             await _unitOfWork.Repository<DataPointValue>().Update(dataPoint);
             await _unitOfWork.SaveAsync();
         }
 
         public async Task<IEnumerable<DataPointValueResponseDto>> GetAll()
         {
-            var DataPointValue = await _unitOfWork.Repository<DataPointValue>().GetAll();
+            var DataPointValue = await _unitOfWork.Repository<DataPointValue>().GetAll(a => a.State == Domain.Enum.StateEnum.active);
             var list = _mapper.Map<IEnumerable<DataPointValueResponseDto>>(DataPointValue);
             return list;
         }

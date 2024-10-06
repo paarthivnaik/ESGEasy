@@ -41,7 +41,7 @@ public partial class DataPointValue
     public DateTime? LastModifiedDate { get; set; }
 
     public virtual Currency? Currency { get; set; }
-
+    public virtual ICollection<Amendment> Amendments { get; set; } = new List<Amendment>();
     public virtual ICollection<DataModelValue> DataModelValues { get; set; } = new List<DataModelValue>();
 
     public virtual DataPointType? DatapointType { get; set; }

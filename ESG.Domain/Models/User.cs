@@ -34,6 +34,10 @@ public partial class User
 
     public virtual ICollection<DataModelValue> DataModelValueAccountableUsers { get; set; } = new List<DataModelValue>();
 
+    public virtual ICollection<DataModelValue> DataModelValueConsultNavigations { get; set; } = new List<DataModelValue>();
+
+    public virtual ICollection<DataModelValue> DataModelValueInformNavigations { get; set; } = new List<DataModelValue>();
+
     public virtual ICollection<DataModelValue> DataModelValueResponsibleUsers { get; set; } = new List<DataModelValue>();
 
     public virtual ICollection<DataPointValue> DataPointValues { get; set; } = new List<DataPointValue>();

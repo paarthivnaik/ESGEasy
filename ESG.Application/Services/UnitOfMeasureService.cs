@@ -80,7 +80,7 @@ namespace ESG.Application.Services
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {uom.Id} not found.");
             }
-            uom.State = StateEnum.deleted;
+            uom.State = deleteRequest.State;
             await _unitOfMeasure.Repository<UnitOfMeasure>().Update(uom);
             await _unitOfMeasure.SaveAsync();
         }
@@ -125,7 +125,7 @@ namespace ESG.Application.Services
         }
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll()
         {
-            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll();
+            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll(a => a.State == StateEnum.active);
             var orderedList = lst.OrderBy(u => u.Id);
             var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
             return data;
@@ -138,7 +138,7 @@ namespace ESG.Application.Services
         }
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMByUOMTypeId(long uomTypeId)
         {
-            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll(u => u.UnitOfMeasureTypeId == uomTypeId);
+            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll(u => u.UnitOfMeasureTypeId == uomTypeId && u.State == StateEnum.active);
             var orderedList = lst.OrderBy(u => u.Id);
             var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
             return data;

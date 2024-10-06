@@ -1,5 +1,4 @@
 ﻿using ESG.Domain.Enum;
-using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 
@@ -37,15 +36,23 @@ public partial class DataModelValue
 
     public long? DataModelId { get; set; }
 
+    public long? Inform { get; set; }
+
+    public long? Consult { get; set; }
+
     public virtual User? AccountableUser { get; set; }
 
     public virtual Dimension? Column { get; set; }
 
     public virtual ModelFilterCombination? Combination { get; set; }
 
+    public virtual User? ConsultNavigation { get; set; }
+
     public virtual DataModel? DataModel { get; set; }
 
     public virtual DataPointValue? DataPointValues { get; set; }
+
+    public virtual User? InformNavigation { get; set; }
 
     public virtual User? ResponsibleUser { get; set; }
 

@@ -66,14 +66,14 @@ namespace ESG.Application.Services
             {
                 throw new KeyNotFoundException($"Dimension with ID {dimension.Id} not found.");
             }
-            dimension.State = ESG.Domain.Enum.StateEnum.deleted;
+            dimension.State = request.State;
             await _unitOfWork.Repository<Dimension>().Update(dimension);
             await _unitOfWork.SaveAsync();
         }
 
         public async Task<IEnumerable<DimensionResponseDto>> GetAll()
         {
-            var list = await _unitOfWork.Repository<Dimension>().GetAll();
+            var list = await _unitOfWork.Repository<Dimension>().GetAll(a => a.State == StateEnum.active);
             return _mapper.Map<IEnumerable<DimensionResponseDto>>(list);
         }
 

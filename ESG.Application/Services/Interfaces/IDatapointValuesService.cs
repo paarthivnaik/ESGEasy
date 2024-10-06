@@ -15,6 +15,6 @@ namespace ESG.Application.Services.Interfaces
         Task<IEnumerable<DataPointValueResponseDto>> GetAll();
         
         Task<DataPointValue> GetById(long Id);
-        Task DeleteDatapoint(long id);
+        Task DeleteDatapoint(DatapointValueDeleteRequestDto datapointValueDeleteRequestDto);
     }
 }

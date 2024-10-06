@@ -106,19 +106,21 @@ namespace ESG.Infrastructure.Persistence
             {
                 entity.HasKey(e => e.Id).HasName("Amendments_pkey");
 
-                entity.HasIndex(e => e.FilterCombinationId, "fki_FK_Amendments_Combinations_CombinationId");
+                entity.HasIndex(e => e.FilterCombinationId, "fki_FK_Amendments1-FilterCombinationId");
 
-                entity.HasIndex(e => e.DatapointId, "fki_FK_Amendments_DatapointValues_DatapointId");
+                entity.HasIndex(e => e.DatapointId, "fki_FK_Amendments_DataPointValuesId");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Value).HasMaxLength(255);
 
                 entity.HasOne(d => d.Datapoint).WithMany(p => p.Amendments)
                     .HasForeignKey(d => d.DatapointId)
-                    .HasConstraintName("FK_Amendments_DatapointValues_DatapointId");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Amendments_DataPointValuesId");
 
                 entity.HasOne(d => d.FilterCombination).WithMany(p => p.Amendments)
                     .HasForeignKey(d => d.FilterCombinationId)
-                    .HasConstraintName("FK_Amendments_Combinations_CombinationId");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Amendments1-FilterCombinationId");
             });
 
             modelBuilder.Entity<Currency>(entity =>
@@ -639,6 +641,7 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasOne(d => d.User).WithOne(p => p.UserRole).HasForeignKey<UserRole>(d => d.UserId);
             });
+            modelBuilder.HasSequence("amendments_id_seq");
 
             OnModelCreatingPartial(modelBuilder);
         }

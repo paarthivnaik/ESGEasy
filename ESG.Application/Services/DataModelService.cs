@@ -698,19 +698,19 @@ namespace ESG.Application.Services
                 }
                 var amendment = new Amendment();
                 var existingAmendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(requestDto.DatapointId, combinationId);
-                if (existingAmendment != null)
-                {
-                    existingAmendment.Value = requestDto.Amendment;
-                    await _unitOfWork.Repository<Amendment>().Update(existingAmendment);
-                }
-                else
-                {
-                    amendment.DatapointId = requestDto.DatapointId;
-                    amendment.FilterCombinationId = combinationId;
-                    amendment.Value = requestDto.Amendment;
-                    await _unitOfWork.Repository<Amendment>().Add(amendment);
-                }
-                
+                //if (existingAmendment != null)
+                //{
+                //    existingAmendment.Value = requestDto.Amendment;
+                //    await _unitOfWork.Repository<Amendment>().Update(existingAmendment);
+                //}
+                //else
+                //{
+                //    amendment.DatapointId = requestDto.DatapointId;
+                //    amendment.FilterCombinationId = combinationId;
+                //    amendment.Value = requestDto.Amendment;
+                //    await _unitOfWork.Repository<Amendment>().Add(amendment);
+                //}
+
             }
             else
             {
@@ -732,20 +732,20 @@ namespace ESG.Application.Services
                         throw new SystemException($"no such row column combination found for row - {dataDto.RowId} and column - {dataDto.ColumnId}");
                     }
                 }
-                var amendment = new Amendment();
-                var existingAmendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(requestDto.DatapointId, null);
-                if (existingAmendment != null)
-                {
-                    existingAmendment.Value = requestDto.Amendment;
-                    await _unitOfWork.Repository<Amendment>().Update(existingAmendment);
-                }
-                else
-                {
-                    amendment.DatapointId = requestDto.DatapointId;
-                    amendment.FilterCombinationId = null;
-                    amendment.Value = requestDto.Amendment;
-                    await _unitOfWork.Repository<Amendment>().Add(amendment);
-                }
+                //var amendment = new Amendment();
+                //var existingAmendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(requestDto.DatapointId, null);
+                //if (existingAmendment != null)
+                //{
+                //    existingAmendment.Value = requestDto.Amendment;
+                //    await _unitOfWork.Repository<Amendment>().Update(existingAmendment);
+                //}
+                //else
+                //{
+                //    amendment.DatapointId = requestDto.DatapointId;
+                //    amendment.FilterCombinationId = null;
+                //    amendment.Value = requestDto.Amendment;
+                //    await _unitOfWork.Repository<Amendment>().Add(amendment);
+                //}
             }
             await _unitOfWork.SaveAsync();
         }

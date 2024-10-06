@@ -75,14 +75,14 @@ namespace ESG.Application.Services
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {uomType.Id} not found.");
             }
-            uomType.State = ESG.Domain.Enum.StateEnum.deleted;
+            uomType.State = deleteRequest.State;
             await _unitOfWork.Repository<UnitOfMeasureType>().Update(uomType);
             await _unitOfWork.SaveAsync();
         }
 
         public async Task<IEnumerable<UnitOfMeasureTypeResponseDto>> GetAll()
         {
-            var list = await _unitOfWork.Repository<UnitOfMeasureType>().GetAll();
+            var list = await _unitOfWork.Repository<UnitOfMeasureType>().GetAll(a => a.State == StateEnum.active);
             var data = _mapper.Map<IEnumerable<UnitOfMeasureTypeResponseDto>>(list);
             return data;
         }

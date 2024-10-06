@@ -21,7 +21,7 @@ public partial class ModelFilterCombination
     public DateTime? LastModifiedDate { get; set; }
 
     public virtual DataModel DataModel { get; set; } = null!;
-
+    public virtual ICollection<Amendment> Amendments { get; set; } = new List<Amendment>();
     public virtual ICollection<DataModelValue> DataModelValues { get; set; } = new List<DataModelValue>();
 
     public virtual ICollection<DataPointValue> DataPointValues { get; set; } = new List<DataPointValue>();

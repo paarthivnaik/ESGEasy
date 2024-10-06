@@ -349,7 +349,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return result.Any() ? result.Select(x => (x.Id, x.Name)) : Enumerable.Empty<(long, string)>();
         }
 
-        
+
         public async Task<Amendment?> GetExistingAmendment(long datapointId, long? combinationId)
         {
             return await _context.Amendments

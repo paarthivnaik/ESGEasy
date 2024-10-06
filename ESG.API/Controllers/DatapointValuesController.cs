@@ -33,9 +33,9 @@ namespace ESG.API.Controllers
         }
 
         [HttpPatch("DeleteDataPointById")]
-        public async Task<IActionResult> Delete(long id)
+        public async Task<IActionResult> Delete(DatapointValueDeleteRequestDto datapointDeleteRequestDto)
         {
-            await _datapintValuesService.DeleteDatapoint(id);
+            await _datapintValuesService.DeleteDatapoint(datapointDeleteRequestDto);
             return Ok();
         }
     }
