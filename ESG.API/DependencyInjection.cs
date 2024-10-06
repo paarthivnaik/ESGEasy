@@ -8,6 +8,8 @@ using ESG.Infrastructure.Persistence.AccountsRepo;
 using ESG.Infrastructure.Persistence;
 using ESG.Infrastructure.Persistence.UnitOfMeasureRepo;
 using Microsoft.Extensions.Configuration;
+using ESG.Infrastructure.Persistence.DatapointRepo;
+using ESG.Application.Common.Interface.DataPoint;
 
 namespace ESG.API
 {
@@ -37,6 +39,7 @@ namespace ESG.API
             services.AddScoped<ICurrencyService, CurrencyService>();
             services.AddScoped<IDisclosureRequirementService, DisclosureRequirementService>();
             services.AddScoped<IUsersRepo, UsersRepo>();
+            services.AddScoped<IDatapointValueRepo, DatapointValueRepo>();
             //services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }

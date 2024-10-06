@@ -7,7 +7,7 @@ public partial class Amendment
 {
     public int Id { get; set; }
 
-    public long FilterCombinationId { get; set; }
+    public long? FilterCombinationId { get; set; }
 
     public string? Value { get; set; }
 

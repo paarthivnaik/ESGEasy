@@ -44,7 +44,31 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 .ToListAsync();
             return names;
         }
+        public async Task<IEnumerable<DataPointValue>> GetAllDatapointValues()
+        {
+            var list = await _context.DataPointValue
+                .AsNoTracking()
+                .Where(x => x.State == Domain.Enum.StateEnum.active)
+                .Select(a => new DataPointValue
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Code = a.Code,
+                    State = a.State,
+                    DatapointTypeId = a.DatapointTypeId,
+                    UnitOfMeasureId = a.UnitOfMeasureId,
+                    CurrencyId = a.CurrencyId,
+                    IsNarrative = a.IsNarrative,
+                    Purpose = a.Purpose,
+                    LanguageId = a.LanguageId,
+                    UserId = a.UserId,
+                    DisclosureRequirementId = a.DisclosureRequirementId
+                    
+                })
+                .ToListAsync();
 
+            return list;
+        }
 
     }
 }

@@ -12,5 +12,6 @@ namespace ESG.Application.Common.Interface.DataPoint
     {
         Task<IEnumerable<long>> GetModelDatapointsByOrgId(long orgId);
         Task<IEnumerable<DataPointValue>> GetNamesForFilteredIds(IEnumerable<long> filteredIds);
+        Task<IEnumerable<DataPointValue>> GetAllDatapointValues();
     }
 }

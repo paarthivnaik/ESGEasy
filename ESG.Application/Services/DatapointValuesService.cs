@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
+using ESG.Application.Common.Interface.DataPoint;
 using ESG.Application.Dto.DatapointValue;
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services.Interfaces;
@@ -17,13 +18,13 @@ namespace ESG.Application.Services
     public class DataPointValueService : IDataPointValueService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IHierarchyService _hierarchyService;
+        private readonly IDatapointValueRepo _datapointValueRepo;
 
         private readonly IMapper _mapper;
-        public DataPointValueService(IUnitOfWork unitOfWork, IHierarchyService hierarchyService, IMapper mapper)
+        public DataPointValueService(IUnitOfWork unitOfWork, IDatapointValueRepo datapointValueRepo, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
-            _hierarchyService = hierarchyService;
+            _datapointValueRepo = datapointValueRepo;
             _mapper = mapper;
         }
 
@@ -92,8 +93,8 @@ namespace ESG.Application.Services
 
         public async Task<IEnumerable<DataPointValueResponseDto>> GetAll()
         {
-            var DataPointValue = await _unitOfWork.Repository<DataPointValue>().GetAll(a => a.State == Domain.Enum.StateEnum.active);
-            var list = _mapper.Map<IEnumerable<DataPointValueResponseDto>>(DataPointValue);
+            var datapoints = await _unitOfWork.DatapointValueRepo.GetAllDatapointValues();
+            var list = _mapper.Map<IEnumerable<DataPointValueResponseDto>>(datapoints);
             return list;
         }
 
