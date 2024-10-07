@@ -581,6 +581,10 @@ namespace ESG.Application.Services
                     responseobj.FilterDimensionTypes = await GetFilterDimension(datamodel.Id, ModelViewTypeEnum.Narrative);
                 } 
             }
+            if (responseobj ==null)
+            {
+                return responseobj;
+            }
             return responseobj;
         }
         private async Task<DatapointDimensionType> GetRowDimension(long modelId, ModelViewTypeEnum viewType)
@@ -1071,10 +1075,6 @@ namespace ESG.Application.Services
             return response;
         }
 
-        //public Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public async Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId)
         {
@@ -1128,6 +1128,7 @@ namespace ESG.Application.Services
 
                 var modelvalue = new DataModelValuesForAssigning
                 {
+                    DataModelValueId = datamodelvalue.Id,
                     DatapointId = datamodelvalue.DataPointValuesId,
                     DatapointName = datamodelvalue.DataPointValues.Name,
                     DatapointCode = datamodelvalue.DataPointValues.Code,

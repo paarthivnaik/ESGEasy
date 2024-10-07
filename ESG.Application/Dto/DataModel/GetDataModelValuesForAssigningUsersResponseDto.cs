@@ -25,6 +25,7 @@ namespace ESG.Application.Dto.DataModel
 
     public class DataModelValuesForAssigning
     {
+        public long DataModelValueId { get; set; }
         public long? DatapointId { get; set; }
         public string? DatapointName { get; set; }
         public string? DatapointCode { get; set; }
