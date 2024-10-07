@@ -99,8 +99,8 @@ namespace ESG.Application.Services
         {
             var existingData = await _unitOfWork.Repository<UnitOfMeasureType>()
                 .Get(u => u.Id == unitOfMeasureType.Id && u.LanguageId == unitOfMeasureType.LanguageId);
-            var translationsData = await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>()
-                .Get(uom => uom.UnitOfMeasureTypeId == unitOfMeasureType.Id && uom.LanguageId == unitOfMeasureType.LanguageId);
+            //var translationsData = await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>()
+            //    .Get(uom => uom.UnitOfMeasureTypeId == unitOfMeasureType.Id && uom.LanguageId == unitOfMeasureType.LanguageId);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasureType.Id} not found.");
@@ -111,13 +111,13 @@ namespace ESG.Application.Services
             existingData.Name = unitOfMeasureType.Name;
             existingData.OrganizationId = unitOfMeasureType.OrganizationId;
 
-            translationsData.ShortText = unitOfMeasureType.ShortText;
-            translationsData.LongText = unitOfMeasureType.LongText;
-            translationsData.State = unitOfMeasureType.State;
-            translationsData.Name = unitOfMeasureType.Name;
+            //translationsData.ShortText = unitOfMeasureType.ShortText;
+            //translationsData.LongText = unitOfMeasureType.LongText;
+            //translationsData.State = unitOfMeasureType.State;
+            //translationsData.Name = unitOfMeasureType.Name;
 
             await _unitOfWork.Repository<UnitOfMeasureType>().Update(existingData);
-            await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>().Update(translationsData);
+            //await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>().Update(translationsData);
             await _unitOfWork.SaveAsync();
         }
     }
