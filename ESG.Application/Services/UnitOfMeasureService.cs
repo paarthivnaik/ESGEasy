@@ -94,26 +94,26 @@ namespace ESG.Application.Services
         {
             var existingData = await _unitOfMeasure.Repository<UnitOfMeasure>()
                 .Get(u => u.Id == unitOfMeasure.Id && u.LanguageId == unitOfMeasure.LanguageId);
-            var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTranslation>()
-                .Get(uom => uom.UnitOfMeasureId == unitOfMeasure.Id && uom.LanguageId == unitOfMeasure.LanguageId);
+            //var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTranslation>()
+            //    .Get(uom => uom.UnitOfMeasureId == unitOfMeasure.Id && uom.LanguageId == unitOfMeasure.LanguageId);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasure.Id} not found.");
             }
             existingData.ShortText = unitOfMeasure.ShortText;
             existingData.LongText = unitOfMeasure.LongText;
-            existingData.Code = unitOfMeasure.Code;
+            //existingData.Code = unitOfMeasure.Code;
             existingData.State = unitOfMeasure.State;
             existingData.Name = unitOfMeasure.Name;
             existingData.OrganizationId = unitOfMeasure.OrganizationId;
 
-            translationsData.ShortText = unitOfMeasure.ShortText;
-            translationsData.LongText = unitOfMeasure.LongText;
-            translationsData.State = unitOfMeasure.State;
-            translationsData.Name = unitOfMeasure.Name;
+            //translationsData.ShortText = unitOfMeasure.ShortText;
+            //translationsData.LongText = unitOfMeasure.LongText;
+            //translationsData.State = unitOfMeasure.State;
+            //translationsData.Name = unitOfMeasure.Name;
 
             await _unitOfMeasure.Repository<UnitOfMeasure>().Update(existingData);
-            await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().Update(translationsData);
+            //await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().Update(translationsData);
             await _unitOfMeasure.SaveAsync();
 
         }

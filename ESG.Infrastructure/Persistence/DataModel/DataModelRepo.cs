@@ -285,23 +285,16 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     dmv.CombinationId == filterCombinationId)
                 .ToListAsync();
         }
-        public async Task<List<DataModelValuesDto>?> GetDataModelValuesByModelIdOrgId(long modelId, long organizationId)
+        public async Task<List<DataModelValue>?> GetDataModelValuesByModelIdOrgId(long modelId, long organizationId)
         {
             return await _context.DataModelValues
                 .Where(dmv =>
                     dmv.DataModelId == modelId &&
                     dmv.DataModel.OrganizationId == organizationId)
                 .Include(a => a.DataPointValues)
-                .Include(dim => dim.Row)         
-                .Select(dmv => new DataModelValuesDto 
-                {
-                    DatapointId = dmv.DataPointValuesId,                
-                    RowId = dmv.RowId,
-                    ColumnId = dmv.ColumnId,
-                    combinationId = dmv.CombinationId,
-                    IsBlocked = dmv.IsBlocked,
-                    Accountable = dmv.AccountableUserId
-                })
+                .Include(dim => dim.Row)
+                .Include(df => df.Combination)
+                .ThenInclude(mfc => mfc.SampleModelFilterCombinationValues)
                 .ToListAsync();
         }
         public async Task<List<DataModelFilter>?> GetDataModelFiltersByConfigId(long configId)

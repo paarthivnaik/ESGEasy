@@ -47,6 +47,7 @@ namespace ESG.Application.Services
                     else
                     {
                         var dimensonsdata = _mapper.Map<DimensionType>(dimensionType);
+                        dimensonsdata.State = StateEnum.active;
                         newDimensionTypes.Add(dimensonsdata);
                         //var dimensonsTranslationdata = _mapper.Map<DimensionTypeTranslation>(dimentionType);
                         //dimensonsTranslationdata.DimensionTypeId = dimensonsdata.DatapointId;

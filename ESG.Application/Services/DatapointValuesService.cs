@@ -51,7 +51,8 @@ namespace ESG.Application.Services
                     }
                     else
                     {
-                        //var newDP = new DataPointValue{
+                        //var newDP = new DataPointValue
+                        //{
                         //    Name = datapoint.Name,
                         //    Code = datapoint.Code,
                         //    DatapointTypeId = datapoint.DatapointTypeId,
@@ -66,8 +67,10 @@ namespace ESG.Application.Services
                         //    CreatedDate = DateTime.UtcNow,
                         //    LastModifiedDate = DateTime.UtcNow,
                         //    DisclosureRequirementId = datapoint.DisclosureRequirementId,
+                        //    State = Domain.Enum.StateEnum.active,
                         //};
                         var newDP = _mapper.Map<DataPointValue>(datapoint);
+                        newDP.State = Domain.Enum.StateEnum.active;
                         newDatapoints.Add(newDP);
                         
                     }

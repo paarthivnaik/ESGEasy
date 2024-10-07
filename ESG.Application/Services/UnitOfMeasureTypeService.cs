@@ -49,6 +49,7 @@ namespace ESG.Application.Services
                     else
                     {
                         var newuomtype = _mapper.Map<UnitOfMeasureType>(uomType);
+                        newuomtype.State = StateEnum.active;
                         newUomTypes.Add(newuomtype);
                         //var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslation>(unitOfMeasureType);
                         //uomTypeTranslationdata.UnitOfMeasureTypeId = uomType.DatapointId;

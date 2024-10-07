@@ -39,7 +39,7 @@ namespace ESG.Application.Common.Mapping
            
             //update
             CreateMap<UnitOfMeasureUpdateRequestDto, UnitOfMeasure>()
-                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+                //.ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
@@ -48,7 +48,7 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.UserId));
             CreateMap<UnitOfMeasure, UnitOfMeasureUpdateRequestDto>()
-                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+               // .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId))
                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))

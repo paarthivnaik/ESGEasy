@@ -1107,18 +1107,54 @@ namespace ESG.Application.Services
             responsedto.DataModelDimenstionTypesWithValues = modelDimenstionTypesWithValues;
             foreach (var datamodelvalue in dataModelValues)
             {
-                var rowdimdto = dimensionValues.Where(a => a.Id == datamodelvalue.RowId).FirstOrDefault();
-                var coldimdto = dimensionValues.Where(a => a.Id == datamodelvalue.ColumnId).FirstOrDefault();
+                var rowdimdto = dimensionValues
+                    .Where(a => a.Id == datamodelvalue.RowId)
+                    .Select(a => (a.Id, a.Name))
+                    .FirstOrDefault();
+                var coldimdto = dimensionValues
+                    .Where(a => a.Id == datamodelvalue.ColumnId)
+                    .Select(a => (a.Id, a.Name))
+                    .FirstOrDefault();
+
+                var filterDimensionDtos = datamodelvalue.Combination.SampleModelFilterCombinationValues
+                    .Where(filterId => dimensionValues.Any(a => a.Id == filterId.DimensionsId))
+                    .Select(filterId => dimensionValues.FirstOrDefault(a => a.Id == filterId.DimensionsId))
+                    .Select(filter => new ModelDimensionHeadersDto
+                    {
+                        Id = filter.Id,
+                        Name = filter.Name
+                    })
+                    .ToList();
+
 
                 var modelvalue = new DataModelValuesForAssigning
                 {
-                    //DatapointId = datamodelvalue.DataPointValuesId,
-                    //DatapointName = datamodelvalue.DataPointValues.Name,
-                    //DatapointCode = datamodelvalue.DataPointValues.Code,
+                    DatapointId = datamodelvalue.DataPointValuesId,
+                    DatapointName = datamodelvalue.DataPointValues.Name,
+                    DatapointCode = datamodelvalue.DataPointValues.Code,
+                    
+                    RowModelDimensionDto = rowdimdto.Id != 0 || rowdimdto.Id != null ? new ModelDimensionHeadersDto
+                    {
+                        Id = rowdimdto.Id,
+                        Name = rowdimdto.Name
+                    } : null,
+                    ColumnModelDimensionDto = coldimdto.Id != 0 || coldimdto.Id != null ? new ModelDimensionHeadersDto
+                    {
+                        Id = coldimdto.Id,
+                        Name = coldimdto.Name
+                    } : null,
+                    FiltersDimensionDto = filterDimensionDtos,
+                    IsBlocked = datamodelvalue.IsBlocked,
+                    Accountable = datamodelvalue.AccountableUserId,
+                    Responsible = datamodelvalue.ResponsibleUserId
                 };
+
+                modelDatamodelValues.Add(modelvalue);
             }
+            responsedto.DataModelValuesForAssigning = modelDatamodelValues;
 
             return responsedto;
+
         }
     }
 }
