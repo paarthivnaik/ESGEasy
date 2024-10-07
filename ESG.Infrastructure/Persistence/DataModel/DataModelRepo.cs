@@ -225,11 +225,11 @@ namespace ESG.Infrastructure.Persistence.DataModel
         }
 
 
-        public async Task<IEnumerable<DataModelValue>> GetDataModelValuesByCombinationId(long combinationId)
+        public async Task<IEnumerable<DataModelValue>> GetDataModelValuesByDatapointIdCombinatinalIdAndModelId(long? combinationId, long datapointId, long modelId)
         {
             var modelvalues = await _context.DataModelValues
                 .AsNoTracking()
-                .Where(a => a.CombinationId == combinationId)
+                .Where(a => a.CombinationId == combinationId && a.DataPointValuesId == datapointId && a.DataModelId == modelId)
                 .ToListAsync();
             return modelvalues;
         }

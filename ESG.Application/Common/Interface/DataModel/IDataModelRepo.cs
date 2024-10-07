@@ -28,7 +28,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<IEnumerable<DataModelFilter>> GetModelFiltersByConfigId(long configId);
         Task<DataPointValue> GetDatapointMetric(long datapointId, long organizationId);
         Task<IEnumerable<ModelFilterCombination>> GetModelFilterCombinationsByModelIdandDatapointId(long modelId, long datapointId);
-        Task<IEnumerable<DataModelValue>> GetDataModelValuesByCombinationId(long combinationId);
+        Task<IEnumerable<DataModelValue>> GetDataModelValuesByDatapointIdCombinatinalIdAndModelId(long? combinationId, long datapointId, long modelId);
 
         Task<List<ModelDimensionType>?> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId);
         Task<List<DataModelValue>?> GetDataModelValues(long modelId, long datapointId, List<long> rowId, List<long?> columnId, long? filterCombinationId);

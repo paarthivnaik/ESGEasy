@@ -1030,9 +1030,9 @@ namespace ESG.Application.Services
                 //throw new ArgumentNullException("There is no model linked to datapoint");
                 return response;
             var ModelFilterCombinations = await _unitOfWork.DataModelRepo.GetModelFilterCombinationsByModelIdandDatapointId(modelId.Id, datapointSavedValuesRequestDto.DatapointId);
-            if (ModelFilterCombinations == null || !ModelFilterCombinations.Any())
+            //if (ModelFilterCombinations == null || !ModelFilterCombinations.Any())
                 //throw new ArgumentNullException("there are no combinations present for that datapoinr");
-                return response;
+                //return response;
             if (datapointSavedValuesRequestDto.SavedDataPointFilters == null || !datapointSavedValuesRequestDto.SavedDataPointFilters.Any())
                 //throw new ArgumentException("No filters provided in the request.");
                 return response;
@@ -1047,13 +1047,12 @@ namespace ESG.Application.Services
                     ModelFilterCombinationId = combination.Id;
                     break;
                 }
-                if (!isMatch)
-                    //throw new InvalidOperationException("No matching model filter combination Values found with ");
-                    return response;
+                
             }
+            
             var amendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(datapointSavedValuesRequestDto.DatapointId, ModelFilterCombinationId);
             response.Amendment = amendment?.Value;
-            var datamodelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByCombinationId(ModelFilterCombinationId);
+            var datamodelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIdCombinatinalIdAndModelId(ModelFilterCombinationId, datapointSavedValuesRequestDto.DatapointId, modelId.Id);
             var datapointdetails = await GetDatapointMetric(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
             response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
             response.Name = datapointdetails.Name;
