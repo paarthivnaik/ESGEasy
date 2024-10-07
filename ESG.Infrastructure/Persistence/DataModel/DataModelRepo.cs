@@ -218,7 +218,6 @@ namespace ESG.Infrastructure.Persistence.DataModel
                .AsNoTracking()
                .Include(a => a.UnitOfMeasure)
                .Include(c => c.Currency)
-               .Include(d => d.DatapointType)
                .Where(a => a.OrganizationId == organizationId && a.Id == datapointId)
                .FirstOrDefaultAsync();
             return dataModel;

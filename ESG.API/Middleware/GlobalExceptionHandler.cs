@@ -1,6 +1,7 @@
 ﻿using ESG.Application.Exception;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace ESG.API.Middleware
 {
@@ -19,16 +20,18 @@ namespace ESG.API.Middleware
                 _ => StatusCodes.Status500InternalServerError,
             };    
             // Create a ProblemDetails object
-            var problemDetails = new ProblemDetails
+            var problemDetails = new
             {
                 Status = statusCode,
                 Title = GetTitleForStatusCode(statusCode),
                 Detail = exception.Message,
-                Instance = httpContext.Request.Path
+                Instance = httpContext.Request.Path,
+                Exception = exception.InnerException,
+                StackTrace = exception.StackTrace
             };
 
-            httpContext.Response.StatusCode = problemDetails.Status.Value;
-            httpContext.Response.ContentType = "application/problem+json";
+            httpContext.Response.StatusCode = statusCode; //problemDetails.Status.Value;
+            httpContext.Response.ContentType = "application/json";
 
             await httpContext.Response
                 .WriteAsJsonAsync(problemDetails, cancellationToken);
