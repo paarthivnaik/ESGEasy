@@ -8,20 +8,19 @@ namespace ESG.Application.Dto.DataModel
 {
     public class GetDataModelValuesForAssigningUsersResponseDto
     {
-        public List<DataModelDimenstionTypesWithValues> DataModelDimenstionTypesWithValues { get; set; }
+        public List<DataModelDimenstionTypesWithNamesForHeaders> DataModelDimenstionTypesWithNames { get; set; }
         public List<DataModelValuesForAssigning> DataModelValuesForAssigning { get; set; }
     }
-    public class DataModelDimenstionTypesWithValues
+    public class DataModelDimenstionTypesWithNamesForHeaders
     {
         public long? TypeId { get; set; }
         public string? TypeName { get; set; }
-        public List<DataModelDimenstionValues>? ValueIds { get; set; }
     }
-    public class DataModelDimenstionValues
-    {
-        public long? DimensionValueId { get; set; }  
-        public string? DimensionValueName { get; set; }
-    }
+    //public class DataModelDimenstionValues
+    //{
+    //    public long? DimensionValueId { get; set; }  
+    //    public string? DimensionValueName { get; set; }
+    //}
 
     public class DataModelValuesForAssigning
     {
@@ -29,18 +28,18 @@ namespace ESG.Application.Dto.DataModel
         public long? DatapointId { get; set; }
         public string? DatapointName { get; set; }
         public string? DatapointCode { get; set; }
-        public ModelDimensionHeadersDto? RowModelDimensionDto { get; set; }
-        public ModelDimensionHeadersDto? ColumnModelDimensionDto { get; set; }
-        public List<ModelDimensionHeadersDto>? FiltersDimensionDto { get; set; }
+        public List<DimensionalCombinationForDatapoint>? DimensionalCombinationForDatapoint { get; set; }
         public bool? IsBlocked { get; set; }
         public long? Accountable { get; set; }
         public long? Responsible { get; set; }
+        public long? Consult {  get; set; }
+        public long? Inform { get; set; }
 
     }
-    public class ModelDimensionHeadersDto
+    public class DimensionalCombinationForDatapoint
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
+        public long? TypeId { get; set; }
+        public long? ValueId { get; set; }
+        public string? ValueName { get; set; }
     }
-
 }

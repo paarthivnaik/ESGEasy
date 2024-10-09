@@ -53,8 +53,9 @@ namespace ESG.API.Controllers
             return await _dataModelService.GetDataModelValuesForAssigningUsers(dataModelId, organizationId);
         }
         [HttpPost("AssignUsersToDataModelValues")]
-        public async Task<IActionResult> AssignUsersToDataModelValues()
+        public async Task<IActionResult> AssignUsersToDataModelValues(AssigningDataModelValuesToUsersRequestDto requestDto)
         {
+            await _dataModelService.AssignUsersToDataModelValues(requestDto);
             return Ok();
         }
     }

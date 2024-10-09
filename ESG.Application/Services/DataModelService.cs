@@ -16,6 +16,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static ESG.Application.Dto.DataModel.DataModelCreateRequestDto;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ESG.Application.Services
 {
@@ -80,7 +81,7 @@ namespace ESG.Application.Services
                 CreatedDate = utcNow,
                 LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                 LastModifiedDate = utcNow,
-                State = StateEnum.active
+                State = StateEnum.inActive
             };
             await _unitOfWork.Repository<DataModel>().AddAsync(dataModel);
             await _unitOfWork.SaveAsync();
@@ -476,8 +477,9 @@ namespace ESG.Application.Services
                         }
                     }
                 }
-                
+                dataModel.State = StateEnum.active;
                 await _unitOfWork.Repository<DataModelValue>().AddRange(dataModelValues);
+                await _unitOfWork.Repository<DataModel>().Update(dataModel);
                 await _unitOfWork.SaveAsync();
             }
             
@@ -1002,6 +1004,9 @@ namespace ESG.Application.Services
             var metric = new DatapointMetricResponseDto();
             var datapoint = await _unitOfWork.DataModelRepo.GetDatapointMetric(datapointId, organizationId);
             metric.Id = datapointId;
+            if (datapoint == null || string.IsNullOrEmpty(datapoint.Name))
+                throw new System.Exception($"The data point is null here {datapoint == null} and " +
+                    $"{datapoint?.Name}");
             metric.Name = datapoint.Name;
             if (datapoint.IsNarrative == true)
             {
@@ -1083,67 +1088,62 @@ namespace ESG.Application.Services
             var dimensionValues = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByModelDimTypeId(
                 dimensionTypes.Select(a => (long?)a.Id).ToList());
             var dataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(ModelId, organizationId);
-            var modelDimenstionTypesWithValues = new List<DataModelDimenstionTypesWithValues>();
+            var modelDimenstionTypesWithNames = new List<DataModelDimenstionTypesWithNamesForHeaders>();
             var modelDatamodelValues = new List<DataModelValuesForAssigning>();
             foreach (var dimtype in dimensionTypes)
             {
-                var valueIds = dimensionValues
-                    .Where(dv => dv.TypeId == dimtype.Id)
-                    .Select(dv => new DataModelDimenstionValues
-                    {
-                        DimensionValueId = dv.Id,
-                        DimensionValueName = dv.Name 
-                    })
-                    .ToList();
-                var modeldimtype = new DataModelDimenstionTypesWithValues
+                var modeldimtype = new DataModelDimenstionTypesWithNamesForHeaders
                 {
-                    TypeId = dimtype.Id,
+                    TypeId = dimtype.DimensionTypeId,
                     TypeName = dimtype.Name,
-                    ValueIds = valueIds, 
                 };
-                modelDimenstionTypesWithValues.Add(modeldimtype);
+                modelDimenstionTypesWithNames.Add(modeldimtype);
             }
-            responsedto.DataModelDimenstionTypesWithValues = modelDimenstionTypesWithValues;
+            responsedto.DataModelDimenstionTypesWithNames = modelDimenstionTypesWithNames;
             foreach (var datamodelvalue in dataModelValues)
             {
-                var rowdimdto = dimensionValues
+                var dimensionsdto = new List<DimensionalCombinationForDatapoint>();
+                var rowDto = dimensionValues
                     .Where(a => a.Id == datamodelvalue.RowId)
-                    .Select(a => (a.Id, a.Name))
+                    .Select(a => new DimensionalCombinationForDatapoint
+                    {
+                        TypeId = a.TypeId,
+                        ValueId = a.Id,
+                        ValueName = a.Name
+                    })
                     .FirstOrDefault();
-                var coldimdto = dimensionValues
+                var colDto = dimensionValues
                     .Where(a => a.Id == datamodelvalue.ColumnId)
-                    .Select(a => (a.Id, a.Name))
+                    .Select(a => new DimensionalCombinationForDatapoint
+                    {
+                        TypeId = a.TypeId,
+                        ValueId = a.Id,
+                        ValueName = a.Name
+                    })
                     .FirstOrDefault();
-
-                var filterDimensionDtos = datamodelvalue.Combination.SampleModelFilterCombinationValues
+                var filterDtos = datamodelvalue.Combination.SampleModelFilterCombinationValues
                     .Where(filterId => dimensionValues.Any(a => a.Id == filterId.DimensionsId))
                     .Select(filterId => dimensionValues.FirstOrDefault(a => a.Id == filterId.DimensionsId))
-                    .Select(filter => new ModelDimensionHeadersDto
+                    .Select(filter => new DimensionalCombinationForDatapoint
                     {
-                        Id = filter.Id,
-                        Name = filter.Name
+                        TypeId = filter.TypeId,
+                        ValueId = filter.Id,
+                        ValueName = filter.Name,
                     })
                     .ToList();
-
-
+                if (rowDto != null) dimensionsdto.Add(rowDto);
+                if (colDto != null) dimensionsdto.Add(colDto);
+                if (filterDtos.Any())
+                {
+                    dimensionsdto.AddRange(filterDtos);
+                }
                 var modelvalue = new DataModelValuesForAssigning
                 {
                     DataModelValueId = datamodelvalue.Id,
                     DatapointId = datamodelvalue.DataPointValuesId,
-                    DatapointName = datamodelvalue.DataPointValues.Name,
-                    DatapointCode = datamodelvalue.DataPointValues.Code,
-                    
-                    RowModelDimensionDto = rowdimdto.Id != 0 || rowdimdto.Id != null ? new ModelDimensionHeadersDto
-                    {
-                        Id = rowdimdto.Id,
-                        Name = rowdimdto.Name
-                    } : null,
-                    ColumnModelDimensionDto = coldimdto.Id != 0 || coldimdto.Id != null ? new ModelDimensionHeadersDto
-                    {
-                        Id = coldimdto.Id,
-                        Name = coldimdto.Name
-                    } : null,
-                    FiltersDimensionDto = filterDimensionDtos,
+                    DatapointName = datamodelvalue.DataPointValues.Name ?? string.Empty,
+                    DatapointCode = datamodelvalue.DataPointValues.Code ?? string.Empty,
+                    DimensionalCombinationForDatapoint = dimensionsdto,
                     IsBlocked = datamodelvalue.IsBlocked,
                     Accountable = datamodelvalue.AccountableUserId,
                     Responsible = datamodelvalue.ResponsibleUserId
@@ -1156,5 +1156,28 @@ namespace ESG.Application.Services
             return responsedto;
 
         }
+
+        public async Task AssignUsersToDataModelValues(AssigningDataModelValuesToUsersRequestDto assigningDataModelValuesToUsersRequestDto)
+        {
+            var updatedDataModelValues = new List<DataModelValue>();
+            var dataModelValues = await _unitOfWork.DataModelRepo.
+                GetDataModelValuesById(assigningDataModelValuesToUsersRequestDto.AssigningUsersDtos.Select(a => a.DataModelValueId).ToList(), assigningDataModelValuesToUsersRequestDto.ModelId, assigningDataModelValuesToUsersRequestDto.OrganizationId);            
+            foreach (var value in assigningDataModelValuesToUsersRequestDto.AssigningUsersDtos)
+            {
+                var datamodelvalue = dataModelValues
+                    .Where(a => a.Id == value.DataModelValueId)
+                    .FirstOrDefault();
+                datamodelvalue.AccountableUserId = value.AccountableUserId;
+                datamodelvalue.ResponsibleUserId = value.ResponsibleUserId;
+                datamodelvalue.IsBlocked = value.IsBlocked;
+                datamodelvalue.Inform = value.Inform;
+                datamodelvalue.Consult = value.Consult;
+                updatedDataModelValues.Add(datamodelvalue);
+            }
+            await _unitOfWork.Repository<DataModelValue>().UpdateRange(updatedDataModelValues);
+            await _unitOfWork.SaveAsync();
+
+        }
+        
     }
 }

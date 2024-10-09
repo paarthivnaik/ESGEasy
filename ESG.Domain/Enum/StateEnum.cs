@@ -9,7 +9,7 @@ namespace ESG.Domain.Enum
     public enum StateEnum
     {
         active = 1,
-        inActve = 2,
+        inActive = 2,
         deleted = 3
     }
 }

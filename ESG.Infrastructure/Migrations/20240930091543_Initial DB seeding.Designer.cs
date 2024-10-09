@@ -330,7 +330,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long?>("DimensionTypeId")
+                    b.Property<long?>("TypeId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("FilterId")
@@ -350,7 +350,7 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "DimensionTypeId" }, "IX_DataModelFilters_DimensionTypeId");
+                    b.HasIndex(new[] { "TypeId" }, "IX_DataModelFilters_DimensionTypeId");
 
                     b.HasIndex(new[] { "FilterId" }, "IX_DataModelFilters_FilterId");
 
@@ -17805,7 +17805,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("DimensionTypeId")
+                    b.Property<long>("TypeId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("LanguageId")
@@ -17833,7 +17833,7 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "DimensionTypeId" }, "IX_Dimensions_DimensionTypeId");
+                    b.HasIndex(new[] { "TypeId" }, "IX_Dimensions_DimensionTypeId");
 
                     b.HasIndex(new[] { "LanguageId" }, "IX_Dimensions_LanguageId");
 
@@ -18336,7 +18336,7 @@ namespace ESG.Infrastructure.Migrations
 
             modelBuilder.Entity("ESG.Domain.Models.DimensionTypeTranslation", b =>
                 {
-                    b.Property<long>("DimensionTypeId")
+                    b.Property<long>("TypeId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("LanguageId")
@@ -18371,7 +18371,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
-                    b.HasKey("DimensionTypeId", "LanguageId");
+                    b.HasKey("TypeId", "LanguageId");
 
                     b.HasIndex(new[] { "LanguageId" }, "IX_DimensionTypeTranslations_LanguageId");
 
@@ -20226,7 +20226,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("DataModelId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("DimensionTypeId")
+                    b.Property<long>("TypeId")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("LastModifiedBy")
@@ -20242,7 +20242,7 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex(new[] { "DataModelId" }, "IX_ModelDimensionTypes_DataModelId");
 
-                    b.HasIndex(new[] { "DimensionTypeId" }, "fki_FK_ModelDimensionTypes_DimensionType_DimensionTypeId");
+                    b.HasIndex(new[] { "TypeId" }, "fki_FK_ModelDimensionTypes_DimensionType_DimensionTypeId");
 
                     b.HasIndex(new[] { "Id" }, "idx_modeldimensiontypes_id");
 
@@ -20433,7 +20433,7 @@ namespace ESG.Infrastructure.Migrations
                     b.Property<long>("DataModelFiltersId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("DimensionTypeId")
+                    b.Property<long?>("TypeId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("DimensionsId")
@@ -20457,7 +20457,7 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasIndex(new[] { "DataModelFiltersId" }, "idx_datamodelfilters_datamodelfiltersid");
 
-                    b.HasIndex(new[] { "DimensionTypeId" }, "idx_dimensontype_dimesiontypeid");
+                    b.HasIndex(new[] { "TypeId" }, "idx_dimensontype_dimesiontypeid");
 
                     b.HasIndex(new[] { "ModelFilterCombinationsId" }, "idx_modelfiltercombination_modelfiltercombinationsid");
 
@@ -27278,7 +27278,7 @@ namespace ESG.Infrastructure.Migrations
                 {
                     b.HasOne("ESG.Domain.Models.DimensionType", "DimensionType")
                         .WithMany("DataModelFilterDimensionTypes")
-                        .HasForeignKey("DimensionTypeId");
+                        .HasForeignKey("TypeId");
 
                     b.HasOne("ESG.Domain.Models.DimensionType", "Filter")
                         .WithMany("DataModelFilterFilters")
@@ -27472,7 +27472,7 @@ namespace ESG.Infrastructure.Migrations
                 {
                     b.HasOne("ESG.Domain.Models.DimensionType", "DimensionType")
                         .WithMany("Dimensions")
-                        .HasForeignKey("DimensionTypeId")
+                        .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -27537,7 +27537,7 @@ namespace ESG.Infrastructure.Migrations
                 {
                     b.HasOne("ESG.Domain.Models.DimensionType", "DimensionType")
                         .WithMany("DimensionTypeTranslations")
-                        .HasForeignKey("DimensionTypeId")
+                        .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -27643,7 +27643,7 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasOne("ESG.Domain.Models.DimensionType", "DimensionType")
                         .WithMany("ModelDimensionTypes")
-                        .HasForeignKey("DimensionTypeId")
+                        .HasForeignKey("TypeId")
                         .IsRequired()
                         .HasConstraintName("FK_ModelDimensionTypes_DimensionType_DimensionTypeId");
 
@@ -27693,7 +27693,7 @@ namespace ESG.Infrastructure.Migrations
 
                     b.HasOne("ESG.Domain.Models.DimensionType", "DimensionType")
                         .WithMany("ModelFilterCombinationalValues")
-                        .HasForeignKey("DimensionTypeId")
+                        .HasForeignKey("TypeId")
                         .HasConstraintName("FK_DimensionType_DimensionTypeId");
 
                     b.HasOne("ESG.Domain.Models.Dimension", "Dimensions")

@@ -25,7 +25,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
         {
             var organizationDataModels = await _context.DataModels
                 .AsNoTracking()
-                .Where(a => a.OrganizationId == OrgId)
+                .Where(a => a.OrganizationId == OrgId && a.State == StateEnum.active)
                 .Select(dp => new ESG.Domain.Models.DataModel
                 {
                     Id = dp.Id,
@@ -214,13 +214,42 @@ namespace ESG.Infrastructure.Persistence.DataModel
         }
         public async Task<DataPointValue> GetDatapointMetric(long datapointId, long organizationId)
         {
-            var dataModel = await _context.DataPointValue
-               .AsNoTracking()
-               .Include(a => a.UnitOfMeasure)
-               .Include(c => c.Currency)
-               .Where(a => a.OrganizationId == organizationId && a.Id == datapointId)
-               .FirstOrDefaultAsync();
-            return dataModel;
+            //var dataModel = await _context.DataPointValue
+            //   .AsNoTracking()
+            //   .Include(a => a.UnitOfMeasure)
+            //   .Include(c => c.Currency)
+            //   .Where(a => a.organizationId == organizationId && a.Id == datapointId)
+            //   .FirstOrDefaultAsync();
+            //return dataModel;
+            try
+            {
+                var dataModel = (from dpv in _context.DataPointValue.AsNoTracking()
+                                 join uom in _context.UnitOfMeasures on dpv.UnitOfMeasureId equals uom.Id into uomGroup
+                                 from uom in uomGroup.DefaultIfEmpty() // Left join for UnitOfMeasure
+                                 join cur in _context.Currencies on dpv.CurrencyId equals cur.Id into curGroup
+                                 from cur in curGroup.DefaultIfEmpty() // Left join for Currency
+                                 join dpt in _context.DataPointType on dpv.DatapointTypeId equals dpt.Id into dptGroup
+                                 from dpt in dptGroup.DefaultIfEmpty() // Left join for DatapointType
+                                 where dpv.OrganizationId == organizationId && dpv.Id == datapointId
+                                 select new DataPointValue
+                                 {
+                                     Id = dpv.Id,
+                                     Code = dpv.Code,
+                                     Name = dpv.Name,
+                                     UnitOfMeasureId = uom != null ? uom.Id : (int?)null,
+                                     CurrencyId = cur != null ? cur.Id : (int?)null,
+                                     UnitOfMeasure = uom,
+                                     Currency = cur
+                                 }).FirstOrDefault();
+
+
+
+                return dataModel;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Proble in getDataPointMetric: " + ex.ToString() + "\n" + ex.InnerException );
+            }
         }
 
 
@@ -325,7 +354,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return result.Any() ? result.Select(x => (x.Id, x.Name, x.TypeId)) : Enumerable.Empty<(long, string, long)>();
         }
 
-        public async Task<IEnumerable<(long Id, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId)
+        public async Task<IEnumerable<(long Id,long DimensionTypeId, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId)
         {
             var result = await _context.ModelDimensionTypes
                 .AsNoTracking()
@@ -333,12 +362,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Include(a => a.DimensionType)
                 .Select(md => new
                 {
-                    Id = md.DimensionType.Id,
+                    Id = md.Id,
+                    DimensionTypeId = md.DimensionType.Id,
                     Name = md.DimensionType.ShortText
                 })
                 .ToListAsync();
 
-            return result.Any() ? result.Select(x => (x.Id, x.Name)) : Enumerable.Empty<(long, string)>();
+            return result.Any() ? result.Select(x => (x.Id,x.DimensionTypeId, x.Name)) : Enumerable.Empty<(long,long, string)>();
         }
 
 
@@ -348,6 +378,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .AsNoTracking()
                 .Where(a => a.DatapointId == datapointId && a.FilterCombinationId == combinationId)
                 .FirstOrDefaultAsync();
+        }
+        public async Task<List<DataModelValue>?> GetDataModelValuesById(List<long> ids, long modelId, long organizationId)
+        {
+            return await _context.DataModelValues
+                .AsNoTracking()
+                .Where(dmv => ids.Contains(dmv.Id) && dmv.DataModelId == modelId && dmv.DataModel.OrganizationId == organizationId)
+                .ToListAsync();
         }
     }
 }
