@@ -42,6 +42,27 @@ namespace ESG.Application.Services
             var response = _mapper.Map<IEnumerable<UserResponseDto>>(users);
             return response;
         }
+        public async Task<IEnumerable<UserResponseDto>> GetOrganizationalUsers(long organizationId)
+        {
+            var res = new List<UserResponseDto>();
+            var users = await _unitOfWork.UsersRepo.GetOrganizatinalUsers(organizationId);
+            foreach (var user in users)
+            {
+                var resobj = new UserResponseDto 
+                {
+                    UserId = user.UserId,
+                    FirstName = user.User.FirstName,
+                    LastName = user.User.LastName,
+                    Email = user.User.Email,
+                    Password = user.User.Password,
+                    PhoneNumber = user.User.PhoneNumber,
+                    LanguageId = user.User.LanguageId,
+                };
+                res.Add(resobj);
+            }
+            //var response = _mapper.Map<IEnumerable<UserResponseDto>>(users);
+            return res;
+        }
         public async Task<UserResponseDto> GetUserById(long userId)
         {
             var user = await _unitOfWork.Repository<User>().Get(userId);

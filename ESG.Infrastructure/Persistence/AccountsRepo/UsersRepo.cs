@@ -35,6 +35,15 @@ namespace ESG.Infrastructure.Persistence.AccountsRepo
 
             return user;
         }
+        public async Task<IEnumerable<OrganizationUser>> GetOrganizatinalUsers(long organizationId)
+        {
+            var user = await _context.OrganizationUsers
+                .AsNoTracking()
+                .Include(a => a.User)
+                .Where(u => u.OrganizationId == organizationId)
+                .ToListAsync();
+            return user;
+        }
         public async Task<string> GenerateToken(long userId,string email, long? organizationId, long? roleId)
         {
             var key = _configuration["Configuration:JwtTokenConfig:Secret"];

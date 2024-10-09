@@ -11,5 +11,6 @@ namespace ESG.Application.Common.Interface.Account
     {
         Task<string> GenerateToken(long userId,string esmail, long? organizationId, long? roleId);
         Task<User?> GetUserDetails(long userId);
+        Task<IEnumerable<OrganizationUser>> GetOrganizatinalUsers(long organizationId);
     }
 }

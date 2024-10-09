@@ -1112,7 +1112,10 @@ namespace ESG.Application.Services
                         ValueName = a.Name
                     })
                     .FirstOrDefault();
-                var colDto = dimensionValues
+                var colDto = new DimensionalCombinationForDatapoint();
+                if (datamodelvalue?.ColumnId != null && dimensionValues != null)
+                {
+                    colDto = dimensionValues
                     .Where(a => a.Id == datamodelvalue.ColumnId)
                     .Select(a => new DimensionalCombinationForDatapoint
                     {
@@ -1120,23 +1123,34 @@ namespace ESG.Application.Services
                         ValueId = a.Id,
                         ValueName = a.Name
                     })
-                    .FirstOrDefault();
-                var filterDtos = datamodelvalue.Combination.SampleModelFilterCombinationValues
-                    .Where(filterId => dimensionValues.Any(a => a.Id == filterId.DimensionsId))
-                    .Select(filterId => dimensionValues.FirstOrDefault(a => a.Id == filterId.DimensionsId))
-                    .Select(filter => new DimensionalCombinationForDatapoint
-                    {
-                        TypeId = filter.TypeId,
-                        ValueId = filter.Id,
-                        ValueName = filter.Name,
-                    })
-                    .ToList();
+                    .FirstOrDefault() ?? new DimensionalCombinationForDatapoint();
+                }
+                var filterDtos = new List<DimensionalCombinationForDatapoint>();
+                if (datamodelvalue?.Combination?.SampleModelFilterCombinationValues != null && dimensionValues != null)
+                {
+                    filterDtos = datamodelvalue.Combination.SampleModelFilterCombinationValues
+                        .Where(filterId => dimensionValues.Any(a => a.Id == filterId.DimensionsId))
+                        .Select(filterId => dimensionValues.FirstOrDefault(a => a.Id == filterId.DimensionsId))
+                        //.Where(filter => filter.Id != null || filter.Id != 0) 
+                        .Select(filter => new DimensionalCombinationForDatapoint
+                        {
+                            TypeId = filter.TypeId,
+                            ValueId = filter.Id,
+                            ValueName = filter.Name,
+                        })
+                        .ToList() ?? new List<DimensionalCombinationForDatapoint>();
+                }
+
                 if (rowDto != null) dimensionsdto.Add(rowDto);
-                if (colDto != null) dimensionsdto.Add(colDto);
-                if (filterDtos.Any())
+                if (colDto != null && (colDto.TypeId != 0 || colDto.ValueId != 0 || !string.IsNullOrEmpty(colDto.ValueName)))
+                {
+                    dimensionsdto.Add(colDto);
+                }
+                if (filterDtos != null && filterDtos.Any(f => f.TypeId != 0 || f.ValueId != 0 || !string.IsNullOrEmpty(f.ValueName)))
                 {
                     dimensionsdto.AddRange(filterDtos);
                 }
+
                 var modelvalue = new DataModelValuesForAssigning
                 {
                     DataModelValueId = datamodelvalue.Id,

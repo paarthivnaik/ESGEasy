@@ -11,6 +11,7 @@ namespace ESG.Application.Services.Interfaces
     public interface IUserService
     {
         Task<IEnumerable<UserResponseDto>> GetAllUsers();
+        Task<IEnumerable<UserResponseDto>> GetOrganizationalUsers(long organizationId);
         Task<UserResponseDto> GetUserById(long userId);
         Task<UserDetailsResponeDto> GetUserDetails(long userId);
         Task<List<long>> GetUserOrganizations(long userId);

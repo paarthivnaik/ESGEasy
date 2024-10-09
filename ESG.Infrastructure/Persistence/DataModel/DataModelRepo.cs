@@ -347,7 +347,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 {
                     Id = md.Dimensions.Id,
                     Name = md.Dimensions.ShortText,
-                    TypeId = md.ModelDimensionTypesId,
+                    TypeId = md.Dimensions.DimensionTypeId,
                 })
                 .ToListAsync();
 
