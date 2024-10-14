@@ -29,6 +29,7 @@ public partial class Dimension
     public long? LastModifiedBy { get; set; }
 
     public DateTime? LastModifiedDate { get; set; }
+    public string? Name { get; set; }
 
     public virtual ICollection<DataModelValue> DataModelValueColumns { get; set; } = new List<DataModelValue>();
 

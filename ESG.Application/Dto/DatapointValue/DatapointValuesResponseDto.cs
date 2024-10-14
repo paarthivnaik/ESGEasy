@@ -21,5 +21,6 @@ namespace ESG.Application.Dto.DatapointValue
         public long? LanguageId { get; set; }
         public long? UserId { get; set; }
         public long? DisclosureRequirementId { get; set; }
+        public long? OrganizationId { get; set; }
     }
 }

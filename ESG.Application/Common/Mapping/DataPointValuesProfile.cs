@@ -27,6 +27,7 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.DisclosureRequirementId, opt => opt.MapFrom(src => src.DisclosureRequirementId))
+                .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId))
                 .ForMember(dest => dest.IsNarrative, opt => opt.MapFrom(src => src.IsNarrative));
             CreateMap<DataPointValueResponseDto, DataPointValue> ()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
@@ -40,6 +41,7 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.DisclosureRequirementId, opt => opt.MapFrom(src => src.DisclosureRequirementId))
+                .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId))
                 .ForMember(dest => dest.IsNarrative, opt => opt.MapFrom(src => src.IsNarrative));
 
             CreateMap<DatapointValueCreateRequestDto, DataPointValue>()

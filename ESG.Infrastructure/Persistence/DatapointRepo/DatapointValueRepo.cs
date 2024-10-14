@@ -62,8 +62,8 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                     Purpose = a.Purpose,
                     LanguageId = a.LanguageId,
                     UserId = a.UserId,
-                    DisclosureRequirementId = a.DisclosureRequirementId
-                    
+                    DisclosureRequirementId = a.DisclosureRequirementId,
+                    OrganizationId = a.OrganizationId,
                 })
                 .ToListAsync();
 

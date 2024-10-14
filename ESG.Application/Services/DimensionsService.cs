@@ -39,6 +39,7 @@ namespace ESG.Application.Services
                         existingDimension.OrganizationId = dimention.OrganizationId;
                         existingDimension.ShortText = dimention.ShortText;
                         existingDimension.LongText = dimention.LongText;
+                        existingDimension.Name = dimention.Name;
                         oldDimension.Add(existingDimension);                        
 
                         //var DimensionTranslateddata = _mapper.Map<DimensionTranslation>(dimentions);
@@ -99,6 +100,7 @@ namespace ESG.Application.Services
                 existingData.ShortText = dimentionsRequest.ShortText;
                 existingData.LongText = dimentionsRequest.LongText;
                 existingData.Code = dimentionsRequest.Code;
+                existingData.Name = dimentionsRequest.Name;
                 existingData.State = dimentionsRequest.State;
             }
             //if (translationsData != null)
