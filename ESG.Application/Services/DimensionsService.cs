@@ -47,6 +47,11 @@ namespace ESG.Application.Services
                     }
                     else
                     {
+                        var existingdimensionCode = await _unitOfWork.Repository<Dimension>().Get(a => a.Code == dimention.Code);
+                        if (existingdimensionCode != null)
+                        {
+                            throw new System.Exception($"The Datapoint with code - {dimention.Code} alredy exists");
+                        }
                         var dimensonsdata = _mapper.Map<Dimension>(dimention);
                         dimensonsdata.State = StateEnum.active;
                         //var dimensonsTranslationdata = _mapper.Map<DimensionTranslation>(dimentions);

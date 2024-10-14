@@ -69,6 +69,11 @@ namespace ESG.Application.Services
                         //    DisclosureRequirementId = datapoint.DisclosureRequirementId,
                         //    State = Domain.Enum.StateEnum.active,
                         //};
+                        var existingdatapointCode = await _unitOfWork.Repository<DataPointValue>().Get(a => a.Code == datapoint.Code);
+                        if (existingdatapointCode != null)
+                        {
+                            throw new System.Exception($"The Datapoint with code - {datapoint.Code} alredy exists");
+                        }
                         var newDP = _mapper.Map<DataPointValue>(datapoint);
                         newDP.State = Domain.Enum.StateEnum.active;
                         newDatapoints.Add(newDP);

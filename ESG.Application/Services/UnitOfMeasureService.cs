@@ -47,6 +47,11 @@ namespace ESG.Application.Services
                     }
                     else
                     {
+                        var existingCode = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(a => a.Code == uom.Code);
+                        if (existingCode != null)
+                        {
+                            throw new System.Exception($"The Datapoint with code - {uom.Code} alredy exists");
+                        }
                         var uomdata = new UnitOfMeasure
                         {
                             Code = uom.Code,
@@ -111,7 +116,7 @@ namespace ESG.Application.Services
             //translationsData.LongText = unitOfMeasure.LongText;
             //translationsData.State = unitOfMeasure.State;
             //translationsData.Name = unitOfMeasure.Name;
-
+           
             await _unitOfMeasure.Repository<UnitOfMeasure>().Update(existingData);
             //await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().Update(translationsData);
             await _unitOfMeasure.SaveAsync();
