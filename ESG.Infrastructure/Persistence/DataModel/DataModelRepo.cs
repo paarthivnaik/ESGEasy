@@ -386,5 +386,15 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(dmv => ids.Contains(dmv.Id) && dmv.DataModelId == modelId && dmv.DataModel.OrganizationId == organizationId)
                 .ToListAsync();
         }
+
+        public async Task<bool> VerifyIsDefaultModel(long modelId, long organizationId)
+        {
+            var res = await _context.DataModels
+                .AsNoTracking()
+                .Where(dm => dm.Id == modelId && dm.OrganizationId == organizationId)
+                .Select(dmv => dmv.IsDefaultModel)
+                .FirstOrDefaultAsync();
+            return res;
+        }
     }
 }

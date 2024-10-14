@@ -16,6 +16,8 @@ namespace ESG.Application.Dto.DataModel
     public class AssigningUsersDto
     {
         public long DataModelValueId { get; set; }
+        public long RowId { get; set; }
+        public long ColumnId { get; set; }
         public long? AccountableUserId { get; set; }
         public long? ResponsibleUserId { get; set; }
         public bool? IsBlocked { get; set; }

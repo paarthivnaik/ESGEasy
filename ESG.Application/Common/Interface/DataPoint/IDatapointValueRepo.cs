@@ -11,7 +11,9 @@ namespace ESG.Application.Common.Interface.DataPoint
     public interface IDatapointValueRepo
     {
         Task<IEnumerable<long>> GetModelDatapointsByOrgId(long orgId);
+        Task<IEnumerable<long>> GetModelDatapointsLinkedToDataModels(long orgId);
         Task<IEnumerable<DataPointValue>> GetNamesForFilteredIds(IEnumerable<long> filteredIds);
         Task<IEnumerable<DataPointValue>> GetAllDatapointValues();
+        Task<List<(long Id, string Name, string Code)>?> GetHierarchyDatapointDetailsByOrganizationId(long organizationId);
     }
 }

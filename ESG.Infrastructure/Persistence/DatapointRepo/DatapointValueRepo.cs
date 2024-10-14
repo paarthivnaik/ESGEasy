@@ -27,7 +27,15 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 .Where(x => x.OrganizationId == orgId)
                 .SelectMany(a => a.ModelDatapoints.Select(md => md.DatapointValuesId))
                 .ToListAsync();
-
+            return list;
+        }
+        public async Task<IEnumerable<long>> GetModelDatapointsLinkedToDataModels(long orgId)
+        {
+            var list = await _context.DataModels
+                .AsNoTracking()
+                .Where(x => x.OrganizationId == orgId && x.IsDefaultModel == false)
+                .SelectMany(a => a.ModelDatapoints.Select(md => md.DatapointValuesId))
+                .ToListAsync();
             return list;
         }
         public async Task<IEnumerable<DataPointValue>> GetNamesForFilteredIds(IEnumerable<long> filteredIds)
@@ -70,5 +78,19 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
             return list;
         }
 
+        public async Task<List<(long Id, string Name, string Code)>?> GetHierarchyDatapointDetailsByOrganizationId(long hierarchyId)
+        {
+            var list = await _context.Hierarchies
+                .AsNoTracking()
+                .Where(x => x.HierarchyId == hierarchyId)
+                    .Select(md => new
+                    {
+                        Id = md.DataPointValuesId,
+                        Name = md.DataPointValues.Name,
+                        Code = md.DataPointValues.Code,
+                    })
+                .ToListAsync();
+            return list.Select(x => (x.Id, x.Name, x.Code)).ToList();
+        }
     }
 }
