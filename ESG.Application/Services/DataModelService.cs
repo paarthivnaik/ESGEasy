@@ -1142,11 +1142,11 @@ namespace ESG.Application.Services
                 }
 
                 if (rowDto != null) dimensionsdto.Add(rowDto);
-                if (colDto != null && (colDto.TypeId != 0 || colDto.ValueId != 0 || !string.IsNullOrEmpty(colDto.ValueName)))
+                if (colDto != null && (colDto.TypeId != null && colDto.TypeId != 0 && colDto.ValueId != null &&  colDto.ValueId != 0))
                 {
                     dimensionsdto.Add(colDto);
                 }
-                if (filterDtos != null && filterDtos.Any(f => f.TypeId != 0 || f.ValueId != 0 || !string.IsNullOrEmpty(f.ValueName)))
+                if (filterDtos != null && filterDtos.Any(f => f.TypeId != null && f.TypeId != 0 && f.ValueId != null && f.ValueId != 0))
                 {
                     dimensionsdto.AddRange(filterDtos);
                 }
