@@ -142,9 +142,10 @@ namespace ESG.Application.Services
             if (hierarchyId != 0)
             {
                 var datapointIds = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(hierarchyId);
-                var DataPointValue = await _unitOfWork.Repository<DataPointValue>()
-                    .GetAll(dp => datapointIds.Contains(dp.Id));
-                var disclosureRequirementIds = DataPointValue.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
+                var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds);
+                //var DataPointValue = await _unitOfWork.Repository<DataPointValue>()
+                //    .GetAll(dp => datapointIds.Contains(dp.Id));
+                var disclosureRequirementIds = datapointdetails.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
                 var disclosureRequirements = await _unitOfWork.Repository<DisclosureRequirement>()
                     .GetAll(dr => disclosureRequirementIds.Contains(dr.Id));
                 var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
@@ -173,11 +174,12 @@ namespace ESG.Application.Services
                     SubTopicId = (long)dr.StandardId,
                 }).ToList();
 
-                var dataPointDtos = DataPointValue.Select(dp => new DataPointDto
+                var dataPointDtos = datapointdetails.Select(dp => new DataPointDto
                 {
                     Id = dp.Id,
                     Name = dp.Name,
-                    DisclosureRequirementId = (long)dp.DisclosureRequirementId,
+                    UOMCode = (dp.UnitOfMeasure?.Code ?? dp.Currency?.CurrencyCode) ?? "Narrative",
+                    DisclosureRequirementId = dp.DisclosureRequirementId.HasValue ? (long)dp.DisclosureRequirementId : 0,
                 }).ToList();
 
                 mainDto.Topics = topicDtos;

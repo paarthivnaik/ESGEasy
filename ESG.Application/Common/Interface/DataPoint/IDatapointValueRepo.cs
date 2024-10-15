@@ -13,6 +13,7 @@ namespace ESG.Application.Common.Interface.DataPoint
         Task<IEnumerable<long>> GetModelDatapointsByOrgId(long orgId);
         Task<IEnumerable<long>> GetModelDatapointsLinkedToDataModels(long orgId);
         Task<IEnumerable<DataPointValue>> GetNamesForFilteredIds(IEnumerable<long> filteredIds);
+        Task<IEnumerable<DataPointValue>> GetDatapointValueDetailsByIds(IEnumerable<long> datapointIds);
         Task<IEnumerable<DataPointValue>> GetAllDatapointValues();
         Task<List<(long Id, string Name, string Code)>?> GetHierarchyDatapointDetailsByOrganizationId(long organizationId);
     }

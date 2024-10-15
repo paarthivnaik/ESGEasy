@@ -92,5 +92,16 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 .ToListAsync();
             return list.Select(x => (x.Id, x.Name, x.Code)).ToList();
         }
+
+        public async Task<IEnumerable<DataPointValue>> GetDatapointValueDetailsByIds(IEnumerable<long> datapointIds)
+        {
+            var list = await _context.DataPointValue
+                .AsNoTracking()
+                .Include(a => a.UnitOfMeasure)
+                .Include(c => c.Currency)
+                .Where(dp => datapointIds.Contains(dp.Id))
+                .ToListAsync();
+            return list;
+        }
     }
 }
