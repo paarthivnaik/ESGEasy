@@ -71,7 +71,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return dataModel;
         }
         
-
+        public async Task<ESG.Domain.Models.DataModel?> GetDataModelById(long modelId)
+        {
+            return await _context.DataModels
+                .AsNoTracking()
+                .Where(a => a.Id == modelId)
+                .FirstOrDefaultAsync();
+        }
         public async Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var result = await _context.ModelConfigurations
@@ -272,7 +278,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 combinationId = null;
             var modelvalues = await _context.DefaultDataModelValues
                 .AsNoTracking()
-                .Where(a => a.DataPointValuesId == datapointId && a.CombinationId == combinationId)
+                .Where(a => a.DataPointValuesId == datapointId )
                 .ToListAsync();
             return modelvalues;
         }
@@ -465,13 +471,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(dmv => dmv.DataModelId == modelId && datapoints.Contains(dmv.DataPointValuesId) && dmv.OrganizationId == organizationId)
                 .ToListAsync();
         }
-        public async Task<ESG.Domain.Models.DataModel?> GetDataModelById(long dataModelId)
-        {
-            return await _context.DataModels
-                .AsNoTracking()
-                .Where(a => a.Id == dataModelId)
-                .FirstOrDefaultAsync();
-        }
+        //public async Task<ESG.Domain.Models.DataModel?> GetDataModelById(long dataModelId)
+        //{
+        //    return await _context.DataModels
+        //        .AsNoTracking()
+        //        .Where(a => a.Id == dataModelId)
+        //        .FirstOrDefaultAsync();
+        //}
 
         public async Task<List<long>?> GetDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId)
         {

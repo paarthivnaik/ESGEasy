@@ -11,6 +11,7 @@ namespace ESG.Application.Dto.DataModel
         public long DatapointId { get; set; }
         public long UserId { get; set; }
         public long OrganizatonId { get; set; }
+        public long ModelId { get; set; }
         public List<SavedDataPointFilters>? SavedDataPointFilters { get; set; }
     }
     public class SavedDataPointFilters

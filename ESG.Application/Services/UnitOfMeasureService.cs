@@ -131,7 +131,7 @@ namespace ESG.Application.Services
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll(long organizationId)
         {
             var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll
-                (a => a.State == StateEnum.active && a.OrganizationId == 1 && a.OrganizationId == organizationId);
+                (a => (a.OrganizationId == 1 || a.OrganizationId == organizationId) && a.State == StateEnum.active);
             var orderedList = lst.OrderBy(u => u.Id);
             var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
             return data;
@@ -142,9 +142,10 @@ namespace ESG.Application.Services
             var data = _mapper.Map<UnitOfMeasureResponseDto>(lst);
             return data;
         }
-        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMByUOMTypeId(long uomTypeId)
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMByUOMTypeId(long uomTypeId, long organizationId)
         {
-            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll(u => u.UnitOfMeasureTypeId == uomTypeId && u.State == StateEnum.active);
+            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll
+                (u => (u.OrganizationId == 1 || u.OrganizationId == organizationId) && u.UnitOfMeasureTypeId == uomTypeId && u.State == StateEnum.active);
             var orderedList = lst.OrderBy(u => u.Id);
             var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
             return data;

@@ -106,7 +106,7 @@ namespace ESG.Application.Services
         public async Task<IEnumerable<DimensionTypeResponseDto>> GetAll(long organizationId)
         {
             var list = await _unitOfWork.Repository<DimensionType>().GetAll
-                (a => a.State == StateEnum.active && a.OrganizationId == 1 && a.OrganizationId == organizationId);
+                (a => (a.OrganizationId == 1 || a.OrganizationId == organizationId) && a.State == StateEnum.active);
             return _mapper.Map<IEnumerable<DimensionTypeResponseDto>>(list);
         }
 

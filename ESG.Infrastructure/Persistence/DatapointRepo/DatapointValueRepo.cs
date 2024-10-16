@@ -56,7 +56,7 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
         {
             var list = await _context.DataPointValue
                 .AsNoTracking()
-                .Where(x => x.State == Domain.Enum.StateEnum.active && x.OrganizationId == 1 && x.OrganizationId == organizationId)
+                .Where(x => (x.OrganizationId == 1 || x.OrganizationId == organizationId) && x.State == Domain.Enum.StateEnum.active)
                 .Select(a => new DataPointValue
                 {
                     Id = a.Id,
