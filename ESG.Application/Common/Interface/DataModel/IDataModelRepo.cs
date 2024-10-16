@@ -27,9 +27,9 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<long>> GetDatapointsByViewType(List<long> datapointIds);
         Task<IEnumerable<DataModelFilter>> GetModelFiltersByConfigId(long configId);
         Task<DataPointValue> GetDatapointMetric(long datapointId, long organizationId);
-        Task<IEnumerable<ModelFilterCombination>> GetModelFilterCombinationsByModelIdandDatapointId(long modelId, long datapointId);
+        Task<IEnumerable<ModelFilterCombination>> GetModelFilterCombinationsByModelIdandDatapointId(long modelId, long datapointId, ModelViewTypeEnum viewType);
         Task<IEnumerable<DataModelValue>> GetDataModelValuesByDatapointIdCombinatinalIdAndModelId(long? combinationId, long datapointId, long modelId);
-
+        Task<IEnumerable<DefaultDataModelValue>> GetDefaultDataModelValuesByDatapointIdCombinatinalIdAndModelId(long? combinationId, long datapointId, long modelId);
         Task<List<ModelDimensionType>?> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId);
         Task<List<DataModelValue>?> GetDataModelValues(long modelId, long datapointId, List<long> rowId, List<long?> columnId, long? filterCombinationId);
         Task<List<long>?> GetModelFilterCombinations(long modelId);
@@ -37,9 +37,15 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<DataModelValue>?> GetDataModelValuesByModelIdOrgId(long modelId, long organizationId);
         Task<List<SampleModelFilterCombinationValue>?> GetDataModelCombinationalValuesByModelFilterCombinationIds(List<long> combinationalIds);
         Task<IEnumerable<(long Id, long DimensionTypeId, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId);
-        Task<bool> VerifyIsDefaultModel(long modelId, long organizationId);
+        Task<bool> VerifyIsDefaultModel(long modelId);
         Task<IEnumerable<(long Id, string Name, long TypeId)>> GetModelDimensionValuesByModelDimTypeId(List<long?> modelDimensionTypeIds);
         Task<Amendment?> GetExistingAmendment(long datapointId, long? combinationId);
         Task<List<DataModelValue>?> GetDataModelValuesById(List<long> ids, long modelId, long OrganizationId);
+        Task<IEnumerable<DefaultDataModelValue>> GetDefaultDataModelValuesByDatapointIds(List<long> datapointIds, StateEnum state, long organizationId);
+        Task<ESG.Domain.Models.DataModel> GetDefaultModel();
+        Task<List<(long Id, long typeId)>> GetModelDimensionValuesByTypeIdAndModelId(long typeId, long modelId);
+        Task<List<DefaultDataModelValue>?> GetDefaultDataModelValuesByModelIdAndDatapoints(long modelId, IEnumerable<long> datapoints, long organizationId);
+        Task<ESG.Domain.Models.DataModel?> GetDataModelById(long dataModelId);
+        Task<List<DefaultDataModelValue>?> GetDefaultDataModelValuesById(List<long> ids);
     }
 }

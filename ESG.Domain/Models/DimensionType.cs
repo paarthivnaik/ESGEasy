@@ -27,6 +27,7 @@ public partial class DimensionType
     public long? LastModifiedBy { get; set; }
 
     public DateTime? LastModifiedDate { get; set; }
+
     public string? Name { get; set; }
 
     public virtual ICollection<DataModelFilter> DataModelFilterDimensionTypes { get; set; } = new List<DataModelFilter>();
@@ -42,6 +43,7 @@ public partial class DimensionType
     public virtual ICollection<ModelConfiguration> ModelConfigurationColumns { get; set; } = new List<ModelConfiguration>();
 
     public virtual ICollection<ModelConfiguration> ModelConfigurationRows { get; set; } = new List<ModelConfiguration>();
+
     public virtual ICollection<ModelDimensionType> ModelDimensionTypes { get; set; } = new List<ModelDimensionType>();
 
     public virtual ICollection<ModelFilterCombinationalValue> ModelFilterCombinationalValues { get; set; } = new List<ModelFilterCombinationalValue>();

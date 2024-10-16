@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ESG.Domain.Models;
 
-public partial class DataModelValue
+public partial class DefaultDataModelValue
 {
     public long Id { get; set; }
 
@@ -39,8 +39,7 @@ public partial class DataModelValue
     public long? Consult { get; set; }
 
     public long? Inform { get; set; }
-
-    public virtual User? AccountableUser { get; set; }
+    public long OrganizationId { get; set; }
 
     public virtual Dimension? Column { get; set; }
 
@@ -53,6 +52,7 @@ public partial class DataModelValue
     public virtual DataPointValue? DataPointValues { get; set; }
 
     public virtual User? InformNavigation { get; set; }
+    public virtual Organization? Organization { get; set; }
 
     public virtual User? ResponsibleUser { get; set; }
 

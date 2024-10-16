@@ -261,6 +261,17 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .ToListAsync();
             return modelvalues;
         }
+        public async Task<IEnumerable<DefaultDataModelValue>> GetDefaultDataModelValuesByDatapointIdCombinatinalIdAndModelId(long? combinationId, long datapointId, long modelId)
+        {
+            if (combinationId == 0)
+                combinationId = null;
+            var modelvalues = await _context.DefaultDataModelValues
+                .AsNoTracking()
+                .Where(a => a.DataPointValuesId == datapointId && a.CombinationId == combinationId)
+                .ToListAsync();
+            return modelvalues;
+        }
+
 
         public async Task<List<ModelDimensionType>?> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId)
         {
@@ -283,13 +294,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return filters;
         }
 
-        public async Task<IEnumerable<ModelFilterCombination>> GetModelFilterCombinationsByModelIdandDatapointId(long modelId, long datapointId)
+        public async Task<IEnumerable<ModelFilterCombination>> GetModelFilterCombinationsByModelIdandDatapointId(long modelId, long datapointId, ModelViewTypeEnum viewType)
         {
             var modelCombinations = await _context.ModelFilterCombinations
                     .AsNoTracking()
                     .Include(a => a.SampleModelFilterCombinationValues)
                     .ThenInclude(cv => cv.DataModelFilters)
-                    .Where(dp => dp.DataModelId == modelId)
+                    .Where(dp => dp.DataModelId == modelId && dp.ViewType == viewType)
                     .ToListAsync();
             return modelCombinations;
         }
@@ -386,15 +397,75 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(dmv => ids.Contains(dmv.Id) && dmv.DataModelId == modelId && dmv.DataModel.OrganizationId == organizationId)
                 .ToListAsync();
         }
+        public async Task<List<DefaultDataModelValue>?> GetDefaultDataModelValuesById(List<long> ids)
+        {
+            return await _context.DefaultDataModelValues
+                .AsNoTracking()
+                .Where(dmv => ids.Contains(dmv.Id))
+                .ToListAsync();
+        }
 
-        public async Task<bool> VerifyIsDefaultModel(long modelId, long organizationId)
+        public async Task<bool> VerifyIsDefaultModel(long modelId)
         {
             var res = await _context.DataModels
                 .AsNoTracking()
-                .Where(dm => dm.Id == modelId && dm.OrganizationId == organizationId)
+                .Where(dm => dm.Id == modelId)
                 .Select(dmv => dmv.IsDefaultModel)
                 .FirstOrDefaultAsync();
             return res;
+        }
+        public async Task<IEnumerable<DefaultDataModelValue>> GetDefaultDataModelValuesByDatapointIds(List<long> datapointIds, StateEnum state, long organizationId)
+        {
+            var modelvalues = await _context.DefaultDataModelValues
+                .AsNoTracking()
+                .Where(a => datapointIds.Contains(a.DataPointValuesId) && a.State == state && a.OrganizationId == organizationId)
+                .ToListAsync();
+            return modelvalues;
+        }
+
+        public async Task<Domain.Models.DataModel> GetDefaultModel()
+        {
+            var datamodel = await _context.DataModels
+                .AsNoTracking()
+                .Include(b => b.ModelDimensionTypes)
+                .Include(a => a.ModelConfigurations)
+                .Include(a => a.ModelFilterCombinations)
+                .Where(a => a.IsDefaultModel == true)
+                .FirstOrDefaultAsync();
+            return datamodel;
+        }
+
+        public async Task<List<(long Id, long typeId)>> GetModelDimensionValuesByTypeIdAndModelId(long modeldimtypeId, long modelId)
+        {
+            var list = await _context.ModelDimensionValues
+                .AsNoTracking()
+                .Where(a => a.ModelDimensionTypesId == modeldimtypeId && a.ModelDimensionTypes.DataModel.Id == modelId)
+                .Select(a => new
+                {
+                    Id = a.DimensionsId,
+                    typeId = a.ModelDimensionTypes.DimensionTypeId
+                })
+                .ToListAsync();
+
+            return list.Select(a => (a.Id, a.typeId)).ToList();
+        }
+        public async Task<List<DefaultDataModelValue>?> GetDefaultDataModelValuesByModelIdAndDatapoints(long modelId, IEnumerable<long> datapoints, long organizationId)
+        {
+            return await _context.DefaultDataModelValues
+                .Include(a => a.DataPointValues)
+                .Include(dim => dim.Row)
+                .Include(dim => dim.Column)
+                .Include(df => df.Combination)
+                    .ThenInclude(mfc => mfc.SampleModelFilterCombinationValues)
+                .Where(dmv => dmv.DataModelId == modelId && datapoints.Contains(dmv.DataPointValuesId) && dmv.OrganizationId == organizationId)
+                .ToListAsync();
+        }
+        public async Task<ESG.Domain.Models.DataModel?> GetDataModelById(long dataModelId)
+        {
+            return await _context.DataModels
+                .AsNoTracking()
+                .Where(a => a.Id == dataModelId)
+                .FirstOrDefaultAsync();
         }
     }
 }

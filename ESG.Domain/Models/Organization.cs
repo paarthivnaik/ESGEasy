@@ -57,7 +57,7 @@ public partial class Organization
     public virtual OrganizationHeirarchy? OrganizationHeirarchy { get; set; }
 
     public virtual ICollection<OrganizationUser> OrganizationUsers { get; set; } = new List<OrganizationUser>();
-
+    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValues { get; set; } = new List<DefaultDataModelValue>();
     public virtual Tenant Tenant { get; set; } = null!;
 
     public virtual ICollection<UnitOfMeasureType> UnitOfMeasureTypes { get; set; } = new List<UnitOfMeasureType>();

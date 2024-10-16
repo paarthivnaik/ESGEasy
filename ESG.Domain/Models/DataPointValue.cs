@@ -40,8 +40,14 @@ public partial class DataPointValue
 
     public DateTime? LastModifiedDate { get; set; }
 
-    public virtual Currency? Currency { get; set; }
+    public string? ShortText { get; set; }
+
+    public string? LongText { get; set; }
+
     public virtual ICollection<Amendment> Amendments { get; set; } = new List<Amendment>();
+
+    public virtual Currency? Currency { get; set; }
+
     public virtual ICollection<DataModelValue> DataModelValues { get; set; } = new List<DataModelValue>();
 
     public virtual DataPointType? DatapointType { get; set; }
@@ -49,6 +55,8 @@ public partial class DataPointValue
     public virtual ICollection<DatapointTypeTranslation> DatapointTypeTranslations { get; set; } = new List<DatapointTypeTranslation>();
 
     public virtual ICollection<DatapointValueTranslation> DatapointValueTranslations { get; set; } = new List<DatapointValueTranslation>();
+
+    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValues { get; set; } = new List<DefaultDataModelValue>();
 
     public virtual DisclosureRequirement? DisclosureRequirement { get; set; }
 

@@ -23,6 +23,7 @@ public partial class ModelDimensionType
     public DateTime? LastModifiedDate { get; set; }
 
     public virtual DataModel DataModel { get; set; } = null!;
+
     public virtual DimensionType DimensionType { get; set; } = null!;
 
     public virtual ICollection<ModelDimensionValue> ModelDimensionValues { get; set; } = new List<ModelDimensionValue>();

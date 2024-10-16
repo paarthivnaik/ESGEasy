@@ -29,11 +29,16 @@ public partial class Dimension
     public long? LastModifiedBy { get; set; }
 
     public DateTime? LastModifiedDate { get; set; }
+
     public string? Name { get; set; }
 
     public virtual ICollection<DataModelValue> DataModelValueColumns { get; set; } = new List<DataModelValue>();
 
     public virtual ICollection<DataModelValue> DataModelValueRows { get; set; } = new List<DataModelValue>();
+
+    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValueColumns { get; set; } = new List<DefaultDataModelValue>();
+
+    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValueRows { get; set; } = new List<DefaultDataModelValue>();
 
     public virtual ICollection<DimensionTranslation> DimensionTranslations { get; set; } = new List<DimensionTranslation>();
 

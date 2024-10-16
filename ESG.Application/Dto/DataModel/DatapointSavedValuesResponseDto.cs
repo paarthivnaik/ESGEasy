@@ -18,6 +18,7 @@ namespace ESG.Application.Dto.DataModel
 
     public class DatapointSavedValues
     {
+        public long DataModelValueId { get; set; }
         public long RowId { get; set; }
         public long? ColumnId { get; set; }
         public string? Value { get; set; }

@@ -17,16 +17,19 @@ public partial class ModelFilterCombination
     public DateTime CreatedDate { get; set; }
 
     public long? LastModifiedBy { get; set; }
+    public ModelViewTypeEnum? ViewType { get; set; }
 
     public DateTime? LastModifiedDate { get; set; }
 
-    public virtual DataModel DataModel { get; set; } = null!;
     public virtual ICollection<Amendment> Amendments { get; set; } = new List<Amendment>();
+
+    public virtual DataModel DataModel { get; set; } = null!;
+
     public virtual ICollection<DataModelValue> DataModelValues { get; set; } = new List<DataModelValue>();
 
-    public virtual ICollection<DataPointValue> DataPointValues { get; set; } = new List<DataPointValue>();
+    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValues { get; set; } = new List<DefaultDataModelValue>();
 
     public virtual ICollection<ModelFilterCombinationalValue> ModelFilterCombinationalValues { get; set; } = new List<ModelFilterCombinationalValue>();
 
-    public virtual IEnumerable<SampleModelFilterCombinationValue> SampleModelFilterCombinationValues { get; set; } = new List<SampleModelFilterCombinationValue>();
+    public virtual ICollection<SampleModelFilterCombinationValue> SampleModelFilterCombinationValues { get; set; } = new List<SampleModelFilterCombinationValue>();
 }
