@@ -558,7 +558,7 @@ namespace ESG.Application.Services
         public async Task<DataModelLinkedtoDatapointResponseDto> GetingDataModelLinkedtoDatapoint(long datapointId, long organizationId)
         {
             var responseobj = new DataModelLinkedtoDatapointResponseDto();
-            var datamodel = await _unitOfWork.DataModelRepo.GetDataModelIdByDatapointIdAndOrgId(datapointId, organizationId);
+            var datamodel = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(datapointId, organizationId);
             if (datamodel == null)
                 throw new ArgumentException("there is no model linked to that datapoint");
             var datapointviewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(datapointId);
@@ -1001,47 +1001,47 @@ namespace ESG.Application.Services
             return responsedto;
         }
 
-        private async Task<DatapointMetricResponseDto> GetDatapointMetric(long datapointId, long organizationId)
-        {
-            var metric = new DatapointMetricResponseDto();
-            var datapoint = await _unitOfWork.DataModelRepo.GetDatapointMetric(datapointId, organizationId);
-            metric.Id = datapointId;
-            if (datapoint == null || string.IsNullOrEmpty(datapoint.Name))
-                throw new System.Exception($"The data point is null here {datapoint == null} and " +
-                    $"{datapoint?.Name}");
-            metric.Name = datapoint.Name;
-            if (datapoint.IsNarrative == true)
-            {
-                metric.IsNarrative = true;
-                metric.MetricId = datapoint.DatapointTypeId!.Value;
-                metric.MetricCode = "Narrative";
-            }
-            else if (datapoint.UnitOfMeasureId != null)
-            {
-                metric.IsNarrative = false;
-                metric.MetricId = datapoint.UnitOfMeasureId!.Value;
-                metric.MetricCode = datapoint.UnitOfMeasure.Code;
-            }
-            else if (datapoint.CurrencyId != null)
-            {
-                metric.IsNarrative = false;
-                metric.MetricId = datapoint.CurrencyId!.Value;
-                metric.MetricCode = datapoint.Currency.CurrencyCode;
-            }
-            else
-            {
-                throw new System.Exception("This Datapoint is not set to any unitofmeasure or currency neither set to IsNarrative");
-            }
-            return metric;
-        }
+        //private async Task<DatapointMetricResponseDto> GetDatapointMetric(long datapointId, long organizationId)
+        //{
+        //    var metric = new DatapointMetricResponseDto();
+        //    var datapoint = await _unitOfWork.DataModelRepo.GetDatapointMetric(datapointId, organizationId);
+        //    metric.Id = datapointId;
+        //    if (datapoint == null || string.IsNullOrEmpty(datapoint.Name))
+        //        throw new System.Exception($"The data point is null here {datapoint == null} and " +
+        //            $"{datapoint?.Name}");
+        //    metric.Name = datapoint.Name;
+        //    if (datapoint.IsNarrative == true)
+        //    {
+        //        metric.IsNarrative = true;
+        //        metric.MetricId = datapoint.DatapointTypeId!.Value;
+        //        metric.MetricCode = "Narrative";
+        //    }
+        //    else if (datapoint.UnitOfMeasureId != null)
+        //    {
+        //        metric.IsNarrative = false;
+        //        metric.MetricId = datapoint.UnitOfMeasureId!.Value;
+        //        metric.MetricCode = datapoint.UnitOfMeasure.Code;
+        //    }
+        //    else if (datapoint.CurrencyId != null)
+        //    {
+        //        metric.IsNarrative = false;
+        //        metric.MetricId = datapoint.CurrencyId!.Value;
+        //        metric.MetricCode = datapoint.Currency.CurrencyCode;
+        //    }
+        //    else
+        //    {
+        //        throw new System.Exception("This Datapoint is not set to any unitofmeasure or currency neither set to IsNarrative");
+        //    }
+        //    return metric;
+        //}
 
         public async Task<DatapointSavedValuesResponseDto> GetDatapointSavedValues(DatapointSavedValuesRequestDto datapointSavedValuesRequestDto)
         {
             var response = new DatapointSavedValuesResponseDto();
             long ModelFilterCombinationId = 0;
             bool isMatch = false;
-            var modelId = await _unitOfWork.DataModelRepo.GetDataModelIdByDatapointIdAndOrgId(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
-            if (modelId == null)
+            var model = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
+            if (model == null)
                 return response;
             var datapointViewType = await _unitOfWork.DataModelRepo.GetDatapointViewType(datapointSavedValuesRequestDto.DatapointId);
             var viewtype = ModelViewTypeEnum.Narrative;
@@ -1049,7 +1049,7 @@ namespace ESG.Application.Services
             {
                 viewtype = ModelViewTypeEnum.Fact;
             }
-            var ModelFilterCombinations = await _unitOfWork.DataModelRepo.GetModelFilterCombinationsByModelIdandDatapointId(modelId.Id, datapointSavedValuesRequestDto.DatapointId, viewtype);
+            var ModelFilterCombinations = await _unitOfWork.DataModelRepo.GetModelFilterCombinationsByModelIdandDatapointId(model.Id, datapointSavedValuesRequestDto.DatapointId, viewtype);
             if (datapointSavedValuesRequestDto.SavedDataPointFilters == null || !datapointSavedValuesRequestDto.SavedDataPointFilters.Any())
                 return response;
             foreach (var combination in ModelFilterCombinations)
@@ -1066,22 +1066,42 @@ namespace ESG.Application.Services
             }
             var amendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(datapointSavedValuesRequestDto.DatapointId, ModelFilterCombinationId);
             response.Amendment = amendment?.Value;
-            var datamodelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByDatapointIdCombinatinalIdAndModelId(ModelFilterCombinationId, datapointSavedValuesRequestDto.DatapointId, modelId.Id);
-            var datapointdetails = await GetDatapointMetric(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
-            response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
-            response.Name = datapointdetails.Name;
-            response.UOMCode = datapointdetails.MetricCode;
-            response.IsNarrative = datapointdetails.IsNarrative;
-            response.DatapointSavedValues = new List<DatapointSavedValues>();
-            foreach (var datamodelValue in datamodelValues)
+            var datamodelLinkedtodatapoint = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
+            if (datamodelLinkedtodatapoint.IsDefaultModel == true)
             {
-                response.DatapointSavedValues.Add(new DatapointSavedValues
+                var defautdatamodelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByDatapointIdCombinatinalIdAndModelId(ModelFilterCombinationId, datapointSavedValuesRequestDto.DatapointId, model.Id);
+                response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
+                response.DatapointSavedValues = new List<DatapointSavedValues>();
+                foreach (var datamodelValue in defautdatamodelValues)
                 {
-                    DataModelValueId = datamodelValue.Id,
-                    RowId = datamodelValue.RowId,
-                    ColumnId = datamodelValue.ColumnId,
-                    Value = datamodelValue.Value,
-                });
+                    response.DatapointSavedValues.Add(new DatapointSavedValues
+                    {
+                        DataModelValueId = datamodelValue.Id,
+                        RowId = datamodelValue.RowId,
+                        ColumnId = datamodelValue.ColumnId,
+                        Value = datamodelValue.Value,
+                        IsBlocked = datamodelValue.IsBlocked,
+                        ResponsibleUserId = datamodelValue.ResponsibleUserId,
+                    });
+                }
+            }
+            if (datamodelLinkedtodatapoint.IsDefaultModel == false)
+            {
+                var datamodelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIdCombinatinalIdAndModelId(ModelFilterCombinationId, datapointSavedValuesRequestDto.DatapointId, model.Id);
+                response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
+                response.DatapointSavedValues = new List<DatapointSavedValues>();
+                foreach (var datamodelValue in datamodelValues)
+                {
+                    response.DatapointSavedValues.Add(new DatapointSavedValues
+                    {
+                        DataModelValueId = datamodelValue.Id,
+                        RowId = datamodelValue.RowId,
+                        ColumnId = datamodelValue.ColumnId,
+                        Value = datamodelValue.Value,
+                        IsBlocked = datamodelValue.IsBlocked,
+                        ResponsibleUserId = datamodelValue.ResponsibleUserId,
+                    });
+                }
             }
             return response;
         }

@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 using static ESG.Application.Dto.Hierarchy.HierarchyResponseDto;
@@ -101,23 +102,23 @@ namespace ESG.Application.Services
                         //    }
                         //}
                     //}
-                    if (existingDatamodelvalues.Count() > 0)
+                    if (existingDatamodelvalues.Count() > 0 )
                     {
                         var existingdps = existingDatamodelvalues.Select(a => a.DataPointValuesId).Distinct().ToList();
-                        var newdps = request.DatapointIds.Where(item => !existingdps.Contains(item)).Distinct().ToList();
+                        var newdps = request.DatapointIds.Except(existingdps).ToList();
+
                         if (newdps.Count() > 0)
                         {
                             await GenerateDefaultDataModelValues(newdps, request);
                         }
                     }
-                    else
-                    {
-                        await GenerateDefaultDataModelValues(request.DatapointIds, request);
-                    }
+                    //else
+                    //{
+                    //    await GenerateDefaultDataModelValues(request.DatapointIds, request);
+                    //}
                 }
-                
             }
-            else 
+            if (existinghierarchyId <= 0) 
             {
                 var hierarchyId = await _unitOfWork.HierarchyRepo.GetNextHierarchyIdAsync();
                 if (request.DatapointIds != null && request.DatapointIds.Any())
@@ -253,8 +254,6 @@ namespace ESG.Application.Services
             {
                 var datapointIds = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(hierarchyId);
                 var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds);
-                //var DataPointValue = await _unitOfWork.Repository<DataPointValue>()
-                //    .GetAll(dp => datapointIds.Contains(dp.Id));
                 var disclosureRequirementIds = datapointdetails.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
                 var disclosureRequirements = await _unitOfWork.Repository<DisclosureRequirement>()
                     .GetAll(dr => disclosureRequirementIds.Contains(dr.Id));
@@ -376,6 +375,28 @@ namespace ESG.Application.Services
                 response.Add(topicDto);
             }
             return response;
+        }
+
+        public async Task<List<GetDatapointsAssignedToUserResponseDto>> GetDatapointsAssignedToUser(long organizationId, long userId)
+        {
+            var mainDto = new List<GetDatapointsAssignedToUserResponseDto>();
+            var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
+            if (hierarchyId != 0)
+            {
+                var defaultDataModelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesyOrgaidAndResponsibleUser(organizationId, userId);
+                var dataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesyOrgaidAndResponsibleUser(organizationId, userId);
+                var datapointIds = defaultDataModelValues.Concat(dataModelValues);
+                var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds);
+                foreach( var datapoint in datapointdetails)
+                {
+                    var res = new GetDatapointsAssignedToUserResponseDto();
+                    res.Id = datapoint.Id;
+                    res.Name = datapoint.Name;
+                    res.UOMCode = (datapoint.UnitOfMeasure?.Code ?? datapoint.Currency?.CurrencyCode) ?? "Narrative";
+                    mainDto.Add(res);
+                }
+            }
+            return mainDto;
         }
     }
 }

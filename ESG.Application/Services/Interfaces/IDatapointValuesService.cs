@@ -12,7 +12,7 @@ namespace ESG.Application.Services.Interfaces
     {
         Task AddAsync(List<DatapointValueCreateRequestDto> DataPointValue);
         Task<DataPointValue> UpdateAsync(DataPointValue DataPointValue);
-        Task<IEnumerable<DataPointValueResponseDto>> GetAll();
+        Task<IEnumerable<DataPointValueResponseDto>> GetAll(long organizationId);
         
         Task<DataPointValue> GetById(long Id);
         Task DeleteDatapoint(DatapointValueDeleteRequestDto datapointValueDeleteRequestDto);

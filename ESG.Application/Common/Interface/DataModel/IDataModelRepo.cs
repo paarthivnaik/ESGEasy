@@ -14,7 +14,7 @@ namespace ESG.Application.Common.Interface.DataModel
     {
         //Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto);
         Task<List<Domain.Models.DataModel>> GetDataModelsIncludingDefaultByOrgId(long OrgId);
-        Task<Domain.Models.DataModel?> GetDataModelIdByDatapointIdAndOrgId(long datapointId, long orgId);
+        Task<Domain.Models.DataModel?> GetDataModelByDatapointIdAndOrgId(long datapointId, long orgId);
         Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum);
         Task<(long Id, string Name)> GetColumnDimensionTypeIdAndNameByDimensionTypeId(long typeId);
         Task<List<(long Id, string? Name)>?> GetFilterDimensionTypeByConfigurationId(long configurationId);
@@ -47,5 +47,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<DefaultDataModelValue>?> GetDefaultDataModelValuesByModelIdAndDatapoints(long modelId, IEnumerable<long> datapoints, long organizationId);
         Task<ESG.Domain.Models.DataModel?> GetDataModelById(long dataModelId);
         Task<List<DefaultDataModelValue>?> GetDefaultDataModelValuesById(List<long> ids);
+        Task<List<long>?> GetDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
+        Task<List<long>?> GetDefaultDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
     }
 }

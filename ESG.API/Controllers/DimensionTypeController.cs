@@ -40,9 +40,9 @@ namespace ESG.API.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<IEnumerable<DimensionTypeResponseDto>> Get()
+        public async Task<IEnumerable<DimensionTypeResponseDto>> Get(long organizationId)
         {
-            return await _dimentionTypeService.GetAll();
+            return await _dimentionTypeService.GetAll(organizationId);
         }
 
 

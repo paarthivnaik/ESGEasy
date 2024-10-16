@@ -14,7 +14,7 @@ namespace ESG.Application.Services.Interfaces
         Task AddRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure);
         Task Update(UnitOfMeasureUpdateRequestDto unitOfMeasure);
         //Task UpdateRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure);
-        Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll();
+        Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll(long organizationId);
         Task<long> Count();
         
         Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMByUOMTypeId(long uomTypeId);

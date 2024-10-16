@@ -13,7 +13,7 @@ namespace ESG.Application.Services.Interfaces
         Task Add(List<UnitOfMeasureTypeCreateRequestDto> unitOfMeasureType);
         Task UpdateAsync(UnitOfMeasureTypeUpdateRequestDto unitOfMeasureType);
         Task AddAsync(UnitOfMeasureType unitOfMeasureType);
-        Task<IEnumerable<UnitOfMeasureTypeResponseDto>> GetAll();
+        Task<IEnumerable<UnitOfMeasureTypeResponseDto>> GetAll(long organizationId);
         Task<IEnumerable<UnitOfMeasureTypeResponseDto>> GetAllTranslations(long Id);
         Task DeleteUOMType(UnitOfMeasureTypeDeleteRequestDto unitOfMeasureType);
     }

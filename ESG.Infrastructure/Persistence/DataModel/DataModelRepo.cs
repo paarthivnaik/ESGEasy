@@ -48,7 +48,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return organizationDataModels;
         }
 
-        public async Task<Domain.Models.DataModel?> GetDataModelIdByDatapointIdAndOrgId(long datapointId, long orgId)
+        public async Task<Domain.Models.DataModel?> GetDataModelByDatapointIdAndOrgId(long datapointId, long orgId)
         {
             var dataModel = await _context.DataModels
                 .AsNoTracking()
@@ -57,17 +57,20 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(dp => new ESG.Domain.Models.DataModel
                 {
                     Id = dp.Id,
-                    ModelName = dp.ModelName
+                    ModelName = dp.ModelName,
+                    IsDefaultModel = dp.IsDefaultModel,
                 })
                 .FirstOrDefaultAsync();
             if (dataModel == null)
                 return new Domain.Models.DataModel
                 {
                     Id = 1,
-                    ModelName = "Default Model"
+                    ModelName = "Default Model",
+                    IsDefaultModel = true,
                 };
             return dataModel;
         }
+        
 
         public async Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
@@ -255,6 +258,8 @@ namespace ESG.Infrastructure.Persistence.DataModel
 
         public async Task<IEnumerable<DataModelValue>> GetDataModelValuesByDatapointIdCombinatinalIdAndModelId(long? combinationId, long datapointId, long modelId)
         {
+            if (combinationId == 0)
+                combinationId = null;
             var modelvalues = await _context.DataModelValues
                 .AsNoTracking()
                 .Where(a => a.CombinationId == combinationId && a.DataPointValuesId == datapointId && a.DataModelId == modelId)
@@ -466,6 +471,25 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .AsNoTracking()
                 .Where(a => a.Id == dataModelId)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<List<long>?> GetDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId)
+        {
+            return await _context.DataModelValues
+                .AsNoTracking()
+                .Where(a => a.DataModel.OrganizationId == organizationId && a.ResponsibleUserId == userId)
+                .Select(b => b.DataPointValuesId)
+                .Distinct()
+                .ToListAsync();
+        }
+        public async Task<List<long>?> GetDefaultDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId)
+        {
+            return await _context.DefaultDataModelValues
+                .AsNoTracking()
+                .Where(a => a.OrganizationId == organizationId && a.ResponsibleUserId == userId)
+                .Select(b => b.DataPointValuesId)
+                .Distinct()
+                .ToListAsync();
         }
     }
 }

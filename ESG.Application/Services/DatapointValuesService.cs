@@ -99,9 +99,9 @@ namespace ESG.Application.Services
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<IEnumerable<DataPointValueResponseDto>> GetAll()
+        public async Task<IEnumerable<DataPointValueResponseDto>> GetAll(long organizationId)
         {
-            var datapoints = await _unitOfWork.DatapointValueRepo.GetAllDatapointValues();
+            var datapoints = await _unitOfWork.DatapointValueRepo.GetAllDatapointValues(organizationId);
             var list = _mapper.Map<IEnumerable<DataPointValueResponseDto>>(datapoints);
             return list;
         }

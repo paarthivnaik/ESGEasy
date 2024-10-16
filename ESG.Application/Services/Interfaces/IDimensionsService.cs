@@ -12,8 +12,8 @@ namespace ESG.Application.Services.Interfaces
     {
         Task AddAsync(List<DimensionCreateRequestDto> dimentions);
         Task UpdateAsync(DimensionUpdateRequestDto dimentions);
-        Task<IEnumerable<DimensionResponseDto>> GetAll();
-        Task<IEnumerable<DimensionResponseDto>> GetById(long Id);
+        Task<IEnumerable<DimensionResponseDto>> GetAll(long organizationId);
+        Task<IEnumerable<DimensionResponseDto>> GetById(long Id, long organizationId);
         Task Delete(DimensionDeleteRequestDto request);
         Task<IEnumerable<DimensionResponseDto>> GetAllTranslations(long id);
     }

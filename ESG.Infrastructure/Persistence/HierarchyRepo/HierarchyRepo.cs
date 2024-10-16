@@ -35,7 +35,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
                 .Where(t => t.OrganizationId == organizationId)
                 .Select(a => a.HierarchyId)
                 .FirstOrDefaultAsync();
-             return hierarchyId > 0 ? hierarchyId : 1;
+             return hierarchyId;
             
         }
         public async Task<IEnumerable<long>> GetDatapointsByHierarchyId(long? hierarchyId)

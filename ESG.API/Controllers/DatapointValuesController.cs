@@ -20,9 +20,9 @@ namespace ESG.API.Controllers
         }
         
         [HttpGet("GetAllDatapoints")]
-        public async Task<IEnumerable<DataPointValueResponseDto>> Get()
+        public async Task<IEnumerable<DataPointValueResponseDto>> Get(long organizationId)
         {
-            return await _datapintValuesService.GetAll();
+            return await _datapintValuesService.GetAll(organizationId);
         }
 
 

@@ -44,10 +44,17 @@ namespace ESG.API.Controllers
             return Ok(200);
         }
         [HttpPost("UserLogIn")]
-        public async Task<string> UserLogIn(UserLogInRequestDto user)
+        public async Task<IActionResult> UserLogIn(UserLogInRequestDto user)
         {
-            var token = await _userService.UserLogin(user);
-            return token;
+            try
+            {
+                var token = await _userService.UserLogin(user);
+                return Ok(new { error = false, errorMsg = "" , token });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
         }
 
         [HttpPut("Update")]

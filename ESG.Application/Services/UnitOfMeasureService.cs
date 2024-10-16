@@ -128,9 +128,10 @@ namespace ESG.Application.Services
             await _unitOfMeasure.Repository<UnitOfMeasure>().UpdateRange(data);
             await _unitOfMeasure.SaveAsync();
         }
-        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll()
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll(long organizationId)
         {
-            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll(a => a.State == StateEnum.active);
+            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll
+                (a => a.State == StateEnum.active && a.OrganizationId == 1 && a.OrganizationId == organizationId);
             var orderedList = lst.OrderBy(u => u.Id);
             var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
             return data;

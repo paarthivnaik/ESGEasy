@@ -52,11 +52,11 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 .ToListAsync();
             return names;
         }
-        public async Task<IEnumerable<DataPointValue>> GetAllDatapointValues()
+        public async Task<IEnumerable<DataPointValue>> GetAllDatapointValues(long organizationId)
         {
             var list = await _context.DataPointValue
                 .AsNoTracking()
-                .Where(x => x.State == Domain.Enum.StateEnum.active)
+                .Where(x => x.State == Domain.Enum.StateEnum.active && x.OrganizationId == 1 && x.OrganizationId == organizationId)
                 .Select(a => new DataPointValue
                 {
                     Id = a.Id,

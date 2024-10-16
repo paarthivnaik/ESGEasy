@@ -36,15 +36,15 @@ namespace ESG.API.Controllers
         }
 
         [HttpGet("GetAllDimensions")]
-        public async Task<IEnumerable<DimensionResponseDto>> Get()
+        public async Task<IEnumerable<DimensionResponseDto>> Get(long organizationId)
         {
-            return await _dimensionsService.GetAll();
+            return await _dimensionsService.GetAll(organizationId);
         }
 
         [HttpGet("GetDimensionByTypeId")]
-        public async Task<IEnumerable<DimensionResponseDto>> GetById(long id)
+        public async Task<IEnumerable<DimensionResponseDto>> GetById(long id, long organizationId)
         {
-            return await _dimensionsService.GetById(id);
+            return await _dimensionsService.GetById(id, organizationId);
         }
 
         [HttpGet("GetAllDimensionTranslationsByDimensionTypeId")]

@@ -86,9 +86,10 @@ namespace ESG.Application.Services
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<IEnumerable<UnitOfMeasureTypeResponseDto>> GetAll()
+        public async Task<IEnumerable<UnitOfMeasureTypeResponseDto>> GetAll(long organizationId)
         {
-            var list = await _unitOfWork.Repository<UnitOfMeasureType>().GetAll(a => a.State == StateEnum.active);
+            var list = await _unitOfWork.Repository<UnitOfMeasureType>().GetAll
+                (a => a.State == StateEnum.active && a.OrganizationId == 1 & a.OrganizationId == organizationId);
             var data = _mapper.Map<IEnumerable<UnitOfMeasureTypeResponseDto>>(list);
             return data;
         }

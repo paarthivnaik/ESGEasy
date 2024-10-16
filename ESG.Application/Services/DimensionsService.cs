@@ -78,15 +78,17 @@ namespace ESG.Application.Services
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<IEnumerable<DimensionResponseDto>> GetAll()
+        public async Task<IEnumerable<DimensionResponseDto>> GetAll(long organizationId)
         {
-            var list = await _unitOfWork.Repository<Dimension>().GetAll(a => a.State == StateEnum.active);
+            var list = await _unitOfWork.Repository<Dimension>().GetAll
+                (a => a.State == StateEnum.active && a.OrganizationId == 1 && a.OrganizationId == organizationId);
             return _mapper.Map<IEnumerable<DimensionResponseDto>>(list);
         }
 
-        public async Task<IEnumerable<DimensionResponseDto>> GetById(long Id)
+        public async Task<IEnumerable<DimensionResponseDto>> GetById(long Id, long organizationId)
         {
-            var list = await _unitOfWork.Repository<Dimension>().GetAll(d => d.DimensionTypeId == Id);
+            var list = await _unitOfWork.Repository<Dimension>().GetAll
+                (d => d.DimensionTypeId == Id && d.State == StateEnum.active && d.OrganizationId == 1 && d.OrganizationId == organizationId);
             return _mapper.Map<IEnumerable<DimensionResponseDto>>(list);
         }
 
