@@ -1001,7 +1001,7 @@ namespace ESG.Application.Services
             return responsedto;
         }
 
-        public async Task<DatapointMetricResponseDto> GetDatapointMetric(long datapointId, long organizationId)
+        private async Task<DatapointMetricResponseDto> GetDatapointMetric(long datapointId, long organizationId)
         {
             var metric = new DatapointMetricResponseDto();
             var datapoint = await _unitOfWork.DataModelRepo.GetDatapointMetric(datapointId, organizationId);
