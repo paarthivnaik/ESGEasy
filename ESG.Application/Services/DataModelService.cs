@@ -660,11 +660,34 @@ namespace ESG.Application.Services
         public async Task SaveDatapointDataInModel(DataPointValueSavingRequestDto requestDto)
         {
             var datamodel = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(requestDto.DatapointId, requestDto.OrganizationId);
-            if (datamodel.IsDefaultModel == true)
+            if (datamodel?.IsDefaultModel == true)
             {
-
+                var ids = requestDto.Values.Select(a => a.DatapointValueId).ToList();
+                var existingdefaultdatapointvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesById(ids);
+                foreach(var reqobj in requestDto.Values)
+                {
+                    var existingvalue = existingdefaultdatapointvalues?.Where(a => a.Id == reqobj.DatapointValueId).FirstOrDefault();
+                    if (existingvalue != null)
+                        existingvalue.Value = reqobj.Value;
+                    if (existingvalue == null)
+                        throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DatapointValueId}");
+                }
+                await _unitOfWork.Repository<DefaultDataModelValue>().UpdateRange(existingdefaultdatapointvalues);
             }
-
+            if (datamodel?.IsDefaultModel == false)
+            {
+                var ids = requestDto.Values.Select(a => a.DatapointValueId).ToList();
+                var existingdatapointvalues = await _unitOfWork.DataModelRepo.GetDataModelValuesById(ids);
+                foreach (var reqobj in requestDto.Values)
+                {
+                    var existingvalue = existingdatapointvalues?.Where(a => a.Id == reqobj.DatapointValueId).FirstOrDefault();
+                    if (existingvalue != null)
+                        existingvalue.Value = reqobj.Value;
+                    if (existingvalue == null)
+                        throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DatapointValueId}");
+                }
+                await _unitOfWork.Repository<DataModelValue>().UpdateRange(existingdatapointvalues);
+            }
             await _unitOfWork.SaveAsync();
         }
               
@@ -776,9 +799,9 @@ namespace ESG.Application.Services
         public async Task<DatapointSavedValuesResponseDto> GetDatapointSavedValues(DatapointSavedValuesRequestDto datapointSavedValuesRequestDto)
         {
             var response = new DatapointSavedValuesResponseDto();
-            long ModelFilterCombinationId = 0;
-            bool isMatch = false;
-            var model = await _unitOfWork.DataModelRepo.GetDataModelById(datapointSavedValuesRequestDto.ModelId);
+            long? ModelFilterCombinationId = null;
+            //bool isMatch = false;
+            var model = await _unitOfWork.DataModelRepo.GetDataModelById(datapointSavedValuesRequestDto.dataModelId);
             if (model == null)
                 return response;
             var datapointViewType = await _unitOfWork.DataModelRepo.GetDatapointViewType(datapointSavedValuesRequestDto.DatapointId);
@@ -792,10 +815,25 @@ namespace ESG.Application.Services
                 return response;
             foreach (var combination in ModelFilterCombinations)
             {
-                isMatch = combination.SampleModelFilterCombinationValues.All(combinationValue =>
-                datapointSavedValuesRequestDto.SavedDataPointFilters.Any(inputFilter =>
-                inputFilter.TypeId == combinationValue.DataModelFilters.FilterId &&  
-                inputFilter.ValueId == combinationValue.DimensionsId));
+                var combinationFilters = combination.SampleModelFilterCombinationValues
+                    .Select(combinationValue => new
+                    {
+                        TypeId = combinationValue.DataModelFilters.FilterId,
+                        ValueId = combinationValue.DimensionsId
+                    })
+                    .ToList();
+                var inputFilters = datapointSavedValuesRequestDto.SavedDataPointFilters?
+                    .Where(filter => filter.TypeId.HasValue && filter.ValueId.HasValue)
+                    .Select(filter => new
+                    {
+                        TypeId = filter.TypeId.Value,
+                        ValueId = filter.ValueId.Value
+                    })
+                    .ToList();
+                bool isMatch = combinationFilters.All(combFilter =>
+                    inputFilters.Any(inputFilter =>
+                        inputFilter.TypeId == combFilter.TypeId &&
+                        inputFilter.ValueId == combFilter.ValueId));
                 if (isMatch)
                 {
                     ModelFilterCombinationId = combination.Id;
@@ -804,8 +842,8 @@ namespace ESG.Application.Services
             }
             var amendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(datapointSavedValuesRequestDto.DatapointId, ModelFilterCombinationId);
             response.Amendment = amendment?.Value;
-            var datamodelLinkedtodatapoint = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
-            if (datamodelLinkedtodatapoint.IsDefaultModel == true)
+            //var datamodelLinkedtodatapoint = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
+            if (model.IsDefaultModel == true)
             {
                 var defautdatamodelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByDatapointIdCombinatinalIdAndModelId(ModelFilterCombinationId, datapointSavedValuesRequestDto.DatapointId, model.Id);
                 response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
@@ -823,7 +861,7 @@ namespace ESG.Application.Services
                     });
                 }
             }
-            if (datamodelLinkedtodatapoint.IsDefaultModel == false)
+            if (model.IsDefaultModel == false)
             {
                 var datamodelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIdCombinatinalIdAndModelId(ModelFilterCombinationId, datapointSavedValuesRequestDto.DatapointId, model.Id);
                 response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
@@ -843,7 +881,6 @@ namespace ESG.Application.Services
             }
             return response;
         }
-
 
         public async Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId)
         {

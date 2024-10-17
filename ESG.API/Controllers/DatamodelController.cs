@@ -2,6 +2,7 @@
 using ESG.Application.Dto.DimensionTypes;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
+using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers
@@ -18,8 +19,15 @@ namespace ESG.API.Controllers
         [HttpPost("CreateDatamodel")]
         public async Task<IActionResult> CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto)
         {
-            await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
-            return Ok();
+            try
+            {
+                await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
+                return Ok(new { error = false, errorMsg = "" });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
         }
         [HttpGet("GetDataModelsForOrganization")]
         public async Task<IEnumerable<DataModelsResponseDto>> GetDataModelsForOrganization(long OrganizationId)
@@ -31,16 +39,18 @@ namespace ESG.API.Controllers
         {
             return await _dataModelService.GetingDataModelLinkedtoDatapoint(datapointId, OrganizationId);
         }
-        //[HttpGet("GetDatapointMetricDetailsForDataModel")]
-        //public async Task<DatapointMetricResponseDto> GetHierarchyDatapointsMetricDetails(long datapointId, long OrganizationId)
-        //{
-        //    return await _dataModelService.GetDatapointMetric(datapointId, OrganizationId);
-        //}
         [HttpPost("SavingDatapointDataInModel")]
         public async Task<IActionResult> SaveDatapointDataInModel(DataPointValueSavingRequestDto datapointValuesSavingRequestDto)
         {
-            await _dataModelService.SaveDatapointDataInModel(datapointValuesSavingRequestDto);
-            return Ok();
+            try
+            {
+                await _dataModelService.SaveDatapointDataInModel(datapointValuesSavingRequestDto);
+                return Ok(new { error = false, errorMsg = "" });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
         }
         [HttpPost("GetDatapointSavedValues")]
         public async Task<DatapointSavedValuesResponseDto> GetDatapointSavedValues(DatapointSavedValuesRequestDto datapointSavedValuesRequestDto)

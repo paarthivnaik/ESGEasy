@@ -47,6 +47,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<DefaultDataModelValue>?> GetDefaultDataModelValuesByModelIdAndDatapoints(long modelId, IEnumerable<long> datapoints, long organizationId);
         Task<ESG.Domain.Models.DataModel?> GetDataModelById(long dataModelId);
         Task<List<DefaultDataModelValue>?> GetDefaultDataModelValuesById(List<long> ids);
+        Task<List<DataModelValue>?> GetDataModelValuesById(List<long> ids);
         Task<List<long>?> GetDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
         Task<List<long>?> GetDefaultDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
     }

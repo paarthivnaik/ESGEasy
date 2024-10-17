@@ -415,6 +415,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(dmv => ids.Contains(dmv.Id))
                 .ToListAsync();
         }
+        public async Task<List<DataModelValue>?> GetDataModelValuesById(List<long> ids)
+        {
+            return await _context.DataModelValues
+                .AsNoTracking()
+                .Where(dmv => ids.Contains(dmv.Id))
+                .ToListAsync();
+        }
 
         public async Task<bool> VerifyIsDefaultModel(long modelId)
         {

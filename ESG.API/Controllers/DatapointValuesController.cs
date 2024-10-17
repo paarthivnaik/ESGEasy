@@ -1,4 +1,5 @@
 ﻿using ESG.Application.Dto.DatapointValue;
+using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -27,9 +28,17 @@ namespace ESG.API.Controllers
 
 
         [HttpPost("CreateOrUpdateDatapoint")]
-        public async Task Post([FromBody] List<DatapointValueCreateRequestDto> value)
+        public async Task<IActionResult> Post([FromBody] List<DatapointValueCreateRequestDto> value)
         {
-            await _datapintValuesService.AddAsync(value);
+            try
+            {
+                await _datapintValuesService.AddAsync(value);
+                return Ok(new { error = false, errorMsg = ""});
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
         }
 
         [HttpPatch("DeleteDataPointById")]

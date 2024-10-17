@@ -1,4 +1,5 @@
 ﻿using ESG.Application.Dto.Dimension;
+using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -17,8 +18,15 @@ namespace ESG.API.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> Post([FromBody] List<DimensionCreateRequestDto> value)
         {
-            await _dimensionsService.AddAsync(value);
-            return Ok();
+            try
+            {
+                await _dimensionsService.AddAsync(value);
+                return Ok(new { error = false, errorMsg = ""});
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
         }
 
         [HttpPut("Update")]

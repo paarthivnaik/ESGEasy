@@ -21,8 +21,15 @@ namespace ESG.API.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> Post([FromBody] List<DimensionTypeCreateRequestDto> value)
         {
-            await _dimentionTypeService.AddAsync(value);
-            return Ok();
+            try
+            {
+                await _dimentionTypeService.AddAsync(value);
+                return Ok(new { error = false, errorMsg = ""});
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
         }
 
         [HttpPut("Update")]

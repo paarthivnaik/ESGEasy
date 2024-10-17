@@ -22,8 +22,16 @@ namespace ESG.API.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> Post([FromBody] List<UnitOfMeasureTypeCreateRequestDto> value)
         {
-            await _unitOfMeasureTypeService.Add(value);
-            return Ok();
+            
+            try
+            {
+                await _unitOfMeasureTypeService.Add(value);
+                return Ok(new { error = false, errorMsg = ""});
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
         }
 
         [HttpPut("Update")]
