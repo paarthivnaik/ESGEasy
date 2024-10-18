@@ -11,13 +11,16 @@ namespace ESG.Application.Dto.DataModel
         public long UserId { get; set; }
         public long OrganizationId { get; set; }
         public long DatapointId { get; set; }
+        public long? CombinationId { get; set; }
+        public long? AmendmentId { get; set; }
+        public string? AmendmentValue {  get; set; }
         public List<Values> Values { get; set; }
         
     }
 
     public class Values
     {
-        public long DatapointValueId { get; set; }
+        public long DataModelValueId { get; set; }
         public string? Value { get; set; }
     }
 }

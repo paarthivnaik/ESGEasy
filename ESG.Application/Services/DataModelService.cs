@@ -660,31 +660,47 @@ namespace ESG.Application.Services
         public async Task SaveDatapointDataInModel(DataPointValueSavingRequestDto requestDto)
         {
             var datamodel = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(requestDto.DatapointId, requestDto.OrganizationId);
+            var amendment = await _unitOfWork.DataModelRepo.GetAmendmentById(requestDto.AmendmentId);
+            if (amendment?.Id == 0 && amendment == null)
+            {
+                var amend = new Amendment
+                {
+                    FilterCombinationId = requestDto.CombinationId,
+                    Value = requestDto.AmendmentValue,
+                    DatapointId = requestDto.DatapointId,
+                };
+                await _unitOfWork.Repository<Amendment>().Add(amend);
+            }
+            if (amendment?.Id > 0 && amendment != null)
+            {
+                amendment.Value = requestDto.AmendmentValue;
+                await _unitOfWork.Repository<Amendment>().Update(amendment);
+            }
             if (datamodel?.IsDefaultModel == true)
             {
-                var ids = requestDto.Values.Select(a => a.DatapointValueId).ToList();
+                var ids = requestDto.Values.Select(a => a.DataModelValueId).ToList();
                 var existingdefaultdatapointvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesById(ids);
                 foreach(var reqobj in requestDto.Values)
                 {
-                    var existingvalue = existingdefaultdatapointvalues?.Where(a => a.Id == reqobj.DatapointValueId).FirstOrDefault();
+                    var existingvalue = existingdefaultdatapointvalues?.Where(a => a.Id == reqobj.DataModelValueId).FirstOrDefault();
                     if (existingvalue != null)
                         existingvalue.Value = reqobj.Value;
                     if (existingvalue == null)
-                        throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DatapointValueId}");
+                        throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DataModelValueId}");
                 }
                 await _unitOfWork.Repository<DefaultDataModelValue>().UpdateRange(existingdefaultdatapointvalues);
             }
             if (datamodel?.IsDefaultModel == false)
             {
-                var ids = requestDto.Values.Select(a => a.DatapointValueId).ToList();
+                var ids = requestDto.Values.Select(a => a.DataModelValueId).ToList();
                 var existingdatapointvalues = await _unitOfWork.DataModelRepo.GetDataModelValuesById(ids);
                 foreach (var reqobj in requestDto.Values)
                 {
-                    var existingvalue = existingdatapointvalues?.Where(a => a.Id == reqobj.DatapointValueId).FirstOrDefault();
+                    var existingvalue = existingdatapointvalues?.Where(a => a.Id == reqobj.DataModelValueId).FirstOrDefault();
                     if (existingvalue != null)
                         existingvalue.Value = reqobj.Value;
                     if (existingvalue == null)
-                        throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DatapointValueId}");
+                        throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DataModelValueId}");
                 }
                 await _unitOfWork.Repository<DataModelValue>().UpdateRange(existingdatapointvalues);
             }
@@ -841,8 +857,9 @@ namespace ESG.Application.Services
                 }
             }
             var amendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(datapointSavedValuesRequestDto.DatapointId, ModelFilterCombinationId);
+            response.AmendmentId = amendment?.Id;
             response.Amendment = amendment?.Value;
-            //var datamodelLinkedtodatapoint = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(datapointSavedValuesRequestDto.DatapointId, datapointSavedValuesRequestDto.OrganizatonId);
+            response.CombinationId = ModelFilterCombinationId;
             if (model.IsDefaultModel == true)
             {
                 var defautdatamodelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByDatapointIdCombinatinalIdAndModelId(ModelFilterCombinationId, datapointSavedValuesRequestDto.DatapointId, model.Id);

@@ -504,5 +504,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Distinct()
                 .ToListAsync();
         }
+
+        public async Task<Amendment?> GetAmendmentById(long? id)
+        {
+            return await _context.Amendments
+                .AsNoTracking()
+                .Where(a => a.Id == id)
+                .FirstOrDefaultAsync();
+        }
     }
 }

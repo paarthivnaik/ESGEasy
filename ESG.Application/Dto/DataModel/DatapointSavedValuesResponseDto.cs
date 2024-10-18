@@ -9,9 +9,8 @@ namespace ESG.Application.Dto.DataModel
     public class DatapointSavedValuesResponseDto
     {
         public long DatapointId { get; set; }
-        // string Name { get; set; }
-        //public string? UOMCode { get; set; }
-        //public bool? IsNarrative { get; set; }
+        public long? CombinationId { get; set; }
+        public long? AmendmentId { get; set; }
         public string? Amendment { get; set; }
         public List<DatapointSavedValues> DatapointSavedValues { get; set; }
     }
