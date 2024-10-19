@@ -36,7 +36,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<DataModelFilter>?> GetDataModelFiltersByConfigId(long configId);
         Task<List<DataModelValue>?> GetDataModelValuesByModelIdOrgId(long modelId, long organizationId);
         Task<List<SampleModelFilterCombinationValue>?> GetDataModelCombinationalValuesByModelFilterCombinationIds(List<long> combinationalIds);
-        Task<IEnumerable<(long Id, long DimensionTypeId, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId);
+        Task<List<(long Id, long DimensionTypeId, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId);
         Task<bool> VerifyIsDefaultModel(long modelId);
         Task<IEnumerable<(long Id, string Name, long TypeId)>> GetModelDimensionValuesByModelDimTypeId(List<long?> modelDimensionTypeIds);
         Task<Amendment?> GetExistingAmendment(long datapointId, long? combinationId);

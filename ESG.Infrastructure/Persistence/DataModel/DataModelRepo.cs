@@ -376,22 +376,24 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return result.Any() ? result.Select(x => (x.Id, x.Name, x.TypeId)) : Enumerable.Empty<(long, string, long)>();
         }
 
-        public async Task<IEnumerable<(long Id,long DimensionTypeId, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId)
+        public async Task<List<(long Id, long DimensionTypeId, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId)
         {
-            var result = await _context.ModelDimensionTypes
+            var query = _context.ModelDimensionTypes
                 .AsNoTracking()
-                .Where(md => md.DataModelId == modelId && md.DataModel.OrganizationId == organizationId)
-                .Include(a => a.DimensionType)
+                .Where(md => md.DataModelId == modelId &&
+                             (modelId == 1 || md.DataModel.OrganizationId == organizationId))
+                .Include(md => md.DimensionType)
                 .Select(md => new
                 {
                     Id = md.Id,
                     DimensionTypeId = md.DimensionType.Id,
                     Name = md.DimensionType.ShortText
-                })
-                .ToListAsync();
+                });
 
-            return result.Any() ? result.Select(x => (x.Id,x.DimensionTypeId, x.Name)) : Enumerable.Empty<(long,long, string)>();
+            var result = await query.ToListAsync();
+            return result.Select(x => (x.Id, x.DimensionTypeId, x.Name)).ToList();
         }
+
 
 
         public async Task<Amendment?> GetExistingAmendment(long datapointId, long? combinationId)

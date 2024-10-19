@@ -661,7 +661,7 @@ namespace ESG.Application.Services
         {
             var datamodel = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(requestDto.DatapointId, requestDto.OrganizationId);
             var amendment = await _unitOfWork.DataModelRepo.GetAmendmentById(requestDto.AmendmentId);
-            if (amendment?.Id == 0 && amendment == null)
+            if (amendment?.Id == 0 || amendment == null)
             {
                 var amend = new Amendment
                 {
@@ -671,7 +671,7 @@ namespace ESG.Application.Services
                 };
                 await _unitOfWork.Repository<Amendment>().Add(amend);
             }
-            if (amendment?.Id > 0 && amendment != null)
+            if (amendment?.Id > 0 || amendment != null)
             {
                 amendment.Value = requestDto.AmendmentValue;
                 await _unitOfWork.Repository<Amendment>().Update(amendment);
@@ -859,6 +859,7 @@ namespace ESG.Application.Services
             var amendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(datapointSavedValuesRequestDto.DatapointId, ModelFilterCombinationId);
             response.AmendmentId = amendment?.Id;
             response.Amendment = amendment?.Value;
+
             response.CombinationId = ModelFilterCombinationId;
             if (model.IsDefaultModel == true)
             {
