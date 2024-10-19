@@ -83,7 +83,6 @@ namespace ESG.Application.Services
             }
             await _unitOfWork.Repository<DataPointValue>().UpdateRange(oldDatapoints);
             await _unitOfWork.Repository<DataPointValue>().AddRange(newDatapoints);
-
             await _unitOfWork.SaveAsync();
         }
 
