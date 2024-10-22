@@ -830,8 +830,7 @@ namespace ESG.Application.Services
                 viewtype = ModelViewTypeEnum.Fact;
             }
             var ModelFilterCombinations = await _unitOfWork.DataModelRepo.GetModelFilterCombinationsByModelIdandDatapointId(model.Id, datapointSavedValuesRequestDto.DatapointId, viewtype);
-            if (datapointSavedValuesRequestDto.SavedDataPointFilters == null || !datapointSavedValuesRequestDto.SavedDataPointFilters.Any())
-                return response;
+        
             foreach (var combination in ModelFilterCombinations)
             {
                 var combinationFilters = combination.SampleModelFilterCombinationValues
