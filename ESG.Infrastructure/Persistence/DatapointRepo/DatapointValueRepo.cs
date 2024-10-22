@@ -61,6 +61,8 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 {
                     Id = a.Id,
                     Name = a.Name,
+                    ShortText = a.ShortText,
+                    LongText = a.LongText,
                     Code = a.Code,
                     State = a.State,
                     DatapointTypeId = a.DatapointTypeId,

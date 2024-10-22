@@ -21,27 +21,33 @@ namespace ESG.Infrastructure.Persistence.DataModel
             _context = context;
         }
 
-        public async Task<List<Domain.Models.DataModel>> GetDataModelsIncludingDefaultByOrgId(long OrgId)
+        public async Task<List<Domain.Models.DataModel>> GetDataModelsIncludingDefaultByOrgId(long OrgId, bool hasValues)
         {
+            var defaultDataModel = new Domain.Models.DataModel();
             var organizationDataModels = await _context.DataModels
                 .AsNoTracking()
                 .Where(a => a.OrganizationId == OrgId && a.State == StateEnum.active)
                 .Select(dp => new ESG.Domain.Models.DataModel
                 {
                     Id = dp.Id,
-                    ModelName = dp.ModelName
+                    ModelName = dp.ModelName,
+                    IsDefaultModel = dp.IsDefaultModel,
                 })
                 .ToListAsync();
-            var defaultDataModel = await _context.DataModels
+            if (hasValues == true)
+            {
+                defaultDataModel = await _context.DataModels
                 .AsNoTracking()
                 .Where(a => a.IsDefaultModel == true)
                 .Select(dp => new ESG.Domain.Models.DataModel
                 {
                     Id = dp.Id,
-                    ModelName = dp.ModelName
+                    ModelName = dp.ModelName,
+                    IsDefaultModel = dp.IsDefaultModel,
                 })
                 .FirstOrDefaultAsync();
-            if (defaultDataModel != null && !organizationDataModels.Any(dm => dm.Id == defaultDataModel.Id))
+            }
+            if (!organizationDataModels.Any(dm => dm.Id == defaultDataModel?.Id) && defaultDataModel?.Id > 0)
             {
                 organizationDataModels.Add(defaultDataModel);
             }
@@ -514,5 +520,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(a => a.Id == id)
                 .FirstOrDefaultAsync();
         }
+
+        public async Task<bool> CheckIsDefaultdataModelvalues(long orgId)
+        {
+            return await _context.DefaultDataModelValues
+                .AsNoTracking()
+                .AnyAsync(a => a.OrganizationId == orgId);
+        }
+
     }
 }

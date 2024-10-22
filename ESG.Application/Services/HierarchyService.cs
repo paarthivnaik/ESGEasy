@@ -205,7 +205,7 @@ namespace ESG.Application.Services
         {
             return list1.SelectMany(item1 => list2, (item1, item2) => (item1, item2)).ToList();
         }
-        public async Task<IEnumerable<HeirarchyDataResponseDto>> GetMethod(int tableType, long? Id)
+        public async Task<IEnumerable<HeirarchyDataResponseDto>> GetMethod(int tableType, long? Id, long? organizationId)
         {
             IEnumerable<HeirarchyDataResponseDto> result = Enumerable.Empty<HeirarchyDataResponseDto>(); ;
 
@@ -235,7 +235,7 @@ namespace ESG.Application.Services
                 case 4: // datapoints
                     if (Id != null)
                     {
-                        var datapoints = await _unitOfWork.HierarchyRepo.GetDatapoints(Id);
+                        var datapoints = await _unitOfWork.HierarchyRepo.GetDatapoints(Id, organizationId);
                         return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(datapoints);
                     }
                     break;

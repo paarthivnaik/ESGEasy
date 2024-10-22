@@ -517,7 +517,8 @@ namespace ESG.Application.Services
         public async Task<IEnumerable<DataModelsResponseDto>> GetDataModelsResponsesByOrgId(long organizationId)
         {
             var responseobj = new List<DataModelsResponseDto>();
-            var datamodels = await _unitOfWork.DataModelRepo.GetDataModelsIncludingDefaultByOrgId(organizationId);
+            var hasdefaultmodelvalues = await _unitOfWork.DataModelRepo.CheckIsDefaultdataModelvalues(organizationId);
+            var datamodels = await _unitOfWork.DataModelRepo.GetDataModelsIncludingDefaultByOrgId(organizationId, hasdefaultmodelvalues);
             if (datamodels != null)
             {
                 foreach (var datamodel in datamodels)
@@ -637,6 +638,8 @@ namespace ESG.Application.Services
             if (configurationId >= 0 || configurationId != null)
             {
                 var filterDimension = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId);
+                if (filterDimension == null)
+                    return responsedto;
                 foreach (var filterdim in filterDimension)
                 {
                     var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, filterdim.Id);

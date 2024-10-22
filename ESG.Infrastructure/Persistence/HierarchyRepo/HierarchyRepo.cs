@@ -48,11 +48,11 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
             return datapointIds;
         }
-        public async Task<IEnumerable<DataPointValue>> GetDatapoints(long? disReqId)
+        public async Task<IEnumerable<DataPointValue>> GetDatapoints(long? disReqId, long? organizationId)
         {
             var datapoints = await _context.DataPointValue
                 .AsNoTracking()
-                .Where(t => t.DisclosureRequirementId == disReqId)
+                .Where(t => (t.OrganizationId == organizationId || t.OrganizationId == 1) && t.DisclosureRequirementId == disReqId)
                 .ToListAsync();
             return datapoints;
         }
