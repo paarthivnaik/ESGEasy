@@ -3,12 +3,14 @@ using ESG.Application.Common.Interface.Account;
 using ESG.Application.Common.Interface.DataModel;
 using ESG.Application.Common.Interface.DataPoint;
 using ESG.Application.Common.Interface.Dimension;
+using ESG.Application.Common.Interface.FileUpload;
 using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Common.Interface.Value;
 using ESG.Domain.Models;
 using ESG.Infrastructure.Persistence.DataModel;
 using ESG.Infrastructure.Persistence.DimensionRepo;
+using ESG.Infrastructure.Persistence.FileUploadingRepo;
 using ESG.Infrastructure.Persistence.HierarchyRepo;
 using ESG.Infrastructure.Persistence.ValueRepo;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -34,6 +36,7 @@ namespace ESG.Infrastructure.Persistence
         public IDatapointValueRepo DatapointValueRepo { get; private set; }
         public IUsersRepo UsersRepo { get; private set; }
         public IOrganizationRepo OrganizationRepo { get; private set; }
+        public IFileUploadRepo FileUploadRepo { get; private set; }
 
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
@@ -54,6 +57,7 @@ namespace ESG.Infrastructure.Persistence
             DatapointValueRepo = new ESG.Infrastructure.Persistence.DatapointRepo.DatapointValueRepo(_context);
             UsersRepo = new ESG.Infrastructure.Persistence.AccountsRepo.UsersRepo(_context, _configuration);
             OrganizationRepo = new ESG.Infrastructure.Persistence.Account.OrganizationRepo(_context);
+            FileUploadRepo = new FileUploadRepo(_context);
         }
         #endregion
        

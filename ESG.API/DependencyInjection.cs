@@ -10,6 +10,7 @@ using ESG.Infrastructure.Persistence.UnitOfMeasureRepo;
 using Microsoft.Extensions.Configuration;
 using ESG.Infrastructure.Persistence.DatapointRepo;
 using ESG.Application.Common.Interface.DataPoint;
+using ESG.Application.Common.Interface.FileUpload;
 
 namespace ESG.API
 {
@@ -40,7 +41,7 @@ namespace ESG.API
             services.AddScoped<IDisclosureRequirementService, DisclosureRequirementService>();
             services.AddScoped<IUsersRepo, UsersRepo>();
             services.AddScoped<IDatapointValueRepo, DatapointValueRepo>();
-            //services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IFileService, FileService>();
             return services;
         }
     }

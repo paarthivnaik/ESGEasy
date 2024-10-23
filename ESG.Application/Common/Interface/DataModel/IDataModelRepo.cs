@@ -50,7 +50,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<DefaultDataModelValue>?> GetDefaultDataModelValuesById(List<long> ids);
         Task<List<DataModelValue>?> GetDataModelValuesById(List<long> ids);
         Task<List<long>?> GetDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
-        Task<List<long>?> GetDefaultDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
+        Task<List<long?>> GetDefaultDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
         Task<Amendment?> GetAmendmentById(long? id);
     }
 }

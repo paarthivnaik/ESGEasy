@@ -8,6 +8,7 @@ using ESG.Application;
 using ESG.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Http.Features;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -43,6 +44,15 @@ builder.Services.AddCors(p => p.AddPolicy("esgapp", builder =>
            .AllowAnyMethod()
            .AllowAnyHeader();
 }));
+
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 104857600; // Set limit to 100MB
+});
+
+
+
+
 var app = builder.Build();
  using(var scope = app.Services.CreateScope())
 {
@@ -58,11 +68,13 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseStaticFiles();
 //app.UseHttpsRedirection();
 
 
 
 //app.UseAuthorization();
+//app.UseAuthentication();
 app.UseCors("esgapp");
 app.MapControllers();
 app.UseExceptionHandler(opt => { });

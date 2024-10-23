@@ -84,7 +84,7 @@ namespace ESG.Infrastructure.Persistence
         public virtual DbSet<UnitOfMeasureType> UnitOfMeasureTypes { get; set; }
 
         public virtual DbSet<UnitOfMeasureTypeTranslation> UnitOfMeasureTypeTranslations { get; set; }
-
+        public virtual DbSet<UploadedFile> UploadedFiles { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         public virtual DbSet<UserRole> UserRoles { get; set; }
@@ -181,6 +181,10 @@ namespace ESG.Infrastructure.Persistence
                 entity.HasIndex(e => e.DataPointValuesId, "idx_datamodelvalues_datapointvaluesid");
 
                 entity.HasIndex(e => e.Id, "idx_datamodelvalues_id");
+
+                entity.HasIndex(e => new { e.DataModelId, e.ResponsibleUserId }, "idx_datamodelvalues_modelid_userid");
+
+                entity.HasIndex(e => new { e.DataModelId, e.ResponsibleUserId, e.DataPointValuesId }, "idx_datamodelvalues_modelid_userid_datapoint");
 
                 entity.HasIndex(e => new { e.RowId, e.ColumnId, e.CombinationId, e.DataPointValuesId }, "unq_contraint_oncombinational_datapoint").IsUnique();
 
@@ -315,10 +319,6 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasIndex(e => e.RowId, "DefaultDataModelValues_RowId_idx");
 
-                entity.HasIndex(e => e.ColumnId, "fki_FK_DataModelValues_Dimensions_ColumnId");
-
-                entity.HasIndex(e => e.RowId, "fki_FK_DataModelValues_Dimensions_RowId");
-
                 entity.HasIndex(e => e.DataModelId, "fki_FK_DefaultDataModelValues_DataModel_DataModelId");
 
                 entity.HasIndex(e => e.ColumnId, "fki_FK_DefaultDataModelValues_Dimensions_ColumnId");
@@ -327,7 +327,7 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasIndex(e => e.CombinationId, "fki_FK_DefaultDataModelValues_ModelFilterCombinations_Combinati");
 
-                entity.HasIndex(e => e.ResponsibleUserId, "fki_FK_DefaultDataModelValues_Users_AccountableUserId");
+                entity.HasIndex(e => e.AccountableUserId, "fki_FK_DefaultDataModelValues_Users_AccountableUserId");
 
                 entity.HasIndex(e => e.Consult, "fki_FK_DefaultDataModelValues_Users_Consult");
 
@@ -338,6 +338,12 @@ namespace ESG.Infrastructure.Persistence
                 entity.HasIndex(e => e.DataPointValuesId, "fki_FK_DefaultDataPointValues_DatapointValuesId");
 
                 entity.HasIndex(e => e.OrganizationId, "fki_FK_DefautDataModelValues_Organization_OrganizationId");
+
+                entity.HasIndex(e => new { e.OrganizationId, e.ResponsibleUserId }, "idx_defaultdatamodelvalues_orgid_userid");
+
+                entity.HasIndex(e => new { e.OrganizationId, e.ResponsibleUserId, e.DataPointValuesId }, "idx_defaultdatamodelvalues_orgid_userid_datapoint");
+
+                entity.HasOne(d => d.AccountableUser).WithMany(p => p.DefaultDataModelValueAccountableUsers).HasForeignKey(d => d.AccountableUserId);
 
                 entity.HasOne(d => d.Column).WithMany(p => p.DefaultDataModelValueColumns).HasForeignKey(d => d.ColumnId);
 
@@ -359,9 +365,7 @@ namespace ESG.Infrastructure.Persistence
                     .HasForeignKey(d => d.OrganizationId)
                     .HasConstraintName("FK_DefautDataModelValues_Organization_OrganizationId");
 
-                entity.HasOne(d => d.ResponsibleUser).WithMany(p => p.DefaultDataModelValueResponsibleUsers)
-                    .HasForeignKey(d => d.ResponsibleUserId)
-                    .HasConstraintName("FK_DefaultDataModelValues_Users_AccountableUserId");
+                entity.HasOne(d => d.ResponsibleUser).WithMany(p => p.DefaultDataModelValueResponsibleUsers).HasForeignKey(d => d.ResponsibleUserId);
 
                 entity.HasOne(d => d.Row).WithMany(p => p.DefaultDataModelValueRows)
                     .HasForeignKey(d => d.RowId)
@@ -703,6 +707,28 @@ namespace ESG.Infrastructure.Persistence
                 entity.HasOne(d => d.UnitOfMeasureType).WithMany(p => p.UnitOfMeasureTypeTranslations)
                     .HasForeignKey(d => d.UnitOfMeasureTypeId)
                     .HasConstraintName("FK_UnitOfMeasureTypeTranslations_UnitOfMeasureTypes_UnitOfMeas~");
+            });
+
+            modelBuilder.Entity<UploadedFile>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("UploadedFile_pkey");
+
+                entity.ToTable("UploadedFile");
+
+                entity.HasIndex(e => e.UserId, "fki_FK_UploadedFile_User_UserId");
+
+                entity.HasIndex(e => e.OrganizationId, "fki_K");
+
+                entity.Property(e => e.FileName).HasMaxLength(255);
+                entity.Property(e => e.UploadDate).HasColumnType("timestamp without time zone");
+
+                entity.HasOne(d => d.Organization).WithMany(p => p.UploadedFiles)
+                    .HasForeignKey(d => d.OrganizationId)
+                    .HasConstraintName("FK_UploadedFile_Organization_OrganizationId");
+
+                entity.HasOne(d => d.User).WithMany(p => p.UploadedFiles)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_UploadedFile_User_UserId");
             });
 
             modelBuilder.Entity<User>(entity =>

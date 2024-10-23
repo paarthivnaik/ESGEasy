@@ -93,7 +93,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(a => new
                 {
                     a.RowId,
-                    RowName = a.Row.ShortText 
+                    RowName = a.Row.Name ?? a.Row.ShortText 
                 })
                 .FirstOrDefaultAsync();
             if (result != null)
@@ -110,15 +110,17 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(a => new
                 {
                     a.Id,
-                    a.ShortText,
+                    Name = a.Name ?? a.ShortText
                 })
                 .FirstOrDefaultAsync();
+
             if (result != null)
             {
-                return (result.Id, result.ShortText);
+                return (result.Id, result.Name);
             }
             return (default(long), string.Empty);
         }
+
         public async Task<long> GetModelconfigurationIdByModelIdAndViewType(long modelId, ModelViewTypeEnum viewTypeEnum)
         {
             var id = await _context.ModelConfigurations
@@ -138,7 +140,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(md => new 
                 {
                     Id = md.Dimensions.Id, 
-                    Name = md.Dimensions.ShortText
+                    Name = md.Dimensions.Name ?? md.Dimensions.ShortText,
                 })
                 .ToListAsync();
             if (result != null)
@@ -181,7 +183,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(md => new
                 {
                     Id = (long?)md.FilterId,  
-                    Name = md.Filter.ShortText
+                    Name = md.Filter.Name ?? md.Filter.ShortText,
                 })
                 .ToListAsync();
 
@@ -444,7 +446,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
         {
             var modelvalues = await _context.DefaultDataModelValues
                 .AsNoTracking()
-                .Where(a => datapointIds.Contains(a.DataPointValuesId) && a.State == state && a.OrganizationId == organizationId)
+                .Where(a => a.DataPointValuesId.HasValue && datapointIds.Contains(a.DataPointValuesId.Value) && a.State == state && a.OrganizationId == organizationId)
                 .ToListAsync();
             return modelvalues;
         }
@@ -483,7 +485,10 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Include(dim => dim.Column)
                 .Include(df => df.Combination)
                     .ThenInclude(mfc => mfc.SampleModelFilterCombinationValues)
-                .Where(dmv => dmv.DataModelId == modelId && datapoints.Contains(dmv.DataPointValuesId) && dmv.OrganizationId == organizationId)
+                .Where(dmv => dmv.DataModelId == modelId
+                    && dmv.DataPointValuesId.HasValue
+                    && datapoints.Contains(dmv.DataPointValuesId.Value)
+                    && dmv.OrganizationId == organizationId)
                 .ToListAsync();
         }
         //public async Task<ESG.Domain.Models.DataModel?> GetDataModelById(long dataModelId)
@@ -503,7 +508,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Distinct()
                 .ToListAsync();
         }
-        public async Task<List<long>?> GetDefaultDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId)
+        public async Task<List<long?>> GetDefaultDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId)
         {
             return await _context.DefaultDataModelValues
                 .AsNoTracking()

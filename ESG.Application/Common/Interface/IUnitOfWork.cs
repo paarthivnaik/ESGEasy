@@ -2,6 +2,7 @@
 using ESG.Application.Common.Interface.DataModel;
 using ESG.Application.Common.Interface.DataPoint;
 using ESG.Application.Common.Interface.Dimension;
+using ESG.Application.Common.Interface.FileUpload;
 using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Common.Interface.Value;
@@ -25,6 +26,7 @@ namespace ESG.Application.Common.Interface
         IDatapointValueRepo DatapointValueRepo { get; }
         IUsersRepo UsersRepo { get; }
         IOrganizationRepo OrganizationRepo { get; }
+        IFileUploadRepo FileUploadRepo { get; }
         Task<int> SaveAsync();
         int Save();
         void BeginTransaction();

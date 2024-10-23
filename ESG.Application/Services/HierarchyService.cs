@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Internal;
 using ESG.Application.Common.Interface;
 using ESG.Application.Dto.Get;
 using ESG.Application.Dto.Hierarchy;
@@ -104,15 +105,23 @@ namespace ESG.Application.Services
                     //}
                     if (existingDatamodelvalues.Count() > 0 )
                     {
-                        var existingdps = existingDatamodelvalues.Select(a => a.DataPointValuesId).Distinct().ToList();
-                        var newdps = request.DatapointIds.Except(existingdps).ToList();
-
+                        //var existingdps = existingDatamodelvalues.Select(a => a.DataPointValuesId).Distinct().ToList();
+                        //var newdps = request.DatapointIds.Except(existingdps).ToList();
+                        var existingdps = existingDatamodelvalues
+                            .Select(a => a.DataPointValuesId)
+                            .Where(id => id.HasValue)
+                            .Select(id => id.Value)
+                            .Distinct()
+                            .ToList();
+                        var newdps = request.DatapointIds
+                            .Except(existingdps)
+                            .ToList();
                         if (newdps.Count() > 0)
                         {
                             await GenerateDefaultDataModelValues(newdps, request);
                         }
                     }
-                    //else
+                    //if (existingDatamodelvalues.Count() <= 0)
                     //{
                     //    await GenerateDefaultDataModelValues(request.DatapointIds, request);
                     //}
@@ -385,7 +394,8 @@ namespace ESG.Application.Services
             {
                 var defaultDataModelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesyOrgaidAndResponsibleUser(organizationId, userId);
                 var dataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesyOrgaidAndResponsibleUser(organizationId, userId);
-                var datapointIds = defaultDataModelValues.Concat(dataModelValues);
+                var defaultDataModelIds = defaultDataModelValues.Where(id => id.HasValue).Select(id => id.Value).ToList();
+                var datapointIds = defaultDataModelIds.Concat(dataModelValues).ToList();
                 var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds);
                 foreach( var datapoint in datapointdetails)
                 {

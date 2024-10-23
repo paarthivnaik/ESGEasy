@@ -32,14 +32,17 @@ public partial class DefaultDataModelValue
 
     public DateTime? LastModifiedDate { get; set; }
 
-    public long DataPointValuesId { get; set; }
+    public long? DataPointValuesId { get; set; }
 
     public long? DataModelId { get; set; }
 
     public long? Consult { get; set; }
 
     public long? Inform { get; set; }
-    public long OrganizationId { get; set; }
+
+    public long? OrganizationId { get; set; }
+
+    public virtual User? AccountableUser { get; set; }
 
     public virtual Dimension? Column { get; set; }
 
@@ -52,6 +55,7 @@ public partial class DefaultDataModelValue
     public virtual DataPointValue? DataPointValues { get; set; }
 
     public virtual User? InformNavigation { get; set; }
+
     public virtual Organization? Organization { get; set; }
 
     public virtual User? ResponsibleUser { get; set; }
