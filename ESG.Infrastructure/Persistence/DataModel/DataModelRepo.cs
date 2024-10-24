@@ -442,7 +442,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .FirstOrDefaultAsync();
             return res;
         }
-        public async Task<IEnumerable<DefaultDataModelValue>> GetDefaultDataModelValuesByDatapointIds(List<long> datapointIds, StateEnum state, long organizationId)
+        public async Task<IEnumerable<DefaultDataModelValue>?> GetDefaultDataModelValuesByDatapointIds(List<long> datapointIds, StateEnum state, long organizationId)
         {
             var modelvalues = await _context.DefaultDataModelValues
                 .AsNoTracking()

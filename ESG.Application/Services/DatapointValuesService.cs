@@ -45,6 +45,8 @@ namespace ESG.Application.Services
                         existingdatapoint.CurrencyId = datapoint.CurrencyId;
                         existingdatapoint.IsNarrative = datapoint.IsNarrative;
                         existingdatapoint.Purpose = datapoint.Purpose;
+                        existingdatapoint.ShortText = datapoint.ShortText;
+                        existingdatapoint.LongText = datapoint.LongText;
                         existingdatapoint.LanguageId = datapoint.LanguageId;
                         existingdatapoint.DisclosureRequirementId = datapoint.DisclosureRequirementId;
                         oldDatapoints.Add(existingdatapoint);

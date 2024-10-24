@@ -3,6 +3,7 @@ using ESG.Application.Dto.Hierarchy;
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
+using ESG.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,8 +24,15 @@ namespace ESG.API.Controllers
         [HttpPost("CreateHierarchy")]
         public async Task<IActionResult> Post([FromBody] HierarchyCreateRequestDto value)
         {
-            await _hierarchyService.AddHierarchy(value);
-            return Ok();
+            try
+            {
+                await _hierarchyService.AddHierarchy(value);
+                return Ok(new { error = false, errorMsg = "Hierarchy saved sucessully" });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
         }
         [HttpGet("GetHierarchy")]
         /// <summary>

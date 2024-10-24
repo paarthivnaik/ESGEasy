@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
+using ESG.Application.Common.Interface.FileUpload;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,16 +18,14 @@ namespace ESG.Application.Services
     public class FileService : IFileService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public FileService(IUnitOfWork unitOfWork, IMapper mapper)
+        public FileService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-       
-        public async Task<IFormFile?> GetFileAsync(string fileName, long organizationId, long userId)
+        public async Task<IFormFile?> GetFileAsync(string fileName, long organizationId)
         {
-            var uploadedFile = await _unitOfWork.Repository<UploadedFile>()
-                .Get(a => a.FileName == fileName && a.OrganizationId == organizationId && a.UserId == userId);
+            var uploadedFile = await _unitOfWork.FileUploadRepo.GetUploadedFileData(fileName, organizationId);
             if (uploadedFile == null)
             {
                 return null;
@@ -34,10 +34,11 @@ namespace ESG.Application.Services
             var formFile = new FormFile(memoryStream, 0, memoryStream.Length, "file", uploadedFile.FileName)
             {
                 Headers = new HeaderDictionary(),
-                ContentType = "application/pdf" 
+                ContentType = "application/pdf" // Set default content type
             };
             return formFile;
         }
+
 
 
         public async Task SaveFileAsync(IFormFile file, long organizationId, long userId)
@@ -53,11 +54,16 @@ namespace ESG.Application.Services
                     FileData = memoryStream.ToArray(),
                     OrganizationId = organizationId,
                     UserId = userId,
-                    UploadDate = DateTime.UtcNow
+                    UploadDate = DateTime.UtcNow.ToLocalTime(),
                 };
                await _unitOfWork.Repository<UploadedFile>().AddAsync(uploadedFile);
                await _unitOfWork.SaveAsync();
             }
+        }
+        public async Task<byte[]?> GetFileDataAsync(string fileName, long organizationId)
+        {
+            var uploadedFile = await _unitOfWork.FileUploadRepo.GetUploadedFileData(fileName, organizationId);
+            return uploadedFile?.FileData;
         }
     }
 }

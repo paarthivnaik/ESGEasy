@@ -43,6 +43,9 @@ namespace ESG.Application.Services
                     var toRemove = new List<Hierarchy>();
                     var existingDatapointIds = existingHierarchies.Select(h => h.DataPointValuesId).ToList();
                     var requestDatapointIds = request.DatapointIds.ToHashSet();
+                    toRemove = existingHierarchies
+                            .Where(h => !requestDatapointIds.Contains(h.DataPointValuesId))
+                            .ToList();
                     foreach (var datapointId in request.DatapointIds)
                     {
                         toAddOrUpdate = request.DatapointIds
@@ -52,10 +55,6 @@ namespace ESG.Application.Services
                                 HierarchyId = existinghierarchyId,
                                 DataPointValuesId = datapointId
                             }).ToList();
-
-                        toRemove = existingHierarchies
-                            .Where(h => !requestDatapointIds.Contains(h.DataPointValuesId))
-                            .ToList();
                     }
                     if (toRemove.Any())
                     {
@@ -63,50 +62,14 @@ namespace ESG.Application.Services
                     }
                     if (toAddOrUpdate.Any())
                     {
-                        await _unitOfWork.Repository<Hierarchy>().UpsertRangeAsync(toAddOrUpdate);
+                        await _unitOfWork.Repository<Hierarchy>().AddRange(toAddOrUpdate);
                     }
                     //now we have to modify the records in the datamodelmodelvalues with respective datapoints
 
                     var existingDatamodelvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByDatapointIds(existingHierarchies.Select(a => a.DataPointValuesId).ToList(), Domain.Enum.StateEnum.active, request.OrganizationId);
-                    //var existingdatapoints = existingDatamodelvalues.Select(a => a.DataPointValuesId).Distinct().ToList();
-                    //if (existingDatamodelvalues.Count() > 0)
-                    //{
-                        //var existingdplist = existingDatamodelvalues.Select(a => a.DataPointValuesId).Distinct().ToList();
-                        //var newdplist = request.DatapointIds.Distinct().ToList();
-                        //var remainingInExistingdplist = existingdplist.Except(newdplist).ToList();
-                        //var remainingInNewdplist = newdplist.Except(existingdplist).ToList();
-                        //if (remainingInExistingdplist.Any() && remainingInExistingdplist?.Count() > 0) //removing from defaultdatamodelvalues
-                        //{
-                        //    var dpvaluesTobeRemoved = existingDatamodelvalues.Where(a => remainingInExistingdplist.Contains(a.DataPointValuesId)).ToList();
-                        //    foreach (var dp in dpvaluesTobeRemoved)
-                        //    {
-                        //        dp.State = Domain.Enum.StateEnum.inActive;
-                        //        dp.LastModifiedBy = request.UserId;
-                        //    }
-                        //    await _unitOfWork.Repository<DefaultDataModelValue>().UpdateRange(dpvaluesTobeRemoved);
-                        //}
-                        //if (remainingInNewdplist.Any() && remainingInNewdplist?.Count() > 0) //adding into defaultdatamodelValues
-                        //{
-                        //    var inactivedatamodelvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByDatapointIds(remainingInNewdplist, Domain.Enum.StateEnum.inActive);
-                        //    if (inactivedatamodelvalues.Any() && inactivedatamodelvalues.Count() > 0)
-                        //    {
-                        //        foreach (var dp in inactivedatamodelvalues)
-                        //        {
-                        //            dp.State = Domain.Enum.StateEnum.active;
-                        //            dp.LastModifiedBy = request.UserId;
-                        //        }
-                        //        await _unitOfWork.Repository<DefaultDataModelValue>().UpdateRange(inactivedatamodelvalues);
-                        //    }
-                        //    else
-                        //    {
-                        //        await GenerateDefaultDataModelValues(remainingInNewdplist, request);
-                        //    }
-                        //}
-                    //}
+                    
                     if (existingDatamodelvalues.Count() > 0 )
                     {
-                        //var existingdps = existingDatamodelvalues.Select(a => a.DataPointValuesId).Distinct().ToList();
-                        //var newdps = request.DatapointIds.Except(existingdps).ToList();
                         var existingdps = existingDatamodelvalues
                             .Select(a => a.DataPointValuesId)
                             .Where(id => id.HasValue)
@@ -121,10 +84,10 @@ namespace ESG.Application.Services
                             await GenerateDefaultDataModelValues(newdps, request);
                         }
                     }
-                    //if (existingDatamodelvalues.Count() <= 0)
-                    //{
-                    //    await GenerateDefaultDataModelValues(request.DatapointIds, request);
-                    //}
+                    if (existingDatamodelvalues.Count() <= 0)
+                    {
+                        await GenerateDefaultDataModelValues(request.DatapointIds, request);
+                    }
                 }
             }
             if (existinghierarchyId <= 0) 
