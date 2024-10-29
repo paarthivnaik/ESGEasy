@@ -717,14 +717,8 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasIndex(e => e.UserId, "fki_FK_UploadedFile_User_UserId");
 
-                entity.HasIndex(e => e.OrganizationId, "fki_K");
-
                 entity.Property(e => e.FileName).HasMaxLength(255);
                 entity.Property(e => e.UploadDate).HasColumnType("timestamp without time zone");
-
-                entity.HasOne(d => d.Organization).WithMany(p => p.UploadedFiles)
-                    .HasForeignKey(d => d.OrganizationId)
-                    .HasConstraintName("FK_UploadedFile_Organization_OrganizationId");
 
                 entity.HasOne(d => d.User).WithMany(p => p.UploadedFiles)
                     .HasForeignKey(d => d.UserId)

@@ -25,8 +25,10 @@ namespace ESG.Application.Services
 
         public async Task AddAsync(List<DimensionCreateRequestDto> dimentions)
         {
-            var oldDimension = new List<Dimension>();
-            var newDimension = new List<Dimension>();
+            var oldDimensions = new List<Dimension>();
+            var oldDimensionTranslations = new List<DimensionTranslation>();
+            var newDimensionTranslations = new List<DimensionTranslation>();
+            var newDimensions = new List<Dimension>();
             if (dimentions != null)
             {
                 foreach (var dimention in dimentions)
@@ -40,10 +42,19 @@ namespace ESG.Application.Services
                         existingDimension.ShortText = dimention.ShortText;
                         existingDimension.LongText = dimention.LongText;
                         existingDimension.Name = dimention.Name;
-                        oldDimension.Add(existingDimension);                        
+                        existingDimension.LastModifiedBy = dimention.UserId;
+                        existingDimension.LastModifiedDate = DateTime.UtcNow;
+                        oldDimensions.Add(existingDimension); 
 
-                        //var DimensionTranslateddata = _mapper.Map<DimensionTranslation>(dimentions);
-                        //await _unitOfWork.Repository<DimensionTranslation>().AddAsync(DimensionTranslateddata);
+                        var existingDimensionTranslation = await _unitOfWork.Repository<DimensionTranslation>()
+                            .Get(a => a.DimensionsId == dimention.DimensionId && a.LanguageId == dimention.LanguageId);
+                        existingDimensionTranslation.LanguageId = dimention.LanguageId;
+                        existingDimensionTranslation.ShortText = dimention.ShortText;
+                        existingDimensionTranslation.LongText = dimention.LongText;
+                        existingDimensionTranslation.Name = dimention.Name;
+                        existingDimensionTranslation.LastModifiedBy = dimention.UserId;
+                        existingDimensionTranslation.LastModifiedDate = DateTime.UtcNow;
+                        oldDimensionTranslations.Add(existingDimensionTranslation);                        
                     }
                     else
                     {
@@ -54,15 +65,17 @@ namespace ESG.Application.Services
                         }
                         var dimensonsdata = _mapper.Map<Dimension>(dimention);
                         dimensonsdata.State = StateEnum.active;
-                        //var dimensonsTranslationdata = _mapper.Map<DimensionTranslation>(dimentions);
-                        //dimensonsTranslationdata.DimensionId = dimensonsdata.DatapointId;
-                        //dimensonsdata.DimensionTranslation = new List<DimensionTranslation> { dimensonsTranslationdata };
-                        newDimension.Add(dimensonsdata);
+                        var dimensonsTranslationdata = _mapper.Map<DimensionTranslation>(dimentions);
+                        dimensonsTranslationdata.DimensionsId = dimensonsdata.Id;
+                        dimensonsdata.DimensionTranslations = new List<DimensionTranslation> { dimensonsTranslationdata };
+                        newDimensions.Add(dimensonsdata);
                     }
                 }
             }
-            await _unitOfWork.Repository<Dimension>().AddRange(newDimension);
-            await _unitOfWork.Repository<Dimension>().UpdateRange(oldDimension);
+            await _unitOfWork.Repository<Dimension>().AddRange(newDimensions);
+            await _unitOfWork.Repository<DimensionTranslation>().AddRange(newDimensionTranslations);
+            await _unitOfWork.Repository<Dimension>().UpdateRange(oldDimensions);
+            await _unitOfWork.Repository<DimensionTranslation>().AddRange(oldDimensionTranslations);
             await _unitOfWork.SaveAsync();
         }
 

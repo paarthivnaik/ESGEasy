@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,5 +23,7 @@ namespace ESG.Application.Dto.DataModel
     {
         public long DataModelValueId { get; set; }
         public string? Value { get; set; }
+        public string? FileName { get; set; }
+        public string? FormFile { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace ESG.Application.Dto.DataModel
         public string? Value { get; set; }
         public bool? IsBlocked { get; set; }
         public long? ResponsibleUserId { get; set; }
+        public byte[]? FileData { get; set; }
+        public string? FileName { get; set; }
     }
 
 }

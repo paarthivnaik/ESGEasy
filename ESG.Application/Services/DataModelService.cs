@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 using static ESG.Application.Dto.DataModel.DataModelCreateRequestDto;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace ESG.Application.Services
 {
@@ -690,6 +692,10 @@ namespace ESG.Application.Services
                         existingvalue.Value = reqobj.Value;
                     if (existingvalue == null)
                         throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DataModelValueId}");
+                    if (reqobj.FormFile != null)
+                    {
+                        await SaveFileAsync(reqobj?.FormFile, reqobj?.FileName, reqobj.DataModelValueId, requestDto.UserId, true);
+                    }
                 }
                 await _unitOfWork.Repository<DefaultDataModelValue>().UpdateRange(existingdefaultdatapointvalues);
             }
@@ -704,12 +710,46 @@ namespace ESG.Application.Services
                         existingvalue.Value = reqobj.Value;
                     if (existingvalue == null)
                         throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DataModelValueId}");
+                    if (reqobj.FormFile != null)
+                    {
+                        await SaveFileAsync(reqobj?.FormFile, reqobj?.FileName, reqobj.DataModelValueId, requestDto.UserId, false);
+                    }
                 }
                 await _unitOfWork.Repository<DataModelValue>().UpdateRange(existingdatapointvalues);
             }
             await _unitOfWork.SaveAsync();
         }
-              
+        public async Task SaveFileAsync(string? file,string? fileName, long dataModelValueId, long userId, bool isDefaultModel)
+        {
+            if (file == null || file.Length == 0)
+                throw new ArgumentException("File cannot be null or empty.");
+            var existingfile = await _unitOfWork.DataModelRepo.GetUploadedFileData(dataModelValueId, isDefaultModel);
+            if (existingfile != null)
+            {
+                byte[] fileBytes = Convert.FromBase64String(file);
+                existingfile.FileName = fileName;
+                existingfile.FileData = fileBytes;
+                existingfile.UserId = userId;
+                existingfile.UploadDate = DateTime.UtcNow.ToLocalTime();
+                existingfile.DataModelValueId = dataModelValueId;
+                existingfile.IsDefaultModel = isDefaultModel;
+                await _unitOfWork.Repository<UploadedFile>().UpdateAsync(existingfile.Id, existingfile);
+            }
+            if (existingfile == null)
+            {
+                byte[] fileBytes = Convert.FromBase64String(file);
+                var uploadedFile = new UploadedFile
+                {
+                    FileName = fileName,
+                    FileData = fileBytes,
+                    UserId = userId,
+                    UploadDate = DateTime.UtcNow.ToLocalTime(),
+                    DataModelValueId = dataModelValueId,
+                    IsDefaultModel = isDefaultModel
+                };
+                await _unitOfWork.Repository<UploadedFile>().AddAsync(uploadedFile);
+            }
+        }
         private async Task<DimensionTypeDto> GetRowDimensionDto(long modelId, ModelViewTypeEnum viewType)
         {
             var filterdimresponsedto = new List<DimensionTypeDto>();
@@ -870,6 +910,7 @@ namespace ESG.Application.Services
                 response.DatapointSavedValues = new List<DatapointSavedValues>();
                 foreach (var datamodelValue in defautdatamodelValues)
                 {
+                    var uploadedfile = await _unitOfWork.DataModelRepo.GetUploadedFileForDataModelValue(datamodelValue.Id, true);
                     response.DatapointSavedValues.Add(new DatapointSavedValues
                     {
                         DataModelValueId = datamodelValue.Id,
@@ -878,6 +919,8 @@ namespace ESG.Application.Services
                         Value = datamodelValue.Value,
                         IsBlocked = datamodelValue.IsBlocked,
                         ResponsibleUserId = datamodelValue.ResponsibleUserId,
+                        FileName = uploadedfile?.FileName,
+                        FileData = uploadedfile?.FileData,
                     });
                 }
             }
@@ -888,6 +931,7 @@ namespace ESG.Application.Services
                 response.DatapointSavedValues = new List<DatapointSavedValues>();
                 foreach (var datamodelValue in datamodelValues)
                 {
+                    var uploadedfile = await _unitOfWork.DataModelRepo.GetUploadedFileForDataModelValue(datamodelValue.Id, false);
                     response.DatapointSavedValues.Add(new DatapointSavedValues
                     {
                         DataModelValueId = datamodelValue.Id,
@@ -896,6 +940,8 @@ namespace ESG.Application.Services
                         Value = datamodelValue.Value,
                         IsBlocked = datamodelValue.IsBlocked,
                         ResponsibleUserId = datamodelValue.ResponsibleUserId,
+                        FileName = uploadedfile?.FileName,
+                        FileData = uploadedfile?.FileData,
                     });
                 }
             }

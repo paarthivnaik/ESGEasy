@@ -533,5 +533,20 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .AnyAsync(a => a.OrganizationId == orgId);
         }
 
+        public async Task<UploadedFile?> GetUploadedFileForDataModelValue(long id, bool isDefaultModel)
+        {
+            return await _context.UploadedFiles
+                .AsNoTracking()
+                .Where(a => a.DataModelValueId == id && a.IsDefaultModel == isDefaultModel)
+                .FirstOrDefaultAsync();
+        }
+        public async Task<UploadedFile?> GetUploadedFileData(long DataModelValueId, bool IsDefaultmodel)
+        {
+            var file = await _context.UploadedFiles
+                .AsNoTracking()
+                .Where(a => a.DataModelValueId == DataModelValueId && a.IsDefaultModel == IsDefaultmodel)
+                .FirstOrDefaultAsync();
+            return file;
+        }
     }
 }

@@ -11,6 +11,7 @@ public partial class DimensionTranslation
     public long LanguageId { get; set; }
 
     public string ShortText { get; set; } = null!;
+    public string? Name { get; set; } = null!;
 
     public string LongText { get; set; } = null!;
 

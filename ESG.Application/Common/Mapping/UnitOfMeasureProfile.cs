@@ -18,7 +18,7 @@ namespace ESG.Application.Common.Mapping
         {
             //create
             CreateMap<UnitOfMeasureCreateRequestDto, UnitOfMeasure>()
-                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+                //.ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))

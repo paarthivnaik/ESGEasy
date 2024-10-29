@@ -21,12 +21,33 @@ namespace ESG.Application.Services
             _mapper = mapper;
         }
 
-        public async Task Add(UOMTranslationsCreateRequestDto uOMTranslationsCreateRequestDto)
+        public async Task Add(UOMTranslationsCreateRequestDto requestDto)
         {
-            if (uOMTranslationsCreateRequestDto != null)
+            if (requestDto != null)
             {
-                var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslation>(uOMTranslationsCreateRequestDto);
-                await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().AddAsync(uomTranslationdata);
+                var existingTranslation = await _unitOfMeasure.Repository<UnitOfMeasureTranslation>()
+                    .Get(a => a.UnitOfMeasureId == requestDto.UnitOfMeasureId && a.LanguageId == requestDto.LanguageId);
+                if (existingTranslation != null)
+                {
+                    existingTranslation.LanguageId = requestDto.LanguageId;
+                    existingTranslation.ShortText = requestDto.ShortText;
+                    existingTranslation.LongText = requestDto.LongText;
+                    existingTranslation.State = requestDto.State;
+                    existingTranslation.LastModifiedBy = requestDto.UserId;
+                    existingTranslation.LastModifiedDate = DateTime.UtcNow;
+                    existingTranslation.Name = requestDto.Name;
+                    await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().UpdateAsync(existingTranslation.Id, existingTranslation);
+                }
+                if (existingTranslation == null)
+                {
+                    var uomTranslationdata = _mapper.Map<UnitOfMeasureTranslation>(requestDto);
+                    uomTranslationdata.State = requestDto.State;
+                    uomTranslationdata.LastModifiedBy = requestDto.UserId;
+                    uomTranslationdata.LastModifiedDate = DateTime.UtcNow;
+                    uomTranslationdata.CreatedDate = DateTime.UtcNow;
+                    await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().AddAsync(uomTranslationdata);
+                }
+                
                 await _unitOfMeasure.SaveAsync();
             }
         }

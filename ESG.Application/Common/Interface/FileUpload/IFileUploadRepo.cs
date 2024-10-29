@@ -9,6 +9,6 @@ namespace ESG.Application.Common.Interface.FileUpload
 {
     public interface IFileUploadRepo
     {
-        Task<UploadedFile?> GetUploadedFileData(string fileName, long organizationId);
+        Task<UploadedFile?> GetUploadedFileData(long DataModelValueId, bool IsDefaultmodel);
     }
 }

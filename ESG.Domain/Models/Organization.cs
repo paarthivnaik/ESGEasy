@@ -63,5 +63,5 @@ public partial class Organization
     public virtual ICollection<UnitOfMeasureType> UnitOfMeasureTypes { get; set; } = new List<UnitOfMeasureType>();
 
     public virtual ICollection<UnitOfMeasure> UnitOfMeasures { get; set; } = new List<UnitOfMeasure>();
-    public virtual ICollection<UploadedFile> UploadedFiles { get; set; } = new List<UploadedFile>();
+    //public virtual ICollection<UploadedFile> UploadedFiles { get; set; } = new List<UploadedFile>();
 }
