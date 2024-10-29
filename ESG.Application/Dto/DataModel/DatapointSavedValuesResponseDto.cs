@@ -24,7 +24,7 @@ namespace ESG.Application.Dto.DataModel
         public string? Value { get; set; }
         public bool? IsBlocked { get; set; }
         public long? ResponsibleUserId { get; set; }
-        public byte[]? FileData { get; set; }
+        public string? FileData { get; set; }
         public string? FileName { get; set; }
     }
 

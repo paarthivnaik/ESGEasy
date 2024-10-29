@@ -911,6 +911,7 @@ namespace ESG.Application.Services
                 foreach (var datamodelValue in defautdatamodelValues)
                 {
                     var uploadedfile = await _unitOfWork.DataModelRepo.GetUploadedFileForDataModelValue(datamodelValue.Id, true);
+                    string? base64String = Convert.ToBase64String(uploadedfile.FileData);
                     response.DatapointSavedValues.Add(new DatapointSavedValues
                     {
                         DataModelValueId = datamodelValue.Id,
@@ -920,7 +921,7 @@ namespace ESG.Application.Services
                         IsBlocked = datamodelValue.IsBlocked,
                         ResponsibleUserId = datamodelValue.ResponsibleUserId,
                         FileName = uploadedfile?.FileName,
-                        FileData = uploadedfile?.FileData,
+                        FileData = base64String,
                     });
                 }
             }
@@ -932,6 +933,7 @@ namespace ESG.Application.Services
                 foreach (var datamodelValue in datamodelValues)
                 {
                     var uploadedfile = await _unitOfWork.DataModelRepo.GetUploadedFileForDataModelValue(datamodelValue.Id, false);
+                    string? base64String = Convert.ToBase64String(uploadedfile.FileData);
                     response.DatapointSavedValues.Add(new DatapointSavedValues
                     {
                         DataModelValueId = datamodelValue.Id,
@@ -941,7 +943,7 @@ namespace ESG.Application.Services
                         IsBlocked = datamodelValue.IsBlocked,
                         ResponsibleUserId = datamodelValue.ResponsibleUserId,
                         FileName = uploadedfile?.FileName,
-                        FileData = uploadedfile?.FileData,
+                        FileData = base64String,
                     });
                 }
             }
