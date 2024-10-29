@@ -41,7 +41,6 @@ namespace ESG.API
             services.AddScoped<IDisclosureRequirementService, DisclosureRequirementService>();
             services.AddScoped<IUsersRepo, UsersRepo>();
             services.AddScoped<IDatapointValueRepo, DatapointValueRepo>();
-            services.AddScoped<IFileService, FileService>();
             return services;
         }
     }
