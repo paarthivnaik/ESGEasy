@@ -65,7 +65,15 @@ namespace ESG.Application.Services
                         }
                         var dimensonsdata = _mapper.Map<Dimension>(dimention);
                         dimensonsdata.State = StateEnum.active;
-                        var dimensonsTranslationdata = _mapper.Map<DimensionTranslation>(dimentions);
+                        var dimensonsTranslationdata = new DimensionTranslation();
+                        dimensonsTranslationdata.Name = dimention.Name;
+                        dimensonsTranslationdata.ShortText = dimention.ShortText;
+                        dimensonsTranslationdata.LongText = dimention.LongText;
+                        dimensonsTranslationdata.LanguageId = dimention.LanguageId;
+                        dimensonsTranslationdata.CreatedBy = dimention.UserId;
+                        dimensonsTranslationdata.LastModifiedBy = dimention.UserId;
+                        dimensonsTranslationdata.CreatedDate = DateTime.UtcNow;
+                        dimensonsTranslationdata.LastModifiedDate = DateTime.UtcNow;
                         dimensonsTranslationdata.DimensionsId = dimensonsdata.Id;
                         dimensonsdata.DimensionTranslations = new List<DimensionTranslation> { dimensonsTranslationdata };
                         newDimensions.Add(dimensonsdata);
