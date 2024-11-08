@@ -52,7 +52,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
         {
             var datapoints = await _context.DataPointValue
                 .AsNoTracking()
-                .Where(t => (t.OrganizationId == organizationId || t.OrganizationId == 1) && t.DisclosureRequirementId == disReqId)
+                .Where(t => (t.OrganizationId == organizationId || t.OrganizationId == 1) && t.DisclosureRequirementId == disReqId && t.State == Domain.Enum.StateEnum.active)
                 .ToListAsync();
             return datapoints;
         }

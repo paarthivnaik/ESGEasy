@@ -1,4 +1,5 @@
-﻿using ESG.Application.Dto.UOMTranslations;
+﻿using ESG.Application.Dto.DataPointValueTranslation;
+using ESG.Application.Dto.UOMTranslations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IDataPointValueTranslationService
     {
-        Task Add(UOMTranslationsCreateRequestDto uOMTranslationsCreateRequestDto);
+        Task Add(DataPointValueTranslationCreateRequestDto requestDto);
     }
 }

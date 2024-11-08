@@ -42,9 +42,10 @@ namespace ESG.Application.Services
                     }
                     else
                     {
+                        var code = datapointType.Code.ToLower();
                         var dpType = new DataPointType
                         {
-                            Code = datapointType.Code,
+                            Code = code,
                             Name = datapointType.Name,
                             ShortText = datapointType.ShortText,
                             LongText = datapointType.LongText,

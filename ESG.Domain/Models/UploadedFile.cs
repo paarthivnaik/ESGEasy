@@ -8,7 +8,7 @@ namespace ESG.Domain.Models
 {
     public class UploadedFile
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public string FileName { get; set; } = null!;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESG.Domain.Enum;
+using System;
 using System.Collections.Generic;
 
 namespace ESG.Domain.Models;
@@ -8,6 +9,8 @@ public partial class DatapointValueTranslation
     public long Id { get; set; }
 
     public string Name { get; set; } = null!;
+    public string ShortText { get; set; } = null!;
+    public string LongText { get; set; } = null!;
 
     public long DatapointValueId { get; set; }
 
@@ -15,7 +18,7 @@ public partial class DatapointValueTranslation
 
     public long LanguageId { get; set; }
 
-    public int State { get; set; }
+    public StateEnum State { get; set; }
 
     public long CreatedBy { get; set; }
 

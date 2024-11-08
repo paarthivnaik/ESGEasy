@@ -48,12 +48,14 @@ namespace ESG.Application.Services
                     }
                     else
                     {
-                        var existingCode = await _unitOfWork.Repository<UnitOfMeasureType>().Get(a => a.Code == uomType.Code);
+                        var code = uomType.Code.ToLower();
+                        var existingCode = await _unitOfWork.Repository<UnitOfMeasureType>().Get(a => a.Code == code);
                         if (existingCode != null)
                         {
-                            throw new System.Exception($"The Datapoint with code - {uomType.Code} alredy exists");
+                            throw new System.Exception($"The Datapoint with code - {uomType.Code} already exists");
                         }
                         var newuomtype = _mapper.Map<UnitOfMeasureType>(uomType);
+                        newuomtype.Code = code;
                         newuomtype.State = StateEnum.active;
                         newUomTypes.Add(newuomtype);
                         //var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslation>(unitOfMeasureType);

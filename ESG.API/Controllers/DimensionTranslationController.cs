@@ -1,4 +1,5 @@
-﻿using ESG.Application.Dto.UOMTranslations;
+﻿using ESG.Application.Dto.DimensionTranslation;
+using ESG.Application.Dto.UOMTranslations;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace ESG.API.Controllers
             _dimensionTranslationService = dimensionTranslationService;
         }
         [HttpPost("Create")]
-        public async Task<IActionResult> Post([FromBody] UOMTranslationsCreateRequestDto value)
+        public async Task<IActionResult> Post([FromBody] DimensionTranslationCreateRequestDto value)
         {
             try
             {

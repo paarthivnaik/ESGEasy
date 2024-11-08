@@ -32,6 +32,8 @@ namespace ESG.Application.Services
         {
             var oldDatapoints = new List<DataPointValue>();
             var newDatapoints = new List<DataPointValue>();
+            var oldDatapointTranslations = new List<DatapointValueTranslation>();
+            var newDatapointTranslations = new List<DatapointValueTranslation>();
             if (DataPointValue != null)
             {
                 foreach (var datapoint in DataPointValue)
@@ -39,52 +41,63 @@ namespace ESG.Application.Services
                     if (DataPointValue != null && datapoint.DatapointId > 0)
                     {
                         var existingdatapoint = await _unitOfWork.Repository<DataPointValue>().Get(a => a.Id == datapoint.DatapointId);
+                        var existingTranslation = await _unitOfWork.Repository<DatapointValueTranslation>().Get(a => a.DatapointValueId == datapoint.DatapointId);
                         existingdatapoint.Name = datapoint.Name;
                         existingdatapoint.DatapointTypeId = datapoint.DatapointTypeId;
                         existingdatapoint.UnitOfMeasureId = datapoint.UnitOfMeasureId;
                         existingdatapoint.CurrencyId = datapoint.CurrencyId;
                         existingdatapoint.IsNarrative = datapoint.IsNarrative;
+                        existingdatapoint.LanguageId = datapoint.LanguageId;
+                        existingdatapoint.LastModifiedBy = datapoint.UserId;
+                        existingdatapoint.LastModifiedDate = DateTime.UtcNow;
                         existingdatapoint.Purpose = datapoint.Purpose;
                         existingdatapoint.ShortText = datapoint.ShortText;
                         existingdatapoint.LongText = datapoint.LongText;
-                        existingdatapoint.LanguageId = datapoint.LanguageId;
                         existingdatapoint.DisclosureRequirementId = datapoint.DisclosureRequirementId;
+
+                        existingTranslation.LanguageId = datapoint.LanguageId;
+                        existingTranslation.DatapointValueId = datapoint.DatapointId;
+                        existingTranslation.Purpose = datapoint.Purpose;
+                        existingTranslation.Name = datapoint.Name;
+                        existingTranslation.ShortText = datapoint.ShortText;
+                        existingTranslation.LongText = datapoint.LongText;
+                        existingTranslation.LanguageId = datapoint.LanguageId;
+                        existingTranslation.LastModifiedBy = datapoint.UserId;
+                        existingTranslation.LastModifiedDate = DateTime.UtcNow;
                         oldDatapoints.Add(existingdatapoint);
+                        oldDatapointTranslations.Add(existingTranslation);
                     }
                     else
                     {
-                        //var newDP = new DataPointValue
-                        //{
-                        //    Name = datapoint.Name,
-                        //    Code = datapoint.Code,
-                        //    DatapointTypeId = datapoint.DatapointTypeId,
-                        //    UnitOfMeasureId = datapoint.UnitOfMeasureId,
-                        //    CurrencyId = datapoint.CurrencyId,
-                        //    IsNarrative = datapoint.IsNarrative,
-                        //    Purpose = datapoint.Purpose,
-                        //    LanguageId = datapoint.LanguageId,
-                        //    OrganizationId = datapoint.OrganizationId,
-                        //    CreatedBy = datapoint.UserId,
-                        //    LastModifiedBy = datapoint.UserId,
-                        //    CreatedDate = DateTime.UtcNow,
-                        //    LastModifiedDate = DateTime.UtcNow,
-                        //    DisclosureRequirementId = datapoint.DisclosureRequirementId,
-                        //    State = Domain.Enum.StateEnum.active,
-                        //};
-                        var existingdatapointCode = await _unitOfWork.Repository<DataPointValue>().Get(a => a.Code == datapoint.Code);
+                        var code = datapoint.Code.ToLower();
+                        var existingdatapointCode = await _unitOfWork.Repository<DataPointValue>().Get(a => a.Code == code);
                         if (existingdatapointCode != null)
                         {
-                            throw new System.Exception($"The Datapoint with code - {datapoint.Code} alredy exists");
+                            throw new System.Exception($"The Datapoint with code - {datapoint.Code} already exists");
                         }
                         var newDP = _mapper.Map<DataPointValue>(datapoint);
+                        newDP.Code = code;
                         newDP.State = Domain.Enum.StateEnum.active;
                         newDatapoints.Add(newDP);
-                        
+                        var newDPTranslation = new DatapointValueTranslation();
+                        newDPTranslation.LanguageId = datapoint.LanguageId;
+                        newDPTranslation.DatapointValueId = newDP.Id;
+                        newDPTranslation.Purpose = datapoint.Purpose;
+                        newDPTranslation.Name = datapoint.Name;
+                        newDPTranslation.ShortText = datapoint.ShortText;
+                        newDPTranslation.LongText = datapoint.LongText;
+                        newDPTranslation.LanguageId = datapoint.LanguageId;
+                        newDPTranslation.CreatedBy = datapoint.UserId;
+                        newDPTranslation.CreatedDate = DateTime.UtcNow;
+                        newDP.DatapointValueTranslations = new List<DatapointValueTranslation>() { newDPTranslation};
+                        newDatapointTranslations.Add(newDPTranslation);
                     }
                 }
             }
             await _unitOfWork.Repository<DataPointValue>().UpdateRange(oldDatapoints);
+            await _unitOfWork.Repository<DatapointValueTranslation>().UpdateRange(oldDatapointTranslations);
             await _unitOfWork.Repository<DataPointValue>().AddRange(newDatapoints);
+            await _unitOfWork.Repository<DatapointValueTranslation>().AddRange(newDatapointTranslations);
             await _unitOfWork.SaveAsync();
         }
 

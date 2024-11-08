@@ -1,4 +1,5 @@
-﻿using ESG.Application.Dto.UOMTranslations;
+﻿using ESG.Application.Dto.DimensionTranslation;
+using ESG.Application.Dto.UOMTranslations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IDimensionTranslationService
     {
-        Task Add(UOMTranslationsCreateRequestDto uOMTranslationsCreateRequestDto);
+        Task Add(DimensionTranslationCreateRequestDto uOMTranslationsCreateRequestDto);
     }
 }

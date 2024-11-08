@@ -56,14 +56,15 @@ namespace ESG.Application.Services
                     }
                     else
                     {
-                        var existingCode = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(a => a.Code == uom.Code);
+                        var code = uom.Code.ToLower();
+                        var existingCode = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(a => a.Code == code);
                         if (existingCode != null)
                         {
-                            throw new System.Exception($"The Datapoint with code - {uom.Code} alredy exists");
+                            throw new System.Exception($"The Datapoint with code - {uom.Code} already exists");
                         }
                         var uomdata = new UnitOfMeasure
                         {
-                            Code = uom.Code,
+                            Code = code,
                             Name = uom.Name,
                             ShortText = uom.ShortText,
                             LongText = uom.LongText,
@@ -123,7 +124,7 @@ namespace ESG.Application.Services
         {
             var existingData = await _unitOfMeasure.Repository<UnitOfMeasure>()
                 .Get(u => u.Id == unitOfMeasure.Id && u.LanguageId == unitOfMeasure.LanguageId);
-            //var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTranslation>()
+            //var translationsData = await _unitOfWork.Repository<UnitOfMeasureTranslation>()
             //    .Get(uom => uom.UnitOfMeasureId == unitOfMeasure.Id && uom.LanguageId == unitOfMeasure.LanguageId);
             if (existingData == null)
             {
@@ -142,7 +143,7 @@ namespace ESG.Application.Services
             //translationsData.Name = unitOfMeasure.Name;
            
             await _unitOfMeasure.Repository<UnitOfMeasure>().Update(existingData);
-            //await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().Update(translationsData);
+            //await _unitOfWork.Repository<UnitOfMeasureTranslation>().Update(translationsData);
             await _unitOfMeasure.SaveAsync();
 
         }
