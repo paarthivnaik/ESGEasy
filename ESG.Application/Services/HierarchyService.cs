@@ -122,15 +122,24 @@ namespace ESG.Application.Services
             var defaultDatamodelValues = new List<DefaultDataModelValue>();
             var defaultDatamodel = await _unitOfWork.DataModelRepo.GetDefaultModel();
             var factconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact).FirstOrDefault();
+            var narrativeconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative).FirstOrDefault();
             var factrowdimtypeId = factconfigId.RowId;
             var modeldimensiontypeIdforFactRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.RowId).FirstOrDefault();
             var modeldimensiontypeIdforFactColumn = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.ColumnId).FirstOrDefault();
-            var rowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
-            var coldimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
-            var filtercombinations = defaultDatamodel.ModelFilterCombinations.Select(a => a.Id).ToList();
+            var modeldimensiontypeIdforNarrativeRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == narrativeconfigId.RowId).FirstOrDefault();
+            var factrowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
+            var factcoldimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
+            var narrativerowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforNarrativeRow.Id, defaultDatamodel.Id);
+            var factfiltercombinations = defaultDatamodel.ModelFilterCombinations
+                .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact)
+                .Select(a => (long ?)a.Id)
+                .ToList();
+            var narrativefiltercombinations = defaultDatamodel.ModelFilterCombinations
+                .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative)
+                .Select(a => a.Id).ToList();
 
-            var factcombinations = GenerateCombinations(rowDimensions.Select(a => a.Id), coldimensions.Select(a => a.Id));
-            var Narrativecombinations = GenerateCombinations(rowDimensions.Select(a => a.Id), filtercombinations);
+            var factcombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), factcoldimensions.Select(a => a.Id), factfiltercombinations);
+            var Narrativecombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), narrativefiltercombinations, null);
             foreach (var dp in datapoints)
             {
                 var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(dp);
@@ -138,7 +147,7 @@ namespace ESG.Application.Services
                 {
                     foreach (var narrative in Narrativecombinations)
                     {
-                        var matchingRowDimension = rowDimensions.FirstOrDefault(a => a.Id == narrative.Item1 || a.Id == narrative.Item2);
+                        var matchingRowDimension = narrativerowDimensions.FirstOrDefault(a => a.Id == narrative.Item1 || a.Id == narrative.Item2);
                         var defaultdatamodelvalue = new DefaultDataModelValue();
                         defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
                         defaultdatamodelvalue.DataPointValuesId = dp;
@@ -156,27 +165,40 @@ namespace ESG.Application.Services
                 {
                     foreach (var fact in factcombinations)
                     {
-                        var matchingRowDimension = rowDimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2);
+                        var matchingRowDimension = factrowDimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2 || a.Id == fact.Item3);
+                        var matchingColDimension = factcoldimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2 || a.Id == fact.Item3);
+                        var usedIds = new HashSet<long> { matchingRowDimension.Id, matchingColDimension.Id };
+                        var combId = new[] { fact.Item1, fact.Item2, fact.Item3 }
+                        .FirstOrDefault(id => !usedIds.Contains(id.Value));
                         var defaultdatamodelvalue = new DefaultDataModelValue();
                         defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
                         defaultdatamodelvalue.DataPointValuesId = dp;
                         defaultdatamodelvalue.CreatedBy = request.UserId;
                         defaultdatamodelvalue.LastModifiedBy = request.UserId;
                         defaultdatamodelvalue.RowId = matchingRowDimension.Id;
-                        defaultdatamodelvalue.ColumnId = (matchingRowDimension.Id == fact.Item1) ? fact.Item2 : fact.Item1;
-                        defaultdatamodelvalue.CombinationId = null;
+                        defaultdatamodelvalue.ColumnId = matchingColDimension.Id;
+                        defaultdatamodelvalue.CombinationId = combId;
                         defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
                         defaultdatamodelvalue.OrganizationId = request.OrganizationId;
                         defaultDatamodelValues.Add(defaultdatamodelvalue);
                     }
                 }
+                await _unitOfWork.Repository<DefaultDataModelValue>().AddRange(defaultDatamodelValues);
             }
-            await _unitOfWork.Repository<DefaultDataModelValue>().AddRange(defaultDatamodelValues);
+            
         }
-        public List<(long, long)> GenerateCombinations(IEnumerable<long> list1, IEnumerable<long> list2)
+        public List<(long, long, long?)> GenerateCombinations(IEnumerable<long> list1, IEnumerable<long> list2, IEnumerable<long?> list3)
         {
-            return list1.SelectMany(item1 => list2, (item1, item2) => (item1, item2)).ToList();
+            list1 = list1 ?? Enumerable.Empty<long>();
+            list2 = list2 ?? Enumerable.Empty<long>();
+            list3 = list3 ?? Enumerable.Empty<long?>();
+
+            return list1.SelectMany(item1 => list2, (item1, item2) => (item1, item2))
+                        .SelectMany(tuple => list3, (tuple, item3) => (tuple.Item1, tuple.Item2, item3))
+                        .ToList();
         }
+
+
         public async Task<IEnumerable<HeirarchyDataResponseDto>> GetMethod(int tableType, long? Id, long? organizationId)
         {
             IEnumerable<HeirarchyDataResponseDto> result = Enumerable.Empty<HeirarchyDataResponseDto>(); ;
