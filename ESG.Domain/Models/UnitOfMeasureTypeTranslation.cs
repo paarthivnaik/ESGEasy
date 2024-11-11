@@ -10,11 +10,11 @@ public partial class UnitOfMeasureTypeTranslation
 
     public long LanguageId { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; } = null!;
 
-    public string ShortText { get; set; } = null!;
+    public string? ShortText { get; set; } = null!;
 
-    public string LongText { get; set; } = null!;
+    public string? LongText { get; set; } = null!;
 
     public StateEnum State { get; set; }
 

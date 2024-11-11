@@ -8,13 +8,13 @@ public partial class UnitOfMeasureType
 {
     public long Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; } = null!;
 
     public string Code { get; set; } = null!;
 
-    public string ShortText { get; set; } = null!;
+    public string? ShortText { get; set; } = null!;
 
-    public string LongText { get; set; } = null!;
+    public string? LongText { get; set; } = null!;
 
     public long LanguageId { get; set; }
 

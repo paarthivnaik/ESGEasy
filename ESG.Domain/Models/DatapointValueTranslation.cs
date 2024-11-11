@@ -8,13 +8,13 @@ public partial class DatapointValueTranslation
 {
     public long Id { get; set; }
 
-    public string Name { get; set; } = null!;
-    public string ShortText { get; set; } = null!;
-    public string LongText { get; set; } = null!;
+    public string? Name { get; set; } = null!;
+    public string? ShortText { get; set; } = null!;
+    public string? LongText { get; set; } = null!;
 
     public long DatapointValueId { get; set; }
 
-    public string Purpose { get; set; } = null!;
+    public string? Purpose { get; set; } = null!;
 
     public long LanguageId { get; set; }
 

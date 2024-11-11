@@ -12,7 +12,7 @@ public partial class DimensionType
 
     public string? ShortText { get; set; }
 
-    public string LongText { get; set; } = null!;
+    public string? LongText { get; set; } = null!;
 
     public long LanguageId { get; set; }
 
