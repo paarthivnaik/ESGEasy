@@ -139,7 +139,7 @@ namespace ESG.Application.Services
                 .Select(a => a.Id).ToList();
 
             var factcombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), factcoldimensions.Select(a => a.Id), factfiltercombinations);
-            var Narrativecombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), narrativefiltercombinations, null);
+            var Narrativecombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), narrativefiltercombinations);
             foreach (var dp in datapoints)
             {
                 var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(dp);
@@ -192,12 +192,17 @@ namespace ESG.Application.Services
             list1 = list1 ?? Enumerable.Empty<long>();
             list2 = list2 ?? Enumerable.Empty<long>();
             list3 = list3 ?? Enumerable.Empty<long?>();
-
             return list1.SelectMany(item1 => list2, (item1, item2) => (item1, item2))
                         .SelectMany(tuple => list3, (tuple, item3) => (tuple.Item1, tuple.Item2, item3))
                         .ToList();
         }
-
+        public List<(long, long)> GenerateCombinations(IEnumerable<long> list1, IEnumerable<long> list2)
+        {
+            list1 = list1 ?? Enumerable.Empty<long>();
+            list2 = list2 ?? Enumerable.Empty<long>();
+            return list1.SelectMany(item1 => list2, (item1, item2) => (item1, item2))
+                        .ToList();
+        }
 
         public async Task<IEnumerable<HeirarchyDataResponseDto>> GetMethod(int tableType, long? Id, long? organizationId)
         {
