@@ -13,6 +13,7 @@ namespace ESG.Application.Common.Interface.Hierarchy
         Task<long> GetNextHierarchyIdAsync();
         Task<IEnumerable<Domain.Models.Hierarchy>> GetHierarchies(long hierarchyId);
         Task<IEnumerable<long>> GetDatapointsByHierarchyId(long? hierarchyId);
+        Task<IEnumerable<long>> GetDatapointsLinkedToModelByORganizationId(long? organizationId);
         Task<IEnumerable<Topic>> GetTopics();
         Task<IEnumerable<Standard>> GetStandards(long? topicId);
         Task<IEnumerable<DisclosureRequirement>> GetDisclosureRequirements(long? standardId);

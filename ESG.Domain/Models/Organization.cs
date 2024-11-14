@@ -42,6 +42,8 @@ public partial class Organization
 
     public DateTime? LastModifiedDate { get; set; }
 
+    public virtual ICollection<Amendment> Amendments { get; set; } = new List<Amendment>();
+
     public virtual ICollection<DataModel> DataModels { get; set; } = new List<DataModel>();
 
     public virtual ICollection<DataPointType> DataPointTypes { get; set; } = new List<DataPointType>();

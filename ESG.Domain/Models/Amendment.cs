@@ -13,7 +13,11 @@ public partial class Amendment
 
     public long DatapointId { get; set; }
 
+    public long? OrganizationId { get; set; }
+
     public virtual DataPointValue Datapoint { get; set; } = null!;
 
-    public virtual ModelFilterCombination FilterCombination { get; set; } = null!;
+    public virtual ModelFilterCombination? FilterCombination { get; set; }
+
+    public virtual Organization? Organization { get; set; }
 }

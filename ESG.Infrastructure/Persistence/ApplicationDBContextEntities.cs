@@ -111,6 +111,8 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasIndex(e => e.DatapointId, "fki_FK_Amendments_DataPointValuesId");
 
+                entity.HasIndex(e => e.OrganizationId, "fki_FK_Amendments_Organization_OrganizationId");
+
                 entity.Property(e => e.Value).HasMaxLength(255);
 
                 entity.HasOne(d => d.Datapoint).WithMany(p => p.Amendments)
@@ -121,6 +123,10 @@ namespace ESG.Infrastructure.Persistence
                 entity.HasOne(d => d.FilterCombination).WithMany(p => p.Amendments)
                     .HasForeignKey(d => d.FilterCombinationId)
                     .HasConstraintName("FK_Amendments1-FilterCombinationId");
+
+                entity.HasOne(d => d.Organization).WithMany(p => p.Amendments)
+                    .HasForeignKey(d => d.OrganizationId)
+                    .HasConstraintName("FK_Amendments_Organization_OrganizationId");
             });
 
             modelBuilder.Entity<Currency>(entity =>
@@ -315,7 +321,7 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasIndex(e => e.ResponsibleUserId, "DefaultDataModelValues_ResponsibleUserId_idx");
 
-                entity.HasIndex(e => new { e.RowId, e.ColumnId, e.CombinationId, e.DataPointValuesId }, "DefaultDataModelValues_RowId_ColumnId_CombinationId_DataPoi_idx").IsUnique();
+                //entity.HasIndex(e => new { e.RowId, e.ColumnId, e.CombinationId, e.DataPointValuesId }, "DefaultDataModelValues_RowId_ColumnId_CombinationId_DataPoi_idx").IsUnique();
 
                 entity.HasIndex(e => e.RowId, "DefaultDataModelValues_RowId_idx");
 

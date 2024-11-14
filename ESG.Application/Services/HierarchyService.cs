@@ -309,9 +309,11 @@ namespace ESG.Application.Services
             {
                 var datapoints = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(HierarchyId);
                 var datamodelDatapoints = await _unitOfWork.DatapointValueRepo.GetModelDatapointsByOrgId(organizationId);
-
+                var defaultModelDatapoints = await _unitOfWork.DatapointValueRepo.GetDefaultModelDatapointsAndNotUserAssignedByOrgId(organizationId);
+                var datamodelDatapointSet = new HashSet<long>(datamodelDatapoints);
+                var defaultModelDatapointSet = new HashSet<long?>(defaultModelDatapoints);
                 filteredDatapoints = datapoints
-                    .Where(dp => !datamodelDatapoints.Any(dmd => dmd == dp))
+                    .Where(dp => !datamodelDatapointSet.Contains(dp) && defaultModelDatapointSet.Contains(dp))
                     .ToList();
             }
 

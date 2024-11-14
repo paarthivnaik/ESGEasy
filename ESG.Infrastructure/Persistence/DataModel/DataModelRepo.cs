@@ -404,11 +404,11 @@ namespace ESG.Infrastructure.Persistence.DataModel
 
 
 
-        public async Task<Amendment?> GetExistingAmendment(long datapointId, long? combinationId)
+        public async Task<Amendment?> GetExistingAmendment(long datapointId, long? combinationId, long organizationId)
         {
             return await _context.Amendments
                 .AsNoTracking()
-                .Where(a => a.DatapointId == datapointId && a.FilterCombinationId == combinationId)
+                .Where(a => a.DatapointId == datapointId && a.FilterCombinationId == combinationId && a.OrganizationId == organizationId)
                 .FirstOrDefaultAsync();
         }
         public async Task<List<DataModelValue>?> GetDataModelValuesById(List<long> ids, long modelId, long organizationId)

@@ -10,11 +10,11 @@ namespace ESG.Domain.Models
     {
         public long Id { get; set; }
 
-        public string FileName { get; set; } = null!;
+        public string? FileName { get; set; } = null!;
 
         public byte[]? FileData { get; set; } = null!;
 
-        public DateTime UploadDate { get; set; }
+        public DateTime? UploadDate { get; set; }
 
         public long? UserId { get; set; }
 

@@ -40,7 +40,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<(long Id, long DimensionTypeId, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId);
         Task<bool> VerifyIsDefaultModel(long modelId);
         Task<IEnumerable<(long Id, string Name, long TypeId)>> GetModelDimensionValuesByModelDimTypeId(List<long?> modelDimensionTypeIds);
-        Task<Amendment?> GetExistingAmendment(long datapointId, long? combinationId);
+        Task<Amendment?> GetExistingAmendment(long datapointId, long? combinationId, long organizationId);
         Task<List<DataModelValue>?> GetDataModelValuesById(List<long> ids, long modelId, long OrganizationId);
         Task<IEnumerable<DefaultDataModelValue>?> GetDefaultDataModelValuesByDatapointIds(List<long> datapointIds, StateEnum state, long organizationId);
         Task<ESG.Domain.Models.DataModel> GetDefaultModel();

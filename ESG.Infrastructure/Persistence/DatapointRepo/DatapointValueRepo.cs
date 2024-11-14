@@ -29,6 +29,20 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 .ToListAsync();
             return list;
         }
+        public async Task<IEnumerable<long?>> GetDefaultModelDatapointsAndNotUserAssignedByOrgId(long orgId)
+        {
+            var list = await _context.DefaultDataModelValues
+                .AsNoTracking()
+                .Where(x => x.OrganizationId == orgId)
+                .GroupBy(x => x.DataPointValuesId)
+                .Where(g => g.All(a => a.ResponsibleUserId == null && a.AccountableUserId == null))
+                .Select(g => g.Key)
+                .Distinct()
+                .ToListAsync();
+
+            return list;
+        }
+
         public async Task<IEnumerable<long>> GetModelDatapointsLinkedToDataModels(long orgId)
         {
             var list = await _context.DataModels

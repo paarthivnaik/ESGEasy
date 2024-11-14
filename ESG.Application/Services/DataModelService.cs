@@ -673,6 +673,7 @@ namespace ESG.Application.Services
                     FilterCombinationId = requestDto.CombinationId,
                     Value = requestDto.AmendmentValue,
                     DatapointId = requestDto.DatapointId,
+                    OrganizationId = requestDto.OrganizationId,
                 };
                 await _unitOfWork.Repository<Amendment>().Add(amend);
             }
@@ -692,10 +693,8 @@ namespace ESG.Application.Services
                         existingvalue.Value = reqobj.Value;
                     if (existingvalue == null)
                         throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DataModelValueId}");
-                    if (reqobj.FormFile != null)
-                    {
-                        await SaveFileAsync(reqobj?.FormFile, reqobj?.FileName, reqobj.DataModelValueId, requestDto.UserId, true);
-                    }
+                    await SaveFileAsync(reqobj?.FormFile, reqobj?.FileName, reqobj.DataModelValueId, requestDto.UserId, true);
+                    
                 }
                 await _unitOfWork.Repository<DefaultDataModelValue>().UpdateRange(existingdefaultdatapointvalues);
             }
@@ -710,10 +709,8 @@ namespace ESG.Application.Services
                         existingvalue.Value = reqobj.Value;
                     if (existingvalue == null)
                         throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DataModelValueId}");
-                    if (reqobj.FormFile != null)
-                    {
-                        await SaveFileAsync(reqobj?.FormFile, reqobj?.FileName, reqobj.DataModelValueId, requestDto.UserId, false);
-                    }
+                    await SaveFileAsync(reqobj?.FormFile, reqobj?.FileName, reqobj.DataModelValueId, requestDto.UserId, false);
+                    
                 }
                 await _unitOfWork.Repository<DataModelValue>().UpdateRange(existingdatapointvalues);
             }
@@ -721,23 +718,20 @@ namespace ESG.Application.Services
         }
         public async Task SaveFileAsync(string? file,string? fileName, long dataModelValueId, long userId, bool isDefaultModel)
         {
-            if (file == null || file.Length == 0)
-                throw new ArgumentException("File cannot be null or empty.");
+            byte[] fileBytes = null;
+            if (file != null)
+                fileBytes = Convert.FromBase64String(file);
             var existingfile = await _unitOfWork.DataModelRepo.GetUploadedFileData(dataModelValueId, isDefaultModel);
             if (existingfile != null)
             {
-                byte[] fileBytes = Convert.FromBase64String(file);
                 existingfile.FileName = fileName;
                 existingfile.FileData = fileBytes;
                 existingfile.UserId = userId;
                 existingfile.UploadDate = DateTime.UtcNow.ToLocalTime();
-                existingfile.DataModelValueId = dataModelValueId;
-                existingfile.IsDefaultModel = isDefaultModel;
                 await _unitOfWork.Repository<UploadedFile>().UpdateAsync(existingfile.Id, existingfile);
             }
             if (existingfile == null)
             {
-                byte[] fileBytes = Convert.FromBase64String(file);
                 var uploadedFile = new UploadedFile
                 {
                     FileName = fileName,
@@ -898,7 +892,8 @@ namespace ESG.Application.Services
                     break;
                 }
             }
-            var amendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(datapointSavedValuesRequestDto.DatapointId, ModelFilterCombinationId);
+            var amendment = await _unitOfWork.DataModelRepo.GetExistingAmendment(
+                datapointSavedValuesRequestDto.DatapointId, ModelFilterCombinationId, datapointSavedValuesRequestDto.OrganizationId);
             response.AmendmentId = amendment?.Id;
             response.Amendment = amendment?.Value;
 
@@ -967,7 +962,9 @@ namespace ESG.Application.Services
                 dimensionTypes.Select(a => (long?)a.Id).ToList());
             var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
             var datapoints = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(hierarchyId);
-            var defaultDatamodelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByModelIdAndDatapoints(ModelId, datapoints, organizationId);
+            var modeldatapoints = await _unitOfWork.HierarchyRepo.GetDatapointsLinkedToModelByORganizationId(organizationId);
+            var datapointsWeneed = datapoints.Except(modeldatapoints);
+            var defaultDatamodelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByModelIdAndDatapoints(ModelId, datapointsWeneed, organizationId);
             var dataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(ModelId, organizationId);
             var modelDimenstionTypesWithNames = new List<DataModelDimenstionTypesWithNamesForHeaders>();
             var modelDatamodelValues = new List<DataModelValuesForAssigning>();
