@@ -530,6 +530,7 @@ namespace ESG.Application.Services
                     {
                         Id = datamodel.Id,
                         Name = datamodel.ModelName,
+                        Purpose = datamodel.Purpose,
                         FactView = null,
                         NarrativeView = null
                     };
