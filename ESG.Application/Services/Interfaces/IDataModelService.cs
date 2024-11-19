@@ -18,9 +18,8 @@ namespace ESG.Application.Services.Interfaces
         Task ConfiguringModel(ConfiguringDataModelRequestDto configuringDataModelRequestDto);
         Task<DatapointSavedValuesResponseDto> GetDatapointSavedValues(DatapointSavedValuesRequestDto datapointSavedValuesRequestDto); 
         Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId); 
-
         Task AssignUsersToDataModelValues(AssigningDataModelValuesToUsersRequestDto assigningDataModelValuesToUsersRequestDto);
-
+        Task<List<long>?> GetDatapointsLinkedToDataModel(long dataModelId, long organizationId);
 
 
 

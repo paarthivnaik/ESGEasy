@@ -10,6 +10,7 @@ using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ESG.Infrastructure.Persistence.DataModel
 {
@@ -453,14 +454,20 @@ namespace ESG.Infrastructure.Persistence.DataModel
 
         public async Task<Domain.Models.DataModel> GetDefaultModel()
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             var datamodel = await _context.DataModels
                 .AsNoTracking()
                 .Include(b => b.ModelDimensionTypes)
                 .Include(a => a.ModelConfigurations)
                 .Include(a => a.ModelFilterCombinations)
                 .Where(a => a.IsDefaultModel == true)
+                //.AsSplitQuery()
                 .FirstOrDefaultAsync();
+            sw.Stop();
+            var elapsedMilliseconds = sw.ElapsedMilliseconds;
             return datamodel;
+            
         }
 
         public async Task<List<(long Id, long typeId)>> GetModelDimensionValuesByTypeIdAndModelId(long modeldimtypeId, long modelId)
@@ -547,6 +554,15 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(a => a.DataModelValueId == DataModelValueId && a.IsDefaultModel == IsDefaultmodel)
                 .FirstOrDefaultAsync();
             return file;
+        }
+
+        public async Task<List<long>> GetDatapointsLinkedToDataModel(long modelId, long organizationId)
+        {
+            return await _context.ModelDatapoints
+                .AsNoTracking()
+                .Where(a => a.DataModelId == modelId && a.DataModel.OrganizationId == organizationId)
+                .Select(a => a.DatapointValuesId)
+                .ToListAsync();
         }
     }
 }

@@ -68,5 +68,11 @@ namespace ESG.API.Controllers
             await _dataModelService.AssignUsersToDataModelValues(requestDto);
             return Ok();
         }
+        [HttpGet("GetDatapointsLinkedToDataModel")]
+        public async Task<List<long>?> GetDatapointsLinkedToDataModel(long modelId, long OrganizationId)
+        {
+            var list = await _dataModelService.GetDatapointsLinkedToDataModel(modelId, OrganizationId);
+            return list;
+        }
     }
 }

@@ -1174,5 +1174,11 @@ namespace ESG.Application.Services
             
             await _unitOfWork.SaveAsync();
         }
+
+        public async Task<List<long>?> GetDatapointsLinkedToDataModel(long dataModelId, long organizationId)
+        {
+            var list = await _unitOfWork.DataModelRepo.GetDatapointsLinkedToDataModel(dataModelId, organizationId);
+            return list;
+        }
     }
 }
