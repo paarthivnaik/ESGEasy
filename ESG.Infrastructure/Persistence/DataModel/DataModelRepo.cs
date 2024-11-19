@@ -46,6 +46,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     Id = dp.Id,
                     ModelName = dp.ModelName,
                     IsDefaultModel = dp.IsDefaultModel,
+                    Purpose = dp.Purpose,
                 })
                 .FirstOrDefaultAsync();
             }
