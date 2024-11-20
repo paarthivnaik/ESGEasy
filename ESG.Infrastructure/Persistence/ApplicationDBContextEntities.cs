@@ -321,8 +321,6 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasIndex(e => e.ResponsibleUserId, "DefaultDataModelValues_ResponsibleUserId_idx");
 
-                //entity.HasIndex(e => new { e.RowId, e.ColumnId, e.CombinationId, e.DataPointValuesId }, "DefaultDataModelValues_RowId_ColumnId_CombinationId_DataPoi_idx").IsUnique();
-
                 entity.HasIndex(e => e.RowId, "DefaultDataModelValues_RowId_idx");
 
                 entity.HasIndex(e => e.DataModelId, "fki_FK_DefaultDataModelValues_DataModel_DataModelId");
@@ -751,6 +749,7 @@ namespace ESG.Infrastructure.Persistence
                 entity.HasOne(d => d.User).WithOne(p => p.UserRole).HasForeignKey<UserRole>(d => d.UserId);
             });
             modelBuilder.HasSequence("amendments_id_seq");
+            modelBuilder.HasSequence("UploadedFile_Id_seq");
 
             OnModelCreatingPartial(modelBuilder);
         }

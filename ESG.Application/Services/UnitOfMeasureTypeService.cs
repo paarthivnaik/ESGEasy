@@ -35,7 +35,6 @@ namespace ESG.Application.Services
                     if (uomType.UnitOfMeasureTypeId > 0)
                     {
                         var existingUOMtype = await _unitOfWork.Repository<UnitOfMeasureType>().Get(a => a.Id == uomType.UnitOfMeasureTypeId);
-                        existingUOMtype.Name = uomType.Name;
                         existingUOMtype.ShortText = uomType.ShortText;
                         existingUOMtype.LongText = uomType.LongText;
                         existingUOMtype.LanguageId = uomType.LanguageId;
@@ -116,7 +115,6 @@ namespace ESG.Application.Services
             existingData.ShortText = unitOfMeasureType.ShortText;
             existingData.LongText = unitOfMeasureType.LongText;
             existingData.State = unitOfMeasureType.State;
-            existingData.Name = unitOfMeasureType.Name;
             existingData.OrganizationId = unitOfMeasureType.OrganizationId;
 
             //translationsData.ShortText = unitOfMeasureType.ShortText;

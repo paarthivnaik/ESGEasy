@@ -10,7 +10,7 @@ namespace ESG.Application.Dto.UnitOfMeasureType
     public class UnitOfMeasureTypeResponseDto
     {
         public long Id { get; set; }
-        public string Name { get; set; }
+        //public string Name { get; set; }
         public string ShortText { get; set; }
         public string LongText { get; set; }
         public string Code { get; set; }

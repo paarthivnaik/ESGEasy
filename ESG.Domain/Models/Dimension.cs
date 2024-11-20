@@ -10,9 +10,9 @@ public partial class Dimension
 
     public string Code { get; set; } = null!;
 
-    public string? ShortText { get; set; } = null!;
+    public string? ShortText { get; set; }
 
-    public string? LongText { get; set; } = null!;
+    public string? LongText { get; set; }
 
     public long LanguageId { get; set; }
 
@@ -29,8 +29,6 @@ public partial class Dimension
     public long? LastModifiedBy { get; set; }
 
     public DateTime? LastModifiedDate { get; set; }
-
-    public string? Name { get; set; }
 
     public virtual ICollection<DataModelValue> DataModelValueColumns { get; set; } = new List<DataModelValue>();
 

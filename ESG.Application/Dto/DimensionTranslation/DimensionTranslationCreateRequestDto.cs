@@ -11,7 +11,7 @@ namespace ESG.Application.Dto.DimensionTranslation
     {
         public long DimensionId { get; set; }
         public long LanguageId { get; set; }
-        public string? Name { get; set; }
+        //public string? Name { get; set; }
         public string? ShortText { get; set; }
         public string? LongText { get; set; }
         public long UserId { get; set; }

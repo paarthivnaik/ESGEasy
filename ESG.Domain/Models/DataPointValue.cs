@@ -10,8 +10,6 @@ public partial class DataPointValue
 
     public string Code { get; set; } = null!;
 
-    public string? Name { get; set; } = null!;
-
     public long? DatapointTypeId { get; set; }
 
     public long? UnitOfMeasureId { get; set; }
@@ -20,7 +18,7 @@ public partial class DataPointValue
 
     public bool? IsNarrative { get; set; }
 
-    public string? Purpose { get; set; } = null!;
+    public string? Purpose { get; set; }
 
     public long LanguageId { get; set; }
 

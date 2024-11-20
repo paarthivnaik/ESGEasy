@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESG.Domain.Enum;
+using System;
 using System.Collections.Generic;
 
 namespace ESG.Domain.Models;
@@ -15,7 +16,7 @@ public partial class ModelFilterCombinationalValue
 
     public long? DimensionTypeId { get; set; }
 
-    public int State { get; set; }
+    public StateEnum State { get; set; }
 
     public long CreatedBy { get; set; }
 

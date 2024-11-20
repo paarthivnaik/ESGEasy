@@ -1,6 +1,5 @@
 ﻿using ESG.Domain.Enum;
-using System;
-using System.Collections.Generic;
+
 
 namespace ESG.Domain.Models;
 

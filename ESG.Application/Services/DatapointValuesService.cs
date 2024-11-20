@@ -42,7 +42,6 @@ namespace ESG.Application.Services
                     {
                         var existingdatapoint = await _unitOfWork.Repository<DataPointValue>().Get(a => a.Id == datapoint.DatapointId);
                         var existingTranslation = await _unitOfWork.Repository<DatapointValueTranslation>().Get(a => a.DatapointValueId == datapoint.DatapointId);
-                        existingdatapoint.Name = datapoint.Name;
                         existingdatapoint.DatapointTypeId = datapoint.DatapointTypeId;
                         existingdatapoint.UnitOfMeasureId = datapoint.UnitOfMeasureId;
                         existingdatapoint.CurrencyId = datapoint.CurrencyId;
@@ -58,7 +57,6 @@ namespace ESG.Application.Services
                         existingTranslation.LanguageId = datapoint.LanguageId;
                         existingTranslation.DatapointValueId = datapoint.DatapointId;
                         existingTranslation.Purpose = datapoint.Purpose;
-                        existingTranslation.Name = datapoint.Name;
                         existingTranslation.ShortText = datapoint.ShortText;
                         existingTranslation.LongText = datapoint.LongText;
                         existingTranslation.LanguageId = datapoint.LanguageId;
@@ -83,7 +81,6 @@ namespace ESG.Application.Services
                         newDPTranslation.LanguageId = datapoint.LanguageId;
                         newDPTranslation.DatapointValueId = newDP.Id;
                         newDPTranslation.Purpose = datapoint.Purpose;
-                        newDPTranslation.Name = datapoint.Name;
                         newDPTranslation.ShortText = datapoint.ShortText;
                         newDPTranslation.LongText = datapoint.LongText;
                         newDPTranslation.LanguageId = datapoint.LanguageId;

@@ -36,7 +36,6 @@ namespace ESG.Application.Services
                     existingTranslation.State = requestDto.State;
                     existingTranslation.LastModifiedBy = requestDto.UserId;
                     existingTranslation.LastModifiedDate = DateTime.UtcNow;
-                    existingTranslation.Name = requestDto.Name;
                     await _unitOfWork.Repository<DimensionTypeTranslation>().UpdateAsync(existingTranslation.Id, existingTranslation);
                 }
                 if (existingTranslation == null)

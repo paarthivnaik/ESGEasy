@@ -16,7 +16,6 @@ namespace ESG.Application.Common.Mapping
         {
             //create
             CreateMap<UnitOfMeasureTypeCreateRequestDto, UnitOfMeasureTypeTranslation>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId))
@@ -24,7 +23,6 @@ namespace ESG.Application.Common.Mapping
             .ForMember(dest => dest.UnitOfMeasureTypeId, opt => opt.MapFrom(src => src.UnitOfMeasureTypeId));
 
             CreateMap<UOMTypeTranslationsCreateRequestDto, UnitOfMeasureTypeTranslation>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
@@ -34,7 +32,6 @@ namespace ESG.Application.Common.Mapping
             //response
             CreateMap<UnitOfMeasureTypeTranslation, UnitOfMeasureTypeResponseDto>()
                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
@@ -42,7 +39,6 @@ namespace ESG.Application.Common.Mapping
                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy));
             CreateMap<UnitOfMeasureTypeResponseDto, UnitOfMeasureTypeTranslation>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))

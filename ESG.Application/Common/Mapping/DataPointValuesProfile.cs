@@ -18,7 +18,6 @@ namespace ESG.Application.Common.Mapping
             CreateMap<DataPointValue, DataPointValueResponseDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
@@ -34,7 +33,6 @@ namespace ESG.Application.Common.Mapping
             CreateMap<DataPointValueResponseDto, DataPointValue> ()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
@@ -50,7 +48,6 @@ namespace ESG.Application.Common.Mapping
 
             CreateMap<DatapointValueCreateRequestDto, DataPointValue>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.DatapointTypeId, opt => opt.MapFrom(src => src.DatapointTypeId))
                 .ForMember(dest => dest.UnitOfMeasureId, opt => opt.MapFrom(src => src.UnitOfMeasureId))
                 .ForMember(dest => dest.CurrencyId, opt => opt.MapFrom(src => src.CurrencyId))

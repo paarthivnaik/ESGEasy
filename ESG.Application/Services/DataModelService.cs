@@ -1035,7 +1035,7 @@ namespace ESG.Application.Services
                     {
                         DataModelValueId = datamodelvalue.Id,
                         DatapointId = datamodelvalue.DataPointValuesId,
-                        DatapointName = datamodelvalue.DataPointValues.Name ?? string.Empty,
+                        DatapointName = datamodelvalue.DataPointValues.ShortText ?? string.Empty,
                         DatapointCode = datamodelvalue.DataPointValues.Code ?? string.Empty,
                         DimensionalCombinationForDatapoint = dimensionsdto,
                         IsBlocked = datamodelvalue.IsBlocked,
@@ -1101,7 +1101,7 @@ namespace ESG.Application.Services
                     {
                         DataModelValueId = datamodelvalue.Id,
                         DatapointId = datamodelvalue.DataPointValuesId,
-                        DatapointName = datamodelvalue.DataPointValues.Name ?? string.Empty,
+                        DatapointName = datamodelvalue.DataPointValues.ShortText ?? string.Empty,
                         DatapointCode = datamodelvalue.DataPointValues.Code ?? string.Empty,
                         DimensionalCombinationForDatapoint = dimensionsdto,
                         IsBlocked = datamodelvalue.IsBlocked,

@@ -35,14 +35,12 @@ namespace ESG.Application.Services
                     existingTranslation.State = requestDto.State;
                     existingTranslation.LastModifiedBy = requestDto.UserId;
                     existingTranslation.LastModifiedDate = DateTime.UtcNow;
-                    existingTranslation.Name = requestDto.Name;
                     await _unitOfWork.Repository<DatapointValueTranslation>().UpdateAsync(existingTranslation.Id, existingTranslation);
                 }
                 if (existingTranslation == null)
                 {
                     var uomTranslationdata = new DatapointValueTranslation();
                     uomTranslationdata.LanguageId = requestDto.LanguageId;
-                    uomTranslationdata.Name = requestDto.Name;
                     uomTranslationdata.ShortText = requestDto.ShortText;
                     uomTranslationdata.LongText = requestDto.LongText;
                     uomTranslationdata.State = requestDto.State;

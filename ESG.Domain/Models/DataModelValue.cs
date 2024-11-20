@@ -32,7 +32,7 @@ public partial class DataModelValue
 
     public DateTime? LastModifiedDate { get; set; }
 
-    public long DataPointValuesId { get; set; }
+    public long? DataPointValuesId { get; set; }
 
     public long? DataModelId { get; set; }
 

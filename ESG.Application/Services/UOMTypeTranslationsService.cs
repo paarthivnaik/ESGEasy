@@ -35,7 +35,6 @@ namespace ESG.Application.Services
                     existingTranslation.State = requestDto.State;
                     existingTranslation.LastModifiedBy = requestDto.UserId;
                     existingTranslation.LastModifiedDate = DateTime.UtcNow;
-                    existingTranslation.Name = requestDto.Name;
                     await _unitOfMeasure.Repository<UnitOfMeasureTypeTranslation>().UpdateAsync(existingTranslation.Id, existingTranslation);
                 }
                 if (existingTranslation == null)
@@ -62,7 +61,6 @@ namespace ESG.Application.Services
             translationsData.ShortText = uomTypeTranslationsUpdateRequestDto.ShortText;
             translationsData.LongText = uomTypeTranslationsUpdateRequestDto.LongText;
             translationsData.State = uomTypeTranslationsUpdateRequestDto.State;
-            translationsData.Name = uomTypeTranslationsUpdateRequestDto.Name;
             translationsData.CreatedBy = uomTypeTranslationsUpdateRequestDto.UserId;
 
             await _unitOfMeasure.Repository<UnitOfMeasureTypeTranslation>().Update(translationsData);

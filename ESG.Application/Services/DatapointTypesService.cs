@@ -30,7 +30,6 @@ namespace ESG.Application.Services
                     if (datapointType.DatapointTypeId > 0)
                     {
                         var existingDatapointType = await _unitOfWork.Repository<DataPointType>().Get(a => a.Id == datapointType.DatapointTypeId);
-                        existingDatapointType.Name = datapointType.Name;
                         existingDatapointType.ShortText = datapointType.ShortText;
                         existingDatapointType.LongText = datapointType.LongText;
                         existingDatapointType.OrganizationId = datapointType.OrganizationId;
@@ -46,7 +45,6 @@ namespace ESG.Application.Services
                         var dpType = new DataPointType
                         {
                             Code = code,
-                            Name = datapointType.Name,
                             ShortText = datapointType.ShortText,
                             LongText = datapointType.LongText,
                             OrganizationId = datapointType.OrganizationId,

@@ -11,7 +11,7 @@ namespace ESG.Application.Dto.Dimension
     {
         public long DimensionId { get; set; }
         public string Code { get; set; }
-        public string? Name { get; set; }
+        //public string? Name { get; set; }
         public long OrganizationId { get; set; }
         public string? ShortText { get; set; }
         public string? LongText { get; set; }

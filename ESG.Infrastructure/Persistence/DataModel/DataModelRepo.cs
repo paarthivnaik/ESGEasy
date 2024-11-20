@@ -96,7 +96,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(a => new
                 {
                     a.RowId,
-                    RowName = a.Row.Name ?? a.Row.ShortText 
+                    RowName = a.Row.ShortText 
                 })
                 .FirstOrDefaultAsync();
             if (result != null)
@@ -113,7 +113,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(a => new
                 {
                     a.Id,
-                    Name = a.Name ?? a.ShortText
+                    Name = a.ShortText
                 })
                 .FirstOrDefaultAsync();
 
@@ -143,7 +143,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(md => new 
                 {
                     Id = md.Dimensions.Id, 
-                    Name = md.Dimensions.Name ?? md.Dimensions.ShortText,
+                    Name = md.Dimensions.ShortText,
                 })
                 .ToListAsync();
             if (result != null)
@@ -186,7 +186,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(md => new
                 {
                     Id = (long?)md.FilterId,  
-                    Name = md.Filter.Name ?? md.Filter.ShortText,
+                    Name = md.Filter.ShortText,
                 })
                 .ToListAsync();
 
@@ -255,7 +255,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                                  {
                                      Id = dpv.Id,
                                      Code = dpv.Code,
-                                     Name = dpv.Name,
+                                     ShortText = dpv.ShortText,
                                      UnitOfMeasureId = uom != null ? uom.Id : (int?)null,
                                      CurrencyId = cur != null ? cur.Id : (int?)null,
                                      UnitOfMeasure = uom,
@@ -398,7 +398,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 {
                     Id = md.Id,
                     DimensionTypeId = md.DimensionType.Id,
-                    Name = md.DimensionType.Name ?? md.DimensionType.ShortText,
+                    Name = md.DimensionType.ShortText,
                 });
 
             var result = await query.ToListAsync();
@@ -508,7 +508,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
         //        .FirstOrDefaultAsync();
         //}
 
-        public async Task<List<long>?> GetDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId)
+        public async Task<List<long?>> GetDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId)
         {
             return await _context.DataModelValues
                 .AsNoTracking()

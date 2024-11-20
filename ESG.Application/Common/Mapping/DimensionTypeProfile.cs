@@ -22,7 +22,6 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId))
                 .ForMember(dest => dest.LastModifiedBy, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
             CreateMap<DimensionType, DimensionTypeCreateRequestDto>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
@@ -31,7 +30,6 @@ namespace ESG.Application.Common.Mapping
                .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId))
                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy))
                .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
-               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
             //Update
             CreateMap<DimensionTypeUpdateRequestDto, DimensionType>()
@@ -39,14 +37,12 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                 .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.UserId))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
             CreateMap<DimensionType, DimensionTypeUpdateRequestDto>()
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy))
-               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                .ForMember(dest => dest.LanguageId, opt => opt.MapFrom(src => src.LanguageId));
 
             //response
@@ -55,7 +51,6 @@ namespace ESG.Application.Common.Mapping
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.CreatedBy))
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                .ForMember(dest => dest.LongText, opt => opt.MapFrom(src => src.LongText))
                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText))
                .ForMember(dest => dest.OrganizationId, opt => opt.MapFrom(src => src.OrganizationId))

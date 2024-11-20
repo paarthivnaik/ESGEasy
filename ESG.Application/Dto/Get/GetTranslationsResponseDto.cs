@@ -11,7 +11,7 @@ namespace ESG.Application.Dto.Get
     {
         public long TranslationsId { get; set; }
         public long LanguageId { get; set; }
-        public string Name { get; set; }
+        //public string Name { get; set; }
         public string ShortText { get; set; }
         public string LongText { get; set; }
         public StateEnum State { get; set; }

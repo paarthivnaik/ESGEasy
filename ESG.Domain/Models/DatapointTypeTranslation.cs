@@ -1,23 +1,22 @@
-﻿using System;
+﻿using ESG.Domain.Enum;
+using System;
 using System.Collections.Generic;
 
 namespace ESG.Domain.Models;
-
+    
 public partial class DatapointTypeTranslation
 {
     public long Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? ShortText { get; set; }
 
-    public string ShortText { get; set; } = null!;
-
-    public string LongText { get; set; } = null!;
+    public string? LongText { get; set; }
 
     public long LanguageId { get; set; }
 
     public long DatapointTypeId { get; set; }
 
-    public int State { get; set; }
+    public StateEnum State { get; set; }
 
     public long CreatedBy { get; set; }
 

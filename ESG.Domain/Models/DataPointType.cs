@@ -10,11 +10,9 @@ public partial class DataPointType
 
     public string Code { get; set; } = null!;
 
-    public string Name { get; set; } = null!;
+    public string? ShortText { get; set; }
 
-    public string ShortText { get; set; } = null!;
-
-    public string LongText { get; set; } = null!;
+    public string? LongText { get; set; }
 
     public long LanguageId { get; set; }
 

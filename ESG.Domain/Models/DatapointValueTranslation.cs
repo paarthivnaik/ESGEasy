@@ -8,13 +8,9 @@ public partial class DatapointValueTranslation
 {
     public long Id { get; set; }
 
-    public string? Name { get; set; } = null!;
-    public string? ShortText { get; set; } = null!;
-    public string? LongText { get; set; } = null!;
-
     public long DatapointValueId { get; set; }
 
-    public string? Purpose { get; set; } = null!;
+    public string? Purpose { get; set; }
 
     public long LanguageId { get; set; }
 
@@ -27,6 +23,10 @@ public partial class DatapointValueTranslation
     public long? LastModifiedBy { get; set; }
 
     public DateTime? LastModifiedDate { get; set; }
+
+    public string? LongText { get; set; }
+
+    public string? ShortText { get; set; }
 
     public virtual DataPointValue DatapointValue { get; set; } = null!;
 

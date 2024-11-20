@@ -32,7 +32,6 @@ namespace ESG.Application.Services
                     if (uom.UnitOfMeasureId > 0)
                     {
                         var existingUOM = await _unitOfMeasure.Repository<UnitOfMeasure>().Get(a => a.Id == uom.UnitOfMeasureId);
-                        existingUOM.Name = uom.Name;
                         existingUOM.ShortText = uom.ShortText;
                         existingUOM.LongText = uom.LongText;
                         existingUOM.OrganizationId = uom.OrganizationId;
@@ -45,7 +44,6 @@ namespace ESG.Application.Services
 
                         var existingUOMTranslation = await _unitOfMeasure.Repository<UnitOfMeasureTranslation>()
                             .Get(a => a.UnitOfMeasureId == uom.UnitOfMeasureId && a.LanguageId == uom.LanguageId);
-                        existingUOMTranslation.Name = uom.Name;
                         existingUOMTranslation.ShortText = uom.ShortText;
                         existingUOMTranslation.LongText = uom.LongText;
                         existingUOMTranslation.LanguageId = uom.LanguageId;
@@ -65,7 +63,6 @@ namespace ESG.Application.Services
                         var uomdata = new UnitOfMeasure
                         {
                             Code = code,
-                            Name = uom.Name,
                             ShortText = uom.ShortText,
                             LongText = uom.LongText,
                             OrganizationId = uom.OrganizationId,
@@ -82,7 +79,6 @@ namespace ESG.Application.Services
                         {
                             UnitOfMeasureId = uomdata.Id,
                             LanguageId = uomdata.LanguageId,
-                            Name = uomdata.Name,
                             ShortText = uomdata.ShortText,
                             LongText = uomdata.LongText,
                             State = StateEnum.active,
@@ -134,7 +130,6 @@ namespace ESG.Application.Services
             existingData.LongText = unitOfMeasure.LongText;
             //existingData.Code = unitOfMeasure.Code;
             existingData.State = unitOfMeasure.State;
-            existingData.Name = unitOfMeasure.Name;
             existingData.OrganizationId = unitOfMeasure.OrganizationId;
 
             //translationsData.ShortText = unitOfMeasure.ShortText;

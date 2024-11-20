@@ -252,7 +252,7 @@ namespace ESG.Application.Services
             if (hierarchyId != 0)
             {
                 var datapointIds = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(hierarchyId);
-                var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds);
+                var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds.Select(id => (long?)id));
                 var disclosureRequirementIds = datapointdetails.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
                 var disclosureRequirements = await _unitOfWork.Repository<DisclosureRequirement>()
                     .GetAll(dr => disclosureRequirementIds.Contains(dr.Id));
@@ -285,7 +285,7 @@ namespace ESG.Application.Services
                 var dataPointDtos = datapointdetails.Select(dp => new DataPointDto
                 {
                     Id = dp.Id,
-                    Name = dp.Name,
+                    Name = dp.ShortText,
                     UOMCode = (dp.UnitOfMeasure?.Code ?? dp.Currency?.CurrencyCode) ?? "Narrative",
                     DisclosureRequirementId = dp.DisclosureRequirementId.HasValue ? (long)dp.DisclosureRequirementId : 0,
                 }).ToList();
@@ -362,7 +362,7 @@ namespace ESG.Application.Services
                                 var datapointDto = new HierarchyDatapoint
                                 {
                                     Id = datapoint.Id,
-                                    Name = datapoint.Name,
+                                    Name = datapoint.ShortText,
                                     IsNarrative = datapoint.IsNarrative
                                 };
 
@@ -387,13 +387,15 @@ namespace ESG.Application.Services
                 var defaultDataModelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesyOrgaidAndResponsibleUser(organizationId, userId);
                 var dataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesyOrgaidAndResponsibleUser(organizationId, userId);
                 var defaultDataModelIds = defaultDataModelValues.Where(id => id.HasValue).Select(id => id.Value).ToList();
-                var datapointIds = defaultDataModelIds.Concat(dataModelValues).ToList();
+                var datapointIds = defaultDataModelIds.Select(id => (long?)id)
+                                      .Concat(dataModelValues)
+                                      .ToList();
                 var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds);
                 foreach( var datapoint in datapointdetails)
                 {
                     var res = new GetDatapointsAssignedToUserResponseDto();
                     res.Id = datapoint.Id;
-                    res.Name = datapoint.Name;
+                    res.Name = datapoint.ShortText;
                     res.UOMCode = (datapoint.UnitOfMeasure?.Code ?? datapoint.Currency?.CurrencyCode) ?? "Narrative";
                     mainDto.Add(res);
                 }

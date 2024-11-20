@@ -1,27 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ESG.Domain.Models
+namespace ESG.Domain.Models;
+
+public partial class UploadedFile
 {
-    public class UploadedFile
-    {
-        public long Id { get; set; }
+    public int Id { get; set; }
 
-        public string? FileName { get; set; } = null!;
+    public string? FileName { get; set; }
 
-        public byte[]? FileData { get; set; } = null!;
+    public byte[]? FileData { get; set; }
 
-        public DateTime? UploadDate { get; set; }
+    public DateTime? UploadDate { get; set; }
 
-        public long? UserId { get; set; }
+    public long? UserId { get; set; }
 
-        public long? DataModelValueId { get; set; }
+    public long? DataModelValueId { get; set; }
 
-        public bool? IsDefaultModel { get; set; }
+    public bool? IsDefaultModel { get; set; }
 
-        public virtual User? User { get; set; }
-    }
+    public virtual User? User { get; set; }
 }

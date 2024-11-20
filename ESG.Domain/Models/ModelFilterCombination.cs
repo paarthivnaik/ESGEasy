@@ -17,9 +17,10 @@ public partial class ModelFilterCombination
     public DateTime CreatedDate { get; set; }
 
     public long? LastModifiedBy { get; set; }
-    public ModelViewTypeEnum? ViewType { get; set; }
 
     public DateTime? LastModifiedDate { get; set; }
+
+    public ModelViewTypeEnum? ViewType { get; set; }
 
     public virtual ICollection<Amendment> Amendments { get; set; } = new List<Amendment>();
 

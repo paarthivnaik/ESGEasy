@@ -44,7 +44,6 @@ namespace ESG.Application.Services
                         existingdimType.State = dimensionType.State;
                         existingdimType.LastModifiedBy = dimensionType.UserId;
                         existingdimType.LastModifiedDate = DateTime.UtcNow;
-                        existingdimType.Name = dimensionType.Name;
                         oldDimensionTypes.Add(existingdimType);
 
                         var existingdimTypeTranslation = await _unitOfWork.Repository<DimensionTypeTranslation>()
@@ -55,7 +54,6 @@ namespace ESG.Application.Services
                         existingdimTypeTranslation.State = dimensionType.State;
                         existingdimTypeTranslation.LastModifiedBy = dimensionType.UserId;
                         existingdimTypeTranslation.LastModifiedDate = DateTime.UtcNow;
-                        existingdimTypeTranslation.Name = dimensionType.Name;
                         oldDimensionTypeTranslations.Add(existingdimTypeTranslation);
                     }
                     else
@@ -94,7 +92,6 @@ namespace ESG.Application.Services
             existingData.ShortText = dimentionType.ShortText;
             existingData.LongText = dimentionType.LongText;
             existingData.Code = dimentionType.Code;
-            existingData.Name = dimentionType.Name;
             existingData.State = dimentionType.State;
 
             //translationsData.ShortText = dimentionType.ShortText;

@@ -50,6 +50,8 @@ public partial class Organization
 
     public virtual ICollection<DataPointValue> DataPointValues { get; set; } = new List<DataPointValue>();
 
+    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValues { get; set; } = new List<DefaultDataModelValue>();
+
     public virtual ICollection<DimensionType> DimensionTypes { get; set; } = new List<DimensionType>();
 
     public virtual ICollection<Dimension> Dimensions { get; set; } = new List<Dimension>();
@@ -59,11 +61,10 @@ public partial class Organization
     public virtual OrganizationHeirarchy? OrganizationHeirarchy { get; set; }
 
     public virtual ICollection<OrganizationUser> OrganizationUsers { get; set; } = new List<OrganizationUser>();
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValues { get; set; } = new List<DefaultDataModelValue>();
+
     public virtual Tenant Tenant { get; set; } = null!;
 
     public virtual ICollection<UnitOfMeasureType> UnitOfMeasureTypes { get; set; } = new List<UnitOfMeasureType>();
 
     public virtual ICollection<UnitOfMeasure> UnitOfMeasures { get; set; } = new List<UnitOfMeasure>();
-    //public virtual ICollection<UploadedFile> UploadedFiles { get; set; } = new List<UploadedFile>();
 }

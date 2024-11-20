@@ -59,7 +59,7 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 .Select(dp => new DataPointValue
                 {
                     Id = dp.Id,
-                    Name = dp.Name,
+                    ShortText = dp.ShortText,
                     IsNarrative = dp.IsNarrative,
                     DisclosureRequirementId = dp.DisclosureRequirementId
                 })
@@ -74,7 +74,6 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 .Select(a => new DataPointValue
                 {
                     Id = a.Id,
-                    Name = a.Name,
                     ShortText = a.ShortText,
                     LongText = a.LongText,
                     Code = a.Code,
@@ -102,14 +101,14 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                     .Select(md => new
                     {
                         Id = md.DataPointValuesId,
-                        Name = md.DataPointValues.Name,
+                        Name = md.DataPointValues.ShortText,
                         Code = md.DataPointValues.Code,
                     })
                 .ToListAsync();
             return list.Select(x => (x.Id, x.Name, x.Code)).ToList();
         }
 
-        public async Task<IEnumerable<DataPointValue>> GetDatapointValueDetailsByIds(IEnumerable<long> datapointIds)
+        public async Task<IEnumerable<DataPointValue>> GetDatapointValueDetailsByIds(IEnumerable<long?> datapointIds)
         {
             var list = await _context.DataPointValue
                 .AsNoTracking()

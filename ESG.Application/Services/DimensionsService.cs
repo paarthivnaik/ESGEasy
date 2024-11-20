@@ -41,7 +41,6 @@ namespace ESG.Application.Services
                         existingDimension.OrganizationId = dimention.OrganizationId;
                         existingDimension.ShortText = dimention.ShortText;
                         existingDimension.LongText = dimention.LongText;
-                        existingDimension.Name = dimention.Name;
                         existingDimension.LastModifiedBy = dimention.UserId;
                         existingDimension.LastModifiedDate = DateTime.UtcNow;
                         oldDimensions.Add(existingDimension); 
@@ -51,7 +50,6 @@ namespace ESG.Application.Services
                         existingDimensionTranslation.LanguageId = dimention.LanguageId;
                         existingDimensionTranslation.ShortText = dimention.ShortText;
                         existingDimensionTranslation.LongText = dimention.LongText;
-                        existingDimensionTranslation.Name = dimention.Name;
                         existingDimensionTranslation.LastModifiedBy = dimention.UserId;
                         existingDimensionTranslation.LastModifiedDate = DateTime.UtcNow;
                         oldDimensionTranslations.Add(existingDimensionTranslation);                        
@@ -68,7 +66,6 @@ namespace ESG.Application.Services
                         dimensonsdata.State = StateEnum.active;
                         dimensonsdata.Code = code;
                         var dimensonsTranslationdata = new DimensionTranslation();
-                        dimensonsTranslationdata.Name = dimention.Name;
                         dimensonsTranslationdata.ShortText = dimention.ShortText;
                         dimensonsTranslationdata.LongText = dimention.LongText;
                         dimensonsTranslationdata.LanguageId = dimention.LanguageId;
@@ -130,7 +127,6 @@ namespace ESG.Application.Services
                 existingData.ShortText = dimentionsRequest.ShortText;
                 existingData.LongText = dimentionsRequest.LongText;
                 existingData.Code = dimentionsRequest.Code;
-                existingData.Name = dimentionsRequest.Name;
                 existingData.State = dimentionsRequest.State;
             }
             //if (translationsData != null)

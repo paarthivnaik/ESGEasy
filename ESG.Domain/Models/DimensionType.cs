@@ -12,7 +12,7 @@ public partial class DimensionType
 
     public string? ShortText { get; set; }
 
-    public string? LongText { get; set; } = null!;
+    public string? LongText { get; set; }
 
     public long LanguageId { get; set; }
 
@@ -27,8 +27,6 @@ public partial class DimensionType
     public long? LastModifiedBy { get; set; }
 
     public DateTime? LastModifiedDate { get; set; }
-
-    public string? Name { get; set; }
 
     public virtual ICollection<DataModelFilter> DataModelFilterDimensionTypes { get; set; } = new List<DataModelFilter>();
 
