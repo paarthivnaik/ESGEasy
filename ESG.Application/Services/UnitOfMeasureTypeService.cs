@@ -49,7 +49,7 @@ namespace ESG.Application.Services
                     else
                     {
                         var code = uomType.Code.ToLower();
-                        var existingCode = await _unitOfWork.Repository<UnitOfMeasureType>().Get(a => a.Code == code);
+                        var existingCode = await _unitOfWork.Repository<UnitOfMeasureType>().Get(a => a.Code == code && a.State == Domain.Enum.StateEnum.active);
                         if (existingCode != null)
                         {
                             throw new System.Exception($"The Datapoint with code - {uomType.Code} already exists");

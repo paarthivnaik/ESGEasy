@@ -59,7 +59,7 @@ namespace ESG.Application.Services
                     else
                     {
                         var code = dimention.Code.ToLower();
-                        var existingdimensionCode = await _unitOfWork.Repository<Dimension>().Get(a => a.Code == code);
+                        var existingdimensionCode = await _unitOfWork.Repository<Dimension>().Get(a => a.DimensionTypeId == dimention.DimensionTypeId && a.Code == code && a.State == Domain.Enum.StateEnum.active);
                         if (existingdimensionCode != null)
                         {
                             throw new System.Exception($"The Datapoint with code - {dimention.Code} already exists");
