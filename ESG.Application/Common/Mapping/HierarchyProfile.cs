@@ -19,22 +19,22 @@ namespace ESG.Application.Common.Mapping
             CreateMap<Topic, HeirarchyDataResponseDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ShortText));
+                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText));
 
             CreateMap<Standard, HeirarchyDataResponseDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ShortText));
+                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText));
 
             CreateMap<DisclosureRequirement, HeirarchyDataResponseDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ShortText));
+                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText));
 
             CreateMap<DataPointValue, HeirarchyDataResponseDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ShortText));
+                .ForMember(dest => dest.ShortText, opt => opt.MapFrom(src => src.ShortText));
 
             ////for hierarchydata
             //CreateMap<Hierarchy, HierarchyResponseDto>()
