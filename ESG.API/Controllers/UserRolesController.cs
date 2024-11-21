@@ -45,9 +45,9 @@ namespace ESG.API.Controllers
         //}
 
         //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(int id)
+        //public async Task<IActionResult> DeleteAsync(int id)
         //{
-        //     await _roleService.Delete(id);
+        //     await _roleService.DeleteAsync(id);
         //    return Ok();
         //}
     }

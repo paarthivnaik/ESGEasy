@@ -19,5 +19,7 @@ public partial class UploadedFile
 
     public bool? IsDefaultModel { get; set; }
 
+    public virtual DataModelValue? DataModelValue { get; set; }
+
     public virtual User? User { get; set; }
 }

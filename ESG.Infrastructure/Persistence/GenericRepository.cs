@@ -224,7 +224,7 @@ namespace ESG.Infrastructure.Persistence
                 throw;
             }
         }
-        public virtual async Task<bool> Delete(T entity)
+        public virtual async Task<bool> DeleteAsync(T entity)
         {
             try
             {

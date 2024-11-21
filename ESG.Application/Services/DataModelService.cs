@@ -694,7 +694,13 @@ namespace ESG.Application.Services
                         existingvalue.Value = reqobj.Value;
                     if (existingvalue == null)
                         throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DataModelValueId}");
-                    await SaveFileAsync(reqobj?.FormFile, reqobj?.FileName, reqobj.DataModelValueId, requestDto.UserId, true);
+                    if (reqobj.Files != null)
+                    {
+                        foreach (var file in reqobj.Files)
+                        {
+                            await SaveFileAsync(reqobj.Files, reqobj.DataModelValueId, requestDto.UserId, true);
+                        }
+                    }
                     
                 }
                 await _unitOfWork.Repository<DefaultDataModelValue>().UpdateRange(existingdefaultdatapointvalues);
@@ -710,39 +716,47 @@ namespace ESG.Application.Services
                         existingvalue.Value = reqobj.Value;
                     if (existingvalue == null)
                         throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DataModelValueId}");
-                    await SaveFileAsync(reqobj?.FormFile, reqobj?.FileName, reqobj.DataModelValueId, requestDto.UserId, false);
-                    
+                    if (reqobj.Files != null)
+                    {
+                        foreach (var file in reqobj.Files)
+                        {
+                            await SaveFileAsync(reqobj.Files, reqobj.DataModelValueId, requestDto.UserId, true);
+                        }
+                    }
                 }
                 await _unitOfWork.Repository<DataModelValue>().UpdateRange(existingdatapointvalues);
             }
             await _unitOfWork.SaveAsync();
         }
-        public async Task SaveFileAsync(string? file,string? fileName, long dataModelValueId, long userId, bool isDefaultModel)
+        public async Task SaveFileAsync(List<Files> files, long dataModelValueId, long userId, bool isDefaultModel)
         {
             byte[] fileBytes = null;
-            if (file != null)
-                fileBytes = Convert.FromBase64String(file);
-            var existingfile = await _unitOfWork.DataModelRepo.GetUploadedFileData(dataModelValueId, isDefaultModel);
-            if (existingfile != null)
+            var existingfiles = await _unitOfWork.DataModelRepo.GetUploadedFileData(dataModelValueId, isDefaultModel);
+            if (existingfiles != null)
             {
-                existingfile.FileName = fileName;
-                existingfile.FileData = fileBytes;
-                existingfile.UserId = userId;
-                existingfile.UploadDate = DateTime.UtcNow.ToLocalTime();
-                await _unitOfWork.Repository<UploadedFile>().UpdateAsync(existingfile.Id, existingfile);
-            }
-            if (existingfile == null)
-            {
-                var uploadedFile = new UploadedFile
+                foreach (var existingfile in existingfiles)
                 {
-                    FileName = fileName,
-                    FileData = fileBytes,
-                    UserId = userId,
-                    UploadDate = DateTime.UtcNow.ToLocalTime(),
-                    DataModelValueId = dataModelValueId,
-                    IsDefaultModel = isDefaultModel
-                };
-                await _unitOfWork.Repository<UploadedFile>().AddAsync(uploadedFile);
+                    await _unitOfWork.Repository<UploadedFile>().DeleteAsync(existingfile);
+                }
+            }
+            if (existingfiles == null)
+            {
+                var uploadedfiles = new List<UploadedFile>();
+                foreach (var file in files)
+                {
+                    fileBytes = Convert.FromBase64String(file.FormFile);
+                    var uploadedFile = new UploadedFile
+                    {
+                        FileName = file.FileName,
+                        FileData = fileBytes,
+                        UserId = userId,
+                        UploadDate = DateTime.UtcNow.ToLocalTime(),
+                        DataModelValueId = dataModelValueId,
+                        IsDefaultModel = isDefaultModel
+                    };
+                    uploadedfiles.Add(uploadedFile);
+                }
+                await _unitOfWork.Repository<UploadedFile>().AddRange(uploadedfiles);
             }
         }
         private async Task<DimensionTypeDto> GetRowDimensionDto(long modelId, ModelViewTypeEnum viewType)

@@ -23,6 +23,11 @@ namespace ESG.Application.Dto.DataModel
     {
         public long DataModelValueId { get; set; }
         public string? Value { get; set; }
+        public List<Files> Files { get; set; }
+        
+    }
+    public class Files
+    {
         public string? FileName { get; set; }
         public string? FormFile { get; set; }
     }

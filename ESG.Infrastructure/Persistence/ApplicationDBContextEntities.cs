@@ -719,10 +719,16 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.ToTable("UploadedFile");
 
+                entity.HasIndex(e => e.DataModelValueId, "fki_FK_UploadFile_DefaultDataModelValues");
+
                 entity.HasIndex(e => e.UserId, "fki_FK_UploadedFile_User_UserId");
 
                 entity.Property(e => e.FileName).HasMaxLength(255);
                 entity.Property(e => e.UploadDate).HasColumnType("timestamp without time zone");
+
+                entity.HasOne(d => d.DataModelValue).WithMany(p => p.UploadedFiles)
+                    .HasForeignKey(d => d.DataModelValueId)
+                    .HasConstraintName("FK_UploadFile_DefaultDataModelValues");
 
                 entity.HasOne(d => d.User).WithMany(p => p.UploadedFiles)
                     .HasForeignKey(d => d.UserId)

@@ -57,4 +57,6 @@ public partial class DataModelValue
     public virtual User? ResponsibleUser { get; set; }
 
     public virtual Dimension Row { get; set; } = null!;
+    public virtual ICollection<UploadedFile> UploadedFiles { get; set; } = new List<UploadedFile>();
+
 }
