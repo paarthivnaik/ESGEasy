@@ -28,7 +28,7 @@ namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
         {
             var list = await _context.UnitOfMeasures
                                      .AsNoTracking()
-                                     .Where(a => a.OrganizationId == OrganizationId)
+                                     .Where(a => a.OrganizationId == 1 || a.OrganizationId == OrganizationId)
                                      .Include(a => a.UnitOfMeasureType)
                                      .ToListAsync();
             return list;
