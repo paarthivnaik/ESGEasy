@@ -18,5 +18,7 @@ namespace ESG.Application.Dto.UnitOfMeasure
         public StateEnum State { get; set; }
         public long UserId { get; set; }
         public long? OrganizationId { get; set; }
+        public long? UOMTypeId { get; set; }
+        public string? UomTypeName { get; set; }
     }
 }

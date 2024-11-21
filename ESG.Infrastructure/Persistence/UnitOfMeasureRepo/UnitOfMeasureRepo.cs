@@ -24,5 +24,14 @@ namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
                                      .ToListAsync();
             return list;
         }
+        public async Task<IEnumerable<UnitOfMeasure>> GetAllUOMDetails(long OrganizationId)
+        {
+            var list = await _context.UnitOfMeasures
+                                     .AsNoTracking()
+                                     .Where(a => a.OrganizationId == OrganizationId)
+                                     .Include(a => a.UnitOfMeasureType)
+                                     .ToListAsync();
+            return list;
+        }
     }
 }

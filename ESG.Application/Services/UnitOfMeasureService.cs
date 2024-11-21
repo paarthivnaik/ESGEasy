@@ -150,10 +150,26 @@ namespace ESG.Application.Services
         }
         public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetAll(long organizationId)
         {
-            var lst = await _unitOfMeasure.Repository<UnitOfMeasure>().GetAll
-                (a => (a.OrganizationId == 1 || a.OrganizationId == organizationId) && a.State == StateEnum.active);
+            var lst = await _unitOfMeasure.UnitOfMeasure.GetAllUOMDetails(organizationId);
             var orderedList = lst.OrderBy(u => u.Id);
-            var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
+            var data = new List<UnitOfMeasureResponseDto>();
+            foreach (var item in orderedList)
+            {
+                var uom = new UnitOfMeasureResponseDto
+                {
+                    Id = item.Id,
+                    Code = item.Code,
+                    ShortText = item.ShortText,
+                    LongText = item.LongText,
+                    LanguageId = item.LanguageId,
+                    State = item.State,
+                    UserId = item.CreatedBy,
+                    OrganizationId = item.OrganizationId,
+                    UOMTypeId = item.UnitOfMeasureType.Id,
+                    UomTypeName = item.UnitOfMeasureType.ShortText,
+                };
+                data.Add(uom);
+            }
             return data;
         }
         public async Task<UnitOfMeasureResponseDto> GetById(long Id)
