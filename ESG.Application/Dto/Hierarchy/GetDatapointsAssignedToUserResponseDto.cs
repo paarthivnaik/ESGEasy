@@ -9,7 +9,7 @@ namespace ESG.Application.Dto.Hierarchy
     public class GetDatapointsAssignedToUserResponseDto
     {
         public long Id { get; set; }
-        public string Name { get; set; }
+        public string ShortText { get; set; }
         public string? UOMCode { get; set; }
         
     }

@@ -285,7 +285,7 @@ namespace ESG.Application.Services
                 var dataPointDtos = datapointdetails.Select(dp => new DataPointDto
                 {
                     Id = dp.Id,
-                    Name = dp.ShortText,
+                    ShortText = dp.ShortText,
                     UOMCode = (dp.UnitOfMeasure?.Code ?? dp.Currency?.CurrencyCode) ?? "Narrative",
                     DisclosureRequirementId = dp.DisclosureRequirementId.HasValue ? (long)dp.DisclosureRequirementId : 0,
                 }).ToList();
@@ -362,7 +362,7 @@ namespace ESG.Application.Services
                                 var datapointDto = new HierarchyDatapoint
                                 {
                                     Id = datapoint.Id,
-                                    Name = datapoint.ShortText,
+                                    ShortText = datapoint.ShortText,
                                     IsNarrative = datapoint.IsNarrative
                                 };
 
@@ -395,7 +395,7 @@ namespace ESG.Application.Services
                 {
                     var res = new GetDatapointsAssignedToUserResponseDto();
                     res.Id = datapoint.Id;
-                    res.Name = datapoint.ShortText;
+                    res.ShortText = datapoint.ShortText;
                     res.UOMCode = (datapoint.UnitOfMeasure?.Code ?? datapoint.Currency?.CurrencyCode) ?? "Narrative";
                     mainDto.Add(res);
                 }
