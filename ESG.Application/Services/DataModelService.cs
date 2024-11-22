@@ -694,14 +694,8 @@ namespace ESG.Application.Services
                         existingvalue.Value = reqobj.Value;
                     if (existingvalue == null)
                         throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DataModelValueId}");
-                    if (reqobj.Files != null)
-                    {
-                        foreach (var file in reqobj.Files)
-                        {
-                            await SaveFileAsync(reqobj.Files, reqobj.DataModelValueId, requestDto.UserId, true);
-                        }
-                    }
-                    
+                    await SaveFileAsync(reqobj.Files, reqobj.DataModelValueId, requestDto.UserId, true);
+
                 }
                 await _unitOfWork.Repository<DefaultDataModelValue>().UpdateRange(existingdefaultdatapointvalues);
             }
@@ -716,19 +710,13 @@ namespace ESG.Application.Services
                         existingvalue.Value = reqobj.Value;
                     if (existingvalue == null)
                         throw new System.Exception($"there is no existing datamodelvalue with Id - {reqobj.DataModelValueId}");
-                    if (reqobj.Files != null)
-                    {
-                        foreach (var file in reqobj.Files)
-                        {
-                            await SaveFileAsync(reqobj.Files, reqobj.DataModelValueId, requestDto.UserId, true);
-                        }
-                    }
+                    await SaveFileAsync(reqobj.Files, reqobj.DataModelValueId, requestDto.UserId, true);
                 }
                 await _unitOfWork.Repository<DataModelValue>().UpdateRange(existingdatapointvalues);
             }
             await _unitOfWork.SaveAsync();
         }
-        public async Task SaveFileAsync(List<Files> files, long dataModelValueId, long userId, bool isDefaultModel)
+        public async Task SaveFileAsync(List<Files>? files, long dataModelValueId, long userId, bool isDefaultModel)
         {
             byte[] fileBytes = null;
             var existingfiles = await _unitOfWork.DataModelRepo.GetUploadedFileData(dataModelValueId, isDefaultModel);
@@ -739,7 +727,7 @@ namespace ESG.Application.Services
                     await _unitOfWork.Repository<UploadedFile>().DeleteAsync(existingfile);
                 }
             }
-            if (existingfiles == null)
+            if (files.Count > 0)
             {
                 var uploadedfiles = new List<UploadedFile>();
                 foreach (var file in files)
