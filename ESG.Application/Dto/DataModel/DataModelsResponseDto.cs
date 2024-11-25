@@ -11,6 +11,7 @@ namespace ESG.Application.Dto.DataModel
         public long Id { get; set; }
         public string Name { get; set; }
         public string Purpose { get; set; }
+        public List<long>? DatapointIds { get; set; }
         public FactViewDto? FactView { get; set; } 
         public NarrativeViewDto? NarrativeView { get; set; }
     }

@@ -545,11 +545,13 @@ namespace ESG.Application.Services
                 foreach (var datamodel in datamodels)
                 {
                     var viewTypes = await _unitOfWork.DataModelRepo.GetConfigurationViewTypesForDataModel(datamodel.Id);
+                    var datapoints = await _unitOfWork.DataModelRepo.GetDatapointsLinkedToDataModel(datamodel.Id, organizationId);
                     var response = new DataModelsResponseDto
                     {
                         Id = datamodel.Id,
                         Name = datamodel.ModelName,
                         Purpose = datamodel.Purpose,
+                        DatapointIds = datapoints.Select(a => a.DatapointValuesId).ToList(),
                         FactView = null,
                         NarrativeView = null
                     };
