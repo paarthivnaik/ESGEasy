@@ -16,19 +16,45 @@ namespace ESG.API.Controllers
             _logger = logger;
             _dataModelService = dataModelService;
         }
-        [HttpPost("CreateDatamodel")]
+        [HttpPost("CreateOrEditDatamodel")]
         public async Task<IActionResult> CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto)
         {
             try
             {
-                await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
-                return Ok(new { error = false, errorMsg = "" });
+                if (dataModelCreateRequestDto.DataModelId <= 0)
+                {
+                    await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
+                    return Ok(new { error = false, errorMsg = "" });
+                }
+                else if (dataModelCreateRequestDto.DataModelId > 0)
+                {
+                    //await _dataModelService.EditDataModel(dataModelCreateRequestDto);
+                    return Ok(new { error = false, errorMsg = "" });
+                }
+                else
+                {
+                    return Ok(new { error = true, errorMsg = "Invalid DataModelId." });
+                }
             }
             catch (Exception ex)
             {
                 return Ok(new { error = true, errorMsg = ex.Message });
             }
         }
+
+        //[HttpPost("EditDatamodel")]
+        //public async Task<IActionResult> EditDataModel(DataModelCreateRequestDto dataModelUpdateRequestDto)
+        //{
+        //    try
+        //    {
+        //        await _dataModelService.EditDataModel(dataModelUpdateRequestDto);
+        //        return Ok(new { error = false, errorMsg = "" });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Ok(new { error = true, errorMsg = ex.Message });
+        //    }
+        //}
         [HttpGet("GetDataModelsForOrganization")]
         public async Task<IEnumerable<DataModelsResponseDto>> GetDataModelsForOrganization(long OrganizationId)
         {

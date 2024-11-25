@@ -21,5 +21,6 @@ namespace ESG.Application.Common.Interface.Hierarchy
         Task<long> GetHierarchyIdByOrgId(long organizationId);
         Task<IEnumerable<Domain.Models.Hierarchy>> GetHierarchyById(long? hierarchyId);
         Task<long> GetHierarchyIdByUserIdOrgId(long UserId, long orgId);
+        Task<IEnumerable<long>> GetRemainingDatapointsByOrganizationId(long organizationId);
     }
 }

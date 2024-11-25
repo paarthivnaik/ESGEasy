@@ -122,5 +122,25 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
                 .ToListAsync();
             return hierarchies;
         }
+        public async Task<IEnumerable<long>> GetRemainingDatapointsByOrganizationId(long organizationId)
+        {
+            var remainingDatapoints = await _context.Hierarchies
+                .AsNoTracking()
+                .Where(h => h.HierarchyId == _context.OrganizationHeirarchies
+                    .Where(oh => oh.OrganizationId == organizationId)
+                    .Select(oh => oh.HierarchyId)
+                    .FirstOrDefault())
+                .Select(h => h.DataPointValuesId)
+                .Except(
+                    _context.DataModels
+                        .Where(dm => dm.OrganizationId == organizationId)
+                        .SelectMany(dm => dm.ModelDatapoints)
+                        .Select(mdp => mdp.DatapointValuesId)
+                )
+                .ToListAsync();
+
+            return remainingDatapoints;
+        }
+
     }
 }

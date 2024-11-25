@@ -42,14 +42,6 @@ public partial class User
 
     public virtual ICollection<DataPointValue> DataPointValues { get; set; } = new List<DataPointValue>();
 
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValueAccountableUsers { get; set; } = new List<DefaultDataModelValue>();
-
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValueConsultNavigations { get; set; } = new List<DefaultDataModelValue>();
-
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValueInformNavigations { get; set; } = new List<DefaultDataModelValue>();
-
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValueResponsibleUsers { get; set; } = new List<DefaultDataModelValue>();
-
     public virtual Language Language { get; set; } = null!;
 
     public virtual ICollection<OrganizationUser> OrganizationUsers { get; set; } = new List<OrganizationUser>();

@@ -28,8 +28,6 @@ public partial class DataModel
 
     public virtual ICollection<DataModelValue> DataModelValues { get; set; } = new List<DataModelValue>();
 
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValues { get; set; } = new List<DefaultDataModelValue>();
-
     public virtual ICollection<ModelConfiguration> ModelConfigurations { get; set; } = new List<ModelConfiguration>();
 
     public virtual ICollection<ModelDatapoint> ModelDatapoints { get; set; } = new List<ModelDatapoint>();

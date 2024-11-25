@@ -41,15 +41,15 @@ namespace ESG.Application.Services
                 {
                     var toAddOrUpdate = new List<Hierarchy>();
                     var toRemove = new List<Hierarchy>();
-                    var existingDatapointIds = existingHierarchies.Select(h => h.DataPointValuesId).ToList();
-                    var requestDatapointIds = request.DatapointIds.ToHashSet();
+                    var existingHierarchyDatapointIds = existingHierarchies.Select(h => h.DataPointValuesId).ToList();
+                    var requestHierarchyDatapointIds = request.DatapointIds.ToHashSet();
                     toRemove = existingHierarchies
-                            .Where(h => !requestDatapointIds.Contains(h.DataPointValuesId))
+                            .Where(h => !requestHierarchyDatapointIds.Contains(h.DataPointValuesId))
                             .ToList();
                     foreach (var datapointId in request.DatapointIds)
                     {
                         toAddOrUpdate = request.DatapointIds
-                            .Where(datapointId => !existingDatapointIds.Contains(datapointId))
+                            .Where(datapointId => !existingHierarchyDatapointIds.Contains(datapointId))
                             .Select(datapointId => new Hierarchy
                             {
                                 HierarchyId = existinghierarchyId,
@@ -66,28 +66,21 @@ namespace ESG.Application.Services
                     }
                     //now we have to modify the records in the datamodelmodelvalues with respective datapoints
 
-                    var existingDatamodelvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByDatapointIds(existingHierarchies.Select(a => a.DataPointValuesId).ToList(), Domain.Enum.StateEnum.active, request.OrganizationId);
-                    
-                    if (existingDatamodelvalues.Count() > 0 )
-                    {
-                        var existingdps = existingDatamodelvalues
-                            .Select(a => a.DataPointValuesId)
-                            .Where(id => id.HasValue)
-                            .Select(id => id.Value)
-                            .Distinct()
-                            .ToList();
-                        var newdps = request.DatapointIds
-                            .Except(existingdps)
-                            .ToList();
-                        if (newdps.Count() > 0)
-                        {
-                            await GenerateDefaultDataModelValues(newdps, request);
-                        }
-                    }
-                    if (existingDatamodelvalues.Count() <= 0)
-                    {
-                        await GenerateDefaultDataModelValues(request.DatapointIds, request);
-                    }
+                    //var existingDefaultModelDatapointsInDatamodelvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByOrganizationId(request.OrganizationId);
+                    //var newdps = request.DatapointIds
+                    //    .Except(existingDatapointsInDatamodelvalues.Where(id => id).Select(id => id.Value))
+                    //    .ToList();
+                    //var olddps = existingDatapointsInDatamodelvalues
+                    //    .Where(id => id.HasValue).Select(id => id.Value)
+                    //    .Except(request.DatapointIds).ToList();
+                    //if (newdps.Count() > 0)
+                    //{
+                    //    await GenerateDefaultDataModelValues(newdps, request);
+                    //}
+                    //if (olddps.Count() > 0)
+                    //{
+                    //    //await _unitOfWork.DataModelRepo.RemoveUnUsedDatapointValuesFromModel(datapoints, request.OrganizationId);
+                    //}
                 }
             }
             if (existinghierarchyId <= 0) 
@@ -112,80 +105,85 @@ namespace ESG.Application.Services
                     CreatedBy = request.UserId,
                     CreatedDate = DateTime.UtcNow
                 };
-                await GenerateDefaultDataModelValues(request.DatapointIds, request);//if hierarchy created newly then we have to create defaultdatamodelvalues for all dps
+                if (request.DatapointIds != null)
+                {
+                    //await GenerateDefaultDataModelValues(request.DatapointIds, request);//if hierarchy created newly then we have to create defaultdatamodelvalues for all dps
+                }
                 await _unitOfWork.Repository<OrganizationHeirarchy>().AddAsync(organizationHierarchy);
             }
             await _unitOfWork.SaveAsync();
         }
         private async Task GenerateDefaultDataModelValues(List<long> datapoints, HierarchyCreateRequestDto request)
         {
-            var defaultDatamodelValues = new List<DefaultDataModelValue>();
-            var defaultDatamodel = await _unitOfWork.DataModelRepo.GetDefaultModel();
-            var factconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact).FirstOrDefault();
-            var narrativeconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative).FirstOrDefault();
-            var factrowdimtypeId = factconfigId.RowId;
-            var modeldimensiontypeIdforFactRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.RowId).FirstOrDefault();
-            var modeldimensiontypeIdforFactColumn = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.ColumnId).FirstOrDefault();
-            var modeldimensiontypeIdforNarrativeRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == narrativeconfigId.RowId).FirstOrDefault();
-            var factrowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
-            var factcoldimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
-            var narrativerowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforNarrativeRow.Id, defaultDatamodel.Id);
-            var factfiltercombinations = defaultDatamodel.ModelFilterCombinations
-                .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact)
-                .Select(a => (long ?)a.Id)
-                .ToList();
-            var narrativefiltercombinations = defaultDatamodel.ModelFilterCombinations
-                .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative)
-                .Select(a => a.Id).ToList();
-
-            var factcombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), factcoldimensions.Select(a => a.Id), factfiltercombinations);
-            var Narrativecombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), narrativefiltercombinations);
-            foreach (var dp in datapoints)
+            var defaultDatamodelValues = new List<DataModelValue>();
+            var defaultDatamodel = await _unitOfWork.DataModelRepo.GetDefaultModel(request.OrganizationId);
+            if (defaultDatamodel != null && defaultDatamodel.Id > 0)
             {
-                var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(dp);
-                if (viewtype != null && viewtype == true)
+                var factconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact).FirstOrDefault();
+                var narrativeconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative).FirstOrDefault();
+                var factrowdimtypeId = factconfigId.RowId;
+                var modeldimensiontypeIdforFactRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.RowId).FirstOrDefault();
+                var modeldimensiontypeIdforFactColumn = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.ColumnId).FirstOrDefault();
+                var modeldimensiontypeIdforNarrativeRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == narrativeconfigId.RowId).FirstOrDefault();
+                var factrowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
+                var factcoldimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
+                var narrativerowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforNarrativeRow.Id, defaultDatamodel.Id);
+                var factfiltercombinations = defaultDatamodel.ModelFilterCombinations
+                    .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact)
+                    .Select(a => (long?)a.Id)
+                    .ToList();
+                var narrativefiltercombinations = defaultDatamodel.ModelFilterCombinations
+                    .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative)
+                    .Select(a => a.Id).ToList();
+
+                var factcombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), factcoldimensions.Select(a => a.Id), factfiltercombinations);
+                var Narrativecombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), narrativefiltercombinations);
+                foreach (var dp in datapoints)
                 {
-                    foreach (var narrative in Narrativecombinations)
+                    var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(dp);
+                    if (viewtype != null && viewtype == true)
                     {
-                        var matchingRowDimension = narrativerowDimensions.FirstOrDefault(a => a.Id == narrative.Item1 || a.Id == narrative.Item2);
-                        var defaultdatamodelvalue = new DefaultDataModelValue();
-                        defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
-                        defaultdatamodelvalue.DataPointValuesId = dp;
-                        defaultdatamodelvalue.CreatedBy = request.UserId;
-                        defaultdatamodelvalue.LastModifiedBy = request.UserId;
-                        defaultdatamodelvalue.RowId = matchingRowDimension.Id;
-                        defaultdatamodelvalue.ColumnId = null;
-                        defaultdatamodelvalue.CombinationId = (matchingRowDimension.Id == narrative.Item1) ? narrative.Item2 : narrative.Item1;
-                        defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
-                        defaultdatamodelvalue.OrganizationId = request.OrganizationId;
-                        defaultDatamodelValues.Add(defaultdatamodelvalue);
+                        foreach (var narrative in Narrativecombinations)
+                        {
+                            var matchingRowDimension = narrativerowDimensions.FirstOrDefault(a => a.Id == narrative.Item1 || a.Id == narrative.Item2);
+                            var defaultdatamodelvalue = new DataModelValue();
+                            defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
+                            defaultdatamodelvalue.DataPointValuesId = dp;
+                            defaultdatamodelvalue.CreatedBy = request.UserId;
+                            defaultdatamodelvalue.LastModifiedBy = request.UserId;
+                            defaultdatamodelvalue.RowId = matchingRowDimension.Id;
+                            defaultdatamodelvalue.ColumnId = null;
+                            defaultdatamodelvalue.CombinationId = (matchingRowDimension.Id == narrative.Item1) ? narrative.Item2 : narrative.Item1;
+                            defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
+                            //defaultdatamodelvalue.OrganizationId = request.OrganizationId;
+                            defaultDatamodelValues.Add(defaultdatamodelvalue);
+                        }
                     }
-                }
-                if (viewtype != null && viewtype == false)
-                {
-                    foreach (var fact in factcombinations)
+                    if (viewtype != null && viewtype == false)
                     {
-                        var matchingRowDimension = factrowDimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2 || a.Id == fact.Item3);
-                        var matchingColDimension = factcoldimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2 || a.Id == fact.Item3);
-                        var usedIds = new HashSet<long> { matchingRowDimension.Id, matchingColDimension.Id };
-                        var combId = new[] { fact.Item1, fact.Item2, fact.Item3 }
-                        .FirstOrDefault(id => !usedIds.Contains(id.Value));
-                        var defaultdatamodelvalue = new DefaultDataModelValue();
-                        defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
-                        defaultdatamodelvalue.DataPointValuesId = dp;
-                        defaultdatamodelvalue.CreatedBy = request.UserId;
-                        defaultdatamodelvalue.LastModifiedBy = request.UserId;
-                        defaultdatamodelvalue.RowId = matchingRowDimension.Id;
-                        defaultdatamodelvalue.ColumnId = matchingColDimension.Id;
-                        defaultdatamodelvalue.CombinationId = combId;
-                        defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
-                        defaultdatamodelvalue.OrganizationId = request.OrganizationId;
-                        defaultDatamodelValues.Add(defaultdatamodelvalue);
+                        foreach (var fact in factcombinations)
+                        {
+                            var matchingRowDimension = factrowDimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2 || a.Id == fact.Item3);
+                            var matchingColDimension = factcoldimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2 || a.Id == fact.Item3);
+                            var usedIds = new HashSet<long> { matchingRowDimension.Id, matchingColDimension.Id };
+                            var combId = new[] { fact.Item1, fact.Item2, fact.Item3 }
+                            .FirstOrDefault(id => !usedIds.Contains(id.Value));
+                            var defaultdatamodelvalue = new DataModelValue();
+                            defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
+                            defaultdatamodelvalue.DataPointValuesId = dp;
+                            defaultdatamodelvalue.CreatedBy = request.UserId;
+                            defaultdatamodelvalue.LastModifiedBy = request.UserId;
+                            defaultdatamodelvalue.RowId = matchingRowDimension.Id;
+                            defaultdatamodelvalue.ColumnId = matchingColDimension.Id;
+                            defaultdatamodelvalue.CombinationId = combId;
+                            defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
+                            //defaultdatamodelvalue.OrganizationId = request.OrganizationId;
+                            defaultDatamodelValues.Add(defaultdatamodelvalue);
+                        }
                     }
+                    await _unitOfWork.Repository<DataModelValue>().AddRange(defaultDatamodelValues);
                 }
-                await _unitOfWork.Repository<DefaultDataModelValue>().AddRange(defaultDatamodelValues);
             }
-            
         }
         public List<(long, long, long?)> GenerateCombinations(IEnumerable<long> list1, IEnumerable<long> list2, IEnumerable<long?> list3)
         {

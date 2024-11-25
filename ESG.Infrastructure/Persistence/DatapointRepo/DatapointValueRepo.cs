@@ -31,9 +31,9 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
         }
         public async Task<IEnumerable<long?>> GetDefaultModelDatapointsAndNotUserAssignedByOrgId(long orgId)
         {
-            var list = await _context.DefaultDataModelValues
+            var list = await _context.DataModelValues
                 .AsNoTracking()
-                .Where(x => x.OrganizationId == orgId)
+                .Where(x => x.DataModelId == orgId)
                 .GroupBy(x => x.DataPointValuesId)
                 .Where(g => g.All(a => a.ResponsibleUserId == null && a.AccountableUserId == null))
                 .Select(g => g.Key)

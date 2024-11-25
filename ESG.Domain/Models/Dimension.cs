@@ -34,9 +34,6 @@ public partial class Dimension
 
     public virtual ICollection<DataModelValue> DataModelValueRows { get; set; } = new List<DataModelValue>();
 
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValueColumns { get; set; } = new List<DefaultDataModelValue>();
-
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValueRows { get; set; } = new List<DefaultDataModelValue>();
 
     public virtual ICollection<DimensionTranslation> DimensionTranslations { get; set; } = new List<DimensionTranslation>();
 

@@ -28,8 +28,6 @@ public partial class ModelFilterCombination
 
     public virtual ICollection<DataModelValue> DataModelValues { get; set; } = new List<DataModelValue>();
 
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValues { get; set; } = new List<DefaultDataModelValue>();
-
     public virtual ICollection<ModelFilterCombinationalValue> ModelFilterCombinationalValues { get; set; } = new List<ModelFilterCombinationalValue>();
 
     public virtual ICollection<SampleModelFilterCombinationValue> SampleModelFilterCombinationValues { get; set; } = new List<SampleModelFilterCombinationValue>();

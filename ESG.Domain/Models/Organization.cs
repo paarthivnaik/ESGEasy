@@ -50,7 +50,6 @@ public partial class Organization
 
     public virtual ICollection<DataPointValue> DataPointValues { get; set; } = new List<DataPointValue>();
 
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValues { get; set; } = new List<DefaultDataModelValue>();
 
     public virtual ICollection<DimensionType> DimensionTypes { get; set; } = new List<DimensionType>();
 

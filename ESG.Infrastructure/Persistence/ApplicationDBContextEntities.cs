@@ -37,7 +37,6 @@ namespace ESG.Infrastructure.Persistence
         public virtual DbSet<DatapointTypeTranslation> DatapointTypeTranslations { get; set; }
 
         public virtual DbSet<DatapointValueTranslation> DatapointValueTranslations { get; set; }
-        public virtual DbSet<DefaultDataModelValue> DefaultDataModelValues { get; set; }
         public virtual DbSet<ESG.Domain.Models.Dimension> Dimensions { get; set; }
 
         public virtual DbSet<DimensionTranslation> DimensionTranslations { get; set; }
@@ -293,87 +292,6 @@ namespace ESG.Infrastructure.Persistence
                 entity.HasOne(d => d.DatapointValue).WithMany(p => p.DatapointValueTranslations).HasForeignKey(d => d.DatapointValueId);
 
                 entity.HasOne(d => d.Language).WithMany(p => p.DatapointValueTranslations).HasForeignKey(d => d.LanguageId);
-            });
-
-            modelBuilder.Entity<DefaultDataModelValue>(entity =>
-            {
-                entity.HasKey(e => e.Id).HasName("DefaultDataModelValues_pkey");
-
-                entity.HasIndex(e => e.AccountableUserId, "DefaultDataModelValues_AccountableUserId_idx");
-
-                entity.HasIndex(e => e.ColumnId, "DefaultDataModelValues_ColumnId_idx");
-
-                entity.HasIndex(e => e.CombinationId, "DefaultDataModelValues_CombinationId_idx");
-
-                entity.HasIndex(e => e.Consult, "DefaultDataModelValues_Consult_idx");
-
-                entity.HasIndex(e => e.DataModelId, "DefaultDataModelValues_DataModelId_idx");
-
-                entity.HasIndex(e => e.DataModelId, "DefaultDataModelValues_DataModelId_idx1");
-
-                entity.HasIndex(e => e.DataPointValuesId, "DefaultDataModelValues_DataPointValuesId_idx");
-
-                entity.HasIndex(e => e.DataPointValuesId, "DefaultDataModelValues_DataPointValuesId_idx1");
-
-                entity.HasIndex(e => e.Id, "DefaultDataModelValues_Id_idx");
-
-                entity.HasIndex(e => e.Inform, "DefaultDataModelValues_Inform_idx");
-
-                entity.HasIndex(e => e.ResponsibleUserId, "DefaultDataModelValues_ResponsibleUserId_idx");
-
-                entity.HasIndex(e => e.RowId, "DefaultDataModelValues_RowId_idx");
-
-                entity.HasIndex(e => e.DataModelId, "fki_FK_DefaultDataModelValues_DataModel_DataModelId");
-
-                entity.HasIndex(e => e.ColumnId, "fki_FK_DefaultDataModelValues_Dimensions_ColumnId");
-
-                entity.HasIndex(e => e.RowId, "fki_FK_DefaultDataModelValues_Dimensions_RowId");
-
-                entity.HasIndex(e => e.CombinationId, "fki_FK_DefaultDataModelValues_ModelFilterCombinations_Combinati");
-
-                entity.HasIndex(e => e.AccountableUserId, "fki_FK_DefaultDataModelValues_Users_AccountableUserId");
-
-                entity.HasIndex(e => e.Consult, "fki_FK_DefaultDataModelValues_Users_Consult");
-
-                entity.HasIndex(e => e.Inform, "fki_FK_DefaultDataModelValues_Users_Inform");
-
-                entity.HasIndex(e => e.ResponsibleUserId, "fki_FK_DefaultDataModelValues_Users_ResponsibleUserId");
-
-                entity.HasIndex(e => e.DataPointValuesId, "fki_FK_DefaultDataPointValues_DatapointValuesId");
-
-                entity.HasIndex(e => e.OrganizationId, "fki_FK_DefautDataModelValues_Organization_OrganizationId");
-
-                entity.HasIndex(e => new { e.OrganizationId, e.ResponsibleUserId }, "idx_defaultdatamodelvalues_orgid_userid");
-
-                entity.HasIndex(e => new { e.OrganizationId, e.ResponsibleUserId, e.DataPointValuesId }, "idx_defaultdatamodelvalues_orgid_userid_datapoint");
-
-                entity.HasOne(d => d.AccountableUser).WithMany(p => p.DefaultDataModelValueAccountableUsers).HasForeignKey(d => d.AccountableUserId);
-
-                entity.HasOne(d => d.Column).WithMany(p => p.DefaultDataModelValueColumns).HasForeignKey(d => d.ColumnId);
-
-                entity.HasOne(d => d.Combination).WithMany(p => p.DefaultDataModelValues).HasForeignKey(d => d.CombinationId);
-
-                entity.HasOne(d => d.ConsultNavigation).WithMany(p => p.DefaultDataModelValueConsultNavigations).HasForeignKey(d => d.Consult);
-
-                entity.HasOne(d => d.DataModel).WithMany(p => p.DefaultDataModelValues)
-                    .HasForeignKey(d => d.DataModelId)
-                    .HasConstraintName("FK_DefaultDataModelValues_DataModel_DataModelId");
-
-                entity.HasOne(d => d.DataPointValues).WithMany(p => p.DefaultDataModelValues)
-                    .HasForeignKey(d => d.DataPointValuesId)
-                    .HasConstraintName("FK_DefaultDataPointValues_DatapointValuesId");
-
-                entity.HasOne(d => d.InformNavigation).WithMany(p => p.DefaultDataModelValueInformNavigations).HasForeignKey(d => d.Inform);
-
-                entity.HasOne(d => d.Organization).WithMany(p => p.DefaultDataModelValues)
-                    .HasForeignKey(d => d.OrganizationId)
-                    .HasConstraintName("FK_DefautDataModelValues_Organization_OrganizationId");
-
-                entity.HasOne(d => d.ResponsibleUser).WithMany(p => p.DefaultDataModelValueResponsibleUsers).HasForeignKey(d => d.ResponsibleUserId);
-
-                entity.HasOne(d => d.Row).WithMany(p => p.DefaultDataModelValueRows)
-                    .HasForeignKey(d => d.RowId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<ESG.Domain.Models.Dimension>(entity =>

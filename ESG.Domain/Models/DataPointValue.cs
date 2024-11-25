@@ -54,8 +54,6 @@ public partial class DataPointValue
 
     public virtual ICollection<DatapointValueTranslation> DatapointValueTranslations { get; set; } = new List<DatapointValueTranslation>();
 
-    public virtual ICollection<DefaultDataModelValue> DefaultDataModelValues { get; set; } = new List<DefaultDataModelValue>();
-
     public virtual DisclosureRequirement? DisclosureRequirement { get; set; }
 
     public virtual ICollection<Hierarchy> Hierarchies { get; set; } = new List<Hierarchy>();
