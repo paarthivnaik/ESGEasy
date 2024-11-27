@@ -32,9 +32,9 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<IEnumerable<ModelFilterCombination>> GetModelFilterCombinationsByModelIdandDatapointId(long modelId, long datapointId, ModelViewTypeEnum viewType);
         Task<IEnumerable<DataModelValue>> GetDataModelValuesByDatapointIdCombinatinalIdAndModelId(long? combinationId, long datapointId, long modelId);
         Task<IEnumerable<DataModelValue>> GetDefaultDataModelValuesByDatapointIdCombinatinalIdAndModelId(long? combinationId, long datapointId, long modelId);
-        Task<List<ModelDimensionType>?> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId);
+        Task<List<ModelDimensionType>> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId);
         Task<List<DataModelValue>?> GetDataModelValues(long modelId, long datapointId, List<long> rowId, List<long?> columnId, long? filterCombinationId);
-        Task<List<long>?> GetModelFilterCombinations(long modelId);
+        Task<List<ModelFilterCombination>?> GetModelFilterCombinations(long modelId);
         Task<List<DataModelFilter>?> GetDataModelFiltersByConfigId(long configId);
         Task<List<DataModelValue>?> GetDataModelValuesByModelIdOrgId(long modelId, long organizationId);
         Task<List<SampleModelFilterCombinationValue>?> GetDataModelCombinationalValuesByModelFilterCombinationIds(List<long> combinationalIds);
@@ -56,5 +56,6 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<Amendment?> GetAmendmentById(long? id);
         Task<UploadedFile?> GetUploadedFileForDataModelValue(long id, bool isDefaultModel);
         Task<List<UploadedFile?>> GetUploadedFileData(long DataModelValueId, bool IsDefaultmodel);
+        Task<List<DataModelValue>> DataModelValuesByModelId(long dataModelId);
     }
 }

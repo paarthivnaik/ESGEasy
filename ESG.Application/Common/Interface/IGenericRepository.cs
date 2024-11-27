@@ -13,7 +13,7 @@ namespace ESG.Application.Common.Interface
         #region CRUD Operations
         Task Add(T entity);
         Task AddAsync(T entity);
-        Task AddRange(IEnumerable<T> entities);
+        Task AddRangeAsync(IEnumerable<T> entities);
         Task<T> Update(T entity);
         Task UpdateRange(IEnumerable<T> entities);
         Task<T> UpdateAsync(long Id, T entity);

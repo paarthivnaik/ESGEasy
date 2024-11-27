@@ -94,7 +94,7 @@ namespace ESG.Infrastructure.Persistence
             }
 
         }
-        public async Task AddRange(IEnumerable<T> entities)
+        public async Task AddRangeAsync(IEnumerable<T> entities)
         {
             try
             {

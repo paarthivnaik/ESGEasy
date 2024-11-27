@@ -95,8 +95,8 @@ namespace ESG.Application.Services
             }
             await _unitOfMeasure.Repository<UnitOfMeasure>().UpdateRange(oldUoms);
             await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().UpdateRange(oldUomTranslations);
-            await _unitOfMeasure.Repository<UnitOfMeasure>().AddRange(newUoms);
-            await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().AddRange(newUomTranslations);
+            await _unitOfMeasure.Repository<UnitOfMeasure>().AddRangeAsync(newUoms);
+            await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().AddRangeAsync(newUomTranslations);
             await _unitOfMeasure.SaveAsync();
         }
         public async Task DeleteUOM(UnitOfMeasureDeleteRequest deleteRequest)
@@ -113,7 +113,7 @@ namespace ESG.Application.Services
         public async Task AddRange(IEnumerable<UnitOfMeasureCreateRequestDto> unitOfMeasure)
         {
             var data = _mapper.Map<IEnumerable<UnitOfMeasure>>(unitOfMeasure);
-            await _unitOfMeasure.Repository<UnitOfMeasure>().AddRange(data);
+            await _unitOfMeasure.Repository<UnitOfMeasure>().AddRangeAsync(data);
             await _unitOfMeasure.SaveAsync();
         }
         public async Task Update(UnitOfMeasureUpdateRequestDto unitOfMeasure)

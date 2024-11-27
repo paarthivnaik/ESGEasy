@@ -62,7 +62,7 @@ namespace ESG.Application.Services
                     }
                     if (toAddOrUpdate.Any())
                     {
-                        await _unitOfWork.Repository<Hierarchy>().AddRange(toAddOrUpdate);
+                        await _unitOfWork.Repository<Hierarchy>().AddRangeAsync(toAddOrUpdate);
                     }
                     //now we have to modify the records in the datamodelmodelvalues with respective datapoints
 
@@ -96,7 +96,7 @@ namespace ESG.Application.Services
                             DataPointValuesId = datapointId
                         });
                     }
-                    await _unitOfWork.Repository<Hierarchy>().AddRange(hierarchies);
+                    await _unitOfWork.Repository<Hierarchy>().AddRangeAsync(hierarchies);
                 }
                 var organizationHierarchy = new OrganizationHeirarchy
                 {
@@ -181,7 +181,7 @@ namespace ESG.Application.Services
                             defaultDatamodelValues.Add(defaultdatamodelvalue);
                         }
                     }
-                    await _unitOfWork.Repository<DataModelValue>().AddRange(defaultDatamodelValues);
+                    await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(defaultDatamodelValues);
                 }
             }
         }
@@ -308,11 +308,14 @@ namespace ESG.Application.Services
                 var datapoints = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(HierarchyId);
                 var datamodelDatapoints = await _unitOfWork.DatapointValueRepo.GetModelDatapointsByOrgId(organizationId);
                 var defaultModelDatapoints = await _unitOfWork.DatapointValueRepo.GetDefaultModelDatapointsAndNotUserAssignedByOrgId(organizationId);
-                var datamodelDatapointSet = new HashSet<long>(datamodelDatapoints);
-                var defaultModelDatapointSet = new HashSet<long?>(defaultModelDatapoints);
-                filteredDatapoints = datapoints
-                    .Where(dp => !datamodelDatapointSet.Contains(dp) && defaultModelDatapointSet.Contains(dp))
+                // && defaultModelDatapoints.Any(d => d == dp)
+                var filteredDps = datapoints
+                    .Where(dp => !datamodelDatapoints.Any(d => d == dp))
                     .ToList();
+                filteredDatapoints = filteredDps
+                    .Where(dp => !defaultModelDatapoints.Any(a => a == dp))
+                    .ToList();
+
             }
 
             var datapointslist = await _unitOfWork.DatapointValueRepo.GetNamesForFilteredIds(filteredDatapoints);

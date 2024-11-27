@@ -302,7 +302,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
         }
 
 
-        public async Task<List<ModelDimensionType>?> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId)
+        public async Task<List<ModelDimensionType>> GetDimensionTypesByModelIdAndOrgId(long modelId, long orgId)
         {
             var modelvalues = await _context.ModelDimensionTypes
                 .AsNoTracking()
@@ -333,12 +333,10 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     .ToListAsync();
             return modelCombinations;
         }
-        public async Task<List<long>?> GetModelFilterCombinations(long modelId)
+        public async Task<List<ModelFilterCombination>?> GetModelFilterCombinations(long modelId)
         {
             return await _context.ModelFilterCombinations
                 .Where(mfc => mfc.DataModelId == modelId)
-                .Include(mfc => mfc.ModelFilterCombinationalValues)
-                .Select(a => a.Id)
                 .ToListAsync();
         }
 
@@ -565,6 +563,15 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 })
                 .ToListAsync();
             return list.Select(a => (a.Id, a.Value, a.DatapointId)).ToList();
+        }
+
+        public async Task<List<DataModelValue>> DataModelValuesByModelId(long dataModelId)
+        {
+           var list = await _context.DataModelValues
+                .AsNoTracking()
+                .Where(a => a.DataModelId == dataModelId)
+                .ToListAsync();
+            return list;
         }
 
     }

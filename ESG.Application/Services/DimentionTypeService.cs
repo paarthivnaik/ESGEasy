@@ -75,7 +75,7 @@ namespace ESG.Application.Services
                     }
                 }
             }
-            await _unitOfWork.Repository<DimensionType>().AddRange(newDimensionTypes);
+            await _unitOfWork.Repository<DimensionType>().AddRangeAsync(newDimensionTypes);
             await _unitOfWork.Repository<DimensionType>().UpdateRange(oldDimensionTypes);
             await _unitOfWork.SaveAsync();
         }

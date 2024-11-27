@@ -65,7 +65,7 @@ namespace ESG.Application.Services
                 }
             }
             await _unitOfWork.Repository<UnitOfMeasureType>().UpdateRange(oldUomTypes);
-            await _unitOfWork.Repository<UnitOfMeasureType>().AddRange(newUomTypes);
+            await _unitOfWork.Repository<UnitOfMeasureType>().AddRangeAsync(newUomTypes);
             await _unitOfWork.SaveAsync();
         }
 
