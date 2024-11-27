@@ -66,21 +66,7 @@ namespace ESG.Application.Services
                     }
                     //now we have to modify the records in the datamodelmodelvalues with respective datapoints
 
-                    //var existingDefaultModelDatapointsInDatamodelvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByOrganizationId(request.OrganizationId);
-                    //var newdps = request.DatapointIds
-                    //    .Except(existingDatapointsInDatamodelvalues.Where(id => id).Select(id => id.Value))
-                    //    .ToList();
-                    //var olddps = existingDatapointsInDatamodelvalues
-                    //    .Where(id => id.HasValue).Select(id => id.Value)
-                    //    .Except(request.DatapointIds).ToList();
-                    //if (newdps.Count() > 0)
-                    //{
-                    //    await GenerateDefaultDataModelValues(newdps, request);
-                    //}
-                    //if (olddps.Count() > 0)
-                    //{
-                    //    //await _unitOfWork.DataModelRepo.RemoveUnUsedDatapointValuesFromModel(datapoints, request.OrganizationId);
-                    //}
+                    await GenerateDefaultDataModelValues(request.DatapointIds, request);
                 }
             }
             if (existinghierarchyId <= 0) 
@@ -107,7 +93,7 @@ namespace ESG.Application.Services
                 };
                 if (request.DatapointIds != null)
                 {
-                    //await GenerateDefaultDataModelValues(request.DatapointIds, request);//if hierarchy created newly then we have to create defaultdatamodelvalues for all dps
+                    await GenerateDefaultDataModelValues(request.DatapointIds, request);//if hierarchy created newly then we have to create defaultdatamodelvalues for all dps
                 }
                 await _unitOfWork.Repository<OrganizationHeirarchy>().AddAsync(organizationHierarchy);
             }
@@ -138,6 +124,8 @@ namespace ESG.Application.Services
 
                 var factcombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), factcoldimensions.Select(a => a.Id), factfiltercombinations);
                 var Narrativecombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), narrativefiltercombinations);
+                var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(defaultDatamodel.Id, request.OrganizationId);
+                await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
                 foreach (var dp in datapoints)
                 {
                     var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(dp);
@@ -155,7 +143,6 @@ namespace ESG.Application.Services
                             defaultdatamodelvalue.ColumnId = null;
                             defaultdatamodelvalue.CombinationId = (matchingRowDimension.Id == narrative.Item1) ? narrative.Item2 : narrative.Item1;
                             defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
-                            //defaultdatamodelvalue.OrganizationId = request.OrganizationId;
                             defaultDatamodelValues.Add(defaultdatamodelvalue);
                         }
                     }
@@ -177,7 +164,6 @@ namespace ESG.Application.Services
                             defaultdatamodelvalue.ColumnId = matchingColDimension.Id;
                             defaultdatamodelvalue.CombinationId = combId;
                             defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
-                            //defaultdatamodelvalue.OrganizationId = request.OrganizationId;
                             defaultDatamodelValues.Add(defaultdatamodelvalue);
                         }
                     }

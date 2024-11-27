@@ -11,11 +11,15 @@ namespace ESG.Application.Dto.DataModel
         public long Id { get; set; }
         public string Name { get; set; }
         public string Purpose { get; set; }
-        public List<long>? DatapointIds { get; set; }
+        public List<DatapointsDto>? Datapoints { get; set; }
         public FactViewDto? FactView { get; set; } 
         public NarrativeViewDto? NarrativeView { get; set; }
     }
-
+    public class DatapointsDto
+    {
+        public long Id { get; set; }
+        public string? ShortText { get; set; }
+    } 
     public class FactViewDto
     {
         public DimensionTypeDto RowDimension { get; set; }

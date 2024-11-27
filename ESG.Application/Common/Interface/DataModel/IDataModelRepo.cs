@@ -13,6 +13,7 @@ namespace ESG.Application.Common.Interface.DataModel
     public interface IDataModelRepo
     {
         //Task CreateDataModel(DataModelCreateRequestDto dataModelCreateRequestDto);
+        Task<Amendment?> GetAmendmentById(long? id);
         Task<List<Domain.Models.DataModel>> GetDataModelsIncludingDefaultByOrgId(long OrgId, bool hasValues);
         //Task<bool> CheckIsDefaultdataModelvalues(long OrgId);
         Task<Domain.Models.DataModel?> GetDataModelByDatapointIdAndOrgId(long datapointId, long orgId);
@@ -53,7 +54,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<long?>> GetDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
         Task<List<long?>> GetDefaultDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
         Task<List<ModelDatapoint>> GetDatapointsLinkedToDataModel(long modelId, long organizationId);
-        Task<Amendment?> GetAmendmentById(long? id);
+        Task<List<DatapointsDto>> GetDatapointsLinkedToDataModelWithName(long modelId, long organizationId);
         Task<UploadedFile?> GetUploadedFileForDataModelValue(long id, bool isDefaultModel);
         Task<List<UploadedFile?>> GetUploadedFileData(long DataModelValueId, bool IsDefaultmodel);
         Task<List<DataModelValue>> DataModelValuesByModelId(long dataModelId);

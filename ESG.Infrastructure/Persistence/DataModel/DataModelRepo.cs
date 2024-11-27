@@ -549,6 +549,20 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(a => a.DataModelId == modelId && a.DataModel.OrganizationId == organizationId)
                 .ToListAsync();
         }
+        public async Task<List<DatapointsDto>> GetDatapointsLinkedToDataModelWithName(long modelId, long organizationId)
+        {
+            return await _context.ModelDatapoints
+                .AsNoTracking()
+                .Where(a => a.DataModelId == modelId && a.DataModel.OrganizationId == organizationId)
+                .Include(a => a.DatapointValues)
+                .Select(a => new DatapointsDto
+                { 
+                    Id = a.Id,
+                    ShortText = a.DatapointValues.ShortText
+                })
+                .ToListAsync();
+        }
+
 
         public async Task<List<(long Id,string? Value, long? DatapointId)>> GetDefaultDataModelValuesByOrganizationId(long organizationId)
         {
