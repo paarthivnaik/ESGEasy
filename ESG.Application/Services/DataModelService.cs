@@ -144,20 +144,31 @@ namespace ESG.Application.Services
             {
                 foreach (var datapointId in newDatapoints)
                 {
-                    modelDatapoints.Add(new ModelDatapoint
-                    {
-                        DataModelId = dataModelId,
-                        DatapointValuesId = datapointId,
-                        State = StateEnum.active,
-                        CreatedBy = dataModelCreateRequestDto.CreatedBy,
-                        CreatedDate = utcNow,
-                        LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
-                        LastModifiedDate = utcNow
-                    });
+                    //modelDatapoints.Add(new ModelDatapoint
+                    //{
+                    //    DataModelId = dataModelId,
+                    //    DatapointValuesId = datapointId,
+                    //    State = StateEnum.active,
+                    //    CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                    //    CreatedDate = utcNow,
+                    //    LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                    //    LastModifiedDate = utcNow
+                    //});
+                    var modeldp = new ModelDatapoint();
+                    modeldp.DataModelId = dataModelId;
+                    modeldp.DataModelId = dataModelId;
+                    modeldp.DatapointValuesId = datapointId;
+                    modeldp.State = StateEnum.active;
+                    modeldp.CreatedBy = dataModelCreateRequestDto.CreatedBy;
+                    modeldp.CreatedDate = utcNow;
+                    modeldp.LastModifiedBy = dataModelCreateRequestDto.CreatedBy;
+                    modeldp.LastModifiedDate = utcNow;
+                    dataModel.ModelDatapoints.Add(modeldp);
+                    modelDatapoints.Add(modeldp);
                 }
                 await _unitOfWork.Repository<ModelDatapoint>().AddRangeAsync(modelDatapoints);
             }
-
+            await _unitOfWork.SaveAsync();
             //ModelDimensionTypes and ModelDimensionValues
             //-------------------------------------------------
 

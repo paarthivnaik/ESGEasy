@@ -53,7 +53,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<DataModelValue>?> GetDataModelValuesById(List<long> ids);
         Task<List<long?>> GetDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
         Task<List<long?>> GetDefaultDataModelValuesyOrgaidAndResponsibleUser(long organizationId, long userId);
-        Task<List<ModelDatapoint>> GetDatapointsLinkedToDataModel(long modelId, long organizationId);
+        Task<List<ModelDatapoint>> GetDatapointsLinkedToDataModel(long? modelId, long organizationId);
         Task<List<DatapointsDto>> GetDatapointsLinkedToDataModelWithName(long modelId, long organizationId);
         Task<UploadedFile?> GetUploadedFileForDataModelValue(long id, bool isDefaultModel);
         Task<List<UploadedFile?>> GetUploadedFileData(long DataModelValueId, bool IsDefaultmodel);

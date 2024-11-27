@@ -542,7 +542,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return file;
         }
 
-        public async Task<List<ModelDatapoint>> GetDatapointsLinkedToDataModel(long modelId, long organizationId)
+        public async Task<List<ModelDatapoint>> GetDatapointsLinkedToDataModel(long? modelId, long organizationId)
         {
             return await _context.ModelDatapoints
                 .AsNoTracking()
@@ -557,7 +557,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Include(a => a.DatapointValues)
                 .Select(a => new DatapointsDto
                 { 
-                    Id = a.Id,
+                    Id = a.DatapointValues.Id,
                     ShortText = a.DatapointValues.ShortText
                 })
                 .ToListAsync();

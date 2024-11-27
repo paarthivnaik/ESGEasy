@@ -282,11 +282,12 @@ namespace ESG.Application.Services
             return mainDto;
         
         }
-        public async Task<List<DatapointsForDataModelResponseDto>> GetDatapointsForDataModel(long organizationId)
+        public async Task<List<DatapointsForDataModelResponseDto>> GetDatapointsForDataModel(long organizationId, long? modelId)
         {
             var response = new List<DatapointsForDataModelResponseDto>();
             List<long> filteredDatapoints = new List<long>();
-
+            List<long> existingModelDatapoints = new List<long>();
+            
             long? HierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
 
             if (HierarchyId != null)
@@ -301,6 +302,12 @@ namespace ESG.Application.Services
                 filteredDatapoints = filteredDps
                     .Where(dp => !defaultModelDatapoints.Any(a => a == dp))
                     .ToList();
+                if (modelId != null && modelId != 0)
+                {
+                    var ModelDatapoints = await _unitOfWork.DataModelRepo.GetDatapointsLinkedToDataModel(modelId, organizationId);
+                    existingModelDatapoints = ModelDatapoints.Select(a => a.DatapointValuesId).ToList();
+                    filteredDatapoints.AddRange(existingModelDatapoints);
+                }
 
             }
 
