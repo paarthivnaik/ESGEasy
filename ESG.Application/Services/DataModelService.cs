@@ -187,7 +187,7 @@ namespace ESG.Application.Services
                 {
                     await GenerateModelConfigurationsAndDataModelFilters(dataModelCreateRequestDto,dataModelCreateRequestDto.Fact,null, dataModelId);
                 }
-                else if (dataModelCreateRequestDto.Narrative != null)
+                if (dataModelCreateRequestDto.Narrative != null)
                 {
                     await GenerateModelConfigurationsAndDataModelFilters(dataModelCreateRequestDto,null, dataModelCreateRequestDto.Narrative, dataModelId);
                 }
@@ -383,7 +383,7 @@ namespace ESG.Application.Services
                         }
                     }
                 }
-                await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(dataModelValues);
+                //await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(dataModelValues);
             }
             if (dataModelCreateRequestDto.Narrative != null)
             {
@@ -516,36 +516,63 @@ namespace ESG.Application.Services
                 throw new ArgumentNullException(nameof(dto), "Both FactDTO and NarrativeDTO are null.");
             var modelConfigurations = new ESG.Domain.Models.ModelConfiguration();
             modelConfigurations.DataModelId = modelId;
-            modelConfigurations.RowId = dto.RowId!.Value;
-            modelConfigurations.ColumnId = dto.ColumnId;
+            modelConfigurations.RowId = dto.RowId;
             modelConfigurations.State = StateEnum.active;
             modelConfigurations.CreatedBy = dataModelCreateRequest.CreatedBy;
             modelConfigurations.CreatedDate = DateTime.UtcNow;
             modelConfigurations.LastModifiedBy = dataModelCreateRequest.CreatedBy;
             modelConfigurations.LastModifiedDate = DateTime.UtcNow;
-            if (dto == factdto)
+            if (dto is ESG.Application.Dto.DataModel.DataModelCreateRequestDto.FactDTO)
             {
+                modelConfigurations.ColumnId = dto.ColumnId;
                 modelConfigurations.ViewType = ModelViewTypeEnum.Fact;
             }
-            if (dto == narrativedto)
+            else if (dto is ESG.Application.Dto.DataModel.DataModelCreateRequestDto.NarrativeDTO)
             {
                 modelConfigurations.ViewType = ModelViewTypeEnum.Narrative;
             }
             await _unitOfWork.Repository<Domain.Models.ModelConfiguration>().AddAsync(modelConfigurations);
-            if (dataModelCreateRequest.Fact?.Filters != null)
+            //await _unitOfWork.SaveAsync();
+            if (modelConfigurations.ViewType == ModelViewTypeEnum.Fact && dataModelCreateRequest.Fact?.Filters != null)
             {
-                var modelFilters = dataModelCreateRequest.Fact.Filters
-                    .Select(filterId => new DataModelFilter
+                var modelFilters = new List<DataModelFilter>();
+                foreach (var filter in dataModelCreateRequest.Fact.Filters)
+                {
+                    var modelfilter = new DataModelFilter
                     {
                         ModelConfigurationId = modelConfigurations.Id,
-                        FilterId = filterId,
+                        FilterId = filter,
                         State = StateEnum.active,
                         CreatedBy = dataModelCreateRequest.CreatedBy,
                         CreatedDate = DateTime.UtcNow,
                         LastModifiedBy = dataModelCreateRequest.CreatedBy,
                         LastModifiedDate = DateTime.UtcNow
-                    })
-                    .ToList();
+                    };
+                    modelfilter.ModelConfigurationId = modelConfigurations.Id;
+                    modelConfigurations.DataModelFilters.Add(modelfilter);
+                    modelFilters.Add(modelfilter);
+                }
+                await _unitOfWork.Repository<DataModelFilter>().AddRangeAsync(modelFilters);
+            }
+            if (modelConfigurations.ViewType == ModelViewTypeEnum.Narrative && dataModelCreateRequest.Narrative?.Filters != null)
+            {
+                var modelFilters = new List<DataModelFilter>();
+                foreach (var filter in dataModelCreateRequest.Narrative.Filters)
+                {
+                    var modelfilter = new DataModelFilter
+                    {
+                        ModelConfigurationId = modelConfigurations.Id,
+                        FilterId = filter,
+                        State = StateEnum.active,
+                        CreatedBy = dataModelCreateRequest.CreatedBy,
+                        CreatedDate = DateTime.UtcNow,
+                        LastModifiedBy = dataModelCreateRequest.CreatedBy,
+                        LastModifiedDate = DateTime.UtcNow
+                    };
+                    modelfilter.ModelConfigurationId = modelConfigurations.Id;
+                    modelConfigurations.DataModelFilters.Add(modelfilter);
+                    modelFilters.Add(modelfilter);
+                }
                 await _unitOfWork.Repository<DataModelFilter>().AddRangeAsync(modelFilters);
             }
         }
@@ -583,6 +610,8 @@ namespace ESG.Application.Services
                         LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                         LastModifiedDate = DateTime.UtcNow
                     };
+                    modelDimensionValue.ModelDimensionTypesId = modelDimensionType.Id;
+                    modelDimensionType.ModelDimensionValues.Add(modelDimensionValue);
                     modelDimensionValues.Add(modelDimensionValue);
                 }
             }
