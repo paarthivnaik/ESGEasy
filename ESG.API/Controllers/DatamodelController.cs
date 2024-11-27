@@ -21,20 +21,9 @@ namespace ESG.API.Controllers
         {
             try
             {
-                if (dataModelCreateRequestDto.DataModelId <= 0)
-                {
-                    await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
-                    return Ok(new { error = false, errorMsg = "" });
-                }
-                else if (dataModelCreateRequestDto.DataModelId > 0)
-                {
-                    //await _dataModelService.EditDataModel(dataModelCreateRequestDto);
-                    return Ok(new { error = false, errorMsg = "" });
-                }
-                else
-                {
-                    return Ok(new { error = true, errorMsg = "Invalid DataModelId." });
-                }
+                await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
+                return Ok(new { error = false, errorMsg = "" });
+                
             }
             catch (Exception ex)
             {

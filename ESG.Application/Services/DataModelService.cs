@@ -205,7 +205,7 @@ namespace ESG.Application.Services
                 {
                     await GenerateModelConfigurationsAndDataModelFilters(dataModelCreateRequestDto, dataModelCreateRequestDto.Fact, null, dataModelId);
                 }
-                else if (dataModelCreateRequestDto.Narrative != null)
+                if (dataModelCreateRequestDto.Narrative != null)
                 {
                     await GenerateModelConfigurationsAndDataModelFilters(dataModelCreateRequestDto, null, dataModelCreateRequestDto.Narrative, dataModelId);
                 }
@@ -493,7 +493,7 @@ namespace ESG.Application.Services
                 }
                 dataModel.State = StateEnum.active;
                 await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(dataModelValues);
-                await _unitOfWork.Repository<DataModel>().Update(dataModel);
+                await _unitOfWork.Repository<DataModel>().UpdateAsync(dataModel.Id, dataModel);
                 await _unitOfWork.SaveAsync();
             }
         }
