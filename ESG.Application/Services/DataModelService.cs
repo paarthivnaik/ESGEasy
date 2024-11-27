@@ -710,7 +710,7 @@ namespace ESG.Application.Services
             var responseobj = new DataModelLinkedtoDatapointResponseDto();
             var datamodel = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(datapointId, organizationId);
             if (datamodel == null)
-                throw new ArgumentException("there is no model linked to that datapoint");
+                throw new ArgumentException("there is no model linked to that datapoint not even a default model");
             var datapointviewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(datapointId);
             if (datapointviewtype == null)
                 throw new ArgumentException("datapoint view type is NULL");

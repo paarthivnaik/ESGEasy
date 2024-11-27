@@ -40,7 +40,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             {
                 defaultDataModel = await _context.DataModels
                 .AsNoTracking()
-                .Where(a => a.IsDefaultModel == true)
+                .Where(a => a.IsDefaultModel == true && a.OrganizationId == OrgId)
                 .Select(dp => new ESG.Domain.Models.DataModel
                 {
                     Id = dp.Id,
@@ -71,12 +71,16 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 })
                 .FirstOrDefaultAsync();
             if (dataModel == null)
-                return new Domain.Models.DataModel
-                {
-                    Id = 1,
-                    ModelName = "Default Model",
-                    IsDefaultModel = true,
-                };
+                dataModel = await _context.DataModels
+                    .AsNoTracking()
+                    .Where(a => a.OrganizationId == orgId && a.IsDefaultModel == true)
+                    .Select(dp => new ESG.Domain.Models.DataModel
+                    {
+                        Id = dp.Id,
+                        ModelName = dp.ModelName,
+                        IsDefaultModel = dp.IsDefaultModel,
+                    })
+                    .FirstOrDefaultAsync();
             return dataModel;
         }
         
