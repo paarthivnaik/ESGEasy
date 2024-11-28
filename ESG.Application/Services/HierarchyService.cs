@@ -58,8 +58,18 @@ namespace ESG.Application.Services
                     }
                     if (toRemove.Any())
                     {
+                        var datamodelvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByOrganizationId(request.OrganizationId);
+                        var filteredToNotRemove = toRemove
+                            .Where(item => !datamodelvalues
+                                .Any(dmValue => dmValue.DatapointId == item.DataPointValuesId && string.IsNullOrEmpty(dmValue.Value)))
+                            .ToList();
+                        if (filteredToNotRemove.Any())
+                        {
+                            throw new SystemException($"These datapoints are having values in datamodelvalues so you cannot delete them { filteredToNotRemove }");
+                        }
                         await _unitOfWork.Repository<Hierarchy>().RemoveRangeAsync(toRemove);
                     }
+
                     if (toAddOrUpdate.Any())
                     {
                         await _unitOfWork.Repository<Hierarchy>().AddRangeAsync(toAddOrUpdate);

@@ -11,6 +11,7 @@ namespace ESG.Application.Dto.DataModel
         public long Id { get; set; }
         public string Name { get; set; }
         public string Purpose { get; set; }
+        public bool? IsDefault { get; set; }
         public List<DatapointsDto>? Datapoints { get; set; }
         public FactViewDto? FactView { get; set; } 
         public NarrativeViewDto? NarrativeView { get; set; }
@@ -19,6 +20,7 @@ namespace ESG.Application.Dto.DataModel
     {
         public long Id { get; set; }
         public string? ShortText { get; set; }
+        public bool? IsNarrative { get; set; }
     } 
     public class FactViewDto
     {

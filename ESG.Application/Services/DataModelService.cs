@@ -676,6 +676,7 @@ namespace ESG.Application.Services
                         Id = datamodel.Id,
                         Name = datamodel.ModelName,
                         Purpose = datamodel.Purpose,
+                        IsDefault = datamodel.IsDefaultModel,
                         Datapoints = datapoints,
                         FactView = null,
                         NarrativeView = null

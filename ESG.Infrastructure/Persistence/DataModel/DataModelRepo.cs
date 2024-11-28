@@ -562,7 +562,8 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(a => new DatapointsDto
                 { 
                     Id = a.DatapointValues.Id,
-                    ShortText = a.DatapointValues.ShortText
+                    ShortText = a.DatapointValues.ShortText,
+                    IsNarrative = a.DatapointValues.IsNarrative,
                 })
                 .ToListAsync();
         }
@@ -572,7 +573,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
         {
             var list = await _context.DataModelValues
                 .AsNoTracking()
-                .Where(a => a.DataModel.OrganizationId == organizationId && a.DataModel.IsDefaultModel == true && a.State == StateEnum.active )
+                .Where(a => a.DataModel.OrganizationId == organizationId && a.DataModel.State == StateEnum.active &&  a.State == StateEnum.active )
                 .Select(a => new
                 {
                     Id = a.Id,
