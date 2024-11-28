@@ -367,6 +367,18 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .ThenInclude(mfc => mfc.SampleModelFilterCombinationValues)
                 .ToListAsync();
         }
+        public async Task<List<long?>> GetDataModelValuesByDatapointIDsModelIdOrgId(List<long>? datapoints, long modelId, long organizationId)
+        {
+            return await _context.DataModelValues
+                .Where(dmv =>
+                    dmv.DataModelId == modelId &&
+                    dmv.DataModel.OrganizationId == organizationId &&
+                    datapoints.Contains(dmv.DataPointValuesId.Value) && 
+                    (dmv.Value != null || dmv.ResponsibleUserId != null))
+                .Select(a => a.DataPointValuesId)
+                .Distinct()
+                .ToListAsync();
+        }
         public async Task<List<DataModelFilter>?> GetDataModelFiltersByConfigId(long configId)
         {
             return await _context.DataModelFilters
@@ -591,6 +603,19 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(a => a.DataModelId == dataModelId)
                 .ToListAsync();
             return list;
+        }
+
+        public async Task<Domain.Models.DataModel> GetDatamodelLinkedToDatapointByIdAndOrganizationId(long datapointId, long organizationId)
+        {
+            var datamodel = await _context.DataModels
+                .AsNoTracking()
+                .Where(a =>
+                    a.OrganizationId == organizationId &&
+                    a.ModelDatapoints.Any(b => b.DatapointValuesId == datapointId) &&
+                    !a.IsDefaultModel)
+                .FirstOrDefaultAsync();
+
+            return datamodel;
         }
 
     }

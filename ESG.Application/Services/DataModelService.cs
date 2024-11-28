@@ -74,9 +74,15 @@ namespace ESG.Application.Services
             var utcNow = DateTime.UtcNow;
             //deleting the old records of DATAMODEL from datamodelvalues, SampleDataModelFiltercomboValues, ModelFilterCombinationalValues
             //-----------------------------------------------------------------------------------------
-
+            
             if (dataModelCreateRequestDto.DataModelId > 0)
             {
+                var datamodelvalues = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDsModelIdOrgId
+                    (dataModelCreateRequestDto.Datapoints, dataModelCreateRequestDto.DataModelId, dataModelCreateRequestDto.OrganizationId);
+                if (datamodelvalues.Count() > 0)
+                {
+                    throw new SystemException($"the datapoints - {datamodelvalues} need to be removed are alredy having values Or user assigned");
+                }
                 var list = await _unitOfWork.DataModelRepo.DataModelValuesByModelId(dataModelCreateRequestDto.DataModelId);
                 if (list != null)
                 {

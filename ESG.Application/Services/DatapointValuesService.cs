@@ -40,6 +40,11 @@ namespace ESG.Application.Services
                 {
                     if (DataPointValue != null && datapoint.DatapointId > 0)
                     {
+                        var iflinkeddatamodel = await _unitOfWork.DataModelRepo.GetDatamodelLinkedToDatapointByIdAndOrganizationId(datapoint.DatapointId, datapoint.OrganizationId);
+                        if (iflinkeddatamodel != null)
+                        {
+                            throw new System.Exception($"Id with {datapoint.DatapointId} is alredy linked to a datamodel so you cannot modify this datapoint ");
+                        }
                         var existingdatapoint = await _unitOfWork.Repository<DataPointValue>().Get(a => a.Id == datapoint.DatapointId);
                         var existingTranslation = await _unitOfWork.Repository<DatapointValueTranslation>().Get(a => a.DatapointValueId == datapoint.DatapointId);
                         existingdatapoint.DatapointTypeId = datapoint.DatapointTypeId;
