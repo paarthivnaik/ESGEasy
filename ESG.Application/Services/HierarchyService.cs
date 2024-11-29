@@ -335,7 +335,7 @@ namespace ESG.Application.Services
                 var topicDto = new DatapointsForDataModelResponseDto
                 {
                     Id = topic.Id,
-                    Name = topic.ShortText,
+                    ShortText = topic.ShortText,
                     Children = new List<HierarchyStandard>() 
                 };
                 var relatedSubTopics = subTopics.Where(st => st.TopicId == topic.Id).ToList();
@@ -344,7 +344,7 @@ namespace ESG.Application.Services
                     var standardDto = new HierarchyStandard
                     {
                         Id = subTopic.Id,
-                        Name = subTopic.ShortText,
+                        ShortText = subTopic.ShortText,
                         Children = new List<HierarchyDisclosureRequirement>() 
                     };
 
@@ -354,7 +354,7 @@ namespace ESG.Application.Services
                         var disclosureRequirementDto = new HierarchyDisclosureRequirement
                         {
                             Id = disclosureRequirement.Id,
-                            Name = disclosureRequirement.ShortText,
+                            ShortText = disclosureRequirement.ShortText,
                             children = new List<HierarchyDatapoint>()
                         };
 
