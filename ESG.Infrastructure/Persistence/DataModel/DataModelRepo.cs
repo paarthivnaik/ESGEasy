@@ -412,8 +412,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
         {
             var query = _context.ModelDimensionTypes
                 .AsNoTracking()
-                .Where(md => md.DataModelId == modelId &&
-                             (modelId == 1 || md.DataModel.OrganizationId == organizationId))
+                .Where(md => md.DataModelId == modelId && md.DataModel.OrganizationId == organizationId)
                 .Include(md => md.DimensionType)
                 .Select(md => new
                 {
@@ -496,15 +495,14 @@ namespace ESG.Infrastructure.Persistence.DataModel
         public async Task<List<DataModelValue>?> GetDefaultDataModelValuesByModelIdAndDatapoints(long modelId, IEnumerable<long> datapoints, long organizationId)
         {
             return await _context.DataModelValues
+                .Where(dmv => dmv.DataModelId == modelId
+                    && dmv.DataPointValuesId.HasValue
+                    && datapoints.Contains(dmv.DataPointValuesId.Value))
                 .Include(a => a.DataPointValues)
                 .Include(dim => dim.Row)
                 .Include(dim => dim.Column)
                 .Include(df => df.Combination)
                     .ThenInclude(mfc => mfc.SampleModelFilterCombinationValues)
-                .Where(dmv => dmv.DataModelId == modelId
-                    && dmv.DataPointValuesId.HasValue
-                    && datapoints.Contains(dmv.DataPointValuesId.Value))
-                    //&& dmv.OrganizationId == organizationId)
                 .ToListAsync();
         }
         //public async Task<ESG.Domain.Models.DataModel?> GetDataModelById(long dataModelId)
@@ -542,12 +540,12 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<UploadedFile?> GetUploadedFileForDataModelValue(long id, bool isDefaultModel)
+        public async Task<List<UploadedFile>?> GetUploadedFileForDataModelValue(long id, bool isDefaultModel)
         {
             return await _context.UploadedFiles
                 .AsNoTracking()
                 .Where(a => a.DataModelValueId == id && a.IsDefaultModel == isDefaultModel)
-                .FirstOrDefaultAsync();
+                .ToListAsync();
         }
         public async Task<List<UploadedFile?>> GetUploadedFileData(long DataModelValueId, bool IsDefaultmodel)
         {
@@ -618,5 +616,15 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return datamodel;
         }
 
+        public async Task<bool> IsDataPointHavinganyValue(long datapoint, long organizationId)
+        {
+            var hasValue = await _context.DataModelValues
+                .AsNoTracking()
+                .AnyAsync(a =>
+                    a.DataModel.OrganizationId == organizationId &&
+                    a.DataPointValuesId == datapoint &&
+                    a.Value != null);
+            return hasValue;
+        }
     }
 }

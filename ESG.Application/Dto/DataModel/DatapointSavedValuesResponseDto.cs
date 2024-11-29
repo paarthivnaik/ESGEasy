@@ -24,8 +24,11 @@ namespace ESG.Application.Dto.DataModel
         public string? Value { get; set; }
         public bool? IsBlocked { get; set; }
         public long? ResponsibleUserId { get; set; }
-        public string? FileData { get; set; }
-        public string? FileName { get; set; }
+        public List<SavedFiles>? Files { get; set; }
     }
-
+    public class SavedFiles
+    {
+        public string? FileName { get; set; }
+        public string? FormFile { get; set; }
+    }
 }

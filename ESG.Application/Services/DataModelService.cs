@@ -1009,7 +1009,6 @@ namespace ESG.Application.Services
         {
             var response = new DatapointSavedValuesResponseDto();
             long? ModelFilterCombinationId = null;
-            //bool isMatch = false;
             var model = await _unitOfWork.DataModelRepo.GetDataModelById(datapointSavedValuesRequestDto.dataModelId);
             if (model == null)
                 return response;
@@ -1054,57 +1053,33 @@ namespace ESG.Application.Services
             response.Amendment = amendment?.Value;
 
             response.CombinationId = ModelFilterCombinationId;
-            if (model.IsDefaultModel == true)
+            var datamodelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIdCombinatinalIdAndModelId(ModelFilterCombinationId, datapointSavedValuesRequestDto.DatapointId, model.Id);
+            response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
+            response.DatapointSavedValues = new List<DatapointSavedValues>();
+            foreach (var datamodelValue in datamodelValues)
             {
-                var defautdatamodelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByDatapointIdCombinatinalIdAndModelId(ModelFilterCombinationId, datapointSavedValuesRequestDto.DatapointId, model.Id);
-                response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
-                response.DatapointSavedValues = new List<DatapointSavedValues>();
-                foreach (var datamodelValue in defautdatamodelValues)
+                var uploadedfiles = await _unitOfWork.DataModelRepo.GetUploadedFileForDataModelValue(datamodelValue.Id, true);
+                var filestoshow = new List<SavedFiles>();
+                foreach (var uploadedfile in uploadedfiles)
                 {
-                    var uploadedfile = await _unitOfWork.DataModelRepo.GetUploadedFileForDataModelValue(datamodelValue.Id, true);
                     string? base64String = null;
-                    if (uploadedfile?.FileData != null)
+                    base64String = Convert.ToBase64String(uploadedfile.FileData);
+                    filestoshow.Add(new SavedFiles
                     {
-                        base64String = Convert.ToBase64String(uploadedfile.FileData);
-                    }
-                    response.DatapointSavedValues.Add(new DatapointSavedValues
-                    {
-                        DataModelValueId = datamodelValue.Id,
-                        RowId = datamodelValue.RowId,
-                        ColumnId = datamodelValue.ColumnId,
-                        Value = datamodelValue.Value,
-                        IsBlocked = datamodelValue.IsBlocked,
-                        ResponsibleUserId = datamodelValue.ResponsibleUserId,
-                        FileName = uploadedfile?.FileName,
-                        FileData = base64String,
+                        FileName = uploadedfile.FileName,
+                        FormFile = base64String,
                     });
                 }
-            }
-            if (model.IsDefaultModel == false)
-            {
-                var datamodelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIdCombinatinalIdAndModelId(ModelFilterCombinationId, datapointSavedValuesRequestDto.DatapointId, model.Id);
-                response.DatapointId = datapointSavedValuesRequestDto.DatapointId;
-                response.DatapointSavedValues = new List<DatapointSavedValues>();
-                foreach (var datamodelValue in datamodelValues)
+                response.DatapointSavedValues.Add(new DatapointSavedValues
                 {
-                    var uploadedfile = await _unitOfWork.DataModelRepo.GetUploadedFileForDataModelValue(datamodelValue.Id, false);
-                    string? base64String = null;
-                    if (uploadedfile?.FileData != null)
-                    {
-                        base64String = Convert.ToBase64String(uploadedfile.FileData);
-                    }
-                    response.DatapointSavedValues.Add(new DatapointSavedValues
-                    {
-                        DataModelValueId = datamodelValue.Id,
-                        RowId = datamodelValue.RowId,
-                        ColumnId = datamodelValue.ColumnId,
-                        Value = datamodelValue.Value,
-                        IsBlocked = datamodelValue.IsBlocked,
-                        ResponsibleUserId = datamodelValue.ResponsibleUserId,
-                        FileName = uploadedfile?.FileName,
-                        FileData = base64String,
-                    });
-                }
+                    DataModelValueId = datamodelValue.Id,
+                    RowId = datamodelValue.RowId,
+                    ColumnId = datamodelValue.ColumnId,
+                    Value = datamodelValue.Value,
+                    IsBlocked = datamodelValue.IsBlocked,
+                    ResponsibleUserId = datamodelValue.ResponsibleUserId,
+                    Files = filestoshow,
+                });
             }
             return response;
         }
@@ -1112,16 +1087,24 @@ namespace ESG.Application.Services
         public async Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId)
         {
             var responsedto = new GetDataModelValuesForAssigningUsersResponseDto();
+            var datapointsweneed = new List<long>();
             var isdefaultModel = await _unitOfWork.DataModelRepo.VerifyIsDefaultModel(ModelId);
             var dimensionTypes = await _unitOfWork.DataModelRepo.GetModelDimensionTypesByModelDimTypeId(ModelId, organizationId);
             IEnumerable<(long Id, string Name, long TypeId)> dimensionValues = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByModelDimTypeId(
                 dimensionTypes.Select(a => (long?)a.Id).ToList());
             var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
-            var datapoints = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(hierarchyId);
-            var modeldatapoints = await _unitOfWork.HierarchyRepo.GetDatapointsLinkedToModelByORganizationId(organizationId);
-            var datapointsWeneed = datapoints.Except(modeldatapoints);
-            var defaultDatamodelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByModelIdAndDatapoints(ModelId, datapointsWeneed, organizationId);
-            var dataModelValues = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(ModelId, organizationId);
+            if (isdefaultModel)
+            {
+                var datapoints = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(hierarchyId);
+                var organizationModeldatapoints = await _unitOfWork.HierarchyRepo.GetDatapointsLinkedToModelByOrganizationId(organizationId);
+                datapointsweneed = datapoints.Except(organizationModeldatapoints).ToList();
+            }
+            else if (!isdefaultModel)
+            {
+                var modeldatapoints = await _unitOfWork.DataModelRepo.GetDatapointsLinkedToDataModel(ModelId, organizationId);
+                datapointsweneed = modeldatapoints.Select(a => a.DatapointValuesId).ToList();
+            }
+            var dataModelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByModelIdAndDatapoints(ModelId, datapointsweneed, organizationId);
             var modelDimenstionTypesWithNames = new List<DataModelDimenstionTypesWithNamesForHeaders>();
             var modelDatamodelValues = new List<DataModelValuesForAssigning>();
 
@@ -1136,198 +1119,96 @@ namespace ESG.Application.Services
             }
             responsedto.DataModelDimenstionTypesWithNames = modelDimenstionTypesWithNames;
 
-            if (isdefaultModel == true) //if that is defult model
+            foreach (var datamodelvalue in dataModelValues)
             {
-                foreach (var datamodelvalue in defaultDatamodelValues)
+                var dimensionsdto = new List<DimensionalCombinationForDatapoint>();
+                var rowDto = dimensionValues
+                    .Where(a => a.Id == datamodelvalue.RowId)
+                    .Select(a => new DimensionalCombinationForDatapoint
+                    {
+                        TypeId = a.TypeId,
+                        ValueId = a.Id,
+                        ValueName = a.Name
+                    })
+                    .FirstOrDefault();
+                var colDto = new DimensionalCombinationForDatapoint();
+                if (datamodelvalue?.ColumnId != null && dimensionValues != null)
                 {
-                    var dimensionsdto = new List<DimensionalCombinationForDatapoint>();
-                    var rowDto = dimensionValues
-                        .Where(a => a.Id == datamodelvalue.RowId)
-                        .Select(a => new DimensionalCombinationForDatapoint
-                        {
-                            TypeId = a.TypeId,
-                            ValueId = a.Id,
-                            ValueName = a.Name
-                        })
-                        .FirstOrDefault();
-                    var colDto = new DimensionalCombinationForDatapoint();
-                    if (datamodelvalue?.ColumnId != null && dimensionValues != null)
+                    colDto = dimensionValues
+                    .Where(a => a.Id == datamodelvalue.ColumnId)
+                    .Select(a => new DimensionalCombinationForDatapoint
                     {
-                        colDto = dimensionValues
-                        .Where(a => a.Id == datamodelvalue.ColumnId)
-                        .Select(a => new DimensionalCombinationForDatapoint
-                        {
-                            TypeId = a.TypeId,
-                            ValueId = a.Id,
-                            ValueName = a.Name
-                        })
-                        .FirstOrDefault() ?? new DimensionalCombinationForDatapoint();
-                    }
-                    var filterDtos = new List<DimensionalCombinationForDatapoint>();
-                    if (datamodelvalue?.Combination?.SampleModelFilterCombinationValues != null && dimensionValues != null)
-                    {
-                        filterDtos = datamodelvalue.Combination.SampleModelFilterCombinationValues
-                            .Where(filterId => dimensionValues.Any(a => a.Id == filterId.DimensionsId))
-                            .Select(filterId => dimensionValues.FirstOrDefault(a => a.Id == filterId.DimensionsId))
-                            .Select(filter => new DimensionalCombinationForDatapoint
-                            {
-                                TypeId = filter.TypeId,
-                                ValueId = filter.Id,
-                                ValueName = filter.Name,
-                            })
-                            .ToList() ?? new List<DimensionalCombinationForDatapoint>();
-                    }
-                    if (rowDto != null) dimensionsdto.Add(rowDto);
-                    if (colDto != null && (colDto.TypeId != null && colDto.TypeId != 0 && colDto.ValueId != null && colDto.ValueId != 0))
-                    {
-                        dimensionsdto.Add(colDto);
-                    }
-                    if (filterDtos != null && filterDtos.Any(f => f.TypeId != null && f.TypeId != 0 && f.ValueId != null && f.ValueId != 0))
-                    {
-                        dimensionsdto.AddRange(filterDtos);
-                    }
-                    var modelvalue = new DataModelValuesForAssigning
-                    {
-                        DataModelValueId = datamodelvalue.Id,
-                        DatapointId = datamodelvalue.DataPointValuesId,
-                        DatapointName = datamodelvalue.DataPointValues.ShortText ?? string.Empty,
-                        DatapointCode = datamodelvalue.DataPointValues.Code ?? string.Empty,
-                        DimensionalCombinationForDatapoint = dimensionsdto,
-                        IsBlocked = datamodelvalue.IsBlocked,
-                        Accountable = datamodelvalue.AccountableUserId,
-                        Responsible = datamodelvalue.ResponsibleUserId
-                    };
-                    modelDatamodelValues.Add(modelvalue);
+                        TypeId = a.TypeId,
+                        ValueId = a.Id,
+                        ValueName = a.Name
+                    })
+                    .FirstOrDefault() ?? new DimensionalCombinationForDatapoint();
                 }
-                responsedto.DataModelValuesForAssigning = modelDatamodelValues;
-            }
-            if (isdefaultModel == false) //if that is not a default model
-            {
-                foreach (var datamodelvalue in dataModelValues)
+                var filterDtos = new List<DimensionalCombinationForDatapoint>();
+                if (datamodelvalue?.Combination?.SampleModelFilterCombinationValues != null && dimensionValues != null)
                 {
-                    var dimensionsdto = new List<DimensionalCombinationForDatapoint>();
-                    var rowDto = dimensionValues
-                        .Where(a => a.Id == datamodelvalue.RowId)
-                        .Select(a => new DimensionalCombinationForDatapoint
+                    filterDtos = datamodelvalue.Combination.SampleModelFilterCombinationValues
+                        .Where(filterId => dimensionValues.Any(a => a.Id == filterId.DimensionsId))
+                        .Select(filterId => dimensionValues.FirstOrDefault(a => a.Id == filterId.DimensionsId))
+                        //.Where(filter => filter.Id != null || filter.Id != 0) 
+                        .Select(filter => new DimensionalCombinationForDatapoint
                         {
-                            TypeId = a.TypeId,
-                            ValueId = a.Id,
-                            ValueName = a.Name
+                            TypeId = filter.TypeId,
+                            ValueId = filter.Id,
+                            ValueName = filter.Name,
                         })
-                        .FirstOrDefault();
-                    var colDto = new DimensionalCombinationForDatapoint();
-                    if (datamodelvalue?.ColumnId != null && dimensionValues != null)
-                    {
-                        colDto = dimensionValues
-                        .Where(a => a.Id == datamodelvalue.ColumnId)
-                        .Select(a => new DimensionalCombinationForDatapoint
-                        {
-                            TypeId = a.TypeId,
-                            ValueId = a.Id,
-                            ValueName = a.Name
-                        })
-                        .FirstOrDefault() ?? new DimensionalCombinationForDatapoint();
-                    }
-                    var filterDtos = new List<DimensionalCombinationForDatapoint>();
-                    if (datamodelvalue?.Combination?.SampleModelFilterCombinationValues != null && dimensionValues != null)
-                    {
-                        filterDtos = datamodelvalue.Combination.SampleModelFilterCombinationValues
-                            .Where(filterId => dimensionValues.Any(a => a.Id == filterId.DimensionsId))
-                            .Select(filterId => dimensionValues.FirstOrDefault(a => a.Id == filterId.DimensionsId))
-                            //.Where(filter => filter.Id != null || filter.Id != 0) 
-                            .Select(filter => new DimensionalCombinationForDatapoint
-                            {
-                                TypeId = filter.TypeId,
-                                ValueId = filter.Id,
-                                ValueName = filter.Name,
-                            })
-                            .ToList() ?? new List<DimensionalCombinationForDatapoint>();
-                    }
-                    if (rowDto != null) dimensionsdto.Add(rowDto);
-                    if (colDto != null && (colDto.TypeId != null && colDto.TypeId != 0 && colDto.ValueId != null && colDto.ValueId != 0))
-                    {
-                        dimensionsdto.Add(colDto);
-                    }
-                    if (filterDtos != null && filterDtos.Any(f => f.TypeId != null && f.TypeId != 0 && f.ValueId != null && f.ValueId != 0))
-                    {
-                        dimensionsdto.AddRange(filterDtos);
-                    }
-                    var modelvalue = new DataModelValuesForAssigning
-                    {
-                        DataModelValueId = datamodelvalue.Id,
-                        DatapointId = datamodelvalue.DataPointValuesId,
-                        DatapointName = datamodelvalue.DataPointValues.ShortText ?? string.Empty,
-                        DatapointCode = datamodelvalue.DataPointValues.Code ?? string.Empty,
-                        DimensionalCombinationForDatapoint = dimensionsdto,
-                        IsBlocked = datamodelvalue.IsBlocked,
-                        Accountable = datamodelvalue.AccountableUserId,
-                        Responsible = datamodelvalue.ResponsibleUserId
-                    };
-                    modelDatamodelValues.Add(modelvalue);
+                        .ToList() ?? new List<DimensionalCombinationForDatapoint>();
                 }
-                responsedto.DataModelValuesForAssigning = modelDatamodelValues;
+                if (rowDto != null) dimensionsdto.Add(rowDto);
+                if (colDto != null && (colDto.TypeId != null && colDto.TypeId != 0 && colDto.ValueId != null && colDto.ValueId != 0))
+                {
+                    dimensionsdto.Add(colDto);
+                }
+                if (filterDtos != null && filterDtos.Any(f => f.TypeId != null && f.TypeId != 0 && f.ValueId != null && f.ValueId != 0))
+                {
+                    dimensionsdto.AddRange(filterDtos);
+                }
+                var modelvalue = new DataModelValuesForAssigning
+                {
+                    DataModelValueId = datamodelvalue.Id,
+                    DatapointId = datamodelvalue.DataPointValuesId,
+                    DatapointName = datamodelvalue.DataPointValues.ShortText ?? string.Empty,
+                    DatapointCode = datamodelvalue.DataPointValues.Code ?? string.Empty,
+                    DimensionalCombinationForDatapoint = dimensionsdto,
+                    IsBlocked = datamodelvalue.IsBlocked,
+                    Accountable = datamodelvalue.AccountableUserId,
+                    Responsible = datamodelvalue.ResponsibleUserId
+                };
+                modelDatamodelValues.Add(modelvalue);
             }
+            responsedto.DataModelValuesForAssigning = modelDatamodelValues;
             return responsedto;
         }
 
         public async Task AssignUsersToDataModelValues(AssigningDataModelValuesToUsersRequestDto assigningDataModelValuesToUsersRequestDto)
         {
             var model = await _unitOfWork.DataModelRepo.GetDataModelById(assigningDataModelValuesToUsersRequestDto.ModelId);
-            if (model.IsDefaultModel == true)
+            var updatedDataModelValues = new List<DataModelValue>();
+            var createdDataModelValues = new List<DataModelValue>();
+            var dataModelValues = await _unitOfWork.DataModelRepo.
+                GetDataModelValuesById(assigningDataModelValuesToUsersRequestDto.AssigningUsersDtos.Select(a => a.DataModelValueId).ToList(), assigningDataModelValuesToUsersRequestDto.ModelId, assigningDataModelValuesToUsersRequestDto.OrganizationId);
+            foreach (var value in assigningDataModelValuesToUsersRequestDto.AssigningUsersDtos)
             {
-                var updatedDataModelValues = new List<DataModelValue>();
-                var createdDataModelValues = new List<DataModelValue>();
-                var dataModelValues = await _unitOfWork.DataModelRepo.
-                    GetDefaultDataModelValuesById(assigningDataModelValuesToUsersRequestDto.AssigningUsersDtos.Select(a => a.DataModelValueId).ToList());
-
-                foreach (var value in assigningDataModelValuesToUsersRequestDto.AssigningUsersDtos)
+                if (value.DataModelValueId > 1)
                 {
-
-                    if (value.DataModelValueId > 1)
-                    {
-                        var datamodelvalue = dataModelValues.Where(a => a.Id == value.DataModelValueId).FirstOrDefault();
-                        if (datamodelvalue == null)
-                        {
-                            throw new SystemException($"there are no row with ids provided --- {value.DataModelValueId}");
-                        }
-                        datamodelvalue.AccountableUserId = value.AccountableUserId;
-                        datamodelvalue.ResponsibleUserId = value.ResponsibleUserId;
-                        datamodelvalue.IsBlocked = value.IsBlocked;
-                        datamodelvalue.Inform = value.Inform;
-                        datamodelvalue.Consult = value.Consult;
-                        updatedDataModelValues.Add(datamodelvalue);
-                    }
-                }
-                if (updatedDataModelValues.Count > 0)
-                {
-                    await _unitOfWork.Repository<DataModelValue>().UpdateRange(updatedDataModelValues);
+                    var datamodelvalue = dataModelValues.Where(a => a.Id == value.DataModelValueId).FirstOrDefault();
+                    datamodelvalue.AccountableUserId = value.AccountableUserId;
+                    datamodelvalue.ResponsibleUserId = value.ResponsibleUserId;
+                    datamodelvalue.IsBlocked = value.IsBlocked;
+                    datamodelvalue.Inform = value.Inform;
+                    datamodelvalue.Consult = value.Consult;
+                    updatedDataModelValues.Add(datamodelvalue);
                 }
             }
-            else
+            if (updatedDataModelValues.Count > 0)
             {
-                var updatedDataModelValues = new List<DataModelValue>();
-                var createdDataModelValues = new List<DataModelValue>();
-                var dataModelValues = await _unitOfWork.DataModelRepo.
-                    GetDataModelValuesById(assigningDataModelValuesToUsersRequestDto.AssigningUsersDtos.Select(a => a.DataModelValueId).ToList(), assigningDataModelValuesToUsersRequestDto.ModelId, assigningDataModelValuesToUsersRequestDto.OrganizationId);
-                foreach (var value in assigningDataModelValuesToUsersRequestDto.AssigningUsersDtos)
-                {
-                    if (value.DataModelValueId > 1)
-                    {
-                        var datamodelvalue = dataModelValues.Where(a => a.Id == value.DataModelValueId).FirstOrDefault();
-                        datamodelvalue.AccountableUserId = value.AccountableUserId;
-                        datamodelvalue.ResponsibleUserId = value.ResponsibleUserId;
-                        datamodelvalue.IsBlocked = value.IsBlocked;
-                        datamodelvalue.Inform = value.Inform;
-                        datamodelvalue.Consult = value.Consult;
-                        updatedDataModelValues.Add(datamodelvalue);
-                    }
-                }
-                if (updatedDataModelValues.Count > 0)
-                {
-                    await _unitOfWork.Repository<DataModelValue>().UpdateRange(updatedDataModelValues);
-                }
+                await _unitOfWork.Repository<DataModelValue>().UpdateRange(updatedDataModelValues);
             }
-
             await _unitOfWork.SaveAsync();
         }
 

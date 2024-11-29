@@ -22,7 +22,11 @@ namespace ESG.API.Controllers
             try
             {
                 await _dataModelService.CreateDataModel(dataModelCreateRequestDto);
-                return Ok(new { error = false, errorMsg = "" });
+                if(dataModelCreateRequestDto.DataModelId > 0)
+                {
+                    return Ok(new { error = false, errorMsg = "2" });
+                }
+                return Ok(new { error = false, errorMsg = "1" });
                 
             }
             catch (Exception ex)

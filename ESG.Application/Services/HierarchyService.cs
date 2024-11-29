@@ -58,15 +58,15 @@ namespace ESG.Application.Services
                     }
                     if (toRemove.Any())
                     {
-                        var datamodelvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByOrganizationId(request.OrganizationId);
-                        var filteredToNotRemove = toRemove
-                            .Where(item => !datamodelvalues
-                                .Any(dmValue => dmValue.DatapointId == item.DataPointValuesId && string.IsNullOrEmpty(dmValue.Value)))
-                            .ToList();
-                        if (filteredToNotRemove.Any())
-                        {
-                            throw new SystemException($"These datapoints are having values in datamodelvalues so you cannot delete them { filteredToNotRemove }");
-                        }
+                        //var datamodelvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByOrganizationId(request.OrganizationId);
+                        //var filteredToNotRemove = toRemove
+                        //    .Where(item => !datamodelvalues
+                        //        .Any(dmValue => dmValue.DatapointId == item.DataPointValuesId && string.IsNullOrEmpty(dmValue.Value)))
+                        //    .ToList();
+                        //if (filteredToNotRemove.Any())
+                        //{
+                        //    throw new SystemException($"These datapoints are having values in datamodelvalues so you cannot delete them { filteredToNotRemove }");
+                        //}
                         await _unitOfWork.Repository<Hierarchy>().RemoveRangeAsync(toRemove);
                     }
 
@@ -405,6 +405,12 @@ namespace ESG.Application.Services
                 }
             }
             return mainDto;
+        }
+
+        public async Task<bool> CheckDataModelValueOfDatapoint(long datapointId, long organizationId)
+        {
+            var havingValue = await _unitOfWork.DataModelRepo.IsDataPointHavinganyValue(datapointId, organizationId);
+            return havingValue;
         }
     }
 }

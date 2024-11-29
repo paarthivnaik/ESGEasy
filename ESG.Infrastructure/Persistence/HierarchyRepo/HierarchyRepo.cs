@@ -38,7 +38,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
              return hierarchyId;
             
         }
-        public async Task<IEnumerable<long>> GetDatapointsByHierarchyId(long? hierarchyId)
+        public async Task<List<long>> GetDatapointsByHierarchyId(long? hierarchyId)
         {
             var datapointIds = await _context.Hierarchies
                     .AsNoTracking()
@@ -48,11 +48,11 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
 
             return datapointIds;
         }
-        public async Task<IEnumerable<long>> GetDatapointsLinkedToModelByORganizationId(long? organizationId)
+        public async Task<List<long>> GetDatapointsLinkedToModelByOrganizationId(long? organizationId)
         {
             var datapointIds = await _context.DataModels
                 .AsNoTracking()
-                .Where(t => t.OrganizationId == organizationId)
+                .Where(t => t.OrganizationId == organizationId && t.IsDefaultModel == false)
                 .SelectMany(t => t.ModelDatapoints) 
                 .Select(mdp => mdp.DatapointValuesId) 
                 .ToListAsync();

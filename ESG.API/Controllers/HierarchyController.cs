@@ -22,7 +22,7 @@ namespace ESG.API.Controllers
             _hierarchyService = hierarchyService;
         }
         [HttpPost("CreateHierarchy")]
-        public async Task<IActionResult> Post([FromBody] HierarchyCreateRequestDto value)
+        public async Task<IActionResult> AddHierarchy([FromBody] HierarchyCreateRequestDto value)
         {
             try
             {
@@ -33,6 +33,14 @@ namespace ESG.API.Controllers
             {
                 return Ok(new { error = true, errorMsg = ex.Message });
             }
+        }
+        [HttpGet("CheckDataModelValueOfDatapoint")]
+        public async Task<bool> CheckDataModelValueOfDatapoint(long datapointId, long organizationId)
+        {
+            bool havingValues = await _hierarchyService.CheckDataModelValueOfDatapoint(datapointId, organizationId);
+            if (havingValues)
+                return true;
+            return false;
         }
         [HttpGet("GetHierarchy")]
         /// <summary>

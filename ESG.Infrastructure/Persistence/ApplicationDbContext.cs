@@ -145,7 +145,7 @@ namespace ESG.Infrastructure.Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
             CurrencySeed.Seed(modelBuilder);
-            DataPointSeed.Seed(modelBuilder);
+            //DataPointSeed.Seed(modelBuilder);
             DimensionSeed.Seed(modelBuilder);
             DisclosureRequirementSeed.Seed(modelBuilder);
             LanguageSeed.Seed(modelBuilder);
@@ -158,8 +158,8 @@ namespace ESG.Infrastructure.Persistence
             UnitOfMeasureSeed.Seed(modelBuilder);
             UserRolesSeed.Seed(modelBuilder);
             UserSeed.Seed(modelBuilder);
-            DataModelSeeder.Seed(modelBuilder);
-            HierarchySeed.Seed(modelBuilder);
+            //DataModelSeeder.Seed(modelBuilder);
+            //HierarchySeed.Seed(modelBuilder);
         }
 
     }
