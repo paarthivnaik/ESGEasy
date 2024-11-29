@@ -144,20 +144,20 @@ namespace ESG.Infrastructure.Persistence
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
+            TenantSeed.Seed(modelBuilder);
             CurrencySeed.Seed(modelBuilder);
-            //DataPointSeed.Seed(modelBuilder);
-            DimensionSeed.Seed(modelBuilder);
-            DisclosureRequirementSeed.Seed(modelBuilder);
             LanguageSeed.Seed(modelBuilder);
             OrganizationSeed.Seed(modelBuilder);
+            UserSeed.Seed(modelBuilder);
             OrganizationUsersSeed.Seed(modelBuilder);
             RoleSeed.Seed(modelBuilder);
-            StandardSeed.Seed(modelBuilder);
-            TenantSeed.Seed(modelBuilder);
-            TopicSeed.Seed(modelBuilder);
-            UnitOfMeasureSeed.Seed(modelBuilder);
             UserRolesSeed.Seed(modelBuilder);
-            UserSeed.Seed(modelBuilder);
+            TopicSeed.Seed(modelBuilder);
+            StandardSeed.Seed(modelBuilder);
+            DisclosureRequirementSeed.Seed(modelBuilder);
+            DimensionSeed.Seed(modelBuilder);
+            UnitOfMeasureSeed.Seed(modelBuilder);
+            //DataPointSeed.Seed(modelBuilder);
             //DataModelSeeder.Seed(modelBuilder);
             //HierarchySeed.Seed(modelBuilder);
         }

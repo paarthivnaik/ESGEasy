@@ -259,20 +259,20 @@ namespace ESG.Application.Services
                 var topicDtos = topics.Select(t => new TopicDto
                 {
                     Id = t.Id,
-                    Name = t.ShortText,
+                    ShortText = t.ShortText,
                 }).ToList();
 
                 var subTopicDtos = subTopics.Select(st => new SubTopicDto
                 {
                     Id = st.Id,
-                    Name = st.ShortText,
+                    ShortText = st.ShortText,
                     TopicId = st.TopicId
                 }).ToList();
 
                 var disclosureRequirementDtos = disclosureRequirements.Select(dr => new DisclosureRequirementDto
                 {
                     Id = dr.Id,
-                    Name = dr.ShortText,
+                    ShortText = dr.ShortText,
                     SubTopicId = (long)dr.StandardId,
                 }).ToList();
 

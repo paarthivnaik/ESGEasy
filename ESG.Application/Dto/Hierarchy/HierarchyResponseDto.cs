@@ -15,20 +15,20 @@ namespace ESG.Application.Dto.Hierarchy
         public class TopicDto
         {
             public long Id { get; set; }
-            public string Name { get; set; }
+            public string ShortText { get; set; }
         }
 
         public class SubTopicDto
         {
             public long Id { get; set; }
-            public string Name { get; set; }
+            public string ShortText { get; set; }
             public long TopicId { get; set; }
         }
 
         public class DisclosureRequirementDto
         {
             public long Id { get; set; }
-            public string Name { get; set; }
+            public string ShortText { get; set; }
             public long SubTopicId { get; set; }
         }
 
