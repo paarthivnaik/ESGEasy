@@ -34,14 +34,20 @@ namespace ESG.API.Controllers
                 return Ok(new { error = true, errorMsg = ex.Message });
             }
         }
-        [HttpGet("CheckDataModelValueOfDatapoint")]
-        public async Task<bool> CheckDataModelValueOfDatapoint(long datapointId, long organizationId)
+        [HttpPost("CheckDataModelValueOfDatapoint")]
+        public async Task<IActionResult> CheckDataModelValueOfDatapoint([FromBody] CheckDataModelValueOfDatapointRegDto requestDto)
         {
-            bool havingValues = await _hierarchyService.CheckDataModelValueOfDatapoint(datapointId, organizationId);
-            if (havingValues)
-                return true;
-            return false;
+            try
+            {
+                bool hasValues = await _hierarchyService.CheckDataModelValueOfDatapoint(requestDto);
+                return Ok(new {hasValue = hasValues});
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Success = false, Message = "An error occurred.", Details = ex.Message });
+            }
         }
+
         [HttpGet("GetHierarchy")]
         /// <summary>
         /// when we pass table type 1 we need to get topic data

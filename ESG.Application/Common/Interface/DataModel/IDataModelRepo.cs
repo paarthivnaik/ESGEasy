@@ -1,5 +1,5 @@
 ﻿using ESG.Application.Dto.DataModel;
-
+using ESG.Application.Dto.Hierarchy;
 using ESG.Domain.Enum;
 using ESG.Domain.Models;
 using System;
@@ -60,6 +60,6 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<DataModelValue>> DataModelValuesByModelId(long dataModelId);
         Task<ESG.Domain.Models.DataModel> GetDatamodelLinkedToDatapointByIdAndOrganizationId(long datapointId, long organizationId);
         Task<List<long?>> GetDataModelValuesByDatapointIDsModelIdOrgId(List<long> datapoints, long modelId, long organizationId);
-        Task<bool> IsDataPointHavinganyValue(long datapoint, long organizationId);
+        Task<bool> IsDataPointHavinganyValue(CheckDataModelValueOfDatapointRegDto requestdto);
     }
 }

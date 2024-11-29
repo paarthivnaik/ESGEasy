@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using ESG.Application.Dto.Hierarchy;
 
 namespace ESG.Infrastructure.Persistence.DataModel
 {
@@ -616,13 +617,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return datamodel;
         }
 
-        public async Task<bool> IsDataPointHavinganyValue(long datapoint, long organizationId)
+        public async Task<bool> IsDataPointHavinganyValue(CheckDataModelValueOfDatapointRegDto requestdto)
         {
             var hasValue = await _context.DataModelValues
                 .AsNoTracking()
                 .AnyAsync(a =>
-                    a.DataModel.OrganizationId == organizationId &&
-                    a.DataPointValuesId == datapoint &&
+                    a.DataModel.OrganizationId == requestdto.OrganizationId &&
+                    requestdto.DatapointIds.Contains(a.DataPointValuesId.Value) &&
                     a.Value != null);
             return hasValue;
         }

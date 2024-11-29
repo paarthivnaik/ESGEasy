@@ -11,7 +11,7 @@ namespace ESG.Application.Services.Interfaces
     public interface IHierarchyService
     {
         Task AddHierarchy(HierarchyCreateRequestDto request);
-        Task<bool> CheckDataModelValueOfDatapoint(long datapointId, long organizationId);
+        Task<bool> CheckDataModelValueOfDatapoint(CheckDataModelValueOfDatapointRegDto requsetdto);
         Task<IEnumerable<HeirarchyDataResponseDto>> GetMethod(int tableType, long? Id, long? organizationId);
         Task<HierarchyResponseDto> GetHierarchyByOrganizationId(long organizationId);
         Task<List<GetDatapointsAssignedToUserResponseDto>> GetDatapointsAssignedToUser(long organizationId, long userId);

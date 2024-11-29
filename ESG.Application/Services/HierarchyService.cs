@@ -407,9 +407,10 @@ namespace ESG.Application.Services
             return mainDto;
         }
 
-        public async Task<bool> CheckDataModelValueOfDatapoint(long datapointId, long organizationId)
+        public async Task<bool> CheckDataModelValueOfDatapoint(CheckDataModelValueOfDatapointRegDto requestdto)
         {
-            var havingValue = await _unitOfWork.DataModelRepo.IsDataPointHavinganyValue(datapointId, organizationId);
+            
+            var havingValue = await _unitOfWork.DataModelRepo.IsDataPointHavinganyValue(requestdto);
             return havingValue;
         }
     }
