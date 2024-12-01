@@ -61,5 +61,6 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<ESG.Domain.Models.DataModel> GetDatamodelLinkedToDatapointByIdAndOrganizationId(long datapointId, long organizationId);
         Task<List<long?>> GetDataModelValuesByDatapointIDsModelIdOrgId(List<long> datapoints, long modelId, long organizationId);
         Task<bool> IsDataPointHavinganyValue(CheckDataModelValueOfDatapointRegDto requestdto);
+        Task<bool> IsDataPointIsAssignedToUser(long modelId, long organizationId);
     }
 }

@@ -124,21 +124,36 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
         }
         public async Task<IEnumerable<long>> GetRemainingDatapointsByOrganizationId(long organizationId)
         {
-            var remainingDatapoints = await _context.Hierarchies
+            var remainingDatapoints = new List<long>();
+                //= await _context.Hierarchies
+                //.AsNoTracking()
+                //.Where(h => h.HierarchyId == _context.OrganizationHeirarchies
+                //    .Where(oh => oh.OrganizationId == organizationId)
+                //    .Select(oh => oh.HierarchyId)
+                //    .FirstOrDefault())
+                //.Select(h => h.DataPointValuesId)
+                //.Except(
+                //    _context.DataModels
+                //        .Where(dm => dm.OrganizationId == organizationId && dm.IsDefaultModel == false)
+                //        .SelectMany(dm => dm.ModelDatapoints)
+                //        .Select(mdp => mdp.DatapointValuesId)
+                //)
+                //.ToListAsync();
+            var hierarchyId = await _context.OrganizationHeirarchies
                 .AsNoTracking()
-                .Where(h => h.HierarchyId == _context.OrganizationHeirarchies
-                    .Where(oh => oh.OrganizationId == organizationId)
-                    .Select(oh => oh.HierarchyId)
-                    .FirstOrDefault())
-                .Select(h => h.DataPointValuesId)
-                .Except(
-                    _context.DataModels
-                        .Where(dm => dm.OrganizationId == organizationId)
-                        .SelectMany(dm => dm.ModelDatapoints)
-                        .Select(mdp => mdp.DatapointValuesId)
-                )
+                .Where(a => a.OrganizationId == organizationId)
+                .Select(a => a.HierarchyId)
+                .FirstOrDefaultAsync();
+            var datapoints = await _context.Hierarchies
+                .AsNoTracking()
+                .Where(a => a.HierarchyId == hierarchyId)
+                .Select(a => a.DataPointValuesId)
                 .ToListAsync();
-
+            var modelDatapoints = await _context.DataModels
+                        .Where(dm => dm.OrganizationId == organizationId && dm.IsDefaultModel == false)
+                        .SelectMany(dm => dm.ModelDatapoints)
+                        .Select(mdp => mdp.DatapointValuesId).ToListAsync();
+            remainingDatapoints = (List<long>)datapoints.Except(modelDatapoints);
             return remainingDatapoints;
         }
 

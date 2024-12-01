@@ -278,7 +278,7 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasOne(d => d.DatapointType).WithMany(p => p.DatapointTypeTranslations).HasForeignKey(d => d.DatapointTypeId);
 
-                entity.HasOne(d => d.DatapointTypeNavigation).WithMany(p => p.DatapointTypeTranslations).HasForeignKey(d => d.DatapointTypeId);
+                //entity.HasOne(d => d.DatapointTypeNavigation).WithMany(p => p.DatapointTypeTranslations).HasForeignKey(d => d.DatapointTypeId);
 
                 entity.HasOne(d => d.Language).WithMany(p => p.DatapointTypeTranslations).HasForeignKey(d => d.LanguageId);
             });

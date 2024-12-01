@@ -50,7 +50,7 @@ public partial class DataPointValue
 
     public virtual DataPointType? DatapointType { get; set; }
 
-    public virtual ICollection<DatapointTypeTranslation> DatapointTypeTranslations { get; set; } = new List<DatapointTypeTranslation>();
+    //public virtual ICollection<DatapointTypeTranslation> DatapointTypeTranslations { get; set; } = new List<DatapointTypeTranslation>();
 
     public virtual ICollection<DatapointValueTranslation> DatapointValueTranslations { get; set; } = new List<DatapointValueTranslation>();
 

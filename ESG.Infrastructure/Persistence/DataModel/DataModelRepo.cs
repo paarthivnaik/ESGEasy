@@ -627,5 +627,15 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     a.Value != null);
             return hasValue;
         }
+        public async Task<bool> IsDataPointIsAssignedToUser(long modelId, long organizationId)
+        {
+            var hasValue = await _context.DataModelValues
+                .AsNoTracking()
+                .AnyAsync(a =>
+                    a.DataModel.OrganizationId == organizationId &&
+                    a.DataModelId == modelId &&
+                    a.ResponsibleUserId != null);
+            return hasValue;
+        }
     }
 }

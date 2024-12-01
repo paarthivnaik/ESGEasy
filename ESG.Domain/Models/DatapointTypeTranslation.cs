@@ -28,7 +28,7 @@ public partial class DatapointTypeTranslation
 
     public virtual DataPointType DatapointType { get; set; } = null!;
 
-    public virtual DataPointValue DatapointTypeNavigation { get; set; } = null!;
+    //public virtual DataPointValue DatapointTypeNavigation { get; set; } = null!;
 
     public virtual Language Language { get; set; } = null!;
 }

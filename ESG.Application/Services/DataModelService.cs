@@ -677,12 +677,14 @@ namespace ESG.Application.Services
                 {
                     var viewTypes = await _unitOfWork.DataModelRepo.GetConfigurationViewTypesForDataModel(datamodel.Id);
                     var datapoints = await _unitOfWork.DataModelRepo.GetDatapointsLinkedToDataModelWithName(datamodel.Id, organizationId);
+                    var editable = await _unitOfWork.DataModelRepo.IsDataPointIsAssignedToUser(datamodel.Id, organizationId);
                     var response = new DataModelsResponseDto
                     {
                         Id = datamodel.Id,
                         Name = datamodel.ModelName,
                         Purpose = datamodel.Purpose,
                         IsDefault = datamodel.IsDefaultModel,
+                        IsEditable = !editable,
                         Datapoints = datapoints,
                         FactView = null,
                         NarrativeView = null

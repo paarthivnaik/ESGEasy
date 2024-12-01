@@ -157,7 +157,7 @@ namespace ESG.Infrastructure.Persistence
             DisclosureRequirementSeed.Seed(modelBuilder);
             DimensionSeed.Seed(modelBuilder);
             UnitOfMeasureSeed.Seed(modelBuilder);
-            //DataPointSeed.Seed(modelBuilder);
+            DataPointSeed.Seed(modelBuilder);
             //DataModelSeeder.Seed(modelBuilder);
             //HierarchySeed.Seed(modelBuilder);
         }

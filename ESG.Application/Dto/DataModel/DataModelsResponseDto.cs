@@ -12,6 +12,7 @@ namespace ESG.Application.Dto.DataModel
         public string Name { get; set; }
         public string Purpose { get; set; }
         public bool? IsDefault { get; set; }
+        public bool? IsEditable { get; set; }
         public List<DatapointsDto>? Datapoints { get; set; }
         public FactViewDto? FactView { get; set; } 
         public NarrativeViewDto? NarrativeView { get; set; }
