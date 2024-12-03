@@ -198,21 +198,23 @@ namespace ESG.Application.Services
                         .ToList();
         }
 
-        public async Task<IEnumerable<HeirarchyDataResponseDto>> GetMethod(int tableType, long? Id, long? organizationId)
+        public async Task<IEnumerable<HeirarchyDataResponseDto>> GetMethod(int tableType, long? Id, long? organizationId, long? languageId)
         {
             IEnumerable<HeirarchyDataResponseDto> result = Enumerable.Empty<HeirarchyDataResponseDto>(); ;
-
+            if (languageId == null)
+                languageId = 1;
             switch (tableType)
             {
                 case 1: // topic
-                        var topics = await _unitOfWork.HierarchyRepo.GetTopics();
+                        var topics = await _unitOfWork.Repository<Topic>().GetAll(a => a.LanguageId == languageId);
                         return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(topics);
                     break;
 
                 case 2: // standard
                     if (Id != null)
                     {
-                        var standard = await _unitOfWork.HierarchyRepo.GetStandards(Id);
+                        //var standard = await _unitOfWork.HierarchyRepo.GetStandards(Id);
+                        var standard = await _unitOfWork.Repository<Standard>().GetAll(a => a.TopicId == Id && a.LanguageId == languageId);
                         return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(standard);
                     }
                     break;
@@ -220,7 +222,8 @@ namespace ESG.Application.Services
                 case 3: // disclosurerequiremnets
                     if (Id != null)
                     {
-                        var disreq = await _unitOfWork.HierarchyRepo.GetDisclosureRequirements(Id);
+                        //var disreq = await _unitOfWork.HierarchyRepo.GetDisclosureRequirements(Id);
+                        var disreq = await _unitOfWork.Repository<DisclosureRequirement>().GetAll(a => a.StandardId == Id && a.LanguageId == languageId);
                         return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(disreq);
                     }
                     break;

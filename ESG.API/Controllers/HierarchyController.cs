@@ -58,9 +58,9 @@ namespace ESG.API.Controllers
         /// <param name="tableType">1- Topic, 2-Standard, 3-DisclousureRequirement, 4- Datapoint</param>
         /// <param name="Id">this DatapointId is tableType foreign key</param>
         /// <returns></returns>
-        public async Task<IEnumerable<HeirarchyDataResponseDto>> GetHeirarchy(int tableType, long? Id, long? organizationId)
+        public async Task<IEnumerable<HeirarchyDataResponseDto>> GetHeirarchy(int tableType, long? Id, long? organizationId, long? languageId)
         {
-            var list = await _hierarchyService.GetMethod(tableType, Id, organizationId);
+            var list = await _hierarchyService.GetMethod(tableType, Id, organizationId, languageId);
             return list;
         }
         [HttpGet("GetHierarchyByOrganizationId")]
