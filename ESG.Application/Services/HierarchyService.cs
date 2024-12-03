@@ -299,7 +299,8 @@ namespace ESG.Application.Services
             var response = new List<DatapointsForDataModelResponseDto>();
             List<long> filteredDatapoints = new List<long>();
             List<long> existingModelDatapoints = new List<long>();
-            
+            if (languageId == null)
+                languageId = 1;
             long? HierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
 
             if (HierarchyId != null)
