@@ -294,7 +294,7 @@ namespace ESG.Application.Services
             return mainDto;
         
         }
-        public async Task<List<DatapointsForDataModelResponseDto>> GetDatapointsForDataModel(long organizationId, long? modelId)
+        public async Task<List<DatapointsForDataModelResponseDto>> GetDatapointsForDataModel(long organizationId, long? modelId, long? languageId)
         {
             var response = new List<DatapointsForDataModelResponseDto>();
             List<long> filteredDatapoints = new List<long>();
@@ -326,11 +326,11 @@ namespace ESG.Application.Services
             var datapointslist = await _unitOfWork.DatapointValueRepo.GetNamesForFilteredIds(filteredDatapoints);
             var disclosureRequirementIds = datapointslist.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
             var disclosureRequirements = (await _unitOfWork.Repository<DisclosureRequirement>()
-                .GetAll(dr => disclosureRequirementIds.Contains(dr.Id))).ToList();
+                .GetAll(dr => disclosureRequirementIds.Contains(dr.Id) && dr.LanguageId == languageId)).ToList();
             var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
-            var subTopics = (await _unitOfWork.Repository<Standard>().GetAll(st => subTopicIds.Contains(st.Id))).ToList();
+            var subTopics = (await _unitOfWork.Repository<Standard>().GetAll(st => subTopicIds.Contains(st.Id) && st.LanguageId == languageId)).ToList();
             var topicIds = subTopics.Select(st => st.TopicId).Distinct().ToList();
-            var topics = (await _unitOfWork.Repository<Topic>().GetAll(t => topicIds.Contains(t.Id))).ToList();
+            var topics = (await _unitOfWork.Repository<Topic>().GetAll(t => topicIds.Contains(t.Id) && t.LanguageId == languageId)).ToList();
 
             foreach (var topic in topics)
             {
