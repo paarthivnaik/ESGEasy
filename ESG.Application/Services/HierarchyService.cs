@@ -239,22 +239,24 @@ namespace ESG.Application.Services
             return result;
         }
 
-        public async Task<HierarchyResponseDto> GetHierarchyByOrganizationId(long organizationId)
+        public async Task<HierarchyResponseDto> GetHierarchyByOrganizationId(long organizationId, long? languageId)
         {
             var mainDto = new HierarchyResponseDto();
             var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
+            if (languageId == null)
+                languageId = 1;
             if (hierarchyId != 0)
             {
                 var datapointIds = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(hierarchyId);
                 var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds.Select(id => (long?)id));
                 var disclosureRequirementIds = datapointdetails.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
                 var disclosureRequirements = await _unitOfWork.Repository<DisclosureRequirement>()
-                    .GetAll(dr => disclosureRequirementIds.Contains(dr.Id));
+                    .GetAll(dr => disclosureRequirementIds.Contains(dr.Id) && dr.LanguageId == languageId);
                 var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
                 var subTopics = await _unitOfWork.Repository<Standard>()
-                    .GetAll(st => subTopicIds.Contains(st.Id));
+                    .GetAll(st => subTopicIds.Contains(st.Id) && st.LanguageId == languageId);
                 var topics = await _unitOfWork.Repository<Topic>()
-                   .GetAll();
+                   .GetAll(a => a.LanguageId == languageId);
 
                 var topicDtos = topics.Select(t => new TopicDto
                 {

@@ -672,8 +672,8 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasOne(d => d.User).WithOne(p => p.UserRole).HasForeignKey<UserRole>(d => d.UserId);
             });
-            modelBuilder.HasSequence("amendments_id_seq");
-            modelBuilder.HasSequence("UploadedFile_Id_seq");
+            //modelBuilder.HasSequence("amendments_id_seq");
+            //modelBuilder.HasSequence("UploadedFile_Id_seq");
 
             OnModelCreatingPartial(modelBuilder);
         }

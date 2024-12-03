@@ -153,7 +153,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
                         .Where(dm => dm.OrganizationId == organizationId && dm.IsDefaultModel == false)
                         .SelectMany(dm => dm.ModelDatapoints)
                         .Select(mdp => mdp.DatapointValuesId).ToListAsync();
-            remainingDatapoints = (List<long>)datapoints.Except(modelDatapoints);
+            remainingDatapoints = datapoints.Except(modelDatapoints).ToList();
             return remainingDatapoints;
         }
 

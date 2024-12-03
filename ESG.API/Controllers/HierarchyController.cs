@@ -64,9 +64,9 @@ namespace ESG.API.Controllers
             return list;
         }
         [HttpGet("GetHierarchyByOrganizationId")]
-        public async Task<HierarchyResponseDto> GetHierarchyByOrganizationId(long organizationId)
+        public async Task<HierarchyResponseDto> GetHierarchyByOrganizationId(long organizationId, long? languageId)
         {
-            var list = await _hierarchyService.GetHierarchyByOrganizationId(organizationId);
+            var list = await _hierarchyService.GetHierarchyByOrganizationId(organizationId, languageId);
             return list;
         }
         [HttpGet("GetDatapointsAssignedToUser")]
