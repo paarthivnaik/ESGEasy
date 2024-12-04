@@ -304,13 +304,14 @@ namespace ESG.Application.Services
             List<long> existingModelDatapoints = new List<long>();
             if (languageId == null)
                 languageId = 1;
-            long? HierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
-
+            long HierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
+            if (HierarchyId <= 0 || HierarchyId == null)
+                return response;
             if (HierarchyId != null)
             {
                 var datapoints = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(HierarchyId);
                 var datamodelDatapoints = await _unitOfWork.DatapointValueRepo.GetModelDatapointsByOrgId(organizationId);
-                var defaultModelDatapoints = await _unitOfWork.DatapointValueRepo.GetDefaultModelDatapointsAndNotUserAssignedByOrgId(organizationId);
+                var defaultModelDatapoints = await _unitOfWork.DatapointValueRepo.GetDataModelValuesDatapointsAndNotUserAssignedByOrgId(organizationId);
                 // && defaultModelDatapoints.Any(d => d == dp)
                 var filteredDps = datapoints
                     .Where(dp => !datamodelDatapoints.Any(d => d == dp))
