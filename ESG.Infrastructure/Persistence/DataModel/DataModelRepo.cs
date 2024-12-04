@@ -231,6 +231,8 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(md => md.Id == datapointId)
                 .Select(md => md.IsNarrative)
                 .FirstOrDefaultAsync();
+            if (viewType == null)
+                return false;
 
             return viewType;
         }
