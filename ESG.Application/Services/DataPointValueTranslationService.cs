@@ -40,6 +40,7 @@ namespace ESG.Application.Services
                 if (existingTranslation == null)
                 {
                     var uomTranslationdata = new DatapointValueTranslation();
+                    uomTranslationdata.DatapointValueId = requestDto.DatapointValueId;
                     uomTranslationdata.LanguageId = requestDto.LanguageId;
                     uomTranslationdata.ShortText = requestDto.ShortText;
                     uomTranslationdata.LongText = requestDto.LongText;
