@@ -46,7 +46,7 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<DataModelValue>?> GetDataModelValuesById(List<long> ids, long modelId, long OrganizationId);
         Task<List<(long Id, string? Value, long? DatapointId)>> GetDefaultDataModelValuesByOrganizationId(long organizationId);
         Task<ESG.Domain.Models.DataModel> GetDefaultModel(long organizationId);
-        Task<List<(long Id, long typeId)>> GetModelDimensionValuesByTypeIdAndModelId(long typeId, long modelId);
+        Task<List<long>> GetModelDimensionValuesByTypeIdAndModelId(long? typeId, long modelId);
         Task<List<DataModelValue>?> GetDefaultDataModelValuesByModelIdAndDatapoints(long modelId, IEnumerable<long> datapoints, long organizationId);
         Task<ESG.Domain.Models.DataModel?> GetDataModelById(long dataModelId);
         Task<List<DataModelValue>?> GetDefaultDataModelValuesById(List<long> ids);
@@ -62,5 +62,6 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<long?>> GetDataModelValuesByDatapointIDsModelIdOrgId(List<long> datapoints, long modelId, long organizationId);
         Task<bool> IsDataPointHavinganyValue(CheckDataModelValueOfDatapointRegDto requestdto);
         Task<bool> IsDataPointIsAssignedToUser(long modelId, long organizationId);
+        Task<List<DataModelValue?>> GetDataModelValuesByDatapointIDsOrgId(List<long> datapoints, long organizationId);
     }
 }

@@ -293,9 +293,8 @@ namespace ESG.Application.Services
                 if (factLists != null && factLists.Count() != 0)
                 {
                     factFiltersCombinations = GetCombinations(factLists);
-                    foreach (var combination in factFiltersCombinations)
-                    {
-                        var ModelFilterCombination = new ModelFilterCombination
+                    generatedCombinationsForFactView = factFiltersCombinations
+                        .Select(combination => new ModelFilterCombination
                         {
                             DataModelId = dataModelId,
                             ViewType = ModelViewTypeEnum.Fact,
@@ -304,9 +303,8 @@ namespace ESG.Application.Services
                             CreatedDate = utcNow,
                             LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                             LastModifiedDate = utcNow
-                        };
-                        generatedCombinationsForFactView.Add(ModelFilterCombination);
-                    }
+                        })
+                        .ToList();
 
                     await _unitOfWork.Repository<ModelFilterCombination>().AddRangeAsync(generatedCombinationsForFactView);
                     await _unitOfWork.SaveAsync();
@@ -326,7 +324,7 @@ namespace ESG.Application.Services
                                 throw new ArgumentNullException($"No matching DataModelFilter found for FilterId {comboType.DimensionTypeId} and ModelConfigurationId {datamodelConfigId}.");
                             }
 
-                            var sampleModelFilterCombinationValue = new SampleModelFilterCombinationValue
+                            samplemodelFilterCombinationalValues.Add( new SampleModelFilterCombinationValue
                             {
                                 ModelFilterCombinationsId = comboId,
                                 DimensionsId = comboType.Value,
@@ -336,9 +334,7 @@ namespace ESG.Application.Services
                                 CreatedDate = utcNow,
                                 LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                                 LastModifiedDate = utcNow
-                            };
-
-                            samplemodelFilterCombinationalValues.Add(sampleModelFilterCombinationValue);
+                            });
                         }
                         processedCombo.Add(nonprocessedCombo);
                     }
@@ -347,60 +343,58 @@ namespace ESG.Application.Services
 
                 foreach (var datapoint in nonNarrativeDatapoints)
                 {
-                    if (generatedCombinationsForFactView.Count() == 0)
+                    if (!generatedCombinationsForFactView.Any())
                     {
-                        foreach (var dimensionId in modeldimTypes
+                        var rowDimensions = modeldimTypes
                             .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.RowId)
-                            .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
-                        {
-                            foreach (var columnDimension in modeldimTypes
-                                .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.ColumnId)
-                                .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
+                            .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId));
+
+                        var columnDimensions = modeldimTypes
+                            .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.ColumnId)
+                            .SelectMany(a => a.ModelDimensionValues.Select(v => (long?)v.DimensionsId))
+                            .DefaultIfEmpty(null);
+
+                        dataModelValues.AddRange(
+                            from rowDimension in rowDimensions
+                            from columnDimension in columnDimensions
+                            select new DataModelValue
                             {
-                                var dataModelValue = new DataModelValue
-                                {
-                                    CombinationId = null,
-                                    RowId = dimensionId,
-                                    ColumnId = columnDimension == null ? (long?)null : columnDimension,
-                                    CreatedBy = dataModelCreateRequestDto.CreatedBy,
-                                    CreatedDate = utcNow,
-                                    DataPointValuesId = datapoint,
-                                    DataModelId = dataModel.Id,
-                                };
-                                dataModelValues.Add(dataModelValue);
-                            }
-                        }
+                                CombinationId = null,
+                                RowId = rowDimension,
+                                ColumnId = columnDimension,
+                                CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                                CreatedDate = utcNow,
+                                DataPointValuesId = datapoint,
+                                DataModelId = dataModel.Id,
+                            });
                     }
                     if (generatedCombinationsForFactView.Count() != 0)
                     {
-                        foreach (var dimensionId in modeldimTypes
+                        var rowDimensions = modeldimTypes
                             .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.RowId)
-                            .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
-                        {
-                            foreach (var columnDimension in modeldimTypes
-                                .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.ColumnId)
-                                .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
-                            {
-                                foreach (var combination in generatedCombinationsForFactView)
-                                {
-                                    var dataModelValue = new DataModelValue
-                                    {
-                                        CombinationId = combination.Id,
-                                        RowId = dimensionId,
-                                        ColumnId = columnDimension == null ? (long?)null : columnDimension,
-                                        CreatedBy = dataModelCreateRequestDto.CreatedBy,
-                                        CreatedDate = utcNow,
-                                        DataPointValuesId = datapoint,
-                                        DataModelId = dataModel.Id,
-                                    };
-                                    dataModelValues.Add(dataModelValue);
-                                }
+                            .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId));
 
-                            }
-                        }
+                        var columnDimensions = modeldimTypes
+                            .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Fact.ColumnId)
+                            .SelectMany(a => a.ModelDimensionValues.Select(v => (long?)v.DimensionsId))
+                            .DefaultIfEmpty(null);
+
+                        dataModelValues.AddRange(
+                            from rowDimension in rowDimensions
+                            from columnDimension in columnDimensions
+                            from combination in generatedCombinationsForFactView
+                            select new DataModelValue
+                            {
+                                CombinationId = combination.Id,
+                                RowId = rowDimension,
+                                ColumnId = columnDimension,
+                                CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                                CreatedDate = utcNow,
+                                DataPointValuesId = datapoint,
+                                DataModelId = dataModel.Id,
+                            });
                     }
                 }
-                //await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(dataModelValues);
             }
             if (dataModelCreateRequestDto.Narrative != null)
             {
@@ -412,9 +406,8 @@ namespace ESG.Application.Services
                 if (narrativeLists != null && narrativeLists.Count() != 0)
                 {
                     narrativeFiltersCombinations = GetCombinations(narrativeLists);
-                    foreach (var combination in narrativeFiltersCombinations)
-                    {
-                        var ModelFilterCombination = new ModelFilterCombination
+                    generatedCombinationsForNarrativeView.AddRange(
+                        narrativeFiltersCombinations.Select(combination => new ModelFilterCombination
                         {
                             DataModelId = dataModelId,
                             ViewType = ModelViewTypeEnum.Narrative,
@@ -423,9 +416,8 @@ namespace ESG.Application.Services
                             CreatedDate = utcNow,
                             LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                             LastModifiedDate = utcNow
-                        };
-                        generatedCombinationsForNarrativeView.Add(ModelFilterCombination);
-                    }
+                        })
+                    );
                     await _unitOfWork.Repository<ModelFilterCombination>().AddRangeAsync(generatedCombinationsForNarrativeView);
                     await _unitOfWork.SaveAsync();
                     for (int i = 0; i < narrativeFiltersCombinations.Count; i++)
@@ -443,8 +435,7 @@ namespace ESG.Application.Services
                             {
                                 throw new ArgumentNullException($"No matching DataModelFilter found for FilterId {comboType.DimensionTypeId} and ModelConfigurationId {datamodelConfigId}.");
                             }
-
-                            var sampleModelFilterCombinationValue = new SampleModelFilterCombinationValue
+                            samplemodelFilterCombinationalValues.Add(new SampleModelFilterCombinationValue
                             {
                                 ModelFilterCombinationsId = comboId,
                                 DimensionsId = comboType.Value,
@@ -454,8 +445,7 @@ namespace ESG.Application.Services
                                 CreatedDate = utcNow,
                                 LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
                                 LastModifiedDate = utcNow
-                            };
-                            samplemodelFilterCombinationalValues.Add(sampleModelFilterCombinationValue);
+                            });
                         }
                         processedCombo.Add(nonprocessedCombo);
                     }
@@ -468,50 +458,54 @@ namespace ESG.Application.Services
                         throw new ArgumentException($"datapoint view type set to null, expected: {datapoint}");
                     if (generatedCombinationsForNarrativeView.Count() == 0)
                     {
-                        foreach (var dimensionId in modeldimTypes
-                            .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Narrative.RowId)
-                            .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
-                        {
-                            var dataModelValue = new DataModelValue
-                            {
-                                CombinationId = null,
-                                RowId = dimensionId,
-                                ColumnId = null,
-                                CreatedBy = dataModelCreateRequestDto.CreatedBy,
-                                CreatedDate = utcNow,
-                                DataPointValuesId = datapoint,
-                                DataModelId = dataModel.Id,
-                            };
-                            dataModelValues.Add(dataModelValue);
-                        }
-                    }
-                    if (generatedCombinationsForNarrativeView.Count() > 0)
-                    {
-                        foreach (var dimensionId in modeldimTypes
+                        dataModelValues.AddRange(
+                            modeldimTypes
                                 .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Narrative.RowId)
-                                .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId)))
-                        {
-                            foreach (var combination in generatedCombinationsForNarrativeView)
-                            {
-                                var dataModelValue = new DataModelValue
+                                .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId))
+                                .Select(dimensionId => new DataModelValue
                                 {
-                                    CombinationId = combination.Id,
+                                    CombinationId = null,
                                     RowId = dimensionId,
                                     ColumnId = null,
                                     CreatedBy = dataModelCreateRequestDto.CreatedBy,
                                     CreatedDate = utcNow,
+                                    LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                                    LastModifiedDate = utcNow,
                                     DataPointValuesId = datapoint,
                                     DataModelId = dataModel.Id,
-                                };
-                                dataModelValues.Add(dataModelValue);
-                            }
-                        }
+                                })
+                        );
+                    }
+                    if (generatedCombinationsForNarrativeView.Count() > 0)
+                    {
+                        dataModelValues.AddRange(
+                            modeldimTypes
+                                .Where(a => a.DimensionTypeId == dataModelCreateRequestDto.Narrative.RowId)
+                                .SelectMany(a => a.ModelDimensionValues.Select(v => v.DimensionsId))
+                                .SelectMany(dimensionId =>
+                                    generatedCombinationsForNarrativeView.Select(combination => new DataModelValue
+                                    {
+                                        CombinationId = combination.Id,
+                                        RowId = dimensionId,
+                                        ColumnId = null,
+                                        CreatedBy = dataModelCreateRequestDto.CreatedBy,
+                                        CreatedDate = utcNow,
+                                        LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
+                                        LastModifiedDate = utcNow,
+                                        DataPointValuesId = datapoint,
+                                        DataModelId = dataModel.Id,
+                                    })
+                                )
+                        );
                     }
                 }
                 dataModel.State = StateEnum.active;
                 await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(dataModelValues);
                 await _unitOfWork.Repository<DataModel>().UpdateAsync(dataModel.Id, dataModel);
                 await _unitOfWork.SaveAsync();
+                var dmvToRemove = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDsOrgId(dataModelCreateRequestDto.Datapoints, dataModelCreateRequestDto.OrganizationId);
+                if ( dmvToRemove != null )
+                    await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(dmvToRemove);
             }
         }
         public async Task GenerateModelConfigurationsAndDataModelFilters(

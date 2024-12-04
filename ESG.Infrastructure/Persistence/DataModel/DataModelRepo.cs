@@ -481,19 +481,15 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return datamodel;
         }
 
-        public async Task<List<(long Id, long typeId)>> GetModelDimensionValuesByTypeIdAndModelId(long modeldimtypeId, long modelId)
+        public async Task<List<long>> GetModelDimensionValuesByTypeIdAndModelId(long? modeldimtypeId, long modelId)
         {
             var list = await _context.ModelDimensionValues
                 .AsNoTracking()
                 .Where(a => a.ModelDimensionTypesId == modeldimtypeId && a.ModelDimensionTypes.DataModel.Id == modelId)
-                .Select(a => new
-                {
-                    Id = a.DimensionsId,
-                    typeId = a.ModelDimensionTypes.DimensionTypeId
-                })
+                .Select(a => a.DimensionsId)
                 .ToListAsync();
 
-            return list.Select(a => (a.Id, a.typeId)).ToList();
+            return list;
         }
         public async Task<List<DataModelValue>?> GetDefaultDataModelValuesByModelIdAndDatapoints(long modelId, IEnumerable<long> datapoints, long organizationId)
         {
@@ -637,6 +633,18 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     a.DataModel.OrganizationId == organizationId &&
                     a.DataModelId == modelId &&
                     a.ResponsibleUserId != null);
+            return hasValue;
+        }
+
+        public async Task<List<DataModelValue?>> GetDataModelValuesByDatapointIDsOrgId(List<long> datapoints, long organizationId)
+        {
+            var hasValue = await _context.DataModelValues
+                .AsNoTracking()
+                .Where(a =>
+                    a.DataModel.OrganizationId == organizationId &&
+                    a.DataModel.IsDefaultModel == true &&
+                    datapoints.Contains(a.DataPointValuesId.Value))
+                .ToListAsync();
             return hasValue;
         }
     }

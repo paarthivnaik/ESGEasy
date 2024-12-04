@@ -59,15 +59,6 @@ namespace ESG.Application.Services
                     }
                     if (toRemove.Any())
                     {
-                        //var datamodelvalues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByOrganizationId(request.OrganizationId);
-                        //var filteredToNotRemove = toRemove
-                        //    .Where(item => !datamodelvalues
-                        //        .Any(dmValue => dmValue.DatapointId == item.DataPointValuesId && string.IsNullOrEmpty(dmValue.Value)))
-                        //    .ToList();
-                        //if (filteredToNotRemove.Any())
-                        //{
-                        //    throw new SystemException($"These datapoints are having values in datamodelvalues so you cannot delete them { filteredToNotRemove }");
-                        //}
                         await _unitOfWork.Repository<Hierarchy>().RemoveRangeAsync(toRemove);
                     }
 
@@ -132,13 +123,6 @@ namespace ESG.Application.Services
                 var narrativefiltercombinations = defaultDatamodel.ModelFilterCombinations
                     .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative)
                     .Select(a => a.Id).ToList();
-                //var factcombinationswithfiltrs = new List<(long, long, long?)>();
-                //var factcombinationswithoutfiltrs = new List<(long, long)>();
-                //if (factfiltercombinations != null)
-                //    factcombinationswithfiltrs = GenerateCombinations(factrowDimensions.Select(a => a.Id), factcoldimensions.Select(a => a.Id), factfiltercombinations);
-                //else if (factfiltercombinations == null || factfiltercombinations.Count == 0)
-                //    factcombinationswithoutfiltrs = GenerateCombinations(factrowDimensions.Select(a => a.Id), factcoldimensions.Select(a => a.Id));
-                //var Narrativecombinations = GenerateCombinations(factrowDimensions.Select(a => a.Id), narrativefiltercombinations);
                 var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(defaultDatamodel.Id, request.OrganizationId);
                 await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
                 foreach (var dp in datapoints)
@@ -146,138 +130,69 @@ namespace ESG.Application.Services
                     var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(dp);
                     if (viewtype != null && viewtype == true)
                     {
-                        foreach (var narrative in narrativefiltercombinations)
-                        {
-                            foreach (var rowDimension in narrativerowDimensions)
+                        defaultDatamodelValues =
+                        (from narrative in narrativefiltercombinations
+                            from rowDimension in narrativerowDimensions
+                            select new DataModelValue
                             {
-                                var defaultdatamodelvalue = new DataModelValue();
-                                defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
-                                defaultdatamodelvalue.DataPointValuesId = dp;
-                                defaultdatamodelvalue.CreatedBy = request.UserId;
-                                defaultdatamodelvalue.LastModifiedBy = request.UserId;
-                                defaultdatamodelvalue.CreatedDate = DateTime.UtcNow;
-                                defaultdatamodelvalue.LastModifiedDate = DateTime.UtcNow;
-                                defaultdatamodelvalue.RowId = rowDimension.Id;
-                                defaultdatamodelvalue.ColumnId = null;
-                                defaultdatamodelvalue.CombinationId = narrative;
-                                defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
-                                defaultDatamodelValues.Add(defaultdatamodelvalue);
-                            }
-                            
-                        }
+                                DataModelId = defaultDatamodel.Id,
+                                DataPointValuesId = dp,
+                                CreatedBy = request.UserId,
+                                LastModifiedBy = request.UserId,
+                                CreatedDate = DateTime.UtcNow,
+                                LastModifiedDate = DateTime.UtcNow,
+                                RowId = rowDimension,
+                                ColumnId = null,
+                                CombinationId = narrative,
+                                State = Domain.Enum.StateEnum.active
+                            }).ToList();
+
                     }
                     if (viewtype != null && viewtype == false && factfiltercombinations.Count() > 0)
                     {
-                        //foreach (var fact in factcombinationswithfiltrs)
-                        //{
-                        //    var matchingRowDimension = factrowDimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2 || a.Id == fact.Item3);
-                        //    var matchingColDimension = factcoldimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2 || a.Id == fact.Item3);
-                        //    var usedIds = new HashSet<long> { matchingRowDimension.Id, matchingColDimension.Id };
-                        //    var combId = new[] { fact.Item1, fact.Item2, fact.Item3 }
-                        //    .FirstOrDefault(id => !usedIds.Contains(id.Value));
-                        //    var defaultdatamodelvalue = new DataModelValue();
-                        //    defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
-                        //    defaultdatamodelvalue.DataPointValuesId = dp;
-                        //    defaultdatamodelvalue.CreatedBy = request.UserId;
-                        //    defaultdatamodelvalue.LastModifiedBy = request.UserId;
-                        //    defaultdatamodelvalue.CreatedDate = DateTime.UtcNow;
-                        //    defaultdatamodelvalue.LastModifiedDate = DateTime.UtcNow;
-                        //    defaultdatamodelvalue.RowId = matchingRowDimension.Id;
-                        //    defaultdatamodelvalue.ColumnId = matchingColDimension.Id;
-                        //    defaultdatamodelvalue.CombinationId = combId;
-                        //    defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
-                        //    defaultDatamodelValues.Add(defaultdatamodelvalue);
-                        //}
-                        foreach (var factfilter in factfiltercombinations)
-                        {
-                            foreach (var rowDimension in factrowDimensions)
-                            {
-                                foreach (var colDimenson in factcoldimensions)
-                                {
-                                    var defaultdatamodelvalue = new DataModelValue();
-                                    defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
-                                    defaultdatamodelvalue.DataPointValuesId = dp;
-                                    defaultdatamodelvalue.CreatedBy = request.UserId;
-                                    defaultdatamodelvalue.LastModifiedBy = request.UserId;
-                                    defaultdatamodelvalue.CreatedDate = DateTime.UtcNow;
-                                    defaultdatamodelvalue.LastModifiedDate = DateTime.UtcNow;
-                                    defaultdatamodelvalue.RowId = rowDimension.Id;
-                                    defaultdatamodelvalue.ColumnId = colDimenson.Id;
-                                    defaultdatamodelvalue.CombinationId = factfilter;
-                                    defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
-                                    defaultDatamodelValues.Add(defaultdatamodelvalue);
-                                }
-                            }
-                        }
+                        defaultDatamodelValues =
+                            (from factfilter in factfiltercombinations
+                             from rowDimension in factrowDimensions
+                             from colDimension in factcoldimensions
+                             select new DataModelValue
+                             {
+                                 DataModelId = defaultDatamodel.Id,
+                                 DataPointValuesId = dp,
+                                 CreatedBy = request.UserId,
+                                 LastModifiedBy = request.UserId,
+                                 CreatedDate = DateTime.UtcNow,
+                                 LastModifiedDate = DateTime.UtcNow,
+                                 RowId = rowDimension,
+                                 ColumnId = colDimension,
+                                 CombinationId = factfilter,
+                                 State = Domain.Enum.StateEnum.active
+                             }).ToList();
+
                     }
                     if (viewtype != null && viewtype == false && factfiltercombinations.Count() <= 0)
                     {
-                        foreach (var rowdim in factrowDimensions)
-                        {
-                            foreach (var coldim in factcoldimensions)
-                            {
-                                var defaultdatamodelvalue = new DataModelValue();
-                                defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
-                                defaultdatamodelvalue.DataPointValuesId = dp;
-                                defaultdatamodelvalue.CreatedBy = request.UserId;
-                                defaultdatamodelvalue.LastModifiedBy = request.UserId;
-                                defaultdatamodelvalue.CreatedDate = DateTime.UtcNow;
-                                defaultdatamodelvalue.LastModifiedDate = DateTime.UtcNow;
-                                defaultdatamodelvalue.RowId = rowdim.Id;
-                                defaultdatamodelvalue.ColumnId = coldim.Id;
-                                defaultdatamodelvalue.CombinationId = null;
-                                defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
-                                defaultDatamodelValues.Add(defaultdatamodelvalue);
-                            }
-
-                        }
-                        //foreach (var fact in factcombinationswithoutfiltrs)
-                        //{
-                        //    var matchingRowDimension = factrowDimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2);
-                        //    var matchingColDimension = factcoldimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2);
-                        //    //var usedIds = new HashSet<long> { matchingRowDimension.Id, matchingColDimension.Id };
-                        //    //var combId = new[] { fact.Item1, fact.Item2, fact.Item3 }
-                        //    //.FirstOrDefault(id => !usedIds.Contains(id.Value));
-                        //    var defaultdatamodelvalue = new DataModelValue();
-                        //    defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
-                        //    defaultdatamodelvalue.DataPointValuesId = dp;
-                        //    defaultdatamodelvalue.CreatedBy = request.UserId;
-                        //    defaultdatamodelvalue.LastModifiedBy = request.UserId;
-                        //    defaultdatamodelvalue.CreatedDate = DateTime.UtcNow;
-                        //    defaultdatamodelvalue.LastModifiedDate = DateTime.UtcNow;
-                        //    defaultdatamodelvalue.RowId = matchingRowDimension.Id;
-                        //    defaultdatamodelvalue.ColumnId = matchingColDimension.Id;
-                        //    defaultdatamodelvalue.CombinationId = null;
-                        //    defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
-                        //    defaultDatamodelValues.Add(defaultdatamodelvalue);
-                        //}
+                        defaultDatamodelValues =
+                            (from rowdim in factrowDimensions
+                             from coldim in factcoldimensions
+                             select new DataModelValue
+                             {
+                                 DataModelId = defaultDatamodel.Id,
+                                 DataPointValuesId = dp,
+                                 CreatedBy = request.UserId,
+                                 LastModifiedBy = request.UserId,
+                                 CreatedDate = DateTime.UtcNow,
+                                 LastModifiedDate = DateTime.UtcNow,
+                                 RowId = rowdim,
+                                 ColumnId = coldim,
+                                 CombinationId = null,
+                                 State = Domain.Enum.StateEnum.active
+                             }).ToList();
                     }
                     await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(defaultDatamodelValues);
                 }
             }
         }
 
-        //public void GenerateFactViewDataModelValues(IEnumerable<long> factcombinations, IEnumerable<long> list2, IEnumerable<long?> list3)
-        //{
-        //    foreach (var fact in factcombinations)
-        //    {
-        //        var matchingRowDimension = factrowDimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2 || a.Id == fact.Item3);
-        //        var matchingColDimension = factcoldimensions.FirstOrDefault(a => a.Id == fact.Item1 || a.Id == fact.Item2 || a.Id == fact.Item3);
-        //        var usedIds = new HashSet<long> { matchingRowDimension.Id, matchingColDimension.Id };
-        //        var combId = new[] { fact.Item1, fact.Item2, fact.Item3 }
-        //        .FirstOrDefault(id => !usedIds.Contains(id.Value));
-        //        var defaultdatamodelvalue = new DataModelValue();
-        //        defaultdatamodelvalue.DataModelId = defaultDatamodel.Id;
-        //        defaultdatamodelvalue.DataPointValuesId = dp;
-        //        defaultdatamodelvalue.CreatedBy = request.UserId;
-        //        defaultdatamodelvalue.LastModifiedBy = request.UserId;
-        //        defaultdatamodelvalue.RowId = matchingRowDimension.Id;
-        //        defaultdatamodelvalue.ColumnId = matchingColDimension.Id;
-        //        defaultdatamodelvalue.CombinationId = combId;
-        //        defaultdatamodelvalue.State = Domain.Enum.StateEnum.active;
-        //        defaultDatamodelValues.Add(defaultdatamodelvalue);
-        //    }
-        //}
         public List<(long, long, long?)> GenerateCombinations(IEnumerable<long> list1, IEnumerable<long> list2, IEnumerable<long?> list3)
         {
             list1 = list1 ?? Enumerable.Empty<long>();
@@ -421,7 +336,6 @@ namespace ESG.Application.Services
                     existingModelDatapoints = ModelDatapoints.Select(a => a.DatapointValuesId).ToList();
                     filteredDatapoints.AddRange(existingModelDatapoints);
                 }
-
             }
 
             var datapointslist = await _unitOfWork.DatapointValueRepo.GetNamesForFilteredIds(filteredDatapoints);
