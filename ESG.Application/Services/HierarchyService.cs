@@ -72,8 +72,13 @@ namespace ESG.Application.Services
                         await _unitOfWork.Repository<Hierarchy>().AddRangeAsync(toAddOrUpdate);
                     }
                     //now we have to modify the records in the datamodelmodelvalues with respective datapoints
-
-                    await GenerateDefaultDataModelValues(request.DatapointIds, request);
+                    var datapoints = request.DatapointIds?.ToList() ?? new List<long>();
+                    var datapointsToRemove = toRemove.Select(a => a.DataPointValuesId).ToList();
+                    var filteredDatapoints = datapoints.Except(datapointsToRemove).ToList();
+                    if (filteredDatapoints.Any())
+                    {
+                        await GenerateDefaultDataModelValues(filteredDatapoints, request);
+                    }
                 }
             }
             if (existinghierarchyId <= 0) 
@@ -106,7 +111,7 @@ namespace ESG.Application.Services
             }
             await _unitOfWork.SaveAsync();
         }
-        private async Task GenerateDefaultDataModelValues(List<long> datapoints, HierarchyCreateRequestDto request)
+        private async Task GenerateDefaultDataModelValues(List<long>? datapoints, HierarchyCreateRequestDto request)
         {
             var defaultDatamodelValues = new List<DataModelValue>();
             var defaultDatamodel = await _unitOfWork.DataModelRepo.GetDefaultModel(request.OrganizationId);
@@ -130,8 +135,9 @@ namespace ESG.Application.Services
                     .Select(a => a.Id).ToList();
                 var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(defaultDatamodel.Id, request.OrganizationId);
                 await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
-                var reminingDatapoints = await _unitOfWork.HierarchyRepo.GetRemainingDatapointsByOrganizationId(request.OrganizationId);
-                foreach (var dp in reminingDatapoints)
+                //var reminingDatapoints = await _unitOfWork.HierarchyRepo.GetRemainingDatapointsByOrganizationId(request.OrganizationId);
+
+                foreach (var dp in datapoints)
                 {
                     var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(dp);
                     if (viewtype != null && viewtype == true)
