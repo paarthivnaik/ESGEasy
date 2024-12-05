@@ -62,6 +62,8 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<long?>> GetDataModelValuesByDatapointIDsModelIdOrgId(List<long>? datapoints, long modelId, long organizationId);
         Task<List<long?>> IsDataPointHavinganyValue(CheckDataModelValueOfDatapointRegDto requestdto);
         Task<bool> CheckModelIsEditable(long modelId, long organizationId);
+        Task<bool> CheckDatapointIsDeletable(long modelId, long organizationId);
         Task<List<DataModelValue?>> GetDefaultDataModelValuesByDatapointIDsOrgId(List<long>? datapoints, long organizationId);
+        Task<List<DataModelValue?>> GetDataModelValuesByDatapointIDOrgId(long datapoint, long organizationId);
     }
 }

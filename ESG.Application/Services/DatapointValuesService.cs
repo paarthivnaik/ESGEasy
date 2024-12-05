@@ -111,8 +111,29 @@ namespace ESG.Application.Services
                 throw new KeyNotFoundException($"Datapoint with ID {dataPoint.Id} not found.");
             }
             dataPoint.State = datapointValueDeleteRequestDto.State;
-            await _unitOfWork.Repository<DataPointValue>().Update(dataPoint);
-            await _unitOfWork.SaveAsync();
+            var datapointHasValue = await _unitOfWork.DataModelRepo.CheckDatapointIsDeletable(datapointValueDeleteRequestDto.DatapointId, datapointValueDeleteRequestDto.OrganizationId);
+            if (datapointHasValue == false)
+            {
+                await _unitOfWork.Repository<DataPointValue>().Update(dataPoint);
+                var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(datapointValueDeleteRequestDto.OrganizationId);
+                if (hierarchyId > 0 || hierarchyId != null)
+                {
+                    var modeldatapoint = await _unitOfWork.Repository<ModelDatapoint>()
+                        .Get(a => a.DataModel.OrganizationId == datapointValueDeleteRequestDto.OrganizationId 
+                                  && a.DatapointValuesId == datapointValueDeleteRequestDto.DatapointId);
+                    if (modeldatapoint != null)
+                        await _unitOfWork.Repository<ModelDatapoint>().DeleteAsync(modeldatapoint);
+                    var datamodelvalues = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDOrgId
+                        (datapointValueDeleteRequestDto.DatapointId, datapointValueDeleteRequestDto.OrganizationId);
+                    if (datamodelvalues != null)
+                        await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(datamodelvalues);
+                }
+                await _unitOfWork.SaveAsync();
+            }
+            else
+            {
+                throw new SystemException($"this datapoint is having a value {datapointValueDeleteRequestDto.DatapointId}");
+            }
         }
 
         public async Task<IEnumerable<DataPointValueResponseDto>> GetAll(long organizationId)

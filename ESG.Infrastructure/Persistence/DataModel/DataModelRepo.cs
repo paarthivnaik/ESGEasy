@@ -41,7 +41,9 @@ namespace ESG.Infrastructure.Persistence.DataModel
             {
                 defaultDataModel = await _context.DataModels
                 .AsNoTracking()
-                .Where(a => a.IsDefaultModel == true && a.OrganizationId == OrgId)
+                .Where(a => a.IsDefaultModel == true 
+                    && a.OrganizationId == OrgId
+                    && a.State == StateEnum.active)
                 .Select(dp => new ESG.Domain.Models.DataModel
                 {
                     Id = dp.Id,
@@ -63,7 +65,10 @@ namespace ESG.Infrastructure.Persistence.DataModel
             var dataModel = await _context.DataModels
                 .AsNoTracking()
                 .Include(a => a.ModelDatapoints)
-                .Where(a => a.OrganizationId == orgId && a.IsDefaultModel == false && a.ModelDatapoints.Any(md => md.DatapointValuesId == datapointId))
+                .Where(a => a.OrganizationId == orgId 
+                    && a.IsDefaultModel == false 
+                    && a.ModelDatapoints.Any(md => md.DatapointValuesId == datapointId)
+                    && a.State == StateEnum.active)
                 .Select(dp => new ESG.Domain.Models.DataModel
                 {
                     Id = dp.Id,
@@ -74,7 +79,9 @@ namespace ESG.Infrastructure.Persistence.DataModel
             if (dataModel == null)
                 dataModel = await _context.DataModels
                     .AsNoTracking()
-                    .Where(a => a.OrganizationId == orgId && a.IsDefaultModel == true)
+                    .Where(a => a.OrganizationId == orgId 
+                        && a.IsDefaultModel == true
+                        && a.State == StateEnum.active)
                     .Select(dp => new ESG.Domain.Models.DataModel
                     {
                         Id = dp.Id,
@@ -89,7 +96,8 @@ namespace ESG.Infrastructure.Persistence.DataModel
         {
             return await _context.DataModels
                 .AsNoTracking()
-                .Where(a => a.Id == modelId)
+                .Where(a => a.Id == modelId
+                )
                 .FirstOrDefaultAsync();
         }
         public async Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum)
@@ -464,7 +472,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             var res = await _context.DataModels
                 .AsNoTracking()
                 .Where(dm => dm.Id == modelId)
-                .Select(dmv => dmv.IsDefaultModel)
+                .Select(dmv => dmv.IsDefaultModel && dmv.State == StateEnum.active)
                 .FirstOrDefaultAsync();
             return res;
         }
@@ -473,7 +481,9 @@ namespace ESG.Infrastructure.Persistence.DataModel
         {
             var datamodel = await _context.DataModels
                 .AsNoTracking()
-                .Where(a => a.OrganizationId == organizationId && a.IsDefaultModel == true)
+                .Where(a => a.OrganizationId == organizationId 
+                    && a.IsDefaultModel == true
+                    && a.State == StateEnum.active)
                 .Include(b => b.ModelDimensionTypes)
                 .Include(a => a.ModelConfigurations)
                 .Include(a => a.ModelFilterCombinations)
@@ -582,7 +592,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
         {
             var list = await _context.DataModelValues
                 .AsNoTracking()
-                .Where(a => a.DataModel.OrganizationId == organizationId && a.DataModel.State == StateEnum.active &&  a.State == StateEnum.active )
+                .Where(a => a.DataModel.OrganizationId == organizationId && a.DataModel.State == StateEnum.active)
                 .Select(a => new
                 {
                     Id = a.Id,
@@ -609,7 +619,8 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(a =>
                     a.OrganizationId == organizationId &&
                     a.ModelDatapoints.Any(b => b.DatapointValuesId == datapointId) &&
-                    !a.IsDefaultModel)
+                    !a.IsDefaultModel
+                    && a.State == StateEnum.active)
                 .FirstOrDefaultAsync();
 
             return datamodel;
@@ -643,6 +654,16 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     a.Value != null);
             return hasValue;
         }
+        public async Task<bool> CheckDatapointIsDeletable(long datapointId, long organizationId)
+        {
+            var hasValue = await _context.DataModelValues
+                .AsNoTracking()
+                .AnyAsync(a =>
+                    a.DataModel.OrganizationId == organizationId &&
+                    a.DataPointValuesId == datapointId &&
+                    a.Value != null);
+            return !hasValue;
+        }
 
         public async Task<List<DataModelValue?>> GetDefaultDataModelValuesByDatapointIDsOrgId(List<long>? datapoints, long organizationId)
         {
@@ -652,6 +673,16 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     a.DataModel.OrganizationId == organizationId &&
                     a.DataModel.IsDefaultModel == true &&
                     datapoints.Contains(a.DataPointValuesId.Value))
+                .ToListAsync();
+            return hasValue;
+        }
+        public async Task<List<DataModelValue?>> GetDataModelValuesByDatapointIDOrgId(long datapoint, long organizationId)
+        {
+            var hasValue = await _context.DataModelValues
+                .AsNoTracking()
+                .Where(a =>
+                    a.DataModel.OrganizationId == organizationId &&
+                    a.DataPointValuesId == datapoint )
                 .ToListAsync();
             return hasValue;
         }
