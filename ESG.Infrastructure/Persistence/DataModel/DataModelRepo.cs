@@ -662,7 +662,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     a.DataModel.OrganizationId == organizationId &&
                     a.DataPointValuesId == datapointId &&
                     a.Value != null);
-            return !hasValue;
+            return hasValue;
         }
 
         public async Task<List<DataModelValue?>> GetDefaultDataModelValuesByDatapointIDsOrgId(List<long>? datapoints, long organizationId)
