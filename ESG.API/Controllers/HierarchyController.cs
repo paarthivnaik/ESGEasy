@@ -39,12 +39,12 @@ namespace ESG.API.Controllers
         {
             try
             {
-                bool hasValues = await _hierarchyService.CheckDataModelValueOfDatapoint(requestDto);
-                return Ok(new {hasValue = hasValues});
+                var hasValues = await _hierarchyService.CheckDataModelValueOfDatapoint(requestDto);
+                return Ok(new { error = false, datapointIds = hasValues });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Success = false, Message = "An error occurred.", Details = ex.Message });
+                return StatusCode(500, new { error = true, Message = "An error occurred.", Details = ex.Message });
             }
         }
 

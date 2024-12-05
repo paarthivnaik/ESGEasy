@@ -24,7 +24,7 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
         {
             var list = await _context.DataModels
                 .AsNoTracking()
-                .Where(x => x.OrganizationId == orgId)
+                .Where(x => x.OrganizationId == orgId && x.State == Domain.Enum.StateEnum.active)
                 .SelectMany(a => a.ModelDatapoints.Select(md => md.DatapointValuesId))
                 .ToListAsync();
             return list;

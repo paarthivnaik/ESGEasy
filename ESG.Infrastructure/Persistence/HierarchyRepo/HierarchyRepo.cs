@@ -1,4 +1,5 @@
-﻿using ESG.Application.Common.Interface.Hierarchy;
+﻿using ESG.Application.Common.Interface;
+using ESG.Application.Common.Interface.Hierarchy;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Dto.Hierarchy;
 using ESG.Domain.Models;
@@ -156,6 +157,138 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
             remainingDatapoints = datapoints.Except(modelDatapoints).ToList();
             return remainingDatapoints;
         }
+        public async Task<List<DataModelValue>> GenerateDataModelValues(List<long>? datapoints, long organizationId, long userId)
+        {
+            var defaultDatamodelValues = new List<DataModelValue>();
 
+            var defaultDatamodel = await _context.DataModels
+                .AsNoTracking()
+                .Where(a => a.OrganizationId == organizationId && a.IsDefaultModel == true)
+                .Include(b => b.ModelDimensionTypes)
+                .Include(a => a.ModelConfigurations)
+                .Include(a => a.ModelFilterCombinations)
+                .FirstOrDefaultAsync();
+            if (defaultDatamodel != null && defaultDatamodel.Id > 0)
+            {
+                var factconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact).FirstOrDefault();
+                var narrativeconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative).FirstOrDefault();
+                var factrowdimtypeId = factconfigId.RowId;
+                var modeldimensiontypeIdforFactRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.RowId).FirstOrDefault();
+                var modeldimensiontypeIdforFactColumn = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.ColumnId).FirstOrDefault();
+                var modeldimensiontypeIdforNarrativeRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == narrativeconfigId.RowId).FirstOrDefault();
+                var factrowDimensions = await _context.ModelDimensionValues
+                    .AsNoTracking()
+                    .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforFactRow.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
+                    .Select(a => a.DimensionsId)
+                    .ToListAsync();
+                //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
+
+                var factcoldimensions = await _context.ModelDimensionValues
+                    .AsNoTracking()
+                    .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforFactColumn.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
+                    .Select(a => a.DimensionsId)
+                    .ToListAsync();
+                //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
+
+                var narrativerowDimensions = await _context.ModelDimensionValues
+                    .AsNoTracking()
+                    .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforNarrativeRow.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
+                    .Select(a => a.DimensionsId)
+                    .ToListAsync();
+                //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforNarrativeRow.Id, defaultDatamodel.Id);
+
+                var factfiltercombinations = defaultDatamodel.ModelFilterCombinations
+                    .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact)
+                    .Select(a => (long?)a.Id)
+                    .ToList();
+                var narrativefiltercombinations = defaultDatamodel.ModelFilterCombinations
+                    .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative)
+                    .Select(a => a.Id).ToList();
+                //var list = await _context.DataModelValues
+                //    .Where(dmv =>
+                //        dmv.DataModelId == defaultDatamodel.Id &&
+                //        dmv.DataModel.OrganizationId == request.OrganizationId)
+                //    .Include(a => a.DataPointValues)
+                //    .Include(dim => dim.Row)
+                //    .Include(df => df.Combination)
+                //    .ThenInclude(mfc => mfc.SampleModelFilterCombinationValues)
+                //    .ToListAsync();
+                //_unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(defaultDatamodel.Id, request.OrganizationId);
+                //await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
+
+                foreach (var dp in datapoints)
+                {
+                    var viewtype = await _context.DataPointValue
+                        .AsNoTracking()
+                        .Where(md => md.Id == dp)
+                        .Select(md => md.IsNarrative)
+                        .FirstOrDefaultAsync();
+                    if (viewtype == null)
+                        viewtype = false;
+                    if (viewtype != null && viewtype == true)
+                    {
+                        defaultDatamodelValues =
+                        (from narrative in narrativefiltercombinations
+                         from rowDimension in narrativerowDimensions
+                         select new DataModelValue
+                         {
+                             DataModelId = defaultDatamodel.Id,
+                             DataPointValuesId = dp,
+                             CreatedBy = userId,
+                             LastModifiedBy = userId,
+                             CreatedDate = DateTime.UtcNow,
+                             LastModifiedDate = DateTime.UtcNow,
+                             RowId = rowDimension,
+                             ColumnId = null,
+                             CombinationId = narrative,
+                             State = Domain.Enum.StateEnum.active
+                         }).ToList();
+
+                    }
+                    if (viewtype != null && viewtype == false && factfiltercombinations.Count() > 0)
+                    {
+                        defaultDatamodelValues =
+                            (from factfilter in factfiltercombinations
+                             from rowDimension in factrowDimensions
+                             from colDimension in factcoldimensions
+                             select new DataModelValue
+                             {
+                                 DataModelId = defaultDatamodel.Id,
+                                 DataPointValuesId = dp,
+                                 CreatedBy = userId,
+                                 LastModifiedBy = userId,
+                                 CreatedDate = DateTime.UtcNow,
+                                 LastModifiedDate = DateTime.UtcNow,
+                                 RowId = rowDimension,
+                                 ColumnId = colDimension,
+                                 CombinationId = factfilter,
+                                 State = Domain.Enum.StateEnum.active
+                             }).ToList();
+
+                    }
+                    if (viewtype != null && viewtype == false && factfiltercombinations.Count() <= 0)
+                    {
+                        defaultDatamodelValues =
+                            (from rowdim in factrowDimensions
+                             from coldim in factcoldimensions
+                             select new DataModelValue
+                             {
+                                 DataModelId = defaultDatamodel.Id,
+                                 DataPointValuesId = dp,
+                                 CreatedBy = userId,
+                                 LastModifiedBy = userId,
+                                 CreatedDate = DateTime.UtcNow,
+                                 LastModifiedDate = DateTime.UtcNow,
+                                 RowId = rowdim,
+                                 ColumnId = coldim,
+                                 CombinationId = null,
+                                 State = Domain.Enum.StateEnum.active
+                             }).ToList();
+                    }
+                    //return defaultDatamodelValues;
+                }
+            }
+            return defaultDatamodelValues;
+        }
     }
 }

@@ -59,9 +59,9 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<UploadedFile?>> GetUploadedFileData(long DataModelValueId, bool IsDefaultmodel);
         Task<List<DataModelValue>> DataModelValuesByModelId(long dataModelId);
         Task<ESG.Domain.Models.DataModel> GetDatamodelLinkedToDatapointByIdAndOrganizationId(long datapointId, long organizationId);
-        Task<List<long?>> GetDataModelValuesByDatapointIDsModelIdOrgId(List<long> datapoints, long modelId, long organizationId);
-        Task<bool> IsDataPointHavinganyValue(CheckDataModelValueOfDatapointRegDto requestdto);
-        Task<bool> IsDataPointIsAssignedToUser(long modelId, long organizationId);
-        Task<List<DataModelValue?>> GetDataModelValuesByDatapointIDsOrgId(List<long> datapoints, long organizationId);
+        Task<List<long?>> GetDataModelValuesByDatapointIDsModelIdOrgId(List<long>? datapoints, long modelId, long organizationId);
+        Task<List<long?>> IsDataPointHavinganyValue(CheckDataModelValueOfDatapointRegDto requestdto);
+        Task<bool> CheckModelIsEditable(long modelId, long organizationId);
+        Task<List<DataModelValue?>> GetDefaultDataModelValuesByDatapointIDsOrgId(List<long>? datapoints, long organizationId);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.Internal;
 using ESG.Application.Common.Interface;
+using ESG.Application.Dto.DataModel;
 using ESG.Application.Dto.Get;
 using ESG.Application.Dto.Hierarchy;
 using ESG.Application.Services.Interfaces;
@@ -60,6 +61,10 @@ namespace ESG.Application.Services
                     if (toRemove.Any())
                     {
                         await _unitOfWork.Repository<Hierarchy>().RemoveRangeAsync(toRemove);
+                        //var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDsOrgId
+                        //    (toRemove.Select(a => a.DataPointValuesId).ToList(), request.OrganizationId);
+                        //if (list.Any())
+                        //    await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
                     }
 
                     if (toAddOrUpdate.Any())
@@ -125,7 +130,8 @@ namespace ESG.Application.Services
                     .Select(a => a.Id).ToList();
                 var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(defaultDatamodel.Id, request.OrganizationId);
                 await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
-                foreach (var dp in datapoints)
+                var reminingDatapoints = await _unitOfWork.HierarchyRepo.GetRemainingDatapointsByOrganizationId(request.OrganizationId);
+                foreach (var dp in reminingDatapoints)
                 {
                     var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(dp);
                     if (viewtype != null && viewtype == true)
@@ -146,7 +152,6 @@ namespace ESG.Application.Services
                                 CombinationId = narrative,
                                 State = Domain.Enum.StateEnum.active
                             }).ToList();
-
                     }
                     if (viewtype != null && viewtype == false && factfiltercombinations.Count() > 0)
                     {
@@ -424,7 +429,7 @@ namespace ESG.Application.Services
             return mainDto;
         }
 
-        public async Task<bool> CheckDataModelValueOfDatapoint(CheckDataModelValueOfDatapointRegDto requestdto)
+        public async Task<List<long?>> CheckDataModelValueOfDatapoint(CheckDataModelValueOfDatapointRegDto requestdto)
         {
             
             var havingValue = await _unitOfWork.DataModelRepo.IsDataPointHavinganyValue(requestdto);

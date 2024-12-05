@@ -615,28 +615,36 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return datamodel;
         }
 
-        public async Task<bool> IsDataPointHavinganyValue(CheckDataModelValueOfDatapointRegDto requestdto)
+        public async Task<List<long?>> IsDataPointHavinganyValue(CheckDataModelValueOfDatapointRegDto requestdto)
         {
-            var hasValue = await _context.DataModelValues
+            //var hasValue = await _context.DataModelValues
+            //    .AsNoTracking()
+            //    .AnyAsync(a =>
+            //        a.DataModel.OrganizationId == requestdto.OrganizationId &&
+            //        requestdto.DatapointIds.Contains(a.DataPointValuesId.Value) &&
+            //        a.Value != null);
+            var datapoints = await _context.DataModelValues
                 .AsNoTracking()
-                .AnyAsync(a =>
+                .Where(a =>
                     a.DataModel.OrganizationId == requestdto.OrganizationId &&
                     requestdto.DatapointIds.Contains(a.DataPointValuesId.Value) &&
-                    a.Value != null);
-            return hasValue;
+                    a.Value != null)
+                .Select(a => a.DataPointValuesId)
+                .ToListAsync();
+            return datapoints;
         }
-        public async Task<bool> IsDataPointIsAssignedToUser(long modelId, long organizationId)
+        public async Task<bool> CheckModelIsEditable(long modelId, long organizationId)
         {
             var hasValue = await _context.DataModelValues
                 .AsNoTracking()
                 .AnyAsync(a =>
                     a.DataModel.OrganizationId == organizationId &&
                     a.DataModelId == modelId &&
-                    a.ResponsibleUserId != null);
+                    a.Value != null);
             return hasValue;
         }
 
-        public async Task<List<DataModelValue?>> GetDataModelValuesByDatapointIDsOrgId(List<long> datapoints, long organizationId)
+        public async Task<List<DataModelValue?>> GetDefaultDataModelValuesByDatapointIDsOrgId(List<long>? datapoints, long organizationId)
         {
             var hasValue = await _context.DataModelValues
                 .AsNoTracking()

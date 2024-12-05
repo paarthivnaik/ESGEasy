@@ -77,6 +77,12 @@ namespace ESG.Application.Services
             
             if (dataModelCreateRequestDto.DataModelId > 0)
             {
+                var datapoints = dataModelCreateRequestDto.Datapoints;
+                if (datapoints == null)
+                {
+                    var modelvalues = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(dataModelCreateRequestDto.DataModelId, dataModelCreateRequestDto.OrganizationId);
+                    datapoints = modelvalues?.Select(a => a.DataPointValuesId.Value).ToList();
+                }
                 var datamodelvalues = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDsModelIdOrgId
                     (dataModelCreateRequestDto.Datapoints, dataModelCreateRequestDto.DataModelId, dataModelCreateRequestDto.OrganizationId);
                 if (datamodelvalues.Count() > 0)
@@ -96,7 +102,6 @@ namespace ESG.Application.Services
                     await _unitOfWork.Repository<SampleModelFilterCombinationValue>().RemoveRangeAsync(comboValues);
                     await _unitOfWork.Repository<ModelFilterCombination>().RemoveRangeAsync(modelfiltercombinations);
                 }
-                
             }
             var dataModel = new DataModel();
             if (dataModelCreateRequestDto.DataModelId == 0)
@@ -134,32 +139,25 @@ namespace ESG.Application.Services
 
             // Fetch existing ModelDatapoints linked to the model
             //--------------------------------------------------
-            var existingModelDatapoints = await _unitOfWork.DataModelRepo
-                .GetDatapointsLinkedToDataModel(dataModel.Id, dataModelCreateRequestDto.OrganizationId);
-            var newDatapoints = dataModelCreateRequestDto.Datapoints
-                .Except(existingModelDatapoints.Select(a => a.DatapointValuesId))
-                .ToList();
-            var oldDatapoints = existingModelDatapoints
-                .Where(a => !dataModelCreateRequestDto.Datapoints.Contains(a.DatapointValuesId))
-                .ToList();
-            if (oldDatapoints.Count() > 0)
-            {
-                await _unitOfWork.Repository<ModelDatapoint>().RemoveRangeAsync(oldDatapoints);
-            }
+            
             if (dataModelCreateRequestDto.IsDefault == false)
             {
+                var existingModelDatapoints = await _unitOfWork.DataModelRepo
+                .GetDatapointsLinkedToDataModel(dataModel.Id, dataModelCreateRequestDto.OrganizationId);
+                var newDatapoints = dataModelCreateRequestDto.Datapoints
+                    .Except(existingModelDatapoints.Select(a => a.DatapointValuesId))
+                    .ToList();
+                var oldDatapoints = existingModelDatapoints
+                    .Where(a => !dataModelCreateRequestDto.Datapoints.Contains(a.DatapointValuesId))
+                    .ToList();
+                if (oldDatapoints.Count() > 0)
+                {
+                    await _unitOfWork.Repository<ModelDatapoint>().RemoveRangeAsync(oldDatapoints);
+                    var generatedefaultdatamodelvalues = await _unitOfWork.HierarchyRepo.GenerateDataModelValues(oldDatapoints.Select(a =>a.DatapointValuesId).ToList(), dataModelCreateRequestDto.OrganizationId, dataModelCreateRequestDto.CreatedBy);
+                    await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(generatedefaultdatamodelvalues);
+                }
                 foreach (var datapointId in newDatapoints)
                 {
-                    //modelDatapoints.Add(new ModelDatapoint
-                    //{
-                    //    DataModelId = dataModelId,
-                    //    DatapointValuesId = datapointId,
-                    //    State = StateEnum.active,
-                    //    CreatedBy = dataModelCreateRequestDto.CreatedBy,
-                    //    CreatedDate = utcNow,
-                    //    LastModifiedBy = dataModelCreateRequestDto.CreatedBy,
-                    //    LastModifiedDate = utcNow
-                    //});
                     var modeldp = new ModelDatapoint();
                     modeldp.DataModelId = dataModelId;
                     modeldp.DataModelId = dataModelId;
@@ -200,11 +198,11 @@ namespace ESG.Application.Services
             //-----------------------------------------------------------
             if (dataModelCreateRequestDto.DataModelId == 0)
             {
-                if (dataModelCreateRequestDto.Fact != null)
+                if (dataModelCreateRequestDto.Fact?.RowId != null)
                 {
                     await GenerateModelConfigurationsAndDataModelFilters(dataModelCreateRequestDto,dataModelCreateRequestDto.Fact,null, dataModelId);
                 }
-                if (dataModelCreateRequestDto.Narrative != null)
+                if (dataModelCreateRequestDto.Narrative?.RowId != null)
                 {
                     await GenerateModelConfigurationsAndDataModelFilters(dataModelCreateRequestDto,null, dataModelCreateRequestDto.Narrative, dataModelId);
                 }
@@ -218,11 +216,11 @@ namespace ESG.Application.Services
                     await _unitOfWork.Repository<DataModelFilter>().RemoveRangeAsync(filters);
                 }
                 await _unitOfWork.Repository<Domain.Models.ModelConfiguration>().RemoveRangeAsync(configurations);
-                if (dataModelCreateRequestDto.Fact != null)
+                if (dataModelCreateRequestDto.Fact?.RowId != null)
                 {
                     await GenerateModelConfigurationsAndDataModelFilters(dataModelCreateRequestDto, dataModelCreateRequestDto.Fact, null, dataModelId);
                 }
-                if (dataModelCreateRequestDto.Narrative != null)
+                if (dataModelCreateRequestDto.Narrative?.RowId != null)
                 {
                     await GenerateModelConfigurationsAndDataModelFilters(dataModelCreateRequestDto, null, dataModelCreateRequestDto.Narrative, dataModelId);
                 }
@@ -240,11 +238,11 @@ namespace ESG.Application.Services
             var narrativeRowDimensionType = modeldimTypes.FirstOrDefault(d => d.DimensionTypeId == dataModelCreateRequestDto.Narrative.RowId);
             var factFilterDimensionTypes = new List<ModelDimensionType>();
             var narrativeFilterDimensionTypes = new List<ModelDimensionType>();
-            if (dataModelCreateRequestDto.Fact.Filters != null)
+            if (dataModelCreateRequestDto.Fact?.Filters != null)
             {
                 factFilterDimensionTypes = modeldimTypes.Where(d => dataModelCreateRequestDto.Fact.Filters.Contains(d.DimensionTypeId)).ToList();
             }
-            if (dataModelCreateRequestDto.Narrative.Filters != null)
+            if (dataModelCreateRequestDto.Narrative?.Filters != null)
             {
                 narrativeFilterDimensionTypes = modeldimTypes.Where(d => dataModelCreateRequestDto.Narrative.Filters.Contains(d.DimensionTypeId)).ToList();
             }
@@ -282,7 +280,7 @@ namespace ESG.Application.Services
                     .ToList();
             var dataModelValues = new List<DataModelValue>();
             ///setting fact view filters and datamodelvalues for datapoint
-            if (dataModelCreateRequestDto.Fact != null)
+            if (dataModelCreateRequestDto.Fact?.RowId != null)
             {
                 var datamodelConfigId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(dataModelId, ModelViewTypeEnum.Fact);
                 var datamodelfilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(datamodelConfigId);
@@ -396,7 +394,7 @@ namespace ESG.Application.Services
                     }
                 }
             }
-            if (dataModelCreateRequestDto.Narrative != null)
+            if (dataModelCreateRequestDto.Narrative?.RowId != null)
             {
                 var datamodelConfigId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(dataModelId, ModelViewTypeEnum.Narrative);
                 var datamodelfilters = await _unitOfWork.DataModelRepo.GetModelFiltersByConfigId(datamodelConfigId);
@@ -499,14 +497,17 @@ namespace ESG.Application.Services
                         );
                     }
                 }
-                dataModel.State = StateEnum.active;
-                await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(dataModelValues);
-                await _unitOfWork.Repository<DataModel>().UpdateAsync(dataModel.Id, dataModel);
-                await _unitOfWork.SaveAsync();
-                var dmvToRemove = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDsOrgId(dataModelCreateRequestDto.Datapoints, dataModelCreateRequestDto.OrganizationId);
-                if ( dmvToRemove != null )
+            }
+            dataModel.State = StateEnum.active;
+            await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(dataModelValues);
+            await _unitOfWork.Repository<DataModel>().UpdateAsync(dataModel.Id, dataModel);
+            if (dataModelCreateRequestDto.IsDefault == false)
+            {
+                var dmvToRemove = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByDatapointIDsOrgId(dataModelCreateRequestDto.Datapoints, dataModelCreateRequestDto.OrganizationId);
+                if (dmvToRemove != null)
                     await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(dmvToRemove);
             }
+            await _unitOfWork.SaveAsync();
         }
         public async Task GenerateModelConfigurationsAndDataModelFilters(
             DataModelCreateRequestDto dataModelCreateRequest,
@@ -671,7 +672,7 @@ namespace ESG.Application.Services
                 {
                     var viewTypes = await _unitOfWork.DataModelRepo.GetConfigurationViewTypesForDataModel(datamodel.Id);
                     var datapoints = await _unitOfWork.DataModelRepo.GetDatapointsLinkedToDataModelWithName(datamodel.Id, organizationId);
-                    var editable = await _unitOfWork.DataModelRepo.IsDataPointIsAssignedToUser(datamodel.Id, organizationId);
+                    var editable = await _unitOfWork.DataModelRepo.CheckModelIsEditable(datamodel.Id, organizationId);
                     var response = new DataModelsResponseDto
                     {
                         Id = datamodel.Id,
