@@ -33,7 +33,9 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
         {
             var list = await _context.DataModelValues
                 .AsNoTracking()
-                .Where(x => x.DataModel.OrganizationId == orgId && x.DataModel.IsDefaultModel == true && x.ResponsibleUserId.HasValue)
+                .Where(x => x.DataModel.OrganizationId == orgId 
+                    && x.DataModel.IsDefaultModel == true
+                    && x.Value != null)
                 .Select(g => g.DataPointValuesId)
                 .Distinct()
                 .ToListAsync();

@@ -58,7 +58,7 @@ namespace ESG.Application.Services
                     {
                         var code = dimention.Code.ToUpper();
                         var existingdimensionCode = await _unitOfWork.Repository<Dimension>()
-                            .Get(a => a.DimensionTypeId == dimention.DimensionTypeId && a.Code == code 
+                            .Get(a => a.DimensionTypeId == dimention.DimensionTypeId && a.Code.ToUpper() == code 
                                 && a.State == Domain.Enum.StateEnum.active
                                 && a.OrganizationId == dimention.OrganizationId);
                         if (existingdimensionCode != null)

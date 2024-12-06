@@ -60,7 +60,7 @@ namespace ESG.Application.Services
                     {
                         var code = dimensionType.Code.ToUpper();
                         var existingCode = await _unitOfWork.Repository<DimensionType>()
-                            .Get(a => a.Code == code 
+                            .Get(a => a.Code.ToUpper() == code 
                                 && a.State == Domain.Enum.StateEnum.active
                                 && a.OrganizationId == dimensionType.OrganizationId);
                         if (existingCode != null)

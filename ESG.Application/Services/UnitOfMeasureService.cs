@@ -57,7 +57,7 @@ namespace ESG.Application.Services
                         var code = uom.Code.ToUpper();
                         var existingCode = await _unitOfMeasure.Repository<UnitOfMeasure>()
                             .Get(a => a.UnitOfMeasureTypeId == uom.UnitOfMeasureTypeId 
-                            && a.Code == code && a.State == Domain.Enum.StateEnum.active 
+                            && a.Code.ToUpper() == code && a.State == Domain.Enum.StateEnum.active 
                             && a.OrganizationId == uom.OrganizationId);
                         if (existingCode != null)
                         {
