@@ -60,24 +60,19 @@ namespace ESG.Application.Services
                     }
                     if (toRemove.Any())
                     {
+                        //now we have to modify the records in the datamodelmodelvalues with respective datapoints
                         await _unitOfWork.Repository<Hierarchy>().RemoveRangeAsync(toRemove);
-                        //var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDsOrgId
-                        //    (toRemove.Select(a => a.DataPointValuesId).ToList(), request.OrganizationId);
-                        //if (list.Any())
-                        //    await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
+                        var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDsOrgId
+                                (toRemove.Select(a => a.DataPointValuesId).ToList() ,request.OrganizationId);
+                        if (list.Any())
+                            await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
                     }
-
                     if (toAddOrUpdate.Any())
                     {
                         await _unitOfWork.Repository<Hierarchy>().AddRangeAsync(toAddOrUpdate);
-                    }
-                    //now we have to modify the records in the datamodelmodelvalues with respective datapoints
-                    var datapoints = request.DatapointIds?.ToList() ?? new List<long>();
-                    var datapointsToRemove = toRemove.Select(a => a.DataPointValuesId).ToList();
-                    var filteredDatapoints = datapoints.Except(datapointsToRemove).ToList();
-                    if (filteredDatapoints.Any())
-                    {
-                        await GenerateDefaultDataModelValues(filteredDatapoints, request);
+                        var list = await _unitOfWork.DataModelRepo.GenerateDataModelValues
+                            (toAddOrUpdate.Select(a => a.DataPointValuesId).ToList(), request.OrganizationId, request.UserId);
+                        await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(list);
                     }
                 }
             }
@@ -105,104 +100,106 @@ namespace ESG.Application.Services
                 };
                 if (request.DatapointIds != null)
                 {
-                    await GenerateDefaultDataModelValues(request.DatapointIds, request);//if hierarchy created newly then we have to create defaultdatamodelvalues for all dps
+                    var datamodelvalues = await _unitOfWork.DataModelRepo.GenerateDataModelValues(request.DatapointIds, request.OrganizationId, request.UserId);
+                    await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(datamodelvalues);
+                    //if hierarchy created newly then we have to create defaultdatamodelvalues for all dps
                 }
                 await _unitOfWork.Repository<OrganizationHeirarchy>().AddAsync(organizationHierarchy);
             }
             await _unitOfWork.SaveAsync();
         }
-        private async Task GenerateDefaultDataModelValues(List<long>? datapoints, HierarchyCreateRequestDto request)
-        {
-            var defaultDatamodelValues = new List<DataModelValue>();
-            var defaultDatamodel = await _unitOfWork.DataModelRepo.GetDefaultModel(request.OrganizationId);
-            if (defaultDatamodel != null && defaultDatamodel.Id > 0)
-            {
-                var factconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact).FirstOrDefault();
-                var narrativeconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative).FirstOrDefault();
-                var factrowdimtypeId = factconfigId.RowId;
-                var modeldimensiontypeIdforFactRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.RowId).FirstOrDefault();
-                var modeldimensiontypeIdforFactColumn = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.ColumnId).FirstOrDefault();
-                var modeldimensiontypeIdforNarrativeRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == narrativeconfigId.RowId).FirstOrDefault();
-                var factrowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
-                var factcoldimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
-                var narrativerowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforNarrativeRow.Id, defaultDatamodel.Id);
-                var factfiltercombinations = defaultDatamodel.ModelFilterCombinations
-                    .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact)
-                    .Select(a => (long?)a.Id)
-                    .ToList();
-                var narrativefiltercombinations = defaultDatamodel.ModelFilterCombinations
-                    .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative)
-                    .Select(a => a.Id).ToList();
-                var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(defaultDatamodel.Id, request.OrganizationId);
-                await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
-                //var reminingDatapoints = await _unitOfWork.HierarchyRepo.GetRemainingDatapointsByOrganizationId(request.OrganizationId);
+        //private async Task GenerateDefaultDataModelValues(List<long>? datapoints, HierarchyCreateRequestDto request)
+        //{
+        //    var defaultDatamodelValues = new List<DataModelValue>();
+        //    var defaultDatamodel = await _unitOfWork.DataModelRepo.GetDefaultModel(request.OrganizationId);
+        //    if (defaultDatamodel != null && defaultDatamodel.Id > 0)
+        //    {
+        //        var factconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact).FirstOrDefault();
+        //        var narrativeconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative).FirstOrDefault();
+        //        var factrowdimtypeId = factconfigId.RowId;
+        //        var modeldimensiontypeIdforFactRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.RowId).FirstOrDefault();
+        //        var modeldimensiontypeIdforFactColumn = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.ColumnId).FirstOrDefault();
+        //        var modeldimensiontypeIdforNarrativeRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == narrativeconfigId.RowId).FirstOrDefault();
+        //        var factrowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
+        //        var factcoldimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
+        //        var narrativerowDimensions = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforNarrativeRow.Id, defaultDatamodel.Id);
+        //        var factfiltercombinations = defaultDatamodel.ModelFilterCombinations
+        //            .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact)
+        //            .Select(a => (long?)a.Id)
+        //            .ToList();
+        //        var narrativefiltercombinations = defaultDatamodel.ModelFilterCombinations
+        //            .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative)
+        //            .Select(a => a.Id).ToList();
+        //        var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(defaultDatamodel.Id, request.OrganizationId);
+        //        await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
+        //        //var reminingDatapoints = await _unitOfWork.HierarchyRepo.GetRemainingDatapointsByOrganizationId(request.OrganizationId);
 
-                foreach (var dp in datapoints)
-                {
-                    var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(dp);
-                    if (viewtype != null && viewtype == true)
-                    {
-                        defaultDatamodelValues =
-                        (from narrative in narrativefiltercombinations
-                            from rowDimension in narrativerowDimensions
-                            select new DataModelValue
-                            {
-                                DataModelId = defaultDatamodel.Id,
-                                DataPointValuesId = dp,
-                                CreatedBy = request.UserId,
-                                LastModifiedBy = request.UserId,
-                                CreatedDate = DateTime.UtcNow,
-                                LastModifiedDate = DateTime.UtcNow,
-                                RowId = rowDimension,
-                                ColumnId = null,
-                                CombinationId = narrative,
-                                State = Domain.Enum.StateEnum.active
-                            }).ToList();
-                    }
-                    if (viewtype != null && viewtype == false && factfiltercombinations.Count() > 0)
-                    {
-                        defaultDatamodelValues =
-                            (from factfilter in factfiltercombinations
-                             from rowDimension in factrowDimensions
-                             from colDimension in factcoldimensions
-                             select new DataModelValue
-                             {
-                                 DataModelId = defaultDatamodel.Id,
-                                 DataPointValuesId = dp,
-                                 CreatedBy = request.UserId,
-                                 LastModifiedBy = request.UserId,
-                                 CreatedDate = DateTime.UtcNow,
-                                 LastModifiedDate = DateTime.UtcNow,
-                                 RowId = rowDimension,
-                                 ColumnId = colDimension,
-                                 CombinationId = factfilter,
-                                 State = Domain.Enum.StateEnum.active
-                             }).ToList();
+        //        foreach (var dp in datapoints)
+        //        {
+        //            var viewtype = await _unitOfWork.DataModelRepo.GetDatapointViewType(dp);
+        //            if (viewtype != null && viewtype == true)
+        //            {
+        //                defaultDatamodelValues =
+        //                (from narrative in narrativefiltercombinations
+        //                    from rowDimension in narrativerowDimensions
+        //                    select new DataModelValue
+        //                    {
+        //                        DataModelId = defaultDatamodel.Id,
+        //                        DataPointValuesId = dp,
+        //                        CreatedBy = request.UserId,
+        //                        LastModifiedBy = request.UserId,
+        //                        CreatedDate = DateTime.UtcNow,
+        //                        LastModifiedDate = DateTime.UtcNow,
+        //                        RowId = rowDimension,
+        //                        ColumnId = null,
+        //                        CombinationId = narrative,
+        //                        State = Domain.Enum.StateEnum.active
+        //                    }).ToList();
+        //            }
+        //            if (viewtype != null && viewtype == false && factfiltercombinations.Count() > 0)
+        //            {
+        //                defaultDatamodelValues =
+        //                    (from factfilter in factfiltercombinations
+        //                     from rowDimension in factrowDimensions
+        //                     from colDimension in factcoldimensions
+        //                     select new DataModelValue
+        //                     {
+        //                         DataModelId = defaultDatamodel.Id,
+        //                         DataPointValuesId = dp,
+        //                         CreatedBy = request.UserId,
+        //                         LastModifiedBy = request.UserId,
+        //                         CreatedDate = DateTime.UtcNow,
+        //                         LastModifiedDate = DateTime.UtcNow,
+        //                         RowId = rowDimension,
+        //                         ColumnId = colDimension,
+        //                         CombinationId = factfilter,
+        //                         State = Domain.Enum.StateEnum.active
+        //                     }).ToList();
 
-                    }
-                    if (viewtype != null && viewtype == false && factfiltercombinations.Count() <= 0)
-                    {
-                        defaultDatamodelValues =
-                            (from rowdim in factrowDimensions
-                             from coldim in factcoldimensions
-                             select new DataModelValue
-                             {
-                                 DataModelId = defaultDatamodel.Id,
-                                 DataPointValuesId = dp,
-                                 CreatedBy = request.UserId,
-                                 LastModifiedBy = request.UserId,
-                                 CreatedDate = DateTime.UtcNow,
-                                 LastModifiedDate = DateTime.UtcNow,
-                                 RowId = rowdim,
-                                 ColumnId = coldim,
-                                 CombinationId = null,
-                                 State = Domain.Enum.StateEnum.active
-                             }).ToList();
-                    }
-                    await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(defaultDatamodelValues);
-                }
-            }
-        }
+        //            }
+        //            if (viewtype != null && viewtype == false && factfiltercombinations.Count() <= 0)
+        //            {
+        //                defaultDatamodelValues =
+        //                    (from rowdim in factrowDimensions
+        //                     from coldim in factcoldimensions
+        //                     select new DataModelValue
+        //                     {
+        //                         DataModelId = defaultDatamodel.Id,
+        //                         DataPointValuesId = dp,
+        //                         CreatedBy = request.UserId,
+        //                         LastModifiedBy = request.UserId,
+        //                         CreatedDate = DateTime.UtcNow,
+        //                         LastModifiedDate = DateTime.UtcNow,
+        //                         RowId = rowdim,
+        //                         ColumnId = coldim,
+        //                         CombinationId = null,
+        //                         State = Domain.Enum.StateEnum.active
+        //                     }).ToList();
+        //            }
+        //            await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(defaultDatamodelValues);
+        //        }
+        //    }
+        //}
 
         public List<(long, long, long?)> GenerateCombinations(IEnumerable<long> list1, IEnumerable<long> list2, IEnumerable<long?> list3)
         {
