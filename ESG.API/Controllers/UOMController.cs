@@ -41,7 +41,7 @@ namespace ESG.API.Controllers
             return Ok();
         }
 
-        [HttpPatch("DeleteAsync")]
+        [HttpPatch("Delete")]
         public async Task<IActionResult> Delete(UnitOfMeasureDeleteRequest value)
         {
             await _unitOfMeasureService.DeleteUOM(value);
