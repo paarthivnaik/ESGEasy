@@ -385,7 +385,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     dmv.DataModelId == modelId &&
                     dmv.DataModel.OrganizationId == organizationId &&
                     datapoints.Contains(dmv.DataPointValuesId.Value) && 
-                    (dmv.Value != null || dmv.ResponsibleUserId != null))
+                    dmv.Value != null)
                 .Select(a => a.DataPointValuesId)
                 .Distinct()
                 .ToListAsync();
