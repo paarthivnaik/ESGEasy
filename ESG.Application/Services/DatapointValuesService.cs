@@ -38,15 +38,15 @@ namespace ESG.Application.Services
             {
                 foreach (var datapoint in DataPointValue)
                 {
-                    if (DataPointValue != null && datapoint.DatapointId > 0)
+                    if (DataPointValue != null && datapoint.Id > 0)
                     {
-                        var iflinkeddatamodel = await _unitOfWork.DataModelRepo.GetDatamodelLinkedToDatapointByIdAndOrganizationId(datapoint.DatapointId, datapoint.OrganizationId);
+                        var iflinkeddatamodel = await _unitOfWork.DataModelRepo.GetDatamodelLinkedToDatapointByIdAndOrganizationId(datapoint.Id, datapoint.OrganizationId);
                         if (iflinkeddatamodel != null)
                         {
-                            throw new System.Exception($"Id with {datapoint.DatapointId} is alredy linked to a datamodel so you cannot modify this datapoint ");
+                            throw new System.Exception($"Id with {datapoint.Id} is alredy linked to a datamodel so you cannot modify this datapoint ");
                         }
-                        var existingdatapoint = await _unitOfWork.Repository<DataPointValue>().Get(a => a.Id == datapoint.DatapointId);
-                        var existingTranslation = await _unitOfWork.Repository<DatapointValueTranslation>().Get(a => a.DatapointValueId == datapoint.DatapointId);
+                        var existingdatapoint = await _unitOfWork.Repository<DataPointValue>().Get(a => a.Id == datapoint.Id);
+                        var existingTranslation = await _unitOfWork.Repository<DatapointValueTranslation>().Get(a => a.DatapointValueId == datapoint.Id);
                         existingdatapoint.DatapointTypeId = datapoint.DatapointTypeId;
                         existingdatapoint.UnitOfMeasureId = datapoint.UnitOfMeasureId;
                         existingdatapoint.CurrencyId = datapoint.CurrencyId;
@@ -60,7 +60,7 @@ namespace ESG.Application.Services
                         existingdatapoint.DisclosureRequirementId = datapoint.DisclosureRequirementId;
 
                         existingTranslation.LanguageId = datapoint.LanguageId;
-                        existingTranslation.DatapointValueId = datapoint.DatapointId;
+                        existingTranslation.DatapointValueId = datapoint.Id;
                         existingTranslation.Purpose = datapoint.Purpose;
                         existingTranslation.ShortText = datapoint.ShortText;
                         existingTranslation.LongText = datapoint.LongText;
@@ -79,6 +79,7 @@ namespace ESG.Application.Services
                         {
                             throw new System.Exception($"The Datapoint with code - {datapoint.Code} already exists");
                         }
+
                         var newDP = _mapper.Map<DataPointValue>(datapoint);
                         newDP.Code = code;
                         newDP.State = Domain.Enum.StateEnum.active;
