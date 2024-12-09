@@ -58,7 +58,7 @@ namespace ESG.Application.Services
                         var existingCode = await _unitOfMeasure.Repository<UnitOfMeasure>()
                             .Get(a => a.UnitOfMeasureTypeId == uom.UnitOfMeasureTypeId 
                             && a.Code.ToUpper() == code && a.State == Domain.Enum.StateEnum.active 
-                            && a.OrganizationId == uom.OrganizationId);
+                            && (a.OrganizationId == 1 && a.OrganizationId == uom.OrganizationId));
                         if (existingCode != null)
                         {
                             throw new System.Exception($"The Datapoint with code - {uom.Code} already exists");
