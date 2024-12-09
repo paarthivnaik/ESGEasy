@@ -62,7 +62,7 @@ namespace ESG.Application.Services
                         var existingCode = await _unitOfWork.Repository<DimensionType>()
                             .Get(a => a.Code.ToUpper() == code 
                                 && a.State == Domain.Enum.StateEnum.active
-                                && (a.OrganizationId == 1 && a.OrganizationId == dimensionType.OrganizationId));
+                                && (a.OrganizationId == 1 || a.OrganizationId == dimensionType.OrganizationId));
                         if (existingCode != null)
                         {
                             throw new System.Exception($"The Datapoint with code - {dimensionType.Code} already exists");
