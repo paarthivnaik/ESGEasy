@@ -711,49 +711,45 @@ namespace ESG.Infrastructure.Persistence.DataModel
             {
                 var factconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact).FirstOrDefault();
                 var narrativeconfigId = defaultDatamodel.ModelConfigurations.Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative).FirstOrDefault();
-                var factrowdimtypeId = factconfigId.RowId;
-                var modeldimensiontypeIdforFactRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.RowId).FirstOrDefault();
-                var modeldimensiontypeIdforFactColumn = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.ColumnId).FirstOrDefault();
-                var modeldimensiontypeIdforNarrativeRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == narrativeconfigId.RowId).FirstOrDefault();
-                var factrowDimensions = await _context.ModelDimensionValues
+                var factrowDimensions = new List<long>();
+                var factcoldimensions = new List<long>();
+                var factfiltercombinations = new List<long?>();
+                var narrativerowDimensions = new List<long>();
+                var narrativefiltercombinations = new List<long?>();
+                if (factconfigId != null)
+                {
+                    var modeldimensiontypeIdforFactRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.RowId).FirstOrDefault();
+                    var modeldimensiontypeIdforFactColumn = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == factconfigId.ColumnId).FirstOrDefault();
+                    factrowDimensions = await _context.ModelDimensionValues
                     .AsNoTracking()
                     .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforFactRow.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
                     .Select(a => a.DimensionsId)
                     .ToListAsync();
-                //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
-
-                var factcoldimensions = await _context.ModelDimensionValues
+                    //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
+                    factcoldimensions = await _context.ModelDimensionValues
                     .AsNoTracking()
                     .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforFactColumn.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
                     .Select(a => a.DimensionsId)
                     .ToListAsync();
-                //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
-
-                var narrativerowDimensions = await _context.ModelDimensionValues
-                    .AsNoTracking()
-                    .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforNarrativeRow.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
-                    .Select(a => a.DimensionsId)
-                    .ToListAsync();
-                //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforNarrativeRow.Id, defaultDatamodel.Id);
-
-                var factfiltercombinations = defaultDatamodel.ModelFilterCombinations
+                    //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
+                    factfiltercombinations = defaultDatamodel.ModelFilterCombinations
                     .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact)
                     .Select(a => (long?)a.Id)
                     .ToList();
-                var narrativefiltercombinations = defaultDatamodel.ModelFilterCombinations
-                    .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative)
-                    .Select(a => a.Id).ToList();
-                //var list = await _context.DataModelValues
-                //    .Where(dmv =>
-                //        dmv.DataModelId == defaultDatamodel.Id &&
-                //        dmv.DataModel.OrganizationId == request.OrganizationId)
-                //    .Include(a => a.DataPointValues)
-                //    .Include(dim => dim.Row)
-                //    .Include(df => df.Combination)
-                //    .ThenInclude(mfc => mfc.SampleModelFilterCombinationValues)
-                //    .ToListAsync();
-                //_unitOfWork.DataModelRepo.GetDataModelValuesByModelIdOrgId(defaultDatamodel.Id, request.OrganizationId);
-                //await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
+                }
+                if (narrativeconfigId != null)
+                {
+                    var modeldimensiontypeIdforNarrativeRow = defaultDatamodel.ModelDimensionTypes.Where(a => a.DimensionTypeId == narrativeconfigId.RowId).FirstOrDefault();
+                    narrativerowDimensions = await _context.ModelDimensionValues
+                        .AsNoTracking()
+                        .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforNarrativeRow.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
+                        .Select(a => a.DimensionsId)
+                        .ToListAsync();
+                    //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforNarrativeRow.Id, defaultDatamodel.Id);
+                    narrativefiltercombinations = defaultDatamodel.ModelFilterCombinations
+                        .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative)
+                        .Select(a => (long?)a.Id).ToList();
+                }
                 foreach (var dp in datapoints)
                 {
                     var viewtype = await _context.DataPointValue
