@@ -39,7 +39,7 @@ namespace ESG.Application.Services
             if (existinghierarchyId != null && existinghierarchyId > 0) //if hierarchy alredy exists then will have records in hierarchy alswell as DatamodelValues
             {
                 var existingHierarchies = await _unitOfWork.HierarchyRepo.GetHierarchies(existinghierarchyId);
-                if (request.DatapointIds != null && request.DatapointIds.Any())
+                if (request.DatapointIds != null)
                 {
                     var toAddOrUpdate = new List<Hierarchy>();
                     var toRemove = new List<Hierarchy>();
@@ -64,8 +64,11 @@ namespace ESG.Application.Services
                         await _unitOfWork.Repository<Hierarchy>().RemoveRangeAsync(toRemove);
                         var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDsOrgId
                                 (toRemove.Select(a => a.DataPointValuesId).ToList() ,request.OrganizationId);
+                        var modeldatapoints = await _unitOfWork.DataModelRepo.GetModelDatapointsByOrganizationId
+                            (toRemove.Select(a => a.DataPointValuesId).ToList(), request.OrganizationId);
                         if (list.Any())
                             await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
+                            await _unitOfWork.Repository<ModelDatapoint>().RemoveRangeAsync(modeldatapoints);
                     }
                     if (toAddOrUpdate.Any())
                     {

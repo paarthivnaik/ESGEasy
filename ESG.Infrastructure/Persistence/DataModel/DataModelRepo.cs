@@ -396,8 +396,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .AsNoTracking()
                 .Where(dmv =>
                     dmv.DataModel.OrganizationId == organizationId &&
-                    datapoints.Contains(dmv.DataPointValuesId.Value) &&
-                    dmv.Value != null)
+                    datapoints.Contains(dmv.DataPointValuesId.Value))
                 .ToListAsync();
         }
         public async Task<List<DataModelFilter>?> GetDataModelFiltersByConfigId(long configId)
@@ -820,6 +819,14 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 }
             }
             return defaultDatamodelValues;
+        }
+
+        public Task<List<ModelDatapoint>> GetModelDatapointsByOrganizationId(List<long>? datapoints, long organizationId)
+        {
+            return _context.ModelDatapoints
+                .AsNoTracking()
+                .Where(a => a.DataModel.OrganizationId == organizationId && datapoints.Contains(a.DatapointValuesId))
+                .ToListAsync();
         }
     }
 }

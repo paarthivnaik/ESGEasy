@@ -67,5 +67,6 @@ namespace ESG.Application.Common.Interface.DataModel
         Task<List<DataModelValue?>> GetDataModelValuesByDatapointIDOrgId(long datapoint, long organizationId);
         Task<List<DataModelValue>> GenerateDataModelValues(List<long>? datapoints, long organizationId, long userId);
         Task<List<DataModelValue>?> GetDataModelValuesByDatapointIDsOrgId(List<long>? datapoints, long organizationId);
+        Task<List<ModelDatapoint>?> GetModelDatapointsByOrganizationId(List<long>? datapoints, long organizationId);
     }
 }
