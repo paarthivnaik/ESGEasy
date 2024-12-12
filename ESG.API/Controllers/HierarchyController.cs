@@ -22,17 +22,17 @@ namespace ESG.API.Controllers
             _hierarchyService = hierarchyService;
         }
         [HttpPost("CreateHierarchy")]
-        public async Task AddHierarchy([FromBody] HierarchyCreateRequestDto value)
+        public async Task<IActionResult> AddHierarchy([FromBody] HierarchyCreateRequestDto value)
         {
-            //try
-            //{
+            try
+            {
                 await _hierarchyService.AddHierarchy(value);
-               // return Ok(new { error = false, errorMsg = "Hierarchy saved sucessully" });
-            //}
-            //catch (Exception ex)
-            //{
-            //    return Ok(new { error = true, errorMsg = ex.Message });
-            //}
+                return Ok(new { error = false, errorMsg = "Hierarchy saved sucessully" });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex });
+            }
         }
         [HttpPost("CheckDataModelValueOfDatapoint")]
         public async Task<IActionResult> CheckDataModelValueOfDatapoint([FromBody] CheckDataModelValueOfDatapointRegDto requestDto)

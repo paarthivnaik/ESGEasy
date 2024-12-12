@@ -140,6 +140,12 @@ namespace ESG.Application.Services
             // Fetch existing ModelDatapoints linked to the model
             //--------------------------------------------------
             
+            if (dataModelCreateRequestDto.IsDefault == true)
+            {
+                var existingModelDatapoints = await _unitOfWork.DataModelRepo
+                .GetDatapointsLinkedToDataModel(dataModel.Id, dataModelCreateRequestDto.OrganizationId);
+                await _unitOfWork.Repository<ModelDatapoint>().RemoveRangeAsync(existingModelDatapoints);
+            }
             if (dataModelCreateRequestDto.IsDefault == false)
             {
                 var existingModelDatapoints = await _unitOfWork.DataModelRepo
@@ -152,7 +158,6 @@ namespace ESG.Application.Services
                     .ToList();
                 if (oldDatapoints.Count() > 0)
                 {
-                    await _unitOfWork.Repository<ModelDatapoint>().RemoveRangeAsync(oldDatapoints);
                     var generatedefaultdatamodelvalues = await _unitOfWork.DataModelRepo.GenerateDataModelValues(oldDatapoints.Select(a =>a.DatapointValuesId).ToList(), dataModelCreateRequestDto.OrganizationId, dataModelCreateRequestDto.CreatedBy);
                     await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(generatedefaultdatamodelvalues);
                 }

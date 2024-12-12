@@ -7,6 +7,7 @@ using ESG.Application.Dto.Hierarchy;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Models;
 using ESG.Domain.Models;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
@@ -114,10 +115,9 @@ namespace ESG.Application.Services
                 }
                 await _unitOfWork.SaveAsync();
             }
-            catch (DbUpdateException ex)
+            catch (SystemException ex)
             {
-                Console.WriteLine(ex.InnerException?.Message);
-                throw;
+                throw ex;
             }
         }
         
