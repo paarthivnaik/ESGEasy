@@ -32,93 +32,86 @@ namespace ESG.Application.Services
         }
         public async Task AddHierarchy(HierarchyCreateRequestDto request)
         {
-            try
-            {
-                if (request == null)
-                    throw new ArgumentNullException(nameof(request), "Request cannot be null");
-                var existinghierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(request.OrganizationId);
-                var hierarchies = new List<Hierarchy>();
+            if (request == null)
+                throw new ArgumentNullException(nameof(request), "Request cannot be null");
+            var existinghierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(request.OrganizationId);
+            var hierarchies = new List<Hierarchy>();
 
-                if (existinghierarchyId != null && existinghierarchyId > 0) //if hierarchy alredy exists then will have records in hierarchy alswell as DatamodelValues
-                {
-                    var existingHierarchies = await _unitOfWork.HierarchyRepo.GetHierarchies(existinghierarchyId);
-                    if (request.DatapointIds != null)
-                    {
-                        var toAddOrUpdate = new List<Hierarchy>();
-                        var toRemove = new List<Hierarchy>();
-                        var existingHierarchyDatapointIds = existingHierarchies.Select(h => h.DataPointValuesId).ToList();
-                        var requestHierarchyDatapointIds = request.DatapointIds.ToHashSet();
-                        toRemove = existingHierarchies
-                                .Where(h => !requestHierarchyDatapointIds.Contains(h.DataPointValuesId))
-                                .ToList();
-                        foreach (var datapointId in request.DatapointIds)
-                        {
-                            toAddOrUpdate = request.DatapointIds
-                                .Where(datapointId => !existingHierarchyDatapointIds.Contains(datapointId))
-                                .Select(datapointId => new Hierarchy
-                                {
-                                    HierarchyId = existinghierarchyId,
-                                    DataPointValuesId = datapointId
-                                }).ToList();
-                        }
-                        if (toRemove.Any())
-                        {
-                            //now we have to modify the records in the datamodelmodelvalues with respective datapoints
-                            await _unitOfWork.Repository<Hierarchy>().RemoveRangeAsync(toRemove);
-                            var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDsOrgId
-                                    (toRemove.Select(a => a.DataPointValuesId).ToList() ,request.OrganizationId);
-                            var modeldatapoints = await _unitOfWork.DataModelRepo.GetModelDatapointsByOrganizationId
-                                (toRemove.Select(a => a.DataPointValuesId).ToList(), request.OrganizationId);
-                            if (list.Any())
-                                await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
-                                await _unitOfWork.Repository<ModelDatapoint>().RemoveRangeAsync(modeldatapoints);
-                        }
-                        if (toAddOrUpdate.Any())
-                        {
-                            await _unitOfWork.Repository<Hierarchy>().AddRangeAsync(toAddOrUpdate);
-                            var list = await _unitOfWork.DataModelRepo.GenerateDataModelValues
-                                (toAddOrUpdate.Select(a => a.DataPointValuesId).ToList(), request.OrganizationId, request.UserId);
-                            await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(list);
-                        }
-                    }
-                }
-                if (existinghierarchyId <= 0) 
-                {
-                    var hierarchyId = await _unitOfWork.HierarchyRepo.GetNextHierarchyIdAsync();
-                    if (request.DatapointIds != null && request.DatapointIds.Any())
-                    {
-                        foreach (var datapointId in request.DatapointIds)
-                        {
-                            hierarchies.Add(new Hierarchy
-                            {
-                                HierarchyId = hierarchyId,
-                                DataPointValuesId = datapointId
-                            });
-                        }
-                        await _unitOfWork.Repository<Hierarchy>().AddRangeAsync(hierarchies);
-                    }
-                    var organizationHierarchy = new OrganizationHeirarchy
-                    {
-                        HierarchyId = hierarchyId,
-                        OrganizationId = request.OrganizationId,
-                        CreatedBy = request.UserId,
-                        CreatedDate = DateTime.UtcNow
-                    };
-                    if (request.DatapointIds != null)
-                    {
-                        var reminingDatapoints = await _unitOfWork.HierarchyRepo.GetRemainingDatapointsByOrganizationId(request.OrganizationId);
-                        var datamodelvalues = await _unitOfWork.DataModelRepo.GenerateDataModelValues(reminingDatapoints.ToList(), request.OrganizationId, request.UserId);
-                        await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(datamodelvalues);
-                        //if hierarchy created newly then we have to create defaultdatamodelvalues for all dps
-                    }
-                    await _unitOfWork.Repository<OrganizationHeirarchy>().AddAsync(organizationHierarchy);
-                }
-                await _unitOfWork.SaveAsync();
-            }
-            catch (SystemException ex)
+            if (existinghierarchyId != null && existinghierarchyId > 0) //if hierarchy alredy exists then will have records in hierarchy alswell as DatamodelValues
             {
-                throw ex;
+                var existingHierarchies = await _unitOfWork.HierarchyRepo.GetHierarchies(existinghierarchyId);
+                if (request.DatapointIds != null)
+                {
+                    var toAddOrUpdate = new List<Hierarchy>();
+                    var toRemove = new List<Hierarchy>();
+                    var existingHierarchyDatapointIds = existingHierarchies.Select(h => h.DataPointValuesId).ToList();
+                    var requestHierarchyDatapointIds = request.DatapointIds.ToHashSet();
+                    toRemove = existingHierarchies
+                            .Where(h => !requestHierarchyDatapointIds.Contains(h.DataPointValuesId))
+                            .ToList();
+                    foreach (var datapointId in request.DatapointIds)
+                    {
+                        toAddOrUpdate = request.DatapointIds
+                            .Where(datapointId => !existingHierarchyDatapointIds.Contains(datapointId))
+                            .Select(datapointId => new Hierarchy
+                            {
+                                HierarchyId = existinghierarchyId,
+                                DataPointValuesId = datapointId
+                            }).ToList();
+                    }
+                    if (toRemove.Any())
+                    {
+                        //now we have to modify the records in the datamodelmodelvalues with respective datapoints
+                        await _unitOfWork.Repository<Hierarchy>().RemoveRangeAsync(toRemove);
+                        var list = await _unitOfWork.DataModelRepo.GetDataModelValuesByDatapointIDsOrgId
+                                (toRemove.Select(a => a.DataPointValuesId).ToList(), request.OrganizationId);
+                        var modeldatapoints = await _unitOfWork.DataModelRepo.GetModelDatapointsByOrganizationId
+                            (toRemove.Select(a => a.DataPointValuesId).ToList(), request.OrganizationId);
+                        if (list.Any())
+                            await _unitOfWork.Repository<DataModelValue>().RemoveRangeAsync(list);
+                        await _unitOfWork.Repository<ModelDatapoint>().RemoveRangeAsync(modeldatapoints);
+                    }
+                    if (toAddOrUpdate.Any())
+                    {
+                        await _unitOfWork.Repository<Hierarchy>().AddRangeAsync(toAddOrUpdate);
+                        var list = await _unitOfWork.DataModelRepo.GenerateDataModelValues
+                            (toAddOrUpdate.Select(a => a.DataPointValuesId).ToList(), request.OrganizationId, request.UserId);
+                        await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(list);
+                    }
+                }
             }
+            if (existinghierarchyId <= 0)
+            {
+                var hierarchyId = await _unitOfWork.HierarchyRepo.GetNextHierarchyIdAsync();
+                if (request.DatapointIds != null && request.DatapointIds.Any())
+                {
+                    foreach (var datapointId in request.DatapointIds)
+                    {
+                        hierarchies.Add(new Hierarchy
+                        {
+                            HierarchyId = hierarchyId,
+                            DataPointValuesId = datapointId
+                        });
+                    }
+                    await _unitOfWork.Repository<Hierarchy>().AddRangeAsync(hierarchies);
+                }
+                var organizationHierarchy = new OrganizationHeirarchy
+                {
+                    HierarchyId = hierarchyId,
+                    OrganizationId = request.OrganizationId,
+                    CreatedBy = request.UserId,
+                    CreatedDate = DateTime.UtcNow
+                };
+                if (request.DatapointIds != null)
+                {
+                    var reminingDatapoints = await _unitOfWork.HierarchyRepo.GetRemainingDatapointsByOrganizationId(request.OrganizationId);
+                    var datamodelvalues = await _unitOfWork.DataModelRepo.GenerateDataModelValues(reminingDatapoints.ToList(), request.OrganizationId, request.UserId);
+                    await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(datamodelvalues);
+                    //if hierarchy created newly then we have to create defaultdatamodelvalues for all dps
+                }
+                await _unitOfWork.Repository<OrganizationHeirarchy>().AddAsync(organizationHierarchy);
+            }
+            await _unitOfWork.SaveAsync();
         }
         
         public List<(long, long, long?)> GenerateCombinations(IEnumerable<long> list1, IEnumerable<long> list2, IEnumerable<long?> list3)

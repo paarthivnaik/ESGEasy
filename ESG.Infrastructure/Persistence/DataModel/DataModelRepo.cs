@@ -725,11 +725,12 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     .Select(a => a.DimensionsId)
                     .ToListAsync();
                     //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
-                    factcoldimensions = await _context.ModelDimensionValues
-                    .AsNoTracking()
-                    .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforFactColumn.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
-                    .Select(a => a.DimensionsId)
-                    .ToListAsync();
+                    if (modeldimensiontypeIdforFactColumn != null)
+                        factcoldimensions = await _context.ModelDimensionValues
+                        .AsNoTracking()
+                        .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforFactColumn.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
+                        .Select(a => a.DimensionsId)
+                        .ToListAsync();
                     //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
                     factfiltercombinations = defaultDatamodel.ModelFilterCombinations
                     .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact)
@@ -758,11 +759,11 @@ namespace ESG.Infrastructure.Persistence.DataModel
                         .FirstOrDefaultAsync();
                     if (viewtype == null)
                         viewtype = false;
-                    if (viewtype != null && viewtype == true)
+                    if (viewtype != null && viewtype == true && narrativefiltercombinations.Count() != 0)
                     {
                         defaultDatamodelValues =
-                        (from narrative in narrativefiltercombinations
-                         from rowDimension in narrativerowDimensions
+                        ( from rowDimension in narrativerowDimensions
+                         from narrative in narrativefiltercombinations
                          select new DataModelValue
                          {
                              DataModelId = defaultDatamodel.Id,
@@ -777,12 +778,30 @@ namespace ESG.Infrastructure.Persistence.DataModel
                              State = Domain.Enum.StateEnum.active
                          }).ToList();
                     }
-                    if (viewtype != null && viewtype == false && factfiltercombinations.Count() > 0)
+                    if (viewtype != null && viewtype == true && narrativefiltercombinations.Count() == 0)
                     {
                         defaultDatamodelValues =
-                            (from factfilter in factfiltercombinations
-                             from rowDimension in factrowDimensions
+                        (from rowDimension in narrativerowDimensions
+                         select new DataModelValue
+                         {
+                             DataModelId = defaultDatamodel.Id,
+                             DataPointValuesId = dp,
+                             CreatedBy = userId,
+                             LastModifiedBy = userId,
+                             CreatedDate = DateTime.UtcNow,
+                             LastModifiedDate = DateTime.UtcNow,
+                             RowId = rowDimension,
+                             ColumnId = null,
+                             CombinationId = null,
+                             State = Domain.Enum.StateEnum.active
+                         }).ToList();
+                    }
+                    if (viewtype != null && viewtype == false && factfiltercombinations.Count() > 0 && factrowDimensions.Count() > 0)
+                    {
+                        defaultDatamodelValues =
+                            ( from rowDimension in factrowDimensions
                              from colDimension in factcoldimensions
+                             from factfilter in factfiltercombinations
                              select new DataModelValue
                              {
                                  DataModelId = defaultDatamodel.Id,
@@ -797,11 +816,29 @@ namespace ESG.Infrastructure.Persistence.DataModel
                                  State = Domain.Enum.StateEnum.active
                              }).ToList();
                     }
-                    if (viewtype != null && viewtype == false && factfiltercombinations.Count() <= 0)
+                    if (viewtype != null && viewtype == false && factfiltercombinations.Count() <= 0 && factcoldimensions.Count() > 0)
+                    {
+                        defaultDatamodelValues =
+                            (from rowDimension in factrowDimensions
+                             from colDimension in factcoldimensions
+                             select new DataModelValue
+                             {
+                                 DataModelId = defaultDatamodel.Id,
+                                 DataPointValuesId = dp,
+                                 CreatedBy = userId,
+                                 LastModifiedBy = userId,
+                                 CreatedDate = DateTime.UtcNow,
+                                 LastModifiedDate = DateTime.UtcNow,
+                                 RowId = rowDimension,
+                                 ColumnId = colDimension,
+                                 CombinationId = null,
+                                 State = Domain.Enum.StateEnum.active
+                             }).ToList();
+                    }
+                    if (viewtype != null && viewtype == false && factfiltercombinations.Count() <= 0 && factcoldimensions.Count() == 0)
                     {
                         defaultDatamodelValues =
                             (from rowdim in factrowDimensions
-                             from coldim in factcoldimensions
                              select new DataModelValue
                              {
                                  DataModelId = defaultDatamodel.Id,
@@ -811,11 +848,12 @@ namespace ESG.Infrastructure.Persistence.DataModel
                                  CreatedDate = DateTime.UtcNow,
                                  LastModifiedDate = DateTime.UtcNow,
                                  RowId = rowdim,
-                                 ColumnId = coldim,
+                                 ColumnId = null,
                                  CombinationId = null,
                                  State = Domain.Enum.StateEnum.active
                              }).ToList();
                     }
+
                 }
             }
             return defaultDatamodelValues;
