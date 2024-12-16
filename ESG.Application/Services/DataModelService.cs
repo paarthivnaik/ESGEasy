@@ -159,6 +159,7 @@ namespace ESG.Application.Services
                 if (oldDatapoints.Count() > 0)
                 {
                     var generatedefaultdatamodelvalues = await _unitOfWork.DataModelRepo.GenerateDataModelValues(oldDatapoints.Select(a =>a.DatapointValuesId).ToList(), dataModelCreateRequestDto.OrganizationId, dataModelCreateRequestDto.CreatedBy);
+                    await _unitOfWork.Repository<ModelDatapoint>().RemoveRangeAsync(oldDatapoints);
                     await _unitOfWork.Repository<DataModelValue>().AddRangeAsync(generatedefaultdatamodelvalues);
                 }
                 foreach (var datapointId in newDatapoints)
