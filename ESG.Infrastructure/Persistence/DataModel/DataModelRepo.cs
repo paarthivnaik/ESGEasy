@@ -660,7 +660,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .AnyAsync(a =>
                     a.DataModel.OrganizationId == organizationId &&
                     a.DataModelId == modelId &&
-                    a.Value != null);
+                    (a.Value != null || a.UploadedFiles.Any()));
             return hasValue;
         }
         public async Task<bool> CheckDatapointIsDeletable(long datapointId, long organizationId)
