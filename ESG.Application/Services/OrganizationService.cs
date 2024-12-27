@@ -14,14 +14,37 @@ namespace ESG.Application.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task AddAsync(Organization organization)
+        public async Task AddAsync(OrganizationCreateDto organizationCreateDto)
         {
-            await _unitOfWork.Repository<Organization>().AddAsync(organization);
+            var newOrg = new Domain.Models.Organization
+            {
+                Name = organizationCreateDto.Name,
+                Country = organizationCreateDto.Country,
+                FirstName = organizationCreateDto.FirstName,
+                LatsName = organizationCreateDto.LatsName,
+                StreetNumber = organizationCreateDto.StreetNumber,
+                Email = organizationCreateDto.Email,
+                CreatedDate = organizationCreateDto.CreatedDate,
+                PostalCode = organizationCreateDto.PostalCode,
+                StreetAddress = organizationCreateDto.StreetAddress,
+                TenantId = organizationCreateDto.TenantId,
+                RegistrationId = organizationCreateDto.RegistrationId,
+                LanguageId = organizationCreateDto.LanguageId,
+                State = organizationCreateDto.State,
+                LastModifiedBy = organizationCreateDto.LastModifiedBy,
+                LastModifiedDate = organizationCreateDto.LastModifiedDate,
+                CreatedBy = organizationCreateDto.CreatedBy,
+                LogoUrl = organizationCreateDto.LogoUrl
+            };
+
+
+            await _unitOfWork.Repository<Organization>().AddAsync(newOrg);
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task<long> Count()
         {
-           return await _unitOfWork.Repository<Organization>().Count();
+            return await _unitOfWork.Repository<Organization>().Count();
         }
 
         public async Task<Organization> Delete(long Id)
@@ -41,7 +64,7 @@ namespace ESG.Application.Services
 
         public async Task<Organization> GetById(long Id)
         {
-           var res = await _unitOfWork.Repository<Organization>().Get(Id);
+            var res = await _unitOfWork.Repository<Organization>().Get(Id);
             return res;
         }
 

@@ -10,7 +10,7 @@ namespace ESG.Application.Services.Interfaces
 {
     public interface IOrganizationService
     {
-        Task AddAsync(Organization organization);
+        Task AddAsync(OrganizationCreateDto organizationCreateDto);
         Task<Organization> UpdateAsync(Organization organization);
         Task<IEnumerable<Organization>> GetAll();
         Task<Organization> GetById(long Id);
