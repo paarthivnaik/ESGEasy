@@ -29,11 +29,27 @@ namespace ESG.API.Controllers
             return res;
         }
 
-        [HttpPost("CreateNewOrg")]
+        [HttpPost("CreateOrEditOrg")]
         public async Task<IActionResult> Post(OrganizationCreateDto organizationCreateDto)
         {
-            await _organizationService.AddAsync(organizationCreateDto);
-            return Ok();
+            //await _organizationService.AddAsync(organizationCreateDto);
+            //return Ok();
+
+            try
+            {
+                if (organizationCreateDto.Id > 0)
+                {
+                    await _organizationService.AddAsync(organizationCreateDto);
+                    return Ok(new { error = false, errorMsg = "2" });
+                }
+                await _organizationService.AddAsync(organizationCreateDto);
+                return Ok(new { error = false, errorMsg = "1" });
+
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
         }
 
 

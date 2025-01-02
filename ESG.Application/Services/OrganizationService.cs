@@ -16,30 +16,56 @@ namespace ESG.Application.Services
         }
         public async Task AddAsync(OrganizationCreateDto organizationCreateDto)
         {
-            var newOrg = new Domain.Models.Organization
+            if (organizationCreateDto.Id == 0)
             {
-                Name = organizationCreateDto.Name,
-                Country = organizationCreateDto.Country,
-                FirstName = organizationCreateDto.FirstName,
-                LatsName = organizationCreateDto.LatsName,
-                StreetNumber = organizationCreateDto.StreetNumber,
-                Email = organizationCreateDto.Email,
-                CreatedDate = organizationCreateDto.CreatedDate,
-                PostalCode = organizationCreateDto.PostalCode,
-                StreetAddress = organizationCreateDto.StreetAddress,
-                TenantId = organizationCreateDto.TenantId,
-                RegistrationId = organizationCreateDto.RegistrationId,
-                LanguageId = organizationCreateDto.LanguageId,
-                State = organizationCreateDto.State,
-                LastModifiedBy = organizationCreateDto.LastModifiedBy,
-                LastModifiedDate = organizationCreateDto.LastModifiedDate,
-                CreatedBy = organizationCreateDto.CreatedBy,
-                LogoUrl = organizationCreateDto.LogoUrl
-            };
+                var newOrg = new Domain.Models.Organization
+                {
+                    Name = organizationCreateDto.Name,
+                    Country = organizationCreateDto.Country,
+                    FirstName = organizationCreateDto.FirstName,
+                    LatsName = organizationCreateDto.LatsName,
+                    StreetNumber = organizationCreateDto.StreetNumber,
+                    Email = organizationCreateDto.Email,
+                    CreatedDate = organizationCreateDto.CreatedDate,
+                    PostalCode = organizationCreateDto.PostalCode,
+                    StreetAddress = organizationCreateDto.StreetAddress,
+                    TenantId = organizationCreateDto.TenantId,
+                    RegistrationId = organizationCreateDto.RegistrationId,
+                    LanguageId = organizationCreateDto.LanguageId,
+                    State = organizationCreateDto.State,
+                    LastModifiedBy = organizationCreateDto.LastModifiedBy,
+                    LastModifiedDate = organizationCreateDto.LastModifiedDate,
+                    CreatedBy = organizationCreateDto.CreatedBy,
+                    LogoUrl = organizationCreateDto.LogoUrl
+                };
+                await _unitOfWork.Repository<Organization>().AddAsync(newOrg);
+                await _unitOfWork.SaveAsync();
+            }
 
-
-            await _unitOfWork.Repository<Organization>().AddAsync(newOrg);
-            await _unitOfWork.SaveAsync();
+            if (organizationCreateDto.Id > 0)
+            {
+                var existingOrg = await _unitOfWork.Repository<Organization>().Get(organizationCreateDto.Id);
+                if (existingOrg != null)
+                {
+                    existingOrg.Name = organizationCreateDto.Name;
+                    existingOrg.Country = organizationCreateDto.Country;
+                    existingOrg.FirstName = organizationCreateDto.FirstName;
+                    existingOrg.LatsName = organizationCreateDto.LatsName;
+                    existingOrg.StreetNumber = organizationCreateDto.StreetNumber;
+                    existingOrg.Email = organizationCreateDto.Email;
+                    existingOrg.PostalCode = organizationCreateDto.PostalCode;
+                    existingOrg.StreetAddress = organizationCreateDto.StreetAddress;
+                    existingOrg.TenantId = organizationCreateDto.TenantId;
+                    existingOrg.RegistrationId = organizationCreateDto.RegistrationId;
+                    existingOrg.LanguageId = organizationCreateDto.LanguageId;
+                    existingOrg.State = organizationCreateDto.State;
+                    existingOrg.LastModifiedBy = organizationCreateDto.LastModifiedBy;
+                    existingOrg.LastModifiedDate = organizationCreateDto.LastModifiedDate;
+                    existingOrg.LogoUrl = organizationCreateDto.LogoUrl;
+                    await _unitOfWork.Repository<Organization>().UpdateAsync(organizationCreateDto.Id, existingOrg);
+                    await _unitOfWork.SaveAsync();
+                };
+            }
         }
 
         public async Task<long> Count()
