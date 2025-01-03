@@ -31,10 +31,7 @@ namespace ESG.API.Controllers
 
         [HttpPost("CreateOrEditOrg")]
         public async Task<IActionResult> Post(OrganizationCreateDto organizationCreateDto)
-        {
-            //await _organizationService.AddAsync(organizationCreateDto);
-            //return Ok();
-
+        {            
             try
             {
                 if (organizationCreateDto.Id > 0)
@@ -60,11 +57,19 @@ namespace ESG.API.Controllers
         //    return Ok(res);
         //}
 
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteAsync(int id)
-        //{
-        //    await _organizationService.DeleteAsync(id);
-        //    return Ok();
-        //}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            try
+            {
+                await _organizationService.Delete(id);
+                return Ok(new { error = false, errorMsg = "Deleted Successfully" });
+            }
+            catch(Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
+            
+        }
     }
 }
