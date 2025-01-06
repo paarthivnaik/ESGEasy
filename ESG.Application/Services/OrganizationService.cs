@@ -84,7 +84,7 @@ namespace ESG.Application.Services
 
         public async Task<IEnumerable<Organization>> GetAll()
         {
-            var res = await _unitOfWork.Repository<Organization>().GetAll();
+            var res = await _unitOfWork.Repository<Organization>().GetAll(o=>o.State == StateEnum.active);
             return res;
         }
 

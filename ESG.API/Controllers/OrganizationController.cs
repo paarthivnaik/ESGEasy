@@ -57,7 +57,7 @@ namespace ESG.API.Controllers
         //    return Ok(res);
         //}
 
-        [HttpPatch("{id}")]
+        [HttpPatch("Delete")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             try
