@@ -10,9 +10,11 @@ namespace ESG.Application.Services
     public class OrganizationService : IOrganizationService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public OrganizationService(IUnitOfWork unitOfWork, IMapper mapper)
+        private readonly IUserService _userService;        
+        public OrganizationService(IUnitOfWork unitOfWork, IMapper mapper, IUserService userService)
         {
             _unitOfWork = unitOfWork;
+            _userService = userService;            
         }
         public async Task AddAsync(OrganizationCreateDto organizationCreateDto)
         {
@@ -40,6 +42,21 @@ namespace ESG.Application.Services
                 };
                 await _unitOfWork.Repository<Organization>().AddAsync(newOrg);
                 await _unitOfWork.SaveAsync();
+                var paswrd = organizationCreateDto.Email.Substring(0, organizationCreateDto.Email.IndexOf("@")); 
+                var user = new Dto.User.UserCreationRequestDto()
+                {
+                    FirstName = organizationCreateDto.FirstName,
+                    LastName = organizationCreateDto.LatsName!,
+                    Password = paswrd,
+                    Email = organizationCreateDto.Email,
+                    LanguageId = organizationCreateDto.LanguageId,
+                    CreatedBy= organizationCreateDto.CreatedBy,
+                    CreatedDate = organizationCreateDto.CreatedDate,
+                    PhoneNumber = "12345678",
+                    OrganizationId = newOrg.Id,
+                    RoleId = 2,
+                };
+                await _userService.Create(user);                
             }
 
             if (organizationCreateDto.Id > 0)
@@ -63,9 +80,9 @@ namespace ESG.Application.Services
                     existingOrg.LastModifiedDate = organizationCreateDto.LastModifiedDate;
                     existingOrg.LogoUrl = organizationCreateDto.LogoUrl;
                     await _unitOfWork.Repository<Organization>().UpdateAsync(organizationCreateDto.Id, existingOrg);
-                    await _unitOfWork.SaveAsync();
                 };
             }
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task<long> Count()
@@ -75,7 +92,7 @@ namespace ESG.Application.Services
 
         public async Task<Organization> Delete(long Id)
         {
-            var res = await _unitOfWork.Repository<Organization>().Get(Id);
+            var res = await _unitOfWork.Repository<Organization>().Get(o=>o.Id == Id);
             res.State = StateEnum.deleted;
             await _unitOfWork.Repository<Organization>().UpdateAsync(Id, res);
             await _unitOfWork.SaveAsync();

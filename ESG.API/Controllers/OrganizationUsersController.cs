@@ -29,12 +29,12 @@ namespace ESG.API.Controllers
         //    return Ok(res);
         //}
 
-        //[HttpPost]
-        //public async Task<IActionResult> Post(OrganizationUser organizationUser)
-        //{
-        //    await _organizationUsersService.AddAsync(organizationUser);
-        //    return Ok();
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Post(OrganizationUser organizationUser)
+        {
+            await _organizationUsersService.AddAsync(organizationUser);
+            return Ok();
+        }
 
         //[HttpPut("{id}")]
         //public async Task<IActionResult> Put(OrganizationUser organizationUser)

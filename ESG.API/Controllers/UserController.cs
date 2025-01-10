@@ -1,5 +1,6 @@
 ﻿ using ESG.Application;
 using ESG.Application.Dto.User;
+using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -62,6 +63,21 @@ namespace ESG.API.Controllers
         {
             await _userService.Update(user);
             return(Ok());
+        }
+
+        [HttpPatch("Delete")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            try
+            {
+                await _userService.Delete(id);
+                return Ok(new { error = false, errorMsg = "Deleted Successfully" });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { error = true, errorMsg = ex.Message });
+            }
+
         }
 
     }

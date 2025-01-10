@@ -7,12 +7,6 @@ using ESG.Domain.Enum;
 using ESG.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ESG.Application.Services
 {
@@ -30,7 +24,7 @@ namespace ESG.Application.Services
 
         public async Task<User> Delete(long Id)
         {
-            var res = await _unitOfWork.Repository<User>().Get(Id);
+            var res = await _unitOfWork.Repository<User>().Get(o=>o.Id==Id);
             res.State = StateEnum.deleted;
             await _unitOfWork.Repository<User>().UpdateAsync(Id, res);
             await _unitOfWork.SaveAsync();
@@ -119,6 +113,28 @@ namespace ESG.Application.Services
             //user.Password= Crypto.GenerateHash(userDto.Password, user.SecurityStamp.ToString());
             user.Email = userDto.Email;
             await _unitOfWork.Repository<User>().AddAsync(user);
+            
+            var organizationUser = new OrganizationUser()
+            {
+                OrganizationId = userDto.OrganizationId!,
+                UserId = user.Id,
+                State = StateEnum.active,
+                CreatedBy = user.CreatedBy,
+                CreatedDate = user.CreatedDate,
+            };
+            user.OrganizationUsers.Add(organizationUser);
+            await _unitOfWork.Repository<OrganizationUser>().AddAsync(organizationUser);
+            var userRole = new UserRole()
+            {
+                RoleId = userDto.RoleId,
+                UserId = user.Id,
+                State = StateEnum.active,
+                CreatedBy = user.CreatedBy,
+                CreatedDate = user.CreatedDate,
+            };
+            user.UserRole = userRole;
+            await _unitOfWork.Repository<UserRole>().AddAsync(userRole);
+
             await _unitOfWork.SaveAsync();
         }
         public async Task<string> UserLogin(UserLogInRequestDto userLogInRequestDto)
@@ -132,9 +148,26 @@ namespace ESG.Application.Services
             var token = await _unitOfWork.UsersRepo.GenerateToken(user.UserId, user.Email, user.OrganizationId, user.RoleId.Value);
             return token.ToString();
         }
-        public Task<User> Update(UserCreationRequestDto user)
+        public async Task<User> Update(UserCreationRequestDto user)
         {
-            throw new NotImplementedException();
+            if(user.FirstName == null || user.Email == null)
+            {
+                throw new System.Exception("Mandatory fields are empty");
+            } 
+            var res = await _unitOfWork.Repository<User>().Get(user.UserId);
+            if (res != null) 
+            { 
+                res.FirstName = user.FirstName;
+                res.LastName = user.LastName!;
+                res.Email = user.Email;
+                res.Password = user.Password;
+                res.LanguageId = user.LanguageId;
+                res.PhoneNumber = user.PhoneNumber!;
+            }
+            await _unitOfWork.Repository<User>().Update(res);
+            await _unitOfWork.SaveAsync();
+            return res;
+            //throw new NotImplementedException();
         }
 
         public Task<User> UpdatePassword(UserCreationRequestDto user)
