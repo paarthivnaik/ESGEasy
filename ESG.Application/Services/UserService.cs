@@ -44,7 +44,7 @@ namespace ESG.Application.Services
             {              
                 if(user.User.State == StateEnum.active)
                 {
-                    var roleId = await _unitOfWork.Repository<UserRole>().Get(o => o.UserId == user.Id);
+                    var roleId = await _unitOfWork.Repository<UserRole>().Get(o => o.UserId == user.UserId);
                     var orgId = await _unitOfWork.Repository<OrganizationUser>().Get(user.Id);
                     var resobj = new UserResponseDto()
                     {
