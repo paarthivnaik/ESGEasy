@@ -17,5 +17,7 @@ namespace ESG.Application.Dto.User
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public long LanguageId { get; set; }
+        public long RoleId { get; set; }
+        public long OrganizationId { get; set; }
     }
 }

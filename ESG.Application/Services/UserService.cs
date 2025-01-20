@@ -39,20 +39,28 @@ namespace ESG.Application.Services
         public async Task<IEnumerable<UserResponseDto>> GetOrganizationalUsers(long organizationId)
         {
             var res = new List<UserResponseDto>();
-            var users = await _unitOfWork.UsersRepo.GetOrganizatinalUsers(organizationId);
-            foreach (var user in users)
-            {
-                var resobj = new UserResponseDto 
+            var orgUsers = await _unitOfWork.UsersRepo.GetOrganizatinalUsers(organizationId);
+            foreach (var user in orgUsers)
+            {              
+                if(user.User.State == StateEnum.active)
                 {
-                    UserId = user.UserId,
-                    FirstName = user.User.FirstName,
-                    LastName = user.User.LastName,
-                    Email = user.User.Email,
-                    Password = user.User.Password,
-                    PhoneNumber = user.User.PhoneNumber,
-                    LanguageId = user.User.LanguageId,
-                };
-                res.Add(resobj);
+                    var roleId = await _unitOfWork.Repository<UserRole>().Get(o => o.UserId == user.Id);
+                    var orgId = await _unitOfWork.Repository<OrganizationUser>().Get(user.Id);
+                    var resobj = new UserResponseDto()
+                    {
+                        UserId = user.UserId,
+                        FirstName = user.User.FirstName,
+                        LastName = user.User.LastName,
+                        Email = user.User.Email,
+                        Password = user.User.Password,
+                        PhoneNumber = user.User.PhoneNumber,
+                        LanguageId = user.User.LanguageId,
+                        RoleId = roleId.RoleId,
+                        OrganizationId
+                        = orgId.OrganizationId,
+                    };
+                    res.Add(resobj);
+                }                
             }
             //var response = _mapper.Map<IEnumerable<UserResponseDto>>(users);
             return res;
@@ -163,6 +171,8 @@ namespace ESG.Application.Services
                 res.Password = user.Password;
                 res.LanguageId = user.LanguageId;
                 res.PhoneNumber = user.PhoneNumber!;
+                res.LastModifiedBy = user.LastModifiedBy;
+                res.LastModifiedDate = user.LastModifiedDate;
             }
             await _unitOfWork.Repository<User>().Update(res);
             await _unitOfWork.SaveAsync();
