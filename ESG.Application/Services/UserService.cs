@@ -157,11 +157,7 @@ namespace ESG.Application.Services
             return token.ToString();
         }
         public async Task<User> Update(UserCreationRequestDto user)
-        {
-            if(user.FirstName == null || user.Email == null)
-            {
-                throw new System.Exception("Mandatory fields are empty");
-            } 
+        {            
             var res = await _unitOfWork.Repository<User>().Get(user.UserId);
             if (res != null) 
             { 

@@ -49,6 +49,7 @@ namespace ESG.Application.Services
                     LastName = organizationCreateDto.LatsName!,
                     Password = paswrd,
                     Email = organizationCreateDto.Email,
+                    State = organizationCreateDto.State,
                     LanguageId = organizationCreateDto.LanguageId,
                     CreatedBy= organizationCreateDto.CreatedBy,
                     CreatedDate = organizationCreateDto.CreatedDate,
