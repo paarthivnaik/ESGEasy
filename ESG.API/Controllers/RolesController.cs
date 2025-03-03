@@ -1,4 +1,5 @@
-﻿using ESG.Application.Services.Interfaces;
+﻿using ESG.Application.Dto.Roles;
+using ESG.Application.Services.Interfaces;
 using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,18 +28,26 @@ namespace ESG.API.Controllers
         //    return await _roleService.GetById(id);
         //}
 
-        //[HttpPost]
-        //public async Task Post([FromBody] Role value)
-        //{
-        //    await _roleService.AddAsync(value);
-        //}
+        [HttpPost("Create")]
+        public async Task Post([FromBody] RoleCreationRequestDto value)
+        {
+            await _roleService.AddAsync(value);
+        }
 
-        //[HttpPut("{id}")]
-        //public async Task<Role> Put([FromBody] Role value)
-        //{
-        //    var res = await _roleService.UpdateAsync(value);
-        //    return res;
-        //}
+        [HttpPut("Update")]
+        public async Task<IActionResult> Put([FromBody] RoleCreationRequestDto value)
+        {
+            try
+            {
+                await _roleService.UpdateAsync(value);
+                return Ok(new { error = false, errorMsg = "" });
+            }
+            catch (Exception ex) {
+                return Ok(new { error = true, errorMsg = ex.Message });
+
+            }
+
+        }
 
         //[HttpDelete("{id}")]
         //public async Task<bool> DeleteAsync(int id)

@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
 using ESG.Application.Common.Interface.Tenants;
+using ESG.Application.Dto.Organization;
+using ESG.Application.Dto.Roles;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,9 +23,14 @@ namespace ESG.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task AddAsync(Role role)
-        {
-            await _unitOfWork.Repository<Role>().AddAsync(role);
+        public async Task AddAsync(RoleCreationRequestDto role)
+        {   
+            Role newRole = new Role();
+            if (role != null)
+            {
+                newRole.Name = role.Name;
+            }
+            await _unitOfWork.Repository<Role>().AddAsync(newRole);
             await _unitOfWork.SaveAsync();
         }
 
@@ -42,11 +50,23 @@ namespace ESG.Application.Services
             return await _unitOfWork.Repository<Role>().Get(Id);
         }
 
-        public async Task<Role> UpdateAsync(Role role)
+        public async Task UpdateAsync(RoleCreationRequestDto role)
         {
-            var res = await _unitOfWork.Repository<Role>().UpdateAsync(role.Id,role);
-            await _unitOfWork.SaveAsync();
-            return res;
+            if (role.Id > 0)
+            {
+                var existingRole = await _unitOfWork.Repository<Role>().Get(role.Id);
+                if (existingRole != null)
+                {
+                    existingRole.Name = role.Name;                    
+                    var res = await _unitOfWork.Repository<Role>().UpdateAsync(role.Id, existingRole);
+                    await _unitOfWork.SaveAsync();
+                }
+                else
+                {
+                    throw new System.Exception("Role does not exist");
+                }
+            }
+           
         }
     }
 }
