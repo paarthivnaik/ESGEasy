@@ -12,5 +12,6 @@ namespace ESG.Application.Services.Interfaces
     {
         Task Add(UOMTranslationsCreateRequestDto uOMTranslationsCreateRequestDto);
         Task Update(UOMTranslationsUpdateRequestDto unitOfMeasure);
+        Task<IEnumerable<UnitOfMeasureResponseDto>> GetUOMTranslationsByLanguageId(long languageId);
     }
 }

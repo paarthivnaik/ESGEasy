@@ -30,7 +30,12 @@ namespace ESG.API.Controllers
                 return Ok(new { error = true, errorMsg = ex.Message });
             }
         }
-
+        [HttpGet("GetUOMTranslationsByLanguageId")]
+        public async Task<IEnumerable<UnitOfMeasureResponseDto>> GetUOMTranslationsByLanguageId(long languageId)
+        {
+            var list = await _uomTranslationsService.GetUOMTranslationsByLanguageId(languageId);
+            return list;
+        }
         //[HttpPut("Update")]
         //public async Task<IActionResult> Put([FromBody] UOMTranslationsUpdateRequestDto value)
         //{

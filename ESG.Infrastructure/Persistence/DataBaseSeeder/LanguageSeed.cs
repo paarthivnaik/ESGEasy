@@ -14,7 +14,11 @@ namespace ESG.Infrastructure.Persistence.DataBaseSeeder
         {
             modelBuilder.Entity<Language>().HasData(
                 new Language { Id = 1, Name = "English", IsoCode = "en" },
-                new Language { Id = 2, Name = "Duch", IsoCode = "nl" });
+                new Language { Id = 2, Name = "Dutch", IsoCode = "nl" },
+                new Language { Id = 3, Name = "Spanish", IsoCode="es"},
+                new Language { Id = 4, Name = "French", IsoCode = "fr" },
+                new Language { Id = 5, Name = "German", IsoCode = "de" }
+                );
         }
     }
 }
