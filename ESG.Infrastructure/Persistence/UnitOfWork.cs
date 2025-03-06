@@ -28,6 +28,7 @@ namespace ESG.Infrastructure.Persistence
     {
         #region Properties
         public IUnitOfMeasureRepo UnitOfMeasure { get; private set; }
+        public IUnitOfMeasureTypeRepo UnitOfMeasureTypeRepo { get; private set; }
         public IDimensionRepo DimensionRepo { get; private set; }
         public IValuesRepo ValuesRepo { get; private set; }
         public IHierarchyRepo HierarchyRepo { get; private set; }
@@ -47,6 +48,7 @@ namespace ESG.Infrastructure.Persistence
         {
             _context = context;
             _configuration = configuration;
+            UnitOfMeasureTypeRepo = new ESG.Infrastructure.Persistence.UnitOfMeasureRepo.UnitOfMeasureTypeRepo(_context);
             UnitOfMeasure = new ESG.Infrastructure.Persistence.UnitOfMeasureRepo.UnitOfMeasureRepo(_context);
             DimensionRepo = new DimensionsRepo(_context);
             ValuesRepo = new ValuesRepo(_context);

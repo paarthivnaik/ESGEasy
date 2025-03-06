@@ -16,7 +16,7 @@ namespace ESG.Application.Services
     public class UnitOfMeasureTypeService : IUnitOfMeasureTypeService
     {
         private readonly IUnitOfWork _unitOfWork;
-
+       
         private readonly IMapper _mapper;
         public UnitOfMeasureTypeService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -126,6 +126,13 @@ namespace ESG.Application.Services
             await _unitOfWork.Repository<UnitOfMeasureType>().Update(existingData);
             //await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>().Update(translationsData);
             await _unitOfWork.SaveAsync();
+        }
+        public async Task<IEnumerable<UnitOfMeasureType>> GetAllUOMTranslationsByUOMIdLangId(long langId, long organizationId)
+        {
+            var list = await _unitOfWork.UnitOfMeasureTypeRepo.GetAllUOMTranslationsByUOMIdLangId(langId, organizationId);            
+            var orderedList = list.OrderBy(u => u.Id);
+            //var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
+            return orderedList;
         }
     }
 }

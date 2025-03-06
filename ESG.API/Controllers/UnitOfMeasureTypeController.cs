@@ -59,5 +59,10 @@ namespace ESG.API.Controllers
         {
             return await _unitOfMeasureTypeService.GetAllTranslations(Id);
         }
+        [HttpGet("GetAllUOMTypeTranslationsByLangId")]
+        public async Task<IEnumerable<UnitOfMeasureType>> GetUOMTypeTranslationsByLangId(long languageId,long organizationId)
+        {
+            return await _unitOfMeasureTypeService.GetAllUOMTranslationsByUOMIdLangId(languageId, organizationId);
+        }
     }
 }

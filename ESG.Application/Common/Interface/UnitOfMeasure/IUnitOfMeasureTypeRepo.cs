@@ -7,8 +7,8 @@ using ESG.Domain.Models;
 
 namespace ESG.Application.Common.Interface.UnitOfMeasure
 {
-    public interface IUnitOfMeasureTypeRepo : IGenericRepository<UnitOfMeasureType>
+    public interface IUnitOfMeasureTypeRepo : IGenericRepository<Domain.Models.UnitOfMeasureType>
     {
-
+        public Task<IEnumerable<Domain.Models.UnitOfMeasureType>> GetAllUOMTranslationsByUOMIdLangId(long langId, long organizationId);
     }
 }

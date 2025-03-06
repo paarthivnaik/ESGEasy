@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Domain.Enum;
+using ESG.Domain.Models;
 
 namespace ESG.Application.Services.Interfaces
 {
@@ -19,6 +20,7 @@ namespace ESG.Application.Services.Interfaces
         
         Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMByUOMTypeId(long uomTypeId, long OrganizationId);
         Task<IEnumerable<UnitOfMeasureResponseDto>> GetAllUOMTranslationsByUOMId(long id);
+        Task<IEnumerable<UnitOfMeasure>> GetAllUOMTranslationsByUOMIdLangId(long id,long langId,long organizationId);
         Task DeleteUOM(UnitOfMeasureDeleteRequest deleteRequest);
     }
 }

@@ -203,5 +203,13 @@ namespace ESG.Application.Services
             var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
             return data;
         }
+        public async Task<IEnumerable<UnitOfMeasure>> GetAllUOMTranslationsByUOMIdLangId(long id, long langId, long organizationId)
+        {
+            var list = await _unitOfMeasure.UnitOfMeasure.GetAllUOMTranslationsByUOMIdLangId(id, langId,organizationId);
+            var orderedList = list.OrderBy(u => u.Id);
+            //var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
+            return orderedList;
+        }
+
     }
 }

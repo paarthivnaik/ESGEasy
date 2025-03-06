@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
+using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Dto.UOMTranslations;
 using ESG.Application.Dto.UOMTypeTranslations;
 using ESG.Application.Services.Interfaces;
+using ESG.Domain.Enum;
 using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -65,6 +67,25 @@ namespace ESG.Application.Services
 
             await _unitOfMeasure.Repository<UnitOfMeasureTypeTranslation>().Update(translationsData);
             await _unitOfMeasure.SaveAsync();
+        }
+        public async Task<IEnumerable<UOMTypeTranslationsCreateRequestDto>> GetUOMTranslationsByLanguageId(long languageId)
+        {
+            var uomTranslationList = await _unitOfMeasure.Repository<UnitOfMeasureTypeTranslation>().GetAll(uom => uom.LanguageId == languageId);
+            var orderedList = uomTranslationList.OrderBy(u => u.Id);
+            var list = new List<UOMTypeTranslationsCreateRequestDto>();
+            foreach (var uom in orderedList)
+            {
+                var uoms = new UOMTypeTranslationsCreateRequestDto();
+                uoms.UnitOfMeasureTypeId = uom.Id;
+                //uoms.Code = uom.ShortText;
+                uoms.ShortText = uom.ShortText;
+                uoms.LongText = uom.LongText;
+                uoms.LanguageId = uom.LanguageId;
+                uoms.State = StateEnum.active;
+                list.Add(uoms);
+            }
+            //var data = _mapper.Map<IEnumerable<UnitOfMeasureCreateRequestDto>>(orderedList);
+            return list;
         }
     }
 }

@@ -12,5 +12,7 @@ namespace ESG.Application.Common.Interface.UnitOfMeasure
     {
         public Task<IEnumerable<UnitOfMeasureTranslation>> GetAllUOMTranslationsByUOMId(long id);
         public Task<IEnumerable<Domain.Models.UnitOfMeasure>> GetAllUOMDetails(long organizationId);
+        public Task<IEnumerable<Domain.Models.UnitOfMeasure>> GetAllUOMTranslationsByUOMIdLangId(long id,long langId,long organizationId);
+
     }
 }

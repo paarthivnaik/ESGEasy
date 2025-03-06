@@ -1,4 +1,6 @@
-﻿using ESG.Application.Dto.UOMTranslations;
+﻿using ESG.Application.Dto.UnitOfMeasure;
+using ESG.Application.Dto.UnitOfMeasureType;
+using ESG.Application.Dto.UOMTranslations;
 using ESG.Application.Dto.UOMTypeTranslations;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
@@ -28,6 +30,12 @@ namespace ESG.API.Controllers
             {
                 return Ok(new { error = true, errorMsg = ex.Message });
             }
+        }
+        [HttpGet("GetAllUOMTypeTranslationsByLanguageId")]
+        public async Task<IEnumerable<UOMTypeTranslationsCreateRequestDto>> GetUOMTranslationsByLanguageId(long languageId)
+        {
+            var list = await _uomTypeTranslationsService.GetUOMTranslationsByLanguageId(languageId);
+            return list;
         }
 
         //[HttpPut("Update")]

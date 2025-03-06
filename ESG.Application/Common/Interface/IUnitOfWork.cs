@@ -18,6 +18,7 @@ namespace ESG.Application.Common.Interface
 {
     public interface IUnitOfWork
     {
+        IUnitOfMeasureTypeRepo UnitOfMeasureTypeRepo { get; }
         IUnitOfMeasureRepo UnitOfMeasure { get; }
         IDimensionRepo DimensionRepo { get; }
         IValuesRepo ValuesRepo { get; }
