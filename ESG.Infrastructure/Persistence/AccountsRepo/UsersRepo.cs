@@ -44,7 +44,7 @@ namespace ESG.Infrastructure.Persistence.AccountsRepo
                 .ToListAsync();
             return user;
         }
-        public async Task<string> GenerateToken(long userId,string email, long? organizationId, long? roleId)
+        public async Task<string> GenerateToken(long userId,string email, long? organizationId, long? roleId,long? languageId)
         {
             var key = _configuration["Configuration:JwtTokenConfig:Secret"];
             var issuer = _configuration["Configuration:JwtTokenConfig:Issuer"];
@@ -67,7 +67,8 @@ namespace ESG.Infrastructure.Persistence.AccountsRepo
                 //new Claim("UserId", userId.ToString()),
                 new Claim("Email", email.ToString()),
                 new Claim("OrganizationId", organizationId.ToString()),
-                new Claim("RoleId", roleId.ToString())
+                new Claim("RoleId", roleId.ToString()),
+                new Claim("LanguageId",languageId.ToString())
             };
             var token = new JwtSecurityToken(
                 issuer: issuer,

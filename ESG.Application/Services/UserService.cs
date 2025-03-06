@@ -153,7 +153,7 @@ namespace ESG.Application.Services
                 throw new System.Exception("User not valid, please enter valid credentials");
             }
             var user = await GetUserDetails(validUser.Id);
-            var token = await _unitOfWork.UsersRepo.GenerateToken(user.UserId, user.Email, user.OrganizationId, user.RoleId.Value);
+            var token = await _unitOfWork.UsersRepo.GenerateToken(user.UserId, user.Email, user.OrganizationId, user.RoleId.Value,userLogInRequestDto.LanguageId);
             return token.ToString();
         }
         public async Task<User> Update(UserCreationRequestDto user)

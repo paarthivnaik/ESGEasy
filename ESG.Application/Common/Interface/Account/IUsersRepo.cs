@@ -9,7 +9,7 @@ namespace ESG.Application.Common.Interface.Account
 {
     public interface IUsersRepo : IGenericRepository<User>
     {
-        Task<string> GenerateToken(long userId,string esmail, long? organizationId, long? roleId);
+        Task<string> GenerateToken(long userId,string esmail, long? organizationId, long? roleId,long? languageId);
         Task<User?> GetUserDetails(long userId);
         Task<IEnumerable<OrganizationUser>> GetOrganizatinalUsers(long organizationId);
     }
