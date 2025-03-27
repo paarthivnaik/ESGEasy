@@ -172,7 +172,7 @@ namespace ESG.Application.Services
                 default:
                     throw new ArgumentException("Invalid tableType provided or DatapointId not provided.");
             }
-            return result;
+            return result.OrderBy(A => A.Id);
         }
 
         public async Task<HierarchyResponseDto> GetHierarchyByOrganizationId(long organizationId, long? languageId)
