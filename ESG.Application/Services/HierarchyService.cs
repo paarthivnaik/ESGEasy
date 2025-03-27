@@ -156,8 +156,8 @@ namespace ESG.Application.Services
                     if (Id != null)
                     {
                         //var disreq = await _unitOfWork.HierarchyRepo.GetDisclosureRequirements(Id);
-                        var disreq = await _unitOfWork.Repository<DisclosureRequirement>().GetAll(a => a.StandardId == Id && a.LanguageId == languageId);
-                        return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(disreq);
+                        var disreq = await _unitOfWork.Repository<DisclosureRequirement>().GetAll(a => a.StandardId == Id && a.LanguageId == languageId && a.State == Domain.Enum.StateEnum.active);
+                        return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(disreq).OrderBy(A=>A.Id);
                     }
                     break;
 
@@ -172,7 +172,7 @@ namespace ESG.Application.Services
                 default:
                     throw new ArgumentException("Invalid tableType provided or DatapointId not provided.");
             }
-            return result.OrderBy(A => A.Id);
+            return result;
         }
 
         public async Task<HierarchyResponseDto> GetHierarchyByOrganizationId(long organizationId, long? languageId)
