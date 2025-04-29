@@ -76,9 +76,9 @@ namespace ESG.API.Controllers
             return list;
         }
         [HttpGet("GetDatapointsForDataModel")]
-        public async Task<List<DatapointsForDataModelResponseDto>> GetDatapointsForDataModel(long organizationId, long? modelId, long? langaugeId)
+        public async Task<List<DatapointsForDataModelResponseDto>> GetDatapointsForDataModel(long organizationId, long? modelId, long? languageId)
         {
-            var list = await _hierarchyService.GetDatapointsForDataModel(organizationId, modelId, langaugeId);
+            var list = await _hierarchyService.GetDatapointsForDataModel(organizationId, modelId, languageId);
             return list;
         }
     }

@@ -44,6 +44,9 @@ namespace ESG.API
             services.AddScoped<IDimensionTranslationService, DimensionTranslationService>();
             services.AddScoped<IDimensionTypeTranslationService, DimensionTypeTranslationService>();
             services.AddScoped<IDataPointValueTranslationService, DataPointValueTranslationService>();
+            services.AddScoped<IDisclosureRequirementTranslationService, DisclosureRequirementTranslationService>();
+            services.AddScoped<ICurrencyTranslationService, CurrencyTranslationService>();
+            services.AddScoped<ILanguageService, LanguageService>();
             return services;
         }
     }

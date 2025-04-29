@@ -1,15 +1,9 @@
 ﻿using AutoMapper;
 using ESG.Application.Common.Interface;
-using ESG.Application.Dto.UnitOfMeasure;
 using ESG.Application.Dto.UnitOfMeasureType;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Enum;
 using ESG.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ESG.Application.Services
 {
@@ -42,8 +36,8 @@ namespace ESG.Application.Services
                         existingUOMtype.LastModifiedBy = uomType.UserId;
                         existingUOMtype.LastModifiedDate = DateTime.UtcNow;
                         oldUomTypes.Add(existingUOMtype);
-                        //var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslation>(unitOfMeasureType);
-                        //await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>().AddAsync(uomTypeTranslationdata);
+                        var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslation>(unitOfMeasureType);
+                        await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>().AddAsync(uomTypeTranslationdata);
                     }
                     else
                     {
@@ -58,15 +52,16 @@ namespace ESG.Application.Services
                         newuomtype.Code = code;
                         newuomtype.State = StateEnum.active;
                         newUomTypes.Add(newuomtype);
-                        //var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslation>(unitOfMeasureType);
-                        //uomTypeTranslationdata.UnitOfMeasureTypeId = uomType.DatapointId;
-                        //uomType.UnitOfMeasureTypeTranslation = new List<UnitOfMeasureTypeTranslation> { uomTypeTranslationdata };
+                        var uomTypeTranslationdata = _mapper.Map<UnitOfMeasureTypeTranslation>(uomType);
+                        uomTypeTranslationdata.UnitOfMeasureTypeId = uomType.UnitOfMeasureTypeId;
+                        newuomtype.UnitOfMeasureTypeTranslations = new List<UnitOfMeasureTypeTranslation> { uomTypeTranslationdata};                        
 
                     }
                 }
             }
             await _unitOfWork.Repository<UnitOfMeasureType>().UpdateRange(oldUomTypes);
             await _unitOfWork.Repository<UnitOfMeasureType>().AddRangeAsync(newUomTypes);
+
             await _unitOfWork.SaveAsync();
         }
 
@@ -107,8 +102,8 @@ namespace ESG.Application.Services
         {
             var existingData = await _unitOfWork.Repository<UnitOfMeasureType>()
                 .Get(u => u.Id == unitOfMeasureType.Id && u.LanguageId == unitOfMeasureType.LanguageId);
-            //var translationsData = await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>()
-            //    .Get(uom => uom.UnitOfMeasureTypeId == unitOfMeasureType.Id && uom.LanguageId == unitOfMeasureType.LanguageId);
+            var translationsData = await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>()
+                .Get(uom => uom.UnitOfMeasureTypeId == unitOfMeasureType.Id && uom.LanguageId == unitOfMeasureType.LanguageId);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasureType.Id} not found.");
@@ -118,20 +113,18 @@ namespace ESG.Application.Services
             existingData.State = unitOfMeasureType.State;
             existingData.OrganizationId = unitOfMeasureType.OrganizationId;
 
-            //translationsData.ShortText = unitOfMeasureType.ShortText;
-            //translationsData.LongText = unitOfMeasureType.LongText;
-            //translationsData.State = unitOfMeasureType.State;
-            //translationsData.Name = unitOfMeasureType.Name;
+            translationsData.ShortText = unitOfMeasureType.ShortText;
+            translationsData.LongText = unitOfMeasureType.LongText;
+            translationsData.State = unitOfMeasureType.State;            
 
             await _unitOfWork.Repository<UnitOfMeasureType>().Update(existingData);
-            //await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>().Update(translationsData);
+            await _unitOfWork.Repository<UnitOfMeasureTypeTranslation>().Update(translationsData);
             await _unitOfWork.SaveAsync();
         }
         public async Task<IEnumerable<UnitOfMeasureType>> GetAllUOMTranslationsByUOMIdLangId(long langId, long organizationId)
         {
             var list = await _unitOfWork.UnitOfMeasureTypeRepo.GetAllUOMTranslationsByUOMIdLangId(langId, organizationId);            
-            var orderedList = list.OrderBy(u => u.Id);
-            //var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
+            var orderedList = list.OrderBy(u => u.Id);            
             return orderedList;
         }
     }

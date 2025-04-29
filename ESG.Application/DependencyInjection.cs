@@ -26,7 +26,8 @@ namespace ESG.Application
                                     typeof(HierarchyProfile),
                                     typeof(DisclosureRequirementProfile),
                                     typeof(UserProfile),
-                                    typeof(DimensionTypeTranslationProfile));
+                                    typeof(DimensionTypeTranslationProfile),
+                                    typeof(LanguageProfile));
             return services;
         }
     }

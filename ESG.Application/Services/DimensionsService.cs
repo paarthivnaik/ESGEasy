@@ -69,6 +69,7 @@ namespace ESG.Application.Services
                         dimensonsdata.State = StateEnum.active;
                         dimensonsdata.Code = code;
                         var dimensonsTranslationdata = new DimensionTranslation();
+                        dimensonsTranslationdata.State = StateEnum.active;
                         dimensonsTranslationdata.ShortText = dimention.ShortText;
                         dimensonsTranslationdata.LongText = dimention.LongText;
                         dimensonsTranslationdata.LanguageId = dimention.LanguageId;
@@ -113,14 +114,30 @@ namespace ESG.Application.Services
             var list = await _unitOfWork.Repository<Dimension>().GetAll
                 (d => (d.OrganizationId == 1 || d.OrganizationId == organizationId) && d.DimensionTypeId == Id && d.State == StateEnum.active);
             return _mapper.Map<IEnumerable<DimensionResponseDto>>(list);
+        }        
+        public async Task<IEnumerable<object>> GetCount()
+        {
+            var list = await _unitOfWork.Repository<Dimension>().GetAll(d => d.State == StateEnum.active);
+            var dimensiontypes = await _unitOfWork.Repository<DimensionType>().GetAll(dt => dt.State == StateEnum.active);            
+            var grouped = list
+        .GroupBy(d => d.DimensionTypeId)
+        .Select(g =>
+        {
+            var dimType = dimensiontypes.FirstOrDefault(dt => dt.Id == g.Key);
+            return new DimensionCountDto
+            {
+                DimensionName = dimType?.LongText ?? "Unknown",
+                Count = g.Count()
+            };
+        });
+            return grouped;
         }
-
         public async Task UpdateAsync(DimensionUpdateRequestDto dimentionsRequest)
         {
             var existingData = await _unitOfWork.Repository<Dimension>()
                 .Get(u => u.Id == dimentionsRequest.Id && u.LanguageId == dimentionsRequest.LanguageId);
-            //var translationsData = await _unitOfWork.Repository<DimensionTranslation>()
-            //    .Get(uom => uom.DimensionsId == dimentionsRequest.Id && uom.LanguageId == dimentionsRequest.LanguageId);
+            var translationsData = await _unitOfWork.Repository<DimensionTranslation>()
+                .Get(uom => uom.DimensionsId == dimentionsRequest.Id && uom.LanguageId == dimentionsRequest.LanguageId);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Dimension with ID {dimentionsRequest.Id} not found.");
@@ -132,14 +149,14 @@ namespace ESG.Application.Services
                 existingData.Code = dimentionsRequest.Code;
                 existingData.State = dimentionsRequest.State;
             }
-            //if (translationsData != null)
-            //{
-            //    translationsData.ShortText = dimentionsRequest.ShortText;
-            //    translationsData.LongText = dimentionsRequest.LongText;
-            //    translationsData.State = dimentionsRequest.State;
-            //}
+            if (translationsData != null)
+            {
+                translationsData.ShortText = dimentionsRequest.ShortText;
+                translationsData.LongText = dimentionsRequest.LongText;
+                translationsData.State = dimentionsRequest.State;
+            }
             await _unitOfWork.Repository<Dimension>().Update(existingData);
-            //await _unitOfWork.Repository<DimensionTranslation>().Update(translationsData);
+            await _unitOfWork.Repository<DimensionTranslation>().Update(translationsData);
             await _unitOfWork.SaveAsync();
         }
 

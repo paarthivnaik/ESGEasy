@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -52,14 +54,17 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 .ToListAsync();
             return list;
         }
-        public async Task<IEnumerable<DataPointValue>> GetNamesForFilteredIds(IEnumerable<long> filteredIds)
+        public async Task<IEnumerable<DataPointValue>> GetNamesForFilteredIds(IEnumerable<long> filteredIds,long? languageId)
         {
             var names = await _context.DataPointValue
                 .Where(dp => filteredIds.Contains(dp.Id))
                 .Select(dp => new DataPointValue
                 {
-                    Id = dp.Id,
-                    ShortText = dp.ShortText,
+                    Id = dp.Id,                    
+                    ShortText = dp.DatapointValueTranslations
+                    .Where(dt=>dt.LanguageId == languageId)
+                    .Select(dt=>dt.ShortText)
+                    .FirstOrDefault(),
                     IsNarrative = dp.IsNarrative,
                     DisclosureRequirementId = dp.DisclosureRequirementId
                 })
@@ -92,7 +97,31 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
 
             return list;
         }
+        public async Task<IEnumerable<DataPointValue>> GetAllDatapointValuesTranslations(long? organizationId,long? langId)
+        {
+            var list = await _context.DataPointValue
+                .Where(x => (x.OrganizationId == 1 || x.OrganizationId == organizationId) && x.State == Domain.Enum.StateEnum.active)
+                .Select(d => new DataPointValue
+                {
+                    Id = d.Id,
+                    Code = d.Code,                    
+                    LanguageId = (long)langId,
+                    OrganizationId = d.OrganizationId,
+                    State = d.State,
+                    ShortText = d.DatapointValueTranslations
+                    .Where(t => t.LanguageId == langId)
+                    .Select(t => t.ShortText)
+                    .FirstOrDefault(),
+                    LongText = d.DatapointValueTranslations
+                    .Where(t => t.LanguageId == langId)
+                    .Select(t => t.LongText)
+                    .FirstOrDefault()
+                })
+                .ToListAsync();
 
+            return list;
+        }
+                            
         public async Task<List<(long Id, string Name, string Code)>?> GetHierarchyDatapointDetailsByOrganizationId(long hierarchyId)
         {
             var list = await _context.Hierarchies
@@ -108,15 +137,24 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
             return list.Select(x => (x.Id, x.Name, x.Code)).ToList();
         }
 
-        public async Task<IEnumerable<DataPointValue>> GetDatapointValueDetailsByIds(IEnumerable<long?> datapointIds)
+        public async Task<IEnumerable<DataPointValue>> GetDatapointValueDetailsByIds(IEnumerable<long?> datapointIds,long? languageId)
         {
             var list = await _context.DataPointValue
                 .AsNoTracking()
                 .Include(a => a.UnitOfMeasure)
                 .Include(c => c.Currency)
+                .Include(dt=>dt.DatapointValueTranslations)
                 .Where(dp => datapointIds.Contains(dp.Id))
                 .ToListAsync();
             return list;
+        }
+        public async Task<DatapointValueTranslation> GetId()
+        {
+            var rec = await _context.DatapointValueTranslations
+                .OrderByDescending(dp => dp.Id)
+                .FirstOrDefaultAsync();
+
+            return rec;
         }
     }
 }

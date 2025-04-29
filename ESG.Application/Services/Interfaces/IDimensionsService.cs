@@ -1,5 +1,6 @@
 ﻿using ESG.Application.Dto.Dimension;
 using ESG.Domain.Enum;
+using ESG.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace ESG.Application.Services.Interfaces
         Task<IEnumerable<DimensionResponseDto>> GetAll(long organizationId);
         Task<IEnumerable<DimensionResponseDto>> GetById(long Id, long organizationId);
         Task Delete(DimensionDeleteRequestDto request);
-        Task<IEnumerable<DimensionResponseDto>> GetAllTranslations(long id);
+        Task<IEnumerable<DimensionResponseDto>> GetAllTranslations(long id);        
+        public Task<IEnumerable<object>> GetCount();
     }
 }

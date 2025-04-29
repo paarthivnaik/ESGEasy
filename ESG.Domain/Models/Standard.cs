@@ -10,7 +10,7 @@ public partial class Standard
 
     public string Code { get; set; } = null!;
 
-    public string ShortText { get; set; } = null!;
+    public string? ShortText { get; set; } = null!;
 
     public string LongText { get; set; } = null!;
 
@@ -33,4 +33,5 @@ public partial class Standard
     public virtual Language Language { get; set; } = null!;
 
     public virtual Topic Topic { get; set; } = null!;
+    public virtual ICollection<StandardTranslation> StandardTranslations { get; set; } = new List<StandardTranslation>();
 }

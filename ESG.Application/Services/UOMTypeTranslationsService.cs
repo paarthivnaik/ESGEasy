@@ -76,15 +76,18 @@ namespace ESG.Application.Services
             foreach (var uom in orderedList)
             {
                 var uoms = new UOMTypeTranslationsCreateRequestDto();
-                uoms.UnitOfMeasureTypeId = uom.Id;
-                //uoms.Code = uom.ShortText;
+                uoms.UnitOfMeasureTypeId = uom.Id;                
                 uoms.ShortText = uom.ShortText;
                 uoms.LongText = uom.LongText;
                 uoms.LanguageId = uom.LanguageId;
                 uoms.State = StateEnum.active;
                 list.Add(uoms);
-            }
-            //var data = _mapper.Map<IEnumerable<UnitOfMeasureCreateRequestDto>>(orderedList);
+            }            
+            return list;
+        }
+        public async Task<IEnumerable<UnitOfMeasureType>> GetUOMTypeTranslationByID(long languageId,long organizationId)
+        {
+            var list = await _unitOfMeasure.UnitOfMeasureTypeRepo.GetAllUOMTranslationsByUOMIdLangId(languageId, organizationId);
             return list;
         }
     }

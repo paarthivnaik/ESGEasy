@@ -50,5 +50,10 @@ namespace ESG.Application.Services
                 await _unitOfWork.SaveAsync();
             }
         }
+        public async Task<IEnumerable<DimensionType>> GetAllTranslations(long? languageId, long? organizationId)
+        {            
+                var list = await _unitOfWork.DimensionTypeRepo.GetDimensionTypeTranslations(languageId, organizationId);
+                return list;            
+        }
     }
 }

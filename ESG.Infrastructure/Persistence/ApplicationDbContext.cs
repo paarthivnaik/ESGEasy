@@ -146,6 +146,7 @@ namespace ESG.Infrastructure.Persistence
             base.OnModelCreating(modelBuilder);
             TenantSeed.Seed(modelBuilder);
             CurrencySeed.Seed(modelBuilder);
+            CountrySeed.Seed(modelBuilder);
             LanguageSeed.Seed(modelBuilder);
             OrganizationSeed.Seed(modelBuilder);
             UserSeed.Seed(modelBuilder);

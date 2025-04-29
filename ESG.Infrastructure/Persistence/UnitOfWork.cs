@@ -1,10 +1,16 @@
 ﻿using ESG.Application.Common.Interface;
 using ESG.Application.Common.Interface.Account;
+using ESG.Application.Common.Interface.Currency;
 using ESG.Application.Common.Interface.DataModel;
 using ESG.Application.Common.Interface.DataPoint;
 using ESG.Application.Common.Interface.Dimension;
+using ESG.Application.Common.Interface.Dimensions;
+using ESG.Application.Common.Interface.DisclosureRequirement;
 using ESG.Application.Common.Interface.FileUpload;
 using ESG.Application.Common.Interface.Hierarchy;
+using ESG.Application.Common.Interface.Language;
+using ESG.Application.Common.Interface.Standard;
+using ESG.Application.Common.Interface.Topic;
 using ESG.Application.Common.Interface.UnitOfMeasure;
 using ESG.Application.Common.Interface.Value;
 using ESG.Domain.Models;
@@ -30,13 +36,18 @@ namespace ESG.Infrastructure.Persistence
         public IUnitOfMeasureRepo UnitOfMeasure { get; private set; }
         public IUnitOfMeasureTypeRepo UnitOfMeasureTypeRepo { get; private set; }
         public IDimensionRepo DimensionRepo { get; private set; }
+        public IDimensionTypeRepo DimensionTypeRepo { get; private set; }
         public IValuesRepo ValuesRepo { get; private set; }
         public IHierarchyRepo HierarchyRepo { get; private set; }
         public IDataModelRepo DataModelRepo { get; private set; }
         public IDatapointValueRepo DatapointValueRepo { get; private set; }
         public IUsersRepo UsersRepo { get; private set; }
         public IOrganizationRepo OrganizationRepo { get; private set; }
-
+        public ICurrencyRepo CurrencyRepo { get; private set; }
+        public ITopicRepo TopicRepo { get; private set; }
+        public IStandardRepo StandardRepo { get; private set; }
+        public IDisclosureRequirementRepo DisclosureRequirementRepo { get; private set; }
+        public ILanguageRepo LanguageRepo { get; private set; }
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
         IDbContextTransaction dbContextTransaction;
@@ -50,13 +61,19 @@ namespace ESG.Infrastructure.Persistence
             _configuration = configuration;
             UnitOfMeasureTypeRepo = new ESG.Infrastructure.Persistence.UnitOfMeasureRepo.UnitOfMeasureTypeRepo(_context);
             UnitOfMeasure = new ESG.Infrastructure.Persistence.UnitOfMeasureRepo.UnitOfMeasureRepo(_context);
-            DimensionRepo = new DimensionsRepo(_context);
+            DimensionRepo = new DimensionsRepo(_context);                         
             ValuesRepo = new ValuesRepo(_context);
             HierarchyRepo = new ESG.Infrastructure.Persistence.HierarchyRepo.HierarchyRepo(_context);
             DataModelRepo = new DataModelRepo(_context);
             DatapointValueRepo = new ESG.Infrastructure.Persistence.DatapointRepo.DatapointValueRepo(_context);
             UsersRepo = new ESG.Infrastructure.Persistence.AccountsRepo.UsersRepo(_context, _configuration);
             OrganizationRepo = new ESG.Infrastructure.Persistence.Account.OrganizationRepo(_context);
+            DisclosureRequirementRepo = new ESG.Infrastructure.Persistence.DisclosureRequirementRepo.DisclosureRequirementRepo(_context);
+            CurrencyRepo = new ESG.Infrastructure.Persistence.CurrencyRepo.CurrencyRepo(_context);
+            DimensionTypeRepo = new ESG.Infrastructure.Persistence.DimensionRepo.DimensionTypeRepo(_context);
+            TopicRepo = new ESG.Infrastructure.Persistence.TopicRepo.TopicRepo(_context);
+            StandardRepo = new ESG.Infrastructure.Persistence.StandardRepo.StandardRepo(_context);
+            LanguageRepo = new ESG.Infrastructure.Persistence.LanguageRepo.LanguageRepo(_context);
         }
         #endregion
        

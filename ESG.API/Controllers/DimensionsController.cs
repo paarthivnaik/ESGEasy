@@ -54,7 +54,11 @@ namespace ESG.API.Controllers
         {
             return await _dimensionsService.GetById(id, organizationId);
         }
-
+        [HttpGet("GetDimensionsCountByTypeId")]
+        public async Task<IEnumerable<Object>> GetCount()
+        {
+            return await _dimensionsService.GetCount();
+        }
         [HttpGet("GetAllDimensionTranslationsByDimensionTypeId")]
 
         public async Task<IEnumerable<DimensionResponseDto>> GetAllTranslations(long id)

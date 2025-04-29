@@ -5,12 +5,7 @@ using ESG.Application.Dto.DimensionTypes;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Enum;
 using ESG.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ESG.Application.Services
 {
@@ -75,6 +70,7 @@ namespace ESG.Application.Services
                         dimensonsTranslationdata.DimensionTypeId = dimensonsdata.Id;
                         dimensonsdata.DimensionTypeTranslations = new List<DimensionTypeTranslation> { dimensonsTranslationdata };
                         newDimensionTypeTranslations.Add(dimensonsTranslationdata);
+
                     }
                 }
             }
@@ -86,8 +82,8 @@ namespace ESG.Application.Services
         {
             var existingData = await _unitOfWork.Repository<DimensionType>()
                 .Get(u => u.Id == dimentionType.Id && u.LanguageId == dimentionType.LanguageId);
-            //var translationsData = await _unitOfWork.Repository<DimensionTypeTranslation>()
-            //    .Get(uom => uom.DimensionTypeId == dimentionType.Id && uom.LanguageId == dimentionType.LanguageId);
+            var translationsData = await _unitOfWork.Repository<DimensionTypeTranslation>()
+                .Get(uom => uom.DimensionTypeId == dimentionType.Id && uom.LanguageId == dimentionType.LanguageId);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"DimensionType with ID {dimentionType.Id} not found.");
@@ -97,12 +93,12 @@ namespace ESG.Application.Services
             existingData.Code = dimentionType.Code;
             existingData.State = dimentionType.State;
 
-            //translationsData.ShortText = dimentionType.ShortText;
-            //translationsData.LongText = dimentionType.LongText;
-            //translationsData.State = dimentionType.State;
-            
+            translationsData.ShortText = dimentionType.ShortText;
+            translationsData.LongText = dimentionType.LongText;
+            translationsData.State = dimentionType.State;
+
             await _unitOfWork.Repository<DimensionType>().Update(existingData);
-            //await _unitOfWork.Repository<DimensionTypeTranslation>().Update(translationsData);
+            await _unitOfWork.Repository<DimensionTypeTranslation>().Update(translationsData);
             await _unitOfWork.SaveAsync();
         }
 

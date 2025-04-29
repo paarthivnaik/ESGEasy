@@ -39,6 +39,95 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
              return hierarchyId;
             
         }
+        public async Task<IEnumerable<Topic>> GetTopicTranslationsByLangId(long? languageId, long? organizationId, long? Id)
+        {
+            var list = await _context.Topics                
+                .Select(t => new Topic
+                {
+                    Id = t.Id,
+                    Code = t.Code,                    
+                    LanguageId = (long)languageId,
+                    State = t.State,
+                    ShortText = t.TopicTranslations
+                    .Where(t => languageId != null ? t.LanguageId == languageId : languageId == 1)
+                    .Select(t => t.ShortText)
+                    .FirstOrDefault() ?? t.ShortText,
+                    LongText = t.TopicTranslations
+                    .Where(t => languageId != null ? t.LanguageId == languageId : languageId == 1)
+                    .Select(t => t.LongText)
+                    .FirstOrDefault() ?? t.LongText
+                })
+                .ToListAsync();
+            return list;
+        }
+        public async Task<IEnumerable<Standard>> GetStandardTranslationsByLangId(long? languageId,long? organizationId,long? tableType,long? Id)
+        {
+            var list = await _context.Standards
+                .Where(t => t.TopicId == Id)                
+                .Select(s => new Standard
+                {
+                    Id = s.Id,
+                    Code = s.Code,
+                    TopicId = s.TopicId,
+                    LanguageId = (long)languageId,
+                    State = s.State,
+                    ShortText = s.StandardTranslations
+                    .Where(st => st.LanguageId == languageId)
+                    .Select(st => st.ShortText)
+                    .FirstOrDefault() ?? s.ShortText,
+                    LongText = s.StandardTranslations
+                    .Where(st => st.LanguageId == languageId)
+                    .Select(st => st.LongText)
+                    .FirstOrDefault() ?? s.LongText
+                })
+                .ToListAsync();
+            return list;
+        }
+        public async Task<IEnumerable<DisclosureRequirement>> GetDisclosureRequirementTranslations(long? languageId, long? organizationId, long? tableType, long? Id)
+        {            
+            var disreq = await _context.DisclosureRequirements
+                .Where(t => t.StandardId == Id)                
+                .Select(d => new DisclosureRequirement
+                {
+                    Id = d.Id,
+                    Code = d.Code,
+                    StandardId = d.StandardId,
+                    LanguageId = (long)languageId,
+                    State = d.State,
+                    ShortText = d.DisclosureRequirementTranslations
+                    .Where(st => st.LanguageId == languageId)
+                    .Select(st => st.ShortText)
+                    .FirstOrDefault(),
+                    LongText = d.DisclosureRequirementTranslations
+                    .Where(st => st.LanguageId == languageId)
+                    .Select(st => st.LongText)
+                    .FirstOrDefault()
+                })
+                .ToListAsync();
+            return disreq;
+        }
+        public async Task<IEnumerable<DataPointValue>> GetDatapointTranslations( long? tableType, long? Id, long? organizationId, long? languageId)
+        {
+            var datapoints = await _context.DataPointValue
+                .Where(dr => dr.DisclosureRequirementId == Id)                
+                .Select(dp => new DataPointValue
+                {
+                    Id = dp.Id,
+                    Code = dp.Code,
+                    LanguageId = (long)languageId,
+                    State = dp.State,
+                    ShortText = dp.DatapointValueTranslations
+                    .Where(dt => dt.LanguageId == languageId)
+                    .Select(dt => dt.ShortText)
+                    .FirstOrDefault(),
+                    LongText = dp.DatapointValueTranslations
+                    .Where(dt => dt.LanguageId == languageId)
+                    .Select(dt => dt.LongText)
+                    .FirstOrDefault()
+                })
+                .ToListAsync();
+            return datapoints;
+        }
         public async Task<List<long>> GetDatapointsByHierarchyId(long? hierarchyId)
         {
             var datapointIds = await _context.Hierarchies
@@ -126,20 +215,7 @@ namespace ESG.Infrastructure.Persistence.HierarchyRepo
         public async Task<IEnumerable<long>> GetRemainingDatapointsByOrganizationId(long organizationId)
         {
             var remainingDatapoints = new List<long>();
-                //= await _context.Hierarchies
-                //.AsNoTracking()
-                //.Where(h => h.HierarchyId == _context.OrganizationHeirarchies
-                //    .Where(oh => oh.OrganizationId == organizationId)
-                //    .Select(oh => oh.HierarchyId)
-                //    .FirstOrDefault())
-                //.Select(h => h.DataPointValuesId)
-                //.Except(
-                //    _context.DataModels
-                //        .Where(dm => dm.OrganizationId == organizationId && dm.IsDefaultModel == false)
-                //        .SelectMany(dm => dm.ModelDatapoints)
-                //        .Select(mdp => mdp.DatapointValuesId)
-                //)
-                //.ToListAsync();
+                
             var hierarchyId = await _context.OrganizationHeirarchies
                 .AsNoTracking()
                 .Where(a => a.OrganizationId == organizationId)

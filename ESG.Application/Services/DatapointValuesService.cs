@@ -102,7 +102,15 @@ namespace ESG.Application.Services
             await _unitOfWork.Repository<DatapointValueTranslation>().UpdateRange(oldDatapointTranslations);
             await _unitOfWork.Repository<DataPointValue>().AddRangeAsync(newDatapoints);
             await _unitOfWork.Repository<DatapointValueTranslation>().AddRangeAsync(newDatapointTranslations);
-            await _unitOfWork.SaveAsync();
+            try
+            {
+                await _unitOfWork.SaveAsync();
+            }
+            catch (System.Exception ex)
+            {
+                throw new System.Exception(ex.InnerException?.Message ?? ex.Message);
+            }
+
         }
 
         public async Task DeleteDatapoint(DatapointValueDeleteRequestDto datapointValueDeleteRequestDto)

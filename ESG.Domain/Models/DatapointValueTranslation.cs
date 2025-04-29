@@ -1,11 +1,13 @@
 ﻿using ESG.Domain.Enum;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace ESG.Domain.Models;
 
 public partial class DatapointValueTranslation
-{
+{    
     public long Id { get; set; }
 
     public long DatapointValueId { get; set; }

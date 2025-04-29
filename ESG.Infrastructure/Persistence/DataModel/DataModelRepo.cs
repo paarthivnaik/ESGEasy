@@ -100,7 +100,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 )
                 .FirstOrDefaultAsync();
         }
-        public async Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum)
+        public async Task<(long Id, string Name)> GetRowDimensionTypeIdAndNameFromConfigurationByModelId(long modelId, ModelViewTypeEnum viewTypeEnum,long languageId)
         {
             var result = await _context.ModelConfigurations
                 .AsNoTracking()
@@ -109,7 +109,10 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(a => new
                 {
                     a.RowId,
-                    RowName = a.Row.ShortText 
+                    RowName = a.Row.DimensionTypeTranslations
+                    .Where(t => t.LanguageId == languageId)
+                    .Select(t => t.ShortText)
+                    .FirstOrDefault()
                 })
                 .FirstOrDefaultAsync();
             if (result != null)
@@ -118,15 +121,18 @@ namespace ESG.Infrastructure.Persistence.DataModel
             }
             return (default(long), string.Empty);
         }
-        public async Task<(long Id, string Name)> GetColumnDimensionTypeIdAndNameByDimensionTypeId(long typeId)
+        public async Task<(long Id, string Name)> GetColumnDimensionTypeIdAndNameByDimensionTypeId(long typeId,long languageId)
         {
             var result = await _context.DimensionTypes
                 .AsNoTracking()
                 .Where(a => a.Id == typeId)
                 .Select(a => new
                 {
-                    a.Id,
-                    Name = a.ShortText
+                    a.Id,                    
+                    Name = a.DimensionTypeTranslations
+                    .Where(dt=>dt.LanguageId == languageId)
+                    .Select(dt=>dt.ShortText)
+                    .FirstOrDefault()
                 })
                 .FirstOrDefaultAsync();
 
@@ -147,7 +153,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return id;
         }
 
-        public async Task<IEnumerable<(long Id, string Name)>> GetDimensionValuesByTypeId(long? modelDimensionTypeId)
+        public async Task<IEnumerable<(long Id, string Name)>> GetDimensionValuesByTypeId(long? modelDimensionTypeId,long languageId)
         {
             var result = await _context.ModelDimensionValues
                 .AsNoTracking()
@@ -155,8 +161,11 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Include(a => a.Dimensions) 
                 .Select(md => new 
                 {
-                    Id = md.Dimensions.Id, 
-                    Name = md.Dimensions.ShortText,
+                    Id = md.Dimensions.Id,                     
+                    Name = md.Dimensions.DimensionTranslations
+                    .Where(d=>d.LanguageId == languageId)
+                    .Select(d=>d.ShortText)
+                    .FirstOrDefault()
                 })
                 .ToListAsync();
             if (result != null)
@@ -192,7 +201,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return modeldimensionTypeId;
         }
 
-        public async Task<List<(long Id, string? Name)>?> GetFilterDimensionTypeByConfigurationId(long configurationId)
+        public async Task<List<(long Id, string? Name)>?> GetFilterDimensionTypeByConfigurationId(long configurationId,long languageId)
         {
             if (_context.DataModelFilters == null)
             {
@@ -205,8 +214,11 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Include(a => a.DimensionType)
                 .Select(md => new
                 {
-                    Id = (long?)md.FilterId,  
-                    Name = md.Filter.ShortText,
+                    Id = (long?)md.FilterId,                      
+                    Name = md.Filter.DimensionTypeTranslations
+                    .Where(ft=>ft.LanguageId == languageId)
+                    .Select(ft=>ft.ShortText)
+                    .FirstOrDefault()
                 })
                 .ToListAsync();
 
@@ -410,8 +422,8 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return await _context.SampleModelFilterCombinationValues
                 .Where(dmf => combinationalIds.Contains(dmf.ModelFilterCombinationsId))
                 .ToListAsync();
-        }
-        public async Task<IEnumerable<(long Id, string Name, long TypeId)>> GetModelDimensionValuesByModelDimTypeId(List<long?> modelDimensionTypeIds)
+        }        
+        public async Task<IEnumerable<(long Id, string Name, long TypeId)>> GetModelDimensionValuesByModelDimTypeId(List<long?> modelDimensionTypeIds,long languageId)
         {
             var result = await _context.ModelDimensionValues
                 .AsNoTracking()
@@ -419,8 +431,11 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Include(a => a.Dimensions)
                 .Select(md => new
                 {
-                    Id = md.Dimensions.Id,
-                    Name = md.Dimensions.ShortText,
+                    Id = md.Dimensions.Id,                    
+                    Name = md.Dimensions.DimensionTranslations
+                    .Where(d => d.LanguageId == languageId)
+                    .Select(d => d.ShortText)
+                    .FirstOrDefault(),
                     TypeId = md.Dimensions.DimensionTypeId,
                 })
                 .ToListAsync();
@@ -428,7 +443,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
             return result.Any() ? result.Select(x => (x.Id, x.Name, x.TypeId)) : Enumerable.Empty<(long, string, long)>();
         }
 
-        public async Task<List<(long Id, long DimensionTypeId, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId)
+        public async Task<List<(long Id, long DimensionTypeId, string Name)>> GetModelDimensionTypesByModelDimTypeId(long modelId, long organizationId,long languageId)
         {
             var query = _context.ModelDimensionTypes
                 .AsNoTracking()
@@ -437,8 +452,11 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Select(md => new
                 {
                     Id = md.Id,
-                    DimensionTypeId = md.DimensionType.Id,
-                    Name = md.DimensionType.ShortText,
+                    DimensionTypeId = md.DimensionType.Id,                    
+                    Name = md.DimensionType.DimensionTypeTranslations
+                    .Where(dt=>dt.LanguageId == languageId)
+                    .Select(dt=>dt.ShortText)
+                    .FirstOrDefault()
                 });
 
             var result = await query.ToListAsync();
@@ -510,18 +528,26 @@ namespace ESG.Infrastructure.Persistence.DataModel
 
             return list;
         }
-        public async Task<List<DataModelValue>?> GetDefaultDataModelValuesByModelIdAndDatapoints(long modelId, IEnumerable<long> datapoints, long organizationId)
+        public async Task<List<DataModelValue>?> GetDefaultDataModelValuesByModelIdAndDatapoints(long modelId, IEnumerable<long> datapoints, long organizationId,long languageId)
         {
-            return await _context.DataModelValues
+            var res =  await _context.DataModelValues
                 .Where(dmv => dmv.DataModelId == modelId
                     && dmv.DataPointValuesId.HasValue
                     && datapoints.Contains(dmv.DataPointValuesId.Value))
+                //.Include(a => a.DataPointValues)
                 .Include(a => a.DataPointValues)
+                    .ThenInclude(dpv => dpv.DatapointValueTranslations
+                    .Where(dv => dv.LanguageId == languageId))
                 .Include(dim => dim.Row)
+                    .ThenInclude(drv=>drv.DimensionTranslations
+                    .Where(dr=>dr.LanguageId == languageId))
                 .Include(dim => dim.Column)
+                    .ThenInclude(dcv=>dcv.DimensionTranslations.
+                    Where(dc=>dc.LanguageId == languageId))
                 .Include(df => df.Combination)
                     .ThenInclude(mfc => mfc.SampleModelFilterCombinationValues)
                 .ToListAsync();
+            return res;
         }
         //public async Task<ESG.Domain.Models.DataModel?> GetDataModelById(long dataModelId)
         //{
@@ -581,19 +607,24 @@ namespace ESG.Infrastructure.Persistence.DataModel
                 .Where(a => a.DataModelId == modelId && a.DataModel.OrganizationId == organizationId)
                 .ToListAsync();
         }
-        public async Task<List<DatapointsDto>> GetDatapointsLinkedToDataModelWithName(long modelId, long organizationId)
+        public async Task<List<DatapointsDto>> GetDatapointsLinkedToDataModelWithName(long modelId, long organizationId,long languageId)
         {
-            return await _context.ModelDatapoints
+            var result = await _context.ModelDatapoints
                 .AsNoTracking()
-                .Where(a => a.DataModelId == modelId && a.DataModel.OrganizationId == organizationId)
+                .Where(a => a.DataModelId == modelId && (a.DataModel.OrganizationId == organizationId || a.DataModel.OrganizationId == 1))
                 .Include(a => a.DatapointValues)
                 .Select(a => new DatapointsDto
-                { 
+                {
                     Id = a.DatapointValues.Id,
-                    ShortText = a.DatapointValues.ShortText,
                     IsNarrative = a.DatapointValues.IsNarrative,
+                    //ShortText = a.DatapointValues.ShortText,
+                    ShortText = a.DatapointValues.DatapointValueTranslations
+                    .Where(t => t.LanguageId == languageId)
+                    .Select(t => t.ShortText)
+                    .FirstOrDefault(),
                 })
                 .ToListAsync();
+            return result;
         }
 
 
@@ -636,13 +667,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
         }
 
         public async Task<List<long?>> IsDataPointHavinganyValue(CheckDataModelValueOfDatapointRegDto requestdto)
-        {
-            //var hasValue = await _context.DataModelValues
-            //    .AsNoTracking()
-            //    .AnyAsync(a =>
-            //        a.DataModel.OrganizationId == requestdto.OrganizationId &&
-            //        requestdto.DatapointIds.Contains(a.DataPointValuesId.Value) &&
-            //        a.Value != null);
+        {            
             var datapoints = await _context.DataModelValues
                 .AsNoTracking()
                 .Where(a =>
@@ -723,15 +748,13 @@ namespace ESG.Infrastructure.Persistence.DataModel
                     .AsNoTracking()
                     .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforFactRow.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
                     .Select(a => a.DimensionsId)
-                    .ToListAsync();
-                    //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactRow.Id, defaultDatamodel.Id);
+                    .ToListAsync();                    
                     if (modeldimensiontypeIdforFactColumn != null)
                         factcoldimensions = await _context.ModelDimensionValues
                         .AsNoTracking()
                         .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforFactColumn.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
                         .Select(a => a.DimensionsId)
-                        .ToListAsync();
-                    //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforFactColumn.Id, defaultDatamodel.Id);
+                        .ToListAsync();                    
                     factfiltercombinations = defaultDatamodel.ModelFilterCombinations
                     .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Fact)
                     .Select(a => (long?)a.Id)
@@ -744,8 +767,7 @@ namespace ESG.Infrastructure.Persistence.DataModel
                         .AsNoTracking()
                         .Where(a => a.ModelDimensionTypesId == modeldimensiontypeIdforNarrativeRow.Id && a.ModelDimensionTypes.DataModel.Id == defaultDatamodel.Id)
                         .Select(a => a.DimensionsId)
-                        .ToListAsync();
-                    //await _unitOfWork.DataModelRepo.GetModelDimensionValuesByTypeIdAndModelId(modeldimensiontypeIdforNarrativeRow.Id, defaultDatamodel.Id);
+                        .ToListAsync();                    
                     narrativefiltercombinations = defaultDatamodel.ModelFilterCombinations
                         .Where(a => a.ViewType == Domain.Enum.ModelViewTypeEnum.Narrative)
                         .Select(a => (long?)a.Id).ToList();

@@ -9,9 +9,9 @@ public partial class DisclosureRequirement
 
     public string Code { get; set; } = null!;
 
-    public string ShortText { get; set; } = null!;
+    public string? ShortText { get; set; } = null;
 
-    public string LongText { get; set; } = null!;
+    public string? LongText { get; set; } = null;
 
     public long LanguageId { get; set; }
 
@@ -32,4 +32,5 @@ public partial class DisclosureRequirement
     public virtual Language Language { get; set; } = null!;
 
     public virtual Standard? Standard { get; set; }
+    public virtual ICollection<DisclosureRequirementTranslation> DisclosureRequirementTranslations { get; set; } = new List<DisclosureRequirementTranslation>();
 }

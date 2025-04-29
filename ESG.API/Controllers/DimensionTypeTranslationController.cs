@@ -2,6 +2,7 @@
 using ESG.Application.Dto.UOMTranslations;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
+using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers
@@ -27,6 +28,20 @@ namespace ESG.API.Controllers
             {
                 return Ok(new { error = true, errorMsg = ex.Message });
             }
+        }
+        [HttpGet("GetAll")]
+        public async Task<IEnumerable<DimensionType>> GetDimensionTypeTranslations(long? languageId, long? organizationId)
+        {
+            try
+            {
+                var list = await _dimensionTypeTranslationService.GetAllTranslations(languageId, organizationId);
+                return list;
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.ToString());
+                return Enumerable.Empty<DimensionType>();
+            }
+            
         }
     }
 }

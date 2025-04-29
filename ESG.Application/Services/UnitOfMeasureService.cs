@@ -123,8 +123,8 @@ namespace ESG.Application.Services
         {
             var existingData = await _unitOfMeasure.Repository<UnitOfMeasure>()
                 .Get(u => u.Id == unitOfMeasure.Id && u.LanguageId == unitOfMeasure.LanguageId);
-            //var translationsData = await _unitOfWork.Repository<UnitOfMeasureTranslation>()
-            //    .Get(uom => uom.UnitOfMeasureId == unitOfMeasure.Id && uom.LanguageId == unitOfMeasure.LanguageId);
+            var translationsData = await _unitOfMeasure.Repository<UnitOfMeasureTranslation>()
+                .Get(uom => uom.UnitOfMeasureId == unitOfMeasure.Id && uom.LanguageId == unitOfMeasure.LanguageId);
             if (existingData == null)
             {
                 throw new KeyNotFoundException($"Unit of Measure with ID {unitOfMeasure.Id} not found.");
@@ -135,13 +135,13 @@ namespace ESG.Application.Services
             existingData.State = unitOfMeasure.State;
             existingData.OrganizationId = unitOfMeasure.OrganizationId;
 
-            //translationsData.ShortText = unitOfMeasure.ShortText;
-            //translationsData.LongText = unitOfMeasure.LongText;
-            //translationsData.State = unitOfMeasure.State;
+            translationsData.ShortText = unitOfMeasure.ShortText;
+            translationsData.LongText = unitOfMeasure.LongText;
+            translationsData.State = unitOfMeasure.State;
             //translationsData.Name = unitOfMeasure.Name;
-           
+
             await _unitOfMeasure.Repository<UnitOfMeasure>().Update(existingData);
-            //await _unitOfWork.Repository<UnitOfMeasureTranslation>().Update(translationsData);
+            await _unitOfMeasure.Repository<UnitOfMeasureTranslation>().Update(translationsData);
             await _unitOfMeasure.SaveAsync();
 
         }
@@ -206,8 +206,7 @@ namespace ESG.Application.Services
         public async Task<IEnumerable<UnitOfMeasure>> GetAllUOMTranslationsByUOMIdLangId(long id, long langId, long organizationId)
         {
             var list = await _unitOfMeasure.UnitOfMeasure.GetAllUOMTranslationsByUOMIdLangId(id, langId,organizationId);
-            var orderedList = list.OrderBy(u => u.Id);
-            //var data = _mapper.Map<IEnumerable<UnitOfMeasureResponseDto>>(orderedList);
+            var orderedList = list.OrderBy(u => u.Id);            
             return orderedList;
         }
 

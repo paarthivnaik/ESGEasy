@@ -55,5 +55,11 @@ namespace ESG.Application.Services
             }
             await _unitOfWork.SaveAsync();
         }
+        public async Task<IEnumerable<DataPointValue>> GetAllDatapointValuesTranslations(long? organizationId, long? langId)
+        {
+            var list = await _unitOfWork.DatapointValueRepo.GetAllDatapointValuesTranslations(organizationId,langId);
+            var orderedList = list.OrderBy(u => u.Id);            
+            return orderedList;
+        }
     }
 }

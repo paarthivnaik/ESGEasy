@@ -22,9 +22,9 @@ namespace ESG.Infrastructure.Persistence
 
         public virtual DbSet<Amendment> Amendments { get; set; }
         public virtual DbSet<AuditLog> AuditLogs { get; set; }
-
+        public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Currency> Currencies { get; set; }
-
+        public virtual DbSet<CurrencyTranslation> CurrencyTranslations { get; set; }
         public virtual DbSet<ESG.Domain.Models.DataModel> DataModels { get; set; }
 
         public virtual DbSet<DataModelFilter> DataModelFilters { get; set; }
@@ -49,7 +49,7 @@ namespace ESG.Infrastructure.Persistence
 
         public virtual DbSet<Hierarchy> Hierarchies { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
-
+        public virtual DbSet<LanguageTranslation> LanguageTranslations { get; set; }
         public virtual DbSet<ModelConfiguration> ModelConfigurations { get; set; }
 
         public virtual DbSet<ModelDatapoint> ModelDatapoints { get; set; }
@@ -135,7 +135,12 @@ namespace ESG.Infrastructure.Persistence
 
                 entity.HasIndex(e => e.Id, "idx_currency_id");
             });
+            modelBuilder.Entity<Country>(entity =>
+            {
+                entity.ToTable("Country");
 
+                entity.HasIndex(e => e.Id, "idx_country_id");
+            });
             modelBuilder.Entity<ESG.Domain.Models.DataModel>(entity =>
             {
                 entity.HasIndex(e => e.OrganizationId, "IX_DataModels_OrganizationId");

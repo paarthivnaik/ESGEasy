@@ -27,7 +27,7 @@ namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
         public async Task<IEnumerable<UnitOfMeasure>> GetAllUOMTranslationsByUOMIdLangId(long id ,long langId, long organizationId)
         {
             var list = await _context.UnitOfMeasures
-                .Where(uom=>(uom.UnitOfMeasureTypeId == id) && (uom.OrganizationId == organizationId))
+                .Where(uom=>(uom.UnitOfMeasureTypeId == id) && (uom.OrganizationId == organizationId || uom.OrganizationId == 1)&&(uom.State == Domain.Enum.StateEnum.active))
                 .Select(u => new UnitOfMeasure
             {
                 Id = u.Id,
@@ -39,11 +39,11 @@ namespace ESG.Infrastructure.Persistence.UnitOfMeasureRepo
                 ShortText = u.UnitOfMeasureTranslations
                     .Where(t => t.LanguageId == langId)
                     .Select(t => t.ShortText)
-                    .FirstOrDefault() ?? u.ShortText,
+                    .FirstOrDefault(),
                 LongText = u.UnitOfMeasureTranslations
                     .Where(t => t.LanguageId == langId)
                     .Select(t => t.LongText)
-                    .FirstOrDefault() ?? u.LongText
+                    .FirstOrDefault()
             })                
                 .ToListAsync();
             return list;

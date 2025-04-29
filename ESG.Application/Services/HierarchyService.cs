@@ -1,22 +1,9 @@
 ﻿using AutoMapper;
 using AutoMapper.Internal;
 using ESG.Application.Common.Interface;
-using ESG.Application.Dto.DataModel;
-using ESG.Application.Dto.Get;
 using ESG.Application.Dto.Hierarchy;
 using ESG.Application.Services.Interfaces;
 using ESG.Domain.Models;
-using ESG.Domain.Models;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Intrinsics.Arm;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using static ESG.Application.Dto.Hierarchy.HierarchyResponseDto;
 
 namespace ESG.Application.Services
@@ -139,24 +126,22 @@ namespace ESG.Application.Services
             switch (tableType)
             {
                 case 1: // topic
-                        var topics = await _unitOfWork.Repository<Topic>().GetAll(a => a.LanguageId == languageId);
-                        return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(topics);
+                    var topics = await _unitOfWork.HierarchyRepo.GetTopicTranslationsByLangId(languageId, organizationId,null);                    
+                    return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(topics);
                     break;
 
                 case 2: // standard
                     if (Id != null)
                     {
-                        //var standard = await _unitOfWork.HierarchyRepo.GetStandards(Id);
-                        var standard = await _unitOfWork.Repository<Standard>().GetAll(a => a.TopicId == Id && a.LanguageId == languageId);
+                        var standard = await _unitOfWork.HierarchyRepo.GetStandardTranslationsByLangId(languageId, organizationId,tableType,Id);                        
                         return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(standard);
                     }
                     break;
 
                 case 3: // disclosurerequiremnets
                     if (Id != null)
-                    {
-                        //var disreq = await _unitOfWork.HierarchyRepo.GetDisclosureRequirements(Id);
-                        var disreq = await _unitOfWork.Repository<DisclosureRequirement>().GetAll(a => a.StandardId == Id && a.LanguageId == languageId && a.State == Domain.Enum.StateEnum.active);
+                    {                        
+                        var disreq = await _unitOfWork.HierarchyRepo.GetDisclosureRequirementTranslations(languageId, organizationId, tableType, Id);                          
                         return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(disreq).OrderBy(A=>A.Id);
                     }
                     break;
@@ -164,8 +149,8 @@ namespace ESG.Application.Services
                 case 4: // datapoints
                     if (Id != null)
                     {
-                        var datapoints = await _unitOfWork.HierarchyRepo.GetDatapoints(Id, organizationId);
-                        return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(datapoints);
+                        var datapoints = await _unitOfWork.HierarchyRepo.GetDatapointTranslations(tableType, Id,organizationId,languageId);                        
+                        return _mapper.Map<IEnumerable<HeirarchyDataResponseDto>>(datapoints).OrderBy(dp=>dp.Id);
                     }
                     break;
 
@@ -184,40 +169,43 @@ namespace ESG.Application.Services
             if (hierarchyId != 0)
             {
                 var datapointIds = await _unitOfWork.HierarchyRepo.GetDatapointsByHierarchyId(hierarchyId);
-                var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds.Select(id => (long?)id));
+                var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds.Select(id => (long?)id),languageId);
+                                
                 var disclosureRequirementIds = datapointdetails.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
-                var disclosureRequirements = await _unitOfWork.Repository<DisclosureRequirement>()
-                    .GetAll(dr => disclosureRequirementIds.Contains(dr.Id) && dr.LanguageId == languageId);
-                var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
-                var subTopics = await _unitOfWork.Repository<Standard>()
-                    .GetAll(st => subTopicIds.Contains(st.Id) && st.LanguageId == languageId);
-                var topics = await _unitOfWork.Repository<Topic>()
-                   .GetAll(a => a.LanguageId == languageId);
+                var disclosureRequirements = await _unitOfWork.DisclosureRequirementRepo.GetAllDisclosureRequirements(dr => disclosureRequirementIds.Contains(dr.Id));
+                
+                var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();                
+                var subTopics = await _unitOfWork.StandardRepo.GetAllStandards(st => subTopicIds.Contains(st.Id));
+                
+                var topics = await _unitOfWork.TopicRepo.GetAllTopics();                
 
                 var topicDtos = topics.Select(t => new TopicDto
                 {
-                    Id = t.Id,
-                    ShortText = t.ShortText,
+                    Id = t.Id,                    
+                    ShortText = t.TopicTranslations.Where(tt=>tt.LanguageId == languageId).Select(tt => tt.ShortText).FirstOrDefault(),
                 }).ToList();
 
                 var subTopicDtos = subTopics.Select(st => new SubTopicDto
                 {
                     Id = st.Id,
-                    ShortText = st.ShortText,
+                    //ShortText = st.ShortText,
+                    ShortText = st.StandardTranslations.Where(stt=>stt.LanguageId == languageId).Select(sst=>sst.ShortText).FirstOrDefault(),
                     TopicId = st.TopicId
                 }).ToList();
 
                 var disclosureRequirementDtos = disclosureRequirements.Select(dr => new DisclosureRequirementDto
                 {
                     Id = dr.Id,
-                    ShortText = dr.ShortText,
+                    //ShortText = dr.ShortText,
+                    ShortText = dr.DisclosureRequirementTranslations.Where(dtt=>dtt.LanguageId == languageId).Select(dt=>dt.ShortText).FirstOrDefault(),
                     SubTopicId = (long)dr.StandardId,
                 }).ToList();
 
                 var dataPointDtos = datapointdetails.Select(dp => new DataPointDto
                 {
-                    Id = dp.Id,
-                    ShortText = dp.ShortText,
+                    Id = dp.Id,                    
+                    ShortText = dp.DatapointValueTranslations.Where(dvt=>dvt.LanguageId == languageId).Select(dvt => dvt.ShortText)
+                    .FirstOrDefault(),
                     UOMCode = (dp.UnitOfMeasure?.Code ?? dp.Currency?.CurrencyCode) ?? "Narrative",
                     DisclosureRequirementId = dp.DisclosureRequirementId.HasValue ? (long)dp.DisclosureRequirementId : 0,
                 }).ToList();
@@ -231,7 +219,7 @@ namespace ESG.Application.Services
         
         }
         public async Task<List<DatapointsForDataModelResponseDto>> GetDatapointsForDataModel(long organizationId, long? modelId, long? languageId)
-        {
+       {
             var response = new List<DatapointsForDataModelResponseDto>();
             List<long> filteredDatapoints = new List<long>();
             List<long> existingModelDatapoints = new List<long>();
@@ -259,21 +247,26 @@ namespace ESG.Application.Services
                 }
             }
 
-            var datapointslist = await _unitOfWork.DatapointValueRepo.GetNamesForFilteredIds(filteredDatapoints);
+            var datapointslist = await _unitOfWork.DatapointValueRepo.GetNamesForFilteredIds(filteredDatapoints,languageId);
             var disclosureRequirementIds = datapointslist.Select(dp => dp.DisclosureRequirementId).Distinct().ToList();
-            var disclosureRequirements = (await _unitOfWork.Repository<DisclosureRequirement>()
-                .GetAll(dr => disclosureRequirementIds.Contains(dr.Id) && dr.LanguageId == languageId)).ToList();
+            
+            var disclosureRequirements = await _unitOfWork.DisclosureRequirementRepo.GetAllDisclosureRequirements(dr => disclosureRequirementIds.Contains(dr.Id));
+            
             var subTopicIds = disclosureRequirements.Select(dr => dr.StandardId).Distinct().ToList();
-            var subTopics = (await _unitOfWork.Repository<Standard>().GetAll(st => subTopicIds.Contains(st.Id) && st.LanguageId == languageId)).ToList();
+                        
+            var subTopics = await _unitOfWork.StandardRepo.GetAllStandards(st => subTopicIds.Contains(st.Id));            
             var topicIds = subTopics.Select(st => st.TopicId).Distinct().ToList();
-            var topics = (await _unitOfWork.Repository<Topic>().GetAll(t => topicIds.Contains(t.Id) && t.LanguageId == languageId)).ToList();
-
+            
+            var topics = await _unitOfWork.TopicRepo.GetTopicTranslations(t=>topicIds.Contains(t.Id));            
             foreach (var topic in topics)
             {
                 var topicDto = new DatapointsForDataModelResponseDto
                 {
-                    Id = topic.Id,
-                    ShortText = topic.ShortText,
+                    Id = topic.Id,                    
+                    ShortText = topic.TopicTranslations
+                    .Where(tt => tt.LanguageId == languageId)
+                    .Select(tt => tt.ShortText)
+                    .FirstOrDefault(),
                     Children = new List<HierarchyStandard>() 
                 };
                 var relatedSubTopics = subTopics.Where(st => st.TopicId == topic.Id).ToList();
@@ -281,8 +274,11 @@ namespace ESG.Application.Services
                 {
                     var standardDto = new HierarchyStandard
                     {
-                        Id = subTopic.Id,
-                        ShortText = subTopic.ShortText,
+                        Id = subTopic.Id,                        
+                        ShortText = subTopic.StandardTranslations
+                        .Where(st => st.LanguageId == languageId)
+                        .Select(st => st.ShortText)
+                        .FirstOrDefault(),
                         Children = new List<HierarchyDisclosureRequirement>() 
                     };
 
@@ -291,8 +287,11 @@ namespace ESG.Application.Services
                     {
                         var disclosureRequirementDto = new HierarchyDisclosureRequirement
                         {
-                            Id = disclosureRequirement.Id,
-                            ShortText = disclosureRequirement.ShortText,
+                            Id = disclosureRequirement.Id,                            
+                            ShortText = disclosureRequirement.DisclosureRequirementTranslations
+                            .Where(dt=>dt.LanguageId == languageId)
+                            .Select(dt=>dt.ShortText)
+                            .FirstOrDefault(),
                             children = new List<HierarchyDatapoint>()
                         };
 
@@ -332,7 +331,7 @@ namespace ESG.Application.Services
                 var datapointIds = defaultDataModelIds.Select(id => (long?)id)
                                       .Concat(dataModelValues)
                                       .ToList();
-                var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds);
+                var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds,null);
                 foreach( var datapoint in datapointdetails)
                 {
                     var res = new GetDatapointsAssignedToUserResponseDto();

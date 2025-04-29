@@ -7,7 +7,7 @@ public partial class Language
 {
     public long Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; } = null!;
 
     public string IsoCode { get; set; } = null!;
 
@@ -46,4 +46,5 @@ public partial class Language
     public virtual ICollection<UnitOfMeasure> UnitOfMeasures { get; set; } = new List<UnitOfMeasure>();
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
+    public virtual ICollection<LanguageTranslation> LanguageTranslations { get; set; } = new List<LanguageTranslation>();
 }

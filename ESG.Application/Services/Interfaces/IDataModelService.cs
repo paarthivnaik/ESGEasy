@@ -13,12 +13,12 @@ namespace ESG.Application.Services.Interfaces
         Task CreateDataModel(DataModelCreateRequestDto requestdto);
         //Task EditDataModel(DataModelCreateRequestDto updateRequestDto);
         Task SaveDatapointDataInModel(DataPointValueSavingRequestDto requestdto);
-        Task<IEnumerable<DataModelsResponseDto>> GetDataModelsResponsesByOrgId(long OrganizationId);
-        Task<DataModelLinkedtoDatapointResponseDto> GetingDataModelLinkedtoDatapoint(long datapointId, long organizationId);
+        Task<IEnumerable<DataModelsResponseDto>> GetDataModelsResponsesByOrgId(long OrganizationId,long languageId);
+        Task<DataModelLinkedtoDatapointResponseDto> GetingDataModelLinkedtoDatapoint(long datapointId, long organizationId, long languageId);
         //Task<DatapointMetricResponseDto> GetDatapointMetric(long datapointId, long organizationId);
         Task ConfiguringModel(ConfiguringDataModelRequestDto configuringDataModelRequestDto);
         Task<DatapointSavedValuesResponseDto> GetDatapointSavedValues(DatapointSavedValuesRequestDto datapointSavedValuesRequestDto); 
-        Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId); 
+        Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId,long languageId); 
         Task AssignUsersToDataModelValues(AssigningDataModelValuesToUsersRequestDto assigningDataModelValuesToUsersRequestDto);
         Task<List<long>?> GetDatapointsLinkedToDataModel(long dataModelId, long organizationId);
 

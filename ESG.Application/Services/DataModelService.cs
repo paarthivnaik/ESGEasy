@@ -667,7 +667,7 @@ namespace ESG.Application.Services
                 currentCombination.RemoveAt(currentCombination.Count - 1);
             }
         }
-        public async Task<IEnumerable<DataModelsResponseDto>> GetDataModelsResponsesByOrgId(long organizationId)
+        public async Task<IEnumerable<DataModelsResponseDto>> GetDataModelsResponsesByOrgId(long organizationId,long languageId)
         {
             var responseobj = new List<DataModelsResponseDto>();
             //var hasdefaultmodelvalues = await _unitOfWork.DataModelRepo.CheckIsDefaultdataModelvalues(organizationId);
@@ -677,7 +677,7 @@ namespace ESG.Application.Services
                 foreach (var datamodel in datamodels)
                 {
                     var viewTypes = await _unitOfWork.DataModelRepo.GetConfigurationViewTypesForDataModel(datamodel.Id);
-                    var datapoints = await _unitOfWork.DataModelRepo.GetDatapointsLinkedToDataModelWithName(datamodel.Id, organizationId);
+                    var datapoints = await _unitOfWork.DataModelRepo.GetDatapointsLinkedToDataModelWithName(datamodel.Id, organizationId,languageId);
                     var editable = await _unitOfWork.DataModelRepo.CheckModelIsEditable(datamodel.Id, organizationId);
                     var response = new DataModelsResponseDto
                     {
@@ -696,17 +696,17 @@ namespace ESG.Application.Services
                         {
                             response.FactView = new FactViewDto
                             {
-                                RowDimension = await GetRowDimensionDto(datamodel.Id, viewType.ViewType),
-                                ColumnDimension = await GetColumnDimensionDto(datamodel.Id, viewType.ViewType),
-                                FilterDimension = await GetFilterDimensionDto(datamodel.Id, viewType.ViewType)
+                                RowDimension = await GetRowDimensionDto(datamodel.Id, viewType.ViewType,languageId),
+                                ColumnDimension = await GetColumnDimensionDto(datamodel.Id, viewType.ViewType,languageId),
+                                FilterDimension = await GetFilterDimensionDto(datamodel.Id, viewType.ViewType,languageId)
                             };
                         }
                         else if (viewType.ViewType == ModelViewTypeEnum.Narrative)
                         {
                             response.NarrativeView = new NarrativeViewDto
                             {
-                                RowDimension = await GetRowDimensionDto(datamodel.Id, viewType.ViewType),
-                                FilterDimension = await GetFilterDimensionDto(datamodel.Id, viewType.ViewType)
+                                RowDimension = await GetRowDimensionDto(datamodel.Id, viewType.ViewType, languageId),
+                                FilterDimension = await GetFilterDimensionDto(datamodel.Id, viewType.ViewType,languageId)
                             };
                         }
                     }
@@ -715,7 +715,7 @@ namespace ESG.Application.Services
             }
             return responseobj;
         }
-        public async Task<DataModelLinkedtoDatapointResponseDto> GetingDataModelLinkedtoDatapoint(long datapointId, long organizationId)
+        public async Task<DataModelLinkedtoDatapointResponseDto> GetingDataModelLinkedtoDatapoint(long datapointId, long organizationId,long languageId)
         {
             var responseobj = new DataModelLinkedtoDatapointResponseDto();
             var datamodel = await _unitOfWork.DataModelRepo.GetDataModelByDatapointIdAndOrgId(datapointId, organizationId);
@@ -734,15 +734,15 @@ namespace ESG.Application.Services
                 };
                 if (datapointviewtype == false)
                 {
-                    responseobj.RowDimensionType = await GetRowDimension(datamodel.Id, ModelViewTypeEnum.Fact);
-                    responseobj.ColumnDimensionType = await GetColumnDimension(datamodel.Id, ModelViewTypeEnum.Fact);
-                    responseobj.FilterDimensionTypes = await GetFilterDimension(datamodel.Id, ModelViewTypeEnum.Fact);
+                    responseobj.RowDimensionType = await GetRowDimension(datamodel.Id, ModelViewTypeEnum.Fact,languageId);
+                    responseobj.ColumnDimensionType = await GetColumnDimension(datamodel.Id, ModelViewTypeEnum.Fact,languageId);
+                    responseobj.FilterDimensionTypes = await GetFilterDimension(datamodel.Id, ModelViewTypeEnum.Fact,languageId);
 
                 }
                 else if (datapointviewtype == true)
                 {
-                    responseobj.RowDimensionType = await GetRowDimension(datamodel.Id, ModelViewTypeEnum.Narrative);
-                    responseobj.FilterDimensionTypes = await GetFilterDimension(datamodel.Id, ModelViewTypeEnum.Narrative);
+                    responseobj.RowDimensionType = await GetRowDimension(datamodel.Id, ModelViewTypeEnum.Narrative,languageId);
+                    responseobj.FilterDimensionTypes = await GetFilterDimension(datamodel.Id, ModelViewTypeEnum.Narrative,languageId);
                 }
             }
             if (responseobj == null)
@@ -751,11 +751,11 @@ namespace ESG.Application.Services
             }
             return responseobj;
         }
-        private async Task<DatapointDimensionType> GetRowDimension(long modelId, ModelViewTypeEnum viewType)
+        private async Task<DatapointDimensionType> GetRowDimension(long modelId, ModelViewTypeEnum viewType,long languageId)
         {
-            var dimensionType = await _unitOfWork.DataModelRepo.GetRowDimensionTypeIdAndNameFromConfigurationByModelId(modelId, viewType);
+            var dimensionType = await _unitOfWork.DataModelRepo.GetRowDimensionTypeIdAndNameFromConfigurationByModelId(modelId, viewType,languageId);
             var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, dimensionType.Id);
-            var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
+            var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId, languageId);
             return new DatapointDimensionType
             {
                 DimensionTypeId = dimensionType.Id,
@@ -767,16 +767,16 @@ namespace ESG.Application.Services
                 }).ToList()
             };
         }
-        private async Task<DatapointDimensionType?> GetColumnDimension(long modelId, ModelViewTypeEnum viewType)
+        private async Task<DatapointDimensionType?> GetColumnDimension(long modelId, ModelViewTypeEnum viewType,long languageId)
         {
             var dimTypeDto = new DatapointDimensionType();
             var columnId = await _unitOfWork.DataModelRepo.GetColumnIdInModelCnfigurationByModelIdAndViewType(modelId, viewType);
             if (columnId == null)
                 return null;
 
-            var dimensionType = await _unitOfWork.DataModelRepo.GetColumnDimensionTypeIdAndNameByDimensionTypeId(columnId!.Value);
+            var dimensionType = await _unitOfWork.DataModelRepo.GetColumnDimensionTypeIdAndNameByDimensionTypeId(columnId!.Value,languageId);
             var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, dimensionType.Id);
-            var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
+            var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId,languageId);
 
             dimTypeDto = new DatapointDimensionType
             {
@@ -790,19 +790,19 @@ namespace ESG.Application.Services
             };
             return dimTypeDto;
         }
-        private async Task<List<DatapointDimensionType>?> GetFilterDimension(long modelId, ModelViewTypeEnum viewTypeEnum)
+        private async Task<List<DatapointDimensionType>?> GetFilterDimension(long modelId, ModelViewTypeEnum viewTypeEnum,long languageId)
         {
             var responsedto = new List<DatapointDimensionType>();
             var configurationId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(modelId, viewTypeEnum);
             if (configurationId >= 0 || configurationId != null)
             {
-                var filterDimension = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId);
+                var filterDimension = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId,languageId);
                 if (filterDimension == null)
                     return responsedto;
                 foreach (var filterdim in filterDimension)
                 {
                     var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, filterdim.Id);
-                    var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
+                    var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId,languageId);
                     var res = new DatapointDimensionType
                     {
                         DimensionTypeId = filterdim.Id,
@@ -903,12 +903,12 @@ namespace ESG.Application.Services
                 await _unitOfWork.Repository<UploadedFile>().AddRangeAsync(uploadedfiles);
             }
         }
-        private async Task<DimensionTypeDto> GetRowDimensionDto(long modelId, ModelViewTypeEnum viewType)
+        private async Task<DimensionTypeDto> GetRowDimensionDto(long modelId, ModelViewTypeEnum viewType,long languageId)
         {
             var filterdimresponsedto = new List<DimensionTypeDto>();
-            var dimensionType = await _unitOfWork.DataModelRepo.GetRowDimensionTypeIdAndNameFromConfigurationByModelId(modelId, viewType);
+            var dimensionType = await _unitOfWork.DataModelRepo.GetRowDimensionTypeIdAndNameFromConfigurationByModelId(modelId, viewType,languageId);
             var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, dimensionType.Id);
-            var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
+            var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId,languageId);
             return new DimensionTypeDto
             {
                 DimensionTypeId = dimensionType.Id,
@@ -920,16 +920,16 @@ namespace ESG.Application.Services
                 }).ToList()
             };
         }
-        private async Task<DimensionTypeDto?> GetColumnDimensionDto(long modelId, ModelViewTypeEnum viewType)
+        private async Task<DimensionTypeDto?> GetColumnDimensionDto(long modelId, ModelViewTypeEnum viewType,long languageId)
         {
             var dimTypeDto = new DimensionTypeDto();
             var columnId = await _unitOfWork.DataModelRepo.GetColumnIdInModelCnfigurationByModelIdAndViewType(modelId, viewType);
             if (columnId == null)
                 return null;
 
-            var dimensionType = await _unitOfWork.DataModelRepo.GetColumnDimensionTypeIdAndNameByDimensionTypeId(columnId!.Value);
+            var dimensionType = await _unitOfWork.DataModelRepo.GetColumnDimensionTypeIdAndNameByDimensionTypeId(columnId!.Value,languageId);
             var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, dimensionType.Id);
-            var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
+            var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId,languageId);
 
             dimTypeDto = new DimensionTypeDto
             {
@@ -943,13 +943,13 @@ namespace ESG.Application.Services
             };
             return dimTypeDto;
         }
-        private async Task<List<DimensionTypeDto>?> GetFilterDimensionDto(long modelId, ModelViewTypeEnum viewTypeEnum)
+        private async Task<List<DimensionTypeDto>?> GetFilterDimensionDto(long modelId, ModelViewTypeEnum viewTypeEnum,long languageId)
         {
             var responsedto = new List<DimensionTypeDto>();
             var configurationId = await _unitOfWork.DataModelRepo.GetModelconfigurationIdByModelIdAndViewType(modelId, viewTypeEnum);
             if (configurationId > 0 || configurationId != null)
             {
-                var filterDimension = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId);
+                var filterDimension = await _unitOfWork.DataModelRepo.GetFilterDimensionTypeByConfigurationId(configurationId,languageId);
                 if (filterDimension == null)
                 {
                     return responsedto;
@@ -957,7 +957,7 @@ namespace ESG.Application.Services
                 foreach (var filterdim in filterDimension)
                 {
                     var modelDimensionTypeId = await _unitOfWork.DataModelRepo.GetModelDimensionTypeIdByDimensiionTypeID(modelId, filterdim.Id);
-                    var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId);
+                    var dimensionValues = await _unitOfWork.DataModelRepo.GetDimensionValuesByTypeId(modelDimensionTypeId, languageId);
                     var res = new DimensionTypeDto
                     {
                         DimensionTypeId = filterdim.Id,
@@ -1087,14 +1087,14 @@ namespace ESG.Application.Services
             return response;
         }
 
-        public async Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId)
+        public async Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long ModelId, long organizationId,long languageId)
         {
             var responsedto = new GetDataModelValuesForAssigningUsersResponseDto();
             var datapointsweneed = new List<long>();
             var isdefaultModel = await _unitOfWork.DataModelRepo.VerifyIsDefaultModel(ModelId);
-            var dimensionTypes = await _unitOfWork.DataModelRepo.GetModelDimensionTypesByModelDimTypeId(ModelId, organizationId);
+            var dimensionTypes = await _unitOfWork.DataModelRepo.GetModelDimensionTypesByModelDimTypeId(ModelId, organizationId,languageId);
             IEnumerable<(long Id, string Name, long TypeId)> dimensionValues = await _unitOfWork.DataModelRepo.GetModelDimensionValuesByModelDimTypeId(
-                dimensionTypes.Select(a => (long?)a.Id).ToList());
+                dimensionTypes.Select(a => (long?)a.Id).ToList(),languageId);
             var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
             if (isdefaultModel)
             {
@@ -1107,7 +1107,7 @@ namespace ESG.Application.Services
                 var modeldatapoints = await _unitOfWork.DataModelRepo.GetDatapointsLinkedToDataModel(ModelId, organizationId);
                 datapointsweneed = modeldatapoints.Select(a => a.DatapointValuesId).ToList();
             }
-            var dataModelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByModelIdAndDatapoints(ModelId, datapointsweneed, organizationId);
+            var dataModelValues = await _unitOfWork.DataModelRepo.GetDefaultDataModelValuesByModelIdAndDatapoints(ModelId, datapointsweneed, organizationId, languageId);
             var modelDimenstionTypesWithNames = new List<DataModelDimenstionTypesWithNamesForHeaders>();
             var modelDatamodelValues = new List<DataModelValuesForAssigning>();
 
@@ -1175,7 +1175,10 @@ namespace ESG.Application.Services
                 {
                     DataModelValueId = datamodelvalue.Id,
                     DatapointId = datamodelvalue.DataPointValuesId,
-                    DatapointName = datamodelvalue.DataPointValues.ShortText ?? string.Empty,
+                    //DatapointName = datamodelvalue.DataPointValues!.DatapointValueTranslations!.Select(vt => vt.ShortText).FirstOrDefault(),
+                    DatapointName = datamodelvalue.DataPointValues?.DatapointValueTranslations != null && datamodelvalue.DataPointValues.DatapointValueTranslations.Any()
+                        ? datamodelvalue.DataPointValues.DatapointValueTranslations.Select(vt => vt.ShortText).FirstOrDefault()
+                        : "",                    
                     DatapointCode = datamodelvalue.DataPointValues.Code ?? string.Empty,
                     DimensionalCombinationForDatapoint = dimensionsdto,
                     IsBlocked = datamodelvalue.IsBlocked,

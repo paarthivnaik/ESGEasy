@@ -49,14 +49,14 @@ namespace ESG.API.Controllers
         //    }
         //}
         [HttpGet("GetDataModelsForOrganization")]
-        public async Task<IEnumerable<DataModelsResponseDto>> GetDataModelsForOrganization(long OrganizationId)
+        public async Task<IEnumerable<DataModelsResponseDto>> GetDataModelsForOrganization(long OrganizationId, long languageId)
         {
-            return await _dataModelService.GetDataModelsResponsesByOrgId(OrganizationId);
+            return await _dataModelService.GetDataModelsResponsesByOrgId(OrganizationId,languageId);
         }
         [HttpGet("GetingDataModelLinkedtoDatapoint")]
-        public async Task<DataModelLinkedtoDatapointResponseDto> GetingDataModelLinkedtoDatapoint(long datapointId, long OrganizationId)
+        public async Task<DataModelLinkedtoDatapointResponseDto> GetingDataModelLinkedtoDatapoint(long datapointId, long OrganizationId, long languageId)
         {
-            return await _dataModelService.GetingDataModelLinkedtoDatapoint(datapointId, OrganizationId);
+            return await _dataModelService.GetingDataModelLinkedtoDatapoint(datapointId, OrganizationId, languageId);
         }
         [HttpPost("SavingDatapointDataInModel")]
         public async Task<IActionResult> SaveDatapointDataInModel(DataPointValueSavingRequestDto datapointValuesSavingRequestDto)
@@ -77,9 +77,9 @@ namespace ESG.API.Controllers
             return await _dataModelService.GetDatapointSavedValues(datapointSavedValuesRequestDto);
         }
         [HttpGet("GetDataModelValuesForAssigningUsers")]
-        public async Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long dataModelId, long organizationId)
+        public async Task<GetDataModelValuesForAssigningUsersResponseDto> GetDataModelValuesForAssigningUsers(long dataModelId, long organizationId,long languageId)
         {
-            return await _dataModelService.GetDataModelValuesForAssigningUsers(dataModelId, organizationId);
+            return await _dataModelService.GetDataModelValuesForAssigningUsers(dataModelId, organizationId, languageId);
         }
         [HttpPost("AssignUsersToDataModelValues")]
         public async Task<IActionResult> AssignUsersToDataModelValues(AssigningDataModelValuesToUsersRequestDto requestDto)

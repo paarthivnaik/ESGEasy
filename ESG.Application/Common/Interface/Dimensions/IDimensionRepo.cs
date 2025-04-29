@@ -11,5 +11,6 @@ namespace ESG.Application.Common.Interface.Dimension
     public interface IDimensionRepo
     {
         Task<IEnumerable<DimensionTranslation>> GetAllTranslations(long id);
+        Task<IEnumerable<Domain.Models.Dimension>> GetDimensionTranslationsByDimensionId(long dimensionTypeId, long languageId, long organizationId);
     }
 }

@@ -25,5 +25,28 @@ namespace ESG.Infrastructure.Persistence.DimensionRepo
                                      .ToListAsync();
             return list;
         }
+        public async Task<IEnumerable<Dimension>> GetDimensionTranslationsByDimensionId(long dimensionTypeid,long languageId,long organizationId)
+        {
+            var list = await _context.Dimensions
+                .Where(d=>(d.DimensionTypeId == dimensionTypeid) && (d.OrganizationId == 1||d.OrganizationId == organizationId)&& (d.State == Domain.Enum.StateEnum.active))
+                .Select(d => new Dimension
+                {
+                    Id = d.Id,
+                    DimensionTypeId = d.DimensionTypeId,
+                    Code = d.Code,
+                    LanguageId = languageId,
+                    ShortText = d.DimensionTranslations
+                    .Where(dt => dt.LanguageId == languageId)
+                    .Select(dt => dt.ShortText)
+                    .FirstOrDefault(),
+                    LongText = d.DimensionTranslations
+                    .Where(t => t.LanguageId == languageId)
+                    .Select(t => t.LongText)
+                    .FirstOrDefault()
+
+                })
+                .ToListAsync();
+            return list;
+        }
     }
 }

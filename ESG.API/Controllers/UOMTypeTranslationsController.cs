@@ -4,6 +4,7 @@ using ESG.Application.Dto.UOMTranslations;
 using ESG.Application.Dto.UOMTypeTranslations;
 using ESG.Application.Services;
 using ESG.Application.Services.Interfaces;
+using ESG.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESG.API.Controllers
@@ -32,9 +33,9 @@ namespace ESG.API.Controllers
             }
         }
         [HttpGet("GetAllUOMTypeTranslationsByLanguageId")]
-        public async Task<IEnumerable<UOMTypeTranslationsCreateRequestDto>> GetUOMTranslationsByLanguageId(long languageId)
+        public async Task<IEnumerable<UnitOfMeasureType>> GetUOMTranslationsByLanguageId(long languageId,long organizationId)
         {
-            var list = await _uomTypeTranslationsService.GetUOMTranslationsByLanguageId(languageId);
+            var list = await _uomTypeTranslationsService.GetUOMTypeTranslationByID(languageId,organizationId);
             return list;
         }
 
