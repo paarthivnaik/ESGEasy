@@ -14,7 +14,7 @@ namespace ESG.Application.Services.Interfaces
         Task<List<long?>> CheckDataModelValueOfDatapoint(CheckDataModelValueOfDatapointRegDto requsetdto);
         Task<IEnumerable<HeirarchyDataResponseDto>> GetMethod(int tableType, long? Id, long? organizationId, long? languageId);
         Task<HierarchyResponseDto> GetHierarchyByOrganizationId(long organizationId, long? languageId);
-        Task<List<GetDatapointsAssignedToUserResponseDto>> GetDatapointsAssignedToUser(long organizationId, long userId);
+        Task<List<GetDatapointsAssignedToUserResponseDto>> GetDatapointsAssignedToUser(long organizationId, long userId,long languageId);
         Task<List<DatapointsForDataModelResponseDto>> GetDatapointsForDataModel(long organizationId, long? modelId, long? languageId);
         //Task<HierarchyResponseDto> GetUserDatapoints(long UserId, long organizationId);
     }

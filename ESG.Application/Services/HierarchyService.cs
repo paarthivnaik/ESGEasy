@@ -319,7 +319,8 @@ namespace ESG.Application.Services
             return response;
         }
 
-        public async Task<List<GetDatapointsAssignedToUserResponseDto>> GetDatapointsAssignedToUser(long organizationId, long userId)
+        public async Task<List<GetDatapointsAssignedToUserResponseDto>> GetDatapointsAssignedToUser(long organizationId, long userId,long languageId)
+        
         {
             var mainDto = new List<GetDatapointsAssignedToUserResponseDto>();
             var hierarchyId = await _unitOfWork.HierarchyRepo.GetHierarchyIdByOrgId(organizationId);
@@ -331,12 +332,13 @@ namespace ESG.Application.Services
                 var datapointIds = defaultDataModelIds.Select(id => (long?)id)
                                       .Concat(dataModelValues)
                                       .ToList();
-                var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds,null);
+                var datapointdetails = await _unitOfWork.DatapointValueRepo.GetDatapointValueDetailsByIds(datapointIds,languageId);
                 foreach( var datapoint in datapointdetails)
                 {
                     var res = new GetDatapointsAssignedToUserResponseDto();
                     res.Id = datapoint.Id;
-                    res.ShortText = datapoint.ShortText;
+                    //res.ShortText = datapoint.ShortText;
+                    res.ShortText = datapoint.DatapointValueTranslations.Where(dpt => dpt.LanguageId == languageId).Select(dpt => dpt.ShortText).FirstOrDefault();
                     res.UOMCode = (datapoint.UnitOfMeasure?.Code ?? datapoint.Currency?.CurrencyCode) ?? "Narrative";
                     mainDto.Add(res);
                 }
