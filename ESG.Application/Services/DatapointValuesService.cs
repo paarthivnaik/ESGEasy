@@ -59,7 +59,7 @@ namespace ESG.Application.Services
                         existingdatapoint.LongText = datapoint.LongText;
                         existingdatapoint.DisclosureRequirementId = datapoint.DisclosureRequirementId;
 
-                        existingTranslation.LanguageId = datapoint.LanguageId;
+                        existingTranslation.LanguageId = datapoint.LanguageId;                       
                         existingTranslation.DatapointValueId = datapoint.Id;
                         existingTranslation.Purpose = datapoint.Purpose;
                         existingTranslation.ShortText = datapoint.ShortText;
@@ -85,6 +85,7 @@ namespace ESG.Application.Services
                         newDP.State = Domain.Enum.StateEnum.active;
                         newDatapoints.Add(newDP);
                         var newDPTranslation = new DatapointValueTranslation();
+                        newDPTranslation.State = Domain.Enum.StateEnum.active;
                         newDPTranslation.LanguageId = datapoint.LanguageId;
                         newDPTranslation.DatapointValueId = newDP.Id;
                         newDPTranslation.Purpose = datapoint.Purpose;

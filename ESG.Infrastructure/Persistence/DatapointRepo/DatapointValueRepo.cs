@@ -104,8 +104,12 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                 .Select(d => new DataPointValue
                 {
                     Id = d.Id,
-                    Code = d.Code,                    
+                    Code = d.Code,
+                    Purpose = d.Purpose,
+                    CreatedBy = d.CreatedBy,
+                    CreatedDate = d.CreatedDate,
                     LanguageId = (long)langId,
+                    DatapointTypeId = d.DatapointTypeId,
                     OrganizationId = d.OrganizationId,
                     State = d.State,
                     ShortText = d.DatapointValueTranslations
@@ -115,7 +119,13 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
                     LongText = d.DatapointValueTranslations
                     .Where(t => t.LanguageId == langId)
                     .Select(t => t.LongText)
-                    .FirstOrDefault()
+                    .FirstOrDefault(),
+                    LastModifiedBy = d.LastModifiedBy,
+                    LastModifiedDate = d.LastModifiedDate,
+                    DisclosureRequirementId = d.DisclosureRequirementId,
+                    CurrencyId = d.CurrencyId,
+                    UnitOfMeasureId = d.UnitOfMeasureId,
+                    IsNarrative = d.IsNarrative
                 })
                 .ToListAsync();
 
@@ -141,8 +151,8 @@ namespace ESG.Infrastructure.Persistence.DatapointRepo
         {
             var list = await _context.DataPointValue
                 .AsNoTracking()
-                .Include(a => a.UnitOfMeasure)
-                .Include(c => c.Currency)
+                .Include(a => a.UnitOfMeasure)                    
+                .Include(c => c.Currency)                    
                 .Include(dt=>dt.DatapointValueTranslations)
                 .Where(dp => datapointIds.Contains(dp.Id))
                 .ToListAsync();
