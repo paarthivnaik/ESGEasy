@@ -35,7 +35,11 @@ namespace ESG.Infrastructure.Persistence.DimensionRepo
                     LongText = u.DimensionTypeTranslations
                     .Where(t => t.LanguageId == langId)
                     .Select(t => t.LongText)
-                    .FirstOrDefault()
+                    .FirstOrDefault(),
+                    CreatedBy = u.CreatedBy,
+                    CreatedDate = u.CreatedDate,
+                    LastModifiedBy= u.LastModifiedBy,
+                    LastModifiedDate = u.LastModifiedDate
                 })
                 .ToListAsync();
             return list;
